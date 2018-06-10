@@ -1,16 +1,15 @@
 ---
 layout:     post
-
 title:      "Everything about Setting Up My Ubuntu Desktop"
-description: "Everything about setting up my own ubuntu desktop, it's just a note in case I need it later"
-excerpt: "Everything about setting up my own ubuntu desktop, it's just a note in case I need it later"
-date:       2018-05-24 09:00:00
+description: "Everything about setting up my own ubuntu desktop, it's just a Note in case I need it later"
+excerpt: "Everything about setting up my own ubuntu desktop, it's just a Note in case I need it later"
+date:    2018-05-24
 author:     "赵化冰"
-image: "img/in-post/2018-05-23-service_2_service_auth/background.jpg"
+image: "https://img.zhaohuabing.com/in-post/2018-05-23-service_2_service_auth/background.jpg"
 published: true 
 tags:
     - ubuntu 
-category: [ tips ]    
+categories: [ "Tips" ]    
 ---
 
 ## 目录

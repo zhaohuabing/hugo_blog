@@ -5,14 +5,14 @@ title:      "Istio Sidecar自动注入原理"
 subtitle:   "Kubernetes webhook扩展机制解析"
 description: "Kubernets 1.9版本引入了Admission Webhook(web 回调)扩展机制，通过Webhook,开发者可以非常灵活地对Kubernets API Server的功能进行扩展，在API Server创建资源时对资源进行验证或者修改。 Istio 0.7版本就利用了Kubernets webhook实现了sidecar的自动注入。"
 excerpt: "Kubernets 1.9版本引入了Admission Webhook(web 回调)扩展机制，通过Webhook,开发者可以非常灵活地对Kubernets API Server的功能进行扩展，在API Server创建资源时对资源进行验证或者修改。 Istio 0.7版本就利用了Kubernets webhook实现了sidecar的自动注入。"
-date:       2018-05-23 14:00:00
+date:    2018-05-23
 author:     "赵化冰"
-image: "img/in-post/2018-4-25-istio-auto-injection-with-webhook/lion.jpg"
+image: "https://img.zhaohuabing.com/in-post/2018-4-25-istio-auto-injection-with-webhook/lion.jpg"
 published: true 
 tags:
     - Kubernetes
     - Istio
-category: [ tech ]
+categories: [ Tech ]
 ---
 
 ## 目录
@@ -33,7 +33,7 @@ Istio 0.7版本就利用了Kubernets webhook实现了sidecar的自动注入。
 ## 什么是Admission
 ---
 Admission是Kubernets中的一个术语，指的是Kubernets API Server资源请求过程中的一个阶段。如下图所示，在API Server接收到资源创建请求时，首先会对请求进行认证和鉴权，然后经过Admission处理，最后再保存到etcd。 
-![](\img\in-post\2018-4-25-istio-auto-injection-with-webhook\admission-phase.png)
+![](http://img.zhaohuabing.com/in-post/2018-4-25-istio-auto-injection-with-webhook/admission-phase.png)
 从图中看到，Admission中有两个重要的阶段，Mutation和Validation，这两个阶段中执行的逻辑如下：
 * Mutation
   
@@ -62,17 +62,17 @@ admissionregistration.k8s.io/v1beta1
 Webhook使用数字证书向kube-apiserver进行身份认证，因此需要先使用工具生成密钥对，并向Istio CA申请数字证书。
 
 ```
-./install/kubernetes/webhook-create-signed-cert.sh \
-    --service istio-sidecar-injector \
-    --namespace istio-system \
+./install/kubernetes/webhook-create-signed-cert.sh /
+    --service istio-sidecar-injector /
+    --namespace istio-system /
     --secret sidecar-injector-certs
 ```
 
 ### 将生成的数字证书配置到webhook中
 
 ```
-cat install/kubernetes/istio-sidecar-injector.yaml | \
-     ./install/kubernetes/webhook-patch-ca-bundle.sh > \
+cat install/kubernetes/istio-sidecar-injector.yaml | /
+     ./install/kubernetes/webhook-patch-ca-bundle.sh > /
      install/kubernetes/istio-sidecar-injector-with-ca-bundle.yaml
 ```
 

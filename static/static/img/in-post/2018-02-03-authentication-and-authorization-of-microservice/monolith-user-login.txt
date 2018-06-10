@@ -1,0 +1,19 @@
+@startuml
+actor User
+participant "Client(Browser)"
+box "Server"
+participant "Security Module" 
+participant "Business Module" 
+end box
+
+"User" -> "Client(Browser)": Name and Passowrd
+"Client(Browser)" -> "Security Module": Login
+"Security Module" -> "Security Module": Verify user identity
+alt Credential is valid
+    "Security Module" -> "Security Module": Generate session
+    "Security Module" -> "Client(Browser)": Sessio Id (Cookie or URL rewriting)
+else Credential is invalid
+    "Security Module" -> "Client(Browser)": Login failed   
+end
+
+@enduml

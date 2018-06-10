@@ -3,13 +3,13 @@ layout:     post
 title:      "使用脚本和定时任务自动设置windows HTTP 代理服务器"
 subtitle:   ""
 description: "使用Visual Basic Script脚本和Windows定时任务自动设置windows HTTP 代理服务器。"
-date:       2017-11-23 14:00:00
 author:     "赵化冰"
+date:     2017-11-23
 image: ""
 published: true
 tags:
     - Tips
-category: [ tips ]
+categories: [ Tips ]
 ---
 
 * 目录
@@ -58,18 +58,18 @@ End Function
 
 Sub setProxy()
   Set objShell = WScript.CreateObject("WScript.Shell")
-  RegLocate = "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Internet Settings\ProxyServer"
+  RegLocate = "HKEY_CURRENT_USER/Software/Microsoft\Windows\CurrentVersion\Internet Settings\ProxyServer"
   objShell.RegWrite RegLocate,proxy_server,"REG_SZ"
-  RegLocate = "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Internet Settings\ProxyEnable"
+  RegLocate = "HKEY_CURRENT_USER/Software/Microsoft\Windows\CurrentVersion\Internet Settings\ProxyEnable"
   objShell.RegWrite RegLocate,"1","REG_DWORD"
   MsgBox "HTTP Proxy is enabled"
 End Sub
 
 Sub clearProxy()
   Set objShell = WScript.CreateObject("WScript.Shell")
-  RegLocate = "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Internet Settings\ProxyServer"
+  RegLocate = "HKEY_CURRENT_USER/Software/Microsoft\Windows\CurrentVersion\Internet Settings\ProxyServer"
   objShell.RegWrite RegLocate,"0.0.0.0:80","REG_SZ"
-  RegLocate = "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Internet Settings\ProxyEnable"
+  RegLocate = "HKEY_CURRENT_USER/Software/Microsoft\Windows\CurrentVersion\Internet Settings\ProxyEnable"
   objShell.RegWrite RegLocate,"0","REG_DWORD"
   MsgBox "HTTP Proxy is disabled"
 End Sub
@@ -85,7 +85,7 @@ Event ID: 10000
 
 执行动作选择刚才创建的脚本就可以了。
 
-![Windows任务触发条件](\img\in-post\windows-proxy-script\windows-task-trigger.PNG)
+![Windows任务触发条件](http://img.zhaohuabing.com/in-post/windows-proxy-script/windows-task-trigger.PNG)
 
 
 

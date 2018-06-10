@@ -4,13 +4,12 @@ title:      "使用Istio实现应用流量转移"
 subtitle:   "本文翻译自istio官方文档"
 description: "本任务将演示如何将应用流量逐渐从旧版本的服务迁移到新版本。通过Istio，可以使用一系列不同权重的规则（10%，20%，··· 100%）将流量平缓地从旧版本服务迁移到新版本服务。"
 excerpt: "本任务将演示如何将应用流量逐渐从旧版本的服务迁移到新版本。通过Istio，可以使用一系列不同权重的规则（10%，20%，··· 100%）将流量平缓地从旧版本服务迁移到新版本服务。"
-date:       2017-11-07 15:00:00
+date:     2017-11-07
 author:     "赵化冰"
-image: "img/in-post/istio-traffic-shifting/crossroads.png"
+image: "https://img.zhaohuabing.com/in-post/istio-traffic-shifting/crossroads.png"
 categories: [ "Tech"]
 tags:
     - Istio
-category: [ tech ]    
 ---
 
 关于Istio的更多内容请参考[istio中文文档](http://istio.doczh.cn/)。
@@ -18,9 +17,9 @@ category: [ tech ]
 原文参见[Traffic Shifting](https://istio.io/docs/tasks/traffic-management/traffic-shifting.html)。
 
 本任务将演示如何将应用流量逐渐从旧版本的服务迁移到新版本。通过Istio，可以使用一系列不同权重的规则（10%，20%，··· 100%）将流量平缓地从旧版本服务迁移到新版本服务。
-
-为简单起见，本任务将采用两步将流量从`reviews:v1` 迁移到 `reviews:v3`，权重分别为50%，100%。
 <!--more-->
+为简单起见，本任务将采用两步将流量从`reviews:v1` 迁移到 `reviews:v3`，权重分别为50%，100%。
+
 # 开始之前
 
 * 参照文档[安装指南](http://istio.doczh.cn/docs/setup/kubernetes/index.html)中的步骤安装Istio。

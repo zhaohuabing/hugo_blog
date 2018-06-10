@@ -2,19 +2,19 @@
 layout:     post
 title:      "Vim Tips"
 subtitle:   ""
-description: "Vim tips and tricks"
+description: "Vim Tips and tricks"
 date:       2018-02-09 11:00:00
 author:     "赵化冰"
-image: "img/in-post/2018-02-09-vim-tips/matrix.jpg"
+image:      "https://img.zhaohuabing.com/in-post/2018-02-09-vim-tips/matrix.jpg"
 published: true
 tags:
     - Tips
     - Vim
-category: [ tips ]
+categories: [ Tips ]
 ---
 ## vim graphical cheat sheet
 
-![](/img/in-post/2018-02-09-vim-tips/vi-vim-cheat-sheet.svg)
+![](/https://img.zhaohuabing.com/in-post/2018-02-09-vim-tips/vi-vim-cheat-sheet.svg)
 <!--more-->
 ## Vim Jumps
 

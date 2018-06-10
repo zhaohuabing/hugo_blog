@@ -2,26 +2,22 @@
 layout:     post
 title:      "Digital Signature and Public Key as Identities"
 subtitle:   "Bitcoin and Cryptocurrency Technologies-Week 1"
-date:       2018-05-15 20:00:00
+date:       2018-05-15
 author:     "赵化冰"
-image: "img/in-post/2018-05-06-cryptocurrency_week1/bitcoin_header.jpg"
+description: "Some fundamental cryptographic technologies in Bitcoin: Asymmetic encryption(Public/Private key), Digital Signature, Digital Identity(Public key and Digital Certificate)."
+image: "https://img.zhaohuabing.com/in-post/2018-05-06-cryptocurrency_week1/bitcoin_header.jpg"
 published: true
 tags:
     - Cryptocurrency
     - Blockchain
     - Bitcoin
     - Digital Signature
-category: [ note ]
+categories: [ Note ]
 
 ---
 
 > This series of articles are my notes of "Bitcoin and Cryptocurrency Technologies" online course.
-
-## Table of Content 
-{:.no_toc}
-
-* Table of Content 
-{:toc}
+<!--more-->
 
 ## Digital Signature
 Just like a written signature of a document, but it's in digital form. The desired features:    
@@ -51,7 +47,7 @@ They verify the message with the public key of the signer, which has already bee
   
 Like I mentioned before, we usually sign the hash of the message, so the verify function is like:    
 **isValid := isEqual(decrypt(pk, hash(message)), signature)** 
-![digital signature](\img\in-post\2018-05-12-cryptocurrency_week1_digital_signature\digital-signatures.jpg)
+![digital signature](http://img.zhaohuabing.com/in-post/2018-05-12-cryptocurrency_week1_digital_signature/digital-signatures.jpg)
 
 ## Use Digital Signature with Cryptocurrency
 Signing a hash pointer is identical to signing the whole structure of the data in the hash pointer points to.    
@@ -76,9 +72,9 @@ But how can people make sure the public key they received is the original one it
 To solve this kind of trust issues in the public key publishing process, we introduced the digital certificate, which is a document consists of a public key, user identity and a signature of a trusted authority. The public key of the trusted authority has already been planted into operating systems or browsers, it's called root certificate.
 
 Obtain a digital certifacte from an authority
-![digital certification](\img\in-post\2018-05-12-cryptocurrency_week1_digital_signature\digital-certificate.png)    
+![digital certification](http://img.zhaohuabing.com/in-post/2018-05-12-cryptocurrency_week1_digital_signature/digital-certificate.png)    
 Verify a digital signature using a certificate issued by an authority    
-![digital certification](\img\in-post\2018-05-12-cryptocurrency_week1_digital_signature\verify-signature.jpg)
+![digital certification](http://img.zhaohuabing.com/in-post/2018-05-12-cryptocurrency_week1_digital_signature/verify-signature.jpg)
  
 ###  Anonymous Identities
 Sometimes, you may want to keep anonymous, in that case, you just publish your public key without a certification. One example is the identiy in Bitcoin, you might not want to let others known how many money you have, especially you have a lot and prefer to keep a low profile.   

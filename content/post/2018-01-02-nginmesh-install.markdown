@@ -11,7 +11,7 @@ tags:
     - Istio 
     - service Mesh
     - nginmesh
-category: [ tech ]
+categories: [ Tech ]
 ---
 
 ## 目录

@@ -4,23 +4,18 @@ title:      "Cryptographic Hash Function"
 subtitle:   "Bitcoin and Cryptocurrency Technologies-Week 1"
 date:       2018-05-09 22:00:00
 author:     "赵化冰"
-image: "img/in-post/2018-05-06-cryptocurrency_week1/bitcoin_header.jpg"
+image: "https://img.zhaohuabing.com/in-post/2018-05-06-cryptocurrency_week1/bitcoin_3.jpg"
+description: "Hash function can produce a fixed lenght digest of any size of data, and the original data can not be found out if it's properly used."
 published: true
 tags:
     - Cryptocurrency
     - Blockchain
     - Bitcoin
-category: [ note ]
+categories: [ Note ]
 
 ---
 
 > This series of articles are my notes of "Bitcoin and Cryptocurrency Technologies" online course.
-
-## Table of Content 
-{:.no_toc}
-
-* Table of Content 
-{:toc}
 
 ## Hash Function
 Hash function is a mathematical function:*H(X)=Y*
@@ -55,7 +50,7 @@ We can use this property of hash functions to create a digest for a given data. 
 **Definition:**
 
 A hash function H is hiding if:   
-when a secret value R is chosen from a highly spread-out distribution that, then given the hash result of *H( R\|X)*, it is infeasible to find X.  \| means concatenation of two strings.
+when a secret value R is chosen from a highly spread-out distribution that, then given the hash result of *H( R/|X)*, it is infeasible to find X.  /| means concatenation of two strings.
 
 **The Problem We Want to Solve:**
 
@@ -65,7 +60,7 @@ The problem is that if there are only a few values of inputs, it will be very ea
 
 **Solution:** 
 
-Concatenating input with a random R which is randomly chosen from a highly spread-out distribution like this: *H( R\|X)*
+Concatenating input with a random R which is randomly chosen from a highly spread-out distribution like this: *H( R/|X)*
 
 **Explanation:**
 
@@ -89,7 +84,7 @@ We want to make a commitment, keep it as a secret, and reveal it later to others
 
 **Implementation:**
 
-*hash(message\|key)=commitment*
+*hash(message/|key)=commitment*
 
 * Message: the commitment we want to make, which may only have a few values.
 * Key is a generated value from a spread-out distribution used to hide the message
@@ -102,10 +97,10 @@ We want to make a commitment, keep it as a secret, and reveal it later to others
 3. You get the hash of the key message combination.
 4. You publish the hash result, which is the commitment, to others and keep the key and message only to yourself. So other people know you have made a commitment, but they don't know what exactly it is.
 5. After a while, you decide to reveal the commitment, so you publish the key and message.
-6. Other people can use the hash function *hash(message\|key)* to calculate the hash result, compare it with the hash(commitment) you previously published. If it's the same, they can verify that you didn't change the commitment you have made.
+6. Other people can use the hash function *hash(message/|key)* to calculate the hash result, compare it with the hash(commitment) you previously published. If it's the same, they can verify that you didn't change the commitment you have made.
 
 > *  Because a key is used to hide the message, other people can't figure out what's the message before you reveal it.
-> * Because of collision-free property, you can't find a message' such that *hash(message'\|key)=hash(message\|key)*, so it's impossible to change the committed message after publishing it.
+> * Because of collision-free property, you can't find a message' such that *hash(message'/|key)=hash(message/|key)*, so it's impossible to change the committed message after publishing it.
 
 ##### 2. Secure Password
 Another common use of hiding property of hash is to secure passwords.
@@ -121,7 +116,7 @@ But there's still a problem, many people tend to use simple words as their passw
 
 Use a randomly generated 'salt' to safeguard the password.
 
-*hash(password\|salt)=output*
+*hash(password/|salt)=output*
 
 **Explanation:**
 
@@ -146,15 +141,15 @@ As the table above illustrates, different salt values will create completely dif
 
 A hash function H is said to be puzzle-friendly if:  
 Given an R which is chosen from a highly spread-out distribution and a target set Y.  
-Try to find a solution X such that *H(R\|X) $$\in$$ Y*.  
+Try to find a solution X such that *H(R/|X) $$/in$$ Y*.  
 There is no solving strategy to find X much better than just trying every possible value of X.
 
 **Usage:** 
 
 Puzzle-friendly property is used for Bitcoin mining. The miner needs to find out a specific number R, which is concatenated with the data of the block, and the hash of the combination should fall into a certain range. The first one who solves this puzzle can add the outstanding transaction into the blockchain and get Bitcoin as the reward.
 
-Bitcoin Minding Puzzle: find R such that *H(R\|BlockData) $$\in$$ ValidRange*
+Bitcoin Minding Puzzle: find R such that *H(R/|BlockData) $$/in$$ ValidRange*
 
 ## SHA-256
 SHA-256 is the hash function used in Bitcoin which has all the three needed properties.
-![SHA-256](\img\in-post\2018-05-09-cryptocurrency-week1-cryptographic-hash-function\sha-256.PNG)
+![SHA-256](http://img.zhaohuabing.com/in-post/2018-05-09-cryptocurrency-week1-cryptographic-hash-function/sha-256.PNG)

@@ -9,7 +9,7 @@ image: "http://img.zhaohuabing.com/post-bg-2015.jpg"
 published: true
 tags:
     - Kubernetes
-categories: [ tech ]
+categories: [ Tech ]
 ---
 
 ## 前言

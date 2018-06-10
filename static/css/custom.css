@@ -276,6 +276,7 @@ th {
 }
 
 img {
+  max-width: 100%;
   height: auto;
   line-height: 0;
 }

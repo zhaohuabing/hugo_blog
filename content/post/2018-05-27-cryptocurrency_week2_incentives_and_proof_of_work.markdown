@@ -3,26 +3,22 @@ layout:     post
 
 title:      "Incentives and Proof of Work"
 subtitle:   "Bitcoin and Cryptocurrency Technologies-Week 2"
-excerpt: "Incentives and Proof of Work"
-date:       2018-05-26 18:00:00
+excerpt:    "Incentives and Proof of Work"
+description: "How bitcoin system implements the mechanism to motivate the participants and how the participants prove their work?"
+date:       2018-05-26
 author:     "赵化冰"
-image: "img/in-post/2018-05-06-cryptocurrency_week1/bitcoin_header.jpg"
+image:      "https://img.zhaohuabing.com/in-post/2018-05-06-cryptocurrency_week1/bitcoin_mining.jpg"
 published: true 
 tags:
     - Cryptocurrency
     - Blockchain
     - Bitcoin
     - Digital Signature
-category: [ note ]
+categories: [ "Note" ]
 ---
 
 > This series of articles are my notes of "Bitcoin and Cryptocurrency Technologies" online course.
 
-## Table of Content 
-{:.no_toc}
-
-* Table of Content 
-{:toc}
 ## Incentive 
 The mechanism to motivate nodes join the Bitcoin network and create blocks.
 ### Incentive 1: Block Reward
@@ -38,7 +34,7 @@ The total number of BTC is 21 million, at the current rate, all the BTC will be 
 
 I would have the chance be a miner if I started this lesson in 2009, what a shame! :-(
 
-![Bitcoin and Block Reward](\img\in-post\2018-05-27-cryptocurrency_week2_incentives_and_proof_of_work\block_reward.png)
+![Bitcoin and Block Reward](http://img.zhaohuabing.com/in-post/2018-05-27-cryptocurrency_week2_incentives_and_proof_of_work/block_reward.png)
 
 [Genesis Block](https://en.bitcoin.it/wiki/Genesis_block)    
 [Bitcoin Block Reward Halving Countdown](https://www.bitcoinblockhalf.com/)
@@ -57,7 +53,7 @@ To select node who gets to propose the block based on their computing power(the 
 
 A hash puzzle needs computing power to solve: find a nonce to get a hash output falling into a small target space.
 
-![Hash Puzzle](\img\in-post\2018-05-27-cryptocurrency_week2_incentives_and_proof_of_work\hash-puzzle.png)
+![Hash Puzzle](http://img.zhaohuabing.com/in-post/2018-05-27-cryptocurrency_week2_incentives_and_proof_of_work/hash-puzzle.png)
 
 ### PoW properties
 * Difficult to Compute    

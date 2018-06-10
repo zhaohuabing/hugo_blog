@@ -8,6 +8,7 @@ disqusShortname = "zhaohuabings-blog"
 googleAnalytics = ""
 preserveTaxonomyNames = true
 paginate = 5 #frontpage pagination
+hasCJKLanguage = true
 
 [params]
   slogan = "路在脚下，心向远方"
@@ -18,9 +19,9 @@ paginate = 5 #frontpage pagination
     "Huabing Zhao (赵化冰) is a software developer, an open source enthusiast and a life adventurer."
   ]
   copyright = [
-    "&copy; 2018 Göran Svensson",
-    "Nederburg Hugo Theme by [Appernetic](https://appernetic.io).",
-    "A port of Tracks by Compete Themes."
+    "&copy; 2018 Huabing Zhao",
+    "",
+    ""
   ]
 
 
@@ -58,9 +59,9 @@ paginate = 5 #frontpage pagination
   email         = "zhaohuabing@gmail.com"
   #twitter       = "full profile url in twitter"
   linkedin      = "https://www.linkedin.com/in/zhaohuabing"
-  stackoverflow = "full profile url in stackoverflow"
+  stackoverflow = "https://stackoverflow.com/users/2306565/huabing-zhao"
   #instagram     = "full profile url in instagram"
   github        = "https://github.com/zhaohuabing"
+  wechat        = "https://zhaohuabing.com/img/wechat_qrcode.jpg"
   #pinterest     = "full profile url in pinterest"
   # if true, auto-detect Chinese/Japanese/Korean Languages in the content. (.Summary and .WordCount can work properly in CJKLanguage)
-  hasCJKLanguage = true

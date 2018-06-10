@@ -1,0 +1,135 @@
+{
+  "title": "Go Learning Guide",
+  "id": 1,
+  "formatVersion": 2,
+  "ideas": {
+    "1": {
+      "title": "Package",
+      "id": 3,
+      "ideas": {
+        "1": {
+          "title": "\"Ordinary\" Package",
+          "id": 8,
+          "ideas": {
+            "1": {
+              "title": "Package name",
+              "id": 4,
+              "attr": {
+                "style": {}
+              },
+              "ideas": {
+                "1": {
+                  "title": "Package name must be the same as the last element of path, that is the directory of the Go source file",
+                  "id": 9
+                },
+                "2": {
+                  "title": "All source files in the same directory should be declared in the same package, which is the directory name",
+                  "id": 10
+                },
+                "3": {
+                  "title": "Multiple package may have the same name, but the path must be different",
+                  "id": 11
+                }
+              }
+            }
+          },
+          "attr": {
+            "position": [
+              84,
+              -155.5,
+              1
+            ],
+            "style": {}
+          }
+        },
+        "2": {
+          "title": "\"main\" Package",
+          "id": 6
+        }
+      }
+    },
+    "-1": {
+      "title": "Variable",
+      "id": 12,
+      "ideas": {
+        "1": {
+          "title": "type with initializer",
+          "id": 14,
+          "ideas": {
+            "2": {
+              "title": "explicit type",
+              "id": 21,
+              "attr": {
+                "style": {}
+              },
+              "ideas": {
+                "1": {
+                  "title": "var x, y int = 1, 2",
+                  "id": 15,
+                  "attr": {
+                    "style": {}
+                  }
+                }
+              }
+            },
+            "4": {
+              "title": "implicit type",
+              "id": 22,
+              "attr": {
+                "style": {}
+              },
+              "ideas": {
+                "1": {
+                  "title": "var x, y = 1, 2",
+                  "id": 16,
+                  "attr": {
+                    "style": {}
+                  }
+                },
+                "2": {
+                  "title": "short  variable declaration ",
+                  "id": 19,
+                  "ideas": {
+                    "1": {
+                      "title": "x := 3",
+                      "id": 20
+                    }
+                  },
+                  "attr": {
+                    "style": {}
+                  }
+                }
+              }
+            }
+          },
+          "attr": {
+            "position": [
+              89,
+              142.20000076293945,
+              2
+            ],
+            "style": {}
+          }
+        },
+        "0.5": {
+          "title": "type without initializer",
+          "id": 17,
+          "attr": {
+            "position": [
+              82,
+              -96,
+              1
+            ],
+            "style": {}
+          },
+          "ideas": {
+            "1": {
+              "title": "var x, y int",
+              "id": 18
+            }
+          }
+        }
+      }
+    }
+  }
+}

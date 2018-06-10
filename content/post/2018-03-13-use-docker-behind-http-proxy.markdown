@@ -5,12 +5,12 @@ subtitle:   ""
 description: "如何配置docker使用HTTP代理"
 date:       2018-03-13 18:00:00
 author:     "赵化冰"
-image: "img/in-post/docker.jpg"
+image: "https://img.zhaohuabing.com/in-post/docker.jpg"
 published: true
 tags:
     - Tips
     - Docker
-category: [ tips ]
+categories: [ Tips ]
 ---
 ## Ubuntu
 ### 设置docker使用http proxy

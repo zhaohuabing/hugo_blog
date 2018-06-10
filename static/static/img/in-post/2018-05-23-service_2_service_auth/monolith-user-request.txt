@@ -1,0 +1,34 @@
+@startuml
+actor User
+participant "Client(Browser)"
+box "Server"
+participant "Authorization Interceptor" 
+participant "Security Module" 
+participant "Business Module" 
+end box
+
+"User" -> "Client(Browser)": User request
+"Client(Browser)" -> "Authorization Interceptor": User request (Session Id, Requested Resource, Operation)
+"Authorization Interceptor"  -> "Authorization Interceptor" : Get session Id
+alt no session Id in the user request 
+    "Authorization Interceptor"  -> "Client(Browser)" : Error: user doesn't login
+else found seesion Id in the user request
+    "Authorization Interceptor" -> "Security Module": User request authorization
+    "Security Module" -> "Security Module": Validate session Id
+    alt Session Id is invalid(Wrong Id or expired)
+        "Security Module" -> "Authorization Interceptor"
+        "Authorization Interceptor" -> "Client(Browser)": Error: user doesn't login          
+    else Session Id is valid
+        "Security Module" -> "Security Module": Check user permission  
+        alt user doesn't have the permission         
+            "Security Module" -> "Authorization Interceptor"
+            "Authorization Interceptor" -> "Client(Browser)": Request operation is not allowed
+        else user has the permission
+            "Security Module" -> "Business Module": Forward request 
+            "Business Module" -> "Security Module"
+            "Security Module" -> "Authorization Interceptor"
+            "Authorization Interceptor" -> "Client(Browser)": Operation result
+        end            
+    end
+end
+@enduml

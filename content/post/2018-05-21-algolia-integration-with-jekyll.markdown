@@ -4,12 +4,12 @@ title:      "使用Algolia为Gitpage博客提供站内搜索"
 subtitle:   ""
 date:       2018-05-21 11:00:00
 author:     "赵化冰"
-image: "img/in-post/2018-05-06-cryptocurrency_week1/bitcoin_header.jpg"
+image: "https://img.zhaohuabing.com/in-post/2018-05-06-cryptocurrency_week1/bitcoin_header.jpg"
 published: false 
 tags:
     - Jekyll:q 
     - Bitcoin
-category: [ note ]
+categories: [ Note ]
 
 ---
 
@@ -23,7 +23,7 @@ category: [ note ]
 
 ## Scrooge Coin Transaction
 Scrooge Coin programming assignment is a little bit tricky, the video of this lesson hasn't explained some implementation details. To help you understand the transaction data structure used in Scrooge Coin, I draw this diagram:
-![Scrooge Coin](\img\in-post\2018-5-20-cryptocurrency_week1_scroogecoin\scroogecoin.png)
+![Scrooge Coin](http://img.zhaohuabing.com/in-post/2018-5-20-cryptocurrency_week1_scroogecoin/scroogecoin.png)
 
 <!--more-->
 Every transaction has a set of inputs and a set of outputs. An input in a transaction must use a hash pointer to refer to its corresponding output in the previous transaction, and it must be signed with the private key of the owner because the owner needs to prove he/she agrees to spend his/her coins.  
@@ -37,7 +37,7 @@ In the second transaction,  Scrooge transferred 3.9 coins to Alice and 5.9 coins
 In the third transaction,  there were two inputs and one output, Alice and Bob transferred 9.7 coins to mike, and the transaction fee was 0.1 coin.
 
 ## Unclaimed transaction outputs pool
-Another trick we need to note when doing the programming assignment is that an UTXOPool is introduced to track the unclaimed outputs (unspent coins), so we can know whether the corresponding output of an input of the transaction is available or not.
+Another trick we need to Note when doing the programming assignment is that an UTXOPool is introduced to track the unclaimed outputs (unspent coins), so we can know whether the corresponding output of an input of the transaction is available or not.
 
 ## TxHandler Java Code
 ```

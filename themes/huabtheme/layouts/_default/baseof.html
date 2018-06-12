@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}">
+<head>{{ partial "head.html" . }}</head>
+{{ partial "nav.html" . }}
+<!-- Page Header -->
+<header class="intro-header" style="background-image: url('https://img.zhaohuabing.com/home-bg-jeep.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
+                <div class="site-heading">
+                    <h1>xxxxx</h1>
+                    <!--<hr class="small">-->
+                    <span class="subheading">yyyyy</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+{{ block "body" . }}
+<body class="home blog ct-body standard">
+{{ end }}
+
+{{ block "main" . }}
+{{ end }}
+
+{{ partial "footer.html" . }}
+{{ partial "scripts.html" . }}
+</body>
+</html>

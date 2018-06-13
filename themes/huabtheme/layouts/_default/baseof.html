@@ -3,6 +3,7 @@
 <head>{{ partial "head.html" . }}</head>
 {{ partial "nav.html" . }}
 <!-- Page Header -->
+{{ block "header" .}}
 <header class="intro-header" style="background-image: url('https://img.zhaohuabing.com/home-bg-jeep.jpg')">
     <div class="container">
         <div class="row">
@@ -16,6 +17,8 @@
         </div>
     </div>
 </header>
+{{ end }}
+
 {{ block "body" . }}
 <body class="home blog ct-body standard">
 {{ end }}

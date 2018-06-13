@@ -24,7 +24,6 @@ hasCJKLanguage = true
     ""
   ]
 
-
   # Sidebar settings
   sidebar = true                           # whether or not using Sidebar.
   sidebar_about_description = "Software Developer, Open Source Enthusiast and Life Adventurer"
@@ -32,43 +31,33 @@ hasCJKLanguage = true
 
   featured_tags = true 
   featured_condition_size = 2 
-      # Contact page
-     # Since this template is static, the contact form uses www.formspree.io as a
-     # proxy. The form makes a POST request to their servers to send the actual
-     # email. Visitors can send up to a 1000 emails each month for free.
-     #
-     # What you need to do for the setup?
-     #
-     # - set your email address under 'email' below (it is also used in Gravatar for the bio).
-     # - upload the generated site to your server
-     # - send a dummy email yourself to confirm your account
-     # - click the confirm link in the email from www.formspree.io
-     # - you're done. Happy mailing!
-  email = "zhaohuabing@gmail.com"
 
-  # Nav links in the side bar
-  [[menu.main]]
-  name = "Home"
-  url = "/"
-  weight = 1
-
-  [[menu.main]]
-  name = "About"
-  url = "about/"
-  weight = 2
-
-  [[menu.main]]
-  name = "Get in touch"
-  url = "contact/"
   [params.social]
+  rss            = true 
+  email          = "zhaohuabing@gmail.com"
   #facebook      = "full profile url in facebook"
   #googleplus    = "full profile url in googleplus"
-  email         = "zhaohuabing@gmail.com"
   #twitter       = "full profile url in twitter"
-  linkedin      = "https://www.linkedin.com/in/zhaohuabing"
-  stackoverflow = "https://stackoverflow.com/users/2306565/huabing-zhao"
+  linkedin       = "https://www.linkedin.com/in/zhaohuabing"
+  stackoverflow  = "https://stackoverflow.com/users/2306565/huabing-zhao"
   #instagram     = "full profile url in instagram"
-  github        = "https://github.com/zhaohuabing"
-  wechat        = "https://zhaohuabing.com/img/wechat_qrcode.jpg"
+  github         = "https://github.com/zhaohuabing"
+  wechat         = "https://zhaohuabing.com/img/wechat_qrcode.jpg"
   #pinterest     = "full profile url in pinterest"
-  # if true, auto-detect Chinese/Japanese/Korean Languages in the content. (.Summary and .WordCount can work properly in CJKLanguage)
+  
+  [[params.friend_link]]
+  title = "Linda的博客"
+  href =  "https://zhaozhihan.com"
+
+  [[params.bookmark_link]]
+  title =  "Martin Fowler"
+  href =  "https://martinfowler.com"
+  [[params.bookmark_link]]
+  title = "ServiceMesh中文网"
+  href =  "http://www.servicemesh.cn"
+  [[params.bookmark_link]]
+  title = "Awesome Service Mesh"
+  href = "https://servicemesh.gitbooks.io/awesome-servicemesh/"
+  [[params.bookmark_link]]
+  title =  "Image Compression"
+  href = "https://tinypng.com/"

@@ -8,9 +8,9 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
                 <div class="site-heading">
-                    <h1>xxxxx</h1>
+                    <h1>{{ .Site.Title}} </h1>
                     <!--<hr class="small">-->
-                    <span class="subheading">yyyyy</span>
+		    <span class="subheading">{{ .Site.Params.slogan }}</span>
                 </div>
             </div>
         </div>
@@ -24,6 +24,5 @@
 {{ end }}
 
 {{ partial "footer.html" . }}
-{{ partial "scripts.html" . }}
 </body>
 </html>

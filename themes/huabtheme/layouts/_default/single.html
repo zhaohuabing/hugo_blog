@@ -11,24 +11,19 @@
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <div class="post-heading">
                     <div class="tags">
-                       {{ range $name, $taxonomy := .Site.Taxonomies.tags }}
-                       <a class="tag" href="{{ "/tags/" | relLangURL }}{{ $name | urlize }}" title="{{ $name }}">
-                           {{ $name }}
+                       {{ range .Params.tags }}
+                       <a class="tag" href="{{ "/tags/" | relLangURL }}{{ . | urlize }}" title="{{ . }}">
+                           {{ . }}
                         </a>
                         {{ end }}
                     </div>
                     <h1>{{ .Title }}</h1>
                     <h2 class="subheading">{{ .Params.subtitle }}</h2>
                     <span  class="meta">Posted by {{ if .Params.author }}{{ .Params.author }}{{ else }}{{ .Site.Title }}{{ end }} on {{ .Date.Format "Monday, January 2, 2006" }}
-                    <span id="{{ .URL }}" class="leancloud_visitors meta_data_item" data-flag-title="">
-                        <span class="post-meta-item-icon">
-                          <span class="octicon octicon-eye"></span> 
-                        </span>
-                        <i class="fa fa-eye"></i>
-                        <span class="old-visitors-count" style="display: none;"></span>
-                        <span class="leancloud-visitors-count"></span>
-                   </span>
-                </span>
+                        {{ if .Site.Params.page_view_conter }}", 
+                        {{ partial "page_view_counter.html" . }}
+                        {{ end }}
+                    </span>
                 </div>
             </div>
         </div>
@@ -47,10 +42,11 @@
                 col-lg-8 col-lg-offset-2
                 col-md-10 col-md-offset-1
                 post-container">
-        <header>
-        <h2>TOC</h2>
-        </header>
-        {{.TableOfContents}}
+
+                <header>
+                <h2>TOC</h2>
+                </header>
+                {{.TableOfContents}}
 		{{ .Content }}
 
                 <hr>
@@ -121,7 +117,6 @@ var disq = new iDisqus('disqus-comment', {
 });
 </script>
 {{ end }}
-
 
 {{ end }}
 

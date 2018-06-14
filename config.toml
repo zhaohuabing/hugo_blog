@@ -25,8 +25,12 @@ hasCJKLanguage = true
     ""
   ]
 
+  # leancloud storage for page view counter
+  page_view_conter = true 
+  leancloud_app_id = "Xu5MAnXL360Ms89vMVnWBjuq-gzGzoHsz"
+  leancloud_app_key = "efUYEefAc2eIPBRO59PRERQC"
+
   # Sidebar settings
-  sidebar = true                           # whether or not using Sidebar.
   sidebar_about_description = "Software Developer, Open Source Enthusiast and Life Adventurer"
   sidebar_avatar = "/img/avatar-zhaohuabing.jpg"      # use absolute URL, seeing it's used in both `/` and `/about/`
 

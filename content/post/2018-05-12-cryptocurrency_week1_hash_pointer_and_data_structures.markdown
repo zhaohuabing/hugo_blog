@@ -12,7 +12,7 @@ tags:
     - Blockchain
     - Bitcoin
 categories: [ "Note" ]
-URL :"/2018/05/12/cryptocurrency_week1_hash_pointer_and_data_structures/"
+URL:: "/2018/05/12/cryptocurrency_week1_hash_pointer_and_data_structures/"
 
 ---
 

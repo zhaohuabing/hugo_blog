@@ -10,6 +10,7 @@ published: true
 tags:
     - Tips
     - Vim
+URL: "/2018/02/09/vim-tips/
 categories: [ Tips ]
 ---
 ## vim graphical cheat sheet

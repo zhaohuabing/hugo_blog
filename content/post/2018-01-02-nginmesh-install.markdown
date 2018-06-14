@@ -11,6 +11,7 @@ tags:
     - Istio 
     - service Mesh
     - nginmesh
+URL: "/2018/01/02/nginmesh-install/
 categories: [ Tech ]
 ---
 

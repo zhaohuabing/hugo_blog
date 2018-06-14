@@ -9,6 +9,7 @@ image: ""
 published: true
 tags:
     - Tips
+URL: "/2017/11/23/windows-proxy-scripts/
 categories: [ Tips ]
 ---
 

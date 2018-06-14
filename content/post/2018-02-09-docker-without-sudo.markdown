@@ -11,6 +11,7 @@ published: true
 tags:
     - Tips
     - Docker
+URL: "/2018/02/09/docker-without-sudo/
 categories: [ Tips ]
 ---
 

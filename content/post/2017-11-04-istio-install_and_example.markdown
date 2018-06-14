@@ -9,6 +9,7 @@ author:     "赵化冰"
 image: "https://img.zhaohuabing.com/in-post/istio-install_and_example/post-bg.jpg"
 tags:
     - Istio
+URL: "/2017/11/04/istio-install_and_example/"
 categories: [ Tech ]
 ---
 

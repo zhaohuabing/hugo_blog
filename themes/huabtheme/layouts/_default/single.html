@@ -2,7 +2,7 @@
 <!-- Post Header -->
 <style type="text/css">
     header.intro-header{
-        background-image: url('{{ if .Params.header_img }}{{ .Params.header_image | absURL }}{{ else }}{{ .Site.Params.header_img }}{{ end }}')
+        background-image: url('{{ if .Params.image }}{{ .Params.image | absURL }}{{ else }}{{ .Site.Params.header_img }}{{ end }}')
     }
 </style>
 <header class="intro-header" >
@@ -19,7 +19,7 @@
                     </div>
                     <h1>{{ .Title }}</h1>
                     <h2 class="subheading">{{ .Params.subtitle }}</h2>
-                    <span  class="meta">Posted by {{ if .Params.author }}{{ .Params.author }}{{ else }}{{ .Site.Title }}{{ end }} on {{ .Date }}
+                    <span  class="meta">Posted by {{ if .Params.author }}{{ .Params.author }}{{ else }}{{ .Site.Title }}{{ end }} on {{ .Date.Format "Monday, January 2, 2006" }}
                     <span id="{{ .URL }}" class="leancloud_visitors meta_data_item" data-flag-title="">
                         <span class="post-meta-item-icon">
                           <span class="octicon octicon-eye"></span> 
@@ -47,7 +47,10 @@
                 col-lg-8 col-lg-offset-2
                 col-md-10 col-md-offset-1
                 post-container">
-
+        <header>
+        <h2>TOC</h2>
+        </header>
+        {{.TableOfContents}}
 		{{ .Content }}
 
                 <hr>
@@ -109,7 +112,7 @@
 <script src="/js/iDisqus.js"></script>
 <script>
 var disq = new iDisqus('disqus-comment', {
-    forum: '{{ .Site.Params.disqus_username}}',
+    forum: '{{ .Site.Params.disqus_username }}',
     api: 'https://disqusapi.zhaohuabing.com',
     site: 'https://zhaohuabing.com',
     mode: 1,

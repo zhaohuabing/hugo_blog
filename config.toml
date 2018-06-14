@@ -11,6 +11,7 @@ paginate = 5 #frontpage pagination
 hasCJKLanguage = true
 
 [params]
+  header_image = "https://img.zhaohuabing.com/home-bg-jeep.jpg"
   slogan = "路在脚下，心向远方"
   description = "Huabing Blog" # meta description
   author = "赵化冰"
@@ -32,6 +33,9 @@ hasCJKLanguage = true
   featured_tags = true 
   featured_condition_size = 2 
 
+  #disqus
+  disqus_username = "zhaohuabings-blog"
+  
   [params.social]
   rss            = true 
   email          = "zhaohuabing@gmail.com"

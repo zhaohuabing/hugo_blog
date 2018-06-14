@@ -12,6 +12,7 @@ tags:
     - Kubernetes
     - Helm
 categories: [ Tech ]
+URL: "/2018/04/16/using-helm-deploy-to-kubernetes"
 ---
 
 ## 目录

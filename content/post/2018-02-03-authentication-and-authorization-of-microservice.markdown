@@ -11,6 +11,7 @@ published: true
 tags:
     - Microservice
     - Security
+URL: "/2018/02/03/authentication-and-authorization-of-microservice/
 categories: [ Tech ]
 ---
 

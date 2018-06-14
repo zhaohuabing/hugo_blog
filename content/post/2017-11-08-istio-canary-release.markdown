@@ -9,6 +9,7 @@ image: "https://img.zhaohuabing.com/in-post/istio-canary-release/canary_bg.jpg"
 published: true
 tags:
     - Istio
+URL: "/2017/11/08/istio-canary-release/"
 categories: [ "Tech" ]
 ---
 

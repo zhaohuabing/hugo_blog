@@ -9,6 +9,7 @@ image: "https://img.zhaohuabing.com/in-post/2018-05-23-service_2_service_auth/ba
 published: true 
 tags:
     - ubuntu 
+URL: "/2018/05/24/set_up_my_ubuntu_desktop/"
 categories: [ "Tips" ]    
 ---
 

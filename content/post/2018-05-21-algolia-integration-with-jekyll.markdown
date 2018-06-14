@@ -10,6 +10,7 @@ tags:
     - Jekyll:q 
     - Bitcoin
 categories: [ Note ]
+URL: "/2018/05/21/algolia-integration-with-jekyll"
 
 ---
 

@@ -12,6 +12,7 @@ tags:
     - Blockchain
     - Bitcoin
 categories: [ Note ]
+URL: "/2018/05/06/cryptocurrency_week1"
 ---
 
 > This series of articles are my notes of "Bitcoin and Cryptocurrency Technologies" online course.

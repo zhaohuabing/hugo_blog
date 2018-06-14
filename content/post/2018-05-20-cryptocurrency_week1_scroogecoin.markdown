@@ -11,6 +11,7 @@ tags:
     - Cryptocurrency
     - Bitcoin
 categories: [ Note ]
+URL :"/2018/05/20/cryptocurrency_week1_scroogecoin/"
 
 ---
 

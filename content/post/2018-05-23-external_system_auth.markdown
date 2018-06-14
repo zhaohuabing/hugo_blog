@@ -11,6 +11,7 @@ published: true
 tags:
     - Microservice
     - Security
+URL: "/2018/05/23/external_system_auth"
 categories: [ "Tech" ]    
 ---
 

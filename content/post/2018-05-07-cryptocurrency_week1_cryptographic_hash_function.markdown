@@ -13,6 +13,7 @@ tags:
     - Bitcoin
 categories: [ Note ]
 
+URL: "/2018/05/07/cryptocurrency_week1_cryptographic_hash_function"
 ---
 
 > This series of articles are my notes of "Bitcoin and Cryptocurrency Technologies" online course.

@@ -30,6 +30,12 @@ hasCJKLanguage = true
   leancloud_app_id = "Xu5MAnXL360Ms89vMVnWBjuq-gzGzoHsz"
   leancloud_app_key = "efUYEefAc2eIPBRO59PRERQC"
 
+  # algolia site search
+  algolia_search = true
+  algolia_appId = "WM4BEY1UDN"
+  algolia_indexName = "blog"
+  algolia_apiKey = "090c4a77b8bd4b8d2f2c1262afbc4be2"
+
   # Sidebar settings
   sidebar_about_description = "Software Developer, Open Source Enthusiast and Life Adventurer"
   sidebar_avatar = "/img/avatar-zhaohuabing.jpg"      # use absolute URL, seeing it's used in both `/` and `/about/`

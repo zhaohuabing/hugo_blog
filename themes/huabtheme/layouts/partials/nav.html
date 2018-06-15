@@ -24,15 +24,17 @@
                     <li>
                         <a href="{{ .Site.BaseURL }}/">Home</a>
                     </li>
-        {{ range $name, $taxonomy := .Site.Taxonomies.categories }}
+                    {{ range $name, $taxonomy := .Site.Taxonomies.categories }}
                     <li>
                         <a href="{{ "/categories/" | relLangURL }}{{ $name | urlize }}">{{ $name }}</a>
                     </li>
-        {{ end }}
+                    {{ end }}
 
-		    <li>
-			 <a href="{{ "/search/" | absURL }}"><img src="\img\search.png" height="15" style="cursor: pointer;"></a>
-		    </li>
+                    {{ if .Site.Params.algolia_search }}
+		            <li>
+		             <a href="{{ "/search/" | absURL }}"><img src="\img\search.png" height="15" style="cursor: pointer;"></a>
+		            </li>
+                    {{ end }}
                 </ul>
             </div>
         </div>

@@ -1,4 +1,4 @@
-# Nederburg theme for hugo
+# Clean white theme for hugo
 
 Nederburg is a fast and secure theme.
 

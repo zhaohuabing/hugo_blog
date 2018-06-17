@@ -14,6 +14,7 @@ tags:
     - Bitcoin
     - Digital Signature
 categories: [ Note ]
+URL: "/2018/06/03/cryptocurrency_week3_bitcoin_script/"
 ---
 
 > This series of articles are my notes of "Bitcoin and Cryptocurrency Technologies" online course.

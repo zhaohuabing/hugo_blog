@@ -11,16 +11,9 @@ tags:
     - Microservice
     - Service Mesh
     - Istio
-URL: "/2018/03/29/what-is-service-mesh-and-istio"
+URL: "/2018/03/29/what-is-service-mesh-and-istio/"
 categories: [ Tech ]    
 ---
-
-## 目录
-{:.no_toc}
-
-* 目录
-{:toc}
-
 
 ## 微服务架构的演进
 作为一种架构模式，微服务将复杂系统切分为数十乃至上百个小服务，每个服务负责实现一个独立的业务逻辑。这些小服务易于被小型的软件工程师团队所理解和修改，并带来了语言和框架选择灵活性，缩短应用开发上线时间，可根据不同的工作负载和资源要求对服务进行独立缩扩容等优势。

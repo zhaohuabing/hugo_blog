@@ -13,12 +13,6 @@ URL: "/2018/05/24/set_up_my_ubuntu_desktop/"
 categories: [ "Tips" ]    
 ---
 
-## 目录
-{:.no_toc}
-
-* 目录
-{:toc}
-
 ## Generate SSH Key Pair
 
 ```

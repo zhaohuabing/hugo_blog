@@ -14,6 +14,7 @@ tags:
     - Bitcoin
     - Digital Signature
 categories: [ "Note" ]
+URL: "/2018/05/26/cryptocurrency_week2_distributed_consenus/"
 ---
 
 > This series of articles are my notes of "Bitcoin and Cryptocurrency Technologies" online course.

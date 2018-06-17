@@ -178,14 +178,14 @@ spec:
 kubectl apply -f <(istioctl kube-inject -f  bookinfo-reviews-v2.yaml)
 ```
 此时系统中部署了V1和V2两个版本的reviews服务，但所有的业务流量都被规则reviews-default导向了V1，如下图所示：
-![](/https://img.zhaohuabing.com/in-post/istio-canary-release/canary-example-deploy-v2.PNG)
+![](https://img.zhaohuabing.com/in-post/istio-canary-release/canary-example-deploy-v2.PNG)
 
 
 ### 将测试流量导入到V2版本的reviews服务
 在进行模拟测试时，由于测试环境和生产环境的网络，服务器，操作系统等环境存在差异，很难完全模拟生产环境进行测试。为了减少环境因素的对测试结果的影响，我们希望能在生产环境中进行上线前的测试，但如果没有很好的隔离措施，可能会导致测试影响已上线的业务，对企业造成损失。
 
 通过采用Istio的路由规则，可以在类生产环境中进行测试，又完全隔离了线上用户的生产流量和测试流量，最小化模拟测试对已上线业务的影响。如下图所示：
-![](/https://img.zhaohuabing.com/in-post/istio-canary-release/canary-example-route-test.PNG)
+![](https://img.zhaohuabing.com/in-post/istio-canary-release/canary-example-route-test.PNG)
 
 创建一条规则，将用户名为 test-user 的流量导入到V2
 
@@ -215,10 +215,10 @@ spec:
 istioctl create -f route-rule-test-reviews-v2.yaml -n default
 ```
 以test-user用户登录，可以看到V2版本带星级的评价页面。
-![](/https://img.zhaohuabing.com/in-post/istio-canary-release/product-page-test-user.PNG)
+![](https://img.zhaohuabing.com/in-post/istio-canary-release/product-page-test-user.PNG)
 
 注销test-user，只能看到V1版本不带星级的评价页面。如下图所示：
-![](/https://img.zhaohuabing.com/in-post/istio-canary-release/product-page-default.PNG)
+![](https://img.zhaohuabing.com/in-post/istio-canary-release/product-page-default.PNG)
 
 ### 将部分生产流量导入到V2版本的reviews服务
 
@@ -251,7 +251,7 @@ istioctl replace -f route-rule-default-reviews.yaml -n default
 ```
 
 此时系统部署如下图所示：
-![](/https://img.zhaohuabing.com/in-post/istio-canary-release/canary-example-route-production-50.PNG)
+![](https://img.zhaohuabing.com/in-post/istio-canary-release/canary-example-route-production-50.PNG)
 
 ### 将所有生产流量导入到到V2版本的reviews服务
 
@@ -276,10 +276,10 @@ spec:
 istioctl replace -f route-rule-default-reviews.yaml -n default
 ```
 系统部署如下图所示：
-![](/https://img.zhaohuabing.com/in-post/istio-canary-release/canary-example-route-production-100.PNG)
+![](https://img.zhaohuabing.com/in-post/istio-canary-release/canary-example-route-production-100.PNG)
 
 此时不管以任何用户登录，都只能看到V2版本带星级的评价页面，如下图所示：
-![](/https://img.zhaohuabing.com/in-post/istio-canary-release/product-page-default-v2.PNG)
+![](https://img.zhaohuabing.com/in-post/istio-canary-release/product-page-default-v2.PNG)
 
 >  备注：如果灰度发布的过程中新版本的服务出现问题，则可以通过修改路由规则，将流量重新导入到V1版本的服务中，将V2版本故障修复后再进行测试。
 

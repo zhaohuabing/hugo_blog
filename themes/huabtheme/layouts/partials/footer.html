@@ -99,18 +99,16 @@
                     </li>
 		    {{ end }}
                 </ul>
-                <p class="copyright text-muted">
-                    Copyright &copy; {{ .Site.Title }}  
-                    <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/deed.zh">CC BY 4.0</a>
+		<p class="copyright text-muted">
+                    Copyright &copy; {{ .Site.Title }} {{ .Date.Format ", 2006" }}
                     <br>
-                    <!--
-                    Theme by <a href="http://huangxuan.me">Hux</a> |
+                    Hugo Theme by <a href="https://zhaohuabing.com">Huabing</a> <!--|
                     <iframe
                         style="margin-left: 2px; margin-bottom:-5px;"
-                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        frameborder="0" scrolling="0" width="100px" height="20px"
                         src="https://ghbtns.com/github-btn.html?user=huxpro&repo=huxpro.github.io&type=star&count=true" >
                     </iframe>
-                    -->
+		    -->
                 </p>
             </div>
         </div>
@@ -174,16 +172,38 @@
 
 <!-- push page to Baidu -->
 <script>
-        (function(){
-            var bp = document.createElement('script');
-            var curProtocol = window.location.protocol.split(':')[0];
-            if (curProtocol === 'https'){
-           bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-          }
-          else{
-          bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-          }
-            var s = document.getElementsByTagName("script")[0];
-            s.parentNode.insertBefore(bp, s);
-        })();
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https'){
+       bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      }
+      else{
+      bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
 </script>
+
+
+<!-- Baidu Tongji -->
+{{ if .Site.Params.ba_track_id }}
+<script>
+    // dynamic User by Hux
+    var _baId = '{{ .Site.Params.ba_track_id }}';
+
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?" + _baId;
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+{{ end }}
+
+{{ if .Site.GoogleAnalytics }}
+{{ template "_internal/google_analytics_async.html" . }}
+{{ end }}

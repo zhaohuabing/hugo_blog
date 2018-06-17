@@ -43,10 +43,13 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
+		{{ if eq .Params.showtoc false }}
+		{{ else }}
                 <header>
                 <h2>TOC</h2>
                 </header>
                 {{.TableOfContents}}
+		{{ end }}
 		{{ .Content }}
 
                 <hr>
@@ -64,11 +67,9 @@
                     {{ end }}
                 </ul>
 
+            {{ partial "comments.html" . }}
 
-		<!-- disqus 评论框 end -->
-		<div id="disqus-comment"></div>
             </div>
-
             <!-- Sidebar Container -->
             <div class="
                 col-lg-8 col-lg-offset-2
@@ -103,20 +104,6 @@
         </div>
     </div>
 </article>
-
-{{ if .Site.Params.disqus_username }}
-<script src="/js/iDisqus.js"></script>
-<script>
-var disq = new iDisqus('disqus-comment', {
-    forum: '{{ .Site.Params.disqus_username }}',
-    api: 'https://disqusapi.zhaohuabing.com',
-    site: 'https://zhaohuabing.com',
-    mode: 1,
-    timeout: 5000,
-    init: true
-});
-</script>
-{{ end }}
 
 {{ end }}
 

@@ -1,6 +1,6 @@
 baseurl = "https://hugoblog.zhaohuabing.com/"
 title = "Huabing Blog"
-theme = "hugo-nederburg-theme"
+theme = "hugo-theme-cleanwhite"
 languageCode = "en-us"
 # Enable comments by entering your Disqus shortname
 disqusShortname = "zhaohuabings-blog"

@@ -1,0 +1,44 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/bin/nodejs', '/usr/bin/npm', 'run', 'algolia' ]
+2 info using npm@3.5.2
+3 info using node@v4.2.6
+4 verbose run-script [ 'prealgolia', 'algolia', 'postalgolia' ]
+5 info lifecycle zhaohuabing.com@1.0.0~prealgolia: zhaohuabing.com@1.0.0
+6 silly lifecycle zhaohuabing.com@1.0.0~prealgolia: no script for prealgolia, continuing
+7 info lifecycle zhaohuabing.com@1.0.0~algolia: zhaohuabing.com@1.0.0
+8 verbose lifecycle zhaohuabing.com@1.0.0~algolia: unsafe-perm in lifecycle true
+9 verbose lifecycle zhaohuabing.com@1.0.0~algolia: PATH: /usr/share/npm/bin/node-gyp-bin:/home/huabing/workspace/hugo_blog/node_modules/.bin:/home/huabing/bin:/home/huabing/.local/bin:/usr/local/go/bin:/home/huabing/workspace/go/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/huabing/ubuntu-tools
+10 verbose lifecycle zhaohuabing.com@1.0.0~algolia: CWD: /home/huabing/workspace/hugo_blog
+11 silly lifecycle zhaohuabing.com@1.0.0~algolia: Args: [ '-c', 'atomic-algolia' ]
+12 info lifecycle zhaohuabing.com@1.0.0~algolia: Failed to exec algolia script
+13 verbose stack Error: zhaohuabing.com@1.0.0 algolia: `atomic-algolia`
+13 verbose stack spawn ENOENT
+13 verbose stack     at ChildProcess.<anonymous> (/usr/share/npm/lib/utils/spawn.js:17:16)
+13 verbose stack     at emitTwo (events.js:87:13)
+13 verbose stack     at ChildProcess.emit (events.js:172:7)
+13 verbose stack     at maybeClose (internal/child_process.js:821:16)
+13 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:211:5)
+14 verbose pkgid zhaohuabing.com@1.0.0
+15 verbose cwd /home/huabing/workspace/hugo_blog
+16 error Linux 4.13.0-45-generic
+17 error argv "/usr/bin/nodejs" "/usr/bin/npm" "run" "algolia"
+18 error node v4.2.6
+19 error npm  v3.5.2
+20 error file sh
+21 error code ELIFECYCLE
+22 error errno ENOENT
+23 error syscall spawn
+24 error zhaohuabing.com@1.0.0 algolia: `atomic-algolia`
+24 error spawn ENOENT
+25 error Failed at the zhaohuabing.com@1.0.0 algolia script 'atomic-algolia'.
+25 error Make sure you have the latest version of node.js and npm installed.
+25 error If you do, this is most likely a problem with the zhaohuabing.com package,
+25 error not with npm itself.
+25 error Tell the author that this fails on your system:
+25 error     atomic-algolia
+25 error You can get information on how to open an issue for this project with:
+25 error     npm bugs zhaohuabing.com
+25 error Or if that isn't available, you can get their info via:
+25 error     npm owner ls zhaohuabing.com
+25 error There is likely additional logging output above.
+26 verbose exit [ 1, true ]

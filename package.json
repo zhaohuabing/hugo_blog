@@ -1,23 +1,22 @@
 {
-  "name": "hugo_blog",
+  "name": "zhaohuabing.com",
   "version": "1.0.0",
-  "description": "",
+  "description": "My hugo blog",
   "main": "index.js",
-  "dependencies": {
-    "atomic-algolia": "^0.3.15"
-  },
-  "devDependencies": {},
   "scripts": {
     "algolia": "atomic-algolia"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/zhaohuabing/hugo_blog.git"
+    "url": "git+https://github.com/zhaohuabing/zhaohuabing.github.io.git"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Huabing Zhao",
+  "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/zhaohuabing/hugo_blog/issues"
+    "url": "https://github.com/zhaohuabing/zhaohuabing.github.io/issues"
   },
-  "homepage": "https://github.com/zhaohuabing/hugo_blog#readme"
+  "homepage": "https://github.com/zhaohuabing/zhaohuabing.github.io#readme",
+  "dependencies": {
+    "atomic-algolia": "^0.3.15"
+  }
 }

@@ -4,3 +4,6 @@
 [submodule "themes/hugo-theme-cleanwhite"]
 	path = themes/hugo-theme-cleanwhite
 	url = https://github.com/zhaohuabing/hugo-theme-cleanwhite
+[submodule "public"]
+	path = public
+	url = git@github.com:zhaohuabing/zhaohuabing.github.io.git

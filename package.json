@@ -1,0 +1,23 @@
+{
+  "name": "hugo_blog",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "atomic-algolia": "^0.3.15"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "algolia": "atomic-algolia"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zhaohuabing/hugo_blog.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zhaohuabing/hugo_blog/issues"
+  },
+  "homepage": "https://github.com/zhaohuabing/hugo_blog#readme"
+}

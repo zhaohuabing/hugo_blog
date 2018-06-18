@@ -16,6 +16,9 @@ const search = instantsearch({
 });
 
 const hitTemplate = function(hit) {
+/*  if (hit === null){
+      return;
+  }*/
   let date = '';
   if (hit.date) {
     date = moment.unix(hit.date).format('MMM D, YYYY');
@@ -30,7 +33,14 @@ const hitTemplate = function(hit) {
     }).join(' > ')
   }
 
-  const content = hit._highlightResult.content.value;
+  let content = "" ; 
+  if (hit._highlightResult.content){
+      content = hit._highlightResult.content.value;
+  }
+  else{
+      content = hit.summary;
+  }
+
 
   return `
     <div class="post-item">

@@ -1,3 +1,6 @@
 [submodule "themes/hugo-nederburg-theme"]
 	path = themes/hugo-nederburg-theme
 	url = https://github.com/appernetic/hugo-nederburg-theme
+[submodule "themes/hugo-theme-cleanwhite"]
+	path = themes/hugo-theme-cleanwhite
+	url = https://github.com/zhaohuabing/hugo-theme-cleanwhite

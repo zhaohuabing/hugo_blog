@@ -1,4 +1,4 @@
-baseurl = "https://hugoblog.zhaohuabing.com/"
+baseurl = "https://zhaohuabing.com/"
 title = "Huabing Blog"
 theme = "hugo-theme-cleanwhite"
 languageCode = "en-us"

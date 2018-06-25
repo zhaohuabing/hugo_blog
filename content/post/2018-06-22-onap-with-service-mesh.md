@@ -5,9 +5,9 @@ title:      "How service mesh can help during the ONAP Microservice journey"
 subtitle:   ""
 excerpt: ""
 author:     "赵化冰"
-date:       2018-06-02
-description: "https://media.licdn.com/media/gcrc/dms/image/C5612AQGxADrUDCsbLg/article-cover_image-shrink_720_1280/0?e=2128896000&v=beta&t=sI_cpNncTX_zgG6yiGSEs5zIaIllthOzf_8_Blsul6M"
-image: ""
+date:       2018-06-22
+description: ""
+image: "https://media.licdn.com/media/gcrc/dms/image/C5612AQGxADrUDCsbLg/article-cover_image-shrink_720_1280/0?e=2128896000&v=beta&t=sI_cpNncTX_zgG6yiGSEs5zIaIllthOzf_8_Blsul6M"
 published: true 
 tags:
     - Istio 
@@ -20,7 +20,8 @@ categories: [ Tech ]
 [ONAP Beijing is available now](https://www.onap.org/announcement/2018/06/12/onap-announces-availability-of-beijing-release-enabling-a-deployment-ready-platform-for-network-automation-and-orchestration)!
 
 ONAP, as part of LF Networking, now accounts for more than 65% of global subscriber participation through carriers creating a harmonized, de-facto open source platform.
-<!--more-->
+<!-- more -->
+
 While it's so exciting to see that more operators are deploying ONAP in their commercial network, ONAP community realizes that there are still somewhere we can improve to smooth the deployment process. For example, instead of deploying ONAP as a whole, users may just want to pick some modules, integrate these modules with their existing system to get a customized ONAP solution. Actually, this is a very usual usage scenario in open source world. So it should be easy to tailor ONAP to suit the different scenarios and purposes for various users.
 
 To reflect these requirements, According to ONAP Casablanca Developer Event this week in Beijing, China, ONAP is planning enhancements for Casablanca release towards a more mature architecture, which will be modular, mode-drive, and microservice-based. A loose-coupled, microservice based ONAP system can make it much easier for ONAP to address the current customized deployability requirement, also to accelerate the platform maturity.

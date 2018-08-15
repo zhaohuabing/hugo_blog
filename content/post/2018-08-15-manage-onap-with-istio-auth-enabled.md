@@ -280,7 +280,7 @@ service/vfc-vnfres ClusterIP 10.111.85.161 <none> 8802/TCP 2d
 service/vfc-workflow ClusterIP 10.97.184.206 <none> 10550/TCP 2d
 service/vfc-workflow-engine ClusterIP 10.109.175.61 <none> 8080/TCP 2
 service/vfc-zte-sdnc-driver ClusterIP 10.103.94.142 <none> 8411/TCP 2d
-service/vfc-zte-vnfm-driver ClusterIP 10.108.146.237 <none> 8410/TCP 2dAME TYPE CLUSTER-IP EXTERNAL-IP PORT(S) AGE
+service/vfc-zte-vnfm-driver ClusterIP 10.108.146.237 <none> 8410/TCP 2d
 ```
 
 Create an Istio Gateway so we can access the MSB portal out of the Mesh

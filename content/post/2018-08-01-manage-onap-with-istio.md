@@ -79,19 +79,19 @@ Confirm Istio was installed:
 ```
 kubectl get svc -n istio-system
 NAME                       TYPE           CLUSTER-IP       EXTERNAL-IP   PORT(S)                                                               AGE
-grafana                    NodePort       https://www.linkedin.com/redir/invalid-link-page?url=10%2e109%2e190%2e71    <none>        3000:30300/TCP                                                        20m
-istio-citadel              ClusterIP      https://www.linkedin.com/redir/invalid-link-page?url=10%2e106%2e185%2e181   <none>        8060/TCP,9093/TCP                                                     20m
-istio-egressgateway        ClusterIP      https://www.linkedin.com/redir/invalid-link-page?url=10%2e102%2e224%2e133   <none>        80/TCP,443/TCP                                                        20m
-istio-ingressgateway       LoadBalancer   https://www.linkedin.com/redir/invalid-link-page?url=10%2e100%2e168%2e32    <pending>     80:31380/TCP,443:31390/TCP,31400:31400/TCP                            20m
-istio-pilot                ClusterIP      https://www.linkedin.com/redir/invalid-link-page?url=10%2e101%2e64%2e153    <none>        15003/TCP,15005/TCP,15007/TCP,15010/TCP,15011/TCP,8080/TCP,9093/TCP   20m
-istio-policy               ClusterIP      https://www.linkedin.com/redir/invalid-link-page?url=10%2e104%2e11%2e162    <none>        9091/TCP,15004/TCP,9093/TCP                                           20m
-istio-sidecar-injector     ClusterIP      https://www.linkedin.com/redir/invalid-link-page?url=10%2e100%2e229%2e40    <none>        443/TCP                                                               20m
-istio-statsd-prom-bridge   ClusterIP      https://www.linkedin.com/redir/invalid-link-page?url=10%2e107%2e27%2e91     <none>        9102/TCP,9125/UDP                                                     20m
-istio-telemetry            ClusterIP      https://www.linkedin.com/redir/invalid-link-page?url=10%2e101%2e153%2e114   <none>        9091/TCP,15004/TCP,9093/TCP,42422/TCP                                 20m
-prometheus                 ClusterIP      https://www.linkedin.com/redir/invalid-link-page?url=10%2e103%2e0%2e205     <none>        9090/TCP                                                              20m
-servicegraph               NodePort       https://www.linkedin.com/redir/invalid-link-page?url=10%2e106%2e49%2e168    <none>        8088:30088/TCP                                                        20m
-tracing                    LoadBalancer   https://www.linkedin.com/redir/invalid-link-page?url=10%2e100%2e158%2e236   <pending>     80:30188/TCP                                                          20m
-zipkin                     NodePort       https://www.linkedin.com/redir/invalid-link-page?url=10%2e96%2e164%2e255    <none>        9411:30411/TCP
+grafana                    NodePort       10.109.190.71    <none>        3000:30300/TCP                                                        20m
+istio-citadel              ClusterIP      10.106.185.181   <none>        8060/TCP,9093/TCP                                                     20m
+istio-egressgateway        ClusterIP      10.102.224.133   <none>        80/TCP,443/TCP                                                        20m
+istio-ingressgateway       LoadBalancer   10.100.168.32    <pending>     80:31380/TCP,443:31390/TCP,31400:31400/TCP                            20m
+istio-pilot                ClusterIP      10.101.64.153    <none>        15003/TCP,15005/TCP,15007/TCP,15010/TCP,15011/TCP,8080/TCP,9093/TCP   20m
+istio-policy               ClusterIP      10.104.11.162    <none>        9091/TCP,15004/TCP,9093/TCP                                           20m
+istio-sidecar-injector     ClusterIP      10.100.229.40    <none>        443/TCP                                                               20m
+istio-statsd-prom-bridge   ClusterIP      10.107.27.91     <none>        9102/TCP,9125/UDP                                                     20m
+istio-telemetry            ClusterIP      10.101.153.114   <none>        9091/TCP,15004/TCP,9093/TCP,42422/TCP                                 20m
+prometheus                 ClusterIP      10.103.0.205     <none>        9090/TCP                                                              20m
+servicegraph               NodePort       10.106.49.168    <none>        8088:30088/TCP                                                        20m
+tracing                    LoadBalancer   10.100.158.236   <pending>     80:30188/TCP                                                          20m
+zipkin                     NodePort       10.96.164.255    <none>        9411:30411/TCP       
 ```
 
 ## Sidecar Injection
@@ -143,7 +143,7 @@ onap           Active    8s        enabled
 Start a local helm repository server and add it to helm repository list:
 ```
 helm serve &
-helm repo add local http://https://www.linkedin.com/redir/invalid-link-page?url=127%2e0%2e0%2e1%3A8879
+helm repo add local http://127.0.0.1:8879
 ```
 All the charts of ONAP components are in the OOM repository, let’s download and build the ONAP helm charts.
 ```
@@ -259,4 +259,4 @@ Istio automatically gathers telemetry for services in a mesh. A Prometheus adapt
 Open your browser at http://node_ip:30300, you should see the Grafana Istio dashboard:
 ![Metrics](https://img.zhaohuabing.com/in-post/2018-08-01-manage-onap-with-istio/metrics.png)
 
-*What's the next? we will enable mutual TLS authentication and leverage Istio RBAC for ONAP microservices communication security. Comment here to leave your thoughts or join our weekly project meeting if you're interested.*
+*What's the next? we will enable mutual TLS authentication and leverage Istio RBAC for ONAP microservices communication security. Comment here to leave your thoughts or join our [weekly project meeting](https://wiki.onap.org/display/DW/MSB+Meeting+Notes) if you're interested.*

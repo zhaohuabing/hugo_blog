@@ -30,4 +30,5 @@ What‘s your opinions about smart phone? Are you addicted to your smart phone? 
 * What's the positive and negative impacts of smart phones to your life?
 
 # Hints for Discussion
-<iframe width="100%" height="800" src="https://coggle.it/diagram/VPxDyZelmdhos3u6/t/smart-phone/afa68b1f8d99d4747b9d0e4f69ae094a0fe72f83560865cef3fc31b7ea815884" frameborder="0" allowfullscreen></iframe>
+![](https://img.zhaohuabing.com/english_topic/Smart_Phone.png)
+

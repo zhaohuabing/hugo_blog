@@ -11,14 +11,14 @@ published: true
 tags:
     - Microservice
     - Security
-URL: "/2018/05/22/user_authentication_authorization/"
+URL: "/2018/02/03/authentication-and-authorization-of-microservice/"
 categories: [ Tech ]
 ---
 
 ## 前言
 
 微服务架构的引入为软件应用带来了诸多好处：包括小开发团队，缩短开发周期，语言选择灵活性，增强服务伸缩能力等。与此同时，也引入了分布式系统的诸多复杂问题。其中一个挑战就是如何在微服务架构中实现一个灵活，安全，高效的认证和鉴权方案。本文将尝试就此问题进行一次比较完整的探讨。
-<!--more-->
+
 ## 单体应用的实现方式
 在单体架构下，整个应用是一个进程，在应用中，一般会用一个安全模块来实现用户认证和鉴权。
 

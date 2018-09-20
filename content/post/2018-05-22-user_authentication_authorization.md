@@ -19,18 +19,12 @@ categories: [ "Tech" ]
 > 
 > 在这一系列文章里，我将尝试分为三个部分对微服务安全进行系统阐述：用户访问认证与鉴权，服务间认证与鉴权，外部系统访问控制。
 
-## 目录
-{:.no_toc}
-
-* 目录
-{:toc}
-
 
 ## 前言
 微服务架构的引入为软件应用带来了诸多好处：包括小开发团队，缩短开发周期，语言选择灵活性，增强服务伸缩能力等。与此同时，也引入了分布式系统的诸多复杂问题。其中一个挑战就是如何在微服务架构中实现一个灵活，安全，高效的认证和鉴权方案。
 
 相对于传统单体应用，微服务架构下的认证和鉴权涉及到场景更为复杂，涉及到用户访问微服务应用，第三方应用访问微服务应用，应用内多个微服务之间相互访问等多种场景，每种场景下的认证和鉴权方案都需要考虑到，以保证应用程序的安全性。本系列博文将就此问题进行一次比较完整的探讨。
-![微服务认证和鉴权涉及到的三种场景](/https://img.zhaohuabing.com/in-post/2018-02-03-authentication-and-authorization-of-microservice/auth-scenarios.png)
+![微服务认证和鉴权涉及到的三种场景](https://img.zhaohuabing.com/in-post/2018-02-03-authentication-and-authorization-of-microservice/auth-scenarios.png)
 <center>微服务认证和鉴权涉及到的三种场景</center>
 
 ## 用户认证和鉴权

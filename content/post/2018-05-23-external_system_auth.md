@@ -44,6 +44,7 @@ curl -u zhaohuabing:fbdf8e8862252ed0f3ba9dba4e328c01ac93aeec https://api.github.
 
 同样以Github为例，一些第三方应用如Travis CI，GitBook等就是通过OAuth和Github进行集成的。
 OAuth针对不同场景有不同的认证流程，一个典型的认证流程如下图所示：
+
 * 用户向OAuth客户端程序发起一个请求，OAuth客户端程序在处理该请求时发现需要访问用户在资源服务器中的数据。
 * 客户端程序将用户请求重定向到认证服务器，该请求中包含一个callback的URL。
 * 认证服务器返回授权页面，要求用户对OAuth客户端的资源请求进行授权。

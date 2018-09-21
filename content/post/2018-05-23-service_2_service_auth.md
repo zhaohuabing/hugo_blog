@@ -21,6 +21,7 @@ categories: [ Tech ]
 ## 服务间认证与鉴权
 
 除来自用户的访问请求以外，微服务应用中的各个微服务相互之间还有大量的访问，包括下述场景：
+
 * 用户间接触发的微服务之间的相互访问<BR>
   例如在一个网上商店应用中，用户访问购物车微服务进行结算时，购物车微服务可能需要访问用户评级微服务获取用户的会员级别，以得到用户可以享受购物折扣。 
 * 非用户触发的微服务之间的相互访问<BR>
@@ -38,6 +39,7 @@ categories: [ Tech ]
 
 #### SPIFEE标准
 [Secure Production Identity Framework For Everyone (SPIFFE)](https://spiffe.io/)是一套服务之间相互进行身份识别的标准，主要包含以下内容：
+
 * SPIFFE ID标准，SPIFFE ID是服务的唯一标识，实现为统一资源标识"Uniform Resource Identifier (URI)”符。
 * SVID(SPIFFE Verifiable Identity Document)标准,将SPIFFE ID编码到一个加密的可验证文档中。
 * 颁发/撤销 SVID的一套API标准。
@@ -49,6 +51,7 @@ Istio服务网格项目的Auth组件实现了SPIFFE标准，可以为网格中�
 ![](http://img.zhaohuabing.com/in-post/2018-05-23-service_2_service_auth/auth.png)
 
 Istio Auth采用了Kubernetes的service account来作为服务标识，其SPIFFE ID的格式为spiffe://&lt;domain&gt;/ns/&lt;namespace&gt;/sa/&lt;serviceaccount&gt;，其中各组成部分如下：
+
 * domain 域名
 * namspace kubernetes service account所在的Namespace
 * serviceaccout kubernetes中定义的service account名

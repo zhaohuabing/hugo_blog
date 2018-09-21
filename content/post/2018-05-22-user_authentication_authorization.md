@@ -31,6 +31,7 @@ categories: [ "Tech" ]
 
 ### 用户身份认证
 一个完整的微服务应用是由多个相互独立的微服务进程组成的，对每个微服务的访问都需要进行用户认证。如果将用户认证的工作放到每个微服务中，存在下面一些问题：
+
 * 需要在各个微服务中重复实现这部分公共逻辑。虽然我们可以使用代码库复用部分代码，但这又会导致所有微服务对特定代码库及其版本存在依赖，影响微服务语言/框架选择的灵活性。
 * 将认证和鉴权的公共逻辑放到微服务实现中违背了单一职责原理，开发人员应重点关注微服务自身的业务逻辑。
 * 用户需要分别登录以访问系统中不同的服务。
@@ -47,6 +48,7 @@ Token和Seesion主要的不同点是存储的地方不同。Session是集中存�
 Token用于表明用户身份，因此需要对其内容进行加密，避免被请求方或者第三者篡改。[JWT(Json Web Token)](https://jwt.io)是一个定义Token格式的开放标准(RFC 7519),定义了Token的内容，加密方式，并提供了各种语言的lib。
 
 JWT Token的结构非常简单，包括三部分：
+
 * Header<BR>
 头部包含类型,为固定值JWT。然后是JWT使用的Hash算法。
 ```
@@ -81,6 +83,7 @@ HMACSHA256(
 Authorization: Bearer mF_9.B5f-4.1JqM
 ```
 采用Token方式进行用户认证的基本流程如下图所示：
+
 1. 用户输入用户名,密码等验证信息，向服务器发起登录请求
 1. 服务器端验证用户登录信息，生成JWT token
 1. 服务器端将Token返回给客户端，客户端保存在本地（一般以Cookie的方式保存）
@@ -95,11 +98,13 @@ Authorization: Bearer mF_9.B5f-4.1JqM
 用户的认证流程和采用Token方式认证的基本流程类似，不同之处是加入了API Gateway作为外部请求的入口。
 
 用户登录
+
 1. 客户端发送登录请求到API Gateway
 2. API Gateway将登录请求转发到Security Service
 3. Security Service验证用户身份，并颁发Token
 
 用户请求
+
 1. 客户端请求发送到API Gateway
 1. API Gateway调用的Security Service对请求中的Token进行验证，检查用户的身份
 2. 如果请求中没有Token，Token过期或者Token验证非法，则拒绝用户请求。
@@ -114,6 +119,7 @@ Authorization: Bearer mF_9.B5f-4.1JqM
 客户端发送的HTTP请求中包含有请求的Resource及HTTP Method。如果系统遵循REST规范，以URI资源方式对访问对象进行建模，则API Gateway可以从请求中直接截取到访问的资源及需要进行的操作，然后调用Security Service进行权限判断，根据判断结果决定用户是否有权限对该资源进行操作，并转发到后端的Business Service。
 
 假设系统中有三个角色:
+
 * order_manager,可以查看，创建，修改，删除订单
 * order_editor, 可以查看，创建，修改订单
 * order_inspector，只能查看订单

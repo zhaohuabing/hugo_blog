@@ -7479,3 +7479,2953 @@
 2018-09-21 09:33:07 DEBUG    accept
 2018-09-21 09:33:07 DEBUG    chosen server: 23.105.216.42:444
 2018-09-21 09:33:07 INFO     connecting disqus.com:443 from 127.0.0.1:36464
+2018-09-21 09:33:08 DEBUG    accept
+2018-09-21 09:33:08 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:33:08 INFO     connecting api.share.baidu.com:80 from 127.0.0.1:36514
+2018-09-21 09:33:08 DEBUG    accept
+2018-09-21 09:33:08 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:33:08 INFO     connecting hm.baidu.com:80 from 127.0.0.1:36534
+2018-09-21 09:33:09 DEBUG    destroy: disqus.com:443
+2018-09-21 09:33:09 DEBUG    destroying remote
+2018-09-21 09:33:09 DEBUG    destroying local
+2018-09-21 09:33:09 DEBUG    accept
+2018-09-21 09:33:09 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:33:09 INFO     connecting c.disquscdn.com:443 from 127.0.0.1:36538
+2018-09-21 09:33:09 DEBUG    accept
+2018-09-21 09:33:09 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:33:09 DEBUG    destroy: disqus.com:443
+2018-09-21 09:33:09 DEBUG    destroying remote
+2018-09-21 09:33:09 DEBUG    destroying local
+2018-09-21 09:33:09 DEBUG    destroy: people.api.boomtrain.com:443
+2018-09-21 09:33:09 DEBUG    destroying remote
+2018-09-21 09:33:09 DEBUG    destroying local
+2018-09-21 09:33:09 DEBUG    destroy: disqus.com:443
+2018-09-21 09:33:09 DEBUG    destroying remote
+2018-09-21 09:33:09 DEBUG    destroying local
+2018-09-21 09:33:09 DEBUG    destroy: disqusads.com:443
+2018-09-21 09:33:09 DEBUG    destroying remote
+2018-09-21 09:33:09 DEBUG    destroying local
+2018-09-21 09:33:09 DEBUG    destroy: links.services.disqus.com:443
+2018-09-21 09:33:09 DEBUG    destroying remote
+2018-09-21 09:33:09 DEBUG    destroying local
+2018-09-21 09:33:09 DEBUG    destroy: links.services.disqus.com:443
+2018-09-21 09:33:09 DEBUG    destroying remote
+2018-09-21 09:33:09 DEBUG    destroying local
+2018-09-21 09:33:09 DEBUG    destroy: referrer.disqus.com:443
+2018-09-21 09:33:09 DEBUG    destroying remote
+2018-09-21 09:33:09 DEBUG    destroying local
+2018-09-21 09:33:09 DEBUG    accept
+2018-09-21 09:33:09 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:33:09 DEBUG    accept
+2018-09-21 09:33:09 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:33:09 DEBUG    accept
+2018-09-21 09:33:09 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:33:09 INFO     connecting cdn.boomtrain.com:443 from 127.0.0.1:36542
+2018-09-21 09:33:09 DEBUG    accept
+2018-09-21 09:33:09 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:33:09 INFO     connecting cdn.boomtrain.com:443 from 127.0.0.1:36544
+2018-09-21 09:33:09 DEBUG    accept
+2018-09-21 09:33:09 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:33:09 INFO     connecting disqus.com:443 from 127.0.0.1:36546
+2018-09-21 09:33:09 DEBUG    accept
+2018-09-21 09:33:09 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:33:09 INFO     connecting disqus.com:443 from 127.0.0.1:36548
+2018-09-21 09:33:09 DEBUG    accept
+2018-09-21 09:33:09 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:33:09 INFO     connecting disqusads.com:443 from 127.0.0.1:36550
+2018-09-21 09:33:09 DEBUG    accept
+2018-09-21 09:33:09 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:33:09 INFO     connecting events.api.boomtrain.com:443 from 127.0.0.1:36552
+2018-09-21 09:33:09 DEBUG    accept
+2018-09-21 09:33:09 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:33:09 INFO     connecting glitter.services.disqus.com:443 from 127.0.0.1:36554
+2018-09-21 09:33:09 DEBUG    accept
+2018-09-21 09:33:09 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:33:09 INFO     connecting onsite.boomtrain.net:443 from 127.0.0.1:36558
+2018-09-21 09:33:09 INFO     connecting glitter.services.disqus.com:443 from 127.0.0.1:36556
+2018-09-21 09:33:09 DEBUG    accept
+2018-09-21 09:33:09 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:33:09 INFO     connecting people.api.boomtrain.com:443 from 127.0.0.1:36560
+2018-09-21 09:33:09 INFO     connecting people.api.boomtrain.com:443 from 127.0.0.1:36564
+2018-09-21 09:33:09 INFO     connecting people.api.boomtrain.com:443 from 127.0.0.1:36562
+2018-09-21 09:33:09 DEBUG    destroy: disqusads.com:443
+2018-09-21 09:33:09 DEBUG    destroying remote
+2018-09-21 09:33:09 DEBUG    destroying local
+2018-09-21 09:33:10 DEBUG    accept
+2018-09-21 09:33:10 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:33:10 INFO     connecting cdn.viglink.com:80 from 127.0.0.1:36590
+2018-09-21 09:33:10 DEBUG    destroy: hm.baidu.com:80
+2018-09-21 09:33:10 DEBUG    destroying remote
+2018-09-21 09:33:10 DEBUG    destroying local
+2018-09-21 09:33:10 DEBUG    accept
+2018-09-21 09:33:10 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:33:11 INFO     connecting cdn.viglink.com:80 from 127.0.0.1:36594
+2018-09-21 09:33:11 DEBUG    destroy: cdn.viglink.com:80
+2018-09-21 09:33:11 DEBUG    destroying remote
+2018-09-21 09:33:11 DEBUG    destroying local
+2018-09-21 09:33:11 DEBUG    accept
+2018-09-21 09:33:11 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:33:11 INFO     connecting links.services.disqus.com:443 from 127.0.0.1:36598
+2018-09-21 09:33:11 DEBUG    destroy: cdn.viglink.com:80
+2018-09-21 09:33:11 DEBUG    destroying remote
+2018-09-21 09:33:11 DEBUG    destroying local
+2018-09-21 09:33:11 DEBUG    accept
+2018-09-21 09:33:11 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:33:11 INFO     connecting people.api.boomtrain.com:443 from 127.0.0.1:36602
+2018-09-21 09:33:12 DEBUG    destroy: hm.baidu.com:80
+2018-09-21 09:33:12 DEBUG    destroying remote
+2018-09-21 09:33:12 DEBUG    destroying local
+2018-09-21 09:33:12 DEBUG    accept
+2018-09-21 09:33:12 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:33:12 DEBUG    got local error
+2018-09-21 09:33:12 ERROR    [Errno 104] Connection reset by peer
+2018-09-21 09:33:12 DEBUG    destroy: c.disquscdn.com:443
+2018-09-21 09:33:12 DEBUG    destroying remote
+2018-09-21 09:33:12 DEBUG    destroying local
+2018-09-21 09:33:12 DEBUG    accept
+2018-09-21 09:33:12 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:33:12 INFO     connecting io.narrative.io:443 from 127.0.0.1:36606
+2018-09-21 09:33:12 INFO     connecting live.rezync.com:443 from 127.0.0.1:36608
+2018-09-21 09:33:12 DEBUG    destroy: cdn.boomtrain.com:443
+2018-09-21 09:33:12 DEBUG    destroying remote
+2018-09-21 09:33:12 DEBUG    destroying local
+2018-09-21 09:33:12 DEBUG    accept
+2018-09-21 09:33:12 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:33:12 INFO     connecting links.services.disqus.com:443 from 127.0.0.1:36614
+2018-09-21 09:33:12 DEBUG    destroy: cdn.boomtrain.com:443
+2018-09-21 09:33:12 DEBUG    destroying remote
+2018-09-21 09:33:12 DEBUG    destroying local
+2018-09-21 09:33:12 DEBUG    accept
+2018-09-21 09:33:12 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:33:12 INFO     connecting disqusads.com:443 from 127.0.0.1:36618
+2018-09-21 09:33:12 DEBUG    destroy: people.api.boomtrain.com:443
+2018-09-21 09:33:12 DEBUG    destroying remote
+2018-09-21 09:33:12 DEBUG    destroying local
+2018-09-21 09:33:12 DEBUG    accept
+2018-09-21 09:33:12 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:33:12 INFO     connecting ei.rlcdn.com:443 from 127.0.0.1:36622
+2018-09-21 09:33:12 DEBUG    destroy: disqus.com:443
+2018-09-21 09:33:12 DEBUG    destroying remote
+2018-09-21 09:33:12 DEBUG    destroying local
+2018-09-21 09:33:12 DEBUG    accept
+2018-09-21 09:33:12 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:33:12 INFO     connecting ib.adnxs.com:443 from 127.0.0.1:36626
+2018-09-21 09:33:12 DEBUG    destroy: disqus.com:443
+2018-09-21 09:33:12 DEBUG    destroying remote
+2018-09-21 09:33:12 DEBUG    destroying local
+2018-09-21 09:33:12 DEBUG    accept
+2018-09-21 09:33:12 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:33:12 INFO     connecting rc.rlcdn.com:443 from 127.0.0.1:36630
+2018-09-21 09:33:13 DEBUG    destroy: disqusads.com:443
+2018-09-21 09:33:13 DEBUG    destroying remote
+2018-09-21 09:33:13 DEBUG    destroying local
+2018-09-21 09:33:13 DEBUG    accept
+2018-09-21 09:33:13 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:33:13 DEBUG    accept
+2018-09-21 09:33:13 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:33:13 DEBUG    got local error
+2018-09-21 09:33:13 ERROR    [Errno 104] Connection reset by peer
+2018-09-21 09:33:13 DEBUG    destroy: events.api.boomtrain.com:443
+2018-09-21 09:33:13 DEBUG    destroying remote
+2018-09-21 09:33:13 DEBUG    destroying local
+2018-09-21 09:33:13 DEBUG    destroy: glitter.services.disqus.com:443
+2018-09-21 09:33:13 DEBUG    destroying remote
+2018-09-21 09:33:13 DEBUG    destroying local
+2018-09-21 09:33:13 DEBUG    destroy: glitter.services.disqus.com:443
+2018-09-21 09:33:13 DEBUG    destroying remote
+2018-09-21 09:33:13 DEBUG    destroying local
+2018-09-21 09:33:13 DEBUG    destroy: links.services.disqus.com:443
+2018-09-21 09:33:13 DEBUG    destroying remote
+2018-09-21 09:33:13 DEBUG    destroying local
+2018-09-21 09:33:13 DEBUG    accept
+2018-09-21 09:33:13 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:33:13 DEBUG    accept
+2018-09-21 09:33:13 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:33:13 DEBUG    accept
+2018-09-21 09:33:13 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:33:13 INFO     connecting rc.rlcdn.com:443 from 127.0.0.1:36634
+2018-09-21 09:33:13 INFO     connecting rc.rlcdn.com:443 from 127.0.0.1:36636
+2018-09-21 09:33:13 INFO     connecting rc.rlcdn.com:443 from 127.0.0.1:36638
+2018-09-21 09:33:13 INFO     connecting rc.rlcdn.com:443 from 127.0.0.1:36640
+2018-09-21 09:33:13 INFO     connecting rc.rlcdn.com:443 from 127.0.0.1:36642
+2018-09-21 09:33:13 DEBUG    destroy: disqusads.com:443
+2018-09-21 09:33:13 DEBUG    destroying remote
+2018-09-21 09:33:13 DEBUG    destroying local
+2018-09-21 09:33:13 DEBUG    accept
+2018-09-21 09:33:13 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:33:13 INFO     connecting secure.adnxs.com:443 from 127.0.0.1:36654
+2018-09-21 09:33:13 DEBUG    destroy: io.narrative.io:443
+2018-09-21 09:33:13 DEBUG    destroying remote
+2018-09-21 09:33:13 DEBUG    destroying local
+2018-09-21 09:33:13 DEBUG    accept
+2018-09-21 09:33:13 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:33:13 INFO     connecting wam.solution.weborama.fr:443 from 127.0.0.1:36658
+2018-09-21 09:33:14 DEBUG    destroy: links.services.disqus.com:443
+2018-09-21 09:33:14 DEBUG    destroying remote
+2018-09-21 09:33:14 DEBUG    destroying local
+2018-09-21 09:33:14 DEBUG    accept
+2018-09-21 09:33:14 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:33:14 DEBUG    destroy: live.rezync.com:443
+2018-09-21 09:33:14 DEBUG    destroying remote
+2018-09-21 09:33:14 DEBUG    destroying local
+2018-09-21 09:33:14 DEBUG    accept
+2018-09-21 09:33:14 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:33:14 INFO     connecting ad.afy11.net:443 from 127.0.0.1:36662
+2018-09-21 09:33:14 INFO     connecting ads.avocet.io:443 from 127.0.0.1:36664
+2018-09-21 09:33:14 DEBUG    got local error
+2018-09-21 09:33:14 ERROR    [Errno 104] Connection reset by peer
+2018-09-21 09:33:14 DEBUG    destroy: onsite.boomtrain.net:443
+2018-09-21 09:33:14 DEBUG    destroying remote
+2018-09-21 09:33:14 DEBUG    destroying local
+2018-09-21 09:33:14 DEBUG    accept
+2018-09-21 09:33:14 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:33:14 INFO     connecting sync.search.spotxchange.com:443 from 127.0.0.1:36670
+2018-09-21 09:33:14 DEBUG    destroy: people.api.boomtrain.com:443
+2018-09-21 09:33:14 DEBUG    destroying remote
+2018-09-21 09:33:14 DEBUG    destroying local
+2018-09-21 09:33:14 DEBUG    accept
+2018-09-21 09:33:14 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:33:14 INFO     connecting n.areyouahuman.com:443 from 127.0.0.1:36674
+2018-09-21 09:33:14 DEBUG    destroy: ib.adnxs.com:443
+2018-09-21 09:33:14 DEBUG    destroying remote
+2018-09-21 09:33:14 DEBUG    destroying local
+2018-09-21 09:33:14 DEBUG    accept
+2018-09-21 09:33:14 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:33:14 INFO     connecting s.cpx.to:443 from 127.0.0.1:36678
+2018-09-21 09:33:14 DEBUG    destroy: people.api.boomtrain.com:443
+2018-09-21 09:33:14 DEBUG    destroying remote
+2018-09-21 09:33:14 DEBUG    destroying local
+2018-09-21 09:33:14 DEBUG    accept
+2018-09-21 09:33:14 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:33:14 DEBUG    destroy: people.api.boomtrain.com:443
+2018-09-21 09:33:14 DEBUG    destroying remote
+2018-09-21 09:33:14 DEBUG    destroying local
+2018-09-21 09:33:14 DEBUG    accept
+2018-09-21 09:33:14 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:33:14 INFO     connecting px.gumgum.com:443 from 127.0.0.1:36682
+2018-09-21 09:33:14 INFO     connecting ag.innovid.com:443 from 127.0.0.1:36684
+2018-09-21 09:33:14 DEBUG    got local error
+2018-09-21 09:33:14 ERROR    [Errno 104] Connection reset by peer
+2018-09-21 09:33:14 DEBUG    destroy: rc.rlcdn.com:443
+2018-09-21 09:33:14 DEBUG    destroying remote
+2018-09-21 09:33:14 DEBUG    destroying local
+2018-09-21 09:33:14 DEBUG    accept
+2018-09-21 09:33:14 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:33:14 INFO     connecting live.rezync.com:443 from 127.0.0.1:36688
+2018-09-21 09:33:14 DEBUG    got local error
+2018-09-21 09:33:14 ERROR    [Errno 104] Connection reset by peer
+2018-09-21 09:33:14 DEBUG    destroy: rc.rlcdn.com:443
+2018-09-21 09:33:14 DEBUG    destroying remote
+2018-09-21 09:33:14 DEBUG    destroying local
+2018-09-21 09:33:14 DEBUG    accept
+2018-09-21 09:33:14 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:33:14 DEBUG    got local error
+2018-09-21 09:33:14 ERROR    [Errno 104] Connection reset by peer
+2018-09-21 09:33:14 DEBUG    destroy: rc.rlcdn.com:443
+2018-09-21 09:33:14 DEBUG    destroying remote
+2018-09-21 09:33:14 DEBUG    destroying local
+2018-09-21 09:33:14 DEBUG    accept
+2018-09-21 09:33:14 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:33:14 INFO     connecting b1sync.zemanta.com:443 from 127.0.0.1:36694
+2018-09-21 09:33:14 INFO     connecting cm.adgrx.com:443 from 127.0.0.1:36696
+2018-09-21 09:33:15 DEBUG    destroy: ad.afy11.net:443
+2018-09-21 09:33:15 DEBUG    destroying remote
+2018-09-21 09:33:15 DEBUG    destroying local
+2018-09-21 09:33:15 DEBUG    accept
+2018-09-21 09:33:15 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:33:15 INFO     connecting idsync.rlcdn.com:443 from 127.0.0.1:36702
+2018-09-21 09:33:15 DEBUG    destroy: ads.avocet.io:443
+2018-09-21 09:33:15 DEBUG    destroying remote
+2018-09-21 09:33:15 DEBUG    destroying local
+2018-09-21 09:33:15 DEBUG    accept
+2018-09-21 09:33:15 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:33:15 INFO     connecting c.conversionlogic.net:443 from 127.0.0.1:36706
+2018-09-21 09:33:15 DEBUG    destroy: live.rezync.com:443
+2018-09-21 09:33:15 DEBUG    destroying remote
+2018-09-21 09:33:15 DEBUG    destroying local
+2018-09-21 09:33:15 DEBUG    accept
+2018-09-21 09:33:15 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:33:15 INFO     connecting dptr.distiltag.com:443 from 127.0.0.1:36710
+2018-09-21 09:33:15 DEBUG    destroy: ag.innovid.com:443
+2018-09-21 09:33:15 DEBUG    destroying remote
+2018-09-21 09:33:15 DEBUG    destroying local
+2018-09-21 09:33:15 DEBUG    accept
+2018-09-21 09:33:15 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:33:15 INFO     connecting idsync.rlcdn.com:443 from 127.0.0.1:36714
+2018-09-21 09:33:15 DEBUG    destroy: cm.adgrx.com:443
+2018-09-21 09:33:15 DEBUG    destroying remote
+2018-09-21 09:33:15 DEBUG    destroying local
+2018-09-21 09:33:15 DEBUG    accept
+2018-09-21 09:33:15 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:33:15 INFO     connecting idsync.rlcdn.com:443 from 127.0.0.1:36718
+2018-09-21 09:33:15 DEBUG    destroy: b1sync.zemanta.com:443
+2018-09-21 09:33:15 DEBUG    destroying remote
+2018-09-21 09:33:15 DEBUG    destroying local
+2018-09-21 09:33:15 DEBUG    accept
+2018-09-21 09:33:15 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:33:15 DEBUG    destroy: n.areyouahuman.com:443
+2018-09-21 09:33:15 DEBUG    destroying remote
+2018-09-21 09:33:15 DEBUG    destroying local
+2018-09-21 09:33:15 DEBUG    got local error
+2018-09-21 09:33:15 ERROR    [Errno 104] Connection reset by peer
+2018-09-21 09:33:15 DEBUG    destroy: rc.rlcdn.com:443
+2018-09-21 09:33:15 DEBUG    destroying remote
+2018-09-21 09:33:15 DEBUG    destroying local
+2018-09-21 09:33:15 DEBUG    accept
+2018-09-21 09:33:15 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:33:15 DEBUG    accept
+2018-09-21 09:33:15 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:33:15 INFO     connecting idsync.rlcdn.com:443 from 127.0.0.1:36722
+2018-09-21 09:33:15 INFO     connecting idsync.rlcdn.com:443 from 127.0.0.1:36724
+2018-09-21 09:33:15 INFO     connecting idsync.rlcdn.com:443 from 127.0.0.1:36726
+2018-09-21 09:33:16 DEBUG    destroy: c.conversionlogic.net:443
+2018-09-21 09:33:16 DEBUG    destroying remote
+2018-09-21 09:33:16 DEBUG    destroying local
+2018-09-21 09:33:16 DEBUG    accept
+2018-09-21 09:33:16 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:33:16 INFO     connecting direct.tekblue.net:443 from 127.0.0.1:36734
+2018-09-21 09:33:16 DEBUG    got local error
+2018-09-21 09:33:16 ERROR    [Errno 104] Connection reset by peer
+2018-09-21 09:33:16 DEBUG    destroy: idsync.rlcdn.com:443
+2018-09-21 09:33:16 DEBUG    destroying remote
+2018-09-21 09:33:16 DEBUG    destroying local
+2018-09-21 09:33:16 DEBUG    accept
+2018-09-21 09:33:16 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:33:16 INFO     connecting track2.securedvisit.com:443 from 127.0.0.1:36736
+2018-09-21 09:33:16 DEBUG    got local error
+2018-09-21 09:33:16 ERROR    [Errno 104] Connection reset by peer
+2018-09-21 09:33:16 DEBUG    destroy: idsync.rlcdn.com:443
+2018-09-21 09:33:16 DEBUG    destroying remote
+2018-09-21 09:33:16 DEBUG    destroying local
+2018-09-21 09:33:16 DEBUG    accept
+2018-09-21 09:33:16 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:33:16 INFO     connecting cmi.netseer.com:443 from 127.0.0.1:36742
+2018-09-21 09:33:16 DEBUG    destroy: rc.rlcdn.com:443
+2018-09-21 09:33:16 DEBUG    destroying remote
+2018-09-21 09:33:16 DEBUG    destroying local
+2018-09-21 09:33:17 DEBUG    destroy: direct.tekblue.net:443
+2018-09-21 09:33:17 DEBUG    destroying remote
+2018-09-21 09:33:17 DEBUG    destroying local
+2018-09-21 09:33:17 DEBUG    accept
+2018-09-21 09:33:17 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:33:17 INFO     connecting direct.tekblue.net:443 from 127.0.0.1:36746
+2018-09-21 09:33:17 DEBUG    destroy: ei.rlcdn.com:443
+2018-09-21 09:33:17 DEBUG    destroying remote
+2018-09-21 09:33:17 DEBUG    destroying local
+2018-09-21 09:33:17 DEBUG    destroy: direct.tekblue.net:443
+2018-09-21 09:33:17 DEBUG    destroying remote
+2018-09-21 09:33:17 DEBUG    destroying local
+2018-09-21 09:33:18 DEBUG    accept
+2018-09-21 09:33:18 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:33:18 INFO     connecting beam.hlserve.com:443 from 127.0.0.1:36750
+2018-09-21 09:33:18 DEBUG    destroy: cdn.boomtrain.com:443
+2018-09-21 09:33:18 DEBUG    destroying remote
+2018-09-21 09:33:18 DEBUG    destroying local
+2018-09-21 09:33:18 DEBUG    destroy: glitter.services.disqus.com:443
+2018-09-21 09:33:18 DEBUG    destroying remote
+2018-09-21 09:33:18 DEBUG    destroying local
+2018-09-21 09:33:19 DEBUG    destroy: idsync.rlcdn.com:443
+2018-09-21 09:33:19 DEBUG    destroying remote
+2018-09-21 09:33:19 DEBUG    destroying local
+2018-09-21 09:33:19 DEBUG    destroy: rc.rlcdn.com:443
+2018-09-21 09:33:19 DEBUG    destroying remote
+2018-09-21 09:33:19 DEBUG    destroying local
+2018-09-21 09:33:19 DEBUG    destroy: idsync.rlcdn.com:443
+2018-09-21 09:33:19 DEBUG    destroying remote
+2018-09-21 09:33:19 DEBUG    destroying local
+2018-09-21 09:33:19 DEBUG    destroy: idsync.rlcdn.com:443
+2018-09-21 09:33:19 DEBUG    destroying remote
+2018-09-21 09:33:19 DEBUG    destroying local
+2018-09-21 09:33:21 DEBUG    destroy: idsync.rlcdn.com:443
+2018-09-21 09:33:21 DEBUG    destroying remote
+2018-09-21 09:33:21 DEBUG    destroying local
+2018-09-21 09:33:23 DEBUG    destroy: beam.hlserve.com:443
+2018-09-21 09:33:23 DEBUG    destroying remote
+2018-09-21 09:33:23 DEBUG    destroying local
+2018-09-21 09:33:24 DEBUG    destroy: secure.adnxs.com:443
+2018-09-21 09:33:24 DEBUG    destroying remote
+2018-09-21 09:33:24 DEBUG    destroying local
+2018-09-21 09:33:25 DEBUG    destroy: disqus.com:443
+2018-09-21 09:33:25 DEBUG    destroying remote
+2018-09-21 09:33:25 DEBUG    destroying local
+2018-09-21 09:33:25 DEBUG    destroy: ib.adnxs.com:443
+2018-09-21 09:33:25 DEBUG    destroying remote
+2018-09-21 09:33:25 DEBUG    destroying local
+2018-09-21 09:33:30 DEBUG    destroy: wam.solution.weborama.fr:443
+2018-09-21 09:33:30 DEBUG    destroying remote
+2018-09-21 09:33:30 DEBUG    destroying local
+2018-09-21 09:33:42 DEBUG    accept
+2018-09-21 09:33:42 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:33:42 INFO     connecting hm.baidu.com:80 from 127.0.0.1:36804
+2018-09-21 09:33:46 DEBUG    destroy: s.cpx.to:443
+2018-09-21 09:33:46 DEBUG    destroying remote
+2018-09-21 09:33:46 DEBUG    destroying local
+2018-09-21 09:33:46 DEBUG    accept
+2018-09-21 09:33:46 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:33:46 DEBUG    accept
+2018-09-21 09:33:46 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:33:46 INFO     connecting docs.google.com:443 from 127.0.0.1:36808
+2018-09-21 09:33:46 INFO     connecting ssl.gstatic.com:443 from 127.0.0.1:36810
+2018-09-21 09:33:49 DEBUG    destroy: sync.search.spotxchange.com:443
+2018-09-21 09:33:49 DEBUG    destroying remote
+2018-09-21 09:33:49 DEBUG    destroying local
+2018-09-21 09:33:52 DEBUG    destroy: f-log-extension.grammarly.io:443
+2018-09-21 09:33:52 DEBUG    destroying remote
+2018-09-21 09:33:52 DEBUG    destroying local
+2018-09-21 09:33:52 DEBUG    destroy: hm.baidu.com:80
+2018-09-21 09:33:52 DEBUG    destroying remote
+2018-09-21 09:33:52 DEBUG    destroying local
+2018-09-21 09:34:11 DEBUG    destroy: api.share.baidu.com:80
+2018-09-21 09:34:11 DEBUG    destroying remote
+2018-09-21 09:34:11 DEBUG    destroying local
+2018-09-21 09:34:13 DEBUG    destroy: onsite.boomtrain.net:443
+2018-09-21 09:34:13 DEBUG    destroying remote
+2018-09-21 09:34:13 DEBUG    destroying local
+2018-09-21 09:34:14 DEBUG    destroy: events.api.boomtrain.com:443
+2018-09-21 09:34:14 DEBUG    destroying remote
+2018-09-21 09:34:14 DEBUG    destroying local
+2018-09-21 09:34:15 DEBUG    destroy: px.gumgum.com:443
+2018-09-21 09:34:15 DEBUG    destroying remote
+2018-09-21 09:34:15 DEBUG    destroying local
+2018-09-21 09:34:18 DEBUG    destroy: s.thebrighttag.com:443
+2018-09-21 09:34:18 DEBUG    destroying remote
+2018-09-21 09:34:18 DEBUG    destroying local
+2018-09-21 09:34:19 DEBUG    destroy: s.cpx.to:443
+2018-09-21 09:34:19 DEBUG    destroying remote
+2018-09-21 09:34:19 DEBUG    destroying local
+2018-09-21 09:34:19 DEBUG    destroy: api.leancloud.cn:443
+2018-09-21 09:34:19 DEBUG    destroying remote
+2018-09-21 09:34:19 DEBUG    destroying local
+2018-09-21 09:34:23 DEBUG    destroy: track2.securedvisit.com:443
+2018-09-21 09:34:23 DEBUG    destroying remote
+2018-09-21 09:34:23 DEBUG    destroying local
+2018-09-21 09:34:23 DEBUG    destroy: cmi.netseer.com:443
+2018-09-21 09:34:23 DEBUG    destroying remote
+2018-09-21 09:34:23 DEBUG    destroying local
+2018-09-21 09:35:17 DEBUG    destroy: dptr.distiltag.com:443
+2018-09-21 09:35:17 DEBUG    destroying remote
+2018-09-21 09:35:17 DEBUG    destroying local
+2018-09-21 09:36:13 DEBUG    got local error
+2018-09-21 09:36:13 ERROR    [Errno 104] Connection reset by peer
+2018-09-21 09:36:13 DEBUG    destroy: docs.google.com:443
+2018-09-21 09:36:13 DEBUG    destroying remote
+2018-09-21 09:36:13 DEBUG    destroying local
+2018-09-21 09:36:14 DEBUG    accept
+2018-09-21 09:36:14 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:36:14 INFO     connecting disqus.com:443 from 127.0.0.1:36916
+2018-09-21 09:36:15 DEBUG    accept
+2018-09-21 09:36:15 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:36:15 DEBUG    accept
+2018-09-21 09:36:15 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:36:15 DEBUG    accept
+2018-09-21 09:36:15 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:36:15 DEBUG    accept
+2018-09-21 09:36:15 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:36:15 DEBUG    accept
+2018-09-21 09:36:15 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:36:15 DEBUG    accept
+2018-09-21 09:36:15 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:36:15 DEBUG    accept
+2018-09-21 09:36:15 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:36:15 DEBUG    accept
+2018-09-21 09:36:15 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:36:15 DEBUG    accept
+2018-09-21 09:36:15 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:36:15 DEBUG    accept
+2018-09-21 09:36:15 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:36:15 DEBUG    accept
+2018-09-21 09:36:15 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:36:15 INFO     connecting disqusads.com:443 from 127.0.0.1:36920
+2018-09-21 09:36:15 DEBUG    accept
+2018-09-21 09:36:15 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:36:15 INFO     connecting disqusads.com:443 from 127.0.0.1:36922
+2018-09-21 09:36:15 DEBUG    accept
+2018-09-21 09:36:15 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:36:15 DEBUG    accept
+2018-09-21 09:36:15 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:36:15 INFO     connecting events.api.boomtrain.com:443 from 127.0.0.1:36924
+2018-09-21 09:36:15 INFO     connecting ib.adnxs.com:443 from 127.0.0.1:36926
+2018-09-21 09:36:15 INFO     connecting ib.adnxs.com:443 from 127.0.0.1:36928
+2018-09-21 09:36:15 INFO     connecting ib.adnxs.com:443 from 127.0.0.1:36930
+2018-09-21 09:36:15 INFO     connecting io.narrative.io:443 from 127.0.0.1:36932
+2018-09-21 09:36:15 INFO     connecting io.narrative.io:443 from 127.0.0.1:36934
+2018-09-21 09:36:15 INFO     connecting io.narrative.io:443 from 127.0.0.1:36936
+2018-09-21 09:36:15 INFO     connecting live.rezync.com:443 from 127.0.0.1:36938
+2018-09-21 09:36:15 INFO     connecting live.rezync.com:443 from 127.0.0.1:36940
+2018-09-21 09:36:15 DEBUG    accept
+2018-09-21 09:36:15 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:36:15 INFO     connecting live.rezync.com:443 from 127.0.0.1:36942
+2018-09-21 09:36:15 DEBUG    accept
+2018-09-21 09:36:15 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:36:15 INFO     connecting people.api.boomtrain.com:443 from 127.0.0.1:36946
+2018-09-21 09:36:15 INFO     connecting onsite.boomtrain.net:443 from 127.0.0.1:36944
+2018-09-21 09:36:15 DEBUG    accept
+2018-09-21 09:36:15 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:36:15 INFO     connecting people.api.boomtrain.com:443 from 127.0.0.1:36948
+2018-09-21 09:36:15 DEBUG    accept
+2018-09-21 09:36:15 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:36:15 INFO     connecting referrer.disqus.com:443 from 127.0.0.1:36950
+2018-09-21 09:36:15 DEBUG    accept
+2018-09-21 09:36:15 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:36:15 INFO     connecting referrer.disqus.com:443 from 127.0.0.1:36952
+2018-09-21 09:36:15 INFO     connecting s.thebrighttag.com:443 from 127.0.0.1:36954
+2018-09-21 09:36:15 INFO     connecting disqus.com:443 from 127.0.0.1:36956
+2018-09-21 09:36:16 DEBUG    accept
+2018-09-21 09:36:16 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:36:16 INFO     connecting c.disquscdn.com:443 from 127.0.0.1:36996
+2018-09-21 09:36:27 DEBUG    destroy: disqus.com:443
+2018-09-21 09:36:27 DEBUG    destroying remote
+2018-09-21 09:36:27 DEBUG    destroying local
+2018-09-21 09:36:27 DEBUG    destroy: disqus.com:443
+2018-09-21 09:36:27 DEBUG    destroying remote
+2018-09-21 09:36:27 DEBUG    destroying local
+2018-09-21 09:36:27 DEBUG    destroy: disqusads.com:443
+2018-09-21 09:36:27 DEBUG    destroying remote
+2018-09-21 09:36:27 DEBUG    destroying local
+2018-09-21 09:36:27 DEBUG    destroy: disqusads.com:443
+2018-09-21 09:36:27 DEBUG    destroying remote
+2018-09-21 09:36:27 DEBUG    destroying local
+2018-09-21 09:36:27 DEBUG    got local error
+2018-09-21 09:36:27 ERROR    [Errno 104] Connection reset by peer
+2018-09-21 09:36:27 DEBUG    destroy: events.api.boomtrain.com:443
+2018-09-21 09:36:27 DEBUG    destroying remote
+2018-09-21 09:36:27 DEBUG    destroying local
+2018-09-21 09:36:27 DEBUG    destroy: ib.adnxs.com:443
+2018-09-21 09:36:27 DEBUG    destroying remote
+2018-09-21 09:36:27 DEBUG    destroying local
+2018-09-21 09:36:27 DEBUG    destroy: ib.adnxs.com:443
+2018-09-21 09:36:27 DEBUG    destroying remote
+2018-09-21 09:36:27 DEBUG    destroying local
+2018-09-21 09:36:27 DEBUG    destroy: ib.adnxs.com:443
+2018-09-21 09:36:27 DEBUG    destroying remote
+2018-09-21 09:36:27 DEBUG    destroying local
+2018-09-21 09:36:27 DEBUG    destroy: io.narrative.io:443
+2018-09-21 09:36:27 DEBUG    destroying remote
+2018-09-21 09:36:27 DEBUG    destroying local
+2018-09-21 09:36:27 DEBUG    destroy: io.narrative.io:443
+2018-09-21 09:36:27 DEBUG    destroying remote
+2018-09-21 09:36:27 DEBUG    destroying local
+2018-09-21 09:36:27 DEBUG    destroy: io.narrative.io:443
+2018-09-21 09:36:27 DEBUG    destroying remote
+2018-09-21 09:36:27 DEBUG    destroying local
+2018-09-21 09:36:27 DEBUG    destroy: live.rezync.com:443
+2018-09-21 09:36:27 DEBUG    destroying remote
+2018-09-21 09:36:27 DEBUG    destroying local
+2018-09-21 09:36:27 DEBUG    destroy: live.rezync.com:443
+2018-09-21 09:36:27 DEBUG    destroying remote
+2018-09-21 09:36:27 DEBUG    destroying local
+2018-09-21 09:36:27 DEBUG    destroy: live.rezync.com:443
+2018-09-21 09:36:27 DEBUG    destroying remote
+2018-09-21 09:36:27 DEBUG    destroying local
+2018-09-21 09:36:27 DEBUG    got local error
+2018-09-21 09:36:27 ERROR    [Errno 104] Connection reset by peer
+2018-09-21 09:36:27 DEBUG    destroy: onsite.boomtrain.net:443
+2018-09-21 09:36:27 DEBUG    destroying remote
+2018-09-21 09:36:27 DEBUG    destroying local
+2018-09-21 09:36:27 DEBUG    destroy: people.api.boomtrain.com:443
+2018-09-21 09:36:27 DEBUG    destroying remote
+2018-09-21 09:36:27 DEBUG    destroying local
+2018-09-21 09:36:27 DEBUG    destroy: people.api.boomtrain.com:443
+2018-09-21 09:36:27 DEBUG    destroying remote
+2018-09-21 09:36:27 DEBUG    destroying local
+2018-09-21 09:36:27 DEBUG    destroy: referrer.disqus.com:443
+2018-09-21 09:36:27 DEBUG    destroying remote
+2018-09-21 09:36:27 DEBUG    destroying local
+2018-09-21 09:36:27 DEBUG    destroy: referrer.disqus.com:443
+2018-09-21 09:36:27 DEBUG    destroying remote
+2018-09-21 09:36:27 DEBUG    destroying local
+2018-09-21 09:36:27 DEBUG    destroy: referrer.disqus.com:443
+2018-09-21 09:36:27 DEBUG    destroying remote
+2018-09-21 09:36:27 DEBUG    destroying local
+2018-09-21 09:36:27 DEBUG    destroy: s.thebrighttag.com:443
+2018-09-21 09:36:27 DEBUG    destroying remote
+2018-09-21 09:36:27 DEBUG    destroying local
+2018-09-21 09:36:27 DEBUG    destroy: disqusapi.zhaohuabing.com:443
+2018-09-21 09:36:27 DEBUG    destroying remote
+2018-09-21 09:36:27 DEBUG    destroying local
+2018-09-21 09:36:27 DEBUG    destroy: c.disquscdn.com:443
+2018-09-21 09:36:27 DEBUG    destroying remote
+2018-09-21 09:36:27 DEBUG    destroying local
+2018-09-21 09:36:27 DEBUG    destroy: pippio.com:443
+2018-09-21 09:36:27 DEBUG    destroying remote
+2018-09-21 09:36:27 DEBUG    destroying local
+2018-09-21 09:36:27 DEBUG    destroy: clients1.google.com:443
+2018-09-21 09:36:27 DEBUG    destroying remote
+2018-09-21 09:36:27 DEBUG    destroying local
+2018-09-21 09:36:27 DEBUG    destroy: ssl.gstatic.com:443
+2018-09-21 09:36:27 DEBUG    destroying remote
+2018-09-21 09:36:27 DEBUG    destroying local
+2018-09-21 09:36:27 DEBUG    destroy: www.google-analytics.com:443
+2018-09-21 09:36:27 DEBUG    destroying remote
+2018-09-21 09:36:27 DEBUG    destroying local
+2018-09-21 09:36:29 DEBUG    destroy: mtalk.google.com:443
+2018-09-21 09:36:29 DEBUG    destroying remote
+2018-09-21 09:36:29 DEBUG    destroying local
+2018-09-21 09:36:29 DEBUG    accept
+2018-09-21 09:36:29 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:36:29 INFO     connecting mtalk.google.com:5228 from 127.0.0.1:37096
+2018-09-21 09:37:14 DEBUG    destroy: mtalk.google.com:5228
+2018-09-21 09:37:14 DEBUG    destroying remote
+2018-09-21 09:37:14 DEBUG    destroying local
+2018-09-21 09:37:14 DEBUG    accept
+2018-09-21 09:37:14 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:37:14 INFO     connecting mtalk.google.com:5228 from 127.0.0.1:37196
+2018-09-21 09:37:46 DEBUG    accept
+2018-09-21 09:37:46 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:37:46 DEBUG    accept
+2018-09-21 09:37:46 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:37:46 INFO     connecting docs.google.com:443 from 127.0.0.1:37200
+2018-09-21 09:37:46 INFO     connecting ssl.gstatic.com:443 from 127.0.0.1:37202
+2018-09-21 09:37:55 DEBUG    got local error
+2018-09-21 09:37:55 ERROR    [Errno 104] Connection reset by peer
+2018-09-21 09:37:55 DEBUG    destroy: docs.google.com:443
+2018-09-21 09:37:55 DEBUG    destroying remote
+2018-09-21 09:37:55 DEBUG    destroying local
+2018-09-21 09:37:55 DEBUG    destroy: ssl.gstatic.com:443
+2018-09-21 09:37:55 DEBUG    destroying remote
+2018-09-21 09:37:55 DEBUG    destroying local
+2018-09-21 09:37:59 DEBUG    destroy: mtalk.google.com:5228
+2018-09-21 09:37:59 DEBUG    destroying remote
+2018-09-21 09:37:59 DEBUG    destroying local
+2018-09-21 09:37:59 DEBUG    accept
+2018-09-21 09:37:59 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:37:59 INFO     connecting mtalk.google.com:5228 from 127.0.0.1:37304
+2018-09-21 09:38:44 DEBUG    destroy: mtalk.google.com:5228
+2018-09-21 09:38:44 DEBUG    destroying remote
+2018-09-21 09:38:44 DEBUG    destroying local
+2018-09-21 09:38:44 DEBUG    accept
+2018-09-21 09:38:44 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:38:44 INFO     connecting mtalk.google.com:5228 from 127.0.0.1:37404
+2018-09-21 09:39:27 DEBUG    destroy: mtalk.google.com:5228
+2018-09-21 09:39:27 DEBUG    destroying remote
+2018-09-21 09:39:27 DEBUG    destroying local
+2018-09-21 09:39:27 DEBUG    accept
+2018-09-21 09:39:27 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:39:27 INFO     connecting mtalk.google.com:5228 from 127.0.0.1:37456
+2018-09-21 09:39:48 DEBUG    accept
+2018-09-21 09:39:48 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:39:48 INFO     connecting hm.baidu.com:80 from 127.0.0.1:37464
+2018-09-21 09:39:49 DEBUG    accept
+2018-09-21 09:39:49 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:39:49 INFO     connecting disqusapi.zhaohuabing.com:443 from 127.0.0.1:37468
+2018-09-21 09:39:49 DEBUG    accept
+2018-09-21 09:39:49 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:39:49 INFO     connecting ghbtns.com:443 from 127.0.0.1:37472
+2018-09-21 09:39:49 DEBUG    accept
+2018-09-21 09:39:49 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:39:49 INFO     connecting disqus.com:443 from 127.0.0.1:37476
+2018-09-21 09:39:49 DEBUG    accept
+2018-09-21 09:39:49 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:39:49 INFO     connecting hm.baidu.com:80 from 127.0.0.1:37480
+2018-09-21 09:39:49 DEBUG    accept
+2018-09-21 09:39:49 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:39:49 INFO     connecting api.share.baidu.com:80 from 127.0.0.1:37484
+2018-09-21 09:39:49 DEBUG    accept
+2018-09-21 09:39:49 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:39:49 INFO     connecting api.leancloud.cn:443 from 127.0.0.1:37492
+2018-09-21 09:39:49 DEBUG    accept
+2018-09-21 09:39:49 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:39:49 INFO     connecting www.google-analytics.com:443 from 127.0.0.1:37496
+2018-09-21 09:39:49 DEBUG    accept
+2018-09-21 09:39:49 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:39:49 INFO     connecting zhaohuabings-blog.disqus.com:443 from 127.0.0.1:37500
+2018-09-21 09:39:50 DEBUG    destroy: api.share.baidu.com:80
+2018-09-21 09:39:50 DEBUG    destroying remote
+2018-09-21 09:39:50 DEBUG    destroying local
+2018-09-21 09:39:50 DEBUG    accept
+2018-09-21 09:39:50 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:39:50 INFO     connecting api.github.com:443 from 127.0.0.1:37504
+2018-09-21 09:39:50 DEBUG    accept
+2018-09-21 09:39:50 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:39:50 DEBUG    accept
+2018-09-21 09:39:50 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:39:50 INFO     connecting disqus.com:443 from 127.0.0.1:37508
+2018-09-21 09:39:50 INFO     connecting c.disquscdn.com:443 from 127.0.0.1:37510
+2018-09-21 09:39:51 DEBUG    accept
+2018-09-21 09:39:51 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:39:51 DEBUG    accept
+2018-09-21 09:39:51 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:39:51 DEBUG    accept
+2018-09-21 09:39:51 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:39:51 DEBUG    accept
+2018-09-21 09:39:51 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:39:51 DEBUG    accept
+2018-09-21 09:39:51 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:39:51 DEBUG    accept
+2018-09-21 09:39:51 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:39:51 DEBUG    accept
+2018-09-21 09:39:51 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:39:51 DEBUG    accept
+2018-09-21 09:39:51 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:39:51 DEBUG    accept
+2018-09-21 09:39:51 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:39:51 DEBUG    accept
+2018-09-21 09:39:51 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:39:51 DEBUG    accept
+2018-09-21 09:39:51 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:39:51 DEBUG    accept
+2018-09-21 09:39:51 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:39:51 DEBUG    accept
+2018-09-21 09:39:51 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:39:51 DEBUG    accept
+2018-09-21 09:39:51 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:39:51 DEBUG    accept
+2018-09-21 09:39:51 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:39:51 DEBUG    destroy: disqus.com:443
+2018-09-21 09:39:51 DEBUG    destroying remote
+2018-09-21 09:39:51 DEBUG    destroying local
+2018-09-21 09:39:51 INFO     connecting disqus.com:443 from 127.0.0.1:37516
+2018-09-21 09:39:51 INFO     connecting disqus.com:443 from 127.0.0.1:37518
+2018-09-21 09:39:51 INFO     connecting disqus.com:443 from 127.0.0.1:37520
+2018-09-21 09:39:51 INFO     connecting events.api.boomtrain.com:443 from 127.0.0.1:37522
+2018-09-21 09:39:51 INFO     connecting ib.adnxs.com:443 from 127.0.0.1:37524
+2018-09-21 09:39:51 INFO     connecting ib.adnxs.com:443 from 127.0.0.1:37526
+2018-09-21 09:39:51 INFO     connecting io.narrative.io:443 from 127.0.0.1:37528
+2018-09-21 09:39:51 INFO     connecting io.narrative.io:443 from 127.0.0.1:37530
+2018-09-21 09:39:51 INFO     connecting live.rezync.com:443 from 127.0.0.1:37532
+2018-09-21 09:39:51 INFO     connecting live.rezync.com:443 from 127.0.0.1:37534
+2018-09-21 09:39:51 INFO     connecting onsite.boomtrain.net:443 from 127.0.0.1:37536
+2018-09-21 09:39:51 INFO     connecting pippio.com:443 from 127.0.0.1:37538
+2018-09-21 09:39:51 INFO     connecting referrer.disqus.com:443 from 127.0.0.1:37540
+2018-09-21 09:39:51 INFO     connecting referrer.disqus.com:443 from 127.0.0.1:37542
+2018-09-21 09:39:51 INFO     connecting s.thebrighttag.com:443 from 127.0.0.1:37544
+2018-09-21 09:39:52 DEBUG    accept
+2018-09-21 09:39:52 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:39:52 INFO     connecting api.share.baidu.com:80 from 127.0.0.1:37580
+2018-09-21 09:39:54 DEBUG    accept
+2018-09-21 09:39:54 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:39:54 INFO     connecting blog.servitehs.org:80 from 127.0.0.1:37584
+2018-09-21 09:39:57 DEBUG    accept
+2018-09-21 09:39:57 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:39:57 INFO     connecting clients1.google.com:443 from 127.0.0.1:37592
+2018-09-21 09:39:58 DEBUG    accept
+2018-09-21 09:39:58 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:39:58 INFO     connecting glitter.services.disqus.com:443 from 127.0.0.1:37596
+2018-09-21 09:39:58 DEBUG    accept
+2018-09-21 09:39:58 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:39:58 INFO     connecting people.api.boomtrain.com:443 from 127.0.0.1:37600
+2018-09-21 09:39:58 DEBUG    accept
+2018-09-21 09:39:58 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:39:58 DEBUG    accept
+2018-09-21 09:39:58 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:39:58 INFO     connecting disqusads.com:443 from 127.0.0.1:37604
+2018-09-21 09:39:58 INFO     connecting disqusads.com:443 from 127.0.0.1:37606
+2018-09-21 09:39:58 DEBUG    destroy: api.share.baidu.com:80
+2018-09-21 09:39:58 DEBUG    destroying remote
+2018-09-21 09:39:58 DEBUG    destroying local
+2018-09-21 09:39:58 DEBUG    accept
+2018-09-21 09:39:58 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:39:58 DEBUG    destroy: hm.baidu.com:80
+2018-09-21 09:39:58 DEBUG    destroying remote
+2018-09-21 09:39:58 DEBUG    destroying local
+2018-09-21 09:39:58 DEBUG    destroy: hm.baidu.com:80
+2018-09-21 09:39:58 DEBUG    destroying remote
+2018-09-21 09:39:58 DEBUG    destroying local
+2018-09-21 09:39:58 DEBUG    accept
+2018-09-21 09:39:58 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:39:58 DEBUG    destroy: disqus.com:443
+2018-09-21 09:39:58 DEBUG    destroying remote
+2018-09-21 09:39:58 DEBUG    destroying local
+2018-09-21 09:39:58 DEBUG    accept
+2018-09-21 09:39:58 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:39:58 DEBUG    destroy: api.github.com:443
+2018-09-21 09:39:58 DEBUG    destroying remote
+2018-09-21 09:39:58 DEBUG    destroying local
+2018-09-21 09:39:58 DEBUG    got local error
+2018-09-21 09:39:58 ERROR    [Errno 104] Connection reset by peer
+2018-09-21 09:39:58 DEBUG    destroy: c.disquscdn.com:443
+2018-09-21 09:39:58 DEBUG    destroying remote
+2018-09-21 09:39:58 DEBUG    destroying local
+2018-09-21 09:39:58 DEBUG    accept
+2018-09-21 09:39:58 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:39:58 DEBUG    got local error
+2018-09-21 09:39:58 ERROR    [Errno 104] Connection reset by peer
+2018-09-21 09:39:58 DEBUG    destroy: events.api.boomtrain.com:443
+2018-09-21 09:39:58 DEBUG    destroying remote
+2018-09-21 09:39:58 DEBUG    destroying local
+2018-09-21 09:39:58 DEBUG    destroy: ib.adnxs.com:443
+2018-09-21 09:39:58 DEBUG    destroying remote
+2018-09-21 09:39:58 DEBUG    destroying local
+2018-09-21 09:39:58 DEBUG    destroy: ib.adnxs.com:443
+2018-09-21 09:39:58 DEBUG    destroying remote
+2018-09-21 09:39:58 DEBUG    destroying local
+2018-09-21 09:39:58 DEBUG    accept
+2018-09-21 09:39:58 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:39:58 DEBUG    destroy: io.narrative.io:443
+2018-09-21 09:39:58 DEBUG    destroying remote
+2018-09-21 09:39:58 DEBUG    destroying local
+2018-09-21 09:39:58 DEBUG    accept
+2018-09-21 09:39:58 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:39:58 INFO     connecting cdn.boomtrain.com:443 from 127.0.0.1:37612
+2018-09-21 09:39:58 INFO     connecting cdn.boomtrain.com:443 from 127.0.0.1:37614
+2018-09-21 09:39:58 INFO     connecting cdn.boomtrain.com:443 from 127.0.0.1:37616
+2018-09-21 09:39:58 INFO     connecting disqus.com:443 from 127.0.0.1:37618
+2018-09-21 09:39:58 DEBUG    accept
+2018-09-21 09:39:58 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:39:58 DEBUG    accept
+2018-09-21 09:39:58 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:39:58 INFO     connecting disqusads.com:443 from 127.0.0.1:37620
+2018-09-21 09:39:58 DEBUG    accept
+2018-09-21 09:39:58 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:39:58 DEBUG    accept
+2018-09-21 09:39:58 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:39:58 INFO     connecting glitter.services.disqus.com:443 from 127.0.0.1:37622
+2018-09-21 09:39:58 INFO     connecting glitter.services.disqus.com:443 from 127.0.0.1:37624
+2018-09-21 09:39:58 INFO     connecting people.api.boomtrain.com:443 from 127.0.0.1:37626
+2018-09-21 09:39:58 INFO     connecting people.api.boomtrain.com:443 from 127.0.0.1:37628
+2018-09-21 09:39:58 INFO     connecting people.api.boomtrain.com:443 from 127.0.0.1:37630
+2018-09-21 09:39:59 DEBUG    destroy: cdn.boomtrain.com:443
+2018-09-21 09:39:59 DEBUG    destroying remote
+2018-09-21 09:39:59 DEBUG    destroying local
+2018-09-21 09:39:59 DEBUG    accept
+2018-09-21 09:39:59 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:39:59 DEBUG    destroy: cdn.boomtrain.com:443
+2018-09-21 09:39:59 DEBUG    destroying remote
+2018-09-21 09:39:59 DEBUG    destroying local
+2018-09-21 09:39:59 DEBUG    accept
+2018-09-21 09:39:59 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:39:59 INFO     connecting cdn.viglink.com:80 from 127.0.0.1:37652
+2018-09-21 09:39:59 INFO     connecting cdn.viglink.com:80 from 127.0.0.1:37654
+2018-09-21 09:39:59 DEBUG    destroy: cdn.boomtrain.com:443
+2018-09-21 09:39:59 DEBUG    destroying remote
+2018-09-21 09:39:59 DEBUG    destroying local
+2018-09-21 09:39:59 DEBUG    accept
+2018-09-21 09:39:59 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:39:59 INFO     connecting ib.adnxs.com:443 from 127.0.0.1:37660
+2018-09-21 09:39:59 DEBUG    destroy: cdn.viglink.com:80
+2018-09-21 09:39:59 DEBUG    destroying remote
+2018-09-21 09:39:59 DEBUG    destroying local
+2018-09-21 09:39:59 DEBUG    accept
+2018-09-21 09:39:59 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:39:59 INFO     connecting links.services.disqus.com:443 from 127.0.0.1:37664
+2018-09-21 09:39:59 DEBUG    destroy: cdn.viglink.com:80
+2018-09-21 09:39:59 DEBUG    destroying remote
+2018-09-21 09:39:59 DEBUG    destroying local
+2018-09-21 09:39:59 DEBUG    accept
+2018-09-21 09:39:59 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:39:59 INFO     connecting onsite.boomtrain.net:443 from 127.0.0.1:37668
+2018-09-21 09:39:59 DEBUG    destroy: people.api.boomtrain.com:443
+2018-09-21 09:39:59 DEBUG    destroying remote
+2018-09-21 09:39:59 DEBUG    destroying local
+2018-09-21 09:39:59 DEBUG    accept
+2018-09-21 09:39:59 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:39:59 INFO     connecting secure.adnxs.com:443 from 127.0.0.1:37672
+2018-09-21 09:39:59 DEBUG    destroy: disqus.com:443
+2018-09-21 09:39:59 DEBUG    destroying remote
+2018-09-21 09:39:59 DEBUG    destroying local
+2018-09-21 09:39:59 DEBUG    accept
+2018-09-21 09:39:59 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:39:59 INFO     connecting events.api.boomtrain.com:443 from 127.0.0.1:37676
+2018-09-21 09:40:00 DEBUG    destroy: disqus.com:443
+2018-09-21 09:40:00 DEBUG    destroying remote
+2018-09-21 09:40:00 DEBUG    destroying local
+2018-09-21 09:40:00 DEBUG    accept
+2018-09-21 09:40:00 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:40:00 INFO     connecting ei.rlcdn.com:443 from 127.0.0.1:37680
+2018-09-21 09:40:00 DEBUG    destroy: disqus.com:443
+2018-09-21 09:40:00 DEBUG    destroying remote
+2018-09-21 09:40:00 DEBUG    destroying local
+2018-09-21 09:40:00 DEBUG    accept
+2018-09-21 09:40:00 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:40:00 DEBUG    destroy: disqus.com:443
+2018-09-21 09:40:00 DEBUG    destroying remote
+2018-09-21 09:40:00 DEBUG    destroying local
+2018-09-21 09:40:00 DEBUG    accept
+2018-09-21 09:40:00 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:40:00 INFO     connecting ib.adnxs.com:443 from 127.0.0.1:37684
+2018-09-21 09:40:00 INFO     connecting rc.rlcdn.com:443 from 127.0.0.1:37686
+2018-09-21 09:40:00 DEBUG    destroy: disqusads.com:443
+2018-09-21 09:40:00 DEBUG    destroying remote
+2018-09-21 09:40:00 DEBUG    destroying local
+2018-09-21 09:40:00 DEBUG    accept
+2018-09-21 09:40:00 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:40:00 INFO     connecting s.cpx.to:443 from 127.0.0.1:37692
+2018-09-21 09:40:00 DEBUG    destroy: disqusads.com:443
+2018-09-21 09:40:00 DEBUG    destroying remote
+2018-09-21 09:40:00 DEBUG    destroying local
+2018-09-21 09:40:00 DEBUG    accept
+2018-09-21 09:40:00 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:40:00 DEBUG    destroy: disqusads.com:443
+2018-09-21 09:40:00 DEBUG    destroying remote
+2018-09-21 09:40:00 DEBUG    destroying local
+2018-09-21 09:40:00 DEBUG    accept
+2018-09-21 09:40:00 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:40:00 INFO     connecting rc.rlcdn.com:443 from 127.0.0.1:37696
+2018-09-21 09:40:00 INFO     connecting rc.rlcdn.com:443 from 127.0.0.1:37698
+2018-09-21 09:40:00 DEBUG    destroy: glitter.services.disqus.com:443
+2018-09-21 09:40:00 DEBUG    destroying remote
+2018-09-21 09:40:00 DEBUG    destroying local
+2018-09-21 09:40:00 DEBUG    accept
+2018-09-21 09:40:00 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:40:00 INFO     connecting s.cpx.to:443 from 127.0.0.1:37704
+2018-09-21 09:40:00 DEBUG    destroy: glitter.services.disqus.com:443
+2018-09-21 09:40:00 DEBUG    destroying remote
+2018-09-21 09:40:00 DEBUG    destroying local
+2018-09-21 09:40:00 DEBUG    accept
+2018-09-21 09:40:00 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:40:00 DEBUG    destroy: glitter.services.disqus.com:443
+2018-09-21 09:40:00 DEBUG    destroying remote
+2018-09-21 09:40:00 DEBUG    destroying local
+2018-09-21 09:40:00 DEBUG    destroy: ib.adnxs.com:443
+2018-09-21 09:40:00 DEBUG    destroying remote
+2018-09-21 09:40:00 DEBUG    destroying local
+2018-09-21 09:40:00 DEBUG    accept
+2018-09-21 09:40:00 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:40:00 DEBUG    accept
+2018-09-21 09:40:00 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:40:00 INFO     connecting rc.rlcdn.com:443 from 127.0.0.1:37708
+2018-09-21 09:40:00 INFO     connecting rc.rlcdn.com:443 from 127.0.0.1:37710
+2018-09-21 09:40:00 INFO     connecting rc.rlcdn.com:443 from 127.0.0.1:37712
+2018-09-21 09:40:00 DEBUG    destroy: io.narrative.io:443
+2018-09-21 09:40:00 DEBUG    destroying remote
+2018-09-21 09:40:00 DEBUG    destroying local
+2018-09-21 09:40:00 DEBUG    accept
+2018-09-21 09:40:00 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:40:00 INFO     connecting links.services.disqus.com:443 from 127.0.0.1:37720
+2018-09-21 09:40:01 DEBUG    got local error
+2018-09-21 09:40:01 ERROR    [Errno 104] Connection reset by peer
+2018-09-21 09:40:01 DEBUG    destroy: ib.adnxs.com:443
+2018-09-21 09:40:01 DEBUG    destroying remote
+2018-09-21 09:40:01 DEBUG    destroying local
+2018-09-21 09:40:01 DEBUG    accept
+2018-09-21 09:40:01 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:40:01 INFO     connecting fallsm.ndg.io:443 from 127.0.0.1:37724
+2018-09-21 09:40:01 DEBUG    destroy: links.services.disqus.com:443
+2018-09-21 09:40:01 DEBUG    destroying remote
+2018-09-21 09:40:01 DEBUG    destroying local
+2018-09-21 09:40:01 DEBUG    accept
+2018-09-21 09:40:01 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:40:01 INFO     connecting servedby.flashtalking.com:443 from 127.0.0.1:37728
+2018-09-21 09:40:01 DEBUG    destroy: live.rezync.com:443
+2018-09-21 09:40:01 DEBUG    destroying remote
+2018-09-21 09:40:01 DEBUG    destroying local
+2018-09-21 09:40:01 DEBUG    accept
+2018-09-21 09:40:01 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:40:01 INFO     connecting www.ads.dropin.io:443 from 127.0.0.1:37732
+2018-09-21 09:40:01 DEBUG    destroy: links.services.disqus.com:443
+2018-09-21 09:40:01 DEBUG    destroying remote
+2018-09-21 09:40:01 DEBUG    destroying local
+2018-09-21 09:40:01 DEBUG    got local error
+2018-09-21 09:40:01 ERROR    [Errno 104] Connection reset by peer
+2018-09-21 09:40:01 DEBUG    destroy: blog.servitehs.org:80
+2018-09-21 09:40:01 DEBUG    destroying remote
+2018-09-21 09:40:01 DEBUG    destroying local
+2018-09-21 09:40:01 DEBUG    accept
+2018-09-21 09:40:01 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:40:01 INFO     connecting hm.baidu.com:80 from 127.0.0.1:37736
+2018-09-21 09:40:01 DEBUG    destroy: www.ads.dropin.io:443
+2018-09-21 09:40:01 DEBUG    destroying remote
+2018-09-21 09:40:01 DEBUG    destroying local
+2018-09-21 09:40:02 DEBUG    got local error
+2018-09-21 09:40:02 ERROR    [Errno 104] Connection reset by peer
+2018-09-21 09:40:02 DEBUG    destroy: onsite.boomtrain.net:443
+2018-09-21 09:40:02 DEBUG    destroying remote
+2018-09-21 09:40:02 DEBUG    destroying local
+2018-09-21 09:40:02 DEBUG    accept
+2018-09-21 09:40:02 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:40:02 INFO     connecting disqus.com:443 from 127.0.0.1:37740
+2018-09-21 09:40:02 DEBUG    accept
+2018-09-21 09:40:02 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:40:02 INFO     connecting api.share.baidu.com:80 from 127.0.0.1:37748
+2018-09-21 09:40:03 DEBUG    accept
+2018-09-21 09:40:03 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:40:03 INFO     connecting hm.baidu.com:80 from 127.0.0.1:37752
+2018-09-21 09:40:03 DEBUG    destroy: disqus.com:443
+2018-09-21 09:40:03 DEBUG    destroying remote
+2018-09-21 09:40:03 DEBUG    destroying local
+2018-09-21 09:40:03 DEBUG    accept
+2018-09-21 09:40:03 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:40:03 DEBUG    got local error
+2018-09-21 09:40:03 ERROR    [Errno 104] Connection reset by peer
+2018-09-21 09:40:03 DEBUG    destroy: fallsm.ndg.io:443
+2018-09-21 09:40:03 DEBUG    destroying remote
+2018-09-21 09:40:03 DEBUG    destroying local
+2018-09-21 09:40:03 DEBUG    accept
+2018-09-21 09:40:03 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:40:03 INFO     connecting c.disquscdn.com:443 from 127.0.0.1:37756
+2018-09-21 09:40:03 INFO     connecting disqus.com:443 from 127.0.0.1:37758
+2018-09-21 09:40:04 DEBUG    destroy: rc.rlcdn.com:443
+2018-09-21 09:40:04 DEBUG    destroying remote
+2018-09-21 09:40:04 DEBUG    destroying local
+2018-09-21 09:40:04 DEBUG    destroy: rc.rlcdn.com:443
+2018-09-21 09:40:04 DEBUG    destroying remote
+2018-09-21 09:40:04 DEBUG    destroying local
+2018-09-21 09:40:04 DEBUG    destroy: rc.rlcdn.com:443
+2018-09-21 09:40:04 DEBUG    destroying remote
+2018-09-21 09:40:04 DEBUG    destroying local
+2018-09-21 09:40:04 DEBUG    destroy: rc.rlcdn.com:443
+2018-09-21 09:40:04 DEBUG    destroying remote
+2018-09-21 09:40:04 DEBUG    destroying local
+2018-09-21 09:40:04 DEBUG    destroy: rc.rlcdn.com:443
+2018-09-21 09:40:04 DEBUG    destroying remote
+2018-09-21 09:40:04 DEBUG    destroying local
+2018-09-21 09:40:04 DEBUG    destroy: ei.rlcdn.com:443
+2018-09-21 09:40:04 DEBUG    destroying remote
+2018-09-21 09:40:04 DEBUG    destroying local
+2018-09-21 09:40:04 DEBUG    accept
+2018-09-21 09:40:04 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:40:04 DEBUG    destroy: api.share.baidu.com:80
+2018-09-21 09:40:04 DEBUG    destroying remote
+2018-09-21 09:40:04 DEBUG    destroying local
+2018-09-21 09:40:04 DEBUG    accept
+2018-09-21 09:40:04 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:40:04 DEBUG    destroy: hm.baidu.com:80
+2018-09-21 09:40:04 DEBUG    destroying remote
+2018-09-21 09:40:04 DEBUG    destroying local
+2018-09-21 09:40:04 DEBUG    accept
+2018-09-21 09:40:04 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:40:04 DEBUG    destroy: hm.baidu.com:80
+2018-09-21 09:40:04 DEBUG    destroying remote
+2018-09-21 09:40:04 DEBUG    destroying local
+2018-09-21 09:40:04 DEBUG    accept
+2018-09-21 09:40:04 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:40:04 DEBUG    got local error
+2018-09-21 09:40:04 ERROR    [Errno 104] Connection reset by peer
+2018-09-21 09:40:04 DEBUG    destroy: c.disquscdn.com:443
+2018-09-21 09:40:04 DEBUG    destroying remote
+2018-09-21 09:40:04 DEBUG    destroying local
+2018-09-21 09:40:04 DEBUG    accept
+2018-09-21 09:40:04 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:40:04 DEBUG    destroy: disqus.com:443
+2018-09-21 09:40:04 DEBUG    destroying remote
+2018-09-21 09:40:04 DEBUG    destroying local
+2018-09-21 09:40:04 DEBUG    accept
+2018-09-21 09:40:04 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:40:04 DEBUG    destroy: live.rezync.com:443
+2018-09-21 09:40:04 DEBUG    destroying remote
+2018-09-21 09:40:04 DEBUG    destroying local
+2018-09-21 09:40:04 DEBUG    accept
+2018-09-21 09:40:04 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:40:04 DEBUG    destroy: people.api.boomtrain.com:443
+2018-09-21 09:40:04 DEBUG    destroying remote
+2018-09-21 09:40:04 DEBUG    destroying local
+2018-09-21 09:40:04 DEBUG    destroy: people.api.boomtrain.com:443
+2018-09-21 09:40:04 DEBUG    destroying remote
+2018-09-21 09:40:04 DEBUG    destroying local
+2018-09-21 09:40:04 DEBUG    destroy: people.api.boomtrain.com:443
+2018-09-21 09:40:04 DEBUG    destroying remote
+2018-09-21 09:40:04 DEBUG    destroying local
+2018-09-21 09:40:04 DEBUG    accept
+2018-09-21 09:40:04 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:40:04 DEBUG    accept
+2018-09-21 09:40:04 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:40:04 DEBUG    accept
+2018-09-21 09:40:04 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:40:04 DEBUG    accept
+2018-09-21 09:40:04 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:40:04 DEBUG    accept
+2018-09-21 09:40:04 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:40:04 DEBUG    accept
+2018-09-21 09:40:04 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:40:04 INFO     connecting a.disquscdn.com:443 from 127.0.0.1:37764
+2018-09-21 09:40:04 INFO     connecting disqus.com:443 from 127.0.0.1:37766
+2018-09-21 09:40:04 INFO     connecting disqus.com:443 from 127.0.0.1:37768
+2018-09-21 09:40:04 INFO     connecting disqus.com:443 from 127.0.0.1:37770
+2018-09-21 09:40:04 INFO     connecting events.api.boomtrain.com:443 from 127.0.0.1:37772
+2018-09-21 09:40:04 INFO     connecting io.narrative.io:443 from 127.0.0.1:37774
+2018-09-21 09:40:04 INFO     connecting io.narrative.io:443 from 127.0.0.1:37776
+2018-09-21 09:40:04 INFO     connecting io.narrative.io:443 from 127.0.0.1:37778
+2018-09-21 09:40:04 INFO     connecting live.rezync.com:443 from 127.0.0.1:37780
+2018-09-21 09:40:04 INFO     connecting live.rezync.com:443 from 127.0.0.1:37782
+2018-09-21 09:40:04 INFO     connecting live.rezync.com:443 from 127.0.0.1:37784
+2018-09-21 09:40:04 INFO     connecting onsite.boomtrain.net:443 from 127.0.0.1:37786
+2018-09-21 09:40:04 INFO     connecting referrer.disqus.com:443 from 127.0.0.1:37788
+2018-09-21 09:40:04 DEBUG    destroy: rc.rlcdn.com:443
+2018-09-21 09:40:04 DEBUG    destroying remote
+2018-09-21 09:40:04 DEBUG    destroying local
+2018-09-21 09:40:05 DEBUG    accept
+2018-09-21 09:40:05 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:40:05 INFO     connecting c.disquscdn.com:443 from 127.0.0.1:37816
+2018-09-21 09:40:07 DEBUG    destroy: a.disquscdn.com:443
+2018-09-21 09:40:07 DEBUG    destroying remote
+2018-09-21 09:40:07 DEBUG    destroying local
+2018-09-21 09:40:07 DEBUG    accept
+2018-09-21 09:40:07 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:40:07 INFO     connecting hm.baidu.com:80 from 127.0.0.1:37820
+2018-09-21 09:40:07 DEBUG    destroy: hm.baidu.com:80
+2018-09-21 09:40:07 DEBUG    destroying remote
+2018-09-21 09:40:07 DEBUG    destroying local
+2018-09-21 09:40:07 DEBUG    accept
+2018-09-21 09:40:07 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:40:07 DEBUG    destroy: disqus.com:443
+2018-09-21 09:40:07 DEBUG    destroying remote
+2018-09-21 09:40:07 DEBUG    destroying local
+2018-09-21 09:40:07 DEBUG    destroy: disqus.com:443
+2018-09-21 09:40:07 DEBUG    destroying remote
+2018-09-21 09:40:07 DEBUG    destroying local
+2018-09-21 09:40:07 INFO     connecting hm.baidu.com:80 from 127.0.0.1:37824
+2018-09-21 09:40:07 DEBUG    accept
+2018-09-21 09:40:07 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:40:07 INFO     connecting blog.servitehs.org:80 from 127.0.0.1:37828
+2018-09-21 09:40:07 DEBUG    accept
+2018-09-21 09:40:07 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:40:07 INFO     connecting disqus.com:443 from 127.0.0.1:37832
+2018-09-21 09:40:07 DEBUG    destroy: hm.baidu.com:80
+2018-09-21 09:40:07 DEBUG    destroying remote
+2018-09-21 09:40:07 DEBUG    destroying local
+2018-09-21 09:40:07 DEBUG    accept
+2018-09-21 09:40:07 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:40:07 INFO     connecting api.share.baidu.com:80 from 127.0.0.1:37840
+2018-09-21 09:40:08 DEBUG    got local error
+2018-09-21 09:40:08 ERROR    [Errno 104] Connection reset by peer
+2018-09-21 09:40:08 DEBUG    destroy: c.disquscdn.com:443
+2018-09-21 09:40:08 DEBUG    destroying remote
+2018-09-21 09:40:08 DEBUG    destroying local
+2018-09-21 09:40:08 DEBUG    accept
+2018-09-21 09:40:08 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:40:08 INFO     connecting hm.baidu.com:80 from 127.0.0.1:37844
+2018-09-21 09:40:08 DEBUG    destroy: disqus.com:443
+2018-09-21 09:40:08 DEBUG    destroying remote
+2018-09-21 09:40:08 DEBUG    destroying local
+2018-09-21 09:40:08 DEBUG    accept
+2018-09-21 09:40:08 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:40:08 DEBUG    got local error
+2018-09-21 09:40:08 ERROR    [Errno 104] Connection reset by peer
+2018-09-21 09:40:08 DEBUG    destroy: events.api.boomtrain.com:443
+2018-09-21 09:40:08 DEBUG    destroying remote
+2018-09-21 09:40:08 DEBUG    destroying local
+2018-09-21 09:40:08 DEBUG    accept
+2018-09-21 09:40:08 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:40:08 INFO     connecting hm.baidu.com:80 from 127.0.0.1:37848
+2018-09-21 09:40:08 INFO     connecting hm.baidu.com:80 from 127.0.0.1:37850
+2018-09-21 09:40:08 DEBUG    destroy: disqus.com:443
+2018-09-21 09:40:08 DEBUG    destroying remote
+2018-09-21 09:40:08 DEBUG    destroying local
+2018-09-21 09:40:08 DEBUG    accept
+2018-09-21 09:40:08 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:40:08 DEBUG    destroy: io.narrative.io:443
+2018-09-21 09:40:08 DEBUG    destroying remote
+2018-09-21 09:40:08 DEBUG    destroying local
+2018-09-21 09:40:08 DEBUG    accept
+2018-09-21 09:40:08 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:40:08 INFO     connecting c.disquscdn.com:443 from 127.0.0.1:37856
+2018-09-21 09:40:08 INFO     connecting disqus.com:443 from 127.0.0.1:37858
+2018-09-21 09:40:09 DEBUG    destroy: api.share.baidu.com:80
+2018-09-21 09:40:09 DEBUG    destroying remote
+2018-09-21 09:40:09 DEBUG    destroying local
+2018-09-21 09:40:09 DEBUG    accept
+2018-09-21 09:40:09 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:40:09 DEBUG    destroy: hm.baidu.com:80
+2018-09-21 09:40:09 DEBUG    destroying remote
+2018-09-21 09:40:09 DEBUG    destroying local
+2018-09-21 09:40:09 DEBUG    accept
+2018-09-21 09:40:09 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:40:09 DEBUG    destroy: hm.baidu.com:80
+2018-09-21 09:40:09 DEBUG    destroying remote
+2018-09-21 09:40:09 DEBUG    destroying local
+2018-09-21 09:40:09 DEBUG    accept
+2018-09-21 09:40:09 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:40:09 DEBUG    destroy: io.narrative.io:443
+2018-09-21 09:40:09 DEBUG    destroying remote
+2018-09-21 09:40:09 DEBUG    destroying local
+2018-09-21 09:40:09 DEBUG    accept
+2018-09-21 09:40:09 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:40:09 DEBUG    destroy: io.narrative.io:443
+2018-09-21 09:40:09 DEBUG    destroying remote
+2018-09-21 09:40:09 DEBUG    destroying local
+2018-09-21 09:40:09 DEBUG    accept
+2018-09-21 09:40:09 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:40:09 DEBUG    destroy: api.leancloud.cn:443
+2018-09-21 09:40:09 DEBUG    destroying remote
+2018-09-21 09:40:09 DEBUG    destroying local
+2018-09-21 09:40:09 INFO     connecting a.disquscdn.com:443 from 127.0.0.1:37864
+2018-09-21 09:40:09 INFO     connecting disqus.com:443 from 127.0.0.1:37866
+2018-09-21 09:40:09 INFO     connecting disqus.com:443 from 127.0.0.1:37868
+2018-09-21 09:40:09 INFO     connecting disqus.com:443 from 127.0.0.1:37870
+2018-09-21 09:40:09 INFO     connecting events.api.boomtrain.com:443 from 127.0.0.1:37872
+2018-09-21 09:40:10 DEBUG    destroy: secure.adnxs.com:443
+2018-09-21 09:40:10 DEBUG    destroying remote
+2018-09-21 09:40:10 DEBUG    destroying local
+2018-09-21 09:40:11 DEBUG    accept
+2018-09-21 09:40:11 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:40:11 INFO     connecting glitter.services.disqus.com:443 from 127.0.0.1:37884
+2018-09-21 09:40:11 DEBUG    accept
+2018-09-21 09:40:11 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:40:11 INFO     connecting people.api.boomtrain.com:443 from 127.0.0.1:37888
+2018-09-21 09:40:11 DEBUG    accept
+2018-09-21 09:40:11 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:40:11 DEBUG    accept
+2018-09-21 09:40:11 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:40:11 INFO     connecting cdn.viglink.com:80 from 127.0.0.1:37892
+2018-09-21 09:40:11 INFO     connecting cdn.viglink.com:80 from 127.0.0.1:37894
+2018-09-21 09:40:11 DEBUG    destroy: s.cpx.to:443
+2018-09-21 09:40:11 DEBUG    destroying remote
+2018-09-21 09:40:11 DEBUG    destroying local
+2018-09-21 09:40:11 DEBUG    accept
+2018-09-21 09:40:11 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:40:11 DEBUG    destroy: hm.baidu.com:80
+2018-09-21 09:40:11 DEBUG    destroying remote
+2018-09-21 09:40:11 DEBUG    destroying local
+2018-09-21 09:40:11 DEBUG    accept
+2018-09-21 09:40:11 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:40:11 INFO     connecting disqusads.com:443 from 127.0.0.1:37900
+2018-09-21 09:40:11 INFO     connecting disqusads.com:443 from 127.0.0.1:37902
+2018-09-21 09:40:12 DEBUG    destroy: s.cpx.to:443
+2018-09-21 09:40:12 DEBUG    destroying remote
+2018-09-21 09:40:12 DEBUG    destroying local
+2018-09-21 09:40:12 DEBUG    accept
+2018-09-21 09:40:12 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:40:12 DEBUG    destroy: blog.servitehs.org:80
+2018-09-21 09:40:12 DEBUG    destroying remote
+2018-09-21 09:40:12 DEBUG    destroying local
+2018-09-21 09:40:12 DEBUG    accept
+2018-09-21 09:40:12 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:40:12 INFO     connecting ib.adnxs.com:443 from 127.0.0.1:37908
+2018-09-21 09:40:12 INFO     connecting io.narrative.io:443 from 127.0.0.1:37910
+2018-09-21 09:40:13 DEBUG    destroy: cdn.viglink.com:80
+2018-09-21 09:40:13 DEBUG    destroying remote
+2018-09-21 09:40:13 DEBUG    destroying local
+2018-09-21 09:40:13 DEBUG    accept
+2018-09-21 09:40:13 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:40:13 INFO     connecting secure.adnxs.com:443 from 127.0.0.1:37916
+2018-09-21 09:40:13 DEBUG    destroy: cdn.viglink.com:80
+2018-09-21 09:40:13 DEBUG    destroying remote
+2018-09-21 09:40:13 DEBUG    destroying local
+2018-09-21 09:40:13 DEBUG    accept
+2018-09-21 09:40:13 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:40:13 DEBUG    destroy: people.api.boomtrain.com:443
+2018-09-21 09:40:13 DEBUG    destroying remote
+2018-09-21 09:40:13 DEBUG    destroying local
+2018-09-21 09:40:13 DEBUG    accept
+2018-09-21 09:40:13 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:40:13 DEBUG    destroy: a.disquscdn.com:443
+2018-09-21 09:40:13 DEBUG    destroying remote
+2018-09-21 09:40:13 DEBUG    destroying local
+2018-09-21 09:40:13 DEBUG    accept
+2018-09-21 09:40:13 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:40:13 INFO     connecting ei.rlcdn.com:443 from 127.0.0.1:37920
+2018-09-21 09:40:13 INFO     connecting ib.adnxs.com:443 from 127.0.0.1:37922
+2018-09-21 09:40:13 INFO     connecting rc.rlcdn.com:443 from 127.0.0.1:37924
+2018-09-21 09:40:13 DEBUG    got local error
+2018-09-21 09:40:13 ERROR    [Errno 104] Connection reset by peer
+2018-09-21 09:40:13 DEBUG    destroy: c.disquscdn.com:443
+2018-09-21 09:40:13 DEBUG    destroying remote
+2018-09-21 09:40:13 DEBUG    destroying local
+2018-09-21 09:40:13 DEBUG    accept
+2018-09-21 09:40:13 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:40:13 DEBUG    destroy: disqus.com:443
+2018-09-21 09:40:13 DEBUG    destroying remote
+2018-09-21 09:40:13 DEBUG    destroying local
+2018-09-21 09:40:13 DEBUG    destroy: disqus.com:443
+2018-09-21 09:40:13 DEBUG    destroying remote
+2018-09-21 09:40:13 DEBUG    destroying local
+2018-09-21 09:40:13 DEBUG    accept
+2018-09-21 09:40:13 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:40:13 DEBUG    destroy: disqus.com:443
+2018-09-21 09:40:13 DEBUG    destroying remote
+2018-09-21 09:40:13 DEBUG    destroying local
+2018-09-21 09:40:13 DEBUG    destroy: disqus.com:443
+2018-09-21 09:40:13 DEBUG    destroying remote
+2018-09-21 09:40:13 DEBUG    destroying local
+2018-09-21 09:40:13 DEBUG    accept
+2018-09-21 09:40:13 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:40:13 INFO     connecting rc.rlcdn.com:443 from 127.0.0.1:37932
+2018-09-21 09:40:13 DEBUG    accept
+2018-09-21 09:40:13 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:40:13 DEBUG    accept
+2018-09-21 09:40:13 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:40:13 INFO     connecting rc.rlcdn.com:443 from 127.0.0.1:37934
+2018-09-21 09:40:13 INFO     connecting rc.rlcdn.com:443 from 127.0.0.1:37938
+2018-09-21 09:40:13 INFO     connecting rc.rlcdn.com:443 from 127.0.0.1:37936
+2018-09-21 09:40:13 INFO     connecting rc.rlcdn.com:443 from 127.0.0.1:37940
+2018-09-21 09:40:13 DEBUG    destroy: disqusads.com:443
+2018-09-21 09:40:13 DEBUG    destroying remote
+2018-09-21 09:40:13 DEBUG    destroying local
+2018-09-21 09:40:13 DEBUG    accept
+2018-09-21 09:40:13 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:40:13 INFO     connecting s.cpx.to:443 from 127.0.0.1:37952
+2018-09-21 09:40:14 DEBUG    destroy: rc.rlcdn.com:443
+2018-09-21 09:40:14 DEBUG    destroying remote
+2018-09-21 09:40:14 DEBUG    destroying local
+2018-09-21 09:40:14 DEBUG    accept
+2018-09-21 09:40:14 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:40:14 INFO     connecting s.cpx.to:443 from 127.0.0.1:37956
+2018-09-21 09:40:14 DEBUG    got local error
+2018-09-21 09:40:14 ERROR    [Errno 104] Connection reset by peer
+2018-09-21 09:40:14 DEBUG    destroy: events.api.boomtrain.com:443
+2018-09-21 09:40:14 DEBUG    destroying remote
+2018-09-21 09:40:14 DEBUG    destroying local
+2018-09-21 09:40:14 DEBUG    accept
+2018-09-21 09:40:14 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:40:14 INFO     connecting hm.baidu.com:80 from 127.0.0.1:37960
+2018-09-21 09:40:14 DEBUG    destroy: glitter.services.disqus.com:443
+2018-09-21 09:40:14 DEBUG    destroying remote
+2018-09-21 09:40:14 DEBUG    destroying local
+2018-09-21 09:40:14 DEBUG    accept
+2018-09-21 09:40:14 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:40:14 INFO     connecting hm.baidu.com:80 from 127.0.0.1:37964
+2018-09-21 09:40:15 DEBUG    destroy: ib.adnxs.com:443
+2018-09-21 09:40:15 DEBUG    destroying remote
+2018-09-21 09:40:15 DEBUG    destroying local
+2018-09-21 09:40:15 DEBUG    accept
+2018-09-21 09:40:15 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:40:15 INFO     connecting api.share.baidu.com:80 from 127.0.0.1:37972
+2018-09-21 09:40:17 DEBUG    destroy: rc.rlcdn.com:443
+2018-09-21 09:40:17 DEBUG    destroying remote
+2018-09-21 09:40:17 DEBUG    destroying local
+2018-09-21 09:40:17 DEBUG    destroy: rc.rlcdn.com:443
+2018-09-21 09:40:17 DEBUG    destroying remote
+2018-09-21 09:40:17 DEBUG    destroying local
+2018-09-21 09:40:17 DEBUG    destroy: rc.rlcdn.com:443
+2018-09-21 09:40:17 DEBUG    destroying remote
+2018-09-21 09:40:17 DEBUG    destroying local
+2018-09-21 09:40:17 DEBUG    destroy: rc.rlcdn.com:443
+2018-09-21 09:40:17 DEBUG    destroying remote
+2018-09-21 09:40:17 DEBUG    destroying local
+2018-09-21 09:40:17 DEBUG    destroy: rc.rlcdn.com:443
+2018-09-21 09:40:17 DEBUG    destroying remote
+2018-09-21 09:40:17 DEBUG    destroying local
+2018-09-21 09:40:17 DEBUG    destroy: ei.rlcdn.com:443
+2018-09-21 09:40:17 DEBUG    destroying remote
+2018-09-21 09:40:17 DEBUG    destroying local
+2018-09-21 09:40:18 DEBUG    destroy: servedby.flashtalking.com:443
+2018-09-21 09:40:18 DEBUG    destroying remote
+2018-09-21 09:40:18 DEBUG    destroying local
+2018-09-21 09:40:23 DEBUG    destroy: secure.adnxs.com:443
+2018-09-21 09:40:23 DEBUG    destroying remote
+2018-09-21 09:40:23 DEBUG    destroying local
+2018-09-21 09:40:24 DEBUG    destroy: ib.adnxs.com:443
+2018-09-21 09:40:24 DEBUG    destroying remote
+2018-09-21 09:40:24 DEBUG    destroying local
+2018-09-21 09:40:26 DEBUG    destroy: hm.baidu.com:80
+2018-09-21 09:40:26 DEBUG    destroying remote
+2018-09-21 09:40:26 DEBUG    destroying local
+2018-09-21 09:40:27 DEBUG    destroy: hm.baidu.com:80
+2018-09-21 09:40:27 DEBUG    destroying remote
+2018-09-21 09:40:27 DEBUG    destroying local
+2018-09-21 09:40:41 DEBUG    destroy: disqusads.com:443
+2018-09-21 09:40:41 DEBUG    destroying remote
+2018-09-21 09:40:41 DEBUG    destroying local
+2018-09-21 09:40:46 DEBUG    destroy: api.share.baidu.com:80
+2018-09-21 09:40:46 DEBUG    destroying remote
+2018-09-21 09:40:46 DEBUG    destroying local
+2018-09-21 09:40:58 DEBUG    destroy: s.thebrighttag.com:443
+2018-09-21 09:40:58 DEBUG    destroying remote
+2018-09-21 09:40:58 DEBUG    destroying local
+2018-09-21 09:41:05 DEBUG    destroy: onsite.boomtrain.net:443
+2018-09-21 09:41:05 DEBUG    destroying remote
+2018-09-21 09:41:05 DEBUG    destroying local
+2018-09-21 09:41:11 DEBUG    destroy: live.rezync.com:443
+2018-09-21 09:41:11 DEBUG    destroying remote
+2018-09-21 09:41:11 DEBUG    destroying local
+2018-09-21 09:41:11 DEBUG    destroy: live.rezync.com:443
+2018-09-21 09:41:11 DEBUG    destroying remote
+2018-09-21 09:41:11 DEBUG    destroying local
+2018-09-21 09:41:13 DEBUG    destroy: onsite.boomtrain.net:443
+2018-09-21 09:41:13 DEBUG    destroying remote
+2018-09-21 09:41:13 DEBUG    destroying local
+2018-09-21 09:41:13 DEBUG    destroy: events.api.boomtrain.com:443
+2018-09-21 09:41:13 DEBUG    destroying remote
+2018-09-21 09:41:13 DEBUG    destroying local
+2018-09-21 09:41:19 DEBUG    destroy: live.rezync.com:443
+2018-09-21 09:41:19 DEBUG    destroying remote
+2018-09-21 09:41:19 DEBUG    destroying local
+2018-09-21 09:41:19 DEBUG    destroy: io.narrative.io:443
+2018-09-21 09:41:19 DEBUG    destroying remote
+2018-09-21 09:41:19 DEBUG    destroying local
+2018-09-21 09:41:20 DEBUG    destroy: s.cpx.to:443
+2018-09-21 09:41:20 DEBUG    destroying remote
+2018-09-21 09:41:20 DEBUG    destroying local
+2018-09-21 09:41:20 DEBUG    destroy: s.cpx.to:443
+2018-09-21 09:41:20 DEBUG    destroying remote
+2018-09-21 09:41:20 DEBUG    destroying local
+2018-09-21 09:42:46 DEBUG    destroy: referrer.disqus.com:443
+2018-09-21 09:42:46 DEBUG    destroying remote
+2018-09-21 09:42:46 DEBUG    destroying local
+2018-09-21 09:42:46 DEBUG    accept
+2018-09-21 09:42:46 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:42:46 DEBUG    accept
+2018-09-21 09:42:46 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:42:46 INFO     connecting docs.google.com:443 from 127.0.0.1:38120
+2018-09-21 09:42:46 INFO     connecting ssl.gstatic.com:443 from 127.0.0.1:38122
+2018-09-21 09:44:11 DEBUG    destroy: clients1.google.com:443
+2018-09-21 09:44:11 DEBUG    destroying remote
+2018-09-21 09:44:11 DEBUG    destroying local
+2018-09-21 09:44:12 DEBUG    destroy: pippio.com:443
+2018-09-21 09:44:12 DEBUG    destroying remote
+2018-09-21 09:44:12 DEBUG    destroying local
+2018-09-21 09:44:15 DEBUG    destroy: www.google-analytics.com:443
+2018-09-21 09:44:15 DEBUG    destroying remote
+2018-09-21 09:44:15 DEBUG    destroying local
+2018-09-21 09:44:27 DEBUG    got local error
+2018-09-21 09:44:27 ERROR    [Errno 104] Connection reset by peer
+2018-09-21 09:44:27 DEBUG    destroy: docs.google.com:443
+2018-09-21 09:44:27 DEBUG    destroying remote
+2018-09-21 09:44:27 DEBUG    destroying local
+2018-09-21 09:44:27 DEBUG    destroy: referrer.disqus.com:443
+2018-09-21 09:44:27 DEBUG    destroying remote
+2018-09-21 09:44:27 DEBUG    destroying local
+2018-09-21 09:44:27 DEBUG    destroy: referrer.disqus.com:443
+2018-09-21 09:44:27 DEBUG    destroying remote
+2018-09-21 09:44:27 DEBUG    destroying local
+2018-09-21 09:44:27 DEBUG    destroy: zhaohuabings-blog.disqus.com:443
+2018-09-21 09:44:27 DEBUG    destroying remote
+2018-09-21 09:44:27 DEBUG    destroying local
+2018-09-21 09:44:27 DEBUG    destroy: ssl.gstatic.com:443
+2018-09-21 09:44:27 DEBUG    destroying remote
+2018-09-21 09:44:27 DEBUG    destroying local
+2018-09-21 09:44:27 DEBUG    destroy: ghbtns.com:443
+2018-09-21 09:44:27 DEBUG    destroying remote
+2018-09-21 09:44:27 DEBUG    destroying local
+2018-09-21 09:44:27 DEBUG    destroy: disqusapi.zhaohuabing.com:443
+2018-09-21 09:44:27 DEBUG    destroying remote
+2018-09-21 09:44:27 DEBUG    destroying local
+2018-09-21 09:44:29 DEBUG    destroy: mtalk.google.com:5228
+2018-09-21 09:44:29 DEBUG    destroying remote
+2018-09-21 09:44:29 DEBUG    destroying local
+2018-09-21 09:44:29 DEBUG    accept
+2018-09-21 09:44:29 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:44:29 INFO     connecting mtalk.google.com:5228 from 127.0.0.1:38272
+2018-09-21 09:45:14 DEBUG    destroy: mtalk.google.com:5228
+2018-09-21 09:45:14 DEBUG    destroying remote
+2018-09-21 09:45:14 DEBUG    destroying local
+2018-09-21 09:45:14 DEBUG    accept
+2018-09-21 09:45:14 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:45:14 INFO     connecting mtalk.google.com:5228 from 127.0.0.1:38372
+2018-09-21 09:45:59 DEBUG    destroy: mtalk.google.com:5228
+2018-09-21 09:45:59 DEBUG    destroying remote
+2018-09-21 09:45:59 DEBUG    destroying local
+2018-09-21 09:45:59 DEBUG    accept
+2018-09-21 09:45:59 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:45:59 INFO     connecting mtalk.google.com:5228 from 127.0.0.1:38472
+2018-09-21 09:46:29 DEBUG    destroy: mtalk.google.com:5228
+2018-09-21 09:46:29 DEBUG    destroying remote
+2018-09-21 09:46:29 DEBUG    destroying local
+2018-09-21 09:46:44 DEBUG    accept
+2018-09-21 09:46:44 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:46:44 INFO     connecting mtalk.google.com:443 from 127.0.0.1:38572
+2018-09-21 09:47:14 DEBUG    destroy: mtalk.google.com:443
+2018-09-21 09:47:14 DEBUG    destroying remote
+2018-09-21 09:47:14 DEBUG    destroying local
+2018-09-21 09:47:27 DEBUG    accept
+2018-09-21 09:47:27 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:47:27 INFO     connecting mtalk.google.com:5228 from 127.0.0.1:38624
+2018-09-21 09:47:46 DEBUG    accept
+2018-09-21 09:47:46 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:47:46 DEBUG    accept
+2018-09-21 09:47:46 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:47:46 INFO     connecting docs.google.com:443 from 127.0.0.1:38628
+2018-09-21 09:47:46 INFO     connecting ssl.gstatic.com:443 from 127.0.0.1:38630
+2018-09-21 09:51:47 DEBUG    destroy: ssl.gstatic.com:443
+2018-09-21 09:51:47 DEBUG    destroying remote
+2018-09-21 09:51:47 DEBUG    destroying local
+2018-09-21 09:51:49 DEBUG    destroy: docs.google.com:443
+2018-09-21 09:51:49 DEBUG    destroying remote
+2018-09-21 09:51:49 DEBUG    destroying local
+2018-09-21 09:52:29 WARNING  timed out: mtalk.google.com:5228
+2018-09-21 09:52:29 DEBUG    destroy: mtalk.google.com:5228
+2018-09-21 09:52:29 DEBUG    destroying remote
+2018-09-21 09:52:29 DEBUG    destroying local
+2018-09-21 09:52:29 DEBUG    accept
+2018-09-21 09:52:29 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:52:29 INFO     connecting mtalk.google.com:5228 from 127.0.0.1:38926
+2018-09-21 09:52:46 DEBUG    accept
+2018-09-21 09:52:46 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:52:46 DEBUG    accept
+2018-09-21 09:52:46 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:52:46 INFO     connecting docs.google.com:443 from 127.0.0.1:38930
+2018-09-21 09:52:46 INFO     connecting ssl.gstatic.com:443 from 127.0.0.1:38932
+2018-09-21 09:53:10 DEBUG    got local error
+2018-09-21 09:53:10 ERROR    [Errno 104] Connection reset by peer
+2018-09-21 09:53:10 DEBUG    destroy: docs.google.com:443
+2018-09-21 09:53:10 DEBUG    destroying remote
+2018-09-21 09:53:10 DEBUG    destroying local
+2018-09-21 09:53:10 DEBUG    destroy: ssl.gstatic.com:443
+2018-09-21 09:53:10 DEBUG    destroying remote
+2018-09-21 09:53:10 DEBUG    destroying local
+2018-09-21 09:53:14 DEBUG    destroy: mtalk.google.com:5228
+2018-09-21 09:53:14 DEBUG    destroying remote
+2018-09-21 09:53:14 DEBUG    destroying local
+2018-09-21 09:53:14 DEBUG    accept
+2018-09-21 09:53:14 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:53:14 INFO     connecting mtalk.google.com:5228 from 127.0.0.1:39034
+2018-09-21 09:53:59 DEBUG    destroy: mtalk.google.com:5228
+2018-09-21 09:53:59 DEBUG    destroying remote
+2018-09-21 09:53:59 DEBUG    destroying local
+2018-09-21 09:53:59 DEBUG    accept
+2018-09-21 09:53:59 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:53:59 INFO     connecting mtalk.google.com:5228 from 127.0.0.1:39134
+2018-09-21 09:54:44 DEBUG    destroy: mtalk.google.com:5228
+2018-09-21 09:54:44 DEBUG    destroying remote
+2018-09-21 09:54:44 DEBUG    destroying local
+2018-09-21 09:54:44 DEBUG    accept
+2018-09-21 09:54:44 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:54:44 INFO     connecting mtalk.google.com:5228 from 127.0.0.1:39238
+2018-09-21 09:55:27 DEBUG    destroy: mtalk.google.com:5228
+2018-09-21 09:55:27 DEBUG    destroying remote
+2018-09-21 09:55:27 DEBUG    destroying local
+2018-09-21 09:55:27 DEBUG    accept
+2018-09-21 09:55:27 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:55:27 INFO     connecting mtalk.google.com:5228 from 127.0.0.1:39290
+2018-09-21 09:57:46 DEBUG    accept
+2018-09-21 09:57:46 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:57:46 DEBUG    accept
+2018-09-21 09:57:46 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:57:46 INFO     connecting docs.google.com:443 from 127.0.0.1:39390
+2018-09-21 09:57:46 INFO     connecting ssl.gstatic.com:443 from 127.0.0.1:39392
+2018-09-21 09:59:29 DEBUG    accept
+2018-09-21 09:59:29 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 09:59:29 INFO     connecting clients4.google.com:443 from 127.0.0.1:39494
+2018-09-21 10:00:27 DEBUG    destroy: docs.google.com:443
+2018-09-21 10:00:27 DEBUG    destroying remote
+2018-09-21 10:00:27 DEBUG    destroying local
+2018-09-21 10:00:27 DEBUG    destroy: ssl.gstatic.com:443
+2018-09-21 10:00:27 DEBUG    destroying remote
+2018-09-21 10:00:27 DEBUG    destroying local
+2018-09-21 10:00:27 DEBUG    destroy: clients4.google.com:443
+2018-09-21 10:00:27 DEBUG    destroying remote
+2018-09-21 10:00:27 DEBUG    destroying local
+2018-09-21 10:00:29 DEBUG    destroy: mtalk.google.com:5228
+2018-09-21 10:00:29 DEBUG    destroying remote
+2018-09-21 10:00:29 DEBUG    destroying local
+2018-09-21 10:00:29 DEBUG    accept
+2018-09-21 10:00:29 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:00:29 INFO     connecting mtalk.google.com:5228 from 127.0.0.1:39594
+2018-09-21 10:01:13 DEBUG    destroy: mtalk.google.com:5228
+2018-09-21 10:01:13 DEBUG    destroying remote
+2018-09-21 10:01:14 DEBUG    destroying local
+2018-09-21 10:01:14 DEBUG    accept
+2018-09-21 10:01:14 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:01:14 INFO     connecting mtalk.google.com:5228 from 127.0.0.1:39694
+2018-09-21 10:01:58 DEBUG    destroy: mtalk.google.com:5228
+2018-09-21 10:01:58 DEBUG    destroying remote
+2018-09-21 10:01:58 DEBUG    destroying local
+2018-09-21 10:01:58 DEBUG    accept
+2018-09-21 10:01:58 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:01:58 INFO     connecting mtalk.google.com:5228 from 127.0.0.1:39794
+2018-09-21 10:02:44 DEBUG    destroy: mtalk.google.com:5228
+2018-09-21 10:02:44 DEBUG    destroying remote
+2018-09-21 10:02:44 DEBUG    destroying local
+2018-09-21 10:02:44 DEBUG    accept
+2018-09-21 10:02:44 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:02:44 INFO     connecting mtalk.google.com:5228 from 127.0.0.1:39894
+2018-09-21 10:02:46 DEBUG    accept
+2018-09-21 10:02:46 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:02:46 DEBUG    accept
+2018-09-21 10:02:46 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:02:46 INFO     connecting docs.google.com:443 from 127.0.0.1:39898
+2018-09-21 10:02:46 INFO     connecting ssl.gstatic.com:443 from 127.0.0.1:39900
+2018-09-21 10:03:25 DEBUG    destroy: docs.google.com:443
+2018-09-21 10:03:25 DEBUG    destroying remote
+2018-09-21 10:03:25 DEBUG    destroying local
+2018-09-21 10:03:25 DEBUG    destroy: ssl.gstatic.com:443
+2018-09-21 10:03:25 DEBUG    destroying remote
+2018-09-21 10:03:25 DEBUG    destroying local
+2018-09-21 10:03:27 DEBUG    destroy: mtalk.google.com:5228
+2018-09-21 10:03:27 DEBUG    destroying remote
+2018-09-21 10:03:27 DEBUG    destroying local
+2018-09-21 10:03:27 DEBUG    accept
+2018-09-21 10:03:27 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:03:27 INFO     connecting mtalk.google.com:5228 from 127.0.0.1:39954
+2018-09-21 10:07:46 DEBUG    accept
+2018-09-21 10:07:46 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:07:46 DEBUG    accept
+2018-09-21 10:07:46 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:07:46 INFO     connecting docs.google.com:443 from 127.0.0.1:40150
+2018-09-21 10:07:46 INFO     connecting ssl.gstatic.com:443 from 127.0.0.1:40152
+2018-09-21 10:08:27 DEBUG    got local error
+2018-09-21 10:08:27 ERROR    [Errno 104] Connection reset by peer
+2018-09-21 10:08:27 DEBUG    destroy: docs.google.com:443
+2018-09-21 10:08:27 DEBUG    destroying remote
+2018-09-21 10:08:27 DEBUG    destroying local
+2018-09-21 10:08:27 DEBUG    destroy: ssl.gstatic.com:443
+2018-09-21 10:08:27 DEBUG    destroying remote
+2018-09-21 10:08:27 DEBUG    destroying local
+2018-09-21 10:08:29 DEBUG    destroy: mtalk.google.com:5228
+2018-09-21 10:08:29 DEBUG    destroying remote
+2018-09-21 10:08:29 DEBUG    destroying local
+2018-09-21 10:08:29 DEBUG    accept
+2018-09-21 10:08:29 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:08:29 INFO     connecting mtalk.google.com:5228 from 127.0.0.1:40254
+2018-09-21 10:09:14 DEBUG    destroy: mtalk.google.com:5228
+2018-09-21 10:09:14 DEBUG    destroying remote
+2018-09-21 10:09:14 DEBUG    destroying local
+2018-09-21 10:09:14 DEBUG    accept
+2018-09-21 10:09:14 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:09:14 INFO     connecting mtalk.google.com:5228 from 127.0.0.1:40354
+2018-09-21 10:09:59 DEBUG    destroy: mtalk.google.com:5228
+2018-09-21 10:09:59 DEBUG    destroying remote
+2018-09-21 10:09:59 DEBUG    destroying local
+2018-09-21 10:09:59 DEBUG    accept
+2018-09-21 10:09:59 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:09:59 INFO     connecting mtalk.google.com:5228 from 127.0.0.1:40454
+2018-09-21 10:10:43 DEBUG    destroy: mtalk.google.com:5228
+2018-09-21 10:10:43 DEBUG    destroying remote
+2018-09-21 10:10:43 DEBUG    destroying local
+2018-09-21 10:10:43 DEBUG    accept
+2018-09-21 10:10:43 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:10:43 INFO     connecting mtalk.google.com:5228 from 127.0.0.1:40554
+2018-09-21 10:11:27 DEBUG    destroy: mtalk.google.com:5228
+2018-09-21 10:11:27 DEBUG    destroying remote
+2018-09-21 10:11:27 DEBUG    destroying local
+2018-09-21 10:11:27 DEBUG    accept
+2018-09-21 10:11:27 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:11:27 INFO     connecting mtalk.google.com:5228 from 127.0.0.1:40606
+2018-09-21 10:12:46 DEBUG    accept
+2018-09-21 10:12:46 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:12:46 DEBUG    accept
+2018-09-21 10:12:46 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:12:46 INFO     connecting docs.google.com:443 from 127.0.0.1:40658
+2018-09-21 10:12:46 INFO     connecting ssl.gstatic.com:443 from 127.0.0.1:40660
+2018-09-21 10:16:27 DEBUG    got local error
+2018-09-21 10:16:27 ERROR    [Errno 104] Connection reset by peer
+2018-09-21 10:16:27 DEBUG    destroy: docs.google.com:443
+2018-09-21 10:16:27 DEBUG    destroying remote
+2018-09-21 10:16:27 DEBUG    destroying local
+2018-09-21 10:16:27 DEBUG    destroy: ssl.gstatic.com:443
+2018-09-21 10:16:27 DEBUG    destroying remote
+2018-09-21 10:16:27 DEBUG    destroying local
+2018-09-21 10:16:29 DEBUG    destroy: mtalk.google.com:5228
+2018-09-21 10:16:29 DEBUG    destroying remote
+2018-09-21 10:16:29 DEBUG    destroying local
+2018-09-21 10:16:29 DEBUG    accept
+2018-09-21 10:16:29 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:16:29 INFO     connecting mtalk.google.com:5228 from 127.0.0.1:40906
+2018-09-21 10:17:14 DEBUG    destroy: mtalk.google.com:5228
+2018-09-21 10:17:14 DEBUG    destroying remote
+2018-09-21 10:17:14 DEBUG    destroying local
+2018-09-21 10:17:14 DEBUG    accept
+2018-09-21 10:17:14 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:17:14 INFO     connecting mtalk.google.com:5228 from 127.0.0.1:41006
+2018-09-21 10:17:46 DEBUG    accept
+2018-09-21 10:17:46 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:17:46 DEBUG    accept
+2018-09-21 10:17:46 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:17:46 INFO     connecting docs.google.com:443 from 127.0.0.1:41010
+2018-09-21 10:17:46 INFO     connecting ssl.gstatic.com:443 from 127.0.0.1:41012
+2018-09-21 10:17:55 DEBUG    got local error
+2018-09-21 10:17:55 ERROR    [Errno 104] Connection reset by peer
+2018-09-21 10:17:55 DEBUG    destroy: docs.google.com:443
+2018-09-21 10:17:55 DEBUG    destroying remote
+2018-09-21 10:17:55 DEBUG    destroying local
+2018-09-21 10:17:55 DEBUG    destroy: ssl.gstatic.com:443
+2018-09-21 10:17:55 DEBUG    destroying remote
+2018-09-21 10:17:55 DEBUG    destroying local
+2018-09-21 10:17:59 DEBUG    destroy: mtalk.google.com:5228
+2018-09-21 10:17:59 DEBUG    destroying remote
+2018-09-21 10:17:59 DEBUG    destroying local
+2018-09-21 10:17:59 DEBUG    accept
+2018-09-21 10:17:59 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:17:59 INFO     connecting mtalk.google.com:5228 from 127.0.0.1:41114
+2018-09-21 10:18:43 DEBUG    destroy: mtalk.google.com:5228
+2018-09-21 10:18:43 DEBUG    destroying remote
+2018-09-21 10:18:43 DEBUG    destroying local
+2018-09-21 10:18:43 DEBUG    accept
+2018-09-21 10:18:43 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:18:43 INFO     connecting mtalk.google.com:5228 from 127.0.0.1:41218
+2018-09-21 10:19:27 DEBUG    destroy: mtalk.google.com:5228
+2018-09-21 10:19:27 DEBUG    destroying remote
+2018-09-21 10:19:27 DEBUG    destroying local
+2018-09-21 10:19:27 DEBUG    accept
+2018-09-21 10:19:27 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:19:27 INFO     connecting mtalk.google.com:5228 from 127.0.0.1:41270
+2018-09-21 10:22:46 DEBUG    accept
+2018-09-21 10:22:46 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:22:46 DEBUG    accept
+2018-09-21 10:22:46 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:22:46 INFO     connecting docs.google.com:443 from 127.0.0.1:41418
+2018-09-21 10:22:46 INFO     connecting ssl.gstatic.com:443 from 127.0.0.1:41420
+2018-09-21 10:22:51 DEBUG    accept
+2018-09-21 10:22:51 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:22:51 INFO     connecting lh5.googleusercontent.com:443 from 127.0.0.1:41426
+2018-09-21 10:22:51 DEBUG    accept
+2018-09-21 10:22:51 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:22:51 DEBUG    accept
+2018-09-21 10:22:51 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:22:51 INFO     connecting lh3.googleusercontent.com:443 from 127.0.0.1:41430
+2018-09-21 10:22:51 INFO     connecting lh6.googleusercontent.com:443 from 127.0.0.1:41432
+2018-09-21 10:22:51 DEBUG    accept
+2018-09-21 10:22:51 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:22:51 INFO     connecting lh6.googleusercontent.com:443 from 127.0.0.1:41438
+2018-09-21 10:24:27 DEBUG    got local error
+2018-09-21 10:24:27 ERROR    [Errno 104] Connection reset by peer
+2018-09-21 10:24:27 DEBUG    destroy: lh6.googleusercontent.com:443
+2018-09-21 10:24:27 DEBUG    destroying remote
+2018-09-21 10:24:27 DEBUG    destroying local
+2018-09-21 10:24:27 DEBUG    destroy: lh6.googleusercontent.com:443
+2018-09-21 10:24:27 DEBUG    destroying remote
+2018-09-21 10:24:27 DEBUG    destroying local
+2018-09-21 10:24:27 DEBUG    destroy: ssl.gstatic.com:443
+2018-09-21 10:24:27 DEBUG    destroying remote
+2018-09-21 10:24:27 DEBUG    destroying local
+2018-09-21 10:24:27 DEBUG    destroy: docs.google.com:443
+2018-09-21 10:24:27 DEBUG    destroying remote
+2018-09-21 10:24:27 DEBUG    destroying local
+2018-09-21 10:24:27 DEBUG    destroy: lh5.googleusercontent.com:443
+2018-09-21 10:24:27 DEBUG    destroying remote
+2018-09-21 10:24:27 DEBUG    destroying local
+2018-09-21 10:24:27 DEBUG    destroy: lh3.googleusercontent.com:443
+2018-09-21 10:24:27 DEBUG    destroying remote
+2018-09-21 10:24:27 DEBUG    destroying local
+2018-09-21 10:24:27 DEBUG    destroy: mtalk.google.com:5228
+2018-09-21 10:24:27 DEBUG    destroying remote
+2018-09-21 10:24:27 DEBUG    destroying local
+2018-09-21 10:24:27 DEBUG    accept
+2018-09-21 10:24:27 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:24:27 INFO     connecting mtalk.google.com:5228 from 127.0.0.1:41538
+2018-09-21 10:24:29 DEBUG    destroy: mtalk.google.com:5228
+2018-09-21 10:24:29 DEBUG    destroying remote
+2018-09-21 10:24:29 DEBUG    destroying local
+2018-09-21 10:24:29 DEBUG    accept
+2018-09-21 10:24:29 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:24:29 INFO     connecting mtalk.google.com:5228 from 127.0.0.1:41590
+2018-09-21 10:25:14 DEBUG    destroy: mtalk.google.com:5228
+2018-09-21 10:25:14 DEBUG    destroying remote
+2018-09-21 10:25:14 DEBUG    destroying local
+2018-09-21 10:25:14 DEBUG    accept
+2018-09-21 10:25:14 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:25:14 INFO     connecting mtalk.google.com:5228 from 127.0.0.1:41694
+2018-09-21 10:25:57 DEBUG    destroy: mtalk.google.com:5228
+2018-09-21 10:25:57 DEBUG    destroying remote
+2018-09-21 10:25:57 DEBUG    destroying local
+2018-09-21 10:25:57 DEBUG    accept
+2018-09-21 10:25:57 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:25:57 INFO     connecting mtalk.google.com:5228 from 127.0.0.1:41746
+2018-09-21 10:25:57 DEBUG    destroy: mtalk.google.com:5228
+2018-09-21 10:25:57 DEBUG    destroying remote
+2018-09-21 10:25:57 DEBUG    destroying local
+2018-09-21 10:25:59 DEBUG    accept
+2018-09-21 10:25:59 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:25:59 INFO     connecting mtalk.google.com:443 from 127.0.0.1:41798
+2018-09-21 10:26:44 DEBUG    destroy: mtalk.google.com:443
+2018-09-21 10:26:44 DEBUG    destroying remote
+2018-09-21 10:26:44 DEBUG    destroying local
+2018-09-21 10:26:44 DEBUG    accept
+2018-09-21 10:26:44 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:26:44 INFO     connecting mtalk.google.com:5228 from 127.0.0.1:41898
+2018-09-21 10:27:27 DEBUG    destroy: mtalk.google.com:5228
+2018-09-21 10:27:27 DEBUG    destroying remote
+2018-09-21 10:27:27 DEBUG    destroying local
+2018-09-21 10:27:27 DEBUG    accept
+2018-09-21 10:27:27 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:27:27 INFO     connecting mtalk.google.com:5228 from 127.0.0.1:41950
+2018-09-21 10:27:46 DEBUG    accept
+2018-09-21 10:27:46 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:27:46 DEBUG    accept
+2018-09-21 10:27:46 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:27:46 DEBUG    accept
+2018-09-21 10:27:46 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:27:46 DEBUG    accept
+2018-09-21 10:27:46 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:27:46 DEBUG    accept
+2018-09-21 10:27:46 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:27:46 INFO     connecting docs.google.com:443 from 127.0.0.1:41954
+2018-09-21 10:27:46 INFO     connecting lh5.googleusercontent.com:443 from 127.0.0.1:41958
+2018-09-21 10:27:46 INFO     connecting lh3.googleusercontent.com:443 from 127.0.0.1:41956
+2018-09-21 10:27:46 INFO     connecting lh6.googleusercontent.com:443 from 127.0.0.1:41960
+2018-09-21 10:27:46 INFO     connecting ssl.gstatic.com:443 from 127.0.0.1:41962
+2018-09-21 10:31:47 DEBUG    destroy: docs.google.com:443
+2018-09-21 10:31:47 DEBUG    destroying remote
+2018-09-21 10:31:47 DEBUG    destroying local
+2018-09-21 10:31:47 DEBUG    destroy: lh6.googleusercontent.com:443
+2018-09-21 10:31:47 DEBUG    destroying remote
+2018-09-21 10:31:47 DEBUG    destroying local
+2018-09-21 10:31:47 DEBUG    destroy: lh5.googleusercontent.com:443
+2018-09-21 10:31:47 DEBUG    destroying remote
+2018-09-21 10:31:47 DEBUG    destroying local
+2018-09-21 10:31:47 DEBUG    destroy: lh3.googleusercontent.com:443
+2018-09-21 10:31:47 DEBUG    destroying remote
+2018-09-21 10:31:47 DEBUG    destroying local
+2018-09-21 10:31:47 DEBUG    destroy: ssl.gstatic.com:443
+2018-09-21 10:31:47 DEBUG    destroying remote
+2018-09-21 10:31:47 DEBUG    destroying local
+2018-09-21 10:32:27 WARNING  timed out: mtalk.google.com:5228
+2018-09-21 10:32:27 DEBUG    destroy: mtalk.google.com:5228
+2018-09-21 10:32:27 DEBUG    destroying remote
+2018-09-21 10:32:27 DEBUG    destroying local
+2018-09-21 10:32:27 DEBUG    accept
+2018-09-21 10:32:27 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:32:27 INFO     connecting mtalk.google.com:5228 from 127.0.0.1:42214
+2018-09-21 10:32:29 DEBUG    destroy: mtalk.google.com:5228
+2018-09-21 10:32:29 DEBUG    destroying remote
+2018-09-21 10:32:29 DEBUG    destroying local
+2018-09-21 10:32:29 DEBUG    accept
+2018-09-21 10:32:29 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:32:29 INFO     connecting mtalk.google.com:5228 from 127.0.0.1:42266
+2018-09-21 10:32:46 DEBUG    accept
+2018-09-21 10:32:46 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:32:46 DEBUG    accept
+2018-09-21 10:32:46 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:32:46 DEBUG    accept
+2018-09-21 10:32:46 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:32:46 DEBUG    accept
+2018-09-21 10:32:46 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:32:46 DEBUG    accept
+2018-09-21 10:32:46 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:32:46 INFO     connecting docs.google.com:443 from 127.0.0.1:42270
+2018-09-21 10:32:46 INFO     connecting lh3.googleusercontent.com:443 from 127.0.0.1:42272
+2018-09-21 10:32:46 INFO     connecting lh5.googleusercontent.com:443 from 127.0.0.1:42274
+2018-09-21 10:32:46 INFO     connecting lh6.googleusercontent.com:443 from 127.0.0.1:42276
+2018-09-21 10:32:46 INFO     connecting ssl.gstatic.com:443 from 127.0.0.1:42278
+2018-09-21 10:33:10 DEBUG    got local error
+2018-09-21 10:33:10 ERROR    [Errno 104] Connection reset by peer
+2018-09-21 10:33:10 DEBUG    destroy: docs.google.com:443
+2018-09-21 10:33:10 DEBUG    destroying remote
+2018-09-21 10:33:10 DEBUG    destroying local
+2018-09-21 10:33:10 DEBUG    got local error
+2018-09-21 10:33:10 ERROR    [Errno 104] Connection reset by peer
+2018-09-21 10:33:10 DEBUG    destroy: lh3.googleusercontent.com:443
+2018-09-21 10:33:10 DEBUG    destroying remote
+2018-09-21 10:33:10 DEBUG    destroying local
+2018-09-21 10:33:10 DEBUG    got local error
+2018-09-21 10:33:10 ERROR    [Errno 104] Connection reset by peer
+2018-09-21 10:33:10 DEBUG    destroy: lh5.googleusercontent.com:443
+2018-09-21 10:33:10 DEBUG    destroying remote
+2018-09-21 10:33:10 DEBUG    destroying local
+2018-09-21 10:33:10 DEBUG    got local error
+2018-09-21 10:33:10 ERROR    [Errno 104] Connection reset by peer
+2018-09-21 10:33:10 DEBUG    destroy: lh6.googleusercontent.com:443
+2018-09-21 10:33:10 DEBUG    destroying remote
+2018-09-21 10:33:10 DEBUG    destroying local
+2018-09-21 10:33:10 DEBUG    destroy: ssl.gstatic.com:443
+2018-09-21 10:33:10 DEBUG    destroying remote
+2018-09-21 10:33:10 DEBUG    destroying local
+2018-09-21 10:33:14 DEBUG    destroy: mtalk.google.com:5228
+2018-09-21 10:33:14 DEBUG    destroying remote
+2018-09-21 10:33:14 DEBUG    destroying local
+2018-09-21 10:33:14 DEBUG    accept
+2018-09-21 10:33:14 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:33:14 INFO     connecting mtalk.google.com:5228 from 127.0.0.1:42386
+2018-09-21 10:33:59 DEBUG    destroy: mtalk.google.com:5228
+2018-09-21 10:33:59 DEBUG    destroying remote
+2018-09-21 10:33:59 DEBUG    destroying local
+2018-09-21 10:33:59 DEBUG    accept
+2018-09-21 10:33:59 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:33:59 INFO     connecting mtalk.google.com:5228 from 127.0.0.1:42486
+2018-09-21 10:34:44 DEBUG    destroy: mtalk.google.com:5228
+2018-09-21 10:34:44 DEBUG    destroying remote
+2018-09-21 10:34:44 DEBUG    destroying local
+2018-09-21 10:34:44 DEBUG    accept
+2018-09-21 10:34:44 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:34:44 INFO     connecting mtalk.google.com:5228 from 127.0.0.1:42586
+2018-09-21 10:35:27 DEBUG    destroy: mtalk.google.com:5228
+2018-09-21 10:35:27 DEBUG    destroying remote
+2018-09-21 10:35:27 DEBUG    destroying local
+2018-09-21 10:35:27 DEBUG    accept
+2018-09-21 10:35:27 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:35:27 INFO     connecting mtalk.google.com:5228 from 127.0.0.1:42638
+2018-09-21 10:37:46 DEBUG    accept
+2018-09-21 10:37:46 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:37:46 DEBUG    accept
+2018-09-21 10:37:46 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:37:46 DEBUG    accept
+2018-09-21 10:37:46 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:37:46 DEBUG    accept
+2018-09-21 10:37:46 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:37:46 DEBUG    accept
+2018-09-21 10:37:46 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:37:46 INFO     connecting docs.google.com:443 from 127.0.0.1:42826
+2018-09-21 10:37:46 INFO     connecting lh3.googleusercontent.com:443 from 127.0.0.1:42828
+2018-09-21 10:37:46 INFO     connecting lh5.googleusercontent.com:443 from 127.0.0.1:42830
+2018-09-21 10:37:46 INFO     connecting lh6.googleusercontent.com:443 from 127.0.0.1:42832
+2018-09-21 10:37:46 INFO     connecting ssl.gstatic.com:443 from 127.0.0.1:42834
+2018-09-21 10:40:27 DEBUG    got local error
+2018-09-21 10:40:27 ERROR    [Errno 104] Connection reset by peer
+2018-09-21 10:40:27 DEBUG    destroy: docs.google.com:443
+2018-09-21 10:40:27 DEBUG    destroying remote
+2018-09-21 10:40:27 DEBUG    destroying local
+2018-09-21 10:40:27 DEBUG    got local error
+2018-09-21 10:40:27 ERROR    [Errno 104] Connection reset by peer
+2018-09-21 10:40:27 DEBUG    destroy: lh3.googleusercontent.com:443
+2018-09-21 10:40:27 DEBUG    destroying remote
+2018-09-21 10:40:27 DEBUG    destroying local
+2018-09-21 10:40:27 DEBUG    got local error
+2018-09-21 10:40:27 ERROR    [Errno 104] Connection reset by peer
+2018-09-21 10:40:27 DEBUG    destroy: lh5.googleusercontent.com:443
+2018-09-21 10:40:27 DEBUG    destroying remote
+2018-09-21 10:40:27 DEBUG    destroying local
+2018-09-21 10:40:27 DEBUG    got local error
+2018-09-21 10:40:27 ERROR    [Errno 104] Connection reset by peer
+2018-09-21 10:40:27 DEBUG    destroy: lh6.googleusercontent.com:443
+2018-09-21 10:40:27 DEBUG    destroying remote
+2018-09-21 10:40:27 DEBUG    destroying local
+2018-09-21 10:40:27 DEBUG    destroy: ssl.gstatic.com:443
+2018-09-21 10:40:27 DEBUG    destroying remote
+2018-09-21 10:40:27 DEBUG    destroying local
+2018-09-21 10:40:29 DEBUG    destroy: mtalk.google.com:5228
+2018-09-21 10:40:29 DEBUG    destroying remote
+2018-09-21 10:40:29 DEBUG    destroying local
+2018-09-21 10:40:29 DEBUG    accept
+2018-09-21 10:40:29 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:40:29 INFO     connecting mtalk.google.com:5228 from 127.0.0.1:43038
+2018-09-21 10:41:14 DEBUG    destroy: mtalk.google.com:5228
+2018-09-21 10:41:14 DEBUG    destroying remote
+2018-09-21 10:41:14 DEBUG    destroying local
+2018-09-21 10:41:14 DEBUG    accept
+2018-09-21 10:41:14 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:41:14 INFO     connecting mtalk.google.com:5228 from 127.0.0.1:43138
+2018-09-21 10:41:59 DEBUG    destroy: mtalk.google.com:5228
+2018-09-21 10:41:59 DEBUG    destroying remote
+2018-09-21 10:41:59 DEBUG    destroying local
+2018-09-21 10:41:59 DEBUG    accept
+2018-09-21 10:41:59 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:41:59 INFO     connecting mtalk.google.com:5228 from 127.0.0.1:43238
+2018-09-21 10:42:44 DEBUG    destroy: mtalk.google.com:5228
+2018-09-21 10:42:44 DEBUG    destroying remote
+2018-09-21 10:42:44 DEBUG    destroying local
+2018-09-21 10:42:44 DEBUG    accept
+2018-09-21 10:42:44 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:42:44 INFO     connecting mtalk.google.com:5228 from 127.0.0.1:43338
+2018-09-21 10:42:46 DEBUG    accept
+2018-09-21 10:42:46 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:42:46 DEBUG    accept
+2018-09-21 10:42:46 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:42:46 INFO     connecting docs.google.com:443 from 127.0.0.1:43342
+2018-09-21 10:42:46 INFO     connecting ssl.gstatic.com:443 from 127.0.0.1:43344
+2018-09-21 10:43:25 DEBUG    destroy: docs.google.com:443
+2018-09-21 10:43:25 DEBUG    destroying remote
+2018-09-21 10:43:25 DEBUG    destroying local
+2018-09-21 10:43:25 DEBUG    destroy: ssl.gstatic.com:443
+2018-09-21 10:43:25 DEBUG    destroying remote
+2018-09-21 10:43:25 DEBUG    destroying local
+2018-09-21 10:43:27 DEBUG    destroy: mtalk.google.com:5228
+2018-09-21 10:43:27 DEBUG    destroying remote
+2018-09-21 10:43:27 DEBUG    destroying local
+2018-09-21 10:43:27 DEBUG    accept
+2018-09-21 10:43:27 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:43:27 INFO     connecting mtalk.google.com:5228 from 127.0.0.1:43398
+2018-09-21 10:47:04 DEBUG    accept
+2018-09-21 10:47:04 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:47:04 INFO     connecting www.googleapis.com:443 from 127.0.0.1:43546
+2018-09-21 10:47:05 DEBUG    accept
+2018-09-21 10:47:05 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:47:05 INFO     connecting clients4.google.com:443 from 127.0.0.1:43550
+2018-09-21 10:47:23 DEBUG    accept
+2018-09-21 10:47:23 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:47:23 INFO     connecting clients2.google.com:443 from 127.0.0.1:43554
+2018-09-21 10:47:25 DEBUG    accept
+2018-09-21 10:47:25 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:47:25 INFO     connecting clients2.googleusercontent.com:443 from 127.0.0.1:43558
+2018-09-21 10:47:46 DEBUG    accept
+2018-09-21 10:47:46 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:47:46 DEBUG    accept
+2018-09-21 10:47:46 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:47:46 INFO     connecting docs.google.com:443 from 127.0.0.1:43610
+2018-09-21 10:47:46 INFO     connecting ssl.gstatic.com:443 from 127.0.0.1:43612
+2018-09-21 10:48:19 DEBUG    got local error
+2018-09-21 10:48:19 ERROR    [Errno 104] Connection reset by peer
+2018-09-21 10:48:19 DEBUG    destroy: docs.google.com:443
+2018-09-21 10:48:19 DEBUG    destroying remote
+2018-09-21 10:48:19 DEBUG    destroying local
+2018-09-21 10:48:19 DEBUG    accept
+2018-09-21 10:48:19 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:48:19 INFO     connecting play.google.com:443 from 127.0.0.1:43622
+2018-09-21 10:48:21 DEBUG    accept
+2018-09-21 10:48:21 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:48:21 INFO     connecting www.googleapis.com:443 from 127.0.0.1:43626
+2018-09-21 10:48:21 DEBUG    accept
+2018-09-21 10:48:21 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:48:21 INFO     connecting 23.client-channel.google.com:443 from 127.0.0.1:43630
+2018-09-21 10:48:21 DEBUG    accept
+2018-09-21 10:48:21 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:48:21 INFO     connecting www.googleapis.com:443 from 127.0.0.1:43634
+2018-09-21 10:48:27 DEBUG    accept
+2018-09-21 10:48:27 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:48:27 INFO     connecting clients4.google.com:443 from 127.0.0.1:43686
+2018-09-21 10:48:27 DEBUG    destroy: clients4.google.com:443
+2018-09-21 10:48:27 DEBUG    destroying remote
+2018-09-21 10:48:27 DEBUG    destroying local
+2018-09-21 10:48:27 DEBUG    got local error
+2018-09-21 10:48:27 ERROR    [Errno 104] Connection reset by peer
+2018-09-21 10:48:27 DEBUG    destroy: www.googleapis.com:443
+2018-09-21 10:48:27 DEBUG    destroying remote
+2018-09-21 10:48:27 DEBUG    destroying local
+2018-09-21 10:48:27 DEBUG    destroy: clients4.google.com:443
+2018-09-21 10:48:27 DEBUG    destroying remote
+2018-09-21 10:48:27 DEBUG    destroying local
+2018-09-21 10:48:27 DEBUG    destroy: www.googleapis.com:443
+2018-09-21 10:48:27 DEBUG    destroying remote
+2018-09-21 10:48:27 DEBUG    destroying local
+2018-09-21 10:48:27 DEBUG    destroy: 23.client-channel.google.com:443
+2018-09-21 10:48:27 DEBUG    destroying remote
+2018-09-21 10:48:27 DEBUG    destroying local
+2018-09-21 10:48:27 DEBUG    destroy: clients2.googleusercontent.com:443
+2018-09-21 10:48:27 DEBUG    destroying remote
+2018-09-21 10:48:27 DEBUG    destroying local
+2018-09-21 10:48:27 DEBUG    destroy: ssl.gstatic.com:443
+2018-09-21 10:48:27 DEBUG    destroying remote
+2018-09-21 10:48:27 DEBUG    destroying local
+2018-09-21 10:48:27 DEBUG    destroy: clients2.google.com:443
+2018-09-21 10:48:27 DEBUG    destroying remote
+2018-09-21 10:48:27 DEBUG    destroying local
+2018-09-21 10:48:27 DEBUG    destroy: www.googleapis.com:443
+2018-09-21 10:48:27 DEBUG    destroying remote
+2018-09-21 10:48:27 DEBUG    destroying local
+2018-09-21 10:48:27 DEBUG    destroy: play.google.com:443
+2018-09-21 10:48:27 DEBUG    destroying remote
+2018-09-21 10:48:27 DEBUG    destroying local
+2018-09-21 10:48:27 DEBUG    accept
+2018-09-21 10:48:27 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:48:27 DEBUG    accept
+2018-09-21 10:48:27 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:48:27 INFO     connecting clients2.googleusercontent.com:443 from 127.0.0.1:43690
+2018-09-21 10:48:27 INFO     connecting 23.client-channel.google.com:443 from 127.0.0.1:43692
+2018-09-21 10:48:27 DEBUG    accept
+2018-09-21 10:48:27 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:48:27 INFO     connecting clients4.google.com:443 from 127.0.0.1:43698
+2018-09-21 10:48:29 DEBUG    destroy: mtalk.google.com:5228
+2018-09-21 10:48:29 DEBUG    destroying remote
+2018-09-21 10:48:29 DEBUG    destroying local
+2018-09-21 10:48:29 DEBUG    accept
+2018-09-21 10:48:29 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:48:29 INFO     connecting mtalk.google.com:5228 from 127.0.0.1:43750
+2018-09-21 10:48:41 DEBUG    accept
+2018-09-21 10:48:41 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:48:41 INFO     connecting play.google.com:443 from 127.0.0.1:43754
+2018-09-21 10:49:10 DEBUG    destroy: play.google.com:443
+2018-09-21 10:49:10 DEBUG    destroying remote
+2018-09-21 10:49:10 DEBUG    destroying local
+2018-09-21 10:49:10 DEBUG    destroy: 23.client-channel.google.com:443
+2018-09-21 10:49:10 DEBUG    destroying remote
+2018-09-21 10:49:10 DEBUG    destroying local
+2018-09-21 10:49:10 DEBUG    destroy: clients4.google.com:443
+2018-09-21 10:49:10 DEBUG    destroying remote
+2018-09-21 10:49:10 DEBUG    destroying local
+2018-09-21 10:49:10 DEBUG    destroy: clients2.googleusercontent.com:443
+2018-09-21 10:49:10 DEBUG    destroying remote
+2018-09-21 10:49:10 DEBUG    destroying local
+2018-09-21 10:49:10 DEBUG    accept
+2018-09-21 10:49:10 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:49:10 INFO     connecting 23.client-channel.google.com:443 from 127.0.0.1:43762
+2018-09-21 10:49:10 DEBUG    accept
+2018-09-21 10:49:10 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:49:10 INFO     connecting clients4.google.com:443 from 127.0.0.1:43766
+2018-09-21 10:49:12 DEBUG    destroy: 23.client-channel.google.com:443
+2018-09-21 10:49:12 DEBUG    destroying remote
+2018-09-21 10:49:12 DEBUG    destroying local
+2018-09-21 10:49:12 DEBUG    destroy: clients4.google.com:443
+2018-09-21 10:49:12 DEBUG    destroying remote
+2018-09-21 10:49:12 DEBUG    destroying local
+2018-09-21 10:49:12 DEBUG    accept
+2018-09-21 10:49:12 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:49:12 INFO     connecting 23.client-channel.google.com:443 from 127.0.0.1:43818
+2018-09-21 10:49:14 DEBUG    destroy: mtalk.google.com:5228
+2018-09-21 10:49:14 DEBUG    destroying remote
+2018-09-21 10:49:14 DEBUG    destroying local
+2018-09-21 10:49:14 DEBUG    accept
+2018-09-21 10:49:14 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:49:14 INFO     connecting mtalk.google.com:5228 from 127.0.0.1:43870
+2018-09-21 10:49:14 DEBUG    accept
+2018-09-21 10:49:14 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:49:14 INFO     connecting clients4.google.com:443 from 127.0.0.1:43874
+2018-09-21 10:49:22 DEBUG    accept
+2018-09-21 10:49:22 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:49:22 INFO     connecting clients4.google.com:443 from 127.0.0.1:43878
+2018-09-21 10:49:24 DEBUG    accept
+2018-09-21 10:49:24 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:49:24 INFO     connecting www.googleapis.com:443 from 127.0.0.1:43882
+2018-09-21 10:49:55 DEBUG    destroy: clients4.google.com:443
+2018-09-21 10:49:55 DEBUG    destroying remote
+2018-09-21 10:49:55 DEBUG    destroying local
+2018-09-21 10:49:55 DEBUG    destroy: clients4.google.com:443
+2018-09-21 10:49:55 DEBUG    destroying remote
+2018-09-21 10:49:55 DEBUG    destroying local
+2018-09-21 10:49:55 DEBUG    destroy: www.googleapis.com:443
+2018-09-21 10:49:55 DEBUG    destroying remote
+2018-09-21 10:49:55 DEBUG    destroying local
+2018-09-21 10:49:55 DEBUG    destroy: 23.client-channel.google.com:443
+2018-09-21 10:49:55 DEBUG    destroying remote
+2018-09-21 10:49:55 DEBUG    destroying local
+2018-09-21 10:49:55 DEBUG    accept
+2018-09-21 10:49:55 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:49:55 INFO     connecting 23.client-channel.google.com:443 from 127.0.0.1:43890
+2018-09-21 10:49:56 DEBUG    destroy: 23.client-channel.google.com:443
+2018-09-21 10:49:56 DEBUG    destroying remote
+2018-09-21 10:49:56 DEBUG    destroying local
+2018-09-21 10:49:56 DEBUG    accept
+2018-09-21 10:49:56 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:49:56 INFO     connecting 23.client-channel.google.com:443 from 127.0.0.1:43942
+2018-09-21 10:49:58 DEBUG    destroy: mtalk.google.com:5228
+2018-09-21 10:49:58 DEBUG    destroying remote
+2018-09-21 10:49:58 DEBUG    destroying local
+2018-09-21 10:49:58 DEBUG    accept
+2018-09-21 10:49:58 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:49:58 DEBUG    accept
+2018-09-21 10:49:58 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:49:58 INFO     connecting mtalk.google.com:5228 from 127.0.0.1:43994
+2018-09-21 10:49:58 INFO     connecting clients4.google.com:443 from 127.0.0.1:43996
+2018-09-21 10:50:40 DEBUG    destroy: clients4.google.com:443
+2018-09-21 10:50:40 DEBUG    destroying remote
+2018-09-21 10:50:40 DEBUG    destroying local
+2018-09-21 10:50:40 DEBUG    destroy: 23.client-channel.google.com:443
+2018-09-21 10:50:40 DEBUG    destroying remote
+2018-09-21 10:50:40 DEBUG    destroying local
+2018-09-21 10:50:40 DEBUG    accept
+2018-09-21 10:50:40 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:50:40 INFO     connecting 23.client-channel.google.com:443 from 127.0.0.1:44010
+2018-09-21 10:50:41 DEBUG    destroy: 23.client-channel.google.com:443
+2018-09-21 10:50:41 DEBUG    destroying remote
+2018-09-21 10:50:41 DEBUG    destroying local
+2018-09-21 10:50:43 DEBUG    destroy: mtalk.google.com:5228
+2018-09-21 10:50:43 DEBUG    destroying remote
+2018-09-21 10:50:43 DEBUG    destroying local
+2018-09-21 10:50:43 DEBUG    accept
+2018-09-21 10:50:43 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:50:43 DEBUG    accept
+2018-09-21 10:50:43 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:50:43 INFO     connecting mtalk.google.com:5228 from 127.0.0.1:44110
+2018-09-21 10:50:43 INFO     connecting clients4.google.com:443 from 127.0.0.1:44112
+2018-09-21 10:50:51 DEBUG    accept
+2018-09-21 10:50:51 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:50:51 INFO     connecting 23.client-channel.google.com:443 from 127.0.0.1:44118
+2018-09-21 10:51:13 DEBUG    destroy: mtalk.google.com:5228
+2018-09-21 10:51:13 DEBUG    destroying remote
+2018-09-21 10:51:13 DEBUG    destroying local
+2018-09-21 10:51:21 DEBUG    destroy: 23.client-channel.google.com:443
+2018-09-21 10:51:21 DEBUG    destroying remote
+2018-09-21 10:51:21 DEBUG    destroying local
+2018-09-21 10:51:25 DEBUG    destroy: clients4.google.com:443
+2018-09-21 10:51:25 DEBUG    destroying remote
+2018-09-21 10:51:25 DEBUG    destroying local
+2018-09-21 10:51:27 DEBUG    accept
+2018-09-21 10:51:27 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:51:27 INFO     connecting mtalk.google.com:443 from 127.0.0.1:44174
+2018-09-21 10:51:27 DEBUG    accept
+2018-09-21 10:51:27 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:51:27 INFO     connecting clients4.google.com:443 from 127.0.0.1:44178
+2018-09-21 10:51:46 DEBUG    accept
+2018-09-21 10:51:46 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:51:46 INFO     connecting 23.client-channel.google.com:443 from 127.0.0.1:44182
+2018-09-21 10:51:57 DEBUG    destroy: mtalk.google.com:443
+2018-09-21 10:51:57 DEBUG    destroying remote
+2018-09-21 10:51:57 DEBUG    destroying local
+2018-09-21 10:52:46 DEBUG    accept
+2018-09-21 10:52:46 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:52:46 DEBUG    accept
+2018-09-21 10:52:46 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:52:46 INFO     connecting docs.google.com:443 from 127.0.0.1:44238
+2018-09-21 10:52:46 INFO     connecting ssl.gstatic.com:443 from 127.0.0.1:44240
+2018-09-21 10:52:52 DEBUG    accept
+2018-09-21 10:52:52 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:52:52 INFO     connecting mtalk.google.com:5228 from 127.0.0.1:44246
+2018-09-21 10:53:16 DEBUG    destroy: docs.google.com:443
+2018-09-21 10:53:16 DEBUG    destroying remote
+2018-09-21 10:53:16 DEBUG    destroying local
+2018-09-21 10:56:27 DEBUG    destroy: 23.client-channel.google.com:443
+2018-09-21 10:56:27 DEBUG    destroying remote
+2018-09-21 10:56:27 DEBUG    destroying local
+2018-09-21 10:56:27 DEBUG    destroy: clients4.google.com:443
+2018-09-21 10:56:27 DEBUG    destroying remote
+2018-09-21 10:56:27 DEBUG    destroying local
+2018-09-21 10:56:27 DEBUG    destroy: ssl.gstatic.com:443
+2018-09-21 10:56:27 DEBUG    destroying remote
+2018-09-21 10:56:27 DEBUG    destroying local
+2018-09-21 10:56:27 DEBUG    accept
+2018-09-21 10:56:27 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:56:27 INFO     connecting 23.client-channel.google.com:443 from 127.0.0.1:44454
+2018-09-21 10:56:29 DEBUG    destroy: mtalk.google.com:5228
+2018-09-21 10:56:29 DEBUG    destroying remote
+2018-09-21 10:56:29 DEBUG    destroying local
+2018-09-21 10:56:29 DEBUG    accept
+2018-09-21 10:56:29 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:56:29 DEBUG    accept
+2018-09-21 10:56:29 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:56:29 INFO     connecting mtalk.google.com:5228 from 127.0.0.1:44506
+2018-09-21 10:56:29 INFO     connecting clients4.google.com:443 from 127.0.0.1:44508
+2018-09-21 10:57:10 DEBUG    destroy: clients4.google.com:443
+2018-09-21 10:57:10 DEBUG    destroying remote
+2018-09-21 10:57:10 DEBUG    destroying local
+2018-09-21 10:57:10 DEBUG    destroy: 23.client-channel.google.com:443
+2018-09-21 10:57:10 DEBUG    destroying remote
+2018-09-21 10:57:10 DEBUG    destroying local
+2018-09-21 10:57:10 DEBUG    accept
+2018-09-21 10:57:10 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:57:10 INFO     connecting 23.client-channel.google.com:443 from 127.0.0.1:44518
+2018-09-21 10:57:10 DEBUG    accept
+2018-09-21 10:57:10 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:57:10 INFO     connecting clients4.google.com:443 from 127.0.0.1:44522
+2018-09-21 10:57:12 DEBUG    destroy: clients4.google.com:443
+2018-09-21 10:57:12 DEBUG    destroying remote
+2018-09-21 10:57:12 DEBUG    destroying local
+2018-09-21 10:57:12 DEBUG    destroy: 23.client-channel.google.com:443
+2018-09-21 10:57:12 DEBUG    destroying remote
+2018-09-21 10:57:12 DEBUG    destroying local
+2018-09-21 10:57:12 DEBUG    accept
+2018-09-21 10:57:12 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:57:12 INFO     connecting 23.client-channel.google.com:443 from 127.0.0.1:44574
+2018-09-21 10:57:14 DEBUG    destroy: mtalk.google.com:5228
+2018-09-21 10:57:14 DEBUG    destroying remote
+2018-09-21 10:57:14 DEBUG    destroying local
+2018-09-21 10:57:14 DEBUG    accept
+2018-09-21 10:57:14 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:57:14 DEBUG    accept
+2018-09-21 10:57:14 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:57:14 INFO     connecting mtalk.google.com:5228 from 127.0.0.1:44626
+2018-09-21 10:57:14 INFO     connecting clients4.google.com:443 from 127.0.0.1:44628
+2018-09-21 10:57:46 DEBUG    accept
+2018-09-21 10:57:46 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:57:46 DEBUG    accept
+2018-09-21 10:57:46 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:57:46 INFO     connecting docs.google.com:443 from 127.0.0.1:44638
+2018-09-21 10:57:46 INFO     connecting ssl.gstatic.com:443 from 127.0.0.1:44640
+2018-09-21 10:57:55 DEBUG    destroy: ssl.gstatic.com:443
+2018-09-21 10:57:55 DEBUG    destroying remote
+2018-09-21 10:57:55 DEBUG    destroying local
+2018-09-21 10:57:55 DEBUG    destroy: 23.client-channel.google.com:443
+2018-09-21 10:57:55 DEBUG    destroying remote
+2018-09-21 10:57:55 DEBUG    destroying local
+2018-09-21 10:57:55 DEBUG    destroy: docs.google.com:443
+2018-09-21 10:57:55 DEBUG    destroying remote
+2018-09-21 10:57:55 DEBUG    destroying local
+2018-09-21 10:57:55 DEBUG    destroy: clients4.google.com:443
+2018-09-21 10:57:55 DEBUG    destroying remote
+2018-09-21 10:57:55 DEBUG    destroying local
+2018-09-21 10:57:55 DEBUG    accept
+2018-09-21 10:57:55 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:57:55 INFO     connecting 23.client-channel.google.com:443 from 127.0.0.1:44646
+2018-09-21 10:57:55 DEBUG    accept
+2018-09-21 10:57:55 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:57:55 INFO     connecting clients4.google.com:443 from 127.0.0.1:44650
+2018-09-21 10:57:57 DEBUG    destroy: mtalk.google.com:5228
+2018-09-21 10:57:57 DEBUG    destroying remote
+2018-09-21 10:57:57 DEBUG    destroying local
+2018-09-21 10:57:57 DEBUG    accept
+2018-09-21 10:57:57 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:57:57 INFO     connecting mtalk.google.com:5228 from 127.0.0.1:44702
+2018-09-21 10:57:57 DEBUG    destroy: mtalk.google.com:5228
+2018-09-21 10:57:57 DEBUG    destroying remote
+2018-09-21 10:57:57 DEBUG    destroying local
+2018-09-21 10:57:57 DEBUG    destroy: 23.client-channel.google.com:443
+2018-09-21 10:57:57 DEBUG    destroying remote
+2018-09-21 10:57:57 DEBUG    destroying local
+2018-09-21 10:57:57 DEBUG    destroy: clients4.google.com:443
+2018-09-21 10:57:57 DEBUG    destroying remote
+2018-09-21 10:57:57 DEBUG    destroying local
+2018-09-21 10:57:57 DEBUG    accept
+2018-09-21 10:57:57 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:57:57 DEBUG    accept
+2018-09-21 10:57:57 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:57:57 INFO     connecting 23.client-channel.google.com:443 from 127.0.0.1:44706
+2018-09-21 10:57:57 INFO     connecting clients4.google.com:443 from 127.0.0.1:44708
+2018-09-21 10:57:59 DEBUG    accept
+2018-09-21 10:57:59 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:57:59 INFO     connecting mtalk.google.com:443 from 127.0.0.1:44762
+2018-09-21 10:58:40 DEBUG    destroy: clients4.google.com:443
+2018-09-21 10:58:40 DEBUG    destroying remote
+2018-09-21 10:58:40 DEBUG    destroying local
+2018-09-21 10:58:40 DEBUG    destroy: 23.client-channel.google.com:443
+2018-09-21 10:58:40 DEBUG    destroying remote
+2018-09-21 10:58:40 DEBUG    destroying local
+2018-09-21 10:58:40 DEBUG    accept
+2018-09-21 10:58:40 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:58:40 INFO     connecting 23.client-channel.google.com:443 from 127.0.0.1:44770
+2018-09-21 10:58:42 DEBUG    destroy: 23.client-channel.google.com:443
+2018-09-21 10:58:42 DEBUG    destroying remote
+2018-09-21 10:58:42 DEBUG    destroying local
+2018-09-21 10:58:42 DEBUG    accept
+2018-09-21 10:58:42 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:58:42 INFO     connecting 23.client-channel.google.com:443 from 127.0.0.1:44822
+2018-09-21 10:58:44 DEBUG    destroy: mtalk.google.com:443
+2018-09-21 10:58:44 DEBUG    destroying remote
+2018-09-21 10:58:44 DEBUG    destroying local
+2018-09-21 10:58:44 DEBUG    accept
+2018-09-21 10:58:44 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:58:44 DEBUG    accept
+2018-09-21 10:58:44 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:58:44 INFO     connecting mtalk.google.com:5228 from 127.0.0.1:44874
+2018-09-21 10:58:44 INFO     connecting clients4.google.com:443 from 127.0.0.1:44876
+2018-09-21 10:59:25 DEBUG    destroy: 23.client-channel.google.com:443
+2018-09-21 10:59:25 DEBUG    destroying remote
+2018-09-21 10:59:25 DEBUG    destroying local
+2018-09-21 10:59:25 DEBUG    destroy: clients4.google.com:443
+2018-09-21 10:59:25 DEBUG    destroying remote
+2018-09-21 10:59:25 DEBUG    destroying local
+2018-09-21 10:59:25 DEBUG    accept
+2018-09-21 10:59:25 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:59:25 INFO     connecting 23.client-channel.google.com:443 from 127.0.0.1:44886
+2018-09-21 10:59:25 DEBUG    accept
+2018-09-21 10:59:25 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:59:25 INFO     connecting clients4.google.com:443 from 127.0.0.1:44890
+2018-09-21 10:59:27 DEBUG    destroy: mtalk.google.com:5228
+2018-09-21 10:59:27 DEBUG    destroying remote
+2018-09-21 10:59:27 DEBUG    destroying local
+2018-09-21 10:59:27 DEBUG    accept
+2018-09-21 10:59:27 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 10:59:27 INFO     connecting mtalk.google.com:5228 from 127.0.0.1:44942
+2018-09-21 11:02:46 DEBUG    accept
+2018-09-21 11:02:46 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:02:46 DEBUG    accept
+2018-09-21 11:02:46 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:02:46 INFO     connecting docs.google.com:443 from 127.0.0.1:45098
+2018-09-21 11:02:46 INFO     connecting ssl.gstatic.com:443 from 127.0.0.1:45100
+2018-09-21 11:02:50 DEBUG    accept
+2018-09-21 11:02:50 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:02:50 INFO     connecting lh4.googleusercontent.com:443 from 127.0.0.1:45106
+2018-09-21 11:02:51 DEBUG    accept
+2018-09-21 11:02:51 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:02:51 INFO     connecting lh4.googleusercontent.com:443 from 127.0.0.1:45110
+2018-09-21 11:04:27 DEBUG    got local error
+2018-09-21 11:04:27 ERROR    [Errno 104] Connection reset by peer
+2018-09-21 11:04:27 DEBUG    destroy: lh4.googleusercontent.com:443
+2018-09-21 11:04:27 DEBUG    destroying remote
+2018-09-21 11:04:27 DEBUG    destroying local
+2018-09-21 11:04:27 DEBUG    destroy: 23.client-channel.google.com:443
+2018-09-21 11:04:27 DEBUG    destroying remote
+2018-09-21 11:04:27 DEBUG    destroying local
+2018-09-21 11:04:27 DEBUG    destroy: lh4.googleusercontent.com:443
+2018-09-21 11:04:27 DEBUG    destroying remote
+2018-09-21 11:04:27 DEBUG    destroying local
+2018-09-21 11:04:27 DEBUG    destroy: docs.google.com:443
+2018-09-21 11:04:27 DEBUG    destroying remote
+2018-09-21 11:04:27 DEBUG    destroying local
+2018-09-21 11:04:27 DEBUG    destroy: ssl.gstatic.com:443
+2018-09-21 11:04:27 DEBUG    destroying remote
+2018-09-21 11:04:27 DEBUG    destroying local
+2018-09-21 11:04:27 DEBUG    destroy: clients4.google.com:443
+2018-09-21 11:04:27 DEBUG    destroying remote
+2018-09-21 11:04:27 DEBUG    destroying local
+2018-09-21 11:04:27 DEBUG    accept
+2018-09-21 11:04:27 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:04:27 INFO     connecting 23.client-channel.google.com:443 from 127.0.0.1:45210
+2018-09-21 11:04:29 DEBUG    destroy: mtalk.google.com:5228
+2018-09-21 11:04:29 DEBUG    destroying remote
+2018-09-21 11:04:29 DEBUG    destroying local
+2018-09-21 11:04:29 DEBUG    accept
+2018-09-21 11:04:29 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:04:29 DEBUG    accept
+2018-09-21 11:04:29 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:04:29 INFO     connecting mtalk.google.com:5228 from 127.0.0.1:45262
+2018-09-21 11:04:29 INFO     connecting clients4.google.com:443 from 127.0.0.1:45264
+2018-09-21 11:05:10 DEBUG    destroy: 23.client-channel.google.com:443
+2018-09-21 11:05:10 DEBUG    destroying remote
+2018-09-21 11:05:10 DEBUG    destroying local
+2018-09-21 11:05:10 DEBUG    destroy: clients4.google.com:443
+2018-09-21 11:05:10 DEBUG    destroying remote
+2018-09-21 11:05:10 DEBUG    destroying local
+2018-09-21 11:05:10 DEBUG    accept
+2018-09-21 11:05:10 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:05:10 INFO     connecting 23.client-channel.google.com:443 from 127.0.0.1:45274
+2018-09-21 11:05:12 DEBUG    destroy: 23.client-channel.google.com:443
+2018-09-21 11:05:12 DEBUG    destroying remote
+2018-09-21 11:05:12 DEBUG    destroying local
+2018-09-21 11:05:12 DEBUG    accept
+2018-09-21 11:05:12 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:05:12 INFO     connecting 23.client-channel.google.com:443 from 127.0.0.1:45326
+2018-09-21 11:05:14 DEBUG    destroy: mtalk.google.com:5228
+2018-09-21 11:05:14 DEBUG    destroying remote
+2018-09-21 11:05:14 DEBUG    destroying local
+2018-09-21 11:05:14 DEBUG    accept
+2018-09-21 11:05:14 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:05:14 DEBUG    accept
+2018-09-21 11:05:14 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:05:14 INFO     connecting mtalk.google.com:5228 from 127.0.0.1:45378
+2018-09-21 11:05:14 INFO     connecting clients4.google.com:443 from 127.0.0.1:45380
+2018-09-21 11:05:55 DEBUG    destroy: clients4.google.com:443
+2018-09-21 11:05:55 DEBUG    destroying remote
+2018-09-21 11:05:55 DEBUG    destroying local
+2018-09-21 11:05:55 DEBUG    destroy: 23.client-channel.google.com:443
+2018-09-21 11:05:55 DEBUG    destroying remote
+2018-09-21 11:05:55 DEBUG    destroying local
+2018-09-21 11:05:55 DEBUG    accept
+2018-09-21 11:05:55 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:05:55 INFO     connecting 23.client-channel.google.com:443 from 127.0.0.1:45386
+2018-09-21 11:05:57 DEBUG    destroy: 23.client-channel.google.com:443
+2018-09-21 11:05:57 DEBUG    destroying remote
+2018-09-21 11:05:57 DEBUG    destroying local
+2018-09-21 11:05:57 DEBUG    accept
+2018-09-21 11:05:57 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:05:57 INFO     connecting 23.client-channel.google.com:443 from 127.0.0.1:45438
+2018-09-21 11:05:59 DEBUG    destroy: mtalk.google.com:5228
+2018-09-21 11:05:59 DEBUG    destroying remote
+2018-09-21 11:05:59 DEBUG    destroying local
+2018-09-21 11:05:59 DEBUG    accept
+2018-09-21 11:05:59 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:05:59 DEBUG    accept
+2018-09-21 11:05:59 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:05:59 INFO     connecting clients4.google.com:443 from 127.0.0.1:45496
+2018-09-21 11:05:59 INFO     connecting mtalk.google.com:5228 from 127.0.0.1:45494
+2018-09-21 11:06:27 DEBUG    accept
+2018-09-21 11:06:27 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:06:27 INFO     connecting clients4.google.com:443 from 127.0.0.1:45502
+2018-09-21 11:06:40 DEBUG    destroy: clients4.google.com:443
+2018-09-21 11:06:40 DEBUG    destroying remote
+2018-09-21 11:06:40 DEBUG    destroying local
+2018-09-21 11:06:40 DEBUG    destroy: clients4.google.com:443
+2018-09-21 11:06:40 DEBUG    destroying remote
+2018-09-21 11:06:40 DEBUG    destroying local
+2018-09-21 11:06:40 DEBUG    destroy: 23.client-channel.google.com:443
+2018-09-21 11:06:40 DEBUG    destroying remote
+2018-09-21 11:06:40 DEBUG    destroying local
+2018-09-21 11:06:40 DEBUG    accept
+2018-09-21 11:06:40 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:06:40 INFO     connecting 23.client-channel.google.com:443 from 127.0.0.1:45506
+2018-09-21 11:06:42 DEBUG    destroy: 23.client-channel.google.com:443
+2018-09-21 11:06:42 DEBUG    destroying remote
+2018-09-21 11:06:42 DEBUG    destroying local
+2018-09-21 11:06:44 DEBUG    destroy: mtalk.google.com:5228
+2018-09-21 11:06:44 DEBUG    destroying remote
+2018-09-21 11:06:44 DEBUG    destroying local
+2018-09-21 11:06:44 DEBUG    accept
+2018-09-21 11:06:44 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:06:44 DEBUG    accept
+2018-09-21 11:06:44 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:06:44 INFO     connecting mtalk.google.com:5228 from 127.0.0.1:45606
+2018-09-21 11:06:44 INFO     connecting clients4.google.com:443 from 127.0.0.1:45608
+2018-09-21 11:06:56 DEBUG    accept
+2018-09-21 11:06:56 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:06:56 INFO     connecting 23.client-channel.google.com:443 from 127.0.0.1:45614
+2018-09-21 11:07:25 DEBUG    destroy: 23.client-channel.google.com:443
+2018-09-21 11:07:25 DEBUG    destroying remote
+2018-09-21 11:07:25 DEBUG    destroying local
+2018-09-21 11:07:25 DEBUG    destroy: clients4.google.com:443
+2018-09-21 11:07:25 DEBUG    destroying remote
+2018-09-21 11:07:25 DEBUG    destroying local
+2018-09-21 11:07:25 DEBUG    accept
+2018-09-21 11:07:25 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:07:25 INFO     connecting 23.client-channel.google.com:443 from 127.0.0.1:45618
+2018-09-21 11:07:27 DEBUG    destroy: mtalk.google.com:5228
+2018-09-21 11:07:27 DEBUG    destroying remote
+2018-09-21 11:07:27 DEBUG    destroying local
+2018-09-21 11:07:27 DEBUG    accept
+2018-09-21 11:07:27 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:07:27 DEBUG    accept
+2018-09-21 11:07:27 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:07:27 INFO     connecting mtalk.google.com:5228 from 127.0.0.1:45670
+2018-09-21 11:07:27 INFO     connecting clients4.google.com:443 from 127.0.0.1:45672
+2018-09-21 11:07:46 DEBUG    accept
+2018-09-21 11:07:46 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:07:46 DEBUG    accept
+2018-09-21 11:07:46 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:07:46 INFO     connecting docs.google.com:443 from 127.0.0.1:45682
+2018-09-21 11:07:46 INFO     connecting ssl.gstatic.com:443 from 127.0.0.1:45684
+2018-09-21 11:08:30 DEBUG    got local error
+2018-09-21 11:08:30 ERROR    [Errno 104] Connection reset by peer
+2018-09-21 11:08:30 DEBUG    destroy: docs.google.com:443
+2018-09-21 11:08:30 DEBUG    destroying remote
+2018-09-21 11:08:30 DEBUG    destroying local
+2018-09-21 11:08:30 DEBUG    accept
+2018-09-21 11:08:30 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:08:30 INFO     connecting www.googleapis.com:443 from 127.0.0.1:45738
+2018-09-21 11:08:32 DEBUG    accept
+2018-09-21 11:08:32 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:08:32 INFO     connecting lh5.googleusercontent.com:443 from 127.0.0.1:45742
+2018-09-21 11:11:47 DEBUG    destroy: ssl.gstatic.com:443
+2018-09-21 11:11:47 DEBUG    destroying remote
+2018-09-21 11:11:47 DEBUG    destroying local
+2018-09-21 11:12:27 DEBUG    destroy: lh5.googleusercontent.com:443
+2018-09-21 11:12:27 DEBUG    destroying remote
+2018-09-21 11:12:27 DEBUG    destroying local
+2018-09-21 11:12:27 DEBUG    destroy: clients4.google.com:443
+2018-09-21 11:12:27 DEBUG    destroying remote
+2018-09-21 11:12:27 DEBUG    destroying local
+2018-09-21 11:12:27 DEBUG    destroy: www.googleapis.com:443
+2018-09-21 11:12:27 DEBUG    destroying remote
+2018-09-21 11:12:27 DEBUG    destroying local
+2018-09-21 11:12:27 WARNING  timed out: mtalk.google.com:5228
+2018-09-21 11:12:27 DEBUG    destroy: mtalk.google.com:5228
+2018-09-21 11:12:27 DEBUG    destroying remote
+2018-09-21 11:12:27 DEBUG    destroying local
+2018-09-21 11:12:27 DEBUG    destroy: 23.client-channel.google.com:443
+2018-09-21 11:12:27 DEBUG    destroying remote
+2018-09-21 11:12:27 DEBUG    destroying local
+2018-09-21 11:12:27 DEBUG    accept
+2018-09-21 11:12:27 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:12:27 DEBUG    accept
+2018-09-21 11:12:27 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:12:27 INFO     connecting mtalk.google.com:5228 from 127.0.0.1:45944
+2018-09-21 11:12:27 INFO     connecting 23.client-channel.google.com:443 from 127.0.0.1:45946
+2018-09-21 11:12:29 DEBUG    destroy: mtalk.google.com:5228
+2018-09-21 11:12:29 DEBUG    destroying remote
+2018-09-21 11:12:29 DEBUG    destroying local
+2018-09-21 11:12:29 DEBUG    accept
+2018-09-21 11:12:29 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:12:29 DEBUG    accept
+2018-09-21 11:12:29 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:12:29 INFO     connecting mtalk.google.com:5228 from 127.0.0.1:46000
+2018-09-21 11:12:29 INFO     connecting clients4.google.com:443 from 127.0.0.1:46002
+2018-09-21 11:12:46 DEBUG    accept
+2018-09-21 11:12:46 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:12:46 DEBUG    accept
+2018-09-21 11:12:46 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:12:46 INFO     connecting docs.google.com:443 from 127.0.0.1:46012
+2018-09-21 11:12:46 INFO     connecting ssl.gstatic.com:443 from 127.0.0.1:46014
+2018-09-21 11:12:49 DEBUG    accept
+2018-09-21 11:12:49 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:12:49 INFO     connecting play.google.com:443 from 127.0.0.1:46020
+2018-09-21 11:12:50 DEBUG    accept
+2018-09-21 11:12:50 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:12:50 INFO     connecting play.google.com:443 from 127.0.0.1:46024
+2018-09-21 11:13:10 DEBUG    got local error
+2018-09-21 11:13:10 ERROR    [Errno 104] Connection reset by peer
+2018-09-21 11:13:10 DEBUG    destroy: docs.google.com:443
+2018-09-21 11:13:10 DEBUG    destroying remote
+2018-09-21 11:13:10 DEBUG    destroying local
+2018-09-21 11:13:10 DEBUG    destroy: play.google.com:443
+2018-09-21 11:13:10 DEBUG    destroying remote
+2018-09-21 11:13:10 DEBUG    destroying local
+2018-09-21 11:13:10 DEBUG    destroy: 23.client-channel.google.com:443
+2018-09-21 11:13:10 DEBUG    destroying remote
+2018-09-21 11:13:10 DEBUG    destroying local
+2018-09-21 11:13:10 DEBUG    destroy: play.google.com:443
+2018-09-21 11:13:10 DEBUG    destroying remote
+2018-09-21 11:13:10 DEBUG    destroying local
+2018-09-21 11:13:10 DEBUG    destroy: ssl.gstatic.com:443
+2018-09-21 11:13:10 DEBUG    destroying remote
+2018-09-21 11:13:10 DEBUG    destroying local
+2018-09-21 11:13:10 DEBUG    destroy: clients4.google.com:443
+2018-09-21 11:13:10 DEBUG    destroying remote
+2018-09-21 11:13:10 DEBUG    destroying local
+2018-09-21 11:13:10 DEBUG    accept
+2018-09-21 11:13:10 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:13:10 INFO     connecting 23.client-channel.google.com:443 from 127.0.0.1:46028
+2018-09-21 11:13:11 DEBUG    destroy: 23.client-channel.google.com:443
+2018-09-21 11:13:11 DEBUG    destroying remote
+2018-09-21 11:13:11 DEBUG    destroying local
+2018-09-21 11:13:13 DEBUG    destroy: mtalk.google.com:5228
+2018-09-21 11:13:13 DEBUG    destroying remote
+2018-09-21 11:13:13 DEBUG    destroying local
+2018-09-21 11:13:13 DEBUG    accept
+2018-09-21 11:13:13 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:13:13 DEBUG    accept
+2018-09-21 11:13:13 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:13:13 INFO     connecting mtalk.google.com:5228 from 127.0.0.1:46128
+2018-09-21 11:13:13 INFO     connecting clients4.google.com:443 from 127.0.0.1:46130
+2018-09-21 11:13:26 DEBUG    accept
+2018-09-21 11:13:26 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:13:26 INFO     connecting 23.client-channel.google.com:443 from 127.0.0.1:46136
+2018-09-21 11:13:55 DEBUG    destroy: clients4.google.com:443
+2018-09-21 11:13:55 DEBUG    destroying remote
+2018-09-21 11:13:55 DEBUG    destroying local
+2018-09-21 11:13:55 DEBUG    destroy: 23.client-channel.google.com:443
+2018-09-21 11:13:55 DEBUG    destroying remote
+2018-09-21 11:13:55 DEBUG    destroying local
+2018-09-21 11:13:55 DEBUG    accept
+2018-09-21 11:13:55 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:13:55 INFO     connecting 23.client-channel.google.com:443 from 127.0.0.1:46140
+2018-09-21 11:13:55 DEBUG    accept
+2018-09-21 11:13:55 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:13:55 INFO     connecting clients4.google.com:443 from 127.0.0.1:46144
+2018-09-21 11:13:57 DEBUG    destroy: clients4.google.com:443
+2018-09-21 11:13:57 DEBUG    destroying remote
+2018-09-21 11:13:57 DEBUG    destroying local
+2018-09-21 11:13:57 DEBUG    destroy: 23.client-channel.google.com:443
+2018-09-21 11:13:57 DEBUG    destroying remote
+2018-09-21 11:13:57 DEBUG    destroying local
+2018-09-21 11:13:57 DEBUG    accept
+2018-09-21 11:13:57 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:13:57 INFO     connecting 23.client-channel.google.com:443 from 127.0.0.1:46196
+2018-09-21 11:13:59 DEBUG    destroy: mtalk.google.com:5228
+2018-09-21 11:13:59 DEBUG    destroying remote
+2018-09-21 11:13:59 DEBUG    destroying local
+2018-09-21 11:13:59 DEBUG    accept
+2018-09-21 11:13:59 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:13:59 INFO     connecting mtalk.google.com:5228 from 127.0.0.1:46248
+2018-09-21 11:13:59 DEBUG    accept
+2018-09-21 11:13:59 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:13:59 INFO     connecting clients4.google.com:443 from 127.0.0.1:46252
+2018-09-21 11:14:40 DEBUG    destroy: 23.client-channel.google.com:443
+2018-09-21 11:14:40 DEBUG    destroying remote
+2018-09-21 11:14:40 DEBUG    destroying local
+2018-09-21 11:14:40 DEBUG    destroy: clients4.google.com:443
+2018-09-21 11:14:40 DEBUG    destroying remote
+2018-09-21 11:14:40 DEBUG    destroying local
+2018-09-21 11:14:40 DEBUG    accept
+2018-09-21 11:14:40 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:14:40 INFO     connecting 23.client-channel.google.com:443 from 127.0.0.1:46260
+2018-09-21 11:14:40 DEBUG    accept
+2018-09-21 11:14:40 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:14:40 INFO     connecting clients4.google.com:443 from 127.0.0.1:46264
+2018-09-21 11:14:42 DEBUG    destroy: clients4.google.com:443
+2018-09-21 11:14:42 DEBUG    destroying remote
+2018-09-21 11:14:42 DEBUG    destroying local
+2018-09-21 11:14:42 DEBUG    destroy: 23.client-channel.google.com:443
+2018-09-21 11:14:42 DEBUG    destroying remote
+2018-09-21 11:14:42 DEBUG    destroying local
+2018-09-21 11:14:42 DEBUG    accept
+2018-09-21 11:14:42 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:14:42 INFO     connecting 23.client-channel.google.com:443 from 127.0.0.1:46316
+2018-09-21 11:14:44 DEBUG    destroy: mtalk.google.com:5228
+2018-09-21 11:14:44 DEBUG    destroying remote
+2018-09-21 11:14:44 DEBUG    destroying local
+2018-09-21 11:14:44 DEBUG    accept
+2018-09-21 11:14:44 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:14:44 DEBUG    accept
+2018-09-21 11:14:44 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:14:44 INFO     connecting mtalk.google.com:5228 from 127.0.0.1:46368
+2018-09-21 11:14:44 INFO     connecting clients4.google.com:443 from 127.0.0.1:46370
+2018-09-21 11:15:25 DEBUG    destroy: clients4.google.com:443
+2018-09-21 11:15:25 DEBUG    destroying remote
+2018-09-21 11:15:25 DEBUG    destroying local
+2018-09-21 11:15:25 DEBUG    destroy: 23.client-channel.google.com:443
+2018-09-21 11:15:25 DEBUG    destroying remote
+2018-09-21 11:15:25 DEBUG    destroying local
+2018-09-21 11:15:25 DEBUG    accept
+2018-09-21 11:15:25 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:15:25 INFO     connecting 23.client-channel.google.com:443 from 127.0.0.1:46378
+2018-09-21 11:15:25 DEBUG    accept
+2018-09-21 11:15:25 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:15:25 INFO     connecting clients4.google.com:443 from 127.0.0.1:46382
+2018-09-21 11:15:27 DEBUG    destroy: mtalk.google.com:5228
+2018-09-21 11:15:27 DEBUG    destroying remote
+2018-09-21 11:15:27 DEBUG    destroying local
+2018-09-21 11:15:27 DEBUG    accept
+2018-09-21 11:15:27 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:15:27 INFO     connecting mtalk.google.com:5228 from 127.0.0.1:46434
+2018-09-21 11:15:54 DEBUG    accept
+2018-09-21 11:15:54 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:15:54 INFO     connecting clients2.google.com:443 from 127.0.0.1:46442
+2018-09-21 11:16:30 DEBUG    accept
+2018-09-21 11:16:30 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:16:30 INFO     connecting android.clients.google.com:443 from 127.0.0.1:46494
+2018-09-21 11:17:46 DEBUG    accept
+2018-09-21 11:17:46 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:17:46 DEBUG    accept
+2018-09-21 11:17:46 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:17:46 DEBUG    accept
+2018-09-21 11:17:46 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:17:46 INFO     connecting docs.google.com:443 from 127.0.0.1:46546
+2018-09-21 11:17:46 INFO     connecting play.google.com:443 from 127.0.0.1:46548
+2018-09-21 11:17:46 INFO     connecting ssl.gstatic.com:443 from 127.0.0.1:46550
+2018-09-21 11:19:57 DEBUG    destroy: clients2.google.com:443
+2018-09-21 11:19:57 DEBUG    destroying remote
+2018-09-21 11:19:57 DEBUG    destroying local
+2018-09-21 11:20:26 DEBUG    got local error
+2018-09-21 11:20:26 ERROR    [Errno 104] Connection reset by peer
+2018-09-21 11:20:26 DEBUG    destroy: docs.google.com:443
+2018-09-21 11:20:26 DEBUG    destroying remote
+2018-09-21 11:20:26 DEBUG    destroying local
+2018-09-21 11:20:26 DEBUG    got local error
+2018-09-21 11:20:26 ERROR    [Errno 104] Connection reset by peer
+2018-09-21 11:20:26 DEBUG    destroy: play.google.com:443
+2018-09-21 11:20:26 DEBUG    destroying remote
+2018-09-21 11:20:26 DEBUG    destroying local
+2018-09-21 11:20:26 DEBUG    destroy: 23.client-channel.google.com:443
+2018-09-21 11:20:26 DEBUG    destroying remote
+2018-09-21 11:20:26 DEBUG    destroying local
+2018-09-21 11:20:26 DEBUG    destroy: android.clients.google.com:443
+2018-09-21 11:20:26 DEBUG    destroying remote
+2018-09-21 11:20:26 DEBUG    destroying local
+2018-09-21 11:20:26 DEBUG    destroy: ssl.gstatic.com:443
+2018-09-21 11:20:26 DEBUG    destroying remote
+2018-09-21 11:20:26 DEBUG    destroying local
+2018-09-21 11:20:26 DEBUG    destroy: clients4.google.com:443
+2018-09-21 11:20:26 DEBUG    destroying remote
+2018-09-21 11:20:26 DEBUG    destroying local
+2018-09-21 11:20:26 DEBUG    accept
+2018-09-21 11:20:26 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:20:26 INFO     connecting 23.client-channel.google.com:443 from 127.0.0.1:46708
+2018-09-21 11:20:28 DEBUG    destroy: mtalk.google.com:5228
+2018-09-21 11:20:28 DEBUG    destroying remote
+2018-09-21 11:20:28 DEBUG    destroying local
+2018-09-21 11:20:28 DEBUG    accept
+2018-09-21 11:20:28 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:20:28 INFO     connecting mtalk.google.com:5228 from 127.0.0.1:46760
+2018-09-21 11:20:48 DEBUG    accept
+2018-09-21 11:20:48 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:20:48 INFO     connecting clients4.google.com:443 from 127.0.0.1:46774
+2018-09-21 11:21:03 DEBUG    accept
+2018-09-21 11:21:03 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:21:03 INFO     connecting www.googleapis.com:443 from 127.0.0.1:46778
+2018-09-21 11:21:03 DEBUG    accept
+2018-09-21 11:21:03 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:21:03 INFO     connecting clients4.google.com:443 from 127.0.0.1:46782
+2018-09-21 11:21:10 DEBUG    destroy: 23.client-channel.google.com:443
+2018-09-21 11:21:10 DEBUG    destroying remote
+2018-09-21 11:21:10 DEBUG    destroying local
+2018-09-21 11:21:10 DEBUG    destroy: clients4.google.com:443
+2018-09-21 11:21:10 DEBUG    destroying remote
+2018-09-21 11:21:10 DEBUG    destroying local
+2018-09-21 11:21:10 DEBUG    destroy: clients4.google.com:443
+2018-09-21 11:21:10 DEBUG    destroying remote
+2018-09-21 11:21:10 DEBUG    destroying local
+2018-09-21 11:21:10 DEBUG    destroy: www.googleapis.com:443
+2018-09-21 11:21:10 DEBUG    destroying remote
+2018-09-21 11:21:10 DEBUG    destroying local
+2018-09-21 11:21:10 DEBUG    accept
+2018-09-21 11:21:10 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:21:10 INFO     connecting 23.client-channel.google.com:443 from 127.0.0.1:46790
+2018-09-21 11:21:12 DEBUG    destroy: 23.client-channel.google.com:443
+2018-09-21 11:21:12 DEBUG    destroying remote
+2018-09-21 11:21:12 DEBUG    destroying local
+2018-09-21 11:21:12 DEBUG    accept
+2018-09-21 11:21:12 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:21:12 INFO     connecting 23.client-channel.google.com:443 from 127.0.0.1:46842
+2018-09-21 11:21:14 DEBUG    destroy: mtalk.google.com:5228
+2018-09-21 11:21:14 DEBUG    destroying remote
+2018-09-21 11:21:14 DEBUG    destroying local
+2018-09-21 11:21:14 DEBUG    accept
+2018-09-21 11:21:14 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:21:14 INFO     connecting mtalk.google.com:5228 from 127.0.0.1:46894
+2018-09-21 11:21:26 DEBUG    accept
+2018-09-21 11:21:26 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:21:26 INFO     connecting www.googleapis.com:443 from 127.0.0.1:46898
+2018-09-21 11:21:26 DEBUG    accept
+2018-09-21 11:21:26 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:21:26 INFO     connecting clients4.google.com:443 from 127.0.0.1:46902
+2018-09-21 11:21:55 DEBUG    destroy: 23.client-channel.google.com:443
+2018-09-21 11:21:55 DEBUG    destroying remote
+2018-09-21 11:21:55 DEBUG    destroying local
+2018-09-21 11:21:55 DEBUG    destroy: clients4.google.com:443
+2018-09-21 11:21:55 DEBUG    destroying remote
+2018-09-21 11:21:55 DEBUG    destroying local
+2018-09-21 11:21:55 DEBUG    destroy: www.googleapis.com:443
+2018-09-21 11:21:55 DEBUG    destroying remote
+2018-09-21 11:21:55 DEBUG    destroying local
+2018-09-21 11:21:55 DEBUG    accept
+2018-09-21 11:21:55 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:21:55 INFO     connecting 23.client-channel.google.com:443 from 127.0.0.1:46906
+2018-09-21 11:21:57 DEBUG    destroy: 23.client-channel.google.com:443
+2018-09-21 11:21:57 DEBUG    destroying remote
+2018-09-21 11:21:57 DEBUG    destroying local
+2018-09-21 11:21:57 DEBUG    accept
+2018-09-21 11:21:57 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:21:57 INFO     connecting 23.client-channel.google.com:443 from 127.0.0.1:46958
+2018-09-21 11:21:59 DEBUG    destroy: mtalk.google.com:5228
+2018-09-21 11:21:59 DEBUG    destroying remote
+2018-09-21 11:21:59 DEBUG    destroying local
+2018-09-21 11:21:59 DEBUG    accept
+2018-09-21 11:21:59 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:21:59 INFO     connecting mtalk.google.com:5228 from 127.0.0.1:47010
+2018-09-21 11:22:00 DEBUG    accept
+2018-09-21 11:22:00 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:22:00 INFO     connecting clients4.google.com:443 from 127.0.0.1:47014
+2018-09-21 11:22:04 DEBUG    accept
+2018-09-21 11:22:04 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:22:04 INFO     connecting www.googleapis.com:443 from 127.0.0.1:47018
+2018-09-21 11:22:05 DEBUG    accept
+2018-09-21 11:22:05 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:22:05 INFO     connecting clients4.google.com:443 from 127.0.0.1:47022
+2018-09-21 11:22:40 DEBUG    destroy: clients4.google.com:443
+2018-09-21 11:22:40 DEBUG    destroying remote
+2018-09-21 11:22:40 DEBUG    destroying local
+2018-09-21 11:22:40 DEBUG    destroy: 23.client-channel.google.com:443
+2018-09-21 11:22:40 DEBUG    destroying remote
+2018-09-21 11:22:40 DEBUG    destroying local
+2018-09-21 11:22:40 DEBUG    destroy: clients4.google.com:443
+2018-09-21 11:22:40 DEBUG    destroying remote
+2018-09-21 11:22:40 DEBUG    destroying local
+2018-09-21 11:22:40 DEBUG    destroy: www.googleapis.com:443
+2018-09-21 11:22:40 DEBUG    destroying remote
+2018-09-21 11:22:40 DEBUG    destroying local
+2018-09-21 11:22:40 DEBUG    accept
+2018-09-21 11:22:40 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:22:40 INFO     connecting 23.client-channel.google.com:443 from 127.0.0.1:47030
+2018-09-21 11:22:42 DEBUG    destroy: 23.client-channel.google.com:443
+2018-09-21 11:22:42 DEBUG    destroying remote
+2018-09-21 11:22:42 DEBUG    destroying local
+2018-09-21 11:22:44 DEBUG    destroy: mtalk.google.com:5228
+2018-09-21 11:22:44 DEBUG    destroying remote
+2018-09-21 11:22:44 DEBUG    destroying local
+2018-09-21 11:22:44 DEBUG    accept
+2018-09-21 11:22:44 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:22:44 INFO     connecting mtalk.google.com:5228 from 127.0.0.1:47130
+2018-09-21 11:22:44 DEBUG    accept
+2018-09-21 11:22:44 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:22:44 INFO     connecting clients4.google.com:443 from 127.0.0.1:47132
+2018-09-21 11:22:49 DEBUG    accept
+2018-09-21 11:22:49 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:22:49 INFO     connecting 23.client-channel.google.com:443 from 127.0.0.1:47138
+2018-09-21 11:23:15 DEBUG    accept
+2018-09-21 11:23:15 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:23:15 INFO     connecting clients2.google.com:443 from 127.0.0.1:47150
+2018-09-21 11:23:23 DEBUG    accept
+2018-09-21 11:23:23 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:23:23 INFO     connecting www.googleapis.com:443 from 127.0.0.1:47154
+2018-09-21 11:23:23 DEBUG    accept
+2018-09-21 11:23:23 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:23:23 INFO     connecting clients4.google.com:443 from 127.0.0.1:47158
+2018-09-21 11:23:25 DEBUG    destroy: www.googleapis.com:443
+2018-09-21 11:23:25 DEBUG    destroying remote
+2018-09-21 11:23:25 DEBUG    destroying local
+2018-09-21 11:23:25 DEBUG    destroy: clients4.google.com:443
+2018-09-21 11:23:25 DEBUG    destroying remote
+2018-09-21 11:23:25 DEBUG    destroying local
+2018-09-21 11:23:25 DEBUG    destroy: clients2.google.com:443
+2018-09-21 11:23:25 DEBUG    destroying remote
+2018-09-21 11:23:25 DEBUG    destroying local
+2018-09-21 11:23:25 DEBUG    destroy: 23.client-channel.google.com:443
+2018-09-21 11:23:25 DEBUG    destroying remote
+2018-09-21 11:23:25 DEBUG    destroying local
+2018-09-21 11:23:25 DEBUG    destroy: clients4.google.com:443
+2018-09-21 11:23:25 DEBUG    destroying remote
+2018-09-21 11:23:25 DEBUG    destroying local
+2018-09-21 11:23:25 DEBUG    accept
+2018-09-21 11:23:25 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:23:25 DEBUG    accept
+2018-09-21 11:23:25 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:23:25 INFO     connecting www.googleapis.com:443 from 127.0.0.1:47162
+2018-09-21 11:23:25 INFO     connecting 23.client-channel.google.com:443 from 127.0.0.1:47164
+2018-09-21 11:23:25 DEBUG    accept
+2018-09-21 11:23:25 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:23:25 INFO     connecting clients4.google.com:443 from 127.0.0.1:47170
+2018-09-21 11:23:26 DEBUG    accept
+2018-09-21 11:23:26 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:23:26 INFO     connecting clients4.google.com:443 from 127.0.0.1:47222
+2018-09-21 11:23:27 DEBUG    destroy: mtalk.google.com:5228
+2018-09-21 11:23:27 DEBUG    destroying remote
+2018-09-21 11:23:27 DEBUG    destroying local
+2018-09-21 11:23:27 DEBUG    accept
+2018-09-21 11:23:27 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:23:27 INFO     connecting mtalk.google.com:5228 from 127.0.0.1:47226
+2018-09-21 11:23:42 DEBUG    accept
+2018-09-21 11:23:42 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:23:42 DEBUG    accept
+2018-09-21 11:23:42 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:23:42 DEBUG    accept
+2018-09-21 11:23:42 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:23:42 INFO     connecting docs.google.com:443 from 127.0.0.1:47230
+2018-09-21 11:23:42 INFO     connecting play.google.com:443 from 127.0.0.1:47232
+2018-09-21 11:23:42 INFO     connecting ssl.gstatic.com:443 from 127.0.0.1:47234
+2018-09-21 11:24:03 DEBUG    accept
+2018-09-21 11:24:03 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:24:03 INFO     connecting ssl.gstatic.com:443 from 127.0.0.1:47242
+2018-09-21 11:24:12 DEBUG    destroy: docs.google.com:443
+2018-09-21 11:24:12 DEBUG    destroying remote
+2018-09-21 11:24:12 DEBUG    destroying local
+2018-09-21 11:24:12 DEBUG    destroy: play.google.com:443
+2018-09-21 11:24:12 DEBUG    destroying remote
+2018-09-21 11:24:12 DEBUG    destroying local
+2018-09-21 11:24:12 DEBUG    destroy: ssl.gstatic.com:443
+2018-09-21 11:24:12 DEBUG    destroying remote
+2018-09-21 11:24:12 DEBUG    destroying local
+2018-09-21 11:24:32 DEBUG    got remote error
+2018-09-21 11:24:32 ERROR    [Errno 104] Connection reset by peer
+2018-09-21 11:24:32 DEBUG    destroy: clients4.google.com:443
+2018-09-21 11:24:32 DEBUG    destroying remote
+2018-09-21 11:24:32 DEBUG    destroying local
+2018-09-21 11:24:32 DEBUG    got remote error
+2018-09-21 11:24:32 ERROR    [Errno 104] Connection reset by peer
+2018-09-21 11:24:32 DEBUG    destroy: 23.client-channel.google.com:443
+2018-09-21 11:24:32 DEBUG    destroying remote
+2018-09-21 11:24:32 DEBUG    destroying local
+2018-09-21 11:24:32 DEBUG    got remote error
+2018-09-21 11:24:32 ERROR    [Errno 104] Connection reset by peer
+2018-09-21 11:24:32 DEBUG    destroy: mtalk.google.com:5228
+2018-09-21 11:24:32 DEBUG    destroying remote
+2018-09-21 11:24:32 DEBUG    destroying local
+2018-09-21 11:24:32 DEBUG    got remote error
+2018-09-21 11:24:32 ERROR    [Errno 104] Connection reset by peer
+2018-09-21 11:24:32 DEBUG    destroy: clients4.google.com:443
+2018-09-21 11:24:32 DEBUG    destroying remote
+2018-09-21 11:24:32 DEBUG    destroying local
+2018-09-21 11:24:32 DEBUG    accept
+2018-09-21 11:24:32 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:24:32 DEBUG    accept
+2018-09-21 11:24:32 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:24:32 INFO     connecting mtalk.google.com:5228 from 127.0.0.1:47302
+2018-09-21 11:24:32 DEBUG    got remote error
+2018-09-21 11:24:32 ERROR    [Errno 104] Connection reset by peer
+2018-09-21 11:24:32 DEBUG    destroy: www.googleapis.com:443
+2018-09-21 11:24:32 DEBUG    destroying remote
+2018-09-21 11:24:32 DEBUG    destroying local
+2018-09-21 11:24:32 INFO     connecting 23.client-channel.google.com:443 from 127.0.0.1:47304
+2018-09-21 11:24:33 DEBUG    destroy: ssl.gstatic.com:443
+2018-09-21 11:24:33 DEBUG    destroying remote
+2018-09-21 11:24:33 DEBUG    destroying local
+2018-09-21 11:25:02 DEBUG    destroy: mtalk.google.com:5228
+2018-09-21 11:25:02 DEBUG    destroying remote
+2018-09-21 11:25:02 DEBUG    destroying local
+2018-09-21 11:25:02 DEBUG    destroy: 23.client-channel.google.com:443
+2018-09-21 11:25:02 DEBUG    destroying remote
+2018-09-21 11:25:02 DEBUG    destroying local
+2018-09-21 11:25:14 DEBUG    accept
+2018-09-21 11:25:14 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:25:14 INFO     connecting 23.client-channel.google.com:443 from 127.0.0.1:47342
+2018-09-21 11:25:22 DEBUG    accept
+2018-09-21 11:25:22 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:25:22 INFO     connecting mtalk.google.com:443 from 127.0.0.1:47346
+2018-09-21 11:25:24 DEBUG    got remote error
+2018-09-21 11:25:24 ERROR    [Errno 104] Connection reset by peer
+2018-09-21 11:25:24 DEBUG    destroy: 23.client-channel.google.com:443
+2018-09-21 11:25:24 DEBUG    destroying remote
+2018-09-21 11:25:24 DEBUG    destroying local
+2018-09-21 11:25:24 DEBUG    accept
+2018-09-21 11:25:24 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:25:24 INFO     connecting 23.client-channel.google.com:443 from 127.0.0.1:47350
+2018-09-21 11:25:52 DEBUG    destroy: mtalk.google.com:443
+2018-09-21 11:25:52 DEBUG    destroying remote
+2018-09-21 11:25:52 DEBUG    destroying local
+2018-09-21 11:25:54 DEBUG    destroy: 23.client-channel.google.com:443
+2018-09-21 11:25:54 DEBUG    destroying remote
+2018-09-21 11:25:54 DEBUG    destroying local
+2018-09-21 11:26:07 DEBUG    accept
+2018-09-21 11:26:07 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:26:07 INFO     connecting 23.client-channel.google.com:443 from 127.0.0.1:47402
+2018-09-21 11:26:37 DEBUG    destroy: 23.client-channel.google.com:443
+2018-09-21 11:26:37 DEBUG    destroying remote
+2018-09-21 11:26:37 DEBUG    destroying local
+2018-09-21 11:26:41 DEBUG    accept
+2018-09-21 11:26:41 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:26:41 INFO     connecting 23.client-channel.google.com:443 from 127.0.0.1:47462
+2018-09-21 11:26:42 DEBUG    accept
+2018-09-21 11:26:42 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:26:42 INFO     connecting 23.client-channel.google.com:443 from 127.0.0.1:47466
+2018-09-21 11:26:50 DEBUG    accept
+2018-09-21 11:26:50 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:26:50 INFO     connecting mtalk.google.com:5228 from 127.0.0.1:47470
+2018-09-21 11:27:11 DEBUG    destroy: 23.client-channel.google.com:443
+2018-09-21 11:27:11 DEBUG    destroying remote
+2018-09-21 11:27:11 DEBUG    destroying local
+2018-09-21 11:27:12 DEBUG    destroy: 23.client-channel.google.com:443
+2018-09-21 11:27:12 DEBUG    destroying remote
+2018-09-21 11:27:12 DEBUG    destroying local
+2018-09-21 11:27:16 DEBUG    accept
+2018-09-21 11:27:16 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:27:16 INFO     connecting 23.client-channel.google.com:443 from 127.0.0.1:47474
+2018-09-21 11:27:20 DEBUG    destroy: mtalk.google.com:5228
+2018-09-21 11:27:20 DEBUG    destroying remote
+2018-09-21 11:27:20 DEBUG    destroying local
+2018-09-21 11:27:46 DEBUG    destroy: 23.client-channel.google.com:443
+2018-09-21 11:27:46 DEBUG    destroying remote
+2018-09-21 11:27:46 DEBUG    destroying local
+2018-09-21 11:27:46 DEBUG    accept
+2018-09-21 11:27:46 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:27:46 DEBUG    accept
+2018-09-21 11:27:46 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:27:46 DEBUG    accept
+2018-09-21 11:27:46 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:27:46 INFO     connecting docs.google.com:443 from 127.0.0.1:47526
+2018-09-21 11:27:46 INFO     connecting play.google.com:443 from 127.0.0.1:47528
+2018-09-21 11:27:46 INFO     connecting ssl.gstatic.com:443 from 127.0.0.1:47530
+2018-09-21 11:28:04 DEBUG    accept
+2018-09-21 11:28:04 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:28:04 INFO     connecting 23.client-channel.google.com:443 from 127.0.0.1:47538
+2018-09-21 11:28:07 DEBUG    accept
+2018-09-21 11:28:07 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:28:07 INFO     connecting ssl.gstatic.com:443 from 127.0.0.1:47542
+2018-09-21 11:28:16 DEBUG    destroy: docs.google.com:443
+2018-09-21 11:28:16 DEBUG    destroying remote
+2018-09-21 11:28:16 DEBUG    destroying local
+2018-09-21 11:28:16 DEBUG    destroy: play.google.com:443
+2018-09-21 11:28:16 DEBUG    destroying remote
+2018-09-21 11:28:16 DEBUG    destroying local
+2018-09-21 11:28:16 DEBUG    destroy: ssl.gstatic.com:443
+2018-09-21 11:28:16 DEBUG    destroying remote
+2018-09-21 11:28:16 DEBUG    destroying local
+2018-09-21 11:28:20 DEBUG    got remote error
+2018-09-21 11:28:20 ERROR    [Errno 113] No route to host
+2018-09-21 11:28:20 DEBUG    destroy: 23.client-channel.google.com:443
+2018-09-21 11:28:20 DEBUG    destroying remote
+2018-09-21 11:28:20 DEBUG    destroying local
+2018-09-21 11:28:20 DEBUG    accept
+2018-09-21 11:28:20 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:28:20 INFO     connecting 23.client-channel.google.com:443 from 127.0.0.1:47546
+2018-09-21 11:28:20 DEBUG    got remote error
+2018-09-21 11:28:20 ERROR    [Errno 113] No route to host
+2018-09-21 11:28:20 DEBUG    destroy: 23.client-channel.google.com:443
+2018-09-21 11:28:20 DEBUG    destroying remote
+2018-09-21 11:28:20 DEBUG    destroying local
+2018-09-21 11:28:25 DEBUG    destroy: ssl.gstatic.com:443
+2018-09-21 11:28:25 DEBUG    destroying remote
+2018-09-21 11:28:25 DEBUG    destroying local
+2018-09-21 11:28:29 DEBUG    accept
+2018-09-21 11:28:29 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:28:29 INFO     connecting mtalk.google.com:443 from 127.0.0.1:47694
+2018-09-21 11:28:29 DEBUG    accept
+2018-09-21 11:28:29 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:28:29 INFO     connecting clients4.google.com:443 from 127.0.0.1:47698
+2018-09-21 11:28:30 DEBUG    accept
+2018-09-21 11:28:30 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:28:30 INFO     connecting 23.client-channel.google.com:443 from 127.0.0.1:47702
+2018-09-21 11:28:59 DEBUG    destroy: mtalk.google.com:443
+2018-09-21 11:28:59 DEBUG    destroying remote
+2018-09-21 11:28:59 DEBUG    destroying local
+2018-09-21 11:28:59 DEBUG    destroy: clients4.google.com:443
+2018-09-21 11:28:59 DEBUG    destroying remote
+2018-09-21 11:28:59 DEBUG    destroying local
+2018-09-21 11:29:00 DEBUG    destroy: 23.client-channel.google.com:443
+2018-09-21 11:29:00 DEBUG    destroying remote
+2018-09-21 11:29:00 DEBUG    destroying local
+2018-09-21 11:29:34 DEBUG    accept
+2018-09-21 11:29:34 DEBUG    chosen server: 23.105.216.42:444
+2018-09-21 11:29:34 INFO     connecting 23.client-channel.google.com:443 from 127.0.0.1:47758

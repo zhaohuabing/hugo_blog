@@ -1,13 +1,13 @@
 ---
 layout:     post
 
-title:      "Istio流量管理机制深度解析"
+title:      "Istio流量管理实现机制深度解析"
 subtitle:   ""
 excerpt: ""
 author:     "赵化冰"
 date:       2018-09-25
-description: ""
-image: ""
+description: " Istio作为一个service mesh开源项目,其中最重要的功能就是对网格中微服务之间的流量进行管理,包括服务发现,请求路由和服务间的可靠通信。Istio体系中流量管理配置下发以及流量规则如何在数据面生效的机制相对比较复杂，通过官方文档容易管中窥豹，难以了解其实现原理。本文尝试结合系统架构、配置文件和代码对Istio流量管理的架构和实现机制进行分析，以达到从整体上理解Pilot和Envoy的流量管理机制的目的。"
+image: "/img/2018-09-25-istio-traffic-management-impl-intro/background.jpg"
 published: true 
 tags:
     - Istio 
@@ -24,7 +24,7 @@ Istio作为一个service mesh开源项目,其中最重要的功能就是对网�
 
 Istio体系中流量管理配置下发以及流量规则如何在数据面生效的机制相对比较复杂，通过官方文档容易管中窥豹，难以了解其实现原理。本文尝试结合系统架构、配置文件和代码对Istio流量管理的架构和实现机制进行分析，以达到从整体上理解Pilot和Envoy的流量管理机制的目的。
 
-# Istio高层架构
+# Pilot高层架构
 
 Istio控制面中负责流量管理的组件为Pilot，Pilot的高层架构如下图所示：
 
@@ -45,7 +45,7 @@ Pilo使用了一套起源于Envoy项目的[标准数据面API](https://github.co
 
 通过采用该标准API，Istio将控制面和数据面进行了解耦，为多种数据面sidecar实现提供了可能性。事实上基于该标准API已经实现了多种Sidecar代理和Istio的集成，除Istio目前集成的Envoy外，还可以和Linkerd, Nginmesh等第三方通信代理进行集成，也可以基于该API自己编写Sidecar实现。
 
-控制面和数据面解耦是Istio后来居上，风头超过Service mesh鼻祖Linkerd的一招妙棋。Istio站在了控制面的高度上，而Linkerd则成为了可选的一种sidecar实现，可谓降维打击的一个典型案例！
+控制面和数据面解耦是Istio后来居上，风头超过Service mesh鼻祖Linkerd的一招妙棋。Istio站在了控制面的高度上，而Linkerd则成为了可选的一种sidecar实现，可谓降维打击的一个典型成功案例！
 
 数据面标准API也有利于生态圈的建立，开源，商业的各种sidecar以后可能百花齐放，用户也可以根据自己的业务场景选择不同的sidecar和控制面集成，如高吞吐量的，低延迟的，高安全性的等等。有实力的大厂商可以根据该API定制自己的sidecar，例如蚂蚁金服开源的Golang版本的Sidecar MOSN(Modular Observable Smart Netstub)（SOFAMesh中Golang版本的Sidecar)；小厂商则可以考虑采用成熟的开源项目或者提供服务的商业sidecar实现。
 
@@ -84,11 +84,11 @@ Pilot的规则DSL是采用K8S API Server中的[Custom Resource (CRD)](https://ku
 
 提供Pilot相关的CRD Resource的增、删、改、查。和Pilot相关的CRD有以下几种:
 
-* Virtualservice：用于定义路由规则，如根据来源或 Header 制定规则，或在不同服务版本之间分拆流量。
-* DestinationRule：定义目的服务的配置策略以及可路由子集。策略包括断路器、负载均衡以及 TLS 等。
-* ServiceEntry：用 [ServiceEntry](https://istio.io/docs/reference/config/istio.networking.v1alpha3/#ServiceEntry) 可以向Istio中加入附加的服务条目，以使网格内可以向istio 服务网格之外的服务发出请求。
-* Gateway：为网格配置网关，以允许一个服务可以被网格外部访问。
-* EnvoyFilter：可以为Envoy配置过滤器。由于Envoy已经支持Lua过滤器，因此可以通过EnvoyFilter启用Lua过滤器，动态改变Envoy的过滤链行为。我之前一直在考虑如何才能动态扩展Envoy的能力，EnvoyFilter提供了很灵活的扩展性。
+* **Virtualservice**：用于定义路由规则，如根据来源或 Header 制定规则，或在不同服务版本之间分拆流量。
+* **DestinationRule**：定义目的服务的配置策略以及可路由子集。策略包括断路器、负载均衡以及 TLS 等。
+* **ServiceEntry**：用 [ServiceEntry](https://istio.io/docs/reference/config/istio.networking.v1alpha3/#ServiceEntry) 可以向Istio中加入附加的服务条目，以使网格内可以向istio 服务网格之外的服务发出请求。
+* **Gateway**：为网格配置网关，以允许一个服务可以被网格外部访问。
+* **EnvoyFilter**：可以为Envoy配置过滤器。由于Envoy已经支持Lua过滤器，因此可以通过EnvoyFilter启用Lua过滤器，动态改变Envoy的过滤链行为。我之前一直在考虑如何才能动态扩展Envoy的能力，EnvoyFilter提供了很灵活的扩展性。
 
 ## 数据面组件
 
@@ -153,14 +153,13 @@ xDS的几个接口是相互独立的，接口下发的配置数据是最终一�
 
 # Bookinfo 示例程序分析
 
+下面我们以Bookinfo为例对Istio中的流量管理实现机制，以及控制面和数据面的交互进行进一步分析。
+
 ## Bookinfo程序结构
 
 下图显示了Bookinfo示例程序中各个组件的IP地址，端口和调用关系，以用于后续的分析。
 
 ![](/img/2018-09-25-istio-traffic-management-impl-intro/bookinfo.png)
-
-
-下面我们以Bookinfo为例对Istio中的流量管理机制，以及控制面和数据面的交互进行进一步分析。
 
 ## xDS接口调试方法
 
@@ -556,7 +555,7 @@ kubectl exec productpage-v1-54b8b9f55-bx2dq -c istio-proxy -- cat /etc/istio/pro
 
 ## Envoy配置分析
 
-### 通过管理接口获取完整配置文件
+### 通过管理接口获取完整配置
 
 从Envoy初始化配置文件中，我们可以大致看到Istio通过Envoy来实现服务发现和流量管理的基本原理。即控制面将xDS server信息通过static resource的方式配置到Envoy的初始化配置文件中，Envoy启动后通过xDS server获取到dynamic resource，包括网格中的service信息及路由规则。
 
@@ -1307,10 +1306,14 @@ Productpage Pod中的Envoy创建了多个Outbound Listener
 13. 请求被转发到127.0.0.1：9080，即Details服务进行处理。
 
 
-完整的Envoy配置文件参见：
+上述调用流程涉及的完整Envoy配置文件参见：
 
 * Proudctpage：https://gist.github.com/zhaohuabing/034ef87786d290a4e89cd6f5ad6fcc97
 * Details：https://gist.github.com/zhaohuabing/544d4d45447b65d10150e528a190f8ee
+
+# 小结
+
+本文介绍了Istio流量管理相关组件，Istio控制面和数据面之间的标准接口，以及Istio下发到Envoy的完整配置数据的结构和内容。然后通过Bookinfo示例程序的一个端到端调用分析了Envoy是如何实现服务网格中服务发现和路由转发的，希望能帮助大家透过概念更进一步深入理解Istio流量管理的实现机制。
 
 # 参考资料
 

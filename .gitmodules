@@ -7,3 +7,6 @@
 [submodule "public"]
 	path = public
 	url = git@github.com:zhaohuabing/zhaohuabing.github.io.git
+[submodule "static/img"]
+	path = static/img
+	url = git@github.com:zhaohuabing/blog_img.git

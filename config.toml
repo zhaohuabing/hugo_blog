@@ -47,6 +47,9 @@ home = ["HTML", "RSS", "Algolia"]
   disqus_proxy = "https://disqusapi.zhaohuabing.com"
   disqus_site = "https://zhaohuabing.com"
 
+  #wechat pay & alipay 
+  zanshang = true 
+
   [params.social]
   rss            = true 
   email          = "zhaohuabing@gmail.com"

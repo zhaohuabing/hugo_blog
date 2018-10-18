@@ -83,6 +83,10 @@ API Gateway支持虚拟主机，提供4层和7层的LB。除此以外，API Gate
 
 提供用户界面对Mesh中的traffic rule进行配置，规则可以在设计应用蓝图时进行配置，也可以在运行期进行动态修改、添加和删除。
 
+引入Mixer进行Metrics收集，后端连接到Promeheus，打算采用自己开发界面对指标进行呈现。
+
+目前采用Zipkin和Envoy直连进行分布式跟踪，后续可能改用jager，因为jager采用了open tracing协议，开放性更好一些，而且是go编写的，和我们目前的技术栈匹配。
+
 ## 数据面
 在各个业务微服务的Pod中加入Envoy proxy，提供服务发现，可靠通讯，并根据Pilot下发的路由规则对服务通讯进行路由。
 

@@ -53,6 +53,7 @@ home = ["HTML", "RSS", "Algolia"]
 
   friends = true
   bookmarks = true
+  about_me = true
 
   [params.social]
   rss            = true 
@@ -65,6 +66,7 @@ home = ["HTML", "RSS", "Algolia"]
   #instagram     = "full profile url in instagram"
   github         = "https://github.com/zhaohuabing"
   wechat         = "https://zhaohuabing.com/img/wechat_qrcode.jpg"
+  medium         = "https://medium.com/@zhaohuabing"
   #pinterest     = "full profile url in pinterest"
   
   [[params.friend_link]]

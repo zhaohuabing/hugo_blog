@@ -89,6 +89,9 @@ home = ["HTML", "RSS", "Algolia"]
   [[params.bookmark_link]]
   title =  "Pxhere"
   href = "https://pxhere.com"
+  [[params.bookmark_link]]
+  title = "unsplash"
+  href = "https://unsplash.com"
   
 [outputFormats.Algolia]
 baseName = "algolia"

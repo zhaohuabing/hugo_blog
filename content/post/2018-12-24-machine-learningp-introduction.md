@@ -11,6 +11,7 @@ image: "/img/2018-12-24-machine-learningp-introduction/background.jpg"
 published: true 
 tags:
     - Machine Learning 
+    - Supervised learning
 
 categories: [ Note ]
 ---

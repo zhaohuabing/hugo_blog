@@ -2,16 +2,16 @@
 layout:     post
 
 title:      "如何为服务网格部署入口网关？"
-subtitle:   "Kubernetes Ingress, Istio Ingress Gateway还是API Gateway？"
+subtitle:   "Kubernetes Ingress, Istio Gateway还是API Gateway？"
 excerpt: ""
 author:     "赵化冰"
 date:       2019-03-29
 description: "在启用了Istio服务网格的Kubernetes集群中，缺省配置下只能在Kubernetes 网络访问到网格内部的服务，要如何才能从外部网络访问网格中提供的服务呢？ Kubernetes和Istio提供了NodePort，LoadBalancer，Kubernetes Ingress，Istio Gateway等多种外部流量入口的方式，面对这么多种方式，我们在产品部署中应该如何选择？"
-image: "/img/2018-12-19-multi-network-interfaces-for-istio/background.jpg"
+image: "http://www.baltana.com/files/wallpapers-3/Tesla-High-Definition-Wallpaper-09417.jpg"
 published: true 
 tags:
-    - Service Mesh 
-    - Istio 
+    - Service Mesh
+    - Istio
     - Kubernetes
     - API Gateway
     - Ingreww
@@ -244,7 +244,7 @@ Gateway和VirtualService用于表示Istio Ingress的配置模型，Istio Ingress
 * 服务访问的SLA、限流及计费
 * ….
 
-![](http://localhost:1313/img/2018-12-27-the-obstacles-to-put-istio-into-production/ingress-comparation.png)
+![](https://zhaohuabing.com/img/2018-12-27-the-obstacles-to-put-istio-into-production/ingress-comparation.png)
 <center>Kubernetes ingress, Istio gateway and API gateway的功能对比</center>
 
 API Gateway需求中很大一部分需要根据不同的应用系统进行定制，目前看来暂时不大可能被纳入K8s Ingress或者Istio Gateway的规范之中。为了满足这些需求，涌现出了各类不同的k8s Ingress Controller以及Istio Ingress Gateway实现，包括Ambassador ，Kong, Traefik,Solo等。

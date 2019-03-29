@@ -3,7 +3,7 @@
 	url = https://github.com/appernetic/hugo-nederburg-theme
 [submodule "themes/hugo-theme-cleanwhite"]
 	path = themes/hugo-theme-cleanwhite
-	url = https://github.com/zhaohuabing/hugo-theme-cleanwhite
+	url = git@github.com:zhaohuabing/hugo-theme-cleanwhite.git
 [submodule "public"]
 	path = public
 	url = git@github.com:zhaohuabing/zhaohuabing.github.io.git

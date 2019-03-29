@@ -40,19 +40,19 @@ Kubernetes以Pod作为应用部署的最小单位。kubernetes会根据Pod的声
 该模式下kube-proxy会为每一个Service在host上创建一个端口，并在该端口上进行监听。Kubernetes通过Iptables规则将发向Cluster IP的请求重定向到Kube-proxy监听的端口上，Kube-proxy会根据LB算法从选择一个提供服务的Pod并和其建立链接，以将请求转发到Pod上。该模式下，Kube-proxy充当了一个四层Load balancer的角色。由于kube-proxy运行在userspace中，在进行转发处理时会增加两次内核和用户空间之间的数据拷贝，效率较另外两种模式低一些；好处是当后端的Pod不可用时，kube-proxy可以重试其他Pod。
 
 ![](https://d33wubrfki0l68.cloudfront.net/e351b830334b8622a700a8da6568cb081c464a9b/13020/images/docs/services-userspace-overview.svg)
-<center>Kube-proxy userspace模式（来自[Isio官网文档](https://kubernetes.io/docs/concepts/services-networking/service/#virtual-ips-and-service-proxies/)<sup>[[1]](#ref01)</sup>)</center>
+<center>Kube-proxy userspace模式（来自[Kubernetes官网文档](https://kubernetes.io/docs/concepts/services-networking/service/#virtual-ips-and-service-proxies/)<sup>[[1]](#ref01)</sup>)</center>
 
 * **iptables**<br>
 为了避免增加内核和用户空间的数据拷贝操作，Kube-proxy提供了iptables模式，在该模式下，Kube-proxy为service后端的每个Pod创建对应的iptables规则，直接将发向Cluster IP的请求重定向到一个Pod IP。该模式下Kube-proxy不承担四层代理的角色，只负责创建iptables规则。该模式的优点是较userspace模式效率更高，但不能提供灵活的LB策略，当后端Pod不可用时也无法进行重试。
 
 ![](https://d33wubrfki0l68.cloudfront.net/27b2978647a8d7bdc2a96b213f0c0d3242ef9ce0/e8c9b/images/docs/services-iptables-overview.svg)
-<center>Kube-proxy userspace模式（来自[Isio官网文档](https://kubernetes.io/docs/concepts/services-networking/service/#virtual-ips-and-service-proxies/)<sup>[[1]](#ref01)</sup>)</center>
+<center>Kube-proxy userspace模式（来自[Kubernetes官网文档](https://kubernetes.io/docs/concepts/services-networking/service/#virtual-ips-and-service-proxies/)<sup>[[1]](#ref01)</sup>)</center>
 
 * **ipvs** <br>
 该模式和iptables类似，kube-proxy监控Pod的变化并创建相应的ipvs rules。ipvs也是在kernel模式下通过netfilter实现的，但采用了hash table来存储规则，因此在规则较多的情况下，Ipvs相对iptables转发效率更高。除此以外，ipvs支持更多的LB算法。如果要设置kube-proxy为ipvs模式，必须在操作系统中安装IPVS内核模块。
 
 ![](https://d33wubrfki0l68.cloudfront.net/2d3d2b521cf7f9ff83238218dac1c019c270b1ed/9ac5c/images/docs/services-ipvs-overview.svg)
-<center>Kube-proxy userspace模式（来自[Isio官网文档](https://kubernetes.io/docs/concepts/services-networking/service/#virtual-ips-and-service-proxies/)<sup>[[1]](#ref01)</sup>)</center>
+<center>Kube-proxy userspace模式（来自[Kubernetes官网文档](https://kubernetes.io/docs/concepts/services-networking/service/#virtual-ips-and-service-proxies/)<sup>[[1]](#ref01)</sup>)</center>
 
 ## Istio Sidecar Proxy
 

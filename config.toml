@@ -23,7 +23,7 @@ home = ["HTML", "RSS", "Algolia"]
   title_404 = "你来到了没有知识的荒原 :("
 
   # leancloud storage for page view counter
-  page_view_conter = true 
+  page_view_conter = true
   leancloud_app_id = "Xu5MAnXL360Ms89vMVnWBjuq-gzGzoHsz"
   leancloud_app_key = "efUYEefAc2eIPBRO59PRERQC"
 
@@ -38,26 +38,26 @@ home = ["HTML", "RSS", "Algolia"]
   #sidebar_avatar = "img/avatar-zhaohuabing.jpg"      # use absolute URL, seeing it's used in both `/` and `/about/`
   sidebar_avatar = "img/zhaohuabing.png"      # use absolute URL, seeing it's used in both `/` and `/about/`
 
-  featured_tags = true 
-  featured_condition_size = 2 
+  featured_tags = true
+  featured_condition_size = 2
 
   # Baidu Analytics
   ba_track_id = "a1d96090e4189c0376251fb043da7be5"
-  
+
   # We need a proxy to access Disqus api in China
   disqus_proxy = "https://disqusapi.zhaohuabing.com"
   disqus_site = "https://zhaohuabing.com"
 
-  #Enable wechat pay & alipay to allow readers send reward money if they like the articles 
-  reward = true 
-  # reward_guide = "如果这篇文章对你有用,请随意打赏" 
+  #Enable wechat pay & alipay to allow readers send reward money if they like the articles
+  reward = true
+  # reward_guide = "如果这篇文章对你有用,请随意打赏"
 
   friends = true
   bookmarks = true
   about_me = true
 
   [params.social]
-  rss            = true 
+  rss            = true
   email          = "zhaohuabing@gmail.com"
   #facebook      = "full profile url in facebook"
   #googleplus    = "full profile url in googleplus"
@@ -69,30 +69,18 @@ home = ["HTML", "RSS", "Algolia"]
   wechat         = "https://zhaohuabing.com/img/wechat_qrcode.jpg"
   medium         = "https://medium.com/@zhaohuabing"
   #pinterest     = "full profile url in pinterest"
-  
+
   [[params.friend_link]]
   title = "Linda的博客"
   href =  "https://zhaozhihan.com"
 
   [[params.bookmark_link]]
-  title =  "Martin Fowler"
-  href =  "https://martinfowler.com"
-  [[params.bookmark_link]]
   title = "ServiceMesher"
   href =  "http://www.servicemesher.com"
   [[params.bookmark_link]]
-  title = "Awesome Service Mesh"
-  href = "https://servicemesh.gitbooks.io/awesome-servicemesh"
-  [[params.bookmark_link]]
-  title =  "Image Compression"
-  href = "https://tinypng.com"
-  [[params.bookmark_link]]
-  title =  "Pxhere"
-  href = "https://pxhere.com"
-  [[params.bookmark_link]]
-  title = "unsplash"
-  href = "https://unsplash.com"
-  
+  title = "pexels"
+  href = "https://www.pexels.com"
+
   [[params.addtional_menus]]
   title =  "BOOKS"
   href =  "/top/books/"
@@ -108,4 +96,4 @@ notAlternative = true
 
 [params.algolia]
 vars = ["title", "summary", "date", "publishdate", "expirydate", "permalink"]
-params = ["categories", "tags"] 
+params = ["categories", "tags"]

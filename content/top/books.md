@@ -5,7 +5,7 @@
 
 ## [Istio Handbook——Istio 服务网格进阶实战](http://www.servicemesher.com/istio-handbook/) 
 
-该电子书为国内Service Mesh技术开源社区ServiceMesher合著，本人参与了部分章节的撰写。
+该电子书为国内Service Mesh技术开源社区ServiceMesher合著，我参与了部分章节的撰写。
 
 
 ## [Machine learning学习笔记](https://zhaohuabing.com/machine-learning) 

@@ -225,7 +225,7 @@ Ingress 规则定义了对七层网关的要求，包括URL分发规则，基于
 * K8s Ingress是独立在Istio体系之外的，需要单独采用Ingress rule进行配置，导致系统入口和内部存在两套互相独立的路由规则配置，运维和管理较为复杂。
 * K8s Ingress rule的功能较弱，不能在入口处实现和网格内部类似的路由规则，也不具备网格sidecar的其它能力，导致难以从整体上为应用系统实现灰度发布、分布式跟踪等服务管控功能。
 
-![](/img/2019-03-29-how-to-choose-ingress-for-service-mesh/K8s-ingress-and-Istio.png)
+![](/img/2019-03-29-how-to-choose-ingress-for-service-mesh/K8s-ingress-and-Istio.jpg)
 <center>采用Kubernetes Ingress作为服务网格的流量入口</center>
 
 ## Istio Gateway
@@ -237,7 +237,7 @@ Istio Gateway资源本身只能配置L4-L6的功能，例如暴露的端口，TL
 Gateway和VirtualService用于表示Istio Ingress的配置模型，Istio Ingress的缺省实现则采用了和Sidecar相同的Envoy proxy。
 
 通过该方式，Istio控制面用一致的配置模型同时控制了入口网关和内部的sidecar代理。这些配置包括路由规则，策略检查、Telementry收集以及其他服务管控功能。
-![](/img/2019-03-29-how-to-choose-ingress-for-service-mesh/Istio-Ingress.png)
+![](/img/2019-03-29-how-to-choose-ingress-for-service-mesh/Istio-Ingress.jpg)
 <center>采用 Istio Ingress Gateway作为服务网格的流量入口</center>
 
 ## 应用对API Gateway的需求

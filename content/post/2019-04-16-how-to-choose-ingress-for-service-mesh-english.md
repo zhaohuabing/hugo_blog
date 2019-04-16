@@ -1,7 +1,7 @@
 ---
 layout:     post
 
-title:      "Which one is the right choice for the ingress gateway of your service mesh?"
+title:      "Which One is the Right Choice for the Ingress Gateway of Your Service Mesh?"
 subtitle:   "Kubernetes Ingress, Istio Gateway or API Gateway?"
 excerpt: ""
 author:     "赵化冰"
@@ -20,7 +20,7 @@ tags:
 
 categories: [ Tech ]
 ---
-By default, in a Kubernetes cluster with the Istio service mesh enabled, services can only be accessed inside the cluster. However, some of the services may need to be exposed to the external network as well. Kubernetes and Istio provide a variety of means to get external traffic into your cluster including NodePort, LoadBalancer, Kubernetes Ingress and Istio Gateway. With all these options, which one should be the right choice for your service mesh running in production?
+By default, in a Kubernetes cluster with the Istio service mesh enabled, services can only be accessed inside the cluster. However, some of the services may need to be exposed to external networks as well. Kubernetes and Istio provide a variety of means to get external traffic into your cluster including NodePort, LoadBalancer, Kubernetes Ingress and Istio Gateway. With all these options, which one should be the right choice for your service mesh running in production?
 
 I will compare all the available options, dig into the technical details, and provide a workable solution at the end of this article. Hopefully, it could be useful for your service mesh production.
 
@@ -36,7 +36,7 @@ As the smallest deployment unit, Pods are dynamically created, destroyed and mig
 
 To solve this problem, Kubernetes uses Service as an abstraction for a group of backend Pods. A Service is bound to a ClusterIP, which is a virtual IP address, and no matter what happens to the backend Pods, the ClusterIP never changes, so a client can always send requests to the ClusterIP of the Service. There is a Kube-proxy which is responsible for routing client requests to a chosen backend Pod in every node.
 
-Kube-proxy is a go application working in three modes:
+Kube-proxy is a go application which can work in three modes:
 
 ### userspace
 

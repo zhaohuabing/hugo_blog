@@ -58,21 +58,11 @@ Helm的引入很好地解决上面这些问题。
 
 因此我们先了解一下Helm的这些相关概念和术语。
 
-* Helm   
-
-  Kubernetes的应用打包工具，也是命令行工具的名称。
-* Tiller 
-
-  Helm的服务端，部署在Kubernetes集群中，用于处理Helm的相关命令。
-* Chart 
-
-  Helm的打包格式，内部包含了一组相关的kubernetes资源。
-* Repoistory 
-  
-  Helm的软件仓库，repository本质上是一个web服务器，该服务器保存了chart软件包以供下载，并有提供一个该repository的chart包的清单文件以供查询。在使用时，Helm可以对接多个不同的Repository。
-* Release 
-  
-  使用Helm install命令在Kubernetes集群中安装的Chart称为Release。
+* Helm: Kubernetes的应用打包工具，也是命令行工具的名称。
+* Tiller: Helm的服务端，部署在Kubernetes集群中，用于处理Helm的相关命令。
+* Chart: Helm的打包格式，内部包含了一组相关的kubernetes资源。
+* Repoistory: Helm的软件仓库，repository本质上是一个web服务器，该服务器保存了chart软件包以供下载，并有提供一个该repository的chart包的清单文件以供查询。在使用时，Helm可以对接多个不同的Repository。
+* Release: 使用Helm install命令在Kubernetes集群中安装的Chart称为Release。
 
 >  需要特别注意的是， Helm中提到的Release和我们通常概念中的版本有所不同，这里的Release可以理解为Helm使用Chart包部署的一个应用实例。
 >  

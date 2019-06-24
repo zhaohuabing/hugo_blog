@@ -214,13 +214,13 @@ Opentracing提供了基于Spring的代码埋点，因此我们可以使用Opentr
 
 从上图中可以看到，相比在应用代码中直接传递HTTP header的方式，采用Opentracing进行代码埋点后，相同的调用增加了7个Spa，这7个Span是由Opentracing的tracer生成的。虽然我们并没有在代码中显示创建这些Span，但Opentracing的代码埋点会自动为每一个REST请求生成一个Span，并根据调用关系关联起来。
 
-Opentracing生成的这些Span为我们提供了更详细的分布式调用跟踪信息，从这些信息中可以分析出一个HTTP调用从客户端应用代码发起请求，到经过客户端的Envoy，再到服务端的Envoy，最后到服务端接受到请求各个步骤的耗时情况。从图中可以看到，在这个应用中，Envoy转发的耗时在1毫秒左右，相对于业务代码的处理时长非常短，可以基本认为Envoy的处理和转发对于业务请求的处理效率没有影响。
+Opentracing生成的这些Span为我们提供了更详细的分布式调用跟踪信息，从这些信息中可以分析出一个HTTP调用从客户端应用代码发起请求，到经过客户端的Envoy，再到服务端的Envoy，最后到服务端接受到请求各个步骤的耗时情况。从图中可以看到，Envoy转发的耗时在1毫秒左右，相对于业务代码的处理时长非常短，对这个应用而言，Envoy的处理和转发对于业务请求的处理效率基本没有影响。
 
-# 在Istio调用跟踪中插入方法级的细粒度跟踪信息
+# 在Istio调用跟踪链中加入方法级的调用跟踪信息
 
 Istio/Envoy提供了跨服务边界的调用链信息，在大部分情况下，服务粒度的调用链信息对于系统性能和故障分析已经足够。但对于某些服务，需要采用更细粒度的调用信息来进行分析，例如一个REST请求内部的业务逻辑和数据库访问分别的耗时情况。在这种情况下，我们需要在服务代码中进行埋点，并将服务代码中上报的调用跟踪数据和Envoy生成的调用跟踪数据进行关联，以统一呈现Envoy和服务代码中生成的调用数据。
 
-对方法级别的调用跟踪信息代码是类似的，因此我们用AOP + Annotation的方式实现，以简化代码。
+在方法中增加调用跟踪的代码是类似的，因此我们用AOP + Annotation的方式实现，以简化代码。
 首先定义一个Traced注解和对应的AOP实现逻辑：
 
 ```java
@@ -283,6 +283,8 @@ public class BankTransaction {
 
 效果如下图所示，可以看到trace中增加了transfer和save2db两个方法级的Span。
 ![](/img/2019-06-22-using-opentracing-with-istio/istio-tracing-opentracing-in-depth.jpg)
+可以打开一个方法的Span，查看详细信息，包括Java类名和调用的方法名等，在AOP代码中还可以根据需要添加出现异常时的异常堆栈等信息。
+![](/img/2019-06-22-using-opentracing-with-istio/istio-tracing-opentracing-in-depth-method.jpg)
 
 # 总结
 

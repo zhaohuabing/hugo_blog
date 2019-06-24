@@ -2,11 +2,11 @@
 layout:     post
 
 title:      "洞若观火：使用OpenTracing增强Istio的调用链跟踪"
-subtitle:   ""
+subtitle:   "第一篇：如何利用Opentracing实现方法级的细粒度跟踪"
 excerpt: ""
 author:     "赵化冰"
 date:       2019-06-22
-description: "本文将介绍如何利用OpenTracing来增强Istio/Envoy缺省的调用链跟踪实现。包括利用Opentracing代替硬编码来实现跨进程边界的分布式调用上下文传递；以及使用Opentracing在Istio/Envoy生成的分布式调用跟踪上进行增强，实现方法级的细粒度调用跟踪。"
+description: "本文将介绍如何利用OpenTracing来增强Istio/Envoy缺省的调用链跟踪实现：如何利用Opentracing来实现跨进程边界的分布式调用上下文传递；以及在Istio/Envoy生成的分布式调用跟踪基础上实现方法级的细粒度调用跟踪。"
 image: "/img/2019-06-22-using-opentracing-with-istio/background.jpg"
 published: true 
 tags:
@@ -292,7 +292,7 @@ Istio/Envoy为微服务应用提供了分布式调用跟踪功能，提高了服
 
 # 下一步
 
-除了同步调用之外，异步消息也是微服务架构中常见的一种通信方式。在下一篇文章中，我们将继续完善eshop demo程序，探讨如何通过Opentracing将Kafka异步消息也纳入到Istio的分布式调用跟踪中。
+除了同步调用之外，异步消息也是微服务架构中常见的一种通信方式。在下一篇文章中，我将继续利用eshop demo程序来探讨如何通过Opentracing将Kafka异步消息也纳入到Istio的分布式调用跟踪中。
 
 # 参考资料
 

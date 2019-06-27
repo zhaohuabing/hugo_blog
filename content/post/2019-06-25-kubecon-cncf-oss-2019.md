@@ -139,7 +139,7 @@ Session后和David Cheney交流了两个问题：
 这次大会上见到了很多在ServiceMesher社区中聊过多次，但未曾谋面的朋友，包括小剑，Jimmy，崔总，超盟,fox ...等等, 还有好些以前不认识的同学主动过来给我打招呼说看过我的博客文章。非常高兴能有机会见到这些志同道合的朋友，也希望我们的ServiceMesher社区能越办越好，冲出中国，走向全球!（已经遇到读过我文章的外国朋友向我打听ServiceMesher社区了，他的原话是：Would you agree to say that this is the only place where such in depth material is available?)
 
 ServiceMesher社区的朋友们
-![](/img/2019-06-25-kubecon-cncf-oss-2019/servicemesher.jpg)
+![](/img/2019-06-25-kubecon-cncf-oss-2019/background.jpg)
 
 ## 恩格斯也来搞Kubernets了！
 

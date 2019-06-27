@@ -105,7 +105,7 @@ Tetrate分享了“基于Envoy和Apache Skywalking的服务网格的可观察性
 介绍了一种多个Istio集群（或称为信任域）之间建立相互信任的机制。该机制可以解决跨集群的服务访问的身份认证问题。其基本思路是在两个信任域之间相互交换证书信息，然后使用得到的证书信息对对方的服务进行身份认证。
 
 交换信任域之间的证书信息
-![](/img/2019-06-25-kubecon-cncf-oss-2019/service-communication.jpg)
+![](/img/2019-06-25-kubecon-cncf-oss-2019/get-trust-bundle.jpg)
 
 用得到的证书信息对来自另一个信任域的请求进行身份认证
 ![](/img/2019-06-25-kubecon-cncf-oss-2019/service-communication.jpg)

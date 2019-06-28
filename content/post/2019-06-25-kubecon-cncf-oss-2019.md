@@ -6,7 +6,7 @@ subtitle:   "2019 KubeCon + ClondNativeCon + Open Source Summit有感"
 excerpt: ""
 author:     "赵化冰"
 date:       2019-06-25
-description: ""
+description: "奇妙的 2019 KubeCon + ClondNativeCon + Open Source Summit 大会！在这里，我近距离接触了大神 Linus；见到了来自 ServiceMesher 社区的很多朋友；还遇到了搞 Kubernetes 的恩格斯后人!"
 image: "/img/2019-06-25-kubecon-cncf-oss-2019/background.jpg"
 published: true
 tags:
@@ -52,6 +52,9 @@ workshop参与者在蚂蚁同学的指导下创建demo
 从他的演讲中可以感受到来自中国的公司和开发者在开源软件，特别是云原生领域中发挥了越来越重要的作用。由于中国的市场体量很大，中国公司在在使用开源软件时会面临一些国外难以遇到的问题，例如如何应对数以亿计的用户量。在解决这些问题的同时，很多中国公司也将这些优化和改进贡献到了上游项目，造福整个开源社区，形成了良性的互动和循环。从后面两天的主题演讲，我也看到中国公司，特别是阿里系在回馈上游开源社区方面是做的非常好的。
 
 Zemlin还提到开源蓬勃发展的一个原因是因为开源不是一个零和游戏，无论是开发者，用户还是商业公司都可以从开源中获益。从开发者角度而言，积极参与开源软件可以获得就业市场上广泛认可的能力，而不是只能做一个公司的某个随时被替换的螺丝钉。从商业公司而言，参与和使用开源软件可以借助社区的力量，并且可以很容易招聘到符合自己要求的人才。从用户而言，开源加速了技术的发展，间接降低了用户获取新技术，新产品的成本。
+
+Linux基金执行董事Jim Zemlin介绍Linux基金会下覆盖的开源项目及相关行业
+![](/img/2019-06-25-kubecon-cncf-oss-2019/keynote.jpg)
 
 Zemlin后面是CNCF执行董事Dan Kohn的演讲，Dan没有考虑到中国听众的文化背景，讲得比较晦涩，我没有仔细听。
 

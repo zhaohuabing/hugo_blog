@@ -13,3 +13,7 @@
 Coursera 在线课程 [Machine learning]( https://www.coursera.org/learn/machine-learning) 笔记<BR>
 讲师: 吴恩达(Andrew Ng) <BR>
 课程地址：https://www.coursera.org/learn/machine-learning<BR>
+
+## [Go语言学习笔记](https://zhaohuabing.com/learning-golang/) 
+
+Go（又称Golang）是Google开发的一种静态强类型、编译型、并发型，并具有垃圾回收功能的编程语言。

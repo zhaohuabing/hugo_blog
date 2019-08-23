@@ -10,6 +10,3 @@
 [submodule "static/img"]
 	path = static/img
 	url = git@github.com:zhaohuabing/blog_img.git
-[submodule "static/files"]
-	path = static/files
-	url = git@github.com:zhaohuabing/blog_slides.git

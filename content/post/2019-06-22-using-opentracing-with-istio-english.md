@@ -2,7 +2,7 @@
 layout:     post
 
 title:      "Enhance Istio Distributed Tracing with OpenTracing"
-subtitle:   "Part 1: Implement fine-grained tracing with OpenTracing"
+subtitle:   "Part 1: Implement Fine-grained Tracing with OpenTracing"
 excerpt: ""
 author:     "赵化冰"
 date:       2019-08-24

@@ -16,6 +16,7 @@ Feel free to connect Huabing at Github⁴ and Linkedin⁵, leave your thoughts i
 
 ## Talks
 
+* [Service Mesh Practice with 5G Management System] (/slides/service-mesh-practice-with-5g-management-system-lfn.pdf) ONAP Workshop, 西安, 2019
 * [Service Mesh in Action with ONAP] (https://www.slideshare.net/HuabingZhao/service-mesh-in-action-with-onap) GNTC, 南京, 2018
 * [MSB to Support Carrier Grade ONAP Microservice Architecture with Service Mesh] (https://www.slideshare.net/HuabingZhao/msb-to-support-carrier-grade-onap-microservice-architecture-with-service-mesh) ONS, Los Angeles, 2018
 * [Microservice Powered Orchestration](https://www.slideshare.net/HuabingZhao/microservice-powered-orchestration-126100339) ONS, Santa Clara, 2017

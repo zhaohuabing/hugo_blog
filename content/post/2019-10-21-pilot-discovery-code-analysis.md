@@ -103,8 +103,8 @@ Pilot Server创建了一个GRPC Server，用于监听和接收来自Envoy的xDS�
 
 1. Config Controller或者Service Controller在配置或服务发生变化时通过回调方法通知Discovery Server，Discovery Server将变化消息放入到Push Channel中。
 1. Discovery Server通过一个goroutine从Push Channel中接收变化消息，将一段时间内连续发生的变化消息进行合并。如果超过指定时间没有新的变化消息，则将合并后的消息加入到一个队列Push Queue中。
-1. 另一个goroutine从Push Queue中取出变化消息，根据上下文生成XdsEvent，发送到每个客户端连接的Push Channel中。
-1. 在DiscoveryServer.StreamAggregatedResources方法中从Push Channel中取出XdsEvent，然后通过GRPC的接口推送一个DiscoveryResponse给Envoy端。（GRPC会为每个client连接单独分配一个goroutine来进行处理，因此不同客户端连接的StreamAggregatedResources处理方法是在不同goroutine中处理的）
+1. 另一个goroutine从Push Queue中取出变化消息，生成XdsEvent，发送到每个客户端连接的Push Channel中。
+1. 在DiscoveryServer.StreamAggregatedResources方法中从Push Channel中取出XdsEvent，然后根据上下文生成符合xDS接口规范的DiscoveryResponse，通过GRPC推送给Envoy端。（GRPC会为每个client连接单独分配一个goroutine来进行处理，因此不同客户端连接的StreamAggregatedResources处理方法是在不同goroutine中处理的）
 
 {{< figure src="/img/2019-10-21-pilot-discovery-code-analysis/pilot-discovery-push-changes.svg" >}}
 
@@ -114,7 +114,7 @@ Pilot和Envoy之间建立的是一个双向的Streaming GRPC服务调用，因�
 
 1. Envoy通过创建好的GRPC连接发送一个DiscoveryRequest
 1. Discovery Server通过一个goroutine从XdsConnection中接收来自Envoy的DiscoveryRequest，并将请求发送到ReqChannel中
-1. Discovery Server的另一个goroutine从ReqChannel中接收DiscoveryRequest，根据上下文生成DiscoveryResponse，然后返回给Envoy。
+1. Discovery Server的另一个goroutine从ReqChannel中接收DiscoveryRequest，根据上下文生成符合xDS接口规范的DiscoveryResponse，然后返回给Envoy。
 
 {{< figure src="/img/2019-10-21-pilot-discovery-code-analysis/pilot-discovery-client-request.svg" >}}
 

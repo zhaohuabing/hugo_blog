@@ -6,7 +6,7 @@ subtitle:   ""
 excerpt: ""
 author:     "赵化冰"
 date:       2019-10-21
-description: "在Istio架构中，Pilot组件属于最核心的组件，负责了服务网格中的流量管理以及控制面和数据面之间的配置下发,其内部的代码结构比较复杂，本文中我们将通过对Pilot的代码的深入分析来了解Pilot实现原理。"
+description: "在Istio架构中，Pilot组件属于最核心的组件，负责了服务网格中的流量管理以及控制面和数据面之间的配置下发。Pilot内部的代码结构比较复杂，本文中我们将通过对Pilot的代码的深入分析来了解Pilot实现原理。"
 image: "/img/post-bg-unix-linux.jpg"
 published: true 
 tags:
@@ -17,7 +17,7 @@ categories: [ Tech ]
 ---
 
 # Istio Pilot 组件介绍
-在Istio架构中，Pilot组件属于最核心的组件，负责了服务网格中的流量管理以及控制面和数据面之间的配置下发,其内部的代码结构比较复杂，本文中我们将通过对Pilot的代码的深入分析来了解Pilot实现原理。
+在Istio架构中，Pilot组件属于最核心的组件，负责了服务网格中的流量管理以及控制面和数据面之间的配置下发。Pilot内部的代码结构比较复杂，本文中我们将通过对Pilot的代码的深入分析来了解Pilot实现原理。
 
 首先我们来看一下Pilot在Istio中的功能定位，Pilot将服务信息和配置数据转换为xDS接口的标准数据结构，通过GRPC下发到数据面的Envoy。如果把Pilot看成一个处理数据的黑盒，则其有两个输入，一个输出：
 
@@ -28,7 +28,7 @@ categories: [ Tech ]
 * 服务数据： 来源于各个服务注册表(Service Registry),例如Kubernetes中注册的Service，Consul Catalog中的服务等。
 * 配置规则： 各种配置规则，包括路由规则及流量管理规则等，通过Kubernetes CRD(Custom resources definition)形式定义并存储在Kubernetes中。
 
-Pilot的输入为符合xDS接口的数据面配置数据，并通过GRPC Streaming接口将配置数据推送到数据面的Envoy中。
+Pilot的输出为符合xDS接口的数据面配置数据，并通过GRPC Streaming接口将配置数据推送到数据面的Envoy中。
 
 备注：Istio代码库在不停变化更新中，本文分析所基于的代码commit为: d539abe00c2599d80c6d64296f78d3bb8ab4b033
 
@@ -117,6 +117,126 @@ Pilot和Envoy之间建立的是一个双向的Streaming GRPC服务调用，因�
 1. Discovery Server的另一个goroutine从ReqChannel中接收DiscoveryRequest，根据上下文生成符合xDS接口规范的DiscoveryResponse，然后返回给Envoy。
 
 {{< figure src="/img/2019-10-21-pilot-discovery-code-analysis/pilot-discovery-client-request.svg" >}}
+
+## Discovery Server业务处理关键代码片段
+
+下面是Discovery Server的关键代码片段和对应的业务逻辑注解，为方便阅读，代码中只保留了逻辑主干，去掉了一些不重要的细节。
+
+### 处理xDS请求和推送的关键代码
+
+该部分关键代码位于 `istio.io/istio/pilot/pkg/proxy/envoy/v2/ads.go` 文件的StreamAggregatedResources 方法中。StreamAggregatedResources方法被注册为GRPC Server的handler，对于每一个客户端连接，GRPC Server会启动一个goroutine来进行处理。
+
+代码中主要包含以下业务逻辑：
+
+* 从GRPC连接中接收来自Envoy的xDS 请求，并放到一个channel reqChannel中
+* 从reqChannel中接收xDS请求，根据xDS请求的类型构造响应并发送给Envoy
+* 从connection的pushChannel中接收Service或者Config变化后的通知，构造xDS响应消息，将变化内容推送到Envoy端
+
+```go
+// StreamAggregatedResources implements the ADS interface.
+func (s *DiscoveryServer) StreamAggregatedResources(stream ads.AggregatedDiscoveryService_StreamAggregatedResourcesServer) error {
+        
+        ......
+
+       //创建一个goroutine来接收来自Envoy的xDS请求，并将请求放到reqChannel中
+       con := newXdsConnection(peerAddr, stream)
+	reqChannel := make(chan *xdsapi.DiscoveryRequest, 1)
+	go receiveThread(con, reqChannel, &receiveError)
+
+       ......
+      
+      for {
+      //从reqChannel接收Envoy端主动发起的xDS请求
+      case discReq, ok := <-reqChannel:
+
+                 //根据请求的类型构造相应的xDS Response并发送到Envoy端
+                 switch discReq.TypeUrl {
+			case ClusterType:
+                                 err := s.pushCds(con, s.globalPushContext(), versionInfo())
+                        case ListenerType:
+                                 err := s.pushLds(con, s.globalPushContext(), versionInfo())
+                        case RouteType:
+                                 err := s.pushRoute(con, s.globalPushContext(), versionInfo())
+                        case EndpointType:
+                                 err := s.pushEds(s.globalPushContext(), con, versionInfo(), nil)
+
+      // 从PushChannel接收Service或者Config变化后的通知
+      case pushEv := <-con.pushChannel:
+
+                //将变化内容推送到Envoy端
+                err := s.pushConnection(con, pushEv)               
+     }
+}
+
+```
+
+### 处理服务和配置变化的关键代码
+ 
+该部分关键代码位于 `istio.io/istio/pilot/pkg/proxy/envoy/v2/discovery.go` 文件中，用于监听服务和配置变化消息，并将变化消息合并后通过Channel发送给前面提到的 StreamAggregatedResources 方法进行处理。
+
+ConfigUpdate是处理服务和配置变化的回调函数，service controller和config controller在发生变化时会调用该方法通知Discovery Server。
+
+```go
+func (s *DiscoveryServer) ConfigUpdate(req *model.PushRequest) {
+	inboundConfigUpdates.Increment()
+
+	//服务或配置变化后，将一个PushRequest发送到pushChannel中
+	s.pushChannel <- req
+}
+```
+
+在debounce方法中将连续发生的PushRequest进行合并，如果一段时间内没有收到新的PushRequest，再发起推送；以避免由于服务和配置频繁变化给系统带来较大压力。
+
+```go
+// The debounce helper function is implemented to enable mocking
+func debounce(ch chan *model.PushRequest, stopCh <-chan struct{}, pushFn func(req *model.PushRequest)) {
+
+    ......
+
+    pushWorker := func() {
+		eventDelay := time.Since(startDebounce)
+		quietTime := time.Since(lastConfigUpdateTime)
+
+		// it has been too long or quiet enough
+                //一段时间内没有收到新的PushRequest，再发起推送
+		if eventDelay >= DebounceMax || quietTime >= DebounceAfter {
+			if req != nil {
+				pushCounter++
+				adsLog.Infof("Push debounce stable[%d] %d: %v since last change, %v since last push, full=%v",
+					pushCounter, debouncedEvents,
+					quietTime, eventDelay, req.Full)
+
+				free = false
+				go push(req)
+				req = nil
+				debouncedEvents = 0
+			}
+		} else {
+			timeChan = time.After(DebounceAfter - quietTime)
+		}
+	}
+       for {
+		select {
+		......
+		case r := <-ch:
+			lastConfigUpdateTime = time.Now()
+			if debouncedEvents == 0 {
+				timeChan = time.After(DebounceAfter)
+				startDebounce = lastConfigUpdateTime
+			}
+			debouncedEvents++
+			//合并连续发生的多个PushRequest
+			req = req.Merge(r)
+		case <-timeChan:
+			if free {
+				pushWorker()
+			}
+		case <-stopCh:
+			return
+		}
+	}
+}
+```
 
 ## 完整的业务流程
 

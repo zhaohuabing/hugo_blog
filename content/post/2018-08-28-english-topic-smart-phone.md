@@ -13,7 +13,7 @@ published: true
 tags:
     - English 
 
-categories: [ Note ]
+categories: [ Life ]
 ---
 
 Smart phones are significantly changing the way we live and work. I heavily depend on my Android phone in my daily life, I use it to schedule my meetings, receive emails, remind me important dates, learning English, etc. 

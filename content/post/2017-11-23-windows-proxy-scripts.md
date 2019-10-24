@@ -8,9 +8,8 @@ date:     2017-11-23
 image: ""
 published: true
 tags:
-    - Tips
 URL: "/2017/11/23/windows-proxy-scripts/"
-categories: [ Tips ]
+categories: [ Tech ]
 ---
 
 ## 问题

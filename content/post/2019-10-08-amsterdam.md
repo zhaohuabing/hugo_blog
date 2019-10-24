@@ -14,7 +14,7 @@ tags:
     - Photograph
     - Amsterdam
 
-categories: [ Photo ]
+categories: [ Life ]
 ---
 
 {{< gallery dir="/img/2019-10-08-amsterdam/" />}} {{< load-photoswipe >}}

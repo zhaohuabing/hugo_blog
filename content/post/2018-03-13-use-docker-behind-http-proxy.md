@@ -8,10 +8,9 @@ author:     "赵化冰"
 image: "https://img.zhaohuabing.com/in-post/docker.jpg"
 published: true
 tags:
-    - Tips
     - Docker
 URL: "/2018/03/13/use-docker-behind-http-proxy/"
-categories: [ Tips ]
+categories: [ Tech ]
 ---
 ## Ubuntu
 ### 设置docker使用http proxy

@@ -10,10 +10,9 @@ image:     "https://img.zhaohuabing.com/in-post/docker.jpg"
 published: true
 showtoc: false 
 tags:
-    - Tips
     - Docker
 URL: "/2018/02/09/docker-without-sudo/"
-categories: [ Tips ]
+categories: [ Tech ]
 ---
 
 ### Add the docker group if it doesn't already exist:

@@ -7,7 +7,7 @@ excerpt: ""
 author:     "赵化冰"
 date:       2019-10-26
 description: "Service Mesh和SDN(Software Defined Network) 的架构非常相似，这两者都采用了软件对网络进行管理和控制，也都包含控制面和数据面的概念。那么Service Mesh和SDN有什么关系？Service Mesh是下一代的SDN吗？ Service Mesh可以从SDN的发展历史中借鉴哪些经验？本文将就这些问题进行一一探讨。"
-image: "https://images.pexels.com/photos/2093323/pexels-photo-2093323.jpeg"
+image: "/img/2019-10-26-what-can-service-mesh-learn-from-sdn/background.jpg"
 published: true 
 tags:
     - Service Mesh 
@@ -16,13 +16,13 @@ tags:
 categories: [ Tech ]
 ---
 
-如果你具有通信或者网络背景，那么对SDN(Software Defined Network)一定不会陌生。你也许已经注意到，最近来在微服务领域兴起的Service Mesh和SDN(Software Defined Network) 非常相似，这两者都采用了软件对网络进行管理和控制，也都采用了包含控制面和数据面的类似架构。
+如果具有通信或者网络行业的知识背景，那么你对SDN(Software Defined Network)一定不会陌生。你也许已经注意到，近来在微服务领域兴起的Service Mesh和SDN(Software Defined Network) 非常相似，这两者都采用了软件对网络进行管理和控制，也都采用了包含控制面和数据面的类似架构。
 
-那么Service Mesh和SDN有什么关系？Service Mesh是下一代的SDN吗？ Service Mesh可以从SDN的发展历史中借鉴哪些经验？本文将就这些问题进行一一探讨。
+那么Service Mesh和SDN有什么关系？Service Mesh是下一代的SDN吗？ Service Mesh是否可以从SDN的发展历史中借鉴一些经验？本文将就这些问题进行一一探讨。
 
 # 传统网络面临的挑战
 
-首先我们来回顾一下SDN的起源。传统的IP网络是一个分布式的无中心架构，各个网络设备包含完整的控制面和数据面，通过网络协议探测网络中其他设备的状态，自主决定如何对流量进行路由。该架构的好处是容错性强，即使网络局部出现故障，整个网络也可以自主恢复，不会影响整个网络的运行。
+首先我们来回顾一下SDN的起源。传统的IP网络是一个分布式的无中心架构，各个网络设备包含完整的控制面和数据面，单个设备通过网络协议探测网络中其他设备的状态，自主决定如何对流量进行路由。该架构的好处是容错性强，即使网络局部出现故障，整个网络也可以自主恢复，不会影响整个网络的运行。
 {{< figure src="/img/2019-10-26-what-can-service-mesh-learn-from-sdn/network-devices.svg" caption="在传统的网络架构下，控制面和数据面位于同一设备中">}}
 
 这种去中心的架构在基于文本和图片的web浏览器应用时代运作良好，但随着互联网业务的爆炸式增长，各种各样的业务纷纷承载在了IP网络上，包括各种实时业务如语音视频通话，对网络提出了新的挑战。
@@ -63,7 +63,7 @@ SDN的不同层次之间采用标准接口进行通信：
 
 从上面的分析可以看出，SDN和Service Mesh面临的是类似的问题，既然都是解决类似的问题，那么Service Mesh是否可以看作下一代的SDN呢？ 
 
-我认为答案是否定的，因为两者之间还是有显著的不同。SDN主要面对L1到L4层，即网络层的基本转发和控制功能；Service Mesh则主要面对L7层及以上，用于处理应用层的服务发现，服务路由等功能。但我们可以把Service Mesh看作SDN的理念在应用层的扩展和实践。
+我认为答案是否定的，因为两者之间还是有显著的不同。SDN主要面对L1到L4层，即网络层的基本转发和控制功能；Service Mesh则主要面对L7层及以上，用于处理应用层的服务发现，服务路由等功能，但两者采用了相似的理念，我们可以把Service Mesh看作SDN的理念在应用层的扩展和实践。
 
 {{< figure src="/img/2019-10-26-what-can-service-mesh-learn-from-sdn/sdn-vs-service-mesh.jpg" caption="SDN和Service Mesh出于网络协议中的不同层次">}}
 
@@ -93,4 +93,25 @@ F5的该案例证明了Service Mesh和F5设备之间集成的可能性，但是�
 # 利用控制面接口开发应用
 
 SDN的另一个优势是可以通过控制器提供的北向接口快速开发各种SDN应用，而不需要对硬件进行升级，这种模式加快了新业务上线的周期，鼓励各种创新业务蓬勃发展。目前Service Mesh在应用方面尚未有太多实践，但从SDN的发展历程来看，Service Mesh应用层有极大的发展空间。
+
+下图是一个利用控制面接口开发的用户业务订阅及SLA管理的APP示例：
+
+1. 用户通过APP管理界面订阅服务，并设置SLA（服务水平协议），包括服务的请求次数，服务的响应时间等等
+1. APP将用户订阅及SLA约定转换为运维策略,调用控制面提供的编程接口下发给控制面
+1. 控制面将运维策略转换为数据面标准协议下发给数据面的代理，在代理上，运维策略被转换为代理的配置和转发策略
+1. 代理在收到用户请求时，根据用户标识对用户进行认证，并根据配置和路由策略对用户请求进行处理，例如根据SLA处理用户请求的限流策略，系统忙时优先转发高SLA等级的用户请求，等等。
+
 {{< figure src="/img/2019-10-26-what-can-service-mesh-learn-from-sdn/user-ubscription.jpg" caption="Service Mesh应用：用户业务订阅及SLA管理">}}
+
+上面只是一个非常简单的应用示例。通过对Service Mesh控制面提供的流量控制，安全策略，拓扑信息、性能指标等基本能力进行组合，并加以创新，可以创建大量端到端的高附加值业务，例如支持业务平滑升级的灰度发布，测试微服务系统健壮性的混沌测试，微服务的监控系统等等。
+
+# 总结：他山之石，可以攻玉
+
+SDN和Service Mesh的出现都是为了解决类似的网络通信问题，两者都采用了“数据面+控制面”这种类似的架构，但位于网络协议的不同层次。Service Mesh并不是下一代的SDN，但通过借鉴SDN的发展经验，Service Mesh也许可以向下面这些方向发展：
+
+* 北向接口：北向接口面向业务和运维，具有较高的抽象层次，比较容易提取统一的控制面标准。目前已经有多个公司支持采用SMI作为统一的控制面标准。但SMI的发展也存在一些挑战，例如如何避免SMI成为不同Service Mesh实现之间的最小公共子集，如何扩展支持除HTTP之外的其它应用层协议？
+* 南向接口：Envoy的xDS v2已经成为了南向接口的事实标准，但xDS接口包含有较多实现相关内容，例如Listener, Filter等，这些限制是否会妨碍Envoy之外的其它兼容数据面实现？
+* 对硬件的控制能力：Service Mesh控制面可以提供对数据面软硬件的统一控制能力，以减少软硬件混合环境下的运维复杂度。
+* 应用层的发展：通过北向接口（控制面编程接口）提供出来的能力，可以开发各端到端的创新应用，这也许会成为Service Mesh的下一个热点。
+
+备注：本文来自于Service Mesher Meetup 成都站的话题分享 [Service Mesh是下一代SDM吗？](chrome-extension://oemmndcbldboiebfnladdacbdfmadadm/https://zhaohuabing.com/slides/what-can-service-mesh-learn-from-sdn-servicemesher-meetup-20191026.pdf) 点击链接可以下载[演讲稿](chrome-extension://oemmndcbldboiebfnladdacbdfmadadm/https://zhaohuabing.com/slides/what-can-service-mesh-learn-from-sdn-servicemesher-meetup-20191026.pdf)。

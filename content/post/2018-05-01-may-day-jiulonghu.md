@@ -2,6 +2,8 @@
 layout:     post
 title:      "川西秘境探险"
 subtitle:   "2018五一甘堡藏寨，九龙湖自驾游记"
+description: "五一节前的一周内，几个朋友就纷纷坐不住了，一个二个不再安心上班，开始在微信群里讨论过节要到哪里耍。
+大家思来想去，最后决定还是去理县方向。因为根据多年自驾的经验，只要出了汶川，沿途都是风景。"
 date:       2018-05-01
 author:     "赵化冰"
 image: "https://img.zhaohuabing.com/in-post/2018-05-01-may-day-jiulonghu/snowmountain.jpg"

@@ -49,7 +49,7 @@ home = ["HTML", "RSS", "Algolia"]
   disqus_site = "https://zhaohuabing.com"
 
   #Enable wechat pay & alipay to allow readers send reward money if they like the articles
-  reward = true
+  reward = false
   reward_guide = "嗯，这篇文章对我有用，鼓励一下..."
 
   friends = true

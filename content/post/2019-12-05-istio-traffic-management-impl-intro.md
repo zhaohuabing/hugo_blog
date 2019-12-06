@@ -2,13 +2,14 @@
 layout:     post
 
 title:      "Istio流量管理实现机制深度解析"
-subtitle:   ""
+subtitle:   "Istio 1.4.0版本更新"
 excerpt: ""
 author:     "赵化冰"
-date:       2018-09-25
+date:       2019-12-05
 description: " Istio作为一个service mesh开源项目,其中最重要的功能就是对网格中微服务之间的流量进行管理,包括服务发现,请求路由和服务间的可靠通信。Istio体系中流量管理配置下发以及流量规则如何在数据面生效的机制相对比较复杂，通过官方文档容易管中窥豹，难以了解其实现原理。本文尝试结合系统架构、配置文件和代码对Istio流量管理的架构和实现机制进行分析，以达到从整体上理解Pilot和Envoy的流量管理机制的目的。"
-image: "/img/2018-09-25-istio-traffic-management-impl-intro/background.jpg"
-published: false
+image: "/img/2019-12-05-istio-traffic-management-impl-intro/background.jpg"
+url: "post/2018-09-25-istio-traffic-management-impl-intro/"
+published: true 
 tags:
     - Istio 
     - Pilot
@@ -28,7 +29,7 @@ Istio体系中流量管理配置下发以及流量规则如何在数据面生效
 
 Istio控制面中负责流量管理的组件为Pilot，Pilot的高层架构如下图所示：
 
-![](/img/2018-09-25-istio-traffic-management-impl-intro/pilot-architecture.png)  
+![](/img/2019-12-05-istio-traffic-management-impl-intro/pilot-architecture.png)  
 <center>Pilot Architecture（来自[Isio官网文档](https://istio.io/docs/concepts/traffic-management/)<sup>[[1]](#ref01)</sup>)</center>
 根据上图,Pilot主要实现了下述功能：
 
@@ -62,7 +63,7 @@ Pilot的规则DSL是采用K8S API Server中的[Custom Resource (CRD)](https://ku
 
 我们可以通过下图了解Istio流量管理涉及到的相关组件。虽然该图来自Istio Github old pilot repo, 但图中描述的组件及流程和目前Pilot的最新代码的架构基本是一致的。
 
-![](/img/2018-09-25-istio-traffic-management-impl-intro/traffic-managment-components.png)  
+![](/img/2019-12-05-istio-traffic-management-impl-intro/traffic-managment-components.png)  
 <center>Pilot Design Overview (来自[Istio old_pilot_repo](https://github.com/istio/old_pilot_repo/blob/master/doc/design.md)<sup>[[4]](#ref04)</sup>)</center>
 图例说明：图中红色的线表示控制流，黑色的线表示数据流。蓝色部分为和Pilot相关的组件。
 
@@ -157,7 +158,7 @@ xDS的几个接口是相互独立的，接口下发的配置数据是最终一�
 
 下图显示了Bookinfo示例程序中各个组件的IP地址，端口和调用关系，以用于后续的分析。
 
-![](/img/2018-09-25-istio-traffic-management-impl-intro/bookinfo.png)
+![](/img/2019-12-05-istio-traffic-management-impl-intro/bookinfo.png)
 
 ## xDS接口调试方法
 
@@ -394,7 +395,7 @@ kubectl exec productpage-v1-54b8b9f55-bx2dq -c istio-proxy -- cat /etc/istio/pro
 
 配置文件的结构如图所示：
 
-![](/img/2018-09-25-istio-traffic-management-impl-intro/envoy-rev0.png)  
+![](/img/2019-12-05-istio-traffic-management-impl-intro/envoy-rev0.png)  
 
 其中各个配置节点的内容如下：
 
@@ -559,7 +560,7 @@ kubectl exec productpage-v1-54b8b9f55-bx2dq -c istio-proxy -- cat /etc/istio/pro
 
 Envoy配置初始化流程：
 
-![](/img/2018-09-25-istio-traffic-management-impl-intro/envoy-config-init.png)  
+![](/img/2019-12-05-istio-traffic-management-impl-intro/envoy-config-init.png)  
 
 1. Pilot-agent根据启动参数和K8S API Server中的配置信息生成Envoy的初始配置文件envoy-rev0.json，该文件告诉Envoy从xDS server中获取动态配置信息，并配置了xDS server的地址信息，即控制面的Pilot。
 1. Pilot-agent使用envoy-rev0.json启动Envoy进程。
@@ -576,7 +577,7 @@ kubectl exec -it productpage-v1-54b8b9f55-bx2dq -c istio-proxy curl http://127.0
 
 ### Envoy配置文件结构
 
-![](/img/2018-09-25-istio-traffic-management-impl-intro/envoy-config.png)  
+![](/img/2019-12-05-istio-traffic-management-impl-intro/envoy-config.png)  
 
 文件中的配置节点包括：
 
@@ -584,7 +585,7 @@ kubectl exec -it productpage-v1-54b8b9f55-bx2dq -c istio-proxy curl http://127.0
 
 从名字可以大致猜出这是Envoy的初始化配置，打开该节点，可以看到文件中的内容和前一章节中介绍的envoy-rev0.json是一致的，这里不再赘述。
 
-![](/img/2018-09-25-istio-traffic-management-impl-intro/envoy-config-bootstrap.png)  
+![](/img/2019-12-05-istio-traffic-management-impl-intro/envoy-config-bootstrap.png)  
 
 #### Clusters 
 
@@ -592,7 +593,7 @@ kubectl exec -it productpage-v1-54b8b9f55-bx2dq -c istio-proxy curl http://127.0
 
 在Productpage的clusters配置中包含static_clusters和dynamic_active_clusters两部分，其中static_clusters是来自于envoy-rev0.json的xDS server和zipkin server信息。dynamic_active_clusters是通过xDS接口从Istio控制面获取的动态服务信息。
 
-![](/img/2018-09-25-istio-traffic-management-impl-intro/envoy-config-clusters.png)  
+![](/img/2019-12-05-istio-traffic-management-impl-intro/envoy-config-clusters.png)  
 
 Dynamic Cluster中有以下几类Cluster：
 
@@ -758,11 +759,13 @@ Envoy是如何做到按请求的目的端口进行分发的呢？ 从下面Virtu
 如果在Enovy的配置中找不到和请求目的地端口的listener，则将会根据Istio的outboundTrafficPolicy全局配置选项进行处理。存在两种情况：
 
 * 如果[outboundTrafficPolicy](https://istio.io/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig-OutboundTrafficPolicy)设置为ALLOW_ANY：Mesh允许发向任何外部服务的请求，不管该服务是否在Pilot的服务注册表中。在该策略下，Pilot将会在下发给Enovy的VirtualOutbound Listener加入一个upstream cluster为[PassthroughCluster](#passthroughcluster)的TCP proxy filter，找不到匹配端口listener的请求会被该TCP proxy filter处理，请求将会被发送到其IP头中的原始目的地地址。
-* 如果[outboundTrafficPolicy](https://istio.io/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig-OutboundTrafficPolicy)设置为REGISTRY_ONLY：只允许发向Pilot服务注册表中存在的服务的对外请求。在该策略下，Pilot将会在下发给Enovy的VirtualOutbound Listener加入一个upstream cluster为[BlackHoleCluster](#blackholecluster)的TCP proxy filter,，找不到匹配端口listener的请求会被该TCP proxy filter处理，由于BlackHoleCluster中没有配置upstteam host，请求实际上会被丢弃。
+* 如果[outboundTrafficPolicy](https://istio.io/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig-OutboundTrafficPolicy)设置为REGISTRY_ONLY：只允许发向Pilot服务注册表中存在的服务的对外请求。在该策略下，Pilot将会在下发给Enovy的VirtualOutbound Listener加入一个upstream cluster为[BlackHoleCluster](#blackholecluster)的TCP proxy filter，找不到匹配端口listener的请求会被该TCP proxy filter处理，由于BlackHoleCluster中没有配置upstteam host，请求实际上会被丢弃。
 
-下图是Bookinfo例子中Productpage服务中Enovy Proxy的Virutal Outbound Listener配置，outboundTrafficPolicy配置为ALLOW_ANY。
+下图是Bookinfo例子中Productpage服务中Enovy Proxy的Virutal Outbound Listener配置，outboundTrafficPolicy配置为ALLOW_ANY，因此Listener的filterchain中第二个filter是一个upstream cluster为PassthroughCluster的TCP proxy filter。注意该filter没有filter_chain_match匹配条件，因此如果进入该listener的请求在配置中找不到对于目的端口的listener进行处理，就会缺省进入该filter进行处理。
 
-{{< figure src="/img/2018-09-25-istio-traffic-management-impl-intro/virtualoutbound.png" caption="Virtual Outbound Listener">}}
+filterchain中的第一个filter为一个upstream cluster为BlackHoleCluster的TCP proxy filter，该filter设置了filter_chain_match匹配条件，只有发向10.40.0.18这个IP的出向请求才会进入该filter处理。从前面[Bookinfo的程序结构图](#bookinfo)中可以看到，10.40.0.18其实是productpage服务自身的IP地址。该filter的目的是为了防止服务向自己发送请求可能导致的死循环。
+
+{{< figure src="/img/2019-12-05-istio-traffic-management-impl-intro/virtualoutbound.png" caption="Virtual Outbound Listener">}}
 
 ##### Outbound Listener
 
@@ -884,15 +887,19 @@ Productpage Pod中的Envoy创建了多个Outbound Listener
 
 ##### VirtualInbound Listener
 
-在Productpage Pod上的Envoy创建了Listener 192.168.206.23_9080，当外部调用Productpage服务的请求到达Pod上15001的"Virtual" Listener时，Virtual Listener根据请求目的地匹配到该Listener,请求将被转发过来。
+在较早的版本中，Istio采用同一个VirtualListener在端口15001上同时处理入向和出向的请求。该方案存在一些潜在的问题，例如可能会导致出现死循环，参见[这个PR](https://github.com/istio/istio/pull/15713)。在1.4中，Istio为Envoy单独创建了一个VirtualInboundListener，在15006端口监听入向请求，原来的15001端口只用于处理出向请求。
 
-{{< figure src="/img/2018-09-25-istio-traffic-management-impl-intro/virtualinbound.png" caption="Virtual Inbound Listener">}}
+另外一个变化是当VirtualInboundListener接收到请求后，将直接在VirtualInboundListener采用一系列filterChain对入向请求进行处理，而不是像VirtualOutboundListener一样分发给其它独立的Listener进行处理。
 
-从上面的配置"bind_to_port": false可以得知该listener创建后并不会被绑定到tcp端口上直接接收网络上的数据，因此其所有请求都转发自15001端口。
+这样修改后，Envoy配置中入向和出向的请求处理流程被完全拆分开，请求处理流程更为清晰，可以避免由于配置导致的一些潜在错误。
 
-该listener配置的envoy.tcp_proxy filter对应的cluster为["inbound|9080||productpage.default.svc.cluster.local"](#inbound-cluster),该cluster配置的host为127.0.0.1:9080，因此Envoy会将该请求发向127.0.0.1:9080。由于iptable设置中127.0.0.1不会被拦截,该请求将发送到Productpage进程的9080端口进行业务处理。
+下图是Bookinfo例子中Reviews服务中Enovy Proxy的Virutal Inbound Listener配置。
 
-除此以外，Listenter中还包含Mixer filter的配置信息，配置了策略检查(Mixer check)和Metrics上报(Mixer report)服务器地址，以及Mixer上报的一些attribute取值。
+该Listener中第三个filterchain用于处理Review服务的入向请求。该filterchain的匹配条件为Review服务的Pod IP和9080端口，配置了一个http_connection_manager filter，http_connection_manager 中又嵌入了istio_auth，Mixer，envoy.router等http filter，经过这些filter进行处理后，请求最终将被转发给"inbound|9080||reviews.default.svc.cluster.local"这个[Inbound Cluster](#inbound-cluster)，由于该Inbound Cluster中配置的Upstream为127.0.0.1:9080，由于iptable设置中127.0.0.1不会被拦截,该请求将发送到同Pod的Reviews服务的9080端口上进行业务处理。
+
+VirtualInbound Listener中的第一个filterchain的匹配条件为所有IP，用于缺省处理未在Pilot服务注册表中注册的服务。
+
+{{< figure src="/img/2019-12-05-istio-traffic-management-impl-intro/virtualinbound.png" caption="Virtual Inbound Listener">}}
 
 #### Routes
 
@@ -1038,7 +1045,7 @@ Productpage Pod中的Envoy创建了多个Outbound Listener
 
 下图描述了一个Productpage服务调用Details服务的请求流程：
 
-![](/img/2018-09-25-istio-traffic-management-impl-intro/envoy-traffic-route.png)  
+{{< figure src="/img/2019-12-05-istio-traffic-management-impl-intro/envoy-traffic-route.svg" caption="Virtual Inbound Listener">}}
 
 1. Productpage发起对Details的调用：`http://details:9080/details/0` 。
 2. 请求被Pod的iptable规则拦截，转发到15001端口。
@@ -1263,4 +1270,3 @@ Productpage Pod中的Envoy创建了多个Outbound Listener
 https://github.com/istio/istio/tree/master/pilot/pkg/proxy/envoy/v2
 1. <a id="ref08">[Pilot Debug interface](https://github.com/istio/istio/tree/master/pilot/pkg/proxy/envoy/v2)
 1. <a id="ref09">[Istio Sidecar自动注入原理](https://zhaohuabing.com/2018/05/23/istio-auto-injection-with-webhook/)
-

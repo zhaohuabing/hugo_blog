@@ -1143,11 +1143,11 @@ VirtualInbound Listener中的第一个filterchain的匹配条件为所有IP，�
 
 下图描述了一个Productpage服务调用Reviews服务的请求流程：
 
-{{< figure src="/img/2019-12-05-istio-traffic-management-impl-intro/envoy-traffic-route.svg" caption="Virtual Inbound Listener">}}
+{{< figure src="/img/2019-12-05-istio-traffic-management-impl-intro/envoy-traffic-route.png" caption="Virtual Inbound Listener">}}
 
 1. Productpage发起对Reviews服务的调用：`http://reviews:9080/reviews/0` 。
 2. 请求被Productpage Pod的iptable规则拦截，重定向到本地的15001端口。
-3. 在5001端口上监听的Envoy Virtual Outbound Listener收到了该请求。
+3. 在15001端口上监听的Envoy Virtual Outbound Listener收到了该请求。
 4. 请求被Virtual Outbound Listener根据原目标IP（通配）和端口（9080）转发到0.0.0.0_9080这个 outbound listener。
 ```
 {

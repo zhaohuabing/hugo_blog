@@ -56,6 +56,8 @@ Tun虚拟设备和物理网卡的区别是Tun虚拟设备是IP层设备，从/de
 
 VPN主机上有两个物理网卡，其中Eth0用于和对方站点的VPN主机进行通信，建立隧道。Eth1在通过网线连接到以太网交换机的同时也被则加入了Linux Bridge，这相当于用一条网线将Linux Bridge上的一个端口（Eth1）连接到了本地站点的以太网交换机上，Eth1上收到的所有数据包都会被发送到Linux Bridge上，Linux Bridge发给Eth1的数据包也会被发送到以太网交换机上。Linux Bridge上还有一个Tap虚拟网卡，用于VPN程序接收从Linux Bridge上收到的数据包。
 
+![](/img/2020-02-24-linux-taptun/linux-bridge-tunnel.png)
+
 假设192.168.0.5发出了一个对192.168.0.3的ARP请求，该ARP请求在网络中经过的路径如下：
 
 1. 192.168.0.5发出ARP请求，询问192.168.0.3的MAC地址。
@@ -70,8 +72,8 @@ VPN主机上有两个物理网卡，其中Eth0用于和对方站点的VPN主机�
 1. 192.168.0.3收到了APR请求，判断iP地址和自己相同，对此请求进行响应。
 1. 同理，ARP响应包也可以按照该路径返回到图左边包括192.168.0.5在内的站点中。
 
-
-![](/img/2020-02-24-linux-taptun/linux-bridge-tunnel.png)
+从站点主机的角度来看，上面图中两个VPN主机之间的远程连接可以看作一条虚拟的网线，这条网线将两个Linux Bridge连接起来。这两个Linux Bridge和两个以太网交换机一起将左右两个站点的主机连接在一起，形成了一个局域网。
+![](/img/2020-02-24-linux-taptun/linux-bridge-tunnel-simplified.png)
 
 # 参考资料
 * [Universal TUN/TAP device driver](https://www.kernel.org/doc/Documentation/networking/tuntap.txt)

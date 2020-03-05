@@ -151,7 +151,7 @@ kubectl apply -f k8s/eshop.yaml
 
 Tracer.buildSpan 方法的说明如下：
 
-```
+```java
 Tracer.SpanBuilder buildSpan(String operationName)
 Return a new SpanBuilder for a Span with the given `operationName`.
 You can override the operationName later via BaseSpan.setOperationName(String).

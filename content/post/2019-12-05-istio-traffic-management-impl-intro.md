@@ -169,7 +169,7 @@ xDS的几个接口是相互独立的，接口下发的配置数据是最终一�
 
 Pilot在15014端口提供了下述[调试接口](https://github.com/istio/istio/tree/master/pilot/pkg/proxy/envoy/v2)<sup>[[8]](#ref08)</sup>下述方法查看xDS接口相关数据。
 
-```
+```bash
 PILOT=istio-pilot.istio-system:15014
 
 # What is sent to envoy
@@ -187,7 +187,7 @@ curl $PILOT/debug/cdsz
 
 Envoy提供了管理接口，缺省为localhost的15000端口，可以获取listener，cluster以及完整的配置数据导出功能。
 
-```
+```bash
 kubectl exec productpage-v1-6d8bc58dd7-ts8kw -c istio-proxy curl http://127.0.0.1:15000/help
   /: Admin home page
   /certs: print certs on machine
@@ -217,7 +217,7 @@ kubectl exec productpage-v1-6d8bc58dd7-ts8kw -c istio-proxy curl http://127.0.0.
 * 15000: Envoy管理端口，该端口绑定在本地环回地址上，只能在Pod内访问。
 * 15090：指向127.0.0.1：15000/stats/prometheus, 用于对外提供Envoy的性能统计指标
 
-```
+```bash
 master $ kubectl exec productpage-v1-6d8bc58dd7-ts8kw -c istio-proxy --  netstat -ln
 Active Internet connections (only servers)
 Proto Recv-Q Send-Q Local Address           Foreign Address         State
@@ -235,7 +235,7 @@ Istio通过K8s的[Admission webhook](https://zhaohuabing.com/2018/05/23/istio-au
 
 备注：下面Pod description中只保留了需要关注的内容，删除了其它不重要的部分。为方便查看，本文中后续的其它配置文件以及命令行输出也会进行类似处理。
 
-```
+```bash
 master $ kubectl describe pod productpage-v1-6d8bc58dd7-ts8kw
 Name:               productpage-v1-6d8bc58dd7-ts8kw
 Namespace:          default
@@ -323,7 +323,7 @@ Iptables规则的详细内容参见istio源码中的shell脚本[tools/packaging/
 
 前面提到，该容器中有两个进程Pilot-agent和envoy。我们进入容器中看看这两个进程的相关信息。
 
-```
+```bash
 master $ kubectl exec productpage-v1-6d8bc58dd7-ts8kw -c istio-proxy -- ps -ef
 UID        PID  PPID  C STIME TTY          TIME CMD
 istio-p+     1     0  0 10:46 ?        00:00:02 /usr/local/bin/pilot-agent proxy sidecar --domain default.svc.cluster.local --configPath /etc/istio/proxy --binaryPath/usr/local/bin/envoy --serviceCluster productpage.default --drainDuration 45s --parentShutdownDuration 1m0s --discoveryAddress istio-pilot.istio-system:15010 --zipkinAddress zipkin.istio-system:9411 --proxyLogLevel=warning --proxyComponentLogLevel=misc:error --connectTimeout 10s --proxyAdminPort 15000 --concurrency 2 --controlPlaneAuthPolicy NONE --dnsRefreshRate 300s --statusPort 15020 --applicationPorts 9080 --trust-domain=cluster.local
@@ -339,7 +339,7 @@ Pilot-agent进程根据启动参数和K8S API Server中的配置信息生成Envo
 
 可以使用下面的命令将productpage pod中该文件导出来查看其中的内容：
 
-```
+```bash
 kubectl exec productpage-v1-6d8bc58dd7-ts8kw -c istio-proxy cat /etc/istio/proxy/envoy-rev0.json > envoy-rev0.json
 ```
 
@@ -353,7 +353,7 @@ kubectl exec productpage-v1-6d8bc58dd7-ts8kw -c istio-proxy cat /etc/istio/proxy
 
 包含了Envoy所在节点相关信息。
 
-```
+```json
 {
     "node": {
         "id": "sidecar~10.40.0.18~productpage-v1-6d8bc58dd7-ts8kw.default~default.svc.cluster.local",
@@ -396,7 +396,7 @@ kubectl exec productpage-v1-6d8bc58dd7-ts8kw -c istio-proxy cat /etc/istio/proxy
 
 配置Envoy的日志路径以及管理端口。
 
-```
+```json
     "admin": {
         "access_log_path": "/dev/null",
         "address": {
@@ -412,7 +412,8 @@ kubectl exec productpage-v1-6d8bc58dd7-ts8kw -c istio-proxy cat /etc/istio/proxy
 
 配置动态资源,这里配置了ADS服务器。
 
-```
+
+```json
 {
     "dynamic_resources": {
         "lds_config": {
@@ -439,7 +440,8 @@ kubectl exec productpage-v1-6d8bc58dd7-ts8kw -c istio-proxy cat /etc/istio/proxy
 
 配置静态资源，包括了prometheus_stats、xds-grpc和zipkin三个cluster和一个在15090上监听的listener。其中xds-grpc cluster对应前面dynamic_resources中ADS配置，指明了Envoy用于获取动态资源的服务器地址。prometheus_stats cluster和15090 listener用于对外提供兼容prometheus格式的统计指标。zipkin cluster则是外部的zipkin调用跟踪服务器地址，Envoy会向该地址上报兼容zipkin格式的调用跟踪信息。
 
-```
+
+```json
 {
     "static_resources": {
         "clusters": [
@@ -568,7 +570,8 @@ kubectl exec productpage-v1-6d8bc58dd7-ts8kw -c istio-proxy cat /etc/istio/proxy
 
 配置分布式链路跟踪，这里配置的后端cluster是前面static_resources里面定义的zipkin cluster。
 
-```
+
+```json
   "tracing": {
     "http": {
       "name": "envoy.zipkin",
@@ -602,9 +605,10 @@ Envoy配置初始化流程：
 可以看到，Envoy中实际生效的配置是由初始化配置文件中的静态配置和从Pilot获取的动态配置一起组成的。因此只对envoy-rev0
 .json进行分析并不能看到Mesh中流量管理的全貌。那么有没有办法可以看到Envoy中实际生效的完整配置呢？答案是可以的，我们可以通过Envoy的管理接口来获取Envoy的完整配置。
 
-```
+```json
 kubectl exec -it productpage-v1-6d8bc58dd7-ts8kw -c istio-proxy curl http://127.0.0.1:15000/config_dump > config_dump
 ```
+
 该文件内容长达近一万行，本文中就不贴出来了，在https://github.com/zhaohuabing/bookinfo-bookinfo-config-dump/blob/istio1.4.0/productpage-config-dump中可以查看到文件的全部内容。
 
 ### Envoy配置文件结构
@@ -635,7 +639,7 @@ Dynamic Cluster中有以下几类Cluster：
 
 从reviews 服务对应的cluster配置中可以看到，其类型为EDS，即表示该Cluster的endpoint来自于动态发现，动态发现中eds_config则指向了ads，最终指向static Resource中配置的xds-grpc cluster,即Pilot的地址。
 
-```
+```json
 {
     "version_info": "2019-12-04T03:08:06Z/13",
     "cluster": {
@@ -665,14 +669,15 @@ Dynamic Cluster中有以下几类Cluster：
 
 可以通过Pilot的调试接口获取该Cluster的endpoint：
 
-```
+```json
 curl http://10.97.222.108:15014/debug/edsz > pilot_eds_dump
 ```
 
 导出的文件较长，本文只贴出reviews服务相关的endpoint配置，完整文件参见:https://github.com/zhaohuabing/bookinfo-bookinfo-config-dump/blob/istio1.4.0/pilot_eds_dump
 
 从下面的文件内容可以看到，reviews cluster配置了3个endpoint地址，是reviews的pod ip。
-```
+
+```json
 {
     "clusterName": "outbound|9080||reviews.default.svc.cluster.local",
     "endpoints": [
@@ -752,7 +757,8 @@ curl http://10.97.222.108:15014/debug/edsz > pilot_eds_dump
 
 该类Cluster对应于Envoy所在节点上的服务。如果该服务接收到请求，当然就是一个入站请求。对于Productpage Pod上的Envoy，其对应的Inbound Cluster只有一个，即productpage。该cluster对应的host为127.0.0.1,即环回地址上productpage的监听端口。由于iptable规则中排除了127.0.0.1,入站请求通过该Inbound cluster处理后将跳过Envoy，直接发送给Productpage进程处理。
 
-```
+
+```json
 {
     "version_info": "2019-12-04T03:08:06Z/13",
     "cluster": {
@@ -797,7 +803,8 @@ curl http://10.97.222.108:15014/debug/edsz > pilot_eds_dump
 
 这是一个特殊的Cluster，并没有配置后端处理请求的Host。如其名字所暗示的一样，请求进入后将被直接丢弃掉。如果一个请求没有找到其对的目的服务，则被发到cluste。
 
-```
+
+```json
 {
     "version_info": "2019-12-04T03:08:06Z/13",
     "cluster": {
@@ -815,7 +822,8 @@ curl http://10.97.222.108:15014/debug/edsz > pilot_eds_dump
 
 和BlackHoleCluter相反，发向PassthroughCluster的请求会被直接发送到其请求中要求的原始目地的，Envoy不会对请求进行重新路由。
 
-```
+
+```json
 {
     "version_info": "2019-12-04T03:08:06Z/13",
     "cluster": {
@@ -918,7 +926,8 @@ VirtualInbound Listener中的第一个filterchain的匹配条件为所有IP，�
 配置Envoy的路由规则。Istio下发的缺省路由规则中对每个端口设置了一个路由规则，根据host来对请求进行路由分发。
 
 下面是Proudctpage服务中9080的路由配置，从文件中可以看到对应了5个virtual host，分别是details、productpage、ratings、reviews和allow_any，前三个virtual host分别对应到不同服务的[outbound cluster](#outbound-cluster)。最后一个对应到[PassthroughCluster](#passthroughcluster),即当入向的i请求没有找到对应的服务时，也会让其直接通过。
-```
+
+```json
 {
     "version_info": "2019-12-04T03:08:06Z/13",
     "route_config": {
@@ -1149,7 +1158,8 @@ VirtualInbound Listener中的第一个filterchain的匹配条件为所有IP，�
 2. 请求被Productpage Pod的iptable规则拦截，重定向到本地的15001端口。
 3. 在15001端口上监听的Envoy Virtual Outbound Listener收到了该请求。
 4. 请求被Virtual Outbound Listener根据原目标IP（通配）和端口（9080）转发到0.0.0.0_9080这个 outbound listener。
-```
+
+```json
 {
     "version_info": "2019-12-04T03:08:06Z/13",
     "listener": {
@@ -1167,8 +1177,10 @@ VirtualInbound Listener中的第一个filterchain的匹配条件为所有IP，�
     "last_updated": "2019-12-04T03:08:22.919Z"
 }
 ```
+
 5. 根据0.0.0.0_9080 listener的http_connection_manager filter配置,该请求采用“9080” route进行分发。
-```
+
+```json
  {
     "version_info": "2019-12-04T03:08:06Z/13",
     "listener": {
@@ -1227,7 +1239,8 @@ VirtualInbound Listener中的第一个filterchain的匹配条件为所有IP，�
 ```
 
 6. “9080”这个route的配置中，host name为reviews:9080的请求对应的cluster为outbound|9080||reviews.default.svc.cluster.local
-```
+
+```json
 {
     "name": "reviews.default.svc.cluster.local:9080",
     "domains": [
@@ -1315,7 +1328,8 @@ VirtualInbound Listener中的第一个filterchain的匹配条件为所有IP，�
 ```
 
 7. outbound|9080||reviews.default.svc.cluster.local cluster为动态资源，通过eds查询得到该cluster中有3个endpoint。
-```
+
+```json
 {
     "clusterName": "outbound|9080||reviews.default.svc.cluster.local",
     "endpoints": [
@@ -1394,7 +1408,8 @@ VirtualInbound Listener中的第一个filterchain的匹配条件为所有IP，�
 9. 然后该请求被iptable规则拦截，重定向到本地的15006端口。
 10. 在15006端口上监听的Envoy Virtual  Inbound Listener收到了该请求。
 11. 根据匹配条件，请求被Virtual Inbound Listener内部配置的Http connection manager filter处理，该filter设置的路由配置为将其发送给inbound|9080|http|reviews.default.svc.cluster.local这个inbound cluster。
-```
+
+```json
 {
     "version_info": "2019-12-04T03:07:44Z/12",
     "listener": {
@@ -1479,7 +1494,8 @@ VirtualInbound Listener中的第一个filterchain的匹配条件为所有IP，�
 
 12. inbound|9080|http|reviews.default.svc.cluster.local cluster配置的host为127.0.0.1：9080。
 
-```
+
+```json
 {
     "version_info": "2019-12-04T03:08:06Z/13",
     "cluster": {

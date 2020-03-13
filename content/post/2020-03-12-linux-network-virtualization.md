@@ -312,9 +312,9 @@ PING 192.168.1.2 (192.168.1.2) 56(84) bytes of data.
 
 # 连接到外部网络
 
-通过给bridge设置一个IP地址，并将该IP设置为namespace的缺省网关，再在主机上添加相应的路由，可以让namespace和主机以及外部网络通信。
-
 前面在介绍Linux bridge时我们讲到，从网络角度上来说，bridge是一个二层设备，因此并不需要设置IP。但Linux bridge虚拟设备比较特殊：我们可以认为bridge自带了一张网卡，这张网卡在主机上显示的名称就是bridge的名称。这张网卡在bridge上，因此可以和其它连接在bridge上的网卡和namespace进行二层通信；同时从主机角度来看，虚拟bridge设备也是主机default network namespace上的一张网卡，在为该网卡设置了IP后，可以参与主机的路由转发。
+
+通过给bridge设置一个IP地址，并将该IP设置为namespace的缺省网关，同时在主机上添加相应的路由，可以让namespace和主机以及外部网络通信。
 
 下面显示了为Linux bridge设备br0设置了IP地址后的逻辑网络视图。注意下图中Linux bridge(br0)和路由器(default network namespace)上出现了br0这张网卡，即这张网卡同时在二层上工作于Linux bridge中，在三层上工作于default network namespace中。
 

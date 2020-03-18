@@ -127,6 +127,11 @@ iptables-save > iptables-dump
 :KUBE-SEP-4CGFRVESQ3AECDE7 - [0:0]
 :KUBE-SEP-YLXG4RMKAICGY2B3 - [0:0]
 
+# 对进入host上30080端口的外部tcp流量进行SNAT，转换为pod网络上的地址
+-A KUBE-NODEPORTS -p tcp -m comment --comment "default/webapp1-nodeport-svc:" -m tcp --dport 30080 -j KUBE-MARK-MASQ
+-A KUBE-MARK-MASQ -j MARK --set-xmark 0x4000/0x4000
+-A KUBE-POSTROUTING -m comment --comment "kubernetes service traffic requiring SNAT" -m mark --mark 0x4000/0x4000 -j MASQUERADE
+
 # 将host上30080端口的外部tcp流量转到KUBE-SVC-J2DWGRZTH4C2LPA4链
 -A KUBE-NODEPORTS -p tcp -m comment --comment "default/webapp1-nodeport-svc:" -m tcp --dport 30080 -j KUBE-SVC-J2DWGRZTH4C2LPA4
 

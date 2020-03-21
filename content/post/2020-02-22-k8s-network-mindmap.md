@@ -43,5 +43,7 @@ showtoc: false
               - [K8s Ingress](https://zhaohuabing.com/post/2019-03-29-how-to-choose-ingress-for-service-mesh/#k8s-ingress)
               - [Istio Ingress Gateway](https://zhaohuabing.com/post/2019-03-29-how-to-choose-ingress-for-service-mesh/#istio-gateway)
         - [API Gateway+Service Mesh](https://zhaohuabing.com/post/2019-03-29-how-to-choose-ingress-for-service-mesh/#api-gateway--sidecar-proxy)
+	- Security
+    	- [Certificate and PKI](https://zhaohuabing.com/post/2020-03-19-pki/)
     	  {{% /mind %}}
 

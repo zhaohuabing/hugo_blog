@@ -43,6 +43,8 @@ showtoc: false
               - [K8s Ingress](https://zhaohuabing.com/post/2019-03-29-how-to-choose-ingress-for-service-mesh/#k8s-ingress)
               - [Istio Ingress Gateway](https://zhaohuabing.com/post/2019-03-29-how-to-choose-ingress-for-service-mesh/#istio-gateway)
         - [API Gateway+Service Mesh](https://zhaohuabing.com/post/2019-03-29-how-to-choose-ingress-for-service-mesh/#api-gateway--sidecar-proxy)
+        - Kubernetes CNI插件
+    		- [Calico](https://www.lijiaocn.com/%E9%A1%B9%E7%9B%AE/2017/04/11/calico-usage.html)
 	- Security
     	- [Certificate and PKI](https://zhaohuabing.com/post/2020-03-19-pki/)
     	  {{% /mind %}}

@@ -80,7 +80,7 @@ Span的数据结构中包含以下内容：
 * Tags：一系列标签，每个标签由一个key value键值对组成。该标签可以是任何有利于调用分析的信息，例如方法名，URL等。
 * SpanContext：用于跨进程边界传递Span相关信息，在进行传递时需要结合一种序列化协议（Wire Protocol）使用。
 * References：该Span引用的其它关联Span，主要有两种引用关系，Childof和FollowsFrom。
-    * Childof： 最常用的一种引用关系，表示Parent Span和Child Span之间存在直接的依赖关系。例PRC服务端Span和RPC客户端Span，或者数据库SQL插入Span和ORM Save动作Span之间的关系。
+    * Childof： 最常用的一种引用关系，表示Parent Span和Child Span之间存在直接的依赖关系。例RPC服务端Span和RPC客户端Span，或者数据库SQL插入Span和ORM Save动作Span之间的关系。
     * FollowsFrom：如果Parent Span并不依赖Child Span的执行结果，则可以用FollowsFrom表示。例如网上商店购物付款后会向用户发一个邮件通知，但无论邮件通知是否发送成功，都不影响付款成功的状态，这种情况则适用于用FollowsFrom表示。
 
 ### 跨进程调用信息传播

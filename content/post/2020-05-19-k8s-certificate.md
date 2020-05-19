@@ -112,6 +112,8 @@ Kubernetes 中使用到的主要证书
 
 ## kube-apiserver 证书配置
 
+在 kube-apiserver 中需要配置对外提供服务的服务器证书及私钥，访问 etcd 所需的客户端证书及私钥，访问 kubelet 所需的客户端证书及私钥， 验证访问其服务的客户端的 CA，验证 etcd 服务器证书的 CA 根证书，以及用于验证 service account token 的公钥。
+
 ```bash
 /usr/local/bin/kube-apiserver \\ 
   --tls-cert-file=/var/lib/kubernetes/kube-apiserver.pem \\                             # 用于对外提供服务的服务器证书

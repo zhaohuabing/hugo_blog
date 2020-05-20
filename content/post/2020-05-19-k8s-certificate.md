@@ -7,14 +7,14 @@ excerpt: ""
 author:     "赵化冰"
 date:       2020-05-19
 description: "在本文中，我将试图以一种比官方文档更容易理解的方式来说明 Kubernete s中和证书（Certificate）相关的工作机制，如果你也存在这方面的疑惑，希望这篇文章对你有所帮助。"
-image: "https://blog.ikuzo.fr/wp-content/uploads/2019/11/kubernetes-sami-810x415.jpg"
+image: "/img/2020-05-19-k8s-certificate/background.jpg"
 published: true 
 tags:
     - kubernetes
 categories: [ Tech ]
 ---
 
-接触 Kubernetes 以来，我经常看到 Kubernetes 在不同的地方使用了证书（Certificate），在 Kubernetes 安装和组件启动参数中也需要配置大量证书相关的参数。但是 Kubernetes 的文档在解释这些证书的工作机制方面做得并不是太好。经过大量的相关阅读和分析工作，我才弄清楚了 Kubernetes 中证书的使用方式。在本文中，我将试图以一种比官方文档更容易理解的方式来说明 Kubernete s中和证书（Certificate）相关的工作机制，如果你也存在这方面的疑惑，希望这篇文章对你有所帮助。
+接触 Kubernetes 以来，我经常看到 Kubernetes 在不同的地方使用了证书（Certificate），在 Kubernetes 安装和组件启动参数中也需要配置大量证书相关的参数。但是 Kubernetes 的文档在解释这些证书的工作机制方面做得并不是太好。经过大量的相关阅读和分析工作后，我基本弄清楚了 Kubernetes 中证书的使用方式。在本文中，我将试图以一种比官方文档更容易理解的方式来说明 Kubernetes 中证书相关的工作机制，如果你也存在这方面的疑惑，希望这篇文章对你有所帮助。
 
 # Kubernetes 组件的认证方式
 
@@ -23,7 +23,7 @@ categories: [ Tech ]
 ![](/img/2020-05-19-k8s-certificate/components-of-kubernetes.png)
 kubernetes 组件，图片来源[kubernetes.io](https://kubernetes.io/zh/docs/concepts/overview/components/)
 
-从图中可以看到，Kubernetes 控制平面中包含了 etctd，kube-api-server，kube-scheduler，kube-controller-manager，cloud-controller-manage r等组件，这些组件会相互进行远程调用，例如 kube-api-server 会调用 etcd 接口存储数据，kube-controller-manager 会调用 kube-api-server 接口查询集群中的对象状态；同时，kube-api-server 也会和在工作节点上的 kubelet 和 kube-proxy 进行通信，以在工作节点上部署和管理应用。
+从图中可以看到，Kubernetes 控制平面中包含了 etctd，kube-api-server，kube-scheduler，kube-controller-manager 等组件，这些组件会相互进行远程调用，例如 kube-api-server 会调用 etcd 接口存储数据，kube-controller-manager 会调用 kube-api-server 接口查询集群中的对象状态；同时，kube-api-server 也会和在工作节点上的 kubelet 和 kube-proxy 进行通信，以在工作节点上部署和管理应用。
 
 以上这些组件之间的相互调用都是通过网络进行的。在进行网络通信时，通信双方需要验证对方的身份，以避免恶意第三方伪造身份窃取信息或者对系统进行攻击。为了相互验证对方的身份，通信双方中的任何一方都需要做下面两件事情：
 
@@ -40,11 +40,11 @@ CA （证书机构），图片来源[www.trustauth.cn](https://www.trustauth.cn/
 * 服务器单向认证：只需要服务器端提供证书，客户端通过服务器端证书验证服务的身份，但服务器并不验证客户端的身份。这种情况一般适用于对 Internet 开放的服务，例如搜索引擎网站，任何客户端都可以连接到服务器上进行访问，但客户端需要验证服务器的身份，以避免连接到伪造的恶意服务器。
 * 双向 TLS 认证：除了客户端需要验证服务器的证书，服务器也要通过客户端证书验证客户端的身份。这种情况下服务器提供的是敏感信息，只允许特定身份的客户端访问。
 
-在 Kubernetes 中，由于组件提供的接口包含了集群的内部信息，因此需要采用双向 TLS 认证。即客户端和服务器端都需要验证对方的身份信息。在两个组件进行双向认证时，会涉及到下面这些证书相关的文件：
+在 Kubernetes 中，各个组件提供的接口中包含了集群的内部信息。如果这些接口被非法访问，将影响集群的安全，因此组件之间的通信需要采用双向 TLS 认证。即客户端和服务器端都需要验证对方的身份信息。在两个组件进行双向认证时，会涉及到下面这些证书相关的文件：
 
-* 服务器端证书：服务器为了证明自身身份的数字证书，里面主要包含了服务器端的公钥以及服务器的身份信息。
-* 服务器端私钥：服务器端证书中包含的公钥所对应的私钥。由于公钥和私钥是成对使用的，在进行 TLS 验证时，服务器使用该私钥来向客户端证明自己是服务器端证书的拥有者。
-* 客户端证书：客户端为了证明自身身份的数字证书，里面主要包含了客户端的公钥以及客户端的身份信息。
+* 服务器端证书：服务器用于证明自身身份的数字证书，里面主要包含了服务器端的公钥以及服务器的身份信息。
+* 服务器端私钥：服务器端证书中包含的公钥所对应的私钥。公钥和私钥是成对使用的，在进行 TLS 验证时，服务器使用该私钥来向客户端证明自己是服务器端证书的拥有者。
+* 客户端证书：客户端用于证明自身身份的数字证书，里面主要包含了客户端的公钥以及客户端的身份信息。
 * 客户端私钥：客户端证书中包含的公钥所对应的私钥，同理，客户端使用该私钥来向服务器端证明自己是客户端证书的拥有者。
 * 服务器端 CA 根证书：签发服务器端证书的 CA 根证书，客户端使用该 CA 根证书来验证服务器端证书的合法性。
 * 客户端端 CA 根证书：签发客户端证书的 CA 根证书，服务器端使用该 CA 根证书来验证客户端证书的合法性。
@@ -57,7 +57,7 @@ CA （证书机构），图片来源[www.trustauth.cn](https://www.trustauth.cn/
 
 # Kubernetes 中使用到的CA和证书
 
-Kubernetes 中使用了大量的证书，本篇文章不会试图覆盖到所有可能使用到的证书，但会尽量讨论主要用到的证书。理解了这些主要证书的使用方法和原理后，也能很快理解其他可能遇到的证书文件。下图标识出了在 kubernetes 中主要使用到的证书和其使用的位置：
+Kubernetes 中使用了大量的证书，本文不会试图覆盖到所有可能使用到的证书，但会讨论到主要的证书。理解了这些证书的使用方法和原理后，也能很快理解其他可能遇到的证书文件。下图标识出了在 kubernetes 中主要使用到的证书和其使用的位置：
 
 ![](/img/2020-05-19-k8s-certificate/kubernetes-certificate-usage.png)
 
@@ -67,7 +67,7 @@ Kubernetes 中使用到的主要证书
 
 1. etcd 集群中各个节点之间相互通信使用的证书。由于一个 etctd 节点既为其他节点提供服务，又需要作为客户端访问其他节点，因此该证书同时用作服务器证书和客户端证书。
 
-2. etcd 向外提供服务使用的证书。该证书是服务器证书。
+2. etcd 集群向外提供服务使用的证书。该证书是服务器证书。
 
 3. kube-apiserver 作为客户端访问 etcd 使用的证书。该证书是客户端证书。
 
@@ -87,7 +87,7 @@ Kubernetes 中使用到的主要证书
 
 11. kube-apiserver 作为客户端访问 kubelet 采用的证书。该证书是客户端证书。
 
-12. kube-controller-manager 用于生成和验证 service-account token 的证书。该证书并不会像其他证书一样用于通过 CA 进行身份认证，而是将证书中的公钥/私钥对用于 service account token 的生成和验证。kube-controller-manager  会用该证书的私钥来生成 service account token，然后以 secret 的方式加载到 pod 中。pod 中的应用可以使用该 token 来访问 kube-apiserver， kube-apiserver 会使用该证书中的公钥来验证请求中的 token。
+12. kube-controller-manager 用于生成和验证 service-account token 的证书。该证书并不会像其他证书一样用于身份认证，而是将证书中的公钥/私钥对用于 service account token 的生成和验证。kube-controller-manager  会用该证书的私钥来生成 service account token，然后以 secret 的方式加载到 pod 中。pod 中的应用可以使用该 token 来访问 kube-apiserver， kube-apiserver 会使用该证书中的公钥来验证请求中的 token。我们将在文中稍后部分详细介绍该证书的使用方法。
 
 通过这张图，对证书机制比较了解的读者可能已经看出，我们其实可以使用多个不同的 CA 来颁发这些证书。只要在通信的组件中正确配置用于验证对方证书的 CA 根证书，就可以使用不同的 CA 来颁发不同用途的证书。但我们一般建议采用统一的 CA 来颁发 kubernetes 集群中的所有证书，这是因为采用一个集群根 CA 的方式比采用多个 CA 的方式更容易管理，可以避免多个CA 导致的复杂的证书配置、更新等问题，减少由于证书配置错误导致的集群故障。
 
@@ -97,7 +97,11 @@ Kubernetes 中使用到的主要证书
 
 ## etcd 证书配置
 
-需要在 etcd 的启动命令行中配置其对外提供服务的服务器证书及私钥; etcd 节点之间相互进行认证的 peer 证书，私钥，以及验证 peer 的 CA；etcd 验证访问其服务的客户端的 CA。
+需要在 etcd 的启动命令行中配置以下证书相关参数：
+
+* etcd 对外提供服务的服务器证书及私钥。
+* etcd 节点之间相互进行认证的 peer 证书、私钥以及验证 peer 的 CA。
+* etcd 验证访问其服务的客户端的 CA。
 
 ```bash
 /usr/local/bin/etcd \\
@@ -112,7 +116,14 @@ Kubernetes 中使用到的主要证书
 
 ## kube-apiserver 证书配置
 
-在 kube-apiserver 中需要配置对外提供服务的服务器证书及私钥，访问 etcd 所需的客户端证书及私钥，访问 kubelet 所需的客户端证书及私钥， 验证访问其服务的客户端的 CA，验证 etcd 服务器证书的 CA 根证书，以及用于验证 service account token 的公钥。
+需要在 kube-apiserver 中配置以下证书相关参数：
+
+* kube-apiserver 对外提供服务的服务器证书及私钥。
+* kube-apiserver 访问 etcd 所需的客户端证书及私钥。
+* kube-apiserver 访问 kubelet 所需的客户端证书及私钥。
+* 验证访问其服务的客户端的 CA。
+* 验证 etcd 服务器证书的 CA 根证书。
+* 验证 service account token 的公钥。
 
 ```bash
 /usr/local/bin/kube-apiserver \\ 
@@ -123,15 +134,15 @@ Kubernetes 中使用到的主要证书
   --kubelet-client-certificate=/var/lib/kubernetes/kube-apiserver-kubelet-client.pem \\ # 用于访问 kubelet 的客户端证书
   --kubelet-client-key=/var/lib/kubernetes/kube-apiserver-kubelet-client-key.pem \\     # 用于访问 kubelet 的客户端证书的私钥
   --client-ca-file=/var/lib/kubernetes/cluster-root-ca.pem \\                           # 用于验证访问 kube-apiserver 的客户端的证书的 CA 根证书
-  --etcd-cafile=/var/lib/kubernetes/cluster-root-ca.pem \\                               # 用于验证 etcd 服务器证书的 CA 根证书  
-  --kubelet-certificate-authority=/var/lib/kubernetes/cluster-root-ca.pem \\             # 用于验证 kubelet 服务器证书的 CA 根证书
-  --service-account-key-file=/var/lib/kubernetes/service-account.pem \\                  # 用于验证 service account token 的公钥
+  --etcd-cafile=/var/lib/kubernetes/cluster-root-ca.pem \\                              # 用于验证 etcd 服务器证书的 CA 根证书  
+  --kubelet-certificate-authority=/var/lib/kubernetes/cluster-root-ca.pem \\            # 用于验证 kubelet 服务器证书的 CA 根证书
+  --service-account-key-file=/var/lib/kubernetes/service-account.pem \\                 # 用于验证 service account token 的公钥
   ...
 ```
 
 ## 采用 kubeconfig 访问 kube-apiserver
 
-Kubernetes 中的各个组件，包括kube-controller-mananger、kube-scheduler、kube-proxy、kubelet等，通过一个kubeconfig 文件中配置的信息来访问 kube-apiserver。该文件中包含了 kube-apiserver 的地址，验证 kube-apiserver 服务器证书的 CA 证书，自己的客户端证书和私钥等访问信息。
+Kubernetes 中的各个组件，包括kube-controller-mananger、kube-scheduler、kube-proxy、kubelet等，采用一个kubeconfig 文件中配置的信息来访问 kube-apiserver。该文件中包含了 kube-apiserver 的地址，验证 kube-apiserver 服务器证书的 CA 证书，自己的客户端证书和私钥等访问信息。
 
 在一个使用 minikube 安装的集群中，生成的 kubeconfig 配置文件如下所示，这四个文件分别为 admin 用户， kube-controller-mananger、kubelet 和 kube-scheduler 的kubeconfig配置文件。
 
@@ -183,7 +194,7 @@ users:
 
 ## Service Account  证书
 
-Kubernetes 中有两类用户，一类为 user account，一类为 service account。 service account 主要被 pod 用于访问 kube-apiserver。 在为一个 pod 指定了 service account  后，kubernetes 会为该 service account 生成一个 JWT token，并使用 secret 将该 service account token 加载到 pod 上。pod 中的应用可以使用 service account token 来访问 api server。service account 证书被用于生成和验证 service account token。该证书的用法和前面介绍的其他证书是不同的，因为实际上使用的是其公钥和私钥，而并不需要对证书进行验证。
+Kubernetes 中有两类用户，一类为 user account，一类为 service account。 service account 主要被 pod 用于访问 kube-apiserver。 在为一个 pod 指定了 service account  后，kubernetes 会为该 service account 生成一个 JWT token，并使用 secret 将该 service account token 加载到 pod 上。pod 中的应用可以使用 service account token 来访问 api server。service account 证书被用于生成和验证 service account token。该证书的用法和前面介绍的其他证书不同，因为实际上使用的是其公钥和私钥，而并不需要对证书进行验证。
 
 我们可以看到 service account 证书的公钥和私钥分别被配置到了 kube-apiserver 和 kube-controller-manager 的命令行参数中，如下所示：
 
@@ -197,9 +208,13 @@ Kubernetes 中有两类用户，一类为 user account，一类为 service accou
  ... 
 ```
 
-下图展示了 kubernetes 中生成、使用和验证 service account token  的基本原理。
+下图展示了 kubernetes 中生成、使用和验证 service account token  的过程。
 
 ![](/img/2020-05-19-k8s-certificate/service-account-token.png)
+
+### 认证方法：客户端证书还是 token ？
+
+我们可以看到，Kubernetes 提供了两种客户端认证的方法，控制面组件采用的是客户端数字证书;而在集群中部署的应用则采用了 service account token 的方式。为什么 Kubernetes 不为 service account 也生成一个证书，并采用该证书进行身份认证呢？ 实际上 Istio 就是这样做的，Istio 会自动为每个 service account 生成一个证书，并使用该证书来在 pod 中的应用之间建立双向 tls 认证。我没有找到 Kubernetes 这个设计决策的相关说明，如果你知道原因或对此有自己的见解，欢迎联系我进行探讨。
 
 ## Kubernetes 证书签发
 
@@ -228,9 +243,11 @@ Kubernetes 提供了一个  `certificates.k8s.io`  API，可以使用配置的 C
 
 # 小结
 
-Kubernetes 中使用了大量的证书来确保集群的安全，弄清楚这些证书的用途和配置方法将有助于我们深入理解 kubernetes 的安装过程和组件的配置。本文是笔者在学习 过程中整理的 Kubernetes 集群中主要使用到的证书，笔者对 Kubernetes 的理解有限，如果文中有部分错误的内容，欢迎指正。
+Kubernetes 中使用了大量的证书来确保集群的安全，弄清楚这些证书的用途和配置方法将有助于我们深入理解 kubernetes 的安装过程和组件的配置。本文是笔者在学习 过程中整理的 Kubernetes 集群中主要使用到的证书，由于笔者对 Kubernetes 的理解有限，文章中难免存在部分错误，欢迎指正。
 
 # 参考文档
 * [Kubernetes PKI 证书和要求](https://kubernetes.io/zh/docs/setup/best-practices/certificates/)
 * [kubernetes the hard way](https://github.com/kelseyhightower/kubernetes-the-hard-wa)
 * [Kubernetes 之 二进制安装(二) 证书详解](https://blog.51cto.com/13210651/2361208)
+* [TLS bootstrapping](https://kubernetes.io/zh/docs/reference/command-line-tools-reference/kubelet-tls-bootstrapping/)
+* [数字证书原理](https://zhaohuabing.com/post/2020-03-19-pki/)

@@ -16,7 +16,6 @@ categories: [ Knowledge Graph ]
 showtoc: false
 ---
 
-{{% mind %}}
 - Kubernetes
 	- 基本理念
 		- 自动化部署，缩扩容和管理容器应用
@@ -86,5 +85,5 @@ showtoc: false
     		- [Calico](https://www.lijiaocn.com/%E9%A1%B9%E7%9B%AE/2017/04/11/calico-usage.html)
 	- Security
     	- [Certificate and PKI](https://zhaohuabing.com/post/2020-03-19-pki/)
-    	  {{% /mind %}}
+		- [Kubernetes 中使用到的证书](https://zhaohuabing.com/post/2020-05-19-k8s-certificate/)
 

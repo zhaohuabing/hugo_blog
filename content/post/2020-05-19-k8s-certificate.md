@@ -11,6 +11,7 @@ image: "/img/2020-05-19-k8s-certificate/background.jpg"
 published: true 
 tags:
     - kubernetes
+    - security
 categories: [ Tech ]
 ---
 
@@ -231,7 +232,7 @@ Kubernetes 提供了一个  `certificates.k8s.io`  API，可以使用配置的 C
 
 ## 使用 TLS bootstrapping 简化 Kubelet 证书制作
 
-在安装 Kubernetes 时，我们需要为每一个工作节点上的 Kubelet 分别生成一个证书。由于工作节点可能很多，手动生成 Kubelet 证书的过程会比较繁琐。为了解决这个问题，Kubernetes 提供了 [TLS bootstrapping ](https://kubernetes.io/zh/docs/reference/command-line-tools-reference/kubelet-tls-bootstrapping/) 的方式来简化   Kubelet 证书的生成过程。其原理是预先提供一个 bootstrapping token，kubelet 通过该 kubelet 调用 kube-apiserver 的证书签发 API 来生成 自己需要的证书。要启用该功能，需要在 kube-apiserver 中启用 ```--enable-bootstrap-token-auth``` ，并创建一个 kubelet 访问 kube-apiserver 使用的 bootstrap token secret。如果使用 kubeadmin 安装，可以使用 ``` kubeadm token create ```命令来创建 token。
+在安装 Kubernetes 时，我们需要为每一个工作节点上的 Kubelet 分别生成一个证书。由于工作节点可能很多，手动生成 Kubelet 证书的过程会比较繁琐。为了解决这个问题，Kubernetes 提供了 [TLS bootstrapping ](https://kubernetes.io/zh/docs/reference/command-line-tools-reference/kubelet-tls-bootstrapping/) 的方式来简化   Kubelet 证书的生成过程。其原理是预先提供一个 bootstrapping token，kubelet 采用该 bootstrapping token 进行客户端验证，调用 kube-apiserver 的证书签发 API 来生成 自己需要的证书。要启用该功能，需要在 kube-apiserver 中启用 ```--enable-bootstrap-token-auth``` ，并创建一个 kubelet 访问 kube-apiserver 使用的 bootstrap token secret。如果使用 kubeadmin 安装，可以使用 ``` kubeadm token create ```命令来创建 token。
 
 采用TLS bootstrapping 生成证书的流程如下：
 

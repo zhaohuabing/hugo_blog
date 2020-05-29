@@ -6,26 +6,27 @@ subtitle:   ""
 excerpt: ""
 author:     "赵化冰"
 date:       2020-05-25
-description: "在上一篇文章《一文带你彻底厘清 Kubernetes 中的证书工作机制》中，我们介绍了 Kubernetes 中证书的工作机制。在这篇文章中，我们继续探讨 Istio 是如何使用证书来实现网格中服务的身份认证和安全通信的。"
+description: "Istio 为微服务提供了无侵入，可插拔的安全框架。应用不需要修改代码，就可以利用 Istio 提供的双向 TLS 认证实现服务身份认证，并基于服务身份信息提供细粒度的访问控制。本文将揭秘 Istio 双向 TLS 认证的实现机制。"
 image: "https://images.pexels.com/photos/1482193/pexels-photo-1482193.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-published: true 
+published: true
 tags:
-    - istio
-    - security
+    - kubernetes
 categories: [ Tech ]
 ---
 
 在上一篇文章[一文带你彻底厘清 Kubernetes 中的证书工作机制](https://zhaohuabing.com/post/2020-05-19-k8s-certificate/)中，我们介绍了 Kubernetes 中证书的工作机制。在这篇文章中，我们继续探讨 Istio 是如何使用证书来实现网格中服务的身份认证和安全通信的。
 
+本文是对 Istio 认证工作机制的深度分析，假设读者已经了解 Service Mesh 以及 Istio 的相关基础概念，因此在本文对此类基础概念不再解释。对于 Istio 不熟悉的读者，建议先阅读 Istio 官方网站上的的这篇基础介绍 [What is Istio?](https://istio.io/docs/concepts/what-is-istio/)。
+
 # Istio 安全架构
 
-Istio 以一种对应用无侵入的，可插拔的方式实现了网格中服务之间的双向 TLS 认证。应用不需要修改代码，就可以实现服务之间以及服务和外部系统/用户之间的安全通信。Istio 安全的高层架构如下图所示：
+Istio 为微服务提供了无侵入，可插拔的安全框架。应用不需要修改代码，就可以利用 Istio 提供的双向 TLS 认证实现服务身份认证，并基于服务身份信息提供细粒度的访问控制。Istio 安全的高层架构如下图所示：
 
 ![](https://istio.io/docs/concepts/security/arch-sec.svg)
 图1. Istio Security Architecture，图片来源[istio.io](https://istio.io/docs/concepts/security/#high-level-architecture)
 
 图中展示了 Istio 中的服务认证和授权两部分内容。让我们暂时忽略掉授权部分，先关注认证部分。服务认证是通过控制面和数据面一起实现的：
- * 控制面：Istiod 中实现了一个 CA （Certificate Authority，证书机构） 服务器。该 CA 服务器负责为网格中的各个服务签发证书，并发送给数据面的边车代理。
+ * 控制面：Istiod 中实现了一个 CA （Certificate Authority，证书机构） 服务器。该 CA 服务器负责为网格中的各个服务签发证书，并将证书分发给数据面的各个服务的边车代理。
  * 数据面：在网格中的服务相互之间发起 plain HTTP/TCP 通信时，和服务同一个 pod 中的边车代理会拦截服务请求，采用证书和对端服务的边车代理进行双向 TLS 认证并建立一个 TLS 连接，使用该 TLS 连接来在网络中传输数据。
 
 # 控制面证书签发流程
@@ -33,19 +34,19 @@ Istio 以一种对应用无侵入的，可插拔的方式实现了网格中服�
 图1是对 Istio 安全架构的一个高度概括的描述，让我们把图1中控制面的交互展开，看一下其中的细节。
 
 ![](/img/2020-05-25-istio-certificate/istio-ca.svg)
-图2. Istio 证书签发流程
+图2. Istio 证书分发流程
 
-Istio 控制面向 Envoy 签发证书的流程如下：
+我们先暂时忽略图中右边蓝色虚线的部分（稍后会在 [控制面身份认证](#heading1) 部分讲到），图中左半部分描述了 Istio 控制面向 Envoy 签发证书的流程：
 1. Envoy 向 pilot-agent 发起一个 SDS (Secret Discovery Service) 请求，要求获取自己的证书和私钥。
-2. Pilot-agent 生成私钥和 CSR （Certificates Signing Request，证书签名请求），向 Istiod 发送 CSR 请求。
-3. Istiod 根据请求中客户端的 Service Account 为其签发证书，将证书返回给 Pilot-agent。
-4. Pilot-agent 将证书和私钥返回给 Envoy。
+2. Pilot-agent 生成私钥和 CSR （Certificates Signing Request，证书签名请求），向 Istiod 发送证书签发请求，请求中包含 CSR 和该 pod 中服务的身份信息。
+3. Istiod 根据请求中服务的身份信息（Service Account）为其签发证书，将证书返回给 Pilot-agent。
+4. Pilot-agent 将证书和私钥通过 SDS 接口返回给 Envoy。
 
 ## 为什么要通过 Pilot-agent 中转？
 
 从图2可以看到，Istio 证书签发的过程中涉及到了三个组件： Istiod (Istio CA) ---> Pilot-agent ---> Enovy。为什么其他 xDS 接口都是由 Istiod 直接向 Envoy 提供，但 SDS 却要通过 Pilot-agent 进行一次中转，而不是直接由 Envoy 通过 SDS 接口从 Istiod 获取证书呢？这样做主要有两个原因。
 
-首先，在 Istio 的证书签发流程中，由 Pilot-agent 生成私钥和 CSR，再通过 CSR 向 Istiod 中的 CA 申请证书。在整个过程中，私钥只存在于本地的 Istio-proxy 容器中。如果去掉中间 Pilot-agent 这一步，直接由 Envoy 向 Isitod 申请证书，则需要由 Istio的 生成私钥，并将私钥和证书一起通过网络返回给 Envoy，这将大大增加私钥泄露的风险。
+首先，在 Istio 的证书签发流程中，由 Pilot-agent 生成私钥和 CSR，再通过 CSR 向 Istiod 中的 CA 申请证书。在整个过程中，私钥只存在于本地的 Istio-proxy 容器中。如果去掉中间 Pilot-agent 这一步，直接由 Envoy 向 Isitod 申请证书，则需要由 Istiod 生成私钥，并将私钥和证书一起通过网络返回给 Envoy，这将大大增加私钥泄露的风险。
 
 另一方面，通过 Pilot-agent 来提供 SDS 服务，由 Pilot-agent 生成标准的 CSR 证书签名请求，可以很容易地对接不同的 CA 服务器，方便 Istio 和其他证书机构进行集成。
 
@@ -346,7 +347,7 @@ spec:
 
 ```
 
-在导出的配置中可以看到 Envoy 通过 SDS 服务器获取到的证书内容。
+在导出的配置中可以看到 Envoy 通过 SDS 服务器获取到的证书（为了简略起见，省略了证书中间的部分内容）。
 
 ```json
  {
@@ -501,10 +502,12 @@ Istio 将此配置通过 xDS 接口下发到 Ingress Gateway Pod 中的 Envoy �
 
 从配置中可以看出，Ingress Gateway 使用的服务器证书也是通过 SDS 服务获取的。Pilot-agent 在路径```unix:/var/run/ingress_gateway/sds``` 上为 Ingress Gateway 提供了一个基于 unix domain socket 的 SDS 服务。Ingress Gateway 中的 Envoy 向该 SDS 服务器请求上述配置文件中的 secret，Pilot-agent 从 Kubernetes 中查到该 同名 secret，然后转换为 SDS 消息返回给 Envoy。
 
-备注：Ingress Gateway 用于和网格内其他服务通信的服务身份证书还是由 Istio CA 颁发的，其证书签发的流程同图2。
+备注：
+1. Ingress Gateway 用于和网格内其他服务通信的服务身份证书还是由 Istio CA 颁发的，其证书获取的流程同图2。
+2. Egress Gateway 未使用 SDS 获取用于访问外部服务的客户端证书（1.6 现状，后续也许会修改）。
 
 ![](/img/2020-05-25-istio-certificate/ingress-gateway-ca-sds.svg)
-图4. Envoy SDS 服务
+图4. Ingress Gateway 证书获取流程
 
 # 数据面使用的所有证书
 

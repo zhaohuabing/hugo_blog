@@ -10,7 +10,7 @@ description: "Istio 为微服务提供了无侵入，可插拔的安全框架。
 image: "https://images.pexels.com/photos/1482193/pexels-photo-1482193.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
 published: true
 tags:
-    - kubernetes
+    - Istio
 categories: [ Tech ]
 ---
 

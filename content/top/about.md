@@ -1,6 +1,6 @@
 ![](/img/zhaohuabing.png)  **_Huabing Zhao_** is a software architect, an Istio Member and an ONAP PTL. He has a solid experience in the information and telecommunication technology industry for more than 17 years. 
 
-Throughout his career, he has built a number of large-scale, cross-country NMS/OSS platforms/systems and operation tools, most of them are still running in productions. 
+Throughout his career, he has built a number of large-scale, cross-country software systems, most of them are still running in production. 
 
 He loves open source and has been contributing to various open source projects, he is a member of Istio¹,  a PTL of ONAP²,  the author of Hugo clean-white theme³.  
 
@@ -8,7 +8,7 @@ He also has strong interests in various technical topics such as Cloud Native, A
 
 Huabing holds a BSc in Computer Science and Technology from Chongqing University in China. 
 
-Currently, Huabing works as a software architect in ZTE  Corporation and also wears the hat of PTL in ONAP open source project. For now, his main focus is to build a microservice-based, cloud-native, reliable, resilient and scalable open network automation platform.
+Currently, Huabing works as a senior engineer at [Tencent Cloud](https://cloud.tencent.com/) and also wears the hat of PTL in ONAP open source project. For now, his main focus is to build a managed service mesh solution on cloud.
 
 While he is free, he likes writing technical blog posts, watching movies, swimming, hiking, travelling and learning languages.
 

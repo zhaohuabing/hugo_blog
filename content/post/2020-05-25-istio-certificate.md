@@ -22,7 +22,7 @@ categories: [ Tech ]
 
 Istio 为微服务提供了无侵入，可插拔的安全框架。应用不需要修改代码，就可以利用 Istio 提供的双向 TLS 认证实现服务身份认证，并基于服务身份信息提供细粒度的访问控制。Istio 安全的高层架构如下图所示：
 
-![](https://istio.io/docs/concepts/security/arch-sec.svg)
+![](https://istio.io/latest/docs/concepts/security/arch-sec.svg)
 图1. Istio Security Architecture，图片来源[istio.io](https://istio.io/docs/concepts/security/#high-level-architecture)
 
 图中展示了 Istio 中的服务认证和授权两部分内容。让我们暂时忽略掉授权部分，先关注认证部分。服务认证是通过控制面和数据面一起实现的：

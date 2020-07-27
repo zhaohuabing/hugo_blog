@@ -112,7 +112,7 @@ Tetrate分享了“基于Envoy和Apache Skywalking的服务网格的可观察性
 用得到的证书信息对来自另一个信任域的请求进行身份认证
 ![](/img/2019-06-25-kubecon-cncf-oss-2019/service-communication.jpg)
 
-[完整PPT链接](/img/2019-06-25-kubecon-cncf-oss-2019/How-SPIFFE-helps-Istio-in-Service-Mesh- Federation.pdf)
+[完整PPT链接](/img/2019-06-25-kubecon-cncf-oss-2019/How-SPIFFE-helps-Istio-in-Service-Mesh-Federation.pdf)
 
 ## IngressRoute：如何为 Kubernetes 提供更好的 Ingress 对象
 

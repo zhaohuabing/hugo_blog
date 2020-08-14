@@ -34,7 +34,7 @@ home = ["HTML", "RSS", "Algolia"]
   algolia_apiKey = "090c4a77b8bd4b8d2f2c1262afbc4be2"
 
   # Sidebar settings
-  sidebar_about_description = "Software Developer, Open Source Enthusiast and Life Adventurer"
+  sidebar_about_description = "Engineer @Tencent Cloud, Open Source Enthusiast and Life Adventurer"
   #sidebar_avatar = "img/avatar-zhaohuabing.jpg"      # use absolute URL, seeing it's used in both `/` and `/about/`
   sidebar_avatar = "img/zhaohuabing.png"      # use absolute URL, seeing it's used in both `/` and `/about/`
 
@@ -103,7 +103,7 @@ params = ["categories", "tags"]
 
 [markup]
   [markup.tableOfContents]
-    endLevel = 2
+    endLevel = 3
     startLevel = 1
   [markup.highlight]
     style = "dracula"

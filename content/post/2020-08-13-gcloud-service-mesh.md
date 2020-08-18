@@ -7,7 +7,7 @@ excerpt: ""
 author:     "赵化冰"
 date:       2020-08-13
 description: "作为开源 Service Mesh 明星项目 Istio 背后的主要大厂，Google 在其公有云上推出了 Service Mesh 管理服务。让人迷惑的是 Google Cloud 上有两个 Service Mesh 产品：Traffic director 与 Anthos Service Mesh，Google CLoud 同时推出两个 Servcie Mesh 产品的原因是什么？这两个产品的定位有何不同？"
-image: "https://cdn.pixabay.com/photo/2017/09/17/16/35/boats-2758962_1280.jpg"
+image: "https://images.pexels.com/photos/37323/goats-competition-dispute.jpg?cs=srgb&dl=pexels-pixabay-37323.jpg&fm=jpg"
 published: true
 tags:
     - Istio
@@ -448,6 +448,8 @@ Anthos 对 On-Perm 和多云的 K8s 集群的管理采用了代理的方式，An
 * 需要将 cluster 的网络方案设置为 vpc-native，这样 pod ip 在 vpc 中就是可以路由的，以让两个 cluster 的网络可以互通。
 * 需要为两个 cluster 中部署的 Istio 控制面设置对方 api server 的 remote secret，以使 stio 获取对方的 Service 信息。
 
+具体的安装步骤可以参见 Anthos Service Mesh 的[帮助文档](https://cloud.google.com/service-mesh/docs/gke-project-setup)。
+
 从导出的 Envoy sidecar 配置可以看到，其连接的 xds server 为本地集群中的 istiod。
 
 ```json
@@ -495,8 +497,73 @@ Metric，Access log和 tracing 过 Envoy stackdriver http filter 上报到 Googl
               }
 ```
 
+尝试从位于 west1-a 集群的 sleep pod 中访问 helloworld 服务，可以看到缺省会访问本集群中的 helloword v1 版本的服务实例，不会跨地域访问。
 
-![](/img/2019-08-13/anthos-example.png)
+
+```bash
+g********@cloudshell:~ (huabingzhao-anthos)$ for i in {1..4}
+> do
+> kubectl exec --context=${CTX1} -it -n sample -c sleep  \
+>    $(kubectl get pod --context=${CTX1} -n sample -l    \
+>    app=sleep -o jsonpath='{.items[0].metadata.name}')  \
+>    -- curl helloworld.sample:5000/hello
+> done
+Hello version: v1, instance: helloworld-v1-578dd69f69-c2fmz
+Hello version: v1, instance: helloworld-v1-578dd69f69-c2fmz
+Hello version: v1, instance: helloworld-v1-578dd69f69-c2fmz
+Hello version: v1, instance: helloworld-v1-578dd69f69-c2fmz
+```
+
+将 west1-a 集群中 helloworld deployment 的副本数设置为0，再进行访问，由于本地没有可用实例，会访问到部署在 east1-b region 的 helloworld v2，实现了跨地域的容灾。这里需要注意一点：虽然两个集群的 IP 是可路由的，但 Google cloud 的防火墙缺省并不允许集群之间相互访问，需要先创建相应的防火墙规则，以运行跨集群的网格访问流量。
+
+```bash
+kubectl edit deployment helloworld-v1 -nsample --context=${CTX1}
+```
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "1"
+  creationTimestamp: "2020-08-14T12:00:32Z"
+  generation: 2
+  labels:
+    version: v1
+  name: helloworld-v1
+  namespace: sample
+  resourceVersion: "54763"
+  selfLink: /apis/apps/v1/namespaces/sample/deployments/helloworld-v1
+  uid: d6c79e00-e62d-411a-8986-25513d805eeb
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 0
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: helloworld
+      version: v1
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+    ......
+```
+
+```bash
+g********@cloudshell:~ (huabingzhao-anthos)$ for i in {1..4}
+> do
+> kubectl exec --context=${CTX1} -it -n sample -c sleep  \
+>    $(kubectl get pod --context=${CTX1} -n sample -l    \
+>    app=sleep -o jsonpath='{.items[0].metadata.name}')  \
+>    -- curl helloworld.sample:5000/hello
+> done
+Hello version: v2, instance: helloworld-v2-776f74c475-jws5r
+Hello version: v2, instance: helloworld-v2-776f74c475-jws5r
+Hello version: v2, instance: helloworld-v2-776f74c475-jws5r
+Hello version: v2, instance: helloworld-v2-776f74c475-jws5r
+```
 
 # Traffic Director 和 Anthos Service Mesh 的定位
 

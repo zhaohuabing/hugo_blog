@@ -1,7 +1,7 @@
 ---
 layout:     post
 
-title:      "Istio 运维实战系列：应用容器与 Envoy Sidecar 的启动依赖问题"
+title:      "Istio 运维实战系列（1）：应用容器对 Envoy Sidecar 的启动依赖问题"
 subtitle:   ""
 excerpt: ""
 author:     "赵化冰"
@@ -20,11 +20,11 @@ categories: [ Tech ]
 
 该问题的表现是安装了 sidecar proxy 的应用在启动后的一小段时间内无法通过网络访问 pod 外部的其他服务，例如外部的 HTTP，MySQL，Redis等服务。如果应用没有对依赖服务的异常进行容错处理，该问题还常常会导致应用启动失败。下面我们以该问题导致的一个典型故障的分析过程为例对该问题的原因进行说明。
 
-典型案例：某客户运维同学反馈：昨天晚上 Istio 环境中应用的心跳检测报 connect reset，然后服务重启了。怀疑是 Istio 环境中网络不稳定导致了服务重启。
+典型案例：某运维同学反馈：昨天晚上 Istio 环境中应用的心跳检测报 connect reset，然后服务重启了。怀疑是 Istio 环境中网络不稳定导致了服务重启。
 
 # 故障分析
 
-根据客户的反馈，该 pod 曾多次重启。因此我们先用 `kubectl logs --previous` 命令查询 awesome-app 容器最后一次重启前的日志，以从日志中查找其重启的原因。
+根据运维同学的反馈，该 pod 曾多次重启。因此我们先用 `kubectl logs --previous` 命令查询 awesome-app 容器最后一次重启前的日志，以从日志中查找其重启的原因。
 
 ```bash
 kubectl logs --previous awesome-app-cd1234567-gzgwg -c awesome-app
@@ -48,7 +48,7 @@ java.net.ConnectException: Connection refused (Connection refused)
 kubectl get pod awesome-app-cd1234567-gzgwg  -oyaml
 ```
 
-命令输出的 pod 详细内容如下，该 yaml 片段省略了其他无关的细节，只显示了容器的 lastState 和 state 部分。
+命令输出的 pod 详细内容如下，该 yaml 片段省略了其他无关的细节，只显示了 lastState 和 state 部分的容器状态信息。
 
 ```yaml
 containerStatuses:
@@ -173,11 +173,11 @@ spec:
     image: my-application
 ```
 
-该方案在不对应用进行修改的情况下比较完美地解决了应用容器和 Envoy sidecar 初始化的依赖问题。但是该解决方案对 Kubernetes 有两个隐式依赖条件：Kubernetes 在一个线程中依次启动 pod 中的多个容器，以及前一个容器的 postStart hook 执行后再启动下一个容器。这两个前提条件在目前的 Kuberenetes 代码实现中是满足的，但由于这并不是 Kubernetes的 API 规范，因此该前提在将来 Kubernetes 升级后很可能被打破，导致该问题再次出现。
+该方案在不对应用进行修改的情况下比较完美地解决了应用容器和 Envoy sidecar 初始化的依赖问题。但是该解决方案对 Kubernetes 有两个隐式依赖条件：Kubernetes 在一个线程中按定义顺序依次启动 pod 中的多个容器，以及前一个容器的 postStart hook 执行完毕后再启动下一个容器。这两个前提条件在目前的 Kuberenetes 代码实现中是满足的，但由于这并不是 Kubernetes的 API 规范，因此该前提在将来 Kubernetes 升级后很可能被打破，导致该问题再次出现。
 
 ## Kubernetes 支持定义 pod 中容器之间的依赖关系
 
-为了彻底解决该问题，避免 Kubernetes 代码变动后该问题再次出现，最彻底的解决方案是由 Kubernetes 支持显式定义 pod 中一个容器的启动依赖于另一个容器的健康状态。目前 Kubernetes 中已经有一个 issue [Support startup dependencies between containers on the same Pod #65502](https://github.com/kubernetes/kubernetes/issues/65502) 对该问题进行跟踪处理。如果 Kubernetes 支持了该特性，则该流程的执行顺序如下：
+为了彻底解决该问题，避免 Kubernetes 代码变动后该问题再次出现，更合理的方式应该是由 Kubernetes 支持显式定义 pod 中一个容器的启动依赖于另一个容器的健康状态。目前 Kubernetes 中已经有一个 issue [Support startup dependencies between containers on the same Pod #65502](https://github.com/kubernetes/kubernetes/issues/65502) 对该问题进行跟踪处理。如果 Kubernetes 支持了该特性，则该流程的执行顺序如下：
 
 1. Kubernetes 启动 Envoy sidecar 容器。
 2. Kubernetes 通过 Envoy sidecar 容器的 readiness probe 检查其状态，直到 readiness probe 反馈 Envoy sidecar 已经 ready，即已经初始化完毕。
@@ -185,9 +185,11 @@ spec:
 
 ## 解耦应用服务之间的启动依赖关系
 
+以上几个解决方案的思路都是控制 pod 中容器的启动顺序，在 Envoy sidecar 初始化完成后再启动应用容器，以确保应用容器启动时能够通过网络正常访问其他服务。但这些方案只是『头痛医头，脚痛医脚』,是治标不治本的方法。因为即使 pod 中对外的网络访问没有问题，应用容器依赖的其他服务也可能由于尚未启动，或者某些问题而不能在此时正常提供服务。要彻底解决该问题，我们需要解耦应用服务之间的启动依赖关系，使应用容器的启动不再强依赖其他服务。
+
 在一个微服务系统中，原单体应用中的各个业务模块被拆分为多个独立进程（服务）。这些服务的启动顺序是随机的，并且服务之间通过不可靠的网络进行通信。微服务多进程部署、跨进程网络通信的特定决定了服务之间的调用出现异常是一个常见的情况。为了应对微服务的该特点，微服务的一个基本的设计原则是 "design for failure"，即需要以优雅的方式应对可能出现的各种异常情况。当在微服务进程中不能访问一个依赖的外部服务时，需要通过重试、降级、超时、断路等策略对异常进行容错处理，以尽可能保证系统的正常运行。
 
-Envoy sidecar 初始化期间网络暂时不能访问的情况只是放大了微服务系统未能正确处理服务依赖的问题，即使解决了 Envoy sidecar 的依赖顺序，该问题依然存在。例如在本案例中，配置中心也是一个独立的微服务，当一个依赖配置中心的微服务启动时，配置中心有可能尚未启动，或者尚未初始化完成。在这种情况下，如果在代码中没有对该异常情况进行处理，也会导致依赖配置中心的微服务启动失败。在一个更为复杂的系统中，多个微服务进程之间可能存在网状依赖关系，如果没有按照 "design for failure" 的原则对微服务进行容错处理，那么只是将整个系统启动起来就将是一个巨大的挑战。
+Envoy sidecar 初始化期间网络暂时不能访问的情况只是放大了微服务系统未能正确处理服务依赖的问题，即使解决了 Envoy sidecar 的依赖顺序，该问题依然存在。例如在本案例中，配置中心也是一个独立的微服务，当一个依赖配置中心的微服务启动时，配置中心有可能尚未启动，或者尚未初始化完成。在这种情况下，如果在代码中没有对该异常情况进行处理，也会导致依赖配置中心的微服务启动失败。在一个更为复杂的系统中，多个微服务进程之间可能存在网状依赖关系，如果没有按照 "design for failure" 的原则对微服务进行容错处理，那么只是将整个系统启动起来就将是一个巨大的挑战。对于本例而言，可以采用一个类似这样的简单容错策略：先用一个缺省的 logback 配置启动应用进程，并在启动后对配置中心进行重试，待连接上配置中心后，再使用配置中心下发的配置对 logback 进行设置。
 
 # 小结
 

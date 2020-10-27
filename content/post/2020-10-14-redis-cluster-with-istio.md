@@ -16,7 +16,7 @@ tags:
 categories: [ Tech ]
 ---
 
-Redis 是一个高性能的 key-value 存储系统，被广泛用于微服务架构中。本文将介绍如何通过 Istio 和 Envoy 实现客户端无感知的 Redis Cluster 数据分片，并提供读写分离、流量镜像等高级流量管理功能。
+Redis 是一个高性能的 key-value 存储系统，被广泛用于微服务架构中。如果我们想要使用 Redis 集群模式提供的高级特性，则需要对客户端代码进行改动，这带来了应用升级和维护的一些困难。利用 Istio 和 Envoy ，我们可以在不修改客户端代码的前提下实现客户端无感知的 Redis Cluster 数据分片，并提供读写分离、流量镜像等高级流量管理功能。
 
 # Redis Cluster
 
@@ -405,7 +405,7 @@ Slave 节点:
 $ kubectl exec redis-cluster-4 -c redis -n redis -- redis-cli monitor
 ```
 
-镜像 节点:
+镜像节点:
 
 ```bash
 $ kubectl exec -it `kubectl get pod -l app=redis-mirror -n redis -o jsonpath="{.items[0].metadata.name}"` -c redis-mirror -n redis -- redis-cli monitor

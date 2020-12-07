@@ -23,7 +23,7 @@ categories: [ Tech ]
 
 Istio 可以在四层和七层上的流量进行管理，当然我们主要希望采用的是其七层的流量管理能力。在七层上，Istio 主要支持了 HTTP/gPRC 两种协议，而对于我们在微服务中使用到的其他七层协议，如 Thrift，Dubbo，Redis 等的支持非常有限。如果我们希望将使用了这些协议的应用迁移到 Istio ，那么只能在四层上对这些协议进行流量管理，能做的事情将非常有限。今天我也将和大家一起讨论如何能够对 Istio 进行扩展，使其能够支持更多的七层协议。
 
-CNBPS 2020 Istio 流量管理原理与协议扩展：
+[CNBPS 2020 Istio 流量管理原理与协议扩展](/slides/cnbps2020-istio-aeraki.pdf) 
 
 B站
 {{< bilibili BV1av411t7JL >}}

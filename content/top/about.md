@@ -15,6 +15,7 @@ While he is free, he likes writing technical blog posts, watching movies, swimmi
 Feel free to connect Huabing at Github⁴ and Linkedin⁵, leave your thoughts in his blog⁶ or share your ideas by writing him an email. 
 
 ## Talks
+* [Istio 流量管理原理与协议扩展](/slides/cnbps2020-istio-aeraki.pdf) CNBPS 2020, online, 2020
 * [What Can Service Mesh Learn From SDN?](/slides/what-can-service-mesh-learn-from-sdn-servicemesher-meetup-20191026.pdf) Service Mesher Meetup, 成都, 2019
 * [Service Mesh Practice with 5G Management System](/slides/service-mesh-practice-with-5g-management-system-lfn.pdf) ONAP Workshop, 西安, 2019
 * [Service Mesh in Action with ONAP] (https://www.slideshare.net/HuabingZhao/service-mesh-in-action-with-onap) GNTC, 南京, 2018

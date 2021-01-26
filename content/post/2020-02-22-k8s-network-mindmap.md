@@ -53,7 +53,20 @@ showtoc: false
 						- 在节点上提供Kubernetes API中定义Service
 						- 设置Service对应的IPtables规则
 						- 进行流量转发（userspace模式）
-    - 商业模式
+    - 部署模式
+		- Single node
+		- Single head node，multiple workers
+			- API Server，Scheduler，and Controller Manager run on a single node
+		- Single etcd，HA heade nodes，multiple workers
+			- Multiple API Server instances fronted by a load balancer
+			- Multiple Scheduler and Controller Manager instances with leader election
+			- Single etcd node
+		- HA etcd，HA head nodes，multiple workers
+			- Multiple API Server instances fronted by a load balancer
+			- Multiple Scheduler and Controller Manager instances with leader election
+			- Etcd cluster run on nodes seperate from the Kubernetes head nodes
+		- Kubernetes Federation
+	- 商业模式
     	- 云服务用户：避免使用单一云提供商导致的厂商锁定，避免技术和成本风险
     	- 云服务厂商：使用Kubernetes来打破AWS的先入垄断地位，抢夺市场份额
     - Network

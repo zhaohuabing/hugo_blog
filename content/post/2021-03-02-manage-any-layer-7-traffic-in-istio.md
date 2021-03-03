@@ -158,7 +158,7 @@ Istio 可以实现 HTTP 和 gRPC 的故障注入，但这还不够。在一个�
 
 # 小结
 
-Service Mesh 中有大量的七层协议流量，包括 RPC、Database、Cache、Messaging 等类型的七层协议，但 Istio 只提供了 HTTP 和 gRPC 的七层管理能力，对其他七层协议的支持非常有限。Aerkai 开源项目通过非侵入的方式为 Istio 提供了任意七层协议的支持能力，并提供了面向用户的高级配置 CRD，可以很方便地对这些协议的流量进行管理，实现灰度发布等高级流量管理能力。目前 Aeraki 已经支持了 Thrift、Dubbo、Redis、Kafka、Zookeeper，并即将支持更多的协议。Aeraki 的定位是做成一个非侵入式 Istio 功能增强工具集，除了协议扩展之外，还会关注解决在 Istio 使用过程中遇到的其他常见问题，包括效率优化、配置简化、第三方服务发现接入、功能扩展等。如果您希望了解更多关于 Aeraki 的内容，欢迎访问 Github 主页  https://github.com/aeraki-framework/aeraki 。
+Service Mesh 中有大量的七层协议流量，包括 RPC、Database、Cache、Messaging 等类型的七层协议，但 Istio 只提供了 HTTP 和 gRPC 的七层管理能力，对其他七层协议的支持非常有限。Aerkai 开源项目通过非侵入的方式为 Istio 提供了任意七层协议的支持能力，并提供了面向用户的高级配置 CRD，可以很方便地对这些协议的流量进行管理，实现灰度发布等高级流量管理能力。目前 Aeraki 已经支持了 Thrift、Dubbo、Redis、Kafka、Zookeeper，并即将支持更多的协议。Aeraki 的定位是做成一个非侵入式 Istio 功能增强工具集，除了协议扩展之外，还会关注解决在 Istio 使用过程中遇到的其他常见问题，包括效率优化、配置简化、第三方服务发现接入、功能扩展等。如果您希望了解更多关于 Aeraki 的内容，欢迎访问 Github 主页  https://github.com/aeraki-framework 。
 
 __招聘信息__：腾讯云 Service Mesh 团队正在火热招聘中，Base 成都、北京、深圳或者西安，要求候选者熟悉 Kubernetes/Istio/Envoy。欢迎大家发送简历到 huabingzhao@tencent.com 或者微信联系 zhao_huabing。
 
@@ -166,5 +166,12 @@ __招聘信息__：腾讯云 Service Mesh 团队正在火热招聘中，Base 成
 
 * [IstioCon talk “How to Manage Any Layer-7 Traffic in an Istio Service Mesh?” 视频回放](https://www.bilibili.com/video/BV1XN41197Sq)
 * [IstioCon talk “How to Manage Any Layer-7 Traffic in an Istio Service Mesh? 讲稿下载](https://zhaohuabing.com/slides/how-to-manage-any-layer-7-traffic-in-istio.pdf)
-* [Aeraki Github 主页](https://github.com/aeraki-framework/aeraki)
+* [Aeraki Github 主页](https://github.com/aeraki-framework)
 * [Aeraki 在线 Demo](http://aeraki.zhaohuabing.com:3000/d/pgz7wp-Gz/aeraki-demo?orgId=1&refresh=10s&kiosk)
+
+## 视频回放
+B站
+{{< bilibili BV1XN41197Sq >}}
+
+YouTube
+{{< youtube sBS4utF68d8 >}}

@@ -2,7 +2,7 @@
 
 Throughout his career, he has built a number of large-scale, cross-country software systems, most of them are still running in production. 
 
-He loves open source and has been contributing to various open source projects, he is a member of Istio¹,  a PTL of ONAP²,  the author of Hugo clean-white theme³.  
+He loves open source and has been contributing to various open source projects, he is a member of Istio¹,  previous PTL of ONAP²,  the author of the Hugo clean-white theme³ and the open source project Aeraki⁴.  
 
 He also has strong interests in various technical topics such as Cloud Native, Artificial Intelligence, Cryptocurrencies, Smart Home, etc. He love sharing his ideas about these things in his blog.
 
@@ -12,7 +12,7 @@ Currently, Huabing works as a senior engineer at [Tencent Cloud](https://cloud.t
 
 While he is free, he likes writing technical blog posts, watching movies, swimming, hiking, travelling and learning languages.
 
-Feel free to connect Huabing at Github⁴ and Linkedin⁵, leave your thoughts in his blog⁶ or share your ideas by writing him an email. 
+Feel free to connect Huabing at Github⁵ and Linkedin⁶, leave your thoughts in his blog⁷ or share your ideas by writing him an email. 
 
 ## Talks
 |Year         |City |Conference  | Title      |Slides      |Video       |
@@ -32,6 +32,7 @@ Feel free to connect Huabing at Github⁴ and Linkedin⁵, leave your thoughts i
 1. Istio:          https://istio.io
 2. ONAP:       https://wiki.onap.org
 3. Hugo:        https://themes.gohugo.io/hugo-theme-cleanwhite
-4. Github      https://github.com/zhaohuabing
-5. Linkedin   https://linkedin.com/inzhaohuabing 
-6. Blog          https://zhaohuabing.com  https://medium.com/@zhaohuabing
+4. Aeraki:     https://github.com/aeraki-framework
+5. Github      https://github.com/zhaohuabing
+6. Linkedin   https://linkedin.com/inzhaohuabing 
+7. Blog          https://zhaohuabing.com  https://medium.com/@zhaohuabing

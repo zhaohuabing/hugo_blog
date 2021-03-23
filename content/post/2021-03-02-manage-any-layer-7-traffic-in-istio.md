@@ -143,6 +143,8 @@ aeraki/demo/install-demo.sh
 
 在采用 Aeraki 之前，我们在不同的环境中需要配置不同的 IP 地址和 Redis 访问密码。采用 Aeraki 之后，在客户端可以采用相同的代码和配置，通过修改 Aeraki CRD 来切换不同环境中的 Redis 配置，大大减少在不同环境之间进行切换的成本。即使 Redis 从单实例改为了 Redis 集群，客户端也可以采用相同的方式进行访问。
 
+![](/img/2021-03-02-manage-any-layer-7-traffic-in-istio/redis-client-code.png)
+
 ## 采用流量镜像进行对比测试
 
 有一些数据库或者数据库代理采用相同的网络协议。例如 TiDB、Oceanbase、Aurora、Kingshard等都兼容 MySQL 协议；Twemproxy、Codis、Tendis、Pika等都采用了 Redis 协议。由于业务需求，我们有时需要从一个实现迁移到另一个实现上。在迁移之前，我们需要进行对比测试，以对比不同实现的性能、功能及兼容性。
@@ -168,10 +170,11 @@ __招聘信息__：腾讯云 Service Mesh 团队正在火热招聘中，Base 成
 * [IstioCon talk “How to Manage Any Layer-7 Traffic in an Istio Service Mesh? 讲稿下载](https://zhaohuabing.com/slides/how-to-manage-any-layer-7-traffic-in-istio.pdf)
 * [Aeraki Github 主页](https://github.com/aeraki-framework)
 * [Aeraki 在线 Demo](http://aeraki.zhaohuabing.com:3000/d/pgz7wp-Gz/aeraki-demo?orgId=1&refresh=10s&kiosk)
+* [IstioCon 2021 Playlist](https://events.istio.io/istiocon-2021/sessions/)
 
 ## 视频回放
 B站
-{{< bilibili BV1XN41197Sq >}}
+{{< bilibili BV1aA411T7rH >}}
 
 YouTube
-{{< youtube sBS4utF68d8 >}}
+{{< youtube k6bXDMs9E_A >}} 

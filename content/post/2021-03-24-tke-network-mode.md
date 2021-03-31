@@ -370,7 +370,7 @@ default via 10.0.0.1 dev eth1 proto dhcp metric 101
 * [弹性网卡使用限制](https://cloud.tencent.com/document/product/576/18527)
 * [Linux 策略路由](https://man7.org/linux/man-pages/man8/ip-rule.8.html)
 * [Deep dive into Virtio-networking and vhost-net](https://www.redhat.com/en/blog/deep-dive-virtio-networking-and-vhost-net)
-* [Linux Tun/Tap 介绍](https://zhaohuabing.com/post/2020-02-24-linux-Taptun/#undefined)
+* [Linux Tun/Tap 介绍](https://zhaohuabing.com/post/2020-02-24-linux-taptun/)
 * [Linux network namespace， Veth， birdge与路由](https://zhaohuabing.com/post/2020-03-12-linux-network-virtualization)
 * [vhost-net/virtio-net 原理](https://www.eet-china.com/mp/a13515.html)
 * [Virtio-networking series](https://www.redhat.com/en/virtio-networking-series)

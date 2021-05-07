@@ -40,7 +40,7 @@ Pilot定义了网格中服务的标准模型，这个标准模型独立于各种
 
 ## 标准数据面 API
 
-Pilo使用了一套起源于Envoy项目的[标准数据面API](https://github.com/envoyproxy/data-plane-api/blob/master/API_OVERVIEW.md)<sup>[[2]](#ref02)</sup>来将服务信息和流量规则下发到数据面的sidecar中。
+Pilo使用了一套起源于Envoy项目的[标准数据面API](https://github.com/envoyproxy/data-plane-api)<sup>[[2]](#ref02)</sup>来将服务信息和流量规则下发到数据面的sidecar中。
 
 通过采用该标准API，Istio将控制面和数据面进行了解耦，为多种数据面sidecar实现提供了可能性。事实上基于该标准API已经实现了多种Sidecar代理和Istio的集成，除Istio目前集成的Envoy外，还可以和Linkerd, Nginmesh等第三方通信代理进行集成，也可以基于该API自己编写Sidecar实现。
 
@@ -1254,7 +1254,7 @@ Productpage Pod中的Envoy创建了多个Outbound Listener
 # 参考资料
 
 1. <a id="ref01">[Istio Traffic Managment Concept](https://istio.io/docs/concepts/traffic-management/#pilot-and-envoy)</a>
-1. <a id="ref02">[Data Plane API](https://github.com/envoyproxy/data-plane-api/blob/master/API_OVERVIEW.md)</a>
+1. <a id="ref02">[Data Plane API](https://github.com/envoyproxy/data-plane-api)</a>
 1. <a id="ref03">[kubernetes Custom Resource](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources)</a>
 1. <a id="ref04">[Istio Pilot Design Overview](https://github.com/istio/old_pilot_repo/blob/master/doc/design.md)</a>
 1. <a id="ref05">[Envoy V2 API Overview](https://www.envoyproxy.io/docs/envoy/latest/configuration/overview/v2_overview)

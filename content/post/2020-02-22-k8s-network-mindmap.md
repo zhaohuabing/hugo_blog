@@ -1,12 +1,12 @@
 ---
 layout:     post
 
-title:      "Kubernetes知识图谱"
+title:      "Kubernetes 知识图谱"
 subtitle:   ""
 excerpt: ""
 author:     "Huabing Zhao"
 date:       2020-02-22
-description: "Kubernetes相关知识汇总"
+description: "Kubernetes 相关知识汇总"
 image: "https://images.pexels.com/photos/1482193/pexels-photo-1482193.jpeg"
 published: true
 tags:
@@ -70,7 +70,10 @@ mindmap: https://markmap.js.org/
 			- Multiple Scheduler and Controller Manager instances with leader election
 			- Etcd cluster run on nodes seperate from the Kubernetes head nodes
 		- Kubernetes Federation
-	- Workload
+	- 商业模式
+    	- 云服务用户：避免使用单一云提供商导致的厂商锁定，避免技术和成本风险
+    	- 云服务厂商：使用Kubernetes来打破AWS的先入垄断地位，抢夺市场份额
+    - Workload
 		- Pod
 			- Smalleset deployable computing unit
 		  	- Consist of one or more containers
@@ -90,10 +93,20 @@ mindmap: https://markmap.js.org/
 			- Job & CronJob
 				- Job runs pods until a specified number of them have been succcessfully executed.
 				- CronJob runs a job periodically on a given schedule.
-	- 商业模式
-    	- 云服务用户：避免使用单一云提供商导致的厂商锁定，避免技术和成本风险
-    	- 云服务厂商：使用Kubernetes来打破AWS的先入垄断地位，抢夺市场份额
-    - Network
+	- Storage
+		- Volume
+			- purpose
+				- Persist data across the life span of a Pod
+					- Data won't lost when a container is restarted
+				- Share data between containers running together in a Pod
+					- Volume can be mounted to mutiple containers inside a Pod
+			- type
+				- configMap
+				- emptyDir
+				- hostPath
+				- local
+				- persistentVolumeClaim
+	- Network
     	- Linux Network Virtualization
            - [Linux tun/tap](https://zhaohuabing.com/post/2020-02-24-linux-taptun/)
         - [Network Namespace](https://zhaohuabing.com/post/2020-03-12-linux-network-virtualization/#network-namespace)

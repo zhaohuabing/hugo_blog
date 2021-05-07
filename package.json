@@ -17,6 +17,6 @@
   },
   "homepage": "https://github.com/zhaohuabing/zhaohuabing.github.io#readme",
   "dependencies": {
-    "atomic-algolia": "^0.3.17"
+    "atomic-algolia": "^0.3.18"
   }
 }

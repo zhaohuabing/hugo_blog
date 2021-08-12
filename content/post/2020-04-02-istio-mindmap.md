@@ -23,7 +23,7 @@ mindmap: https://markmap.js.org/
 	- 流量管理
 	    - [Istio流量管理实现机制深度解析
 ](https://zhaohuabing.com/post/2018-09-25-istio-traffic-management-impl-intro/)
-		- [Istio 流量管理原理与协议扩展](http://localhost:1313/post/2020-12-07-cnbps2020-istio-traffic-management/)
+		- [Istio 流量管理原理与协议扩展](https://zhaohuabing.com/post/2020-12-07-cnbps2020-istio-traffic-management/)
 	- 可见性
 		- [实现方法级调用跟踪](https://zhaohuabing.com/post/2019-06-22-using-opentracing-with-istio/)
 		- [实现 Kafka 消息调用跟踪](https://zhaohuabing.com/post/2019-07-02-using-opentracing-with-istio/)
@@ -34,7 +34,7 @@ mindmap: https://markmap.js.org/
 	- 故障定位
 		- [Headless Service](https://zhaohuabing.com/post/2020-09-11-headless-mtls/)
 		- [Sidecar 启动依赖](https://zhaohuabing.com/post/2020-09-05-istio-sidecar-dependency/)
-		- [Pod 内抓包] (https://tencentcloudcontainerteam.github.io/tke-handbook/skill/capture-packets-in-container.html)
+		- [Pod 内抓包](https://tencentcloudcontainerteam.github.io/tke-handbook/skill/capture-packets-in-container.html)
 	- 源码分析
 		- [Pilot 源码解析](https://zhaohuabing.com/post/2019-10-21-pilot-discovery-code-analysis/)
 		- [Istio 服务注册机制](https://zhaohuabing.com/post/2019-02-18-pilot-service-registry-code-analysis/)

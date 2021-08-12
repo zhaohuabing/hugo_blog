@@ -75,14 +75,14 @@ home = ["HTML", "RSS", "Algolia"]
   href =  "https://zhaozhihan.com"
 
   [[params.bookmark_link]]
-  title = "ServiceMesher"
-  href =  "http://www.servicemesher.com"
+  title = "medium"
+  href =  "https://medium.com/@zhaohuabing"
   [[params.bookmark_link]]
   title = "pexels"
   href = "https://www.pexels.com"
   [[params.bookmark_link]]
-  title = "tasks"
-  href = "https://zhaohuabing.atlassian.net"
+  title = "van gogh"
+  href = "https://www.vangoghmuseum.nl/en/collection?q="
 
   [[params.addtional_menus]]
   title =  "BOOKS"

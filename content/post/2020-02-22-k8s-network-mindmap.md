@@ -106,6 +106,24 @@ mindmap: https://markmap.js.org/
 				- hostPath
 				- local
 				- persistentVolumeClaim
+	- Policies
+		- ResourceQuota
+			- purpose
+				- Limit the aggregated resource consumption of a Namespace
+			- Scope
+				- Namespaced: ResourceQuota is enforced in a Namespace scope, different Namespaces have different Resouce limit
+			- Type
+				- Compute Resource Quota
+					- CPU (limits.cpu requests.cpu)
+					- Memory (limits.memory requets.memory)
+				- Storage Resource Quota
+					- Persistent Storage (storage)
+					- Ephemeral Storage (ephermal-storage)
+				- Object Count Quota
+					- Limit of total number of Namespaced resources (count/services)
+			- Request and Limit
+				- Request: Resources that are guaranteed to get
+				- Limit: The maximum amount of resources that one can get
 	- Network
     	- Linux Network Virtualization
            - [Linux tun/tap](https://zhaohuabing.com/post/2020-02-24-linux-taptun/)

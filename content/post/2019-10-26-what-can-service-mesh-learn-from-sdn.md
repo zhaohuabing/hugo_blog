@@ -1,7 +1,7 @@
 ---
 layout:     post
 
-title:      "Service Mesh是下一代SDN吗？"
+title:      "Service Mesher Meetup 成都站：Service Mesh是下一代SDN吗？"
 subtitle:   "从SDN看Service Mesh的发展"
 excerpt: ""
 author:     "赵化冰"
@@ -14,7 +14,7 @@ tags:
     - Istio 
     - SDN
 
-categories: [ Tech ]
+categories: [ Talk ]
 ---
 
 如果具有通信或者网络行业的知识背景，那么你对SDN(Software Defined Network)一定不会陌生。你也许已经注意到，近来在微服务领域兴起的Service Mesh和SDN(Software Defined Network) 非常相似，这两者都采用了软件对网络进行管理和控制，也都采用了包含控制面和数据面的类似架构。

@@ -1,7 +1,7 @@
 ---
 layout:     post
 
-title:      "CNBPS 2020 Istio 流量管理原理与协议扩展"
+title:      "CNBPS 2020：Istio 流量管理原理与协议扩展"
 subtitle:   ""
 excerpt: ""
 author:     "赵化冰"
@@ -15,7 +15,7 @@ tags:
     - Envoy
     - Service Mesh
 
-categories: [ Tech ]
+categories: [ Talk ]
 ---
 通过本次的分享，听众可以理解Istio流量管理背后的实现原理，包括控制面流量管理模型和数据面流量转发机制。本次分享还将介绍如何对Istio进行扩展，以支持更多地七层协议，如dubbo，thrift，redis等等。 
 

@@ -124,8 +124,6 @@ SDN和Service Mesh的出现都是为了解决类似的网络通信问题，两�
 备注：本文来自于 Service Mesher Meetup 成都站的话题分享 [Service Mesh是下一代SDN吗？](https://zhaohuabing.com/slides/what-can-service-mesh-learn-from-sdn-servicemesher-meetup-20191026.pdf) 点击链接可以下载[演讲稿](https://zhaohuabing.com/slides/what-can-service-mesh-learn-from-sdn-servicemesher-meetup-20191026.pdf)。
 
 ## 视频回放
-B站
-{{< bilibili BV1aA411T7rH >}}
 
 YouTube
 {{< youtube nGkxp-2OsKg >}} 

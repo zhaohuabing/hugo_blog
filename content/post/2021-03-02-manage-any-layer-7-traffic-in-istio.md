@@ -16,7 +16,14 @@ tags:
     - Redis
     - Dubbo
     - Thrift
-categories: [ Talk ]
+categories:
+    - Talk
+    - Tech
+talk:
+    link: "https://events.istio.io/istiocon-2021/sessions/how-to-manage-any-layer-7-traffic-in-an-istio-service-mesh"
+    slides: "/slides/how-to-manage-any-layer-7-traffic-in-istio.pdf"
+    bilibili: "https://www.bilibili.com/video/BV1aA411T7rH"
+    youtube: "https://youtu.be/k6bXDMs9E_A"
 ---
 备注：本文根据腾讯云赵化冰和知乎唐阳在 IstioCon 2021 中的演讲 [“How to Manage Any Layer-7 Traffic in an Istio Service Mesh?”](https://events.istio.io/istiocon-2021/sessions/how-to-manage-any-layer-7-traffic-in-an-istio-service-mesh/) 整理而成。
 

@@ -85,9 +85,6 @@ home = ["HTML", "RSS", "Algolia"]
   href = "https://www.vangoghmuseum.nl/en/collection?q="
 
   [[params.addtional_menus]]
-  title =  "PUBLICATION"
-  href =  "/top/publications/"
-  [[params.addtional_menus]]
   title =  "ABOUT"
   href =  "/top/about/"
 
@@ -110,3 +107,4 @@ params = ["categories", "tags"]
 
 [markup.goldmark.renderer]
 unsafe = true
+

@@ -13,8 +13,14 @@ tags:
     - Service Mesh 
     - Istio 
     - SDN
-
-categories: [ Talk ]
+categories:
+    - Talk
+    - Tech
+talk:
+    link: "https://tech.antfin.com/community/activities/949?chInfo=sm"
+    slides: "/slides/what-can-service-mesh-learn-from-sdn-servicemesher-meetup-20191026.pdf"
+    bilibili: ""
+    youtube: "https://youtu.be/nGkxp-2OsKg"
 ---
 
 如果具有通信或者网络行业的知识背景，那么你对SDN(Software Defined Network)一定不会陌生。你也许已经注意到，近来在微服务领域兴起的Service Mesh和SDN(Software Defined Network) 非常相似，这两者都采用了软件对网络进行管理和控制，也都采用了包含控制面和数据面的类似架构。
@@ -115,4 +121,11 @@ SDN和Service Mesh的出现都是为了解决类似的网络通信问题，两�
 * 对硬件的控制能力：Service Mesh控制面可以提供对数据面软硬件的统一控制能力，以减少软硬件混合环境下的运维复杂度。
 * 应用层的发展：通过北向接口（控制面编程接口）提供出来的能力，可以开发各端到端的创新应用，这也许会成为Service Mesh的下一个热点。
 
-备注：本文来自于Service Mesher Meetup 成都站的话题分享 [Service Mesh是下一代SDM吗？](chrome-extension://oemmndcbldboiebfnladdacbdfmadadm/https://zhaohuabing.com/slides/what-can-service-mesh-learn-from-sdn-servicemesher-meetup-20191026.pdf) 点击链接可以下载[演讲稿](chrome-extension://oemmndcbldboiebfnladdacbdfmadadm/https://zhaohuabing.com/slides/what-can-service-mesh-learn-from-sdn-servicemesher-meetup-20191026.pdf)。
+备注：本文来自于 Service Mesher Meetup 成都站的话题分享 [Service Mesh是下一代SDN吗？](https://zhaohuabing.com/slides/what-can-service-mesh-learn-from-sdn-servicemesher-meetup-20191026.pdf) 点击链接可以下载[演讲稿](https://zhaohuabing.com/slides/what-can-service-mesh-learn-from-sdn-servicemesher-meetup-20191026.pdf)。
+
+## 视频回放
+B站
+{{< bilibili BV1aA411T7rH >}}
+
+YouTube
+{{< youtube nGkxp-2OsKg >}} 

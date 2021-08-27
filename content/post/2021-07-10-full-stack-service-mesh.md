@@ -14,7 +14,14 @@ tags:
     - Envoy
     - Aeraki
     - MetaProtocol
-categories: [ Talk ]
+categories:
+    - Talk
+    - Tech
+talk:
+    link: "https://istio.io/latest/zh/blog/2021/istiomeetups-china"
+    slides: "/img/2021-07-10-full-stack-service-mesh/slides.pdf"
+    bilibili: "https://www.bilibili.com/video/BV1th41167N5"
+    youtube: "https://youtu.be/Bq5T3OR3iTM"
 ---
 
 ## 主题简介
@@ -33,6 +40,14 @@ categories: [ Talk ]
 
 ## 演讲稿
 
+[pdf 下载](/img/2021-07-10-full-stack-service-mesh/slides.pdf)
 <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vRGAhPuPJCgpI9uNFQR0ZsjefdR7NQAMcyKrezOLU_ihvclsHxf9p242w0UYAdtUJ5xO4jhVJ-EtfWO/embed?start=false&loop=false&delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+
+## 视频回放
+B站
+{{< bilibili BV1th41167N5 >}}
+
+YouTube
+{{< youtube Bq5T3OR3iTM >}} 
 
 

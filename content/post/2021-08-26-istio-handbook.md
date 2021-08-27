@@ -9,7 +9,8 @@ date:       2021-08-26
 image: "https://micrio-cdn.vangoghmuseum.nl/QHzII/views/max/1800x862.jpg"
 published: true
 tags:
-    - Network
+    - Istio
+    - Service Mesh
 categories: [ Publication ]
 showtoc: false
 publication:

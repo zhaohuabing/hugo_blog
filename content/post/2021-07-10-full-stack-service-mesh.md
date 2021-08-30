@@ -17,11 +17,16 @@ tags:
 categories:
     - Talk
     - Tech
-talk:
-    link: "https://istio.io/latest/zh/blog/2021/istiomeetups-china"
-    slides: "/img/2021-07-10-full-stack-service-mesh/slides.pdf"
-    bilibili: "https://www.bilibili.com/video/BV1th41167N5"
-    youtube: "https://youtu.be/Bq5T3OR3iTM"
+metadata:
+    - text: "北京 2021/07"
+    - text: "活动链接"
+      link: "https://istio.io/latest/zh/blog/2021/istiomeetups-china"
+    - text: "讲稿下载"
+      link: "/img/2021-07-10-full-stack-service-mesh/slides.pdf"
+    - text: "哔哩哔哩"
+      link: "https://www.bilibili.com/video/BV1th41167N5"
+    - text: "YouTube"
+      link: "https://youtu.be/Bq5T3OR3iTM"
 ---
 
 ## 主题简介

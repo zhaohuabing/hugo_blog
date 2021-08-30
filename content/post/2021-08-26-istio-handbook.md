@@ -13,11 +13,10 @@ tags:
     - Service Mesh
 categories: [ Publication ]
 showtoc: false
-publication:
-    publisher: 电子工业出版社
-    jdlink: 
-    ddlink:
-    online: https://www.servicemesher.com/istio-handbook
+metadata:
+    - text: "电子工业出版社"
+    - text: "在线阅读"
+      link: "https://www.servicemesher.com/istio-handbook"
 ---
 ### Istio Handbook——Istio 服务网格进阶实战
 
@@ -41,3 +40,6 @@ publication:
 ### 参与本书
 
 请参阅[本书写作规范](https://github.com/servicemesher/istio-handbook/blob/master/CODE_OF_CONDUCT.md)，加入 ServiceMesher 后进入 Slack channel 讨论。
+
+### 印刷版封面
+![](https://www.servicemesher.com/istio-handbook/cover.jpg)

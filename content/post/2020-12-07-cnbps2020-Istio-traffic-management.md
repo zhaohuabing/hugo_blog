@@ -18,11 +18,16 @@ tags:
 categories:
     - Talk
     - Tech
-talk:
-    link: "https://mp.weixin.qq.com/s/Cpe7HqEIH4NAXWsoKd_cCg"
-    slides: "/slides/cnbps2020-istio-aeraki.pdf"
-    bilibili: "https://www.bilibili.com/video/BV1av411t7JL"
-    youtube: "https://youtu.be/lB5d4qbZqzU"
+metadata:
+    - text: "Virtual 2020/11"
+    - text: "活动链接"
+      link: "https://mp.weixin.qq.com/s/Cpe7HqEIH4NAXWsoKd_cCg"
+    - text: "讲稿下载"
+      link: "/slides/cnbps2020-istio-aeraki.pdf"
+    - text: "哔哩哔哩"
+      link: "https://www.bilibili.com/video/BV1av411t7JL"
+    - text: "YouTube"
+      link: "https://youtu.be/lB5d4qbZqzU"
 ---
 通过本次的分享，听众可以理解Istio流量管理背后的实现原理，包括控制面流量管理模型和数据面流量转发机制。本次分享还将介绍如何对Istio进行扩展，以支持更多地七层协议，如dubbo，thrift，redis等等。 
 

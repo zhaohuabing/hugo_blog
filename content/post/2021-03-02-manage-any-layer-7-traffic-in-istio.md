@@ -1,7 +1,7 @@
 ---
 layout:     post
 
-title:      "IstioCon 2021：如何在 Isito 中支持 Dubbo、Thrift、Redis，以及任何七层协议？"
+title:      "IstioCon 2021: How to Manage Any Layer-7 Traffic in an Istio Service Mesh?"
 subtitle:   ""
 excerpt: ""
 author:     "赵化冰"
@@ -19,11 +19,16 @@ tags:
 categories:
     - Talk
     - Tech
-talk:
-    link: "https://events.istio.io/istiocon-2021/sessions/how-to-manage-any-layer-7-traffic-in-an-istio-service-mesh"
-    slides: "/slides/how-to-manage-any-layer-7-traffic-in-istio.pdf"
-    bilibili: "https://www.bilibili.com/video/BV1aA411T7rH"
-    youtube: "https://youtu.be/k6bXDMs9E_A"
+metadata:
+    - text: "Virtual 2021/02"
+    - text: "活动链接"
+      link: "https://events.istio.io/istiocon-2021/sessions/how-to-manage-any-layer-7-traffic-in-an-istio-service-mesh"
+    - text: "讲稿下载"
+      link: "/slides/how-to-manage-any-layer-7-traffic-in-istio.pdf"
+    - text: "哔哩哔哩"
+      link: "https://www.bilibili.com/video/BV1aA411T7rH"
+    - text: "YouTube"
+      link: "https://youtu.be/k6bXDMs9E_A"
 ---
 备注：本文根据腾讯云赵化冰和知乎唐阳在 IstioCon 2021 中的演讲 [“How to Manage Any Layer-7 Traffic in an Istio Service Mesh?”](https://events.istio.io/istiocon-2021/sessions/how-to-manage-any-layer-7-traffic-in-an-istio-service-mesh/) 整理而成。
 

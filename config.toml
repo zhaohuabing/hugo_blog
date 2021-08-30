@@ -6,7 +6,7 @@ languageCode = "en-us"
 disqusShortname = "zhaohuabings-blog"
 googleAnalytics = "UA-109223766-1"
 preserveTaxonomyNames = true
-paginate = 5 #frontpage pagination
+paginate = 7 #frontpage pagination
 hasCJKLanguage = true
 
 [outputs]
@@ -83,6 +83,10 @@ home = ["HTML", "RSS", "Algolia"]
   [[params.bookmark_link]]
   title = "van gogh"
   href = "https://www.vangoghmuseum.nl/en/collection?q="
+
+  [[params.addtional_menus]]
+  title =  "ARCHIVE"
+  href =  "/top/archive/"
 
   [[params.addtional_menus]]
   title =  "ABOUT"

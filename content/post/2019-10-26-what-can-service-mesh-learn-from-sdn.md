@@ -16,11 +16,14 @@ tags:
 categories:
     - Talk
     - Tech
-talk:
-    link: "https://tech.antfin.com/community/activities/949?chInfo=sm"
-    slides: "/slides/what-can-service-mesh-learn-from-sdn-servicemesher-meetup-20191026.pdf"
-    bilibili: ""
-    youtube: "https://youtu.be/nGkxp-2OsKg"
+metadata:
+    - text: "成都 2019/10"
+    - text: "活动链接"
+      link: "https://tech.antfin.com/community/activities/949?chInfo=sm"
+    - text: "讲稿下载"
+      link: "/slides/what-can-service-mesh-learn-from-sdn-servicemesher-meetup-20191026.pdf"
+    - text: "YouTube"
+      link: "https://youtu.be/nGkxp-2OsKg"
 ---
 
 如果具有通信或者网络行业的知识背景，那么你对SDN(Software Defined Network)一定不会陌生。你也许已经注意到，近来在微服务领域兴起的Service Mesh和SDN(Software Defined Network) 非常相似，这两者都采用了软件对网络进行管理和控制，也都采用了包含控制面和数据面的类似架构。

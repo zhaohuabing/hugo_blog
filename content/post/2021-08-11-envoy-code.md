@@ -6,7 +6,7 @@ subtitle:   ""
 description: "最近在实现 MetaProtocol 时阅读了 Envoy 相关的一些源码。这里将一些重要流程的时序图记录下来，以备后续查看。"
 author:     "赵化冰"
 date:       2021-08-11
-image: "https://micrio-cdn.vangoghmuseum.nl/VFaaw/views/max/1800x1515.jpg"
+image: "https://upload.wikimedia.org/wikipedia/commons/a/a3/Lake_in_Dome_Creek.jpg"
 published: true
 tags:
     - Envoy

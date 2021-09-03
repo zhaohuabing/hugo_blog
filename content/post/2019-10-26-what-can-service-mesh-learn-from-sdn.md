@@ -7,7 +7,7 @@ excerpt: ""
 author:     "赵化冰"
 date:       2019-10-26
 description: "Service Mesh和SDN(Software Defined Network) 的架构非常相似，这两者都采用了软件对网络进行管理和控制，也都包含控制面和数据面的概念。那么Service Mesh和SDN有什么关系？Service Mesh是下一代的SDN吗？ Service Mesh可以从SDN的发展历史中借鉴哪些经验？本文将就这些问题进行一一探讨。"
-image: "/img/2019-10-26-what-can-service-mesh-learn-from-sdn/background.jpg"
+image: "https://upload.wikimedia.org/wikipedia/commons/9/97/Malojapass_B%C3%B6hringer_2018.jpg"
 published: true 
 tags:
     - Service Mesh 

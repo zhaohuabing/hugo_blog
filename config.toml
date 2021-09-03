@@ -81,8 +81,8 @@ home = ["HTML", "RSS", "Algolia"]
   title = "pexels"
   href = "https://www.pexels.com"
   [[params.bookmark_link]]
-  title = "van gogh"
-  href = "https://www.vangoghmuseum.nl/en/collection?q="
+  title = "nature"
+  href = "https://commons.wikimedia.org/wiki/Commons:Featured_pictures/Places/Natural"
 
   [[params.addtional_menus]]
   title =  "ARCHIVE"

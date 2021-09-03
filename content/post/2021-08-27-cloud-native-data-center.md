@@ -2,14 +2,14 @@
 layout:     post
 
 title:      "译著：云原生数据中心网络"
-subtitle:   "浮云飘进我的生活,没有带来雨水或迎来风暴,却为落日的天空增添了色彩"
+subtitle:   "浮云飘进我的生命,没有带来雨水或迎来风暴,却为落日的天空增添了色彩"
 description: "目前市面上可以找到的介绍云计算底层网络技术的最好的中文书籍之一：如果你想要学习或者构建一个现代化的云原生数据中心网络，或者想简单验证一下你对现代云原生数据中心网络的一些想法，那么这本书正是你所需要的。不管你是在搭建一个多租户的私有云，还是一个运行机器学习的网络，或者一个企业数据中心，本书作者都介绍了必要的步骤，以帮助你设计费用合理、高容量、易于管理、敏捷且可靠的数据中心。
  
 本书是网络架构师、数据中心运营人员，以及网络和容器化应用开发人员的理想之选。书中有机地结合了理论知识与实践操作，介绍了构建和运维一个健壮的、可扩展的网络基础设施所需的架构和协议。本书将以一种厂商中立的方式来介绍网络设计。如果你对开放网络感兴趣，这本书也包含了许多使用FRR和Ansible等开源软件的示例。
 "
 author:     "赵化冰"
 date:       2021-08-27
-image: "https://micrio-cdn.vangoghmuseum.nl/tpKBG/views/max/1800x883.jpg"
+image: "https://upload.wikimedia.org/wikipedia/commons/a/aa/%C3%81rea_de_Prote%C3%A7%C3%A3o_Ambiental_da_Baleia_Franca_Claudio_Seelig_%2801%29.jpg"
 published: true
 tags:
     - Network

@@ -6,7 +6,7 @@ subtitle:   ""
 description: "在实现 K8s 网络模型时，为了应对不同的使用场景，TKE（Tencent Kubernetes Engine）提供了 Global Router 和 VPC-CNI 两种网络模式。本文中，我们将通过这两种模式下数据包的转发流程来分析这两种模式各自的实现原理。本文还会对比分析不同网络模式下的网络效率和资源使用情况，以便于大家在创建 TKE 集群时根据应用对网络的需求和使用成本选择合适的网络模型。"
 author:     "赵化冰"
 date:       2021-03-24
-image: "https://micrio-cdn.vangoghmuseum.nl/rAERt/views/max/1800x1420.jpg"
+image: "https://upload.wikimedia.org/wikipedia/commons/7/7b/Mont_Blanc_from_Les_Arcs_1950.jpg"
 published: true
 tags:
     - Tencent

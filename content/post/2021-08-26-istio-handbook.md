@@ -6,7 +6,7 @@ subtitle:   ""
 description: "Istio 是由 Google、IBM、Lyft 等共同开源的 Service Mesh（服务网格）框架，于2017年初开始进入大众视野，作为云原生时代下承 Kubernetes、上接 Serverless 架构的重要基础设施层，地位至关重要。ServiceMesher 社区作为中国最早的一批在研究和推广 Service Mesh 技术的开源社区决定整合社区资源，合作撰写一本开源电子书作为服务网格智库。我作为编委会成员和主要作者之一，参与了本书的编写工作。"
 author:     "赵化冰"
 date:       2021-08-26
-image: "https://upload.wikimedia.org/wikipedia/commons/e/e6/Forested_hills_in_Lysekil_in_fog_-_B%26W.jpg"
+image: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Forested_hills_in_Lysekil_in_fog_-_B%26W.jpg/2560px-Forested_hills_in_Lysekil_in_fog_-_B%26W.jpg"
 published: true
 tags:
     - Istio

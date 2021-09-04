@@ -9,7 +9,7 @@ description: "目前市面上可以找到的介绍云计算底层网络技术的
 "
 author:     "赵化冰"
 date:       2021-08-27
-image: "https://upload.wikimedia.org/wikipedia/commons/a/aa/%C3%81rea_de_Prote%C3%A7%C3%A3o_Ambiental_da_Baleia_Franca_Claudio_Seelig_%2801%29.jpg"
+image: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/%C3%81rea_de_Prote%C3%A7%C3%A3o_Ambiental_da_Baleia_Franca_Claudio_Seelig_%2801%29.jpg/2560px-%C3%81rea_de_Prote%C3%A7%C3%A3o_Ambiental_da_Baleia_Franca_Claudio_Seelig_%2801%29.jpg"
 published: true
 tags:
     - Network

@@ -7,7 +7,7 @@ excerpt: ""
 author:     "赵化冰"
 date:       2019-03-29
 description: "在启用了Istio服务网格的Kubernetes集群中，缺省情况下只能在集群内部访问网格中的服务，要如何才能从外部网络访问这些服务呢？ Kubernetes和Istio提供了NodePort，LoadBalancer，Kubernetes Ingress，Istio Gateway等多种外部流量入口的方式，面对这么多种方式，我们在产品部署中应该如何选择？"
-image: "http://www.baltana.com/files/wallpapers-3/Tesla-High-Definition-Wallpaper-09417.jpg"
+image: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Andhika_bayu_nugraha-taman_nasional_bromo_tengger_semeru.jpg/2560px-Andhika_bayu_nugraha-taman_nasional_bromo_tengger_semeru.jpg"
 published: true 
 tags:
     - Service Mesh

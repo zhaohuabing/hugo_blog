@@ -82,7 +82,7 @@ home = ["HTML", "RSS", "Algolia"]
   href = "https://www.pexels.com"
   [[params.bookmark_link]]
   title = "nature"
-  href = "https://commons.wikimedia.org/wiki/Commons:Featured_pictures/Places/Natural"
+  href = "https://commons.wikimedia.org/wiki/Commons:Wiki_Loves_Earth_2020/Winners"
 
   [[params.addtional_menus]]
   title =  "ARCHIVE"

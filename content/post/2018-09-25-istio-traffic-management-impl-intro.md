@@ -7,7 +7,7 @@ excerpt: ""
 author:     "赵化冰"
 date:       2018-09-25
 description: " Istio作为一个service mesh开源项目,其中最重要的功能就是对网格中微服务之间的流量进行管理,包括服务发现,请求路由和服务间的可靠通信。Istio体系中流量管理配置下发以及流量规则如何在数据面生效的机制相对比较复杂，通过官方文档容易管中窥豹，难以了解其实现原理。本文尝试结合系统架构、配置文件和代码对Istio流量管理的架构和实现机制进行分析，以达到从整体上理解Pilot和Envoy的流量管理机制的目的。"
-image: "/img/2018-09-25-istio-traffic-management-impl-intro/background.jpg"
+image: "https://upload.wikimedia.org/wikipedia/commons/d/d6/San_Francisco_International_Airport_at_night.jpg"
 published: false
 tags:
     - Istio 

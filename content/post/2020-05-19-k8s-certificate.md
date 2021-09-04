@@ -7,7 +7,7 @@ excerpt: ""
 author:     "赵化冰"
 date:       2020-05-19
 description: "在本文中，我将试图以一种比官方文档更容易理解的方式来说明 Kubernete s中和证书（Certificate）相关的工作机制，如果你也存在这方面的疑惑，希望这篇文章对你有所帮助。"
-image: "/img/2020-05-19-k8s-certificate/background.jpg"
+image: "https://upload.wikimedia.org/wikipedia/commons/2/21/Kolkheti1122.jpg"
 published: true
 tags:
     - kubernetes

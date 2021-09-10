@@ -10,6 +10,8 @@ description: "In this session, I'll talk about the MSB(Microservice BUS) project
 image: "https://images.pexels.com/photos/466685/pexels-photo-466685.jpeg?cs=srgb&dl=pexels-lukas-kloeppel-466685.jpg&fm=jpg"
 published: true
 showtoc: false
+#navstyle: "invert"
+headerstyle: "text"
 tags:
     - ONAP
     - Microservice

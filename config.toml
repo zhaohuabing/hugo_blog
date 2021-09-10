@@ -13,6 +13,8 @@ hasCJKLanguage = true
 home = ["HTML", "RSS", "Algolia"]
 
 [params]
+  #header_image = "img/header1.png"
+  #header_image = "https://images.unsplash.com/photo-1505324453012-a12195b84346?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1867&q=80"
   header_image = "img/home-bg-jeep.jpg"
   SEOTitle = "赵化冰的博客 | Zhaohuabing Blog"
   description = "赵化冰，程序员, 开源爱好者，生活探险家 | 这里是 赵化冰 的博客，与你一起发现更大的世界。"
@@ -52,7 +54,7 @@ home = ["HTML", "RSS", "Algolia"]
   reward = false
   reward_guide = "嗯，这篇文章对我有用，鼓励一下..."
 
-  friends = true
+  friends = false
   bookmarks = true
   about_me = true
 

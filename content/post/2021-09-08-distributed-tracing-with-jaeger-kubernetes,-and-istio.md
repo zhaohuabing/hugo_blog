@@ -6,7 +6,7 @@ subtitle:   ""
 description: "In this series of liveProjects, you’ll deploy distributed tracing to help an eCommerce company manage its new microservices infrastructure. You’ve just been hired by eShop, a rapidly growing company that adopted microservices due to the flexibility they provide developers. eShop is finding that managing and troubleshooting its ever-increasing number of microservices is a challenge, and so your task is to use distributed tracing to develop a high-level picture of requests across these microservices. You’ll implement distributed tracing using Jaeger, Kubernetes, and Istio. Each liveProject in this series can be tackled individually, or as part of an extended learning experience."
 author:     "赵化冰"
 date:       2021-09-06
-image: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Andhika_bayu_nugraha-taman_nasional_bromo_tengger_semeru.jpg/2560px-Andhika_bayu_nugraha-taman_nasional_bromo_tengger_semeru.jpg"
+image: "https://images.pexels.com/photos/4183522/pexels-photo-4183522.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
 published: true
 tags:
     - Istio

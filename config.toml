@@ -54,7 +54,7 @@ home = ["HTML", "RSS", "Algolia"]
   reward = false
   reward_guide = "嗯，这篇文章对我有用，鼓励一下..."
 
-  friends = false
+  friends = true
   bookmarks = true
   about_me = true
 
@@ -77,8 +77,8 @@ home = ["HTML", "RSS", "Algolia"]
   href =  "https://zhaozhihan.com"
 
   [[params.bookmark_link]]
-  title = "medium"
-  href =  "https://medium.com/@zhaohuabing"
+  title = "unsplash"
+  href =  "https://unsplash.com/"
   [[params.bookmark_link]]
   title = "pexels"
   href = "https://www.pexels.com"

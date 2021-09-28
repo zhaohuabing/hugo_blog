@@ -29,25 +29,25 @@ While I created this theme, I followed the Hugo theme best practice and tried to
 ## Screenshots
 
 **Home**
-![screenshot](https://raw.githubusercontent.com/zhaohuabing/hugo-theme-cleanwhite/master/images/fullscreenshot.png)
+![screenshot](/img/2021-09-26-hugo-theme-clean-white/fullscreenshot.png)
 
 **Post**
-![screenshot](https://raw.githubusercontent.com/zhaohuabing/hugo-theme-cleanwhite/master/images/post.png)
+![screenshot](/img/2021-09-26-hugo-theme-clean-white/post.png)
 
 **Search**
-![screenshot](https://raw.githubusercontent.com/zhaohuabing/hugo-theme-cleanwhite/master/images/sitesearch.png)
+![screenshot](/img/2021-09-26-hugo-theme-clean-white/sitesearch.png)
 
 **Disqus**
-![screenshot](https://raw.githubusercontent.com/zhaohuabing/hugo-theme-cleanwhite/master/images/disqus.png)
+![screenshot](/img/2021-09-26-hugo-theme-clean-white/disqus.png)
 
 **Wechat Pay & Alipay**
-![screenshot](https://raw.githubusercontent.com/zhaohuabing/hugo-theme-cleanwhite/master/images/rewards.png)
+![screenshot](/img/2021-09-26-hugo-theme-clean-white/rewards.png)
 
 **Mind Map**
-![screenshot](https://raw.githubusercontent.com/zhaohuabing/hugo-theme-cleanwhite/master/images/mindmap.png)
+![screenshot](/img/2021-09-26-hugo-theme-clean-white/mindmap.png)
 
 **Bilibili Video**
-![screenshot](https://raw.githubusercontent.com/zhaohuabing/hugo-theme-cleanwhite/master/images/bilibili.png)
+![screenshot](/img/2021-09-26-hugo-theme-clean-white/bilibili.png)
 
 ## Quick Start
 

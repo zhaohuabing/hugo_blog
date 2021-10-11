@@ -10,7 +10,7 @@ published: true
 tags:
     - Cryptocurrency
     - Bitcoin
-categories: [ Note ]
+categories: [ Tech ]
 URL: "/2018/05/20/cryptocurrency_week1_scroogecoin/"
 
 ---

@@ -11,7 +11,7 @@ published: true
 tags:
     - Hugo
 categories: [ Open Source ]
-showtoc: false
+showtoc: true
 metadata:
     - text: "Github"
       link: "https://github.com/zhaohuabing/hugo-theme-cleanwhite"

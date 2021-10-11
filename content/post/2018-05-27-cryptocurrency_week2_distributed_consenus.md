@@ -13,7 +13,7 @@ tags:
     - Blockchain
     - Bitcoin
     - Digital Signature
-categories: [ "Note" ]
+categories: [ Tech ]
 URL: "/2018/05/26/cryptocurrency_week2_distributed_consenus/"
 ---
 

@@ -13,7 +13,7 @@ tags:
     - Blockchain
     - Bitcoin
     - Digital Signature
-categories: [ Note ]
+categories: [ Tech ]
 URL: "/2018/06/03/cryptocurrency_week3_bitcoin_script/"
 ---
 

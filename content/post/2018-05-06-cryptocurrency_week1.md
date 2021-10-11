@@ -11,7 +11,7 @@ tags:
     - Cryptocurrency
     - Blockchain
     - Bitcoin
-categories: [ Note ]
+categories: [ Tech ]
 URL: "/2018/05/06/cryptocurrency_week1"
 ---
 

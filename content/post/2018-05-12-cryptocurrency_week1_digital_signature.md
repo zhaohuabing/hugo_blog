@@ -12,7 +12,7 @@ tags:
     - Blockchain
     - Bitcoin
     - Digital Signature
-categories: [ Note ]
+categories: [ Tech ]
 URL: "/2018/05/12/cryptocurrency_week1_digital_signature"
 
 ---

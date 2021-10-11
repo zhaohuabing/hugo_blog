@@ -13,7 +13,7 @@ tags:
     - Machine Learning 
     - Supervised learning
 
-categories: [ Note ]
+categories: [ Tech ]
 ---
 
 # What is machine learning?

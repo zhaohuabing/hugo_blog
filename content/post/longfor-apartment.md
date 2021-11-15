@@ -11,7 +11,7 @@ image: "https://images.pexels.com/photos/276514/pexels-photo-276514.jpeg"
 published: true
 showtoc: false
 
-categories: [ Life ]
+#categories: [ Life ]
 ---
 
 ## Overview

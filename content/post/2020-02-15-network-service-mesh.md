@@ -8,7 +8,7 @@ author:     "赵化冰"
 date:       2020-02-15
 description: "当第一次看到Network Service Mesh这一名词时，你很可能和我一样好奇它到底是什么？是否和Service Mesh有什么关系？Network Service Mesh是云原生领域中一个新的热点，是CNCF（云原生基金会）中的一个沙箱项目。本文将介绍Network Service Mesh的起源和架构，并探讨其与Service Mesh、SDN、NFV等相关技术的区别与联系。"
 image: "/img/2020-02-15-network-service-mesh/background.png"
-published: true 
+published: false
 tags:
     - Network Service Mesh
     - Service Mesh

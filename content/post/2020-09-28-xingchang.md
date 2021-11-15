@@ -14,7 +14,7 @@ tags:
     - Photograph
     - Sichuan
 
-categories: [ Life ]
+#categories: [ Life ]
 ---
 
 {{< gallery dir="/img/2020-09-28-xingchang/" />}} {{< load-photoswipe >}}

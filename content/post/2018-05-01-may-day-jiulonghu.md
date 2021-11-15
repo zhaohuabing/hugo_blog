@@ -11,7 +11,7 @@ published: true
 hide-in-home: true
 tags:
     - Travel
-categories: [ Life ]
+#categories: [ Life ]
 URL: "/2018/05/01/may-day-jiulonghu"
 ---
 

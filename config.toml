@@ -47,8 +47,8 @@ home = ["HTML", "RSS", "Algolia"]
   ba_track_id = "a1d96090e4189c0376251fb043da7be5"
 
   # We need a proxy to access Disqus api in China
-  disqus_proxy = "https://disqusapi.zhaohuabing.com"
-  disqus_site = "https://zhaohuabing.com"
+  # disqus_proxy = "https://disqusapi.zhaohuabing.com"
+  # disqus_site = "https://zhaohuabing.com"
 
   #Enable wechat pay & alipay to allow readers send reward money if they like the articles
   reward = false
@@ -58,6 +58,18 @@ home = ["HTML", "RSS", "Algolia"]
   bookmarks = true
   about_me = true
 
+  [params.giscus]
+  data_repo="zhaohuabing/zhaohuabing.github.io"
+  data_repo_id="MDEwOlJlcG9zaXRvcnkxMzc3MjcyMjM="
+  data_category="Announcements"
+  data_category_id="DIC_kwDOCDWM984CAWAt"
+  data_mapping="pathname"
+  data_reactions_enabled="1"
+  data_emit_metadata="0"
+  data_theme="light"
+  data_lang="en"
+  crossorigin="anonymous"
+  
   [params.social]
   rss            = true
   email          = "zhaohuabing@gmail.com"
@@ -65,7 +77,7 @@ home = ["HTML", "RSS", "Algolia"]
   #googleplus    = "full profile url in googleplus"
   twitter        = "https://twitter.com/zhaohuabing"
   linkedin       = "https://www.linkedin.com/in/zhaohuabing"
-  #stackoverflow  = "https://stackoverflow.com/users/2306565/huabing-zhao"
+  #stackoverflow = "https://stackoverflow.com/users/2306565/huabing-zhao"
   #instagram     = "full profile url in instagram"
   github         = "https://github.com/zhaohuabing"
   wechat         = "https://zhaohuabing.com/img/wechat_qrcode.jpg"

@@ -1,0 +1,182 @@
+---
+layout:     post
+
+title:      "如何成功通过 CKA 考试？"
+subtitle:   ""
+description: "帮助你顺利通过 CKA 考试的一些技巧。"
+author: "赵化冰"
+date: 2021-12-20
+image: "https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+published: false
+tags:
+    - CKA
+    - CNCF
+    - Kubernetes
+categories: [ Tech ]
+showtoc: true
+---
+
+# 了解 CKA 考察的内容
+
+在开始准备考试前一定要阅读[CNCF 官方考试大纲](https://github.com/cncf/curriculum)，了解 CKA 考察考生的主要内容，以在备考时做到知己知彼，有的放矢，根据该考试大纲进行针对性的准备和练习。该大纲会根据 K8s 的版本进行更新，但每个版本中涉及的考试内容变化不大，下面是我准备考试时的版本（v1.22）要求的主要内容：
+* 25% - Cluster Architecture, Installation & Configuration
+* 15% - Workloads & Scheduling
+* 20% - Services & Networking
+* 10% - Storage
+* 30% - Troubleshooting
+
+# 熟悉考试的软件环境
+
+CKA 考试的软件环境如下，确保在考试前的练习中采用相同的软件环境，以提前熟悉考试环境：
+* 操作系统：Ubuntu 18.04
+* Shell：bash
+* 编辑器：vi
+* 命令行工具：kubectl jq tmux curl wget
+* 浏览器 chrome
+
+
+YouTube 上有一个 Linux 基金会录制的 CKA 考试环境的视频，大家可以看一下，对考试环境有一个基本的了解：https://www.youtube.com/watch?v=9UqkWcdy140
+
+{{< youtube 9UqkWcdy140 >}}
+
+建议在准备考试时充分练习并熟悉下面的工具：
+
+## 编辑器 vi
+
+vi 是一个非常强大的编辑软件，命令也非常多，但我们不需要掌握所有的命令。了解如何在 vi 的编辑和命令模式之间切换，并熟悉在考试中会使用到的几个 vi 编辑器的常用命令即可，包括删除、剪切、拷贝、粘贴、上下翻页等。注意 vi 在粘贴 yaml 时的自动格式化处理可能会不正确。可以通过 `:set paste` 取消 vi 的自动格式化。常用的 vi 命令：
+* 进入编辑模式 i
+* 进入命令模式 Esc
+* 储存后离开 vi :wq
+* 光标移动最后一行 G
+* 光标移动到第一行 gg
+* 光标移动到指定 nG （n为行数）
+
+vi 的使用方法和命令介绍参见这篇文章：https://www.runoob.com/linux/linux-vim.html
+
+## Josn/yaml 处理 jq
+
+在对 K8s crd 和 kubectl 命令行输出进行操作时需要对 Json/Yaml 代码片段进行操作，例如截取或者修改输出中某个特定的字段。考试环境中预装了 Json/Yaml 的命令行工具 jq。在练习时要熟悉该命令的使用方法，例如下面的命令可以获取 pod 中的镜像名称：
+```bash
+$ k get pod busybox -ojson|jq '.spec.containers[0].image'
+"busybox"
+```
+阅读这篇文章《My jq Cheatsheet》(https://medium.com/geekculture/my-jq-cheatsheet-34054df5b650)，了解更多 jq 的使用方法。
+
+## 终端复用器 tmux 
+
+考试时只能打开一个终端，但在考试时我们可能需要同时执行多个任务，或者在多个终端之间进行对比查看、复制粘贴。可以使用考试环境中预装的终端复用工具 tmux 来打开多个终端。在考试中会可能使用到的常用 tmux 命令：
+  * Ctrl+b %：划分左右两个窗格。
+  * Ctrl+b "：划分上下两个窗格。
+  * Ctrl+b <arrow key>：光标切换到其他窗格。<arrow key>是指向要切换到的窗格的方向键，比如切换到下方窗格，就按方向键↓。
+
+关于 tmux 的更多使用方法，可以参考 阮一峰 老师的 [《Tmux 使用教程》](https://www.ruanyifeng.com/blog/2019/10/tmux.html)。
+
+# 考试的一些技巧
+
+CKA 考试一共两个小时，时间是比较紧张的，可能会出现时间不够用的情况。可以采用下面的技巧来加快做题的速度，在考试时间内完成尽量多的试题。
+
+## 为常用的 kubectl 命令定义 alias
+你可以根据自己的习惯来设置 alias，如下：
+
+```bash
+alias k=”kubectl”
+alias kgd=”k get deploy”
+alias kgp=”k get pods”
+alias kgn=”k get nodes”
+alias kgs=”k get svc”
+alias kge=”k get events — sort-by=’.metadata.creationTimestamp’ |tail -8"
+```
+
+## 使用 kubectl 的自动补全功能
+
+```bash
+source <(kubectl completion bash)
+echo "source <(kubectl completion bash)" >> ~/.bashrc
+```
+
+## 使用 K8s Resource 的缩写名而不是全称
+
+熟练使用常见 K8s Resource 名称的缩写：
+
+|Short name|Full name|
+|----------|---------|
+|cm	|configmaps|
+|ds	|daemonsets|
+|deploy	|deployments|
+|ep	|endpoints|
+|ev	|events||
+hpa   |   	horizontalpodautoscalers|
+|ing|	ingresses|
+|limits	|limitranges|
+|ns	|namespaces|
+|no	|nodes|
+|pvc|	persistentvolumeclaims|
+|pv	|persistentvolumes|
+|po	|pods|
+|rs	|replicasets|
+|rc	|replicationcontrollers|
+|quota	|resourcequotas|
+|sa	|serviceaccounts|
+|svc	|services|
+
+## 采用 dry run 来生成 yaml
+
+考生会被要求创建一些 K8s 资源，例如 pod，deployment，service 等等。从头编写这些资源的 yaml 文件不仅耗时，而且我们也很难记住某个资源的整个结构。可以使用 dry run 来生成一个基础的 yaml 文件，然后基于该文件进行修改，最后再采用修改后的文件来创建资源。
+
+例如这道题：创建一个 nginx pod，将 request 的 memory 设置为 1M, CPU 设置为 500m
+
+```bash
+k run nginx --image=nginx --dry-run=client -oyaml > pod.yaml
+vi pod.yaml //添加 resource limit 设置
+k create -f pod.yaml
+```
+
+## 采用 kubectl explain 来查看 resource 的定义
+
+如果在考试中我们需要查看某个 k8s 资源的定义，我们可以在 k8s 在线文档中去搜索该资源的 API，但在 K8s 文档的搜索功能并不是很方便使用，你可能需要点击多次才能找到正确的链接。通过 kubectl explain 命令可以更方便地查看资源定义，kubectl explain 的一个好处是可以层层递进查看，例如需要查看 pod 中容器的 limit 如何定义，但记不清楚 pod yaml 的结构层次，则可以这样查询：
+
+``` bash
+k explain pod.spec //查看 pod 的 spec
+k explain pod.spec.containers //进一步查看 pod spec 中 containers 部分的定义
+k explain pod.spec.containers.resources //进一步查看 resources 部分的定义
+k explain pod.spec.containers.resources.limits //进一步查看 limits 部分的定义
+```
+
+# 安装 k8s 集群的一些注意事项
+
+安装前首先采用 ```sudo -i``` 命令切换到 root 用户。
+
+我们只需要了解安装需要的相关工具和大致步骤，并不需要记住安装的相关命令。考试时打开 K8s 官网中的 [Bootstrapping clusters with kubeadm](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/) 文档，跟随文档中的步骤进行安装即可。
+
+## 安装 Docker
+
+Docker 官网的安装手册中有较多步骤，而在考试中不允许访问 Docker 官网。建议使用一键安装脚本来安装 Docker。Docker 一键安装脚本的地址 ```get.docker.com``` 很容易记住。
+
+```bash
+bash <(wget -O- get.docker.com)
+```
+
+注意需要设置 systemd 为 docker 的 cgroup driver，参见 https://kubernetes.io/docs/setup/production-environment/container-runtimes/#docker
+
+## 初始化 master 节点
+
+如果节点上有多个网卡，注意通过 ```--apiserver-advertise-address``` 参数设置 apiserver 的监听地址，该地址应为和 worker 节点同一个局域网上的地址。
+
+如果使用了 flannel 插件，需要在 kubeadm 命令中加入 pod cidr 参数， ```kubeadm init --pod-network-cidr=10.244.0.0/16```，cidr 和 https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml 中配置的 CIDR 一致。
+
+## 安装 CNI 插件
+
+需要通过 ``` kubectl apply -f <add-on.yaml> ``` 安装  CNI addon，平时安装时我们会通过 k8s 在线文档导航到一个外部的 CNI 网站上，找到该 addon 的 yaml 文件.在考试时不允许访问 CNI 的网站，在下面的 K8s 文档中有安装 CNI 插件的例子，可以将网页地址加入浏览器收藏夹中。
+https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/high-availability/#steps-for-the-first-control-plane-node
+
+# 收藏常用 k8s 文档
+
+提前将考试中可能会用到的 k8s 文档加入 chrome 收藏夹，避免考试时临时搜索浪费时间。下面是我收藏的相关在线文档：
+* kubectl 命令参考：https://kubernetes.io/docs/reference/kubectl/cheatsheet/
+* 使用 kubeadm 安装 K8s 集群 Kubernetes API：https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/
+* 设置 Docker：https://kubernetes.io/docs/setup/production-environment/container-runtimes/#docker
+* 安装 K8s CNI addon：https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/high-availability/#steps-for-the-first-control-plane-node
+* 备份 etcd ：https://kubernetes.io/docs/tasks/administer-cluster/configure-upgrade-etcd/#backing-up-an-etcd-cluster
+* K8s Cluster 排错：https://kubernetes.io/docs/tasks/debug-application-cluster/debug-cluster/
+
+注意：考试中不允许访问 https://helm.sh/docs/, https://kubernetes.io/docs/, https://github.com/kubernetes/,  https://kubernetes.io/blog/ 之外的其他文档，因此注意不要点击 k8s 文档中的外链，例如 cni addon 和 docker 网站的外链。

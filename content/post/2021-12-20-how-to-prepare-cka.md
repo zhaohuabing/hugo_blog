@@ -7,13 +7,13 @@ description: "帮助你顺利通过 CKA 考试的一些技巧。"
 author: "赵化冰"
 date: 2021-12-20
 image: "https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-published: false
+published: true
 tags:
     - CKA
     - CNCF
     - Kubernetes
 categories: [ Tech ]
-showtoc: true
+showtoc: false
 ---
 
 # 了解 CKA 考察的内容
@@ -79,12 +79,14 @@ CKA 考试一共两个小时，时间是比较紧张的，可能会出现时间�
 你可以根据自己的习惯来设置 alias，如下：
 
 ```bash
-alias k=”kubectl”
-alias kgd=”k get deploy”
-alias kgp=”k get pods”
-alias kgn=”k get nodes”
-alias kgs=”k get svc”
-alias kge=”k get events — sort-by=’.metadata.creationTimestamp’ |tail -8"
+alias k=kubectl
+alias kgp="k get pod"
+alias kgd="k get deploy"
+alias kgs="k get svc"
+alias kgn="k get nodes"
+alias kd="k describe"
+alias kge="k get events --sort-by='.metadata.creationTimestamp' |tail -8"
+export dr=" --dry-run=client -o yaml"
 ```
 
 ## 使用 kubectl 的自动补全功能
@@ -131,9 +133,49 @@ vi pod.yaml //添加 resource limit 设置
 k create -f pod.yaml
 ```
 
+## 利用 kubectl command help 查看创建资源示例
+
+```kubectl command --help``` 命令的输出中提供了很多常用例子，将这些例子拷贝出来稍加修改就可以在考试中使用。采用该命令可以节约在 k8s 在线文档中查找搜寻相关示例的时间。
+
+例如 ```kubectl run --help``` 的输出中有大量创建 pod 的示例：
+
+```bash
+kubectl run --help
+Create and run a particular image in a pod.
+
+Examples:
+  # Start a nginx pod.
+  kubectl run nginx --image=nginx
+
+  # Start a hazelcast pod and let the container expose port 5701.
+  kubectl run hazelcast --image=hazelcast/hazelcast --port=5701
+
+  # Start a hazelcast pod and set environment variables "DNS_DOMAIN=cluster" and "POD_NAMESPACE=default" in the
+container.
+  kubectl run hazelcast --image=hazelcast/hazelcast --env="DNS_DOMAIN=cluster" --env="POD_NAMESPACE=default"
+
+  # Start a hazelcast pod and set labels "app=hazelcast" and "env=prod" in the container.
+  kubectl run hazelcast --image=hazelcast/hazelcast --labels="app=hazelcast,env=prod"
+
+  # Dry run. Print the corresponding API objects without creating them.
+  kubectl run nginx --image=nginx --dry-run=client
+
+  # Start a nginx pod, but overload the spec with a partial set of values parsed from JSON.
+  kubectl run nginx --image=nginx --overrides='{ "apiVersion": "v1", "spec": { ... } }'
+
+  # Start a busybox pod and keep it in the foreground, don't restart it if it exits.
+  kubectl run -i -t busybox --image=busybox --restart=Never
+
+  # Start the nginx pod using the default command, but use custom arguments (arg1 .. argN) for that command.
+  kubectl run nginx --image=nginx -- <arg1> <arg2> ... <argN>
+
+  # Start the nginx pod using a different command and custom arguments.
+  kubectl run nginx --image=nginx --command -- <cmd> <arg1> ... <argN>
+  ```
+
 ## 采用 kubectl explain 来查看 resource 的定义
 
-如果在考试中我们需要查看某个 k8s 资源的定义，我们可以在 k8s 在线文档中去搜索该资源的 API，但在 K8s 文档的搜索功能并不是很方便使用，你可能需要点击多次才能找到正确的链接。通过 kubectl explain 命令可以更方便地查看资源定义，kubectl explain 的一个好处是可以层层递进查看，例如需要查看 pod 中容器的 limit 如何定义，但记不清楚 pod yaml 的结构层次，则可以这样查询：
+通过 ```kubectl command --help``` 命令可以查看创建资源的示例，但 help 命令中只显示了常用的选项，并不会提供完整的资源定义。如果在考试中我们需要查看某个 k8s 资源的定义，一个方法到在 k8s 在线文档中去搜索该资源的 API，但在 K8s 文档的搜索功能并不是很方便使用，你可能需要点击多次才能找到正确的链接。另一个更方便的方法是采用 kubectl explain 命令来查看资源定义。kubectl explain 的好处是可以层层递进查看，例如需要查看 pod 中容器的 limit 如何定义，但记不清楚 pod yaml 的结构层次，则可以这样查询：
 
 ``` bash
 k explain pod.spec //查看 pod 的 spec
@@ -166,7 +208,7 @@ bash <(wget -O- get.docker.com)
 
 ## 安装 CNI 插件
 
-需要通过 ``` kubectl apply -f <add-on.yaml> ``` 安装  CNI addon，平时安装时我们会通过 k8s 在线文档导航到一个外部的 CNI 网站上，找到该 addon 的 yaml 文件.在考试时不允许访问 CNI 的网站，在下面的 K8s 文档中有安装 CNI 插件的例子，可以将网页地址加入浏览器收藏夹中。
+采用 kubeadm 初始化集群后，需要通过 ``` kubectl apply -f <add-on.yaml> ``` 安装  CNI addon，否则加入集群的节点会一直处于 NotReady 状态。平时安装时我们会通过 k8s 在线文档导航到一个外部的 CNI 网站上，找到该 addon 的 yaml 文件。在考试时不允许访问 CNI 的网站，在下面的 K8s 文档中有安装 CNI 插件的例子，可以将网页地址加入浏览器收藏夹中。
 https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/high-availability/#steps-for-the-first-control-plane-node
 
 # 收藏常用 k8s 文档
@@ -176,7 +218,22 @@ https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/high-avail
 * 使用 kubeadm 安装 K8s 集群 Kubernetes API：https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/
 * 设置 Docker：https://kubernetes.io/docs/setup/production-environment/container-runtimes/#docker
 * 安装 K8s CNI addon：https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/high-availability/#steps-for-the-first-control-plane-node
-* 备份 etcd ：https://kubernetes.io/docs/tasks/administer-cluster/configure-upgrade-etcd/#backing-up-an-etcd-cluster
+* 升级 K8s Cluster: https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/kubeadm-upgrade/
+* 备份 etcd ：https://kubernetes.io/docs/tasks/administer-cluster/configure-upgrade-etcd/#snapshot-using-etcdctl-options
 * K8s Cluster 排错：https://kubernetes.io/docs/tasks/debug-application-cluster/debug-cluster/
 
 注意：考试中不允许访问 https://helm.sh/docs/, https://kubernetes.io/docs/, https://github.com/kubernetes/,  https://kubernetes.io/blog/ 之外的其他文档，因此注意不要点击 k8s 文档中的外链，例如 cni addon 和 docker 网站的外链。
+
+# 练习，练习，练习
+
+CKA 要求考生在规定时间内完成对 K8s 的指定管理任务，这要求考生理解 K8s 的相关概念，并非常熟悉 kubectl 命令行的相关操作。而熟悉 kubectl 命令行的方法就是不断的重复练习。Github 上有一些很好的资源，可以在准备考试时参照进行练习：
+
+* [CKA Practice Exercises](https://github.com/alijahnas/CKA-practice-exercises)
+* [Kubernetes Certified Administration](https://github.com/walidshaari/Kubernetes-Certified-Administrator)
+* [K8s Practice Training](https://github.com/StenlyTU/K8s-training-official)
+* [Awesome Kubernetes](https://github.com/ramitsurana/awesome-kubernetes)
+
+建议在考试前制定一个练习计划，并坚持按照该计划进行练习。我遵循的计划是考试前三个月开始练习，周一到周五每天早上上班前抽半小时时间。周末的时间比较灵活，周六和周日会花2小时左右练习。你练习的时间越长，对 kubectl 命令行的操作越熟悉，对即将到来的考试越有信心，顺利通过考试的几率则越大。
+
+最后祝大家顺利通过考试！
+

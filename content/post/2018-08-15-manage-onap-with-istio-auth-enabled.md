@@ -7,7 +7,7 @@ excerpt: ""
 author:     "赵化冰"
 date:       2018-08-15
 description: ""
-image: "https://img.zhaohuabing.com/in-post/2018-08-01-manage-onap-with-istio/backgroud.jpeg"
+image: "/img/2018-08-01-manage-onap-with-istio/backgroud.jpeg"
 published: true 
 tags:
     - Istio 

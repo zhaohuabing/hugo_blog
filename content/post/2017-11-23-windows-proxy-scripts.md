@@ -82,7 +82,7 @@ Event ID: 10000
 
 执行动作选择刚才创建的脚本就可以了。
 
-![Windows任务触发条件](http://img.zhaohuabing.com/in-post/windows-proxy-script/windows-task-trigger.PNG)
+![Windows任务触发条件](/img//windows-proxy-script/windows-task-trigger.PNG)
 
 
 

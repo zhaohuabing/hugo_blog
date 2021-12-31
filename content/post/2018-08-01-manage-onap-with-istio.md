@@ -7,7 +7,7 @@ excerpt: ""
 author:     "赵化冰"
 date:       2018-08-01
 description: ""
-image: "https://img.zhaohuabing.com/in-post/2018-08-01-manage-onap-with-istio/backgroud.jpeg"
+image: "/img/2018-08-01-manage-onap-with-istio/backgroud.jpeg"
 published: true 
 tags:
     - Istio 
@@ -230,7 +230,7 @@ pod/vfc-vfc-zte-vnfm-driver-59d4756fbc-rpn9v 2/2 Running 0 2d
 --omitted for simplicity
 ```
 You can open the MSB portal http://Node_IP:30280/iui/microservices/default.html in the browser to see all the registered services.
-![MSB Portal](https://img.zhaohuabing.com/in-post/2018-08-01-manage-onap-with-istio/msb.png)
+![MSB Portal](/img/2018-08-01-manage-onap-with-istio/msb.png)
 # Explore Istio Features
 ## Distributed Tracing
 First, let's generate some traffics in the application, access the following URLs with curl command or open them in the browser
@@ -240,7 +240,7 @@ First, let's generate some traffics in the application, access the following URL
 * http://node_ip:30280/api/multicloud-ocata/v0/swagger.json
 
 Then open your browser at http://tracing_node_ip:tracing_node_port/, you should see something similar to the following:
-![Distributed Tracing](https://img.zhaohuabing.com/in-post/2018-08-01-manage-onap-with-istio/tracing.png)
+![Distributed Tracing](/img/2018-08-01-manage-onap-with-istio/tracing.png)
 
 Note:
 
@@ -251,12 +251,12 @@ Note:
 Istio provides a Servicegraph service which generates and visualizes graph representations of the services in the mesh.
 
 Open your browser at http://node_ip:30088/dotviz or http://node_ip:30088/force/forcegraph.html, you should see the service graph:
-![Service Graph](https://img.zhaohuabing.com/in-post/2018-08-01-manage-onap-with-istio/servicegraph.png)
+![Service Graph](/img/2018-08-01-manage-onap-with-istio/servicegraph.png)
 
 ## Metrics Visualization
 Istio automatically gathers telemetry for services in a mesh. A Prometheus adapter is plugged into Mixer to serve the generated metric data. A Grafana addon is pre-configured with a Prometheus data source and has an Istio dashboard installed for the metric visualization.
 
 Open your browser at http://node_ip:30300, you should see the Grafana Istio dashboard:
-![Metrics](https://img.zhaohuabing.com/in-post/2018-08-01-manage-onap-with-istio/metrics.png)
+![Metrics](/img/2018-08-01-manage-onap-with-istio/metrics.png)
 
 *What's the next? we will enable mutual TLS authentication and leverage Istio RBAC for ONAP microservices communication security. Comment here to leave your thoughts or join our [weekly project meeting](https://wiki.onap.org/display/DW/MSB+Meeting+Notes) if you're interested.*

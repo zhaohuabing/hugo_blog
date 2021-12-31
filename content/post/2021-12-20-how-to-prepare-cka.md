@@ -7,7 +7,7 @@ description: "帮助你顺利通过 CKA 考试的一些技巧。"
 author: "赵化冰"
 date: 2021-12-20
 image: "https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-published: true
+published: false
 tags:
     - CKA
     - CNCF

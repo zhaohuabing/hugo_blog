@@ -4,7 +4,7 @@ title:      "Cryptographic Hash Function"
 subtitle:   "Bitcoin and Cryptocurrency Technologies-Week 1"
 date:       2018-05-09 22:00:00
 author:     "赵化冰"
-image: "https://img.zhaohuabing.com/in-post/2018-05-06-cryptocurrency_week1/bitcoin_3.jpg"
+image: "/img/2018-05-06-cryptocurrency_week1/bitcoin_3.jpg"
 description: "Hash function can produce a fixed lenght digest of any size of data, and the original data can not be found out if it's properly used."
 published: true
 tags:
@@ -153,4 +153,4 @@ Bitcoin Minding Puzzle: find R such that *H(R/|BlockData) $$/in$$ ValidRange*
 
 ## SHA-256
 SHA-256 is the hash function used in Bitcoin which has all the three needed properties.
-![SHA-256](http://img.zhaohuabing.com/in-post/2018-05-09-cryptocurrency-week1-cryptographic-hash-function/sha-256.PNG)
+![SHA-256](/img//2018-05-09-cryptocurrency-week1-cryptographic-hash-function/sha-256.PNG)

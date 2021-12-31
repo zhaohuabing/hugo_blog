@@ -4,7 +4,7 @@ title:      "Introduction to crypto and cryptocurrencies"
 subtitle:   "Bitcoin and Cryptocurrency Technologies-Week 1"
 date:       2018-05-06
 author:     "赵化冰"
-image: "https://img.zhaohuabing.com/in-post/2018-05-06-cryptocurrency_week1/bitcoin_1.jpg"
+image: "/img/2018-05-06-cryptocurrency_week1/bitcoin_1.jpg"
 description : "I have noticed the buzzwords “Bitcoin” and “Blockchain” for a while. There are lots of articles, news, and talks around them. It seems that many people believe that cryptocurrency is the future of online payment, some even claim that blockchain would become the fundamental technology of the next generation of the Internet."
 published: true
 tags:

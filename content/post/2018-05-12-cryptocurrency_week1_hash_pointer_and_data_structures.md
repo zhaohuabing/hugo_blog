@@ -4,7 +4,7 @@ title:      "Hash Pointers and Data Structures"
 subtitle:   "Bitcoin and Cryptocurrency Technologies-Week 1"
 author:     "赵化冰"
 date:       2018-05-12
-image: "https://img.zhaohuabing.com/in-post/2018-05-06-cryptocurrency_week1/blockchain.png"
+image: "/img/2018-05-06-cryptocurrency_week1/blockchain.png"
 published: true
 description: "Hash pointer is used to bulid some key data structures in cryptocurrency, such as Block chain and Merkel tree."
 tags:
@@ -23,14 +23,14 @@ Hash Pointer is comprised of two parts:
 * Pointer to where some information is stored
 * Cryptographic hash of that information    
 The pointer can be used to get the information, the hash can be used to verify that information hasn't been changed    
-![hashpointer](http://img.zhaohuabing.com/in-post/2018-05-12-cryptocurrency_week1_hash_pointer_and_data_structures/hashpointet.png)
+![hashpointer](/img//2018-05-12-cryptocurrency_week1_hash_pointer_and_data_structures/hashpointet.png)
 <!--more-->
 
 ## Data Structures Built with Hash Pointers
 
 ### Blockchain
 Hash pointers can be used to build a linked list, which is also called a blockchain.    
-![blockchain](http://img.zhaohuabing.com/in-post/2018-05-12-cryptocurrency_week1_hash_pointer_and_data_structures/blockchian.png)
+![blockchain](/img//2018-05-12-cryptocurrency_week1_hash_pointer_and_data_structures/blockchian.png)
 
 We should Note that the hash stored in the hash pointer is the hash of the whole data of the previous block, which also includes the hash pointer to the block before that one. This makes it's impossible to tamper a block in the blockchain without letting others know.
 
@@ -44,12 +44,12 @@ We only need to keep the hash pointer to the last block of the blockchain. Then 
 * Now the content of block 2 is changed, so to make this story consistent, the hash pointer in block3 must be changed.
 * Finally, the attacker goes to the hash pointer to the last block of the blockchain, which is a roadblock for him, because we keep and remember that hash pointer.
 
-![tamper evident](http://img.zhaohuabing.com/in-post/2018-05-12-cryptocurrency_week1_hash_pointer_and_data_structures/tamper_evident.png)
+![tamper evident](/img//2018-05-12-cryptocurrency_week1_hash_pointer_and_data_structures/tamper_evident.png)
 
 ### Merkle Tree
 Merkle tree is a binary tree building with hash pointers. The leaves are data blocks, nodes further up in the tree are the hashes of their respective children.
 
-![merkel tree](http://img.zhaohuabing.com/in-post/2018-05-12-cryptocurrency_week1_hash_pointer_and_data_structures/merkel_tree.png)
+![merkel tree](/img//2018-05-12-cryptocurrency_week1_hash_pointer_and_data_structures/merkel_tree.png)
 
 **Features**
 * **Tamper evident**    

@@ -5,7 +5,7 @@ subtitle:   "Bitcoin and Cryptocurrency Technologies-Week 2"
 excerpt:    "Distributed Consensus"
 date:       2018-05-27
 author:     "赵化冰"
-image: "https://img.zhaohuabing.com/in-post/2018-05-06-cryptocurrency_week1/bitcoin_consensus.jpg"
+image: "/img/2018-05-06-cryptocurrency_week1/bitcoin_consensus.jpg"
 description: "How the nodes in the bitcoin network reach consensus on the transactions?"
 published: true 
 tags:
@@ -22,7 +22,7 @@ URL: "/2018/05/26/cryptocurrency_week2_distributed_consenus/"
 ## Decentralize ScroogeCoin: Distributed Consensus
 Bitcoin is a peer to peer network.   When Alice wants to pay Bob:    
 She broadcasts the transaction to all Bitcoin nodes 
-![Transfer Bitcoin](http://img.zhaohuabing.com/in-post/2018-05-27-cryptocurrency_week2_distributed_consenus/bitcoin-network.png)
+![Transfer Bitcoin](/img//2018-05-27-cryptocurrency_week2_distributed_consenus/bitcoin-network.png)
 The consensus of Bitcoin network:
 * The content of transactions
 * The order in which these transactions happened
@@ -47,14 +47,14 @@ The attacker creates two transactions, which transfer the same coins to two diff
 Solution: The rule of Bitcoin is that honest nodes always chose the longest valid branch and append the next block to that branch when there is more than one branch. So the more blocks are appended to the branch which your transaction is in, more likely this branch will be ultimately recognized by the Bitcoin network.  
 
 The suggested number is 6, experience shows that after 6 blocks have been appended to the block which your transaction is in, you can almost be sure this branch will not become an orphan branch in the future. So if you're selling something to someone，after receiving the payment by Bitcoin, you can wait until 6 more blocks are appended next to your block, then you complete this transaction and send the payer the product.
-![Transfer Bitcoin](http://img.zhaohuabing.com/in-post/2018-05-27-cryptocurrency_week2_distributed_consenus/double-spending-attack.png)
+![Transfer Bitcoin](/img//2018-05-27-cryptocurrency_week2_distributed_consenus/double-spending-attack.png)
 > There is no guarantee that a transaction is in consensus branch, but we assume the probability is almost 100% after 6 confirmation.
 
 I'm wondering: Does this means to avoid the potential risk of double spending attack, we always have to wait about one hour to complete a transaction?
 
 It seems like that, more information can be found at these two links. I think it's a big issue for Bitcoin, an hour is too long compared with nearly real-time confirmation of a traditional "centralized bank transaction".
 
-![](http://img.zhaohuabing.com/in-post/2018-05-27-cryptocurrency_week2_distributed_consenus/confirmation-time.png)
+![](/img//2018-05-27-cryptocurrency_week2_distributed_consenus/confirmation-time.png)
 
 * [How long does it take for a Bitcoin transaction to be confirmed?](https://coincenter.org/entry/how-long-does-it-take-for-a-bitcoin-transaction-to-be-confirmed)
 * [Average Confirmation Time of Bitcoin](https://blockchain.info/charts/avg-confirmation-time?timespan=30days)

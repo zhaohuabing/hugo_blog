@@ -5,7 +5,7 @@ subtitle:   "Bitcoin and Cryptocurrency Technologies-Week 1"
 date:       2018-05-20
 author:     "赵化冰"
 description: "Finally, I got to the most exciting part of week 1 lectures-the programming assignment!"
-image: "https://img.zhaohuabing.com/in-post/2018-05-06-cryptocurrency_week1/programming.jpg"
+image: "/img/2018-05-06-cryptocurrency_week1/programming.jpg"
 published: true
 tags:
     - Cryptocurrency
@@ -26,7 +26,7 @@ It turns out that writing posts on my blog is a better way to learn, I have to f
 
 ## Scrooge Coin Transaction
 Scrooge Coin programming assignment is a little bit tricky, the video of this lesson hasn't explained some implementation details. To help you understand the transaction data structure used in Scrooge Coin, I draw this diagram:
-![Scrooge Coin](http://img.zhaohuabing.com/in-post/2018-5-20-cryptocurrency_week1_scroogecoin/scroogecoin.png)
+![Scrooge Coin](/img//2018-5-20-cryptocurrency_week1_scroogecoin/scroogecoin.png)
 
 Every transaction has a set of inputs and a set of outputs. An input in a transaction must use a hash pointer to refer to its corresponding output in the previous transaction, and it must be signed with the private key of the owner because the owner needs to prove he/she agrees to spend his/her coins.  
 

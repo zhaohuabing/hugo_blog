@@ -3,13 +3,13 @@
 	url = https://github.com/appernetic/hugo-nederburg-theme
 [submodule "themes/hugo-theme-cleanwhite"]
 	path = themes/hugo-theme-cleanwhite
-	url = git@github.com:zhaohuabing/hugo-theme-cleanwhite.git
+	url = https://github.com/zhaohuabing/hugo-theme-cleanwhite.git
 [submodule "public"]
 	path = public
-	url = git@github.com:zhaohuabing/zhaohuabing.github.io.git
+	url = https://github.com/zhaohuabing/zhaohuabing.github.io.git
 [submodule "static/img"]
 	path = static/img
-	url = git@github.com:zhaohuabing/blog_img.git
+	url = https://github.com/zhaohuabing/blog_img.git
 [submodule "static/slides"]
 	path = static/slides
-	url = git@github.com:zhaohuabing/blog_slides.git
+	url = https://github.com/zhaohuabing/blog_slides.git

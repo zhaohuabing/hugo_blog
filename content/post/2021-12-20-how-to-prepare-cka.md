@@ -184,6 +184,16 @@ k explain pod.spec.containers.resources //进一步查看 resources 部分的定
 k explain pod.spec.containers.resources.limits //进一步查看 limits 部分的定义
 ```
 
+## 创建临时 Pod 来进行测试
+
+考试时经常会让考生创建临时 pod 来测试某些功能，例如创建一个临时的 busybox pod ，在该 pod 中通过 wget 命令来测试上一个步骤中 expose 的某个 k8s service。可以采用 ``` kubectl run ``` 加上 ``` --rm ``` 选项来创建该 pod，``` --rm ``` 选项表示运行指定的命令后该 pod 将会被立即删除掉。该技巧可以让我们快速创建一个可以执行 wget， curl 等命令的临时 pod，命令执行后 pod 会被自动删除掉，无需手动清理。 该技巧在平时对 K8s 中运行的应用程序进行排错时也很有用。
+
+```bash
+➜  ~ kubectl -it  run busybox --rm --image=busybox -it -- sh
+If you don't see a command prompt, try pressing enter.
+/ # wget -O- 172.17.254.255
+```
+
 # 安装 k8s 集群的一些注意事项
 
 安装前首先采用 ```sudo -i``` 命令切换到 root 用户。

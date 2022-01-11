@@ -11,8 +11,9 @@ image: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Meteora%60s_mo
 published: true
 tags:
     - Kubernetes
+    - Knowledge Graph
 
-categories: [ Knowledge Graph ]
+categories: [ Tech ]
 showtoc: false
 mindmap: https://markmap.js.org/
 ---

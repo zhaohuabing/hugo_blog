@@ -242,7 +242,7 @@ dynamic_route_configs": [
 # 参考文档
 
 * [Aeraki 官方网站](https://www.aeraki.net/zh/)
-* [Aeraki github](https://github.com/aeraki-framework)
+* [Aeraki github](https://github.com/aeraki-mesh)
 
 
 

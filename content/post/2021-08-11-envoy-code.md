@@ -13,7 +13,7 @@ tags:
 categories: [ Tech ]
 ---
 
-最近在实现 [MetaProtocol](https://github.com/aeraki-framework/meta-protocol-proxy) 时阅读了 Envoy 相关的一些源码。这里将一些重要流程的时序图记录下来，以备后续查看。
+最近在实现 [MetaProtocol](https://github.com/aeraki-mesh/meta-protocol-proxy) 时阅读了 Envoy 相关的一些源码。这里将一些重要流程的时序图记录下来，以备后续查看。
 
 # TCP Proxy
 

@@ -7,7 +7,7 @@ description: "帮助你顺利通过 CKA 考试的一些技巧。"
 author: "赵化冰"
 date: 2021-12-20
 image: "https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-published: false
+published: true
 tags:
     - CKA
     - CNCF
@@ -189,7 +189,7 @@ k explain pod.spec.containers.resources.limits //进一步查看 limits 部分�
 考试时经常会让考生创建临时 pod 来测试某些功能，例如创建一个临时的 busybox pod ，在该 pod 中通过 wget 命令来测试上一个步骤中 expose 的某个 k8s service。可以采用 ``` kubectl run ``` 加上 ``` --rm ``` 选项来创建该 pod，``` --rm ``` 选项表示运行指定的命令后该 pod 将会被立即删除掉。该技巧可以让我们快速创建一个可以执行 wget， curl 等命令的临时 pod，命令执行后 pod 会被自动删除掉，无需手动清理。 该技巧在平时对 K8s 中运行的应用程序进行排错时也很有用。
 
 ```bash
-➜  ~ kubectl -it  run busybox --rm --image=busybox -it -- sh
+➜  ~ kubectl -it  run busybox --rm --image=busybox -- sh
 If you don't see a command prompt, try pressing enter.
 / # wget -O- 172.17.254.255
 ```
@@ -223,7 +223,11 @@ https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/high-avail
 
 # 收藏常用 k8s 文档
 
-提前将考试中可能会用到的 k8s 文档加入 chrome 收藏夹，避免考试时临时搜索浪费时间。下面是我收藏的相关在线文档：
+考试时可以查看 k8s 在线文档，因此可以提前将考试中可能会用到的 k8s 文档加入 chrome 收藏夹，避免考试时临时搜索浪费时间。
+你可以根据练习判断需要收藏哪些 K8s 文档，并按分类整理文件夹，下图是我收藏的文档：
+![](/img/2021-12-20-how-to-prepare-cka/bookmarks.png)
+
+一些有用的文档链接：
 * kubectl 命令参考：https://kubernetes.io/docs/reference/kubectl/cheatsheet/
 * 使用 kubeadm 安装 K8s 集群 Kubernetes API：https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/
 * 设置 Docker：https://kubernetes.io/docs/setup/production-environment/container-runtimes/#docker

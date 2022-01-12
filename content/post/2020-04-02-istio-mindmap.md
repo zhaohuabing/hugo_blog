@@ -31,7 +31,7 @@ mindmap: https://markmap.js.org/
     - 协议扩展
 		- [如何在 Isito 中支持 Dubbo、Thrift、Redis，以及任何七层协议？](https://zhaohuabing.com/post/2021-03-02-manage-any-layer-7-traffic-in-istio/)
 		- [在 Istio 中实现 Redis 集群的数据分片、读写分离和流量镜像](https://zhaohuabing.com/post/2020-10-14-redis-cluster-with-istio/)
-		- [Aeraki: Manage any layer 7 traffic in an Istio service mesh](https://github.com/aeraki-framework/aeraki)
+		- [Aeraki: Manage any layer 7 traffic in an Istio service mesh](https://github.com/aeraki-mesh/aeraki)
 	- 故障定位
 		- [Headless Service](https://zhaohuabing.com/post/2020-09-11-headless-mtls/)
 		- [Sidecar 启动依赖](https://zhaohuabing.com/post/2020-09-05-istio-sidecar-dependency/)

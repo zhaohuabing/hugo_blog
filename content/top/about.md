@@ -32,7 +32,7 @@ Feel free to connect Huabing at Github⁵ and Linkedin⁶, leave your thoughts i
 1. Istio:          https://istio.io
 2. ONAP:       https://wiki.onap.org
 3. Hugo:        https://themes.gohugo.io/hugo-theme-cleanwhite
-4. Aeraki:     https://github.com/aeraki-framework
+4. Aeraki:     https://github.com/aeraki-mesh
 5. Github      https://github.com/zhaohuabing
 6. Linkedin   https://linkedin.com/inzhaohuabing 
 7. Blog          https://zhaohuabing.com  https://medium.com/@zhaohuabing

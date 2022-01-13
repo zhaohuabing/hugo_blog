@@ -13,6 +13,13 @@ tags:
     - Istio
     - Envoy
 categories: [ Tech ]
+metadata:
+    - text: "Website"
+      link: "https://www.aeraki.net/zh"
+    - text: "Github"
+      link: "https://github.com/aeraki-mesh"
+    - text: "QuickStart" 
+      link: "https://www.aeraki.net/zh/docs/v1.0/quickstart/"
 ---
 
 Aeraki 可以帮助你在服务网格中管理任何七层协议。目前 Aeraki 已经支持了 Dubbo、Thrit、Redis 等开源协议。你还可以使用 Aeraki 的 MetaProtocol 协议扩展框架来管理私有协议的七层流量。

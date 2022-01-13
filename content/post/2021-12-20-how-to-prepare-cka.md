@@ -235,6 +235,7 @@ https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/high-avail
 * 升级 K8s Cluster: https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/kubeadm-upgrade/
 * 备份 etcd ：https://kubernetes.io/docs/tasks/administer-cluster/configure-upgrade-etcd/#snapshot-using-etcdctl-options
 * K8s Cluster 排错：https://kubernetes.io/docs/tasks/debug-application-cluster/debug-cluster/
+* Nginx ingress controller 安装：https://github.com/kubernetes/ingress-nginx/blob/main/docs/deploy/index.md
 
 注意：考试中不允许访问 https://helm.sh/docs/, https://kubernetes.io/docs/, https://github.com/kubernetes/,  https://kubernetes.io/blog/ 之外的其他文档，因此注意不要点击 k8s 文档中的外链，例如 cni addon 和 docker 网站的外链。
 

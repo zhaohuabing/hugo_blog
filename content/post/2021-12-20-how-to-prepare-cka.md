@@ -5,7 +5,7 @@ title:      "如何成功通过 CKA 考试？"
 subtitle:   ""
 description: "帮助你顺利通过 CKA 考试的一些技巧。"
 author: "赵化冰"
-date: 2021-12-20
+date: 2022-02-07
 image: "https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
 published: true
 tags:
@@ -13,7 +13,6 @@ tags:
     - CNCF
     - Kubernetes
 categories: [ Tech ]
-showtoc: false
 ---
 
 # 了解 CKA 考察的内容
@@ -86,7 +85,6 @@ alias kgs="k get svc"
 alias kgn="k get nodes"
 alias kd="k describe"
 alias kge="k get events --sort-by='.metadata.creationTimestamp' |tail -8"
-export dr=" --dry-run=client -o yaml"
 ```
 
 ## 使用 kubectl 的自动补全功能
@@ -131,6 +129,32 @@ hpa   |   	horizontalpodautoscalers|
 k run nginx --image=nginx --dry-run=client -oyaml > pod.yaml
 vi pod.yaml //添加 resource limit 设置
 k create -f pod.yaml
+```
+
+由于在考试中会频繁使用到 ```--dry-run=client -oyaml``` 选项来生成 k8s 对象的 yaml 文件，我们可以采用 export 来定义一个变量 do，以节省输入时间。
+
+```bash
+export do="--dry-run=client -o yaml"
+```
+
+定义 do 变量后，就可以像下面这样使用：
+
+```bash
+k run nginx --image=nginx $do > pod.yaml
+```
+
+## 快速删除 pod
+
+CKA 考试中有时候需要删除 pod，k8s 缺省采用优雅删除的方式，这意味着 kubectl 命令行会被挂起等待较长的时间，等相关资源被清理后再返回。这个时间可能会长达 10 多秒。CKA 考试时间相对比较紧张，为了尽可能减少删除时的等待时间，我们可以采用强制删除的方式快速删除 pod。
+
+```bash
+export now="--force --grace-period 0"
+```
+
+定义 now 变量后，可以像下面这样快速删除一个 pod：
+
+```bash
+k delete pod test $now
 ```
 
 ## 利用 kubectl command help 查看创建资源示例
@@ -250,5 +274,9 @@ CKA 要求考生在规定时间内完成对 K8s 的指定管理任务，这要�
 
 建议在考试前制定一个练习计划，并坚持按照该计划进行练习。我遵循的计划是考试前三个月开始练习，周一到周五每天早上上班前抽半小时时间。周末的时间比较灵活，周六和周日会花2小时左右练习。你练习的时间越长，对 kubectl 命令行的操作越熟悉，对即将到来的考试越有信心，顺利通过考试的几率则越大。
 
-最后祝大家顺利通过考试！
+购买 CKA 考试后会赠送两次 killer.sh 的模拟考试，模拟考试的难度稍大于实际考试。在练习一段时间上面的习题后，可以参加第一次模拟考试；然后根据模拟考试的结果再进行查漏补缺，对第一次考试中的错题进行分析和加强练习，然后再进行第二次模拟考试。做完两次模拟考试，并掌握了模拟考试中所有试题的知识点后，你心里基本上就对考试的内容有较大的底气，可以参加正式考试了。
+
+按照上面的方法进行准备，我成功通过了 CKA 的考试。也祝大家顺利通过考试！
+
+![](/img/2021-12-20-how-to-prepare-cka/cka.png)
 

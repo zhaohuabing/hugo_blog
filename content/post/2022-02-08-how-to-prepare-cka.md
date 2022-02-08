@@ -5,7 +5,7 @@ title:      "如何成功通过 CKA 考试？"
 subtitle:   ""
 description: "帮助你顺利通过 CKA 考试的一些技巧。"
 author: "赵化冰"
-date: 2022-02-07
+date: 2022-02-08
 image: "https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
 published: true
 tags:
@@ -18,6 +18,7 @@ categories: [ Tech ]
 # 了解 CKA 考察的内容
 
 在开始准备考试前一定要阅读[CNCF 官方考试大纲](https://github.com/cncf/curriculum)，了解 CKA 考察考生的主要内容，以在备考时做到知己知彼，有的放矢，根据该考试大纲进行针对性的准备和练习。该大纲会根据 K8s 的版本进行更新，但每个版本中涉及的考试内容变化不大，下面是我准备考试时的版本（v1.22）要求的主要内容：
+
 * 25% - Cluster Architecture, Installation & Configuration
 * 15% - Workloads & Scheduling
 * 20% - Services & Networking
@@ -27,6 +28,7 @@ categories: [ Tech ]
 # 熟悉考试的软件环境
 
 CKA 考试的软件环境如下，确保在考试前的练习中采用相同的软件环境，以提前熟悉考试环境：
+
 * 操作系统：Ubuntu 18.04
 * Shell：bash
 * 编辑器：vi
@@ -43,6 +45,7 @@ YouTube 上有一个 Linux 基金会录制的 CKA 考试环境的视频，大家
 ## 编辑器 vi
 
 vi 是一个非常强大的编辑软件，命令也非常多，但我们不需要掌握所有的命令。了解如何在 vi 的编辑和命令模式之间切换，并熟悉在考试中会使用到的几个 vi 编辑器的常用命令即可，包括删除、剪切、拷贝、粘贴、上下翻页等。注意 vi 在粘贴 yaml 时的自动格式化处理可能会不正确。可以通过 `:set paste` 取消 vi 的自动格式化。常用的 vi 命令：
+
 * 进入编辑模式 i
 * 进入命令模式 Esc
 * 储存后离开 vi :wq
@@ -64,9 +67,10 @@ $ k get pod busybox -ojson|jq '.spec.containers[0].image'
 ## 终端复用器 tmux 
 
 考试时只能打开一个终端，但在考试时我们可能需要同时执行多个任务，或者在多个终端之间进行对比查看、复制粘贴。可以使用考试环境中预装的终端复用工具 tmux 来打开多个终端。在考试中会可能使用到的常用 tmux 命令：
+
   * Ctrl+b %：划分左右两个窗格。
   * Ctrl+b "：划分上下两个窗格。
-  * Ctrl+b <arrow key>：光标切换到其他窗格。<arrow key>是指向要切换到的窗格的方向键，比如切换到下方窗格，就按方向键↓。
+  * Ctrl+b <arrow key>：光标切换到其他窗格。<arrow key> 是指向要切换到的窗格的方向键，比如切换到下方窗格，就按方向键↓。
 
 关于 tmux 的更多使用方法，可以参考 阮一峰 老师的 [《Tmux 使用教程》](https://www.ruanyifeng.com/blog/2019/10/tmux.html)。
 
@@ -249,9 +253,10 @@ https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/high-avail
 
 考试时可以查看 k8s 在线文档，因此可以提前将考试中可能会用到的 k8s 文档加入 chrome 收藏夹，避免考试时临时搜索浪费时间。
 你可以根据练习判断需要收藏哪些 K8s 文档，并按分类整理文件夹，下图是我收藏的文档：
-![](/img/2021-12-20-how-to-prepare-cka/bookmarks.png)
+![](/img/2022-02-08-how-to-prepare-cka/bookmarks.png)
 
 一些有用的文档链接：
+
 * kubectl 命令参考：https://kubernetes.io/docs/reference/kubectl/cheatsheet/
 * 使用 kubeadm 安装 K8s 集群 Kubernetes API：https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/
 * 设置 Docker：https://kubernetes.io/docs/setup/production-environment/container-runtimes/#docker
@@ -278,5 +283,5 @@ CKA 要求考生在规定时间内完成对 K8s 的指定管理任务，这要�
 
 按照上面的方法进行准备，我成功通过了 CKA 的考试。也祝大家顺利通过考试！
 
-![](/img/2021-12-20-how-to-prepare-cka/cka.png)
+![](/img/2022-02-08-how-to-prepare-cka/cka.png)
 

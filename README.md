@@ -1,1 +1,1 @@
-# hugo_blog https://zhaohuabing.com
+https://zhaohuabing.com

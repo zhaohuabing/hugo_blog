@@ -1,0 +1,99 @@
+---
+baseurl: 'https://zhaohuabing.com'
+title: Huabing Blog
+theme: hugo-theme-cleanwhite
+languageCode: en-us
+disqusShortname: zhaohuabings-blog
+googleAnalytics: UA-109223766-1
+preserveTaxonomyNames: true
+paginate: 7
+hasCJKLanguage: true
+outputs:
+  home:
+    - HTML
+    - RSS
+    - Algolia
+outputFormats:
+  Algolia:
+    baseName: algolia
+    isPlainText: true
+    mediaType: application/json
+    notAlternative: true
+markup:
+  tableOfContents:
+    endLevel: 2
+    startLevel: 1
+  highlight:
+    style: dracula
+  goldmark:
+    renderer:
+      unsafe: true
+params:
+  header_image: img/home-bg-jeep.jpg
+  SEOTitle: 赵化冰的博客 | Zhaohuabing Blog
+  description: '赵化冰，程序员, 开源爱好者，生活探险家 | 这里是 赵化冰 的博客，与你一起发现更大的世界。'
+  keyword: >-
+    赵化冰, zhaohuabing, Zhaohuabing, , 赵化冰的网络日志, 赵化冰的博客, Zhaohuabing Blog, 博客,
+    个人网站, 互联网, Web, 云原生, PaaS, Istio, Kubernetes, 微服务, Microservice
+  slogan: 路在脚下，心向远方
+  image_404: img/404-bg.jpg
+  title_404: '你来到了没有知识的荒原 :('
+  page_view_conter: false
+  leancloud_app_id: Xu5MAnXL360Ms89vMVnWBjuq-gzGzoHsz
+  leancloud_app_key: efUYEefAc2eIPBRO59PRERQC
+  algolia_search: true
+  sidebar_about_description: 'Engineer @Tencent Cloud, Open Source Enthusiast and Life Adventurer'
+  sidebar_avatar: img/zhaohuabing.png
+  featured_tags: true
+  featured_condition_size: 2
+  ba_track_id: a1d96090e4189c0376251fb043da7be5
+  reward: false
+  reward_guide: 嗯，这篇文章对我有用，鼓励一下...
+  friends: true
+  bookmarks: true
+  about_me: true
+  giscus:
+    data_repo: zhaohuabing/zhaohuabing.github.io
+    data_repo_id: MDEwOlJlcG9zaXRvcnkxMzc3MjcyMjM=
+    data_category: Announcements
+    data_category_id: DIC_kwDOCDWM984CAWAt
+    data_mapping: pathname
+    data_reactions_enabled: '1'
+    data_emit_metadata: '0'
+    data_theme: light
+    data_lang: en
+    crossorigin: anonymous
+  social:
+    rss: true
+    email: zhaohuabing@gmail.com
+    twitter: 'https://twitter.com/zhaohuabing'
+    linkedin: 'https://www.linkedin.com/in/zhaohuabing'
+    github: 'https://github.com/zhaohuabing'
+    wechat: 'https://zhaohuabing.com/img/wechat_qrcode.jpg'
+    medium: 'https://medium.com/@zhaohuabing'
+  friend_link:
+    - title: Linda的博客
+      href: 'https://zhaozhihan.com'
+  bookmark_link:
+    - title: unsplash
+      href: 'https://unsplash.com/'
+    - title: pexels
+      href: 'https://www.pexels.com'
+    - title: nature
+      href: 'https://commons.wikimedia.org/wiki/Commons:Wiki_Loves_Earth_2020/Winners'
+  addtional_menus:
+    - title: ARCHIVE
+      href: /top/archive/
+    - title: ABOUT
+      href: /top/about/
+  algolia:
+    vars:
+      - title
+      - summary
+      - date
+      - publishdate
+      - expirydate
+      - permalink
+    params:
+      - categories
+      - tags

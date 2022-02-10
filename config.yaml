@@ -41,7 +41,11 @@ params:
   page_view_conter: false
   leancloud_app_id: Xu5MAnXL360Ms89vMVnWBjuq-gzGzoHsz
   leancloud_app_key: efUYEefAc2eIPBRO59PRERQC
+  # https://forestry.io/blog/search-with-algolia-in-hugo/
   algolia_search: true
+  algolia_appId: WM4BEY1UDN
+  algolia_indexName: blog
+  algolia_apiKey: 090c4a77b8bd4b8d2f2c1262afbc4be2
   sidebar_about_description: 'Engineer @Tencent Cloud, Open Source Enthusiast and Life Adventurer'
   sidebar_avatar: img/zhaohuabing.png
   featured_tags: true

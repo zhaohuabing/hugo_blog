@@ -67,6 +67,10 @@ params:
   #  data_theme: light
   #  data_lang: en
   #  crossorigin: anonymous
+
+  # We need a proxy to access Disqus api in China
+  disqus_proxy : 'http://disqusapi.zhaohuabing.com:8080'
+  disqus_site : 'https://zhaohuabing.com'
   social:
     rss: true
     email: zhaohuabing@gmail.com

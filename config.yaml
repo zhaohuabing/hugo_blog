@@ -69,7 +69,7 @@ params:
   #  crossorigin: anonymous
 
   # We need a proxy to access Disqus api in China
-  disqus_proxy : 'https://disqusapi.zhaohuabing.com:9443'
+  disqus_proxy : 'https://disqusapi.zhaohuabing.com'
   disqus_site : 'https://zhaohuabing.com'
   social:
     rss: true

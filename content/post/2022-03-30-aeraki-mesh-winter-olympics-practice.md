@@ -22,11 +22,11 @@ metadata:
     - text: "活动链接"
       link: "https://mp.weixin.qq.com/s/zp9q99mGyH2VD9Dij2owWg"
     - text: "讲稿下载"
-      link: "/img/2022-03-30-aeraki-mesh-winter-olympics-practice/bird-nest.jpeg"
+      link: "/img/2022-03-30-aeraki-mesh-winter-olympics-practice/slides.pdf"
     - text: "哔哩哔哩"
-      link: ""
+      link: "https://www.bilibili.com/video/BV1HP4y1M7xw"
     - text: "YouTube"
-      link: ""
+      link: "https://youtu.be/uXxatQTKzW8"
 ---
 
 ## 主题简介

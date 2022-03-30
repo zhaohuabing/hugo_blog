@@ -52,9 +52,9 @@ metadata:
 
 ## 视频回放
 B站
-{{< bilibili  >}}
+{{< bilibili  BV1HP4y1M7xw >}}
 
 YouTube
-{{< youtube  >}} 
+{{< youtube uXxatQTKzW8 >}} 
 
 

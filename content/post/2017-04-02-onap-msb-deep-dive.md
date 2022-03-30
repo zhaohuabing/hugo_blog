@@ -1,7 +1,7 @@
 ---
 layout:     post
 
-title:      "ONAP Developer Event: MSB Technical Deep Dive and ONAP Use Cases"
+title:      "LFN ONAP Developer Event: MSB Technical Deep Dive and ONAP Use Cases"
 subtitle:   ""
 excerpt: ""
 author:     "赵化冰"
@@ -41,4 +41,4 @@ And what’s the potential benefit MSB could bring to ONAP.
 ## Slides
 
 [download pdf](/img/2017-04-02-onap-msb-deep-dive/msb-deep-dive.pdf)
-<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vS_r7wQVNMWN5m5c9ui2tPg0oIXUQlk9LYH-on-f2ERaWDL8sOaRF71Ays/embed?start=false&loop=false&delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vSFwl8wurxqOVq-JaDfoilxScjVvzzTQL_F8wt38sEcJTt--pghzeTYcGc/embed?start=false&loop=false&delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>

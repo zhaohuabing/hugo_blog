@@ -15,7 +15,7 @@ tags:
     - Aeraki
     - MetaProtocol
 categories:
-    - Talk
+    - Presentation
     - Tech
 metadata:
     - text: "北京 2021/07"

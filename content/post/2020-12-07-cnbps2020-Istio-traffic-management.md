@@ -16,7 +16,7 @@ tags:
     - Service Mesh
     - Aeraki
 categories:
-    - Talk
+    - Presentation
     - Tech
 metadata:
     - text: "Virtual 2020/11"

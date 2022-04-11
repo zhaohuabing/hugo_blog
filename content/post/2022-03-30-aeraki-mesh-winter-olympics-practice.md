@@ -15,7 +15,7 @@ tags:
     - Aeraki
     - MetaProtocol
 categories:
-    - Talk
+    - Presentation
     - Tech
 metadata:
     - text: "Virtual 2022/03"

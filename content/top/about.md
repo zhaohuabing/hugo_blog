@@ -1,8 +1,11 @@
-![](/img/zhaohuabing.png)  **_Huabing Zhao_** is a software architect, an Istio Member and an ONAP PTL. He has a solid experience in the information and telecommunication technology industry for more than 17 years. 
+
+
+## About Me
+**_Huabing Zhao_** is a software architect, an Istio Member and an ONAP PTL. He has a solid experience in the information and telecommunication technology industry for more than 17 years. 
 
 Throughout his career, he has built a number of large-scale, cross-country software systems, most of them are still running in production. 
 
-He loves open source and has been contributing to various open source projects, he is a member of Istio¹,  previous PTL of ONAP²,  the author of the Hugo clean-white theme³ and the open source project Aeraki⁴.  
+He loves open source and has been contributing to various open source projects, he is a member of Istio,  previous PTL of ONAP, the author of the Hugo clean-white theme and the open source project Aeraki Mesh.  
 
 He also has strong interests in various technical topics such as Cloud Native, Artificial Intelligence, Cryptocurrencies, Smart Home, etc. He love sharing his ideas about these things in his blog.
 
@@ -12,14 +15,24 @@ Currently, Huabing works as a senior engineer at [Tencent Cloud](https://cloud.t
 
 While he is free, he likes writing technical blog posts, watching movies, swimming, hiking, travelling and learning languages.
 
-Feel free to connect Huabing at Github⁵ and Linkedin⁶, leave your thoughts in his blog⁷ or share your ideas by writing him an email. 
+Feel free to connect Huabing at Github and Linkedin, leave your thoughts in his blog or share your ideas by writing him an email. 
 
-## Talks
-|Year         |City |Conference  | Title      |Slides      |Video       |
+## Publications
+| Title       |Type        |Publisher   |Link        |
+| ----------- |----------- |----------- |----------- |
+|[Istio 服务网格进阶实战](https://www.zhaohuabing.com/post/2021-08-26-istio-handbook/)|实体书|电子工业出版社||
+|[Distributed Tracing with Jaeger, Kubernetes, and Istio](https://www.zhaohuabing.com/post/2021-09-08-distributed-tracing-with-jaeger-kubernetes-and-istio/)|Live Project|Manning|[30% off](https://www.manning.com/liveprojectseries/distributed-tracing-ser)|
+|[云原生数据中心网络](https://zhaohuabing.com/post/2021-08-27-cloud-native-data-center)|翻译|中国电力出版社|[购买链接](https://item.jd.com/12929975.html)|
+|[Istio 运维实战](http://localhost:1313/post/2021-10-08-istio-operation-bible/)|电子书||[在线阅读](https://istio-operation-bible.aeraki.net/)|
+
+
+## Presentations (Selected)
+|Year         |City        |Conference  | Title      |Slides      |Video       |
 | ----------- |----------- |----------- |----------- |----------- |----------- |
+|2022|Virtual|[云原生正发声](https://events.istio.io/istiocon-2021/)| [Areaki Mesh 在 2022 冬奥会视频直播应用中的服务网格实践](https://mp.weixin.qq.com/s/zp9q99mGyH2VD9Dij2owWg) | [Slides](http://localhost:1313/img/2022-03-30-aeraki-mesh-winter-olympics-practice/slides.pdf)|[Video](https://youtu.be/uXxatQTKzW8)|
 |2021|Virtual|[IstioCon](https://events.istio.io/istiocon-2021/)| [How to manage any layer-7 traffic in an Istio service mesh?](https://events.istio.io/istiocon-2021/sessions/how-to-manage-any-layer-7-traffic-in-an-istio-service-mesh/) | [Slides](/slides/how-to-manage-any-layer-7-traffic-in-istio.pdf)|[Video](https://www.youtube.com/watch?v=sBS4utF68d8)|
 |2020|Virtual|[CNBPS](https://www.cnbpa.org/)|[Istio 流量管理原理与协议扩展](https://cloud.tencent.com/developer/article/1723804)|[Slides](/slides/cnbps2020-istio-aeraki.pdf)|[Video](https://www.youtube.com/watch?v=lB5d4qbZqzU)|
-|2019|Chengdu|[Service Mesher Meetup](https://cloudnative.to/blog/service-mesh-meetup-chengdu-20191028/)|[What Can Service Mesh Learn From SDN?](https://cloudnative.to/blog/service-mesh-meetup-chengdu-20191028/)|[Slides](/slides/what-can-service-mesh-learn-from-sdn-servicemesher-meetup-20191026.pdf)|
+|2019|Chengdu|[Service Mesher Meetup](https://cloudnative.to/blog/service-mesh-meetup-chengdu-20191028/)|[What Can Service Mesh Learn From SDN?](https://cloudnative.to/blog/service-mesh-meetup-chengdu-20191028/)|[Slides](/slides/what-can-service-mesh-learn-from-sdn-servicemesher-meetup-20191026.pdf)|[Video](https://youtu.be/nGkxp-2OsKg)|
 |2019|Xi'an|ONAP Workshop|Service Mesh Practice with 5G Management System|[Slides](/slides/service-mesh-practice-with-5g-management-system-lfn.pdf)|
 |2018|Nanjing|[GNTC](https://www.bagevent.com/event/1624048?aId=)|[Service Mesh in Action with ONAP](https://www.sdnlab.com/22596.html)|
 |2017|Santa Clara|[NAP Developer Forum](https://wiki.onap.org/display/DW/ONAP+Beijing+Release+Developer+Forum%2C+Dec.+11-13%2C+2017%2C+Santa+Clara%2C+CA+US)|[MSB to Support Carrier Grade ONAP Microservice Architecture with Service Mesh](https://onapbeijing2017.sched.com/event/D5q2)|[Slides](https://wiki.onap.org/display/DW/MSB+Service+Mesh+Planning?preview=%2F20873876%2F20873874%2FMSB+to+Support+Carrier+Grade+ONAP+Microservice+Architecture+with+Service+Mesh.pdf)|
@@ -27,12 +40,11 @@ Feel free to connect Huabing at Github⁵ and Linkedin⁶, leave your thoughts i
 |2017|New Jersey|[ONAP Developer Event](https://wiki.onap.org/display/DW/ONAP+Project+Developer+Event%3A+May+2+-+5%2C+2017%2C+Middletown%2C+NJ%2C+USA)|MSB Technical Deep Dive and ONAP Use Cases|[Slides](https://www.slideshare.net/HuabingZhao/msb-depp-dive/)|
 |2017|Paris|[ONAP Developer Event](https://wiki.onap.org/display/DW/ONAP+Developer+Event+September+25-28%2C+2017%2C+Paris-Saclay%2C+France)|[Microservice Bus Tutorial](https://wiki.onap.org/display/DW/September+26-28+Topics#September2628Topics-M2)|[Slides](https://www.slideshare.net/HuabingZhao/microservice-bus-tutorial)|
 
-## Links
-
-1. Istio:          https://istio.io
-2. ONAP:       https://wiki.onap.org
-3. Hugo:        https://themes.gohugo.io/hugo-theme-cleanwhite
-4. Aeraki:     https://github.com/aeraki-mesh
-5. Github      https://github.com/zhaohuabing
-6. Linkedin   https://linkedin.com/inzhaohuabing 
-7. Blog          https://zhaohuabing.com  https://medium.com/@zhaohuabing
+## Open Source Projects
+|Project      |Role        |  Website   | GitHub     |
+| ----------- |----------- |----------- |----------- |
+| Aeraki Mesh | Creator    | https://aeraki.net  | http://github.com/aeraki-mesh |
+| Istio       | Contributor| https://istio.io    | https://github.com/istio/istio|
+| Envoy       | Contributor| https://www.envoyproxy.io |https://github.com/envoyproxy/envoy|
+| ONAP        | PTL        | https://www.onap.org||
+| hugo-theme-cleanwhite | Creator    | https://themes.gohugo.io/themes/hugo-theme-cleanwhite  | github.com/zhaohuabing/hugo-theme-cleanwhite |

@@ -15,7 +15,7 @@ tags:
     - Microservice
     - API Gateway
 categories:
-    - Talk
+    - Presentation
 metadata:
     - text: "Saclay, France 2017/09"
     - text: "活动链接"

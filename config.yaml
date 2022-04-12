@@ -47,7 +47,7 @@ params:
   algolia_indexName: blog
   algolia_apiKey: 090c4a77b8bd4b8d2f2c1262afbc4be2
   sidebar_about_description: 'Engineer @Tencent Cloud, Open Source Enthusiast and Life Adventurer'
-  sidebar_avatar: img/zhaohuabing-headshot-round-brick.png
+  sidebar_avatar: img/zhaohuabing-headshot-round-white.png
   featured_tags: true
   featured_condition_size: 2
   ba_track_id: a1d96090e4189c0376251fb043da7be5

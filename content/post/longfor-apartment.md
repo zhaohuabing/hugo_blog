@@ -27,7 +27,7 @@ Hello, this is Zhao, I have a cozy apartment next to UESTC Qingshuihe Campus(Uni
 
 There's no agency/middleman, so you don't have to pay extra money. 
 
-The rent is RMB1400 excluding property management fee. Please contact me via zhaohuabing@gmail.com if you're interested.
+The rent is RMB1400 excluding property management fee. Please contact me via zhaohuabing@zhaohuabing.com if you're interested.
 
 ## Location
 

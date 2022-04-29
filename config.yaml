@@ -73,7 +73,7 @@ params:
   disqus_site : 'https://zhaohuabing.com'
   social:
     rss: true
-    email: zhaohuabing@gmail.com
+    email: zhaohuabing@zhaohuabing.com
     twitter: 'https://twitter.com/zhaohuabing'
     linkedin: 'https://www.linkedin.com/in/zhaohuabing'
     github: 'https://github.com/zhaohuabing'

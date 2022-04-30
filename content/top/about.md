@@ -1,4 +1,6 @@
-
+---
+multilingual: true
+---
 
 ## About Me
 **_Huabing Zhao_** is a software architect, an Istio Member and an ONAP PTL. He has a solid experience in the information and telecommunication technology industry for more than 17 years. 
@@ -15,7 +17,7 @@ Currently, Huabing works as a senior engineer at [Tencent Cloud](https://cloud.t
 
 While he is free, he likes writing technical blog posts, watching movies, swimming, hiking, travelling and learning languages.
 
-Feel free to connect Huabing at Github and Linkedin, leave your thoughts in his blog or share your ideas by writing him an email. 
+Feel free to connect Huabing at Github and Linkedin, leave your thoughts in his blog or share your ideas by [writing him an email](mailto:zhaohuabing@zhaohuabing.com). 
 
 ## Publications
 | Title       |Type        |Publisher   |Link        |

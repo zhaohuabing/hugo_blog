@@ -6,7 +6,7 @@ languageCode: en-us
 disqusShortname: zhaohuabings-blog
 googleAnalytics: UA-109223766-1
 preserveTaxonomyNames: true
-paginate: 7
+paginate: 10
 hasCJKLanguage: true
 outputs:
   home:
@@ -89,6 +89,15 @@ params:
       href: 'https://www.pexels.com'
     - title: nature
       href: 'https://commons.wikimedia.org/wiki/Commons:Wiki_Loves_Earth_2020/Winners'
+  publications:
+    title: MY BOOKS
+    items:
+      - title: Distributed Tracing with Jaeger, Kubernetes, and Istio
+        image: /img/liveproject.png
+        href: https://www.manning.com/bundles/distributed-tracing-ser?utm_source=zhaohuabing&utm_medium=affiliate&utm_campaign=liveproject_zhao_distributed_9_7_21&a_aid=zhaohuabing&a_bid=ce8ffc93
+      - title: 云原生数据中心网络
+        image: /img/cndc.png
+        href: http://localhost:1313/post/2021-08-27-cloud-native-data-center/
   addtional_menus:
     - title: ARCHIVE
       href: /top/archive/

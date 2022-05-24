@@ -31,7 +31,7 @@ Feel free to connect Huabing at Github and Linkedin, leave your thoughts in his 
 ## Presentations (Selected)
 |Year         |City        |Conference  | Title      |Slides      |Video       |
 | ----------- |----------- |----------- |----------- |----------- |----------- |
-|2022|Virtual|[IstioCon](https://events.istio.io/istiocon-2022)|[Tencent Music’s service mesh practice with Istio and Aeraki](https://events.istio.io/istiocon-2022/sessions/tencent-music-aeraki/)|[slides](/slides/tencent-music-service-mesh-practice-with-istio-and-aeraki.pdf)||
+|2022|Virtual|[IstioCon](https://events.istio.io/istiocon-2022)|[Tencent Music’s service mesh practice with Istio and Aeraki](https://events.istio.io/istiocon-2022/sessions/tencent-music-aeraki/)|[slides](/slides/tencent-music-service-mesh-practice-with-istio-and-aeraki.pdf)|[Video](https://www.youtube.com/watch?v=6t_yPsq4Pi4)|
 |2022|Virtual|[A2M](https://a2m.msup.com.cn/course?aid=2699&cid=15382)|[全栈服务网格 - Aeraki Mesh 助你在 Istio 服务网格中管理任何七层流量](https://a2m.msup.com.cn/course?aid=2699&cid=15382)|[slides](/slides/full-stack-service-mesh-a2m-20220422.pdf)||
 |2022|Virtual|[云原生正发声](https://cloud.tencent.com/developer/salon/live-1403)| [Areaki Mesh 在 2022 冬奥会视频直播应用中的服务网格实践](https://mp.weixin.qq.com/s/zp9q99mGyH2VD9Dij2owWg) | [Slides](http://localhost:1313/img/2022-03-30-aeraki-mesh-winter-olympics-practice/slides.pdf)|[Video](https://youtu.be/uXxatQTKzW8)|
 |2021|Virtual|[IstioCon](https://events.istio.io/istiocon-2021/)| [How to manage any layer-7 traffic in an Istio service mesh?](https://events.istio.io/istiocon-2021/sessions/how-to-manage-any-layer-7-traffic-in-an-istio-service-mesh/) | [Slides](/slides/how-to-manage-any-layer-7-traffic-in-istio.pdf)|[Video](https://www.youtube.com/watch?v=sBS4utF68d8)|

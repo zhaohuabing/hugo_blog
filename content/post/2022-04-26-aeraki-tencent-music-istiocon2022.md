@@ -6,7 +6,7 @@ subtitle:   ""
 description: "本场分享将介绍腾讯音乐使用 Istio + Aeraki 的服务网格落地实践，主要包含下述内容：如何利用 Aeraki 来扩展 Istio 的协议扩展能力，Aeraki 和 MetaProtocol Proxy 的原理介绍，腾讯音乐如何使用 Istio + Aeraki 来构建一个管理 HTTP 和私有协议的全功能服务网格。"
 author:     "赵化冰"
 date:       2022-04-26
-image: "https://news.cgtn.com/news/2022-02-21/Beijing-2022-Winter-Olympics-closes-with-fireworks-over-Bird-s-Nest-17PnNMaubXq/img/5b6d5bdd0d5442c99b39f4169ba19265/5b6d5bdd0d5442c99b39f4169ba19265.jpeg"
+image: "https://events.istio.io/istiocon-2022/images/hero-background2.jpg"
 published: true
 showtoc: false
 tags:
@@ -50,9 +50,9 @@ This session will introduce Tencent music’s service mesh practice with Istio a
 
 References:
 
-Aeraki: https://aeraki.net
-Github: https://github.com/aeraki-mesh
-Tencent Music: https://www.tencentmusic.com
+* Aeraki: https://aeraki.net
+* Github: https://github.com/aeraki-mesh
+* Tencent Music: https://www.tencentmusic.com
 
 ## 活动链接
 * [Istiocon 官网链接](https://mp.weixin.qq.com/s/zp9q99mGyH2VD9Dij2owWg)

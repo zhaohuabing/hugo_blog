@@ -17,6 +17,7 @@ tags:
     - Tencent
 categories:
     - Tech
+    - Open Source
 metadata:
     - text: "官方网站"
       link: "https://aeraki.net"

@@ -28,9 +28,9 @@ metadata:
 
 感谢来自百度、知乎、灵雀云、腾讯音乐、滴滴、政采云等多家合作伙伴的社区同学的贡献与支持！对我而言，CNCF Sandbox 绝不是终点，而是一个新的起点。社区即将举行会议规划下半年的需求，另外除了已经上线的腾讯音乐和央视频之外，目前已有多个产品正在在测试中，下半年将会有更多产品落地，敬请期待。
 
-这一切的起点来自于 2017 年我与一个 IBM 工程师的对话。当时我在 Linux 基金会下一个开源项目 [ONAP](https://www.onap.org/) 中做一些微服务基础设施相关的工作。在 2017 年四月，我出差到硅谷参加 ONAP 的一个会议，遇到了这个名叫 Jason 的 IBM 工程师。他对我说，“赵，我们和 Google，Lyft 刚刚开源了一个叫 Istio 的项目，和你目前的工作类似，也许你会感兴趣的。” 正是这次偶然的对话，开启了我的服务网格之旅。我开始了解和学习 Istio 相关的知识，当我了解得越多，我就越发意识到 Istio 将是继 Kubernetes 之后云原生领域的又一个里程碑式的重要项目。并从 2018 年开始在我当时的公司中引入 Istio，运用在公司内部的管理平台中。这应该是国内最早一批落地的 Istio 项目之一。
+这一切的起点来自于 2017 年我与一个 IBM 工程师的对话。当时我在 Linux 基金会下一个开源项目 [ONAP](https://www.onap.org/) 中做一些微服务基础设施相关的工作。在 2017 年四月，我出差到硅谷参加 ONAP 的一个会议，遇到了这个名叫 Jason 的 IBM 工程师。他对我说，“赵，我们和 Google，Lyft 刚刚开源了一个叫 Istio 的项目，和你目前的工作类似，也许你会感兴趣的。” 正是这次偶然的对话，开启了我的服务网格之旅。我开始了解和学习 Istio 相关的知识，当我了解得越多，我就越发意识到 Istio 将是继 Kubernetes 之后云原生领域的又一个里程碑式的重要项目。并从 2018 年开始在我当时的公司中引入 Istio，运用在公司内部的管理平台中。这应该是国内最早一批落地的 Istio 项目之一。在这个过程中也向 Istio 提交了支持多网络平面，Consul 注册表优化等一系列 PR。
 
-由于使用到了 Dubbo，我向 Istio 提交了支持 Dubbo 的 PR，该 PR 被社区讨论后决定拒绝，因为社区认为维护这些非 HTTP 协议的工作量和复杂度超过了社区的承受范围。于是我决定创建 Aeraki Mesh 项目来支持非 HTTP 协议。
+由于使用到了 Dubbo，我向 Istio 提交了支持 Dubbo 的 PR，该 PR 被社区讨论后决定拒绝，因为社区认为维护这些非 HTTP 协议的工作量和复杂度超过了社区的承受范围。于是我决定创建 Aeraki Mesh 项目来支持在 Istio 中支持第三方协议。
 
 当我在 2020年11月3日将 Aeraki 的 README 提交到 Github 时，我写下了项目的愿景：“A framework to help you build a service mesh and understand any layer 7 protocols used in your mesh”。
 ![](/img/2022-06-17-aeraki-mesh-cncf-sandbox/first-commit.png)

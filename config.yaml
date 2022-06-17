@@ -46,7 +46,7 @@ params:
   algolia_appId: WM4BEY1UDN
   algolia_indexName: blog
   algolia_apiKey: 090c4a77b8bd4b8d2f2c1262afbc4be2
-  sidebar_about_description: 'Engineer @Tencent Cloud, Open Source Enthusiast and Life Adventurer'
+  sidebar_about_description: 'Engineer @Tencent Cloud, Creator @Aeraki Mesh, Open Source Enthusiast and Life Adventurer'
   sidebar_avatar: img/zhaohuabing-headshot-round-white.png
   featured_tags: true
   featured_condition_size: 2
@@ -95,6 +95,9 @@ params:
       - title: Distributed Tracing with Jaeger, Kubernetes, and Istio
         image: /img/liveproject.png
         href: https://www.manning.com/bundles/distributed-tracing-ser?utm_source=zhaohuabing&utm_medium=affiliate&utm_campaign=liveproject_zhao_distributed_9_7_21&a_aid=zhaohuabing&a_bid=ce8ffc93
+      - title: 深入理解 Istio
+        image: /img/2021-08-26-istio-handbook/book.jpeg
+        href: https://www.zhaohuabing.com/post/2021-08-26-istio-handbook/
       - title: 云原生数据中心网络
         image: /img/cndc.png
         href: https://zhaohuabing.com/post/2021-08-27-cloud-native-data-center/

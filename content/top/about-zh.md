@@ -1,12 +1,12 @@
 ## 关于我
-Hi，我是赵化冰，服务网格技术布道者及实践者，[腾讯云](https://cloud.tencent.com/product/tcm)工程师，曾担任[中兴通讯](https://www.zte.com.cn/)技术专家，Linux 基金会开源项目 [ONAP](https://www.onap.org/) 项目 leader，甲骨文中间件高级顾问等。我创建了服务网格开源项目 [Aeraki Mesh](https://aeraki.net)，可以在 Istio 中管理 Dubbo、Thrift、Redis 以及任意私有协议的流量。
+Hi，我是赵化冰，服务网格技术布道者及实践者，[腾讯云](https://cloud.tencent.com/product/tcm)工程师，曾担任[中兴通讯](https://www.zte.com.cn/)技术专家，Linux 基金会开源项目 [ONAP](https://www.onap.org/) 项目 leader，甲骨文中间件高级顾问等。我创建了服务网格开源项目 [Aeraki Mesh](https://aeraki.net)（CNCF Sandbox 项目），可以在 Istio 中管理 Dubbo、Thrift、Redis 以及任意私有协议的流量。
 
-工作联系： zhaohuabing@zhaohuabing.com
+工作联系： zhaohuabing@gmail.com
 
 ## 出版物
 | 标题       |类型        |出版社   |链接        |
 | ----------- |----------- |----------- |----------- |
-|[Istio 服务网格进阶实战](https://www.zhaohuabing.com/post/2021-08-26-istio-handbook/)|实体书籍|电子工业出版社||
+|[深入理解 Istio — 云原生服务网格进阶实战](https://www.zhaohuabing.com/post/2021-08-26-istio-handbook/)|实体书籍|电子工业出版社|[购买链接](https://item.jd.com/13200745.html)|
 |[Distributed Tracing with Jaeger, Kubernetes, and Istio](https://www.zhaohuabing.com/post/2021-09-08-distributed-tracing-with-jaeger-kubernetes-and-istio/)|在线教程|[曼宁出版社（美）](https://www.manning.com/)|[30% 折扣](https://www.manning.com/liveprojectseries/distributed-tracing-ser)|
 |[云原生数据中心网络](https://zhaohuabing.com/post/2021-08-27-cloud-native-data-center)|翻译书籍|中国电力出版社|[购买链接](https://item.jd.com/12929975.html)|
 |[Istio 运维实战](http://localhost:1313/post/2021-10-08-istio-operation-bible/)|电子书籍||[在线阅读](https://istio-operation-bible.aeraki.net/)|

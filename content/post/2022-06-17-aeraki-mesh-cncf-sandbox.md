@@ -32,7 +32,7 @@ metadata:
 ![](/img/2022-06-17-aeraki-mesh-cncf-sandbox/first-commit.png)
 当我写下这段话时，我并没有想到在一年后的今天，Aeraki Mesh 已经支持了 Dubbo、Thrift、bRPC 等超过了七种自定义协议，为多个互联网大型项目的微服务提供了非 HTTP 协议的服务网格能力。成为 CNCF Sandbox 项目，意味着 Aeraki Mesh 成为了云原生服务网格象限中重要的组成部分，对我和整个 Aeraki Mesh 社区而言，这是一个新的里程牌。
 
-在这里，我要特别感谢为 Aeraki Mesh 社区做出贡献的同学，没有你们的贡献，Aeaki Mesh 无法在成立这么短时间内完成 CNCF Sandbox 的目标：
+在这里，我要感谢为 Aeraki Mesh 社区做出贡献的同学，没有你们的贡献，Aeaki Mesh 无法在成立这么短时间内完成 CNCF Sandbox 的目标。
 
 特别感谢：[cocotyty](https://github.com/cocotyty) 在项目初期的支持，我们还一起在第一届 IstioCon 上共同发表了一篇[演讲](https://www.zhaohuabing.com/post/2021-03-02-manage-any-layer-7-traffic-in-istio/#undefined)，让更多人了解到了 Aeraki 这个项目。[Sad-polar-bear](https://github.com/Sad-polar-bear)，[whitefirer](https://github.com/whitefirer)  和 [ESTLing](https://github.com/ESTLing) 为 Aeraki Mesh 在 [央视频](https://zhaohuabing.com/post/2022-03-30-aeraki-mesh-winter-olympics-practice/) 和 [腾讯音乐](https://zhaohuabing.com/post/2022-04-26-aeraki-tencent-music-istiocon2022/) 中产品落地付出了很多努力。[smwyzi](https://github.com/smwyzi) 贡献了 bRPC 协议的实现代码。[huanghuangzym](https://github.com/huanghuangzym) 对 Dubbo 注册表对接的测试与改进。[Xunzhuo](https://github.com/Xunzhuo) 对社区流程和文档做了很多改进工作。我无法一一列出所有人，在这里感谢每一个为 Aeraki Mesh 提交 PR 和 Issue 的贡献者：
 

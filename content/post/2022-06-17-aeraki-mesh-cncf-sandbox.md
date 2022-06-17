@@ -26,13 +26,17 @@ metadata:
 
 6月15日，我创建的 [Aeraki Mesh](https://aeraki.net) 项目通过了全球顶级开源基金会云原生计算基金会（CNCF）技术监督委员会评定，正式成为CNCF 沙箱项目！这意味着 Aeraki Mesh 得到了云原生开源社区的认可，而且加入 CNCF 也保证了项目的中立和开源开放，为 Aeraki Mesh 在云原生生态系统的进一步发展迈出了坚定的一步。
 
-感谢来着百度、知乎、灵雀云、腾讯音乐、滴滴、政采云等多家合作伙伴的社区同学的贡献与支持！对我而言，CNCF Sandbox 绝不是终点，而是一个新的起点。社区即将举行会议规划下半年的需求，另外除了已经上线的腾讯音乐和央视频之外，目前已有多个产品正在在测试中，下半年将会有更多产品落地，敬请期待。
+感谢来自百度、知乎、灵雀云、腾讯音乐、滴滴、政采云等多家合作伙伴的社区同学的贡献与支持！对我而言，CNCF Sandbox 绝不是终点，而是一个新的起点。社区即将举行会议规划下半年的需求，另外除了已经上线的腾讯音乐和央视频之外，目前已有多个产品正在在测试中，下半年将会有更多产品落地，敬请期待。
+
+这一切的起点来自于 2017 年我与一个 IBM 的工程师的对话。当时我在 Linux 基金会下一个开源项目 [ONAP](https://www.onap.org/) 中做一些微服务基础设施相关的工作。当在硅谷开会时，项目中一个名叫 Jason 的 IBM 工程师对我说，“赵，我们和 Google，Lyft 刚刚开源了一个叫 Istio 的项目，和你目前的工作类似，也许你会感兴趣的。” 正是这次偶然的对话，开启了我的服务网格之旅。我开始了解和学习 Istio 相关的知识，当我了解得越多，我就越发意识到 Istio 将是继 Kubernetes 之后云原生领域的又一个里程碑式的重要项目。并从 2018 年开始在我当时的公司中引入 Istio，运用在公司内部的管理平台中。这应该是国内最早一批落地的 Istio 项目之一。
 
 当我在 2020年11月3日将 Aeraki 的 README 提交到 Github 时，我写下了项目的愿景：“A framework to help you build a service mesh and understand any layer 7 protocols used in your mesh”。
 ![](/img/2022-06-17-aeraki-mesh-cncf-sandbox/first-commit.png)
 当我写下这段话时，我并没有想到在一年后的今天，Aeraki Mesh 已经支持了 Dubbo、Thrift、bRPC 等超过了七种自定义协议，为多个互联网大型项目的微服务提供了非 HTTP 协议的服务网格能力。成为 CNCF Sandbox 项目，意味着 Aeraki Mesh 成为了云原生服务网格象限中重要的组成部分，对我和整个 Aeraki Mesh 社区而言，这是一个新的里程牌。
 
-在这里，我要感谢为 Aeraki Mesh 社区做出贡献的同学，没有你们的贡献，Aeaki Mesh 无法在成立这么短时间内完成 CNCF Sandbox 的目标。
+在这里，我要感谢 Istio 和 Envoy 这两个伟大的项目，全球无数顶尖的程序员一起创造了 Istio 和 Envoy，Aeraki Mesh 所做的只是站在巨人的肩膀上而已。
+
+其次，我要感谢为 Aeraki Mesh 社区做出贡献的同学，没有你们的贡献，Aeaki Mesh 无法在成立这么短时间内完成 CNCF Sandbox 的目标。
 
 特别感谢：[cocotyty](https://github.com/cocotyty) 在项目初期的支持，我们还一起在第一届 IstioCon 上共同发表了一篇[演讲](https://www.zhaohuabing.com/post/2021-03-02-manage-any-layer-7-traffic-in-istio/#undefined)，让更多人了解到了 Aeraki 这个项目。[Sad-polar-bear](https://github.com/Sad-polar-bear)，[whitefirer](https://github.com/whitefirer)  和 [ESTLing](https://github.com/ESTLing) 为 Aeraki Mesh 在 [央视频](https://zhaohuabing.com/post/2022-03-30-aeraki-mesh-winter-olympics-practice/) 和 [腾讯音乐](https://zhaohuabing.com/post/2022-04-26-aeraki-tencent-music-istiocon2022/) 中产品落地付出了很多努力。[smwyzi](https://github.com/smwyzi) 贡献了 bRPC 协议的实现代码。[huanghuangzym](https://github.com/huanghuangzym) 对 Dubbo 注册表对接的测试与改进。[Xunzhuo](https://github.com/Xunzhuo) 对社区流程和文档做了很多改进工作。我无法一一列出所有人，在这里感谢每一个为 Aeraki Mesh 提交 PR 和 Issue 的贡献者：
 

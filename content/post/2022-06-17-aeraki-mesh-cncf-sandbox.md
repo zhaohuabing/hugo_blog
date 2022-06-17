@@ -90,7 +90,9 @@ Aeraki Mesh 产品落地实践：
 媒体报道：
 
 * [InfoQ：腾讯云 Aeraki Mesh 正式成为 CNCF 沙箱项目：与 Istio 无缝集成，支持 Dubbo、Thrift、bRPC 等](https://www.infoq.cn/news/RtFGEKqDrO3eew8uTdUr)
-* [国际在线：全面拥抱云原生和开源：腾讯云 Aeraki Mesh 正式成为 CNCF 沙箱项目](http://gr.cri.cn/20220616/a1926618-aae2-cab7-6577-84f2f90f4919.html)
+* [新浪：Aeraki Mesh 正式成为 CNCF 沙箱项目，腾讯云携手合作伙伴研发](https://news.sina.com.cn/sx/2022-06-16/detail-imizmscu7156889.shtml)
+* [凤凰网：全面拥抱云原生和开源：腾讯云 Aeraki Mesh 正式成为 CNCF 沙箱项目](https://tech.ifeng.com/c/8GtbclKj3Xu)
+* [网易：全球顶级开源基金会 CNCF 宣布：腾讯云 Aeraki Mesh 正式成为沙箱项目](https://www.163.com/news/article/HA0IFCB400019UD6.html)
 * [CSDN：Aeraki Mesh 正式成为CNCF沙箱项目，腾讯云携手合作伙伴加速服务网格成熟商用](https://blog.csdn.net/Tencnt_news/article/details/125316807?csdn_share_tail=%7B%22type%22%3A%22blog%22%2C%22rType%22%3A%22article%22%2C%22rId%22%3A%22125316807%22%2C%22source%22%3A%22Tencnt_news%22%7D&ctrtid=YZofj)
 
 

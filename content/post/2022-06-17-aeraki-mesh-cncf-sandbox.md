@@ -2,8 +2,8 @@
 layout:     post
 
 title:      "Aeraki Mesh 正式成为 CNCF 沙箱项目"
-subtitle:   "腾讯云携手合作伙伴加速服务网格成熟商用"
-description: "6月15日，由腾讯云主导，联合百度、灵雀云、腾讯音乐、滴滴、政采云等多家合作伙伴发起的服务网格开源项目 [Aeraki Mesh](https://aeraki.net) 通过了全球顶级开源基金会云原生计算基金会（CNCF）技术监督委员会评定，正式成为CNCF 沙箱项目。这意味着 Aeraki Mesh 得到了云原生开源社区的认可，而且加入 CNCF 也保证了项目的中立和开源开放，为 Aeraki Mesh 在云原生生态系统的进一步发展迈出了坚定的一步。"
+subtitle:   "新的起点，砥砺前行"
+description: "6月15日，我在创建的 [Aeraki Mesh](https://aeraki.net) 项目通过了全球顶级开源基金会云原生计算基金会（CNCF）技术监督委员会评定，正式成为CNCF 沙箱项目！这意味着 Aeraki Mesh 得到了云原生开源社区的认可，而且加入 CNCF 也保证了项目的中立和开源开放，为 Aeraki Mesh 在云原生生态系统的进一步发展迈出了坚定的一步。感谢来着百度、知乎、灵雀云、腾讯音乐、滴滴、政采云等多家合作伙伴的社区同学的贡献与支持！"
 author:     "赵化冰"
 date:       2022-04-26
 image: "img/2022-06-17-aeraki-mesh-cncf-sandbox/background.webp"
@@ -24,9 +24,29 @@ metadata:
       link: "https://github.com/aeraki-mesh"
 ---
 
-6月15日，由腾讯云主导，联合百度、灵雀云、腾讯音乐、滴滴、政采云等多家合作伙伴发起的服务网格开源项目 [Aeraki Mesh](https://aeraki.net) 通过了全球顶级开源基金会云原生计算基金会（CNCF）技术监督委员会评定，正式成为CNCF 沙箱项目。这意味着 Aeraki Mesh 得到了云原生开源社区的认可，而且加入 CNCF 也保证了项目的中立和开源开放，为 Aeraki Mesh 在云原生生态系统的进一步发展迈出了坚定的一步。
+6月15日，我创建的 [Aeraki Mesh](https://aeraki.net) 项目通过了全球顶级开源基金会云原生计算基金会（CNCF）技术监督委员会评定，正式成为CNCF 沙箱项目！这意味着 Aeraki Mesh 得到了云原生开源社区的认可，而且加入 CNCF 也保证了项目的中立和开源开放，为 Aeraki Mesh 在云原生生态系统的进一步发展迈出了坚定的一步。
 
-Aeraki Mesh 加入 CNCF 的这个时间点，恰好在[Istio 宣布将 Istio 捐赠给 CNCF 基金会](https://istio.io/latest/blog/2022/istio-has-applied-to-join-the-cncf/)不久。作为 Service Mesh 开源领域的领军项目，Istio 受到了广大开发者的欢迎，加入 CNCF 标志着 Istio 和 K8s，Knative 三大云原生容器自动化框架纳入了同一个治理架构，Istio 和 CNCF 中其他的项目之间的合作将更为密切顺畅，也为 Istio 成为 Service Mesh 领域的事实标准扫清了最后的障碍。然而 Istio 虽然强大，但主要处理 HTTP 协议，将其他协议看做 TCP 流量，这是服务网格在产品落地时遇到的主要问题之一。在微服务中经常会使用到其他的协议，例如 Dubbo、Thrift、Redis，以及私有协议等。只使用 Istio 无法对这些流量进行服务治理。Aeraki Mesh 提供了一种非侵入的、高度可扩展的解决方案来管理服务网格中的任何七层流量。Aeraki Mesh 在此时间节点加入 CNCF，在 Istio 中为非 HTTP 协议提供了和 HTTP 协议同等的治理能力，加速了服务网格成熟商用和产品落地的进程。
+感谢来着百度、知乎、灵雀云、腾讯音乐、滴滴、政采云等多家合作伙伴的社区同学的贡献与支持！对我而言，CNCF Sandbox 绝不是终点，而是一个新的起点。社区即将举行会议规划下半年的需求，另外除了已经上线的腾讯音乐和央视频之外，目前已有多个产品正在在测试中，下半年将会有更多产品落地，敬请期待。
+
+当我在 2020年11月3日将 Aeraki 的 README 提交到 Github 时，我写下了项目的愿景：“A framework to help you build a service mesh and understand any layer 7 protocols used in your mesh”。
+![](/img/2022-06-17-aeraki-mesh-cncf-sandbox/first-commit.png)
+当我写下这段话时，我并没有想到在一年后的今天，Aeraki Mesh 已经支持了 Dubbo、Thrift、bRPC 等超过了七种自定义协议，为多个互联网大型项目的微服务提供了非 HTTP 协议的服务网格能力。成为 CNCF Sandbox 项目，意味着 Aeraki Mesh 成为了云原生服务网格象限中重要的组成部分，对我和整个 Aeraki Mesh 社区而言，这是一个新的里程牌。
+
+在这里，我要特别感谢为 Aeraki Mesh 社区做出贡献的同学，没有你们的贡献，Aeaki Mesh 无法在成立这么短时间内完成 CNCF Sandbox 的目标：
+
+特别感谢：[cocotyty](https://github.com/cocotyty) 在项目初期的支持，我们还一起在第一届 IstioCon 上共同发表了一篇[演讲](https://www.zhaohuabing.com/post/2021-03-02-manage-any-layer-7-traffic-in-istio/#undefined)，让更多人了解到了 Aeraki 这个项目。[Sad-polar-bear](https://github.com/Sad-polar-bear)，[whitefirer](https://github.com/whitefirer)  和 [ESTLing](https://github.com/ESTLing) 为 Aeraki Mesh 在 [央视频](https://zhaohuabing.com/post/2022-03-30-aeraki-mesh-winter-olympics-practice/) 和 [腾讯音乐](https://zhaohuabing.com/post/2022-04-26-aeraki-tencent-music-istiocon2022/) 中产品落地付出了很多努力。[smwyzi](https://github.com/smwyzi) 贡献了 bRPC 协议的实现代码。[huanghuangzym](https://github.com/huanghuangzym) 对 Dubbo 注册表对接的测试与改进。[Xunzhuo](https://github.com/Xunzhuo) 对社区流程和文档做了很多改进工作。我无法一一列出所有人，在这里感谢每一个为 Aeraki Mesh 提交 PR 和 Issue 的贡献者：
+
+
+![](https://contrib.rocks/image?repo=aeraki-mesh/aeraki)
+
+![](https://contrib.rocks/image?repo=aeraki-mesh/meta-protocol-proxy)
+
+![](https://contrib.rocks/image?repo=aeraki-mesh/website)
+
+
+Aeraki Mesh 加入 CNCF 的这个时间点，恰好在[Istio 宣布将 Istio 捐赠给 CNCF 基金会](https://istio.io/latest/blog/2022/istio-has-applied-to-join-the-cncf/)不久。作为 Service Mesh 开源领域的领军项目，Istio 受到了广大开发者的欢迎，加入 CNCF 标志着 Istio 和 K8s，Knative 三大云原生容器自动化框架纳入了同一个治理架构，Istio 和 CNCF 中其他的项目之间的合作将更为密切顺畅，也为 Istio 成为 Service Mesh 领域的事实标准扫清了最后的障碍。
+
+然而 Istio 虽然强大，但主要处理 HTTP 协议，将其他协议看做 TCP 流量，这是服务网格在产品落地时遇到的主要问题之一。在微服务中经常会使用到其他的协议，例如 Dubbo、Thrift、Redis，以及私有协议等。只使用 Istio 无法对这些流量进行服务治理。Aeraki Mesh 提供了一种非侵入的、高度可扩展的解决方案来管理服务网格中的任何七层流量。Aeraki Mesh 在此时间节点加入 CNCF，在 Istio 中为非 HTTP 协议提供了和 HTTP 协议同等的治理能力，加速了服务网格成熟商用和产品落地的进程。
 
 Aeraki [Air-rah-ki] 是希腊语 ”微风“ 的意思。 该命名的寓意是希望 Aeraki Mesh 这股“微风”能帮助 Istio 和 Kubernetes 在云原生的旅程中行得更快更远。Aeraki Mesh 的定位非常明确：只处理服务网格的非 HTTP 七层流量，将 HTTP 流量留给 Istio 。(我们认为现有的项目已经足够优秀，不必重新造轮子)。
 ![](/img/2022-06-17-aeraki-mesh-cncf-sandbox/aeraki-mesh-architecture.png)

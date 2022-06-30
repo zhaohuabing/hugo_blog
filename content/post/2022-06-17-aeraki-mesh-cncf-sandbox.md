@@ -9,6 +9,7 @@ date:       2022-04-26
 image: "img/2022-06-17-aeraki-mesh-cncf-sandbox/background.webp"
 published: true
 showtoc: false
+plantuml: true
 tags:
     - Istio
     - Envoy

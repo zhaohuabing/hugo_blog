@@ -2,3 +2,4 @@
   from = "/learning-envoy/*"
   to = "hilarious-faloodeh-b9f59a.netlify.app/:splat"
   status = 200
+  force = true

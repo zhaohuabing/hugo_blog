@@ -7,3 +7,10 @@ GO_VERSION = "1.18"
   to = "https://hilarious-faloodeh-b9f59a.netlify.app/:splat"
   status = 200
   force = true
+
+  
+[[redirects]]
+  from = "/learning-golang/*"
+  to = "https://luxury-licorice-c5da80.netlify.app/:splat"
+  status = 200
+  force = true

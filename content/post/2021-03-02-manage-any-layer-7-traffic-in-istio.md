@@ -17,7 +17,7 @@ tags:
     - Dubbo
     - Thrift
 categories:
-    - Presentation
+    - Presentations
     - Tech
 metadata:
     - text: "Virtual 2021/02"

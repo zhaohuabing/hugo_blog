@@ -15,7 +15,7 @@ tags:
     - Microservice
     - API Gateway
 categories:
-    - Presentation
+    - Presentations
 metadata:
     - text: "Santa Clara, CA, USA 2017/04"
     - text: "活动链接"

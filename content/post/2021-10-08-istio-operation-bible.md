@@ -12,7 +12,7 @@ tags:
     - Istio
     - Envoy
     - Service Mesh
-categories: [ Publication ]
+categories: [ Books ]
 showtoc: false
 metadata:
     - text: "在线阅读"

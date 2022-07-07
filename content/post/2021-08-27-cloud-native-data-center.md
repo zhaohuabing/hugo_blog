@@ -13,7 +13,7 @@ image: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/%C3%81rea_de_P
 published: true
 tags:
     - Network
-categories: [ Publication ]
+categories: [ Books ]
 showtoc: false
 metadata:
     - text: "中国电力出版社/O’Reilly"

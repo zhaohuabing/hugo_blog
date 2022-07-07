@@ -14,7 +14,7 @@ tags:
     - Jaeger
     - OpenTracing
     - Distributed Tracing
-categories: [ Publication ]
+categories: [ Books ]
 showtoc: false
 metadata:
     - text: "Manning Publications"

@@ -46,7 +46,7 @@ params:
   algolia_appId: WM4BEY1UDN
   algolia_indexName: blog
   algolia_apiKey: 090c4a77b8bd4b8d2f2c1262afbc4be2
-  sidebar_about_description: 'Engineer @Tencent Cloud, Creator @Aeraki Mesh, Open Source Enthusiast and Life Adventurer'
+  sidebar_about_description: 'Engineer @Tencent Cloud, creator @Aeraki Mesh, open-source enthusiast, technical writer and life adventurer'
   sidebar_avatar: img/zhaohuabing-headshot-round-white.png
   featured_tags: true
   featured_condition_size: 5

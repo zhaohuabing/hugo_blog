@@ -17,7 +17,7 @@ tags:
     - Microservice
     - API Gateway
 categories:
-    - Presentation
+    - Presentations
 metadata:
     - text: "Middletown, NJ, USA 2017/07"
     - text: "活动链接"

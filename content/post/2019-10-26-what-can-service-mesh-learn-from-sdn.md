@@ -14,7 +14,7 @@ tags:
     - Istio 
     - SDN
 categories:
-    - Presentation
+    - Presentations
     - Tech
 metadata:
     - text: "成都 2019/10"

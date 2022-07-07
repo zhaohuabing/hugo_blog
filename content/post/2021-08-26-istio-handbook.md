@@ -11,7 +11,7 @@ published: true
 tags:
     - Istio
     - Service Mesh
-categories: [ Publication ]
+categories: [ Books ]
 showtoc: false
 metadata:
     - text: "电子工业出版社"

@@ -6,3 +6,4 @@ layout: page
 
 ## [Envoy 学习笔记](https://zhaohuabing.com/learning-envoy) 
 
+## [Linux 学习笔记](https://zhaohuabing.com/learning-linux) 

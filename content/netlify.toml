@@ -14,3 +14,9 @@ GO_VERSION = "1.18"
   to = "https://luxury-licorice-c5da80.netlify.app/:splat"
   status = 200
   force = true
+
+  [[redirects]]
+  from = "/learning-linux/*"
+  to = "https://gilded-melomakarona-a91538.netlify.app/:splat"
+  status = 200
+  force = true

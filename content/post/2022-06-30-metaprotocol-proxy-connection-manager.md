@@ -181,3 +181,6 @@ void ConnectionManager::onBelowWriteBufferLowWatermark() {
 * [Envo 请求生命周期介绍](https://www.envoyproxy.io/docs/envoy/latest/intro/life_of_a_request)
 * [How to Write Envoy Filters Like a Ninja! — Part 1](https://blog.envoyproxy.io/how-to-write-envoy-filters-like-a-ninja-part-1-d166e5abec09)
 * [Taming a Network Filter](https://blog.envoyproxy.io/taming-a-network-filter-44adcf91517)
+
+
+我的博客即将同步至腾讯云开发者社区，邀请大家一同入驻：https://cloud.tencent.com/developer/support-plan?invite_code=3lidtv8h8qckw

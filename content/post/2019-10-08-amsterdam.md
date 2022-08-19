@@ -11,8 +11,7 @@ image: "/img/2019-10-08-amsterdam/bike.jpg"
 published: true
 showtoc: false
 tags:
-    - Photograph
-    - Amsterdam
+    - Travel
 
 #categories: [ Life ]
 ---

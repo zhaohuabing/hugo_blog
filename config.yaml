@@ -106,6 +106,8 @@ params:
       href: /archive/
     - title: NOTES
       href: /notes/
+    - title: PHOTOS
+      href: /photos/  
     - title: ABOUT
       href: /about/
   algolia:

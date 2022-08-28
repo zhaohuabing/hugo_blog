@@ -82,7 +82,13 @@ params:
   friend_link:
     - title: Linda的博客
       href: 'https://zhaozhihan.com'
+    - title: Istio Operation Bible
+      href: 'https://unsplash.com/'
   bookmark_link:
+    - title: Aeraki Mesh
+      href: 'https://aeraki.net/'
+    - title: Istio 运维实战
+      href: 'https://istio-operation-bible.aeraki.net/'  
     - title: unsplash
       href: 'https://unsplash.com/'
     - title: pexels

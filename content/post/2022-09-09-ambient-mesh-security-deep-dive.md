@@ -1,0 +1,51 @@
+---
+layout:     post
+
+title:      "译文：Ambient Mesh 安全架构深度分析"
+subtitle:   ""
+description: ""
+author: "Ethan Jackson - Google, Yuval Kohavi - Solo.io, Justin Pettit - Google, Christian Posta - Solo.io"
+date: 2022-09-08
+image: "https://images.unsplash.com/photo-1585688458395-51aa0a34e9a2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2370&q=80"
+published: true
+tags:
+    - Istio
+    - Envoy
+    - Service Mesh
+    - Ambient Mesh
+categories: [ Tech ]
+showtoc: true
+metadata:
+    - text: "英文原文"
+      link: "https://istio.io/latest/blog/2022/ambient-security/"
+---
+
+深入分析刚刚公布的 [Istio ambient mesh](https://www.zhaohuabing.com/post/2022-09-08-introducing-ambient-mesh/)（Istio 的一个无 sidecar 数据平面）对于服务网格的安全来说意味着什么。
+
+我们最近发布了 Istio ambient mesh，它是 Istio 的一个无 sidecar 数据平面。正如[公告博客](https://www.zhaohuabing.com/post/2022-09-08-introducing-ambient-mesh/)中所说，我们使用 ambient mesh 解决的首要问题是简化操作、更广泛的应用兼容性、降低基础设施成本和提高性能。在设计 ambient 数据平面时，我们仔细地平衡操作、成本和性能的相关问题，同时避免牺牲安全或功能。由于 ambient 组件运行在应用 pod 之外，安全边界已经发生了变化--我们相信会更好。在这篇博客中，我们将详细介绍这些变化，并比较与 sidecar 部署模式的差异。
+
+![](/img/2022-09-09-ambient-mesh-security-deep-dive/ambient-layers.png)
+ambient mesh 数据平面的分层架构
+
+简而言之，Istio ambient mesh 引入了一个分层的 mesh 数据平面，它有一个负责传输安全和路由的安全覆盖层，并可以选择为需要的 namespace 添加 L7 功能。要了解更多，请查看[公告博客](https://www.zhaohuabing.com/post/2022-09-08-introducing-ambient-mesh)和[入门博客](https://istio.io/latest/blog/2022/get-started-ambient)。安全覆盖层由一个节点共享的组件 ztunnel 组成，它负责 L4 遥测和 mTLS，作为一个 DaemonSet 部署。Mesh 的 L7 层是由 waypoint proxy 提供的，waypoint proxy  是一个完整的 L7 Envoy 代理，按身份/工作负载类型部署。该设计的一些核心影响包括下述几点：
+* 应用与数据平面的分离
+* 类似于 CNI 的安全覆盖层组件
+* 操作的简单性更有利于安全
+* 避免多租户的 L7 代理
+* 依然对 sidecar 部署提供一流的支持
+
+# 分隔应用与数据平面
+
+尽管 ambient mesh 的主要目标是简化服务网格的运维，但它也确实有助于提高安全性。复杂性会滋生漏洞，而企业应用（以及它们的依赖路径，库和框架）是极其复杂的，容易出现安全漏洞。从处理复杂的业务逻辑到利用 OSS 库或有问题的内部共享库，用户的应用程序代码是来自内部或外部的攻击者的主要目标。如果一个应用程序被攻破，凭证、机密信息和密钥就会暴露给攻击者，包括那些加载或存储在内存中的数据。在 sidecar 模式中，应用程序被攻破意味着攻击者可以接管 sidecar 和任何相关的身份/密钥。在 ambient 模式中，数据平面组件和应用程序不在同一个 pod 中，因此，应用程序被攻破不会导致代理中的机密信息的泄露。
+
+Envoy 代理是一个潜在的被攻击目标吗？Envoy 是一个经过安全加固的基础设施，受到了严格的审查，并在一些关键的环境中大规模运行（例如，在生产中用于谷歌的网络前端）。然而，由于 Envoy 是软件，它对漏洞并没有免疫力。当这些漏洞出现时，Envoy 有一个强大的 CVE 流程来识别它们，快速修复它们，并在它们有机会产生广泛影响之前向客户推出修复的版本。
+
+回到之前的评论，"复杂性导致安全漏洞"，Envoy Proxy 最复杂的部分是它的 L7 处理，事实上，历史上 Envoy 的大部分漏洞都是在它的 L7 处理栈中。但是，如果你只是用 Istio 来做 mTLS 呢？当不需要使用 L7 功能时，为什么要冒着出现更多 CVE 安全落地的几率去部署一个完整的 L7 代理呢？在这种情况下，分离 L4 和 L7 网格能力就很有作用。在 sidecar 部署中，即使你只使用了一小部分功能，你也需要部署完整的代理；但在 ambient 模式下，我们可以通过采用一个安全覆盖层来减少暴露的安全漏洞，只在需要时加入 L7 的处理。此外，L7 组件与应用程序完全分开运行，从而未提供攻击路径。
+
+# 将 L4 下移到 CNI 中
+
+ambient 数据平面的 L4 组件以 DaemonSet 的形式运行，每个节点一个。这意味着它是为一个节点上运行的所有 pod 提供服务的共享基础设施。这个组件特别敏感，应该与节点上的任何其他共享组件（如任何 CNI 代理、kube-proxy、kubelet，甚至是 Linux 内核）同等看待。来自工作负载的流量被重定向到 ztunnel，ztunnel 会识别流量的工作负载并为其选择正确的证书以建立 mTLS 连接。
+
+ztunnel 为每个 pod 使用一个单独的证书，只有当 pod 运行在当前在节点上时，该证书才会颁发给该节点的 ztunnel。这确保了当 ztunnel 被攻击时，只有运行在该节点上的 pod 的证书可能被盗。这一点和其他实现良好的节点共享基础设施类似，例如其他安全的 CNI 实现。ztunnel 没有使用集群级别的或节点级别的安全凭证。这些凭证如果被盗，可能会立即导致集群中的所有应用流量被攻破，除非还实施了复杂的二级授权机制。
+
+To be continue ...

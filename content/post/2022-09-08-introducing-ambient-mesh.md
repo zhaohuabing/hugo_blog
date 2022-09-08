@@ -60,6 +60,24 @@ Ztunnel 实现了一个服务网格的核心功能：零信任。当为一个 na
 ![](/img/2022-09-08-introducing-ambient-mesh/ambient-secure-overlay.png)
 Ambient mesh 在每个节点上使用一个共享的 ztunnel 来提供一个零信任的安全覆盖层
 
-Namespaces operating in this mode use one or more Envoy-based waypoint proxies to handle L7 processing for workloads in that namespace. Istio’s control plane configures the ztunnels in the cluster to pass all traffic that requires L7 processing through the waypoint proxy. Importantly, from a Kubernetes perspective, waypoint proxies are just regular pods that can be auto-scaled like any other Kubernetes deployment. We expect this to yield significant resource savings for users, as the waypoint proxies can be auto-scaled to fit the real time traffic demand of the namespaces they serve, not the maximum worst-case load operators expect.
-
 在启用 ambient mesh 并创建安全覆盖层后，一个 namepace 也可以配置使用 L7 的相关特性。这允许在一个 namespae 中提供完整的 Istio 功能，包括 [Virtual Service API](https://istio.io/latest/docs/reference/config/networking/virtual-service/)、[L7 遥测](https://istio.io/latest/docs/reference/config/telemetry/) 和 [L7授权策略](https://istio.io/latest/docs/reference/config/security/authorization-policy/)。以这种模式运行的 namespace 使用一个或多个基于 Envoy 的 “waypoint proxy” 来为工作负载进行 L7 处理。Istio 控制平面会配置集群中的 ztunnel 将所有需要进行 L7 处理的流量发送到 waypoint proxy。重要的是，从Kubernetes 的角度来看，waypoint proxy 只是普通的 pod，可以像其他Kubernetes 工作负载一样进行自动伸缩。由于 waypoint proxy 可以根据其服务的 namespace 的实时流量需求进行自动伸缩，而不是按照可能的最大工作负载进行配置，我们预计这将为用户节省大量资源。
+
+![](/img/2022-09-08-introducing-ambient-mesh/ambient-waypoint.png)
+When additional features are needed, ambient mesh deploys waypoint proxies, which ztunnels connect through for policy enforcement
+当需要支持更多（七层）特性时，ambient mesh 会部署 waypoint proxy，并把 ztunnel 连接到 waypoint proxy 以为流量应用（七层）策略
+
+Ambient mesh uses HTTP CONNECT over mTLS to implement its secure tunnels and insert waypoint proxies in the path, a pattern we call HBONE (HTTP-Based Overlay Network Environment). HBONE provides for a cleaner encapsulation of traffic than TLS on its own while enabling interoperability with common load-balancer infrastructure. FIPS builds are used by default to meet compliance needs. More details on HBONE, its standards-based approach, and plans for UDP and other non-TCP protocols will be provided in a future blog.
+
+Ambient mesh 使用 HTTP CONNECT over mTLS 来实现其安全隧道，并在流量路径中插入 waypoint proxy，我们把这种模式称为 HBONE（HTTP-Based Overlay Network Environment）。HBONE 提供了比 TLS 本身更干净的流量封装，同时实现了与通用负载平衡器基础设施的互操作性。Ambient mesh 将默认使用 [FIPS](https://www.nist.gov/standardsgov/compliance-faqs-federal-information-processing-standards-fips#:~:text=are%20FIPS%20developed%3F-,What%20are%20Federal%20Information%20Processing%20Standards%20(FIPS)%3F,by%20the%20Secretary%20of%20Commerce.) 构建，以满足合规性需求。关于 HBONE 的更多细节，其基于标准的方法，以及 UDP 和其他非 TCP 协议的计划，将在未来的博客中介绍。
+
+在一个 mesh 中 中混合部署 sidecar 和 ambient 模式并不会对系统的能力或安全带来限制。无论用户选择何种部署模式，Istio 控制平面都将确保策略的正确执行。Ambient 只是引入了一个具有更好人体工程学和更灵活的选项而已。
+
+# 为何不在本地节点上进行 L7 处理？
+
+Ambient mesh 采用一个部署在本地节点上的共享 ztunnel 代理来处理 mesh 的零信任方面，而 L7 的处理则交给了独立部署 的 waypoint proxy pod。 为何要这么麻烦地将流量从 ztunnel 转接到 waypoint proxy，而不是直接在节点上使用一个共享的完整 L7 代理呢？主要有几个原因：
+
+Envoy 本质上并不支持多租户。因此如果共享 L7 代理，则需要在一个共享代理实例中对来自多个租户的 L7 流量一起进行复杂的规则处理，我们对这种做法有安全顾虑。通过严格限制只在共享代理中进行 L4 处理，我们大大减少了出现漏洞的几率。
+
+与 waypoint proxy 所需的 L7 处理相比，ztunnel 所提供的 mTLS 和 L4 功能需要的 CPU 和内存占用要小得多。通过将 waypoint proxy 作为一个共享的 namespace 基本的资源来运行，我们可以根据该 namespace 的需求来对它们进独立伸缩，其成本不会不公平地分配给不相关的租户。
+
+通过减少 ztunnel 的作用范围，我们可以很容易为 Istio 和 ztunnel 之间的互操作定义一个标准接口，并可以使用其他满足该标准接口的安全隧道的实现替换 ztunnel。

@@ -97,10 +97,26 @@ Ambient mesh 采用一个部署在本地节点上的共享 ztunnel 代理来处�
 
 # 安全问题呢？
 
-随着一个彻底的新架构的出现，自然会有关于安全的问题。[ambient 安全的博文](https://istio.io/latest/blog/2022/ambient-security/)对此做了深入的讨论，我们这里总结下面几点：
+随着一个彻底的新架构的出现，自然会有关于安全的问题。[这篇关于 ambient 安全的博文](https://istio.io/latest/blog/2022/ambient-security/)对此做了深入的讨论，我们这里总结下面几点：
 
-sidecar 与其所服务的工作负载部署在一起，因此任意一方的漏洞会危及到另一方。在 ambient mesh 模式中，即使一个应用程序被攻破，ztunnels 和 waypoint 代理仍然可以对被攻破的应用程序的流量执行严格的安全策略。此外，鉴于Envoy 是一个被世界上最大的网络运营商使用的久经考验的成熟软件，它出现安全漏洞的可能性远低于与它一起运行的应用程序。
+* sidecar 与其所服务的工作负载部署在一起，因此任意一方的漏洞会危及到另一方。在 ambient mesh 模式中，即使一个应用程序被攻破，ztunnels 和 waypoint 代理仍然可以对被攻破的应用程序的流量执行严格的安全策略。此外，鉴于Envoy 是一个被世界上最大的网络运营商使用的久经考验的成熟软件，它出现安全漏洞的可能性远低于与它一起运行的应用程序。
 
-虽然 ztunnel 是一个共享资源，但它只能访问它所运行的节点上的工作负载的密钥。因此，它出现安全问题时的影响范围并不比任何其他依赖每节点密钥进行加密的 CNI 插件差。另外，考虑到 ztunnel 有限的 L4 攻击面和 Envoy 的上述安全特性，我们觉得这种风险是有限和可以接受的。
+* 虽然 ztunnel 是一个共享资源，但它只能访问它所运行的节点上的工作负载的密钥。因此，它出现安全问题时的影响范围并不比任何其他依赖每节点密钥进行加密的 CNI 插件差。另外，考虑到 ztunnel 有限的 L4 攻击面和 Envoy 的上述安全特性，我们觉得这种风险是有限和可以接受的。
 
-最后，虽然 waypoint proxy 是一种共享资源，但它们只限于为一个 service account 服务。这使得它们并不会比现在的 sidecar 模式更差；如果一个 waypoint proxy 被攻破，只会丢失该 waypoint proxy 相关的安全信息，并不会影响其他 service account。
+* 最后，虽然 waypoint proxy 是一种共享资源，但它们只限于为一个 service account 服务。这使得它们并不会比现在的 sidecar 模式更差；如果一个 waypoint proxy 被攻破，只会丢失该 waypoint proxy 相关的安全信息，并不会影响其他 service account。
+
+# 这就是 sidecar 模式的结束吗？
+
+绝对不是。虽然我们认为 ambient mesh 将是许多网格用户未来的最佳选择，但对于那些需要专用数据平面资源的场景，例如合规要求或性能调优，sidecar 仍然是一个不错的选择。Istio 将继续支持 sidecar，而且重要的是，将允许 sidecar 与 ambient mesh 无缝互通。事实上，我们今天发布的 ambient mesh 代码已经支持与基于 sidecar 的Istio 进行互操作。
+
+# 了解更多
+
+请看一个简短的视频，看 Christian 运行 Istio ambient mesh 组件并演示一些功能。
+
+{{< youtube nupRBh9Iypo >}} 
+
+# 参与进来
+
+我们今天发布的是 Istio ambient mesh 的早期版本，目前 ambient mesh 仍处于活跃的开发之中。我们很高兴能在更广泛的社区进行分析，并期待有更多人参与 ambien mesh 的相关工作，以在 2023 年进入生产就绪。
+
+我们通过你的反馈来帮助建造 ambient mesh 这个解决方案。你可以在 Istio 实验版中下载和试用 ambient mesh。在 README 中有一份目前缺失的功能和工作项目的清单。请尝试使用 ambient mesh，并告知我们你的想法！

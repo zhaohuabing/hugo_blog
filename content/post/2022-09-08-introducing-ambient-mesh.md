@@ -66,8 +66,6 @@ Ambient mesh 在每个节点上使用一个共享的 ztunnel 来提供一个零�
 When additional features are needed, ambient mesh deploys waypoint proxies, which ztunnels connect through for policy enforcement
 当需要支持更多（七层）特性时，ambient mesh 会部署 waypoint proxy，并把 ztunnel 连接到 waypoint proxy 以为流量应用（七层）策略
 
-Ambient mesh uses HTTP CONNECT over mTLS to implement its secure tunnels and insert waypoint proxies in the path, a pattern we call HBONE (HTTP-Based Overlay Network Environment). HBONE provides for a cleaner encapsulation of traffic than TLS on its own while enabling interoperability with common load-balancer infrastructure. FIPS builds are used by default to meet compliance needs. More details on HBONE, its standards-based approach, and plans for UDP and other non-TCP protocols will be provided in a future blog.
-
 Ambient mesh 使用 HTTP CONNECT over mTLS 来实现其安全隧道，并在流量路径中插入 waypoint proxy，我们把这种模式称为 HBONE（HTTP-Based Overlay Network Environment）。HBONE 提供了比 TLS 本身更干净的流量封装，同时实现了与通用负载平衡器基础设施的互操作性。Ambient mesh 将默认使用 [FIPS](https://www.nist.gov/standardsgov/compliance-faqs-federal-information-processing-standards-fips#:~:text=are%20FIPS%20developed%3F-,What%20are%20Federal%20Information%20Processing%20Standards%20(FIPS)%3F,by%20the%20Secretary%20of%20Commerce.) 构建，以满足合规性需求。关于 HBONE 的更多细节，其基于标准的方法，以及 UDP 和其他非 TCP 协议的计划，将在未来的博客中介绍。
 
 在一个 mesh 中 中混合部署 sidecar 和 ambient 模式并不会对系统的能力或安全带来限制。无论用户选择何种部署模式，Istio 控制平面都将确保策略的正确执行。Ambient 只是引入了一个具有更好人体工程学和更灵活的选项而已。
@@ -76,8 +74,24 @@ Ambient mesh 使用 HTTP CONNECT over mTLS 来实现其安全隧道，并在流�
 
 Ambient mesh 采用一个部署在本地节点上的共享 ztunnel 代理来处理 mesh 的零信任方面，而 L7 的处理则交给了独立部署 的 waypoint proxy pod。 为何要这么麻烦地将流量从 ztunnel 转接到 waypoint proxy，而不是直接在节点上使用一个共享的完整 L7 代理呢？主要有几个原因：
 
-Envoy 本质上并不支持多租户。因此如果共享 L7 代理，则需要在一个共享代理实例中对来自多个租户的 L7 流量一起进行复杂的规则处理，我们对这种做法有安全顾虑。通过严格限制只在共享代理中进行 L4 处理，我们大大减少了出现漏洞的几率。
+* Envoy 本质上并不支持多租户。因此如果共享 L7 代理，则需要在一个共享代理实例中对来自多个租户的 L7 流量一起进行复杂的规则处理，我们对这种做法有安全顾虑。通过严格限制只在共享代理中进行 L4 处理，我们大大减少了出现漏洞的几率。
 
-与 waypoint proxy 所需的 L7 处理相比，ztunnel 所提供的 mTLS 和 L4 功能需要的 CPU 和内存占用要小得多。通过将 waypoint proxy 作为一个共享的 namespace 基本的资源来运行，我们可以根据该 namespace 的需求来对它们进独立伸缩，其成本不会不公平地分配给不相关的租户。
+* 与 waypoint proxy 所需的 L7 处理相比，ztunnel 所提供的 mTLS 和 L4 功能需要的 CPU 和内存占用要小得多。通过将 waypoint proxy 作为一个共享的 namespace 基本的资源来运行，我们可以根据该 namespace 的需求来对它们进独立伸缩，其成本不会不公平地分配给不相关的租户。
 
-通过减少 ztunnel 的作用范围，我们可以很容易为 Istio 和 ztunnel 之间的互操作定义一个标准接口，并可以使用其他满足该标准接口的安全隧道的实现替换 ztunnel。
+* 通过减少 ztunnel 的作用范围，我们可以很容易为 Istio 和 ztunnel 之间的互操作定义一个标准接口，并可以使用其他满足该标准接口的安全隧道的实现替换 ztunnel。
+
+# 但是那些额外增加的跳数呢？
+
+在 ambient mesh 中，一个 waypoint proxy 与它所服务的工作负载不一定在同一个节点上。看上去这可能是一个性能问题，但我们认为，该模式中的网络延迟最终将与 Istio 目前的 sidecar 实现差不多。我们将在专门的性能博文中讨论这个话题，但现在我们可以总结出两点：
+
+* 事实上，Istio 的大部分网络延迟并不是来自于网络（现代的云供应商拥有极快的网络），而是来自于实现其复杂的功能特性所需的大量 L7 处理。sidecar 模式中每个连接需要两个 L7 处理步骤（客户端和服务器侧各一个），而 ambient mesh 将这两个步骤压缩成了一个。在大多数情况下，我们认为这种减少的处理成本能够补偿额外的网络跳数带来的延迟。
+用户通常在部署Mesh时，首先启用零信任的安全态势，然后根据需要选择性地启用L7功能。Ambient mesh允许这些用户在不需要时完全绕过L7处理的成本。
+
+* 在部署 Mesh 时，用户往往首先启用零信任安全，然后再根据需要选择性地启用 L7 功能。Ambient mesh 允许这些用户在不需要 L7 处理时完全避开其带来的成本。
+
+# 资源开销
+
+总的来说，我们认为对大多数用户而言，ambient mesh 具有有更少和更可预测的资源需求。ztunnel 有限的功能允许其作为一个共享资源部署在节点上，这将显著减少大多数用户为每个工作负荷所需的保留资源。此外，由于 waypoint proxy 是普通的 Kubernetes pods，我们可以根据其服务的工作负载的实时流量需求对其进行动态部署和扩展。
+
+另一方面，我们需要根据最坏情况为每个工作负载的 sidecar proxy 预留内存和CPU。进行这些计算是很复杂的，很难计算出一个非常准确的数值，所以在实践中，管理员倾向于为 sidecar 过度配置。sidecar 的高额资源预留会导致其他工作负载无法被安排，从而导致节点利用率不足。Ambient mesh 的每节点的 ztunnel 代理的固定开销较低，其 waypoint proxy 则可以动态伸缩，因此需要的资源预留总体上要少得多，从而使集群的资源利用效率更高。
+

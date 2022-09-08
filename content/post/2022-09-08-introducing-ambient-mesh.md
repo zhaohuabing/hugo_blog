@@ -54,3 +54,12 @@ Ambient mesh 采取了一种不同的方法。它将 Istio 的功能分成两个
 # 构建一个 ambient mesh
 
 Ambient mesh 使用了一个共享代理，该共享代理运行在 Kubernetes 集群的每个节点上。这个代理是一个零信任隧道（简称为 ztunnel），其主要职责是安全地连接和认证 mesh 内的工作负载。节点上的网络栈会重定向工作负载的所有流量，使这些流量通过本地的 ztunnel 代理。这将 Istio 的数据平面与应用程序的关注点完全分开，可以让运维在不影响应用的情况下启用、禁用、伸缩和升级数据平面。ztunnel 不对工作负载流量进行 L7 处理，因此相对 sidecar 更为精简。这种复杂性和相关的资源成本的大幅降低使得 ambient mesh 适合作为共享基础设施进行交付。
+
+Ztunnel 实现了一个服务网格的核心功能：零信任。当为一个 namespace 启用 ambient 时，Istio 会创建一个安全覆盖层(secure overlay)，该安全覆盖层为工作负载提供 mTLS, 遥测和认证，以及 L4 权限控制，并不需要中断 HTTP 链接或者解析 HTTP 数据。 
+
+![](/img/2022-09-08-introducing-ambient-mesh/ambient-secure-overlay.png)
+Ambient mesh 在每个节点上使用一个共享的 ztunnel 来提供一个零信任的安全覆盖层
+
+Namespaces operating in this mode use one or more Envoy-based waypoint proxies to handle L7 processing for workloads in that namespace. Istio’s control plane configures the ztunnels in the cluster to pass all traffic that requires L7 processing through the waypoint proxy. Importantly, from a Kubernetes perspective, waypoint proxies are just regular pods that can be auto-scaled like any other Kubernetes deployment. We expect this to yield significant resource savings for users, as the waypoint proxies can be auto-scaled to fit the real time traffic demand of the namespaces they serve, not the maximum worst-case load operators expect.
+
+在启用 ambient mesh 并创建安全覆盖层后，一个 namepace 也可以配置使用 L7 的相关特性。这允许在一个 namespae 中提供完整的 Istio 功能，包括 [Virtual Service API](https://istio.io/latest/docs/reference/config/networking/virtual-service/)、[L7 遥测](https://istio.io/latest/docs/reference/config/telemetry/) 和 [L7授权策略](https://istio.io/latest/docs/reference/config/security/authorization-policy/)。以这种模式运行的 namespace 使用一个或多个基于 Envoy 的 “waypoint proxy” 来为工作负载进行 L7 处理。Istio 控制平面会配置集群中的 ztunnel 将所有需要进行 L7 处理的流量发送到 waypoint proxy。重要的是，从Kubernetes 的角度来看，waypoint proxy 只是普通的 pod，可以像其他Kubernetes 工作负载一样进行自动伸缩。由于 waypoint proxy 可以根据其服务的 namespace 的实时流量需求进行自动伸缩，而不是按照可能的最大工作负载进行配置，我们预计这将为用户节省大量资源。

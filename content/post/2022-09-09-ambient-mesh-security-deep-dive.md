@@ -5,7 +5,7 @@ title:      "译文：Ambient Mesh 安全架构深度分析"
 subtitle:   ""
 description: ""
 author: "Ethan Jackson - Google, Yuval Kohavi - Solo.io, Justin Pettit - Google, Christian Posta - Solo.io"
-date: 2022-09-08
+date: 2022-09-09
 image: "https://images.unsplash.com/photo-1585688458395-51aa0a34e9a2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2370&q=80"
 published: true
 tags:
@@ -47,5 +47,7 @@ Envoy 代理是一个潜在的被攻击目标吗？Envoy 是一个经过安全�
 ambient 数据平面的 L4 组件以 DaemonSet 的形式运行，每个节点一个。这意味着它是为一个节点上运行的所有 pod 提供服务的共享基础设施。这个组件特别敏感，应该与节点上的任何其他共享组件（如任何 CNI 代理、kube-proxy、kubelet，甚至是 Linux 内核）同等看待。来自工作负载的流量被重定向到 ztunnel，ztunnel 会识别流量的工作负载并为其选择正确的证书以建立 mTLS 连接。
 
 ztunnel 为每个 pod 使用一个单独的证书，只有当 pod 运行在当前在节点上时，该证书才会颁发给该节点的 ztunnel。这确保了当 ztunnel 被攻击时，只有运行在该节点上的 pod 的证书可能被盗。这一点和其他实现良好的节点共享基础设施类似，例如其他安全的 CNI 实现。ztunnel 没有使用集群级别的或节点级别的安全凭证。这些凭证如果被盗，可能会立即导致集群中的所有应用流量被攻破，除非还实施了复杂的二级授权机制。
+
+如果我们将其与 sidecar 模式相比较，我们注意到 ztunnel 是共享的。如果 ztunnel 被攻击，可能会导致在节点上运行的应用程序的身份泄露。然而，由于这个组件中只有 L4 处理，没有任何 L7 逻辑，因此其可攻击面显著减小，出现 CVE 漏洞的可能性比 Istio sidecar 低。此外，具有较大的 L7 可攻击面的 sidecar 中的 CVE 漏洞并不只包含在被攻破的那个特定工作负载中。sidecar 中的出现任何严重的 CVE 漏洞都有可能在网格中的其他所有工作负载中重复出现。
 
 To be continue ...

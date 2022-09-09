@@ -1,7 +1,7 @@
 ---
 layout:     post
 
-title:      "译文：Ambient Mesh 安全架构深度分析"
+title:      "译文：Istio Ambient 模式安全架构深度解析"
 subtitle:   ""
 description: ""
 author: "Ethan Jackson - Google, Yuval Kohavi - Solo.io, Justin Pettit - Google, Christian Posta - Solo.io"

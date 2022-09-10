@@ -279,6 +279,9 @@ kubectl exec -it deploy/sleep -- sh -c 'for i in $(seq 1 10); do curl -s http://
 从上面的试验，可以看到 ambient 模式已经较好地解决了 Istio sidecar 模式下应用和 sidecar 的部署依赖问题。在 ambient 模式下，服务网格的能力是通过应用 pod 之外的 ztunnel 和 waypoint proxy 提供的，不再需要对应用 pod 进行 sidecar 注入，因此应用和 mesh 组件的的部署和升级不再相互依赖，将服务网格彻底下沉到了基础设施层面，实现了“服务网格是为应用提供通信的基础设施”的承诺。
 目前要为服务启用 L7 网格能力，必须显示创建一个 gateway，这对于运维来说是一个额外的负担。对于之前我比较担心的 waypoint proxy 导致的故障范围扩大和故障定位不变的问题，由于 Istio 为每个服务账号创建一个 waypoint proxy deployment，只要遵循最佳实践为每个服务创建不同的 service account，该问题也可以得到比较好的解决。另外目前 ambient 尚处于快速的开发迭代过程中，相信这些小问题将在后续的版本中很快得到解决。
 
+# 参考文档：
+* https://istio.io/latest/blog/2022/get-started-ambient/
+
 
 
 

@@ -23,7 +23,7 @@ Istio ambient 模式采用了被称为 [HBONE](https://www.zhaohuabing.com/post/
 
 建立 HTTP 隧道的常见形式是采用 HTTP 协议的 CONNECT 方法。在这种机制下，客户端首先向 HTTP 代理服务器发送一个 HTTP CONNECT 请求，请求中携带需要连接的目的服务器。代理服务器根据该请求代表客户端连接目的服务器。和目的服务器建立连接后，代理服务器将客户端 TCP 数据流直接透明地传送给目的服务器。在这种方式中，只有初始连接请求是 HTTP，之后代理服务器处理的是 TCP 数据流。
 
-![](/img/2022-09-11-ambient-hbone/http-tunnel.svg)
+![](/img/2022-09-11-ambient-hbone/http-tunnel.png)
 
 通过这种方法，我们可以采用 HTTP CONNECT 创建一个隧道，该隧道中可以传输任何类型的 TCP 数据。
 

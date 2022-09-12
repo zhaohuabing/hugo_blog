@@ -1,7 +1,7 @@
 ---
 layout:     post
 
-title:      "Istio Ambient 模式 HBONE 隧道原理详解"
+title:      "Istio Ambient 模式 HBONE 隧道原理详解 - 上"
 subtitle:   ""
 description: ""
 author: "赵化冰"
@@ -17,7 +17,7 @@ categories: [ Tech ]
 showtoc: true
 ---
 
-Istio ambient 模式采用了被称为 [HBONE](https://www.zhaohuabing.com/post/2022-09-08-introducing-ambient-mesh/#%E6%9E%84%E5%BB%BA%E4%B8%80%E4%B8%AA-ambient-mesh) 的方式来连接 ztunnel 和 waypoint proxy。HBONE 是 HTTP-Based Overlay Network Environment 的缩写。简单地说，ambient 模式采用了 [HTTP CONNECT 方法](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/CONNECT) 在 ztunnel 和 waypoint proxy 创建了一个隧道，通过该隧道来传输数据。本文将分析 HBONE 的实现机制和原理。
+Istio ambient 模式采用了被称为 [HBONE](https://www.zhaohuabing.com/post/2022-09-08-introducing-ambient-mesh/#%E6%9E%84%E5%BB%BA%E4%B8%80%E4%B8%AA-ambient-mesh) 的方式来连接 ztunnel 和 waypoint proxy。HBONE 是 HTTP-Based Overlay Network Environment 的缩写。虽然该名称是第一次看到，其实 HBONE 并不是 Istio 创建出来的一个新协议，而只是利用了 HTTP 协议标准提供的隧道能力。简单地说，ambient 模式采用了 [HTTP CONNECT 方法](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/CONNECT) 在 ztunnel 和 waypoint proxy 创建了一个隧道，通过该隧道来传输数据。本文将分析 HBONE 的实现机制和原理。
 
 # HTTP 隧道原理
 
@@ -70,7 +70,7 @@ filter_chains:
 ]
 ```
 
-定义一个 Cluster，将上面定义的 Internal Listener 作为 Cluster 中的一个 endpoint。该 endpoint 的地址设置为 Internal Listener 的 name。
+采用一个 Cluster 来连接 Egress Listener 和 Internal Listener。该 Cluster 配置在 Egress Listener 的 HCM 中，其 endpoint 是 Internal Listener 的 name。
 ```yaml
 name: encap_cluster
 load_assignment:
@@ -106,7 +106,7 @@ filter_chains:
 
 ## Envoy 作为 HTTP 隧道客户端
 
-Envoy 支持创建 HTTP 隧道，但通过串联两个 Listener，可以将外部 Listener 中收到的 HTTP 请求通过 Internal Listener 创建的 HTTP 隧道发送到后端的代理服务器，如下所示（该配置文件来自 [Envoy Github 中的示例文件](https://github.com/envoyproxy/envoy/blob/8537d2a29265e61aaa0349311e6fc5d592659b08/configs/encapsulate_http_in_http2_connect.yaml)）：
+通过串联两个 Listener，可以将外部 Listener 中收到的 HTTP 请求通过 Internal Listener 创建的 HTTP 隧道发送到后端的代理服务器，如下所示（该配置文件来自 [Envoy Github 中的示例文件](https://github.com/envoyproxy/envoy/blob/8537d2a29265e61aaa0349311e6fc5d592659b08/configs/encapsulate_http_in_http2_connect.yaml)）：
 
 Egress（入口） Listener，从端口 1000 接收来自客户端的 HTTP 请求
 ```yaml
@@ -189,13 +189,121 @@ clusters:
                 address: 127.0.0.1
                 port_value: 10001
 ```
-![](/img/2022-09-11-ambient-hbone/envoy-http-tunnel.png)
-<p style="text-align: center;">通过 Internal Listener 创建 HTTP 隧道，代理 downstream 的 HTTP 请求</p>
+![](/img/2022-09-11-ambient-hbone/envoy-http-tunnel-client.png)
+<p style="text-align: center;">采用 Internal Listener 创建 HTTP 隧道，代理 downstream 的 HTTP 请求</p>
 
-上面的示例中 egress listener 的 filter chain 中配置的是 HCM。由于 HTTP 隧道是透明传输 TCP 数据流的，因此其中可以是任意七层协议的数据，egress listener 中的 filter chain 中也可以配置为 Tcp Proxy。
+上面的示例中 Egress Listener 的 filter chain 中配置的是 HCM。由于 HTTP 隧道是透明传输 TCP 数据流的，因此其中可以是任意七层协议的数据，Egress Listener 中的 filter chain 中也可以配置为 Tcp Proxy。
 
 ## Envoy 作为 HTTP 隧道服务器
-当然，我们可以采用 Envoy 来作为 HTTP Proxy 来接收 HTTP CONNECT 请求，建立和客户端的 HTTP 隧道。Envoy 不能在同一个 Listener 里面E
+当然，我们可以采用 Envoy 来作为 HTTP Proxy 来接收 HTTP CONNECT 请求，建立和客户端的 HTTP 隧道。Envoy 不能在同一个 Listener 里面建立隧道并将从 HTTP 数据从隧道中解封出来。要实现这一点，我们需要两层 listener，第一层 listener 中的 HCM 负责创建 HTTP CONNECT 隧道并从隧道中拿到 TCP 数据流，然后将该 TCP 数据流交给第二次 listener 中的 HCM 进行 HTTP 处理。
+
+下面的配置将 Envoy 作为一个 HTTP CONNECT 隧道服务器端，并采用一个 Internal Listen 对隧道中的数据进行 HTTP 处理。（该配置文件来自 [Envoy Github 中的示例文件](https://github.com/envoyproxy/envoy/blob/8537d2a29265e61aaa0349311e6fc5d592659b08/configs/terminate_http_in_http2_connect.yaml)）
+
+Egress Listener，从 10001 端口接收来自隧道客户端的 HTTP CONNECT 请求，并将隧道中的数据递交给 Internal Listener 进行下一步处理。注意其中 HCM 的 `upgrade_type: CONNECT` 选项表示支持 HTTP CONNECT 隧道，`http2_protocol_options` 表示采用 HTTP/2。
+```yaml
+listeners:
+- name: listener_0
+  address:
+    socket_address:
+      protocol: TCP
+      address: 127.0.0.1
+      port_value: 10001
+  filter_chains:
+  - filters:
+    - name: envoy.filters.network.http_connection_manager
+      typed_config:
+        "@type": type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager
+        stat_prefix: ingress_http
+        route_config:
+          name: local_route
+          virtual_hosts:
+          - name: local_service
+            domains:
+            - "*"
+            routes:
+            - match:
+                connect_matcher:
+                  {}
+              route:
+                # 数据将被发送给 decap_cluster
+                cluster: decap_cluster
+                upgrade_configs:
+                - upgrade_type: CONNECT
+                  connect_config:
+                    {}
+        http_filters:
+        - name: envoy.filters.http.router
+          typed_config:
+            "@type": type.googleapis.com/envoy.extensions.filters.http.router.v3.Router
+        http2_protocol_options:
+          allow_connect: true
+        upgrade_configs:
+        # 该选项标准支持采用 HTTP CONNECT 请求来创建隧道
+        - upgrade_type: CONNECT
+```
+
+Internal Listener，从隧道中拿到的 TCP 流解析出 HTTP 请求，并返回一个 HTTP 200 响应。
+```yaml
+  - name: decap
+    internal_listener: {}
+    filter_chains:
+    - filters:
+      - name: envoy.filters.network.http_connection_manager
+        typed_config:
+          "@type": type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager
+          stat_prefix: ingress_http
+          route_config:
+            name: local_route
+            virtual_hosts:
+            - name: local_service
+              domains: ["*"]
+              routes:
+              - match:
+                  prefix: "/"
+                direct_response:
+                  status: 200
+                  body:
+                    inline_string: "Hello, world!\n"
+          http_filters:
+          - name: envoy.filters.http.router
+            typed_config:
+              "@type": type.googleapis.com/envoy.extensions.filters.http.router.v3.Router
+```
+
+采用一个 Cluster 来连接 Egress Listener 和 Internal Listener。该 Cluster 配置在 Egress Listener 的 HCM 中，其 endpoint 是 Internal Listener 的 name。
+```yaml
+  clusters:
+  - name: decap_cluster
+    load_assignment:
+      cluster_name: decap_cluster
+      endpoints:
+      - lb_endpoints:
+        - endpoint:
+            address:
+              envoy_internal_address:
+                server_listener_name: decap
+```
+![](/img/2022-09-11-ambient-hbone/envoy-http-tunnel-server.png)
+<p style="text-align: center;">采用 Internal Listener 对来自 HTTP CONNECT 隧道的数据进行 HTTP 处理</p>
+
+# 采用 Envoy 来创建一个端到端的 HTTP CONNECT 隧道
+从上面的分析可以得知，Envoy 可以作为 Tunnel Client 发起一个 HTTP CONNECT 隧道创建请求，也可以作为 Tunnel Server 来创建一个 HTTP CONNECT 隧道。因此我们可以采用两个 Envoy 来作为 HTTP CONNECT 隧道的两端，如下图所示：
+![](/img/2022-09-11-ambient-hbone/envoy-http-tunnel.png)
+<p style="text-align: center;">采用 Envoy 来创建 HTTP CONNECT 隧道，并对隧道中的数据进行 HTTP 处理</p>
+
+# Istio 的 HBONE 隧道
+
+Istio HBONE 采用了上面介绍的方法来创建 HTTP CONNET 隧道，TCP 流量在进入隧道时会进行 mTLS 加密，在出隧道时进行 mTLS 卸载。一个采用 HBONE 创建的连接如下所示：
+![](/img/2022-09-11-ambient-hbone/hbone-connection.png)
+<p style="text-align: center;">HBONE 连接</p>
+
+HBONE 由于采用了 HTTP CONNECT 创建隧道，还可以在 HTTP CONNECT 请求中加入一些 header 来很方便地在 downstream 和 upstream 之间传递上下文信息，包括：
+* authority - 请求的原始目的地址，例如 1.2.3.4:80。
+* X-Forwarded-For（可选） - 请求的原始源地址，用于在多跳访问之间保留源地址。
+* baggage (可选) - client/server 的一些元数据，在 telemetry 中使用。
+
+在这篇文章中，我们介绍了了 Istio ambient 模式用来连接 ztunnel 和 waypoint proxy 的 HBONE 隧道的基本原理。下一篇文章中，我们将以 bookinfo demo 程序为例来深入分析 ambient 模式中 HBONE 的流量路径。
+
 
 # 参考资料
 
@@ -203,7 +311,8 @@ clusters:
 * https://zh.wikipedia.org/wiki/HTTP%E9%9A%A7%E9%81%93
 * https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/http/upgrades
 * https://www.envoyproxy.io/docs/envoy/latest/configuration/other_features/internal_listener
-
+* https://docs.google.com/document/d/1Ofqtxqzk-c_wn0EgAXjaJXDHB9KhDuLe-W3YGG67Y8g
+* https://docs.google.com/document/d/1ubUG78rNQbwwkqpvYcr7KgM14kEHwitSsuorCZjR6qY/edit#
 
 
 

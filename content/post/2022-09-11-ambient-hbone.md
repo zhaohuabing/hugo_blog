@@ -102,7 +102,11 @@ filter_chains:
 
 # Envoy 的 HTTP Tunnel
 
-通过串联两个 Listener，可以将外部 Listener 中收到的 HTTP 请求通过 Internal Listener 创建的 HTTP 隧道发送到后端的代理服务器，如下所示（该配置文件来自 [Envoy Github 中的示例文件](https://github.com/envoyproxy/envoy/blob/8537d2a29265e61aaa0349311e6fc5d592659b08/configs/encapsulate_http_in_http2_connect.yaml)）：
+我们可以采用 Envoy 来作为客户端创建一个到 HTTP Proxy 的 HTTP Tunnel，也可以采用 Envoy 来作为 HTTP Proxy 服务器接收来自客户端的 HTTP CONNECT 请求。
+
+## Envoy 作为 HTTP 隧道客户端
+
+Envoy 支持创建 HTTP 隧道，但通过串联两个 Listener，可以将外部 Listener 中收到的 HTTP 请求通过 Internal Listener 创建的 HTTP 隧道发送到后端的代理服务器，如下所示（该配置文件来自 [Envoy Github 中的示例文件](https://github.com/envoyproxy/envoy/blob/8537d2a29265e61aaa0349311e6fc5d592659b08/configs/encapsulate_http_in_http2_connect.yaml)）：
 
 Egress（入口） Listener，从端口 1000 接收来自客户端的 HTTP 请求
 ```yaml
@@ -187,6 +191,11 @@ clusters:
 ```
 ![](/img/2022-09-11-ambient-hbone/envoy-http-tunnel.png)
 <p style="text-align: center;">通过 Internal Listener 创建 HTTP 隧道，代理 downstream 的 HTTP 请求</p>
+
+上面的示例中 egress listener 的 filter chain 中配置的是 HCM。由于 HTTP 隧道是透明传输 TCP 数据流的，因此其中可以是任意七层协议的数据，egress listener 中的 filter chain 中也可以配置为 Tcp Proxy。
+
+## Envoy 作为 HTTP 隧道服务器
+当然，我们可以采用 Envoy 来作为 HTTP Proxy 来接收 HTTP CONNECT 请求，建立和客户端的 HTTP 隧道。Envoy 不能在同一个 Listener 里面E
 
 # 参考资料
 

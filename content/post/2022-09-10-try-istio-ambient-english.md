@@ -1,10 +1,10 @@
 ---
 layout:     post
 
-title:      "初探 Istio Ambient 模式"
+title:      "Try out Istio Ambient mode"
 subtitle:   ""
 description: ""
-author: "赵化冰"
+author: "Huaing Zhao"
 date: 2022-09-10
 image: "https://images.unsplash.com/photo-1558403871-bb6e8113a32e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2662&q=80"
 published: true
@@ -17,16 +17,16 @@ categories: [ Tech ]
 showtoc: true
 ---
 
-Ambient 是 Istio 刚刚宣布支持的一种新的数据面模式，在本篇文章中，我们将尝试安装 Istio 的 ambient 模式，并采用 bookinfo demo 来体验 ambient 提供的 L4 和 L7 能力。
+Ambient is a new data-plane model that Istio has just announced support for. In this post, we will try to install Istio’s ambient model and use the bookinfo demo to experience the L4 and L7 capabilities offered by ambient.
 
-> 备注： L4 指 OSI 标准网络模型的四层，即 TCP 层的处理。 L7 指 OSI 标准网络模型的七层，即应用层的处理，一般指的是 HTTP 协议的处理。
+> Note: L4 refers to the four layers of the OSI standard network model, i.e., TCP layer processing. L7 refers to layer seven of the OSI standard network model, which is the application layer processing, generally referred to as HTTP protocol processing.
 
-# 安装 Istio ambient 模式
-根据 ambient 模式的 [README 文档](https://github.com/istio/istio/tree/experimental-ambient#readme)，目前 ambient 支持了 Google GKE，AWS EKS 和 kind 三种 k8s 部署环境。经过我的尝试，在 Ubuntu 上的 kind 是最方便搭建的部署环境。可以参照[Get Started with Istio Ambient Mesh](https://istio.io/latest/blog/2022/get-started-ambient/) 搭建支持 ambient 的 Istio 试验版本。如果你无法访问官方的下载地址，可以参照下面的步骤从我在国内搭建的镜像地址下载安装：
+# Install Istio ambient mode
+According to the ambient [README](https://github.com/istio/istio/tree/experimental-ambient#readme)，ambient currently supports Google GKE, AWS EKS and kind k8s deployment environments . After my experimentation, kind on Ubuntu is the most convenient deployment environment to try ambient. You can refer to[Get Started with Istio Ambient Mesh](https://istio.io/latest/blog/2022/get-started-ambient/) to deploy the Istio experiment version with ambient support. If you do not have access to the official download address, you can download and install from the mirror I built in China by following these steps:
 
-1. 首先在一个 Ubuntu 虚机上安装 docker 和 [kind](https://kind.sigs.k8s.io/docs/user/quick-start/)。
+1. First install docker and [kind](https://kind.sigs.k8s.io/docs/user/quick-start/) on an Ubuntu virtual machine.
 
-2. 创建一个 kind k8s 集群:
+2. Create a kind k8s cluster:
 ```bash
 kind create cluster --config=- <<EOF
 kind: Cluster
@@ -38,7 +38,7 @@ nodes:
 - role: worker
 EOF
 ```
-3. 然后下载并解压支持 ambient 模式的 Istio 试验版本。
+3. Then download and unzip the Istio experiment version that supports ambient mode.
 
 ```bash
 wget https://zhaohuabing.com/download/ambient/istio-0.0.0-ambient.191fe680b52c1754ee72a06b3e0d3f9d116f2e82-linux-amd64.tar.gz
@@ -46,14 +46,14 @@ wget https://zhaohuabing.com/download/ambient/istio-0.0.0-ambient.191fe680b52c17
 tar -xvf istio-0.0.0-ambient.191fe680b52c1754ee72a06b3e0d3f9d116f2e82-linux-amd64.tar.gz
 ```
 
-4. 安装 Istio，需要指定 profile 为 ambient，注意需要指定 hub，否则相关的容器镜像可能由于网络原因拉取失败。
+4. Install Istio, you need to specify the profile as ambient, note that you need to specify the hub if you can't access gcr.io, otherwise the relevant container image may fail to pull due to network reasons.
 
 ```bash
 cd istio-0.0.0-ambient.191fe680b52c1754ee72a06b3e0d3f9d116f2e82
 ./bin/istioctl install --set profile=ambient --set hub=zhaohuabing
 ```
 
-ambient profile 在集群中安装了 Istiod, ingress gateway, ztunnel 和 istio-cni 几个组件。其中 ztunnel 和 istio-cni 以 daemonset 方式部署在每个 node 上。istio-cni 用于检测哪些应用 pod 处于 ambient 模式，并会创建 iptables 规则将这些 pod 出向流量和入向流量重定向到 node 的 ztunnel。istio-cni 会持续监控 node 上 pod 的变化，并更新相应的重定向逻辑。
+The ambient profile installs Istiod, ingress gateway, ztunnel and istio-cni components in the cluster. The ztunnel and istio-cni are deployed on each node as daemonset. istio-cni is used to detect which application pods are in ambient mode and create iptables rules to redirect outbound and inbound traffic from these pods to the node’s ztunnel. istio-cni will continuously monitors changes to the pods on the node and updates the redirection logic accordingly.
 
 ```bash
 $ kubectl -n istio-system get pod
@@ -68,9 +68,9 @@ ztunnel-dk42c                           1/1     Running   0          87m
 ztunnel-ff26n                           1/1     Running   0          87m
 ```
 
-# 部署 Demo 应用程序
+# Deploy the demo application
 
-执行下面的命令，部署 Demo 应用程序。
+Execute the following command to deploy the Demo application:
 
 ```bash
 kubectl apply -f samples/bookinfo/platform/kube/bookinfo.yaml
@@ -79,20 +79,20 @@ kubectl apply -f https://zhaohuabing.com/download/ambient/sleep.yaml
 kubectl apply -f https://zhaohuabing.com/download/ambient/notsleep.yaml
 ```
 
-上面的命令将 Demo 应用程序部署在 default namespace，由于 default namespace 没有打上相关的标签，此时 Demo 应用的流量并不经过 ztunnel，pod 之间通过 k8s 的 [service](https://www.zhaohuabing.com/post/2019-03-29-how-to-choose-ingress-for-service-mesh/#undefined) 机制进行通信，pod 之间的流量没有经过 mTLS 认证和加密。
+The above command deploys the demo application in the default namespace. Currently, the traffic of the demo application does not go through ztunnel, and the traffic between pods goes through the [k8s service](https://www.zhaohuabing.com/post/2019-03-29-how-to-choose-ingress-for-service-mesh/#undefined) mechanism to communicat with each other, and the traffic between pods is not protected by mTLS.
 
 ![](/img/2022-09-10-try-istio-ambient/app-not-in-ambient.png)
-未纳入 ambient 模式的应用之间的通信
+<p style="text-align: center;">Communication between applications are plain text</p>
 
-# 将 Demo 应用纳入 ambient 模式
+# Put demo application in ambient mode
 
-可以通过为 namespace 打上下面的标签来将该 namespace 中的所有应用加入 ambient mesh 中。
+You can add all application workloads in a namespace to the ambient mesh by labeling the namespace with the following tag.
 
 ```bash
 kubectl label namespace default istio.io/dataplane-mode=ambient
 ``` 
 
-istio-cni 组件会监控到 namespace 加入到了 ambient mesh 中，会设置相应的流量重定向策略，如果我们查看 istio-cni 的日志，可以看到 istio-cni 为应用 pod 创建了相应的路由规则：
+The istio-cni component watches the namespace added to the ambient mesh and will set the appropriate traffic redirection policy. If we check the istio-cni logs, we can see that istio-cni creates the appropriate routing rules for the application pod.
 
 ```bash
 kubectl logs istio-cni-node-nxcnf -n istio-system|grep route
@@ -104,34 +104,35 @@ kubectl logs istio-cni-node-nxcnf -n istio-system|grep route
 2022-09-10T09:40:07.389121Z	info	ambient	Adding route for reviews-v2-79857b95b-nk8hn/default: [table 100 10.244.2.7/32 via 192.168.126.2 dev istioin src 10.244.2.1]
 ```
 
-从 sleep 访问 productpage:
+Access the productpage from sleep:
 
 ```bash
 kubectl exec deploy/sleep -- curl -s http://productpage:9080/ 
 ```
 
-我们应该可以看到 productpage 服务的输出。此时流量已经通过 ztunnel 进行了 mTLS 双向认证和加密。我们应该可以从 sleep 和 productpage 节点上的 ztunnel 的日志中看到访问记录。
+We should be able to see the output of the productpage service. At this point the traffic has been authenticated and encrypted in both directions with mTLS via ztunnel. We should be able to see the access logs from the ztunnel on the sleep and productpage nodes.
 
-outbound 方向的流量（sleep -> sleep node 上的 ztunnel)：
+Traffic in the outbound direction (sleep -> ztunnel on the sleep node).
+
 ```bash
 kubectl  -n istio-system logs ztunnel-dk42c -cistio-proxy --tail 1
 [2022-09-10T10:12:33.041Z] "- - -" 0 - - - "-" 84 1839 2 - "-" "-" "-" "-" "envoy://outbound_tunnel_lis_spiffe://cluster.local/ns/default/sa/sleep/10.244.2.9:9080" spiffe://cluster.local/ns/default/sa/sleep_to_http_productpage.default.svc.cluster.local_outbound_internal envoy://internal_client_address/ 10.96.250.29:9080 10.244.1.5:45176 - - capture outbound (no waypoint proxy)
 ```
 
-inbound 方向的流量日志（productpage 上的 ztunnel -> productpage）：
+Traffic logs in the inbound direction (ztunnel -> productpage on productpage).
 ```bash
 kubectl  -n istio-system logs ztunnel-ff26n -cistio-proxy --tail 1
 [2022-09-10T10:18:23.497Z] "CONNECT - HTTP/2" 200 - via_upstream - "-" 84 1839 2 - "-" "-" "6300b128-3a4d-472e-b573-e14743b6c981" "10.244.2.9:9080" "10.244.2.9:9080" virtual_inbound 10.244.1.3:48053 10.244.2.9:15008 10.244.1.3:36748 - - inbound hcm
 ```
+We can see that the outbound traffic log has the word (no waypoint proxy) in it because ambient’s only does L4 processing by default, no L7 processing. The traffic only goes through the ztunnel and not the waypoint proxy, as shown in the figure below.
 
-我们可以看到 outbound 流量的日志中有(no waypoint proxy)字样，这是因为 ambient 目前的实现中缺省只进行 L4 处理，没有进行 L7 处理。因此此时流量只会通过 ztunnel ，不会经过 waypoint proxy。此时应用程序的流量路径如下图所示：
 ![](/img/2022-09-10-try-istio-ambient/app-in-ambient-secure-overlay.png)
-应用之间通过 ztunnel 安全覆盖层进行通信
+<p style="text-align: center;">Applications communicate with each other through the ztunnel security overlay</p>
 
 
-# 为 ambient mode 启用 L7 功能
+# Enable L7 processing for ambient mode
 
-目前 ambient 模式需要通过定义一个 gateway 来显示启用某个服务的七层处理。创建下面的 gateway，为 productpage 服务开启七层处理。
+Currently ambient mode requires a gateway to be defined to enable L7 processing for a service. Create the following gateway to enable L7 processing for the productpage service.
 
 ```bash
 kubectl apply -f - <<EOF
@@ -146,31 +147,32 @@ spec:
 EOF
 ```
 
-注意上面创建的 gateway 资源中 gatewayClassName 必须设置为 'istio-mesh'，Istio 才会为 productpage 创建对应的 waypoint proxy。
+Note that the gatewayClassName in the gateway resource must be set to ‘istio-mesh’, otherwise Istio won't create the corresponding waypoint proxy for the productpage.
 
-此时可以查看到 Istio 创建的 waypoint proxy：
+You can see the waypoint proxy created by Istio at this point.
 
 ```bash
 kubectl get pod|grep waypoint
 bookinfo-productpage-waypoint-proxy-7dc7c7ff6-6q6l7   1/1     Running   0          21s
 ```
-从 sleep 访问 productpage:
+Access the productpage from sleep.
 
 ```bash
 kubectl exec deploy/sleep -- curl -s http://productpage:9080/ 
 ```
 
-下面我们再来看一下请求经过的实际路径：
+Let’s look at the actual path that the request goes through.
 
-sleep -> sleep node 上的 ztunnel ：
+sleep -> ztunnel on sleep node.
+
 ```bash
 kubectl  -n istio-system logs ztunnel-dk42c -cistio-proxy --tail 1
 [2022-09-10T10:51:36.373Z] "- - -" 0 - - - "-" 84 1894 5 - "-" "-" "-" "-" "10.244.2.12:15006" spiffe://cluster.local/ns/default/sa/sleep_to_server_waypoint_proxy_spiffe://cluster.local/ns/default/sa/bookinfo-productpage 10.244.1.5:47829 10.96.250.29:9080 10.244.1.5:44952 - - capture outbound (to server waypoint proxy)
 ```
 
-可以从上面的日志中看到 (to server waypoint proxy) 字样，说明请求经过 waypoint proxy。
+You can see the words (to server waypoint proxy) in the above log, indicating that the request went through the waypoint proxy.
 
-sleep node 上的 ztunnel -> waypoint proxy :
+ztunnel on sleepnode-> waypoint proxy.
 
 ```bash
 kubectl logs bookinfo-productpage-waypoint-proxy-7dc7c7ff6-6q6l7 --tail 3
@@ -184,15 +186,15 @@ kubectl  -n istio-system logs ztunnel-ff26n -cistio-proxy --tail 1
 [2022-09-10T10:51:36.376Z] "CONNECT - HTTP/2" 200 - via_upstream - "-" 699 1839 1 - "-" "-" "3e0eaa80-7c72-4d46-909a-233a6bd6073e" "10.244.2.9:9080" "10.244.2.9:9080" virtual_inbound 10.244.2.12:41893 10.244.2.9:15008 10.244.2.12:38336 - - inbound hcm
 ```
 
-在 ambient 模式中启用 L7 功能后，应用之间的流量路径如下图所示：
+After the L7 feature has been enabled in ambient mode, the traffic path between applications is shown in the figure below.
 ![](/img/2022-09-10-try-istio-ambient/app-in-ambient-l7.png)
-启用 waypoint L7 处理后的应用流量路径
+<p style="text-align: center;">Application traffic path after enabling waypoint L7 processing</p>
 
-# 对流量进行七层路由
+# Routing Traffic
 
-现在我们来尝试在 ambient 模式中对流量进行七层路由。ambient 模式的路由规则和 sidecar 模式是相同的，也是采用 Virtual service。
+Now let’s try to route the traffic in ambient mode. Ambient mode has the same routing rules as sidecar mode and also uses Virtual service.
 
-首先通过创建 gateway 为 review 服务启用 L7 能力。
+First enable the L7 capability for the review service by creating a gateway.
 
 ```bash
 kubectl apply -f - <<EOF
@@ -207,7 +209,7 @@ spec:
 EOF
 ```
 
-然后创建 DR，按版本将 review 服务分为 3 个 subset：
+Creat a DR to divide the reviews service into 3 subsets.
 
 ```bash
 kubectl apply -f - <<EOF
@@ -233,7 +235,7 @@ spec:
 EOF
 ```
 
-创建 VS，按 90/10 的比例将请求发送到 V1 和 V2 版本：
+Create VS and send requests to V1 and V2 versions in 90/10 ratio.
 
 ```bash
 kubectl apply -f - <<EOF
@@ -257,7 +259,7 @@ spec:
 EOF
 ```
 
-执行下面的命令，可以验证 reviews 服务的请求按照上面定义的路由规则进行了路由。
+Execute the following command to verify that the reviews service requests are routed according to the routing rules defined above.
 
 ```bash
 kubectl exec -it deploy/sleep -- sh -c 'for i in $(seq 1 10); do curl -s http://istio-ingressgateway.istio-system/productpage | grep reviews-v.-; done'
@@ -274,12 +276,15 @@ kubectl exec -it deploy/sleep -- sh -c 'for i in $(seq 1 10); do curl -s http://
         <u>reviews-v1-6494d87c7b-f4lvz</u>
 ```
 
-# ambient 模式小结
+# Wrap-up and Key Take-aways
 
-从上面的试验，可以看到 ambient 模式已经较好地解决了 Istio sidecar 模式下应用和 sidecar 的部署依赖问题。在 ambient 模式下，服务网格的能力是通过应用 pod 之外的 ztunnel 和 waypoint proxy 提供的，不再需要对应用 pod 进行 sidecar 注入，因此应用和 mesh 组件的的部署和升级不再相互依赖，将服务网格彻底下沉到了基础设施层面，实现了“服务网格是为应用提供通信的基础设施”的承诺。
-目前要为服务启用 L7 网格能力，必须显示创建一个 gateway，这对于运维来说是一个额外的负担。对于之前我比较担心的 waypoint proxy 导致的故障范围扩大和故障定位不变的问题，由于 Istio 为每个服务账号创建一个 waypoint proxy deployment，只要遵循最佳实践为每个服务创建不同的 service account，该问题也可以得到比较好的解决。另外目前 ambient 尚处于快速的开发迭代过程中，相信这些小问题将在后续的版本中很快得到解决。
+From the above experiments, we can see that ambient mode has solved the deployment dependency problem of application and sidecar in Istio sidecar mode. In ambient mode, the service mesh functionalities are provided through ztunnel and waypoint proxy, which are outside of the application pod, and sidecar injection to the application pods is no longer required. As a result, the lifecycle of application and mesh components such as deployment and upgrade are no longer coupled, bringing the service mesh down to the infrastructure layer as it has promised.
 
-# 参考文档：
+Currently, to enable the L7 processing for a service, you have to create a gateway, which is an additional burden for operations. I was also concerned about the bigger blast radius compared with sidecar. But since a waypoint only serves a service account, this problem can be mitigated by assign a dedicated service account for each service, and it's also a k8s security best-practice we should follow.
+
+Aywany, ambient is still in active development, so I believe these minor issues will be solved soon in future release.
+
+# Reference
 * https://istio.io/latest/blog/2022/get-started-ambient/
 
 

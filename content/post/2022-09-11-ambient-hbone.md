@@ -17,7 +17,7 @@ categories: [ Tech ]
 showtoc: true
 ---
 
-Istio ambient 模式采用了被称为 [HBONE](https://www.zhaohuabing.com/post/2022-09-08-introducing-ambient-mesh/#%E6%9E%84%E5%BB%BA%E4%B8%80%E4%B8%AA-ambient-mesh) 的方式来连接 ztunnel 和 waypoint proxy。HBONE 是 HTTP-Based Overlay Network Environment 的缩写。虽然该名称是第一次看到，其实 HBONE 并不是 Istio 创建出来的一个新协议，而只是利用了 HTTP 协议标准提供的隧道能力。简单地说，ambient 模式采用了 [HTTP CONNECT 方法](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/CONNECT) 在 ztunnel 和 waypoint proxy 创建了一个隧道，通过该隧道来传输数据。本文将分析 HBONE 的实现机制和原理。
+Istio ambient 模式采用了被称为 [HBONE](https://www.zhaohuabing.com/post/2022-09-08-introducing-ambient-mesh/#%E6%9E%84%E5%BB%BA%E4%B8%80%E4%B8%AA-ambient-mesh) 的方式来连接 ztunnel 和 waypoint proxy。HBONE 是 HTTP-Based Overlay Network Environment 的缩写。虽然该名称是第一次看到，其实 HBONE 并不是 Istio 创建出来的一个新协议，而只是利用了 HTTP 协议标准提供的隧道能力。简单地说，ambient 模式采用了 [HTTP 的 CONNECT 方法](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/CONNECT) 在 ztunnel 和 waypoint proxy 创建了一个隧道，通过该隧道来传输数据。本文将分析 HBONE 的实现机制和原理。
 
 # HTTP 隧道原理
 
@@ -52,7 +52,7 @@ SSH-2.0-OpenSSH_4.3\r\n
 ... ggg
 ```
 
-备注：除了 HTTP CONNECT 以外，采用 HTTP GET 和 POST 也可以创建 HTTP 隧道，这种方式创建的隧道的原理是将 TCP 数据封装到 HTTP 数据包中发送到外部服务器，该外部服务器会提取并执行客户端的原始网络请求。外部服务器收到此请求的响应后，将其重新打包为HTTP响应，并发送回客户端。在这种方式中，客户端所有流量都封装在 HTTP GET 或者 POST 请求中。
+> 备注：除了 HTTP CONNECT 以外，采用 HTTP GET 和 POST 也可以创建 HTTP 隧道，这种方式创建的隧道的原理是将 TCP 数据封装到 HTTP 数据包中发送到外部服务器，该外部服务器会提取并执行客户端的原始网络请求。外部服务器收到此请求的响应后，将其重新打包为HTTP响应，并发送回客户端。在这种方式中，客户端所有流量都封装在 HTTP GET 或者 POST 请求中。
 
 # Envoy 的 Internal Listener 机制
 
@@ -195,7 +195,7 @@ clusters:
 上面的示例中 Egress Listener 的 filter chain 中配置的是 HCM。由于 HTTP 隧道是透明传输 TCP 数据流的，因此其中可以是任意七层协议的数据，Egress Listener 中的 filter chain 中也可以配置为 Tcp Proxy。
 
 ## Envoy 作为 HTTP 隧道服务器
-当然，我们可以采用 Envoy 来作为 HTTP Proxy 来接收 HTTP CONNECT 请求，建立和客户端的 HTTP 隧道。Envoy 不能在同一个 Listener 里面建立隧道并将从 HTTP 数据从隧道中解封出来。要实现这一点，我们需要两层 listener，第一层 listener 中的 HCM 负责创建 HTTP CONNECT 隧道并从隧道中拿到 TCP 数据流，然后将该 TCP 数据流交给第二次 listener 中的 HCM 进行 HTTP 处理。
+当然，我们可以采用 Envoy 来作为 HTTP Proxy 来接收 HTTP CONNECT 请求，建立和客户端的 HTTP 隧道。Envoy 不能在同一个 Listener 里面建立隧道并将从 HTTP 数据从隧道中解封出来。要实现这一点，我们需要两层 listener，第一层 listener 中的 HCM 负责创建 HTTP CONNECT 隧道并从隧道中拿到 TCP 数据流，然后将该 TCP 数据流交给个 listener 中的 HCM 进行 HTTP 处理。
 
 下面的配置将 Envoy 作为一个 HTTP CONNECT 隧道服务器端，并采用一个 Internal Listen 对隧道中的数据进行 HTTP 处理。（该配置文件来自 [Envoy Github 中的示例文件](https://github.com/envoyproxy/envoy/blob/8537d2a29265e61aaa0349311e6fc5d592659b08/configs/terminate_http_in_http2_connect.yaml)）
 
@@ -302,7 +302,7 @@ HBONE 由于采用了 HTTP CONNECT 创建隧道，还可以在 HTTP CONNECT 请�
 * X-Forwarded-For（可选） - 请求的原始源地址，用于在多跳访问之间保留源地址。
 * baggage (可选) - client/server 的一些元数据，在 telemetry 中使用。
 
-在这篇文章中，我们介绍了了 Istio ambient 模式用来连接 ztunnel 和 waypoint proxy 的 HBONE 隧道的基本原理。下一篇文章中，我们将以 bookinfo demo 程序为例来深入分析 ambient 模式中 HBONE 的流量路径。
+在这篇文章中，我们介绍了 Istio ambient 模式用来连接 ztunnel 和 waypoint proxy 的 HBONE 隧道的基本原理。下一篇文章中，我们将以 bookinfo demo 程序为例来深入分析 ambient 模式中 HBONE 的流量路径。
 
 
 # 参考资料

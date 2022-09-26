@@ -3,7 +3,7 @@ layout:     post
 
 title:      "脑动极光 Aeraki Mesh Dubbo 架构微服务治理实践应用"
 subtitle:   ""
-description: ""
+description: "脑动极光在 Aeraki Mesh 社区会议上分享的 Dubbo 微服务治理实践。"
 author: "赵化冰"
 date: 2022-09-26
 image: "https://images.unsplash.com/photo-1592514302393-c7c44b038323?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3432&q=80"

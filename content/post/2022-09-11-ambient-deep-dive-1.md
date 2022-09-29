@@ -1,11 +1,11 @@
 ---
 layout:     post
 
-title:      "Istio Ambient 模式 HBONE 隧道原理详解 - 上"
-subtitle:   ""
+title:      "Istio Ambient 模式流量管理实现机制详解（一）"
+subtitle:   "HBONE 隧道原理"
 description: ""
 author: "赵化冰"
-date: 2022-09-11
+date: 2022-09-28
 image: "https://images.unsplash.com/photo-1558405588-0eff8afefeb3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2662&q=80"
 published: true
 tags:

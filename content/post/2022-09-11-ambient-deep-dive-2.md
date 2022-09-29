@@ -1,13 +1,13 @@
 ---
 layout:     post
 
-title:      "Istio Ambient 模式 HBONE 隧道原理详解 - 中"
-subtitle:   ""
+title:      "Istio Ambient 模式流量管理实现机制详解（二）"
+subtitle:   "ztunnel 流量劫持"
 description: ""
 author: "赵化冰"
-date: 2022-09-14
+date: 2022-09-29
 image: "https://images.unsplash.com/photo-1558405588-0eff8afefeb3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2662&q=80"
-published: false
+published: true
 tags:
     - Istio
     - Envoy
@@ -17,10 +17,9 @@ categories: [ Tech ]
 showtoc: true
 ---
 
-Ambient 模式采用了[策略路由（Policy-based Routing）](https://en.wikipedia.org/wiki/Policy-based_routing)来将应用 workload 的流量转发到 ztunnel。
-
-
-下面我们以 [初探 Istio Ambient 模式](https://www.zhaohuabing.com/post/2022-09-10-try-istio-ambient/) 中安装的 demo 为例来介绍 ambient 模式是如何对流量进行处理的。
+ambient 模式中，所有 pod 通过 node 上的 ztunnel 之间创建的安全通道进行通信，如下图所示：
+![](/img/2022-09-10-try-istio-ambient/app-in-ambient-secure-overlay.png)
+那么 Istio 是如何将 pod 的流量发送到 ztunnel 的呢？ambient 模式采用了 iptables 规则和[策略路由（Policy-based Routing）](https://en.wikipedia.org/wiki/Policy-based_routing)来将 pod 的流量转发到 ztunnel。下面我们以 [初探 Istio Ambient 模式](https://www.zhaohuabing.com/post/2022-09-10-try-istio-ambient/) 中安装的 demo 为例来详细介绍 ambient 模式是如何对流量进行劫持的。
 
 kind 集群中有三个 node，如下所示：
 ```
@@ -98,11 +97,7 @@ ztunnel-gzlxs                          10.244.2.10   ambient-worker2
 
 可以看到，该节点上
 
-
-
-
-
-
+。。。。。 未完待续
 
 # 参考资料
 

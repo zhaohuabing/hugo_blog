@@ -3,7 +3,7 @@ layout:     post
 
 title:      "5分钟内将 Dubbo 服务接入 Istio 服务网格"
 subtitle:   "Aeraki Mesh Dubbo 接入教程"
-description: ""
+description: "演示如何利用 Aeraki Mesh 在 Isito 服务网格中对 Dubbo 服务进行服务治理：七层负载均衡、动态路由、本地/全局限流、零代码侵入调用跟踪、查看调用指标等。"
 author: "赵化冰"
 date: 2022-09-27
 image: "https://images.unsplash.com/photo-1627666259356-03a116b7dde9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"

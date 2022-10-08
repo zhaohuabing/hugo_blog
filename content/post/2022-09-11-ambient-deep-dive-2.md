@@ -42,7 +42,7 @@ reviews-v2-79857b95b-m4lst        10.244.2.5    ambient-worker2
 reviews-v3-75f494fccb-5jgzw       10.244.2.8    ambient-worker2
 ```
 
-本例中 pod 和 node 通过 [ptp](https://www.cni.dev/plugins/current/main/ptp/) 方式连接，目前 ambient 还不支持 [bridige](https://www.cni.dev/plugins/current/main/bridge/) 模式。istio 社区正在进行支持 bridge 模式的相关工作。
+本例中 pod 和 node 通过 [ptp](https://www.cni.dev/plugins/current/main/ptp/) 方式连接，即 pod 和 node 之间通过一个 veth pair 连接，并通过设置 node 上的路由规则来打通 pod 和 node 之间的网络。目前 ambient 还不支持 [bridige](https://www.cni.dev/plugins/current/main/bridge/) 模式。istio 社区正在进行支持 bridge 模式的相关工作。
 
 Istio 在 ambient-worker2 上部署了 ztunnel-gzlxs 来负责处理应用 pod 之间的通信。
 ```bash
@@ -144,7 +144,7 @@ outbound 流量进入 ztunnel pod 后，采用透明代理(TPROXY)的方式发�
 ### outbound 方向流量劫持总览
 通过上面的分析，可以看到 outbound 流量劫持的完整流程如下图所示：
 ![](/img/2022-09-11-ambient-deep-dive-2/ztunnel-outbound.png)
-<center>ambient 模式 outbound 流量劫持</center>
+<center>ambient 模式 outbound 流量劫持（ptp 网络）</center>
 
 ## inbound 流量劫持
 ### node 上 inbound 方向的策略路由

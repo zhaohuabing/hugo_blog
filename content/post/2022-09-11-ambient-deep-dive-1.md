@@ -302,7 +302,8 @@ HBONE 由于采用了 HTTP CONNECT 创建隧道，还可以在 HTTP CONNECT 请�
 * X-Forwarded-For（可选） - 请求的原始源地址，用于在多跳访问之间保留源地址。
 * baggage (可选) - client/server 的一些元数据，在 telemetry 中使用。
 
-在这篇文章中，我们介绍了 Istio ambient 模式用来连接 ztunnel 和 waypoint proxy 的 HBONE 隧道的基本原理。下一篇文章中，我们将以 bookinfo demo 程序为例来深入分析 ambient 模式中 HBONE 的流量路径。
+# 小结
+在这篇文章中，我们介绍了 Istio ambient 模式用来连接 ztunnel 和 waypoint proxy 的 HBONE 隧道的基本原理。下一篇文章中，我们将以 bookinfo demo 程序为例来深入分析 ambient 模式中的流量劫持原理。
 
 
 # 参考资料

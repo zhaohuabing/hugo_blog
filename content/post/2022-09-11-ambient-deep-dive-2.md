@@ -42,8 +42,6 @@ reviews-v2-79857b95b-m4lst        10.244.2.5    ambient-worker2
 reviews-v3-75f494fccb-5jgzw       10.244.2.8    ambient-worker2
 ```
 
-本例中 pod 和 node 通过 [ptp](https://www.cni.dev/plugins/current/main/ptp/) 方式连接，即 pod 和 node 之间通过一个 veth pair 连接，并通过设置 node 上的路由规则来打通 pod 和 node 之间的网络。目前 ambient 还不支持 [bridige](https://www.cni.dev/plugins/current/main/bridge/) 模式。istio 社区正在进行支持 bridge 模式的相关工作。
-
 Istio 在 ambient-worker2 上部署了 ztunnel-gzlxs 来负责处理应用 pod 之间的通信。
 ```bash
 ~ k get pod -n istio-system -ocustom-columns=NAME:.metadata.name,IP:.status.podIP,NODE:.spec.nodeName|grep ztunnel
@@ -52,7 +50,14 @@ ztunnel-l5d98                          10.244.0.6    ambient-control-plane
 ztunnel-w59fl                          10.244.1.19   ambient-worker
 ```
 
+本文使用的 demo 中， pod 和 node 通过 [ptp](https://www.cni.dev/plugins/current/main/ptp/) 方式连接，即 pod 和 node 之间通过一个 veth pair 连接，并通过设置 node 上的路由规则来打通 pod 和 node 之间的网络。下文中流量劫持的相关分析也是基于 kubernetes ptp 网络的。（在编写本文时，ambient 还不支持 [bridige](https://www.cni.dev/plugins/current/main/bridge/) 模式。istio 社区正在进行支持 bridge 模式的相关工作。）
+
 ## outbound 流量劫持
+outbound 方向的流量劫持主要涉及两个步骤：
+1. 采用 node 上的 iptables 规则和策略路由将应用 pod 的 outbound 流量路由到 ztunnel pod。
+2. 采用 TPROXY 将进入 ztunnel pod 的 outbound 流量重定向到 envoy 的 15001 端口。
+
+下面我们来介绍 istio 在以上两个步骤中使用到的网络工具和实现原理。
 
 ### 应用 pod ipset
 由于 kind 部署的 k8s 集群采用了 container 来模拟 node，我们可以采用 ```docker``` 命令进入 ambient-worker2 node。（由于 kind 集群中的 node 实际上是一个 docker container，因此我们可以通过 ```docker exec``` 命令进入 node。）
@@ -93,7 +98,7 @@ Name: ztunnel-pods-ips
 ```
 
 ### node 上 outbound 方向的策略路由
-查看 outbound 相关的策略路由规则，可以看到打上了 0x100 标签的数据包将采用 101 这个路由表。由于数据包的目的地址是 service ip，将采用缺省路由，通过 istioout 网络设备发送到 192.168.127.2。 istioout 是 istio-cni 创建的一个 geneve tunnel 设备，该 tunnel 连接了 node 和 ztunnel pod，192.168.127.2 是 tunnel 在 ztunnel pod 端的 ip 地址，我们将在下文中详细介绍该 tunnel。
+查看 outbound 相关的策略路由规则，可以看到打上了 0x100 标签的数据包将采用 101 这个路由表，将通过 istioout 网络设备发送到 192.168.127.2。istioout 是 istio-cni 创建的一个 geneve tunnel 设备，该 tunnel 连接了 node 和 ztunnel pod，192.168.127.2 是 tunnel 在 ztunnel pod 端的 ip 地址，我们将在下文中详细介绍该 tunnel。
 
 ```bash
 ~ docker exec ambient-worker2 ip rule
@@ -107,7 +112,7 @@ default via 192.168.127.2 dev istioout
 ```
 ### istioout geneve tunnel
 
-为了区分请求目的地址为 service ip 和 pod ip 的数据包，ambient 采用了 [geneve tunnel](https://www.rfc-editor.org/rfc/rfc8926.html) 来将目的地址为 service ip 的数据包从 node 路由到 ztunnel pod 中。
+ambient 采用了 [geneve tunnel](https://www.rfc-editor.org/rfc/rfc8926.html) 来将应用 pod 的 outbound 数据包从 node 路由到 ztunnel pod 中。
 
 查看 geneve tunnel 在 node 这一侧的设备，可以看到分配的地址为 ```192.168.127.1```，其 tunnel 的对端是 ```10.244.2.10```，即该 node 上的 ztunnel pod。
 ```bash
@@ -142,17 +147,23 @@ outbound 流量进入 ztunnel pod 后，采用透明代理(TPROXY)的方式发�
 ```
 
 ### outbound 方向流量劫持总览
-通过上面的分析，可以看到 outbound 流量劫持的完整流程如下图所示：
+除了上文介绍的内容之外，outbound 流量的完整处理流程还涉及到流量如何从 pod 路由到 node（下图中箭头1），以及经过 ztunnel 处理后如何发出到其他 node（下图中箭头5,6,7）的过程。这些部分的流量路由和 istio 无关，可以参考 kubernetes [ptp CNI plugin](https://www.cni.dev/plugins/current/main/ptp/) 的介绍。如果使用不同的 CNI plugin，这些部分的流量路由实现也会有所不同。本例中，outbound 流量劫持的完整流程如下图所示：
 ![](/img/2022-09-11-ambient-deep-dive-2/ztunnel-outbound.png)
 <center>ambient 模式 outbound 流量劫持（ptp 网络）</center>
 
 ## inbound 流量劫持
+inbound 方向的流量劫持和 outbound 类似，也主要涉及两个步骤：
+
+1. 采用 node 上的策略路由将应用 pod 的 outbound 流量路由到 ztunnel pod。
+2. 采用 TPROXY 将进入 ztunnel pod 的 outbound 流量重定向到 envoy 的 15006 和 15008 端口。其中 15006 处理 plain tcp 数据，15008 处理 tls 数据。
+
+下面我们来具体分析 inbound 方向流量劫持的实现原理。
+
 ### node 上 inbound 方向的策略路由
 inbound 方向的流量会采用 100 这个路由表。从路由表中的规则中可以看到，目的地址是该 node 上应用 pod（10.244.2.*/24）的 IP 数据包将通过 istioin 这个设备路由到 192.168.126.2。istioin 是 istio-cni 创建的一个 geneve tunnel 设备，该 tunnel 连接了 node 和 ztunnel pod，192.168.126.2 是 tunnel 在 ztunnel pod 端的 ip 地址，我们将在下文中详细介绍该 tunnel。
 
 ```bash
 ~ docker exec ambient-worker2 ip rule
-➜  ~ docker exec -it ambient-worker2 ip rule
 103:	from all lookup 100
 ```
 
@@ -204,9 +215,9 @@ k -n istio-system exec  ztunnel-gzlxs --  iptables-save|grep pistioin
 ```
 
 ### inbound 方向流量劫持总览
-通过上面的分析，可以看到 inbound 流量劫持的完整流程如下图所示：
+除了上文介绍的内容之外，inbound 流量的完整处理流程还涉及到流量经过 ztunnel 处理后如何路由到应用 pod（下图中箭头5,6,7）的过程。这些部分的流量路由和 istio 无关，可以参考 kubernetes ptp CNI plugin 的介绍。如果使用不同的 CNI plugin，这些部分的流量路由实现也会有所不同。本例中，inbound 流量劫持的完整流程如下图所示：
 ![](/img/2022-09-11-ambient-deep-dive-2/ztunnel-inbound.png)
-<center>ambient 模式 inbound 流量劫持</center>
+<center>ambient 模式 inbound 流量劫持（ptp 网络）</center>
 
 # 小结
 在本文中，我们详细分析了 Istio ambient 模式是如何劫持应用 pod 的流量，并将其转发到 ztunnel pod 的。ambient 模式下采用了 iptables，策略路由和 TPROXY 等 linux 的网络工具来对流量进行拦截和路由。从上文的分析中可以看到，由于 ambient 模式修改了 node 上的 iptables 规则和路由，和某些 k8s cni 插件可能出现冲突。相对而言，sidecar 模式只会影响到 pod 自身的 network namespace，和 k8s cni 的兼容性较好。ambient 模式目前只支持[ptp](https://www.cni.dev/plugins/current/main/ptp/) 类型的 k8s 网络，[bridige](https://www.cni.dev/plugins/current/main/bridge/) 模式的支持工作正在进行中。 在本系列的下一篇文章中，我们将继续深入分析 ztunnel 内部对四层流量的处理流程。

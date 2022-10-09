@@ -3,10 +3,10 @@ layout:     post
 
 title:      "Istio Ambient 模式流量管理实现机制详解（二）"
 subtitle:   "ztunnel 流量劫持"
-description: ""
+description: "ambient 模式中，应用 pod 通过 ztunnel 之间的安全通道进行通信。要实现这一点，Istio 需要劫持应用 pod 的 outbound 和 inbound 流量，并转发到 ztunnel 进行处理。这是如何实现的呢？"
 author: "赵化冰"
 date: 2022-09-29
-image: "https://images.unsplash.com/photo-1618564340323-28f633e4c748?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80"
+image: "https://images.unsplash.com/photo-1473800447596-01729482b8eb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"
 published: true
 tags:
     - Istio
@@ -147,7 +147,7 @@ outbound 流量进入 ztunnel pod 后，采用透明代理(TPROXY)的方式发�
 ```
 
 ### outbound 方向流量劫持总览
-除了上文介绍的内容之外，outbound 流量的完整处理流程还涉及到流量如何从 pod 路由到 node（下图中箭头1），以及经过 ztunnel 处理后如何发出到其他 node（下图中箭头5,6,7）的过程。这些部分的流量路由和 istio 无关，可以参考 kubernetes [ptp CNI plugin](https://www.cni.dev/plugins/current/main/ptp/) 的介绍。如果使用不同的 CNI plugin，这些部分的流量路由实现也会有所不同。本例中，outbound 流量劫持的完整流程如下图所示：
+除了上文介绍的内容之外，outbound 流量的完整处理流程还涉及到流量如何从 pod 路由到 node（下图中箭头1），以及经过 ztunnel 处理后如何发出到其他 node（下图中箭头5,6,7）的过程。这些部分的流量路由和 istio 无关，本文不进行详细介绍，有兴趣了解的话可以参考 kubernetes [ptp CNI plugin](https://www.cni.dev/plugins/current/main/ptp/) 的介绍。如果使用不同的 CNI plugin，这些部分的流量路由实现也会有所不同。本例中，outbound 流量劫持的完整流程如下图所示：
 ![](/img/2022-09-11-ambient-deep-dive-2/ztunnel-outbound.png)
 <center>ambient 模式 outbound 流量劫持（ptp 网络）</center>
 
@@ -215,7 +215,7 @@ k -n istio-system exec  ztunnel-gzlxs --  iptables-save|grep pistioin
 ```
 
 ### inbound 方向流量劫持总览
-除了上文介绍的内容之外，inbound 流量的完整处理流程还涉及到流量经过 ztunnel 处理后如何路由到应用 pod（下图中箭头5,6,7）的过程。这些部分的流量路由和 istio 无关，可以参考 kubernetes ptp CNI plugin 的介绍。如果使用不同的 CNI plugin，这些部分的流量路由实现也会有所不同。本例中，inbound 流量劫持的完整流程如下图所示：
+除了上文介绍的内容之外，inbound 流量的完整处理流程还涉及到流量经过 ztunnel 处理后路由到应用 pod（下图中箭头5,6,7）的过程。这些部分的流量路由和 istio 无关，本文不进行详细介绍，有兴趣了解的话可以参考 kubernetes [ptp CNI plugin](https://www.cni.dev/plugins/current/main/ptp/) 的介绍。如果使用不同的 CNI plugin，这些部分的流量路由实现也会有所不同。本例中，inbound 流量劫持的完整流程如下图所示：
 ![](/img/2022-09-11-ambient-deep-dive-2/ztunnel-inbound.png)
 <center>ambient 模式 inbound 流量劫持（ptp 网络）</center>
 

@@ -1,4 +1,5 @@
 node_modules
+static/_pagefind
 public
 .env
 *.log

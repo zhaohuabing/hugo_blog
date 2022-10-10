@@ -12,9 +12,9 @@ index-pagefind:
 index-pagefind:
 deploy: # deploy command for netlify. 
 	hugo
-	npx pagefind --source public
+	# npx pagefind --source public
 	# Notice: these environment variables need to be set: ALGOLIA_ADMIN_KEY, ALGOLIA_APP_ID, ALGOLIA_INDEX_FILE, ALGOLIA_INDEX_NAME
-	# npm install atomic-algolia --save
-	# npm run algolia 
+	npm install atomic-algolia --save
+	npm run algolia 
 
 .PHONY: serve index-algolia index-pagefind deploy

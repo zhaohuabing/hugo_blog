@@ -15,7 +15,9 @@ tags:
     - Aeraki Mesh
     - Dubbo
     - MetaProtocol
-categories: [ Tech ]
+categories: 
+    - Tech
+    - Presentations
 showtoc: false
 ---
 [Aeraki Mesh 官网](https://aeraki.net)

@@ -15,8 +15,14 @@ GO_VERSION = "1.18"
   status = 200
   force = true
 
-  [[redirects]]
+[[redirects]]
   from = "/learning-linux/*"
   to = "https://gilded-melomakarona-a91538.netlify.app/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/istio-guide/*"
+  to = "https://istio-guide.netlify.app/:splat"
   status = 200
   force = true

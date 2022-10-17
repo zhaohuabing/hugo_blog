@@ -16,7 +16,7 @@ categories: [ Books ]
 showtoc: false
 metadata:
     - text: "在线阅读"
-      link: "https://istio-operation-bible.aeraki.net/"
+      link: "https://www.zhaohuabing.com/istio-guide/docs/"
 ---
 ### Istio 运维实战
 
@@ -24,4 +24,4 @@ metadata:
 
 然而，“服务网格”这一基础设施的引入也给整个微服务的运维技术栈带来了新的挑战。对于运维同学来说，Istio 和 Envoy 的运维存在着较陡的学习曲线。腾讯云 TCM（Tencent Cloud Mesh）团队是业内最早一批接触服务网格技术的人员之一，有着大量 Istio/Envoy 故障排查和运维经验。本电子书记录了 TCM 团队从大量实际案例中总结出来的 Istio 运维经验，以及使用 Istio 的最佳实践，希望对大家有所帮助。
 
-在线阅读：https://istio-operation-bible.aeraki.net/
+在线阅读：https://www.zhaohuabing.com/istio-guide/docs/

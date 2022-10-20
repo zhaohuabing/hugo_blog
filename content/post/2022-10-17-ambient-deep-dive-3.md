@@ -6,7 +6,7 @@ subtitle:   "ztunnel 四层流量处理"
 description: ""
 author: "赵化冰"
 date: 2022-10-17
-image: "https://images.unsplash.com/photo-1473800447596-01729482b8eb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"
+image: "https://images.unsplash.com/photo-1664434612237-3eda04fbc834?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"
 published: true
 tags:
     - Istio
@@ -199,7 +199,7 @@ Internal Listener 中 TCP Proxy 指定的 Cluster ```outbound_tunnel_clus_spiffe
 
 {{< figure src="img/2022-10-17-ambient-deep-dive-3/outbound_sds.png" link="/img/2022-10-17-ambient-deep-dive-3/outbound_sds.png" >}} {{< load-photoswipe >}}
 
-### Outbound 四层流量处理总览
+### Outbound 处理总览
 
 通过对 ztunnel 配置的分析，我们可以看到，在 ztunnel 中，Outbound 方向流量的处理过程如下：
 1. ztunnel_outbound listener 在 15001 端口接收 pod 上劫持后通过 TPROXY 转发到 ztunnel 的出向流量。

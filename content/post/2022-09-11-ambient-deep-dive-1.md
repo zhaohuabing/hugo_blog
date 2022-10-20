@@ -70,7 +70,7 @@ filter_chains:
 ]
 ```
 
-采用一个 Cluster 来连接 Egress Listener 和 Internal Listener。该 Cluster 配置在 Egress Listener 的 HCM 中，其 endpoint 是 Internal Listener 的 name。
+然后采用一个 Cluster 来连接 Egress Listener 和 Internal Listener。如下面的配置片段所示，该 Cluster 配置在 Egress Listener 的 HCM 中，其 endpoint 中的地址是一个 [Envoy Internal Address](https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/core/v3/address.proto#envoy-v3-api-msg-config-core-v3-envoyinternaladdress)，表示 endpoint 对应的是一个 internal listener，而不是一个真正的 upstream host。
 ```yaml
 name: encap_cluster
 load_assignment:
@@ -99,6 +99,8 @@ filter_chains:
       stat_prefix: ingress
       cluster: encap_cluster
 ```
+
+为什么需要 Internal Listener？[Envoy 的 HCM 不支持直接将 downstream 的 HTTP 请求通过 HTTP CONNECT 隧道转发给 upstream](https://www.envoyproxy.io/docs/envoy/latest/configuration/other_features/internal_listener#encapsulate-http-get-requests-in-a-http-connect-request)，因此需要将从 egress listener 中收到的请求经过 HCM 处理后再转发给 Internal Listner 中的 TcpProxy，由该 TcpProxy 来和 upstream host 创建 HTTP 隧道。
 
 # Envoy 的 HTTP Tunnel
 

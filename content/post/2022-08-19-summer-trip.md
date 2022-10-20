@@ -21,4 +21,4 @@ tags:
 
 <iframe src="https://www.google.com/maps/d/embed?mid=1bG_61nZUmKeRbch4okgKD2e_G8xYQ1s&ehbc=2E312F" width="1024" height="768" frameborder="0" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
 
-{{< gallery dir="/img/2022-08-19-summer-trip/" />}} {{< load-photoswipe >}}
+ç dir="/img/2022-08-19-summer-trip/" />}} {{< load-photoswipe >}}

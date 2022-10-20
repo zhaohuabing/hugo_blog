@@ -34,7 +34,7 @@ ambient-worker2         Ready    <none>          4d9h   v1.25.0
 
 在 ambient-worker2 这个 node 中运行了下面这些应用 pod。
 ```bash
-k get pod -ocustom-columns=NAME:.metadata.name,IP:.status.podIP,NODE:.spec.nodeName|grep ambient-worker2
+~ k get pod -ocustom-columns=NAME:.metadata.name,IP:.status.podIP,NODE:.spec.nodeName|grep ambient-worker2
 productpage-v1-7c548b785b-mhjm6   10.244.2.3    ambient-worker2
 ratings-v1-85c74b6cb4-t4pq6       10.244.2.2    ambient-worker2
 reviews-v1-6494d87c7b-jnjcl       10.244.2.7    ambient-worker2

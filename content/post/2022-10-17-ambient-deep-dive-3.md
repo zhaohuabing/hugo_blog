@@ -89,7 +89,7 @@ reviews       ClusterIP   10.96.183.192   <none>        9080/TCP   39d
 <center>ambient 模式 outbound 流量劫持（ptp 网络）</center>
 
 
-备注：如果想要详细了解 outbound 流量拦截的机制，可以参考本系列中第二篇的 [outbound 流量劫持](https://www.zhaohuabing.com/post/2022-09-11-ambient-deep-dive-2/#outbound-%E6%B5%81%E9%87%8F%E5%8A%AB%E6%8C%81) 部分的内容。
+> 备注：如果想要详细了解 outbound 流量拦截的机制，可以参考本系列中第二篇的 [outbound 流量劫持](https://www.zhaohuabing.com/post/2022-09-11-ambient-deep-dive-2/#outbound-%E6%B5%81%E9%87%8F%E5%8A%AB%E6%8C%81) 部分的内容。
 
 ztunnel 采用了 [Envoy Internal Listener](https://www.zhaohuabing.com/post/2022-09-11-ambient-deep-dive-1/#envoy-%E7%9A%84-internal-listener-%E6%9C%BA%E5%88%B6) 机制来创建一个 HTTP CONNECT 隧道，通过该隧道对 outbound 流量进行加密传输。该机制采用了两层 Listener 来对 outbound 流量进行处理，分别是对外接收请求的 Outbound Listener，以及和 server 端创建 HTTP CONNECT 隧道的 Internal Listener。
 >备注：如果想要了解 HTTP CONNECT 隧道的原理和 Envoy Internal Listener 机制，可以参考本系列的第一篇文章 [HBONE 隧道原理](https://www.zhaohuabing.com/post/2022-09-11-ambient-deep-dive-1/)。
@@ -167,7 +167,7 @@ Internal Listener 中采用了一个 TCP Proxy 来创建隧道，并将请求通
 ],
 ```
 
-* 为了 server 端能从隧道中拿到原始的请求地址，tunneling_config 中将 HTTP CONNECT header 中的 host 字段设置值为 ```%DYNAMIC_METADATA(tunnel:destination)%```，即从 filter 的 metadata 中取出 tunnel::destination 这个 key 的值作为 host。该 metadata 来自于前面 endpoint 中的配置，其取值为 pod IP: service port。假设 envoy 选中 endpoint_id 为 ```10.244.1.23:9080``` 这个 endpoint，从上面 endpoint 的配置中可以看到，其 host 则为 ```10.244.1.23:9080``` 。配置中还为 HTTP CONNECT 请求增加了一个 ```x-envoy-original-dst-host``` header，取值和 host 相同。
+* 为了 server 端能从隧道中拿到原始的请求地址，tunneling_config 中为 HTTP CONNECT 请求增加了一个 ```x-envoy-original-dst-host``` header，取值为 ```%DYNAMIC_METADATA([\"tunnel\", \"destination\"])%```，即从 filter 的 metadata 中 tunnel::destination 这个 key 的值。该 metadata 来自于前面 endpoint 中的配置，其取值为 pod IP: service port。假设 envoy 选中 endpoint_id 为 ```10.244.1.23:9080``` 这个 endpoint，从上面 endpoint 的配置中可以看到，其 host 则为 ```10.244.1.23:9080``` 。
 ```yaml
 "tunneling_config": {
   "hostname": "%DYNAMIC_METADATA(tunnel:destination)%",
@@ -198,7 +198,7 @@ Internal Listener 中 TCP Proxy 指定的 Cluster ```outbound_tunnel_clus_spiffe
 ### Outbound 处理总览
 
 通过对 ztunnel 配置的分析，我们可以看到，在 ztunnel 中，Outbound 方向流量的处理过程如下：
-1. ```ztunnel_outbound``` listener 在 15001 端口接收 pod 上劫持后通过 TPROXY 转发到 ztunnel 的出向流量。
+1. ```ztunnel_outbound``` listener 在 15001 端口接收通过 iptables 和 route 劫持后转发到 ztunnel 的出向流量。
     1. ```ztunnel_outbound``` 的 ```filter_chain_matcher``` 中的 match 条件选中 ```spiffe://cluster.local/ns/default/sa/bookinfo-productpage_to_http_reviews.default.svc.cluster.local_outbound_internal.local_outbound_internal``` filter chain。
     1. ```spiffe://cluster.local/ns/default/sa/bookinfo-productpage_to_http_reviews.default.svc.cluster.local_outbound_internal.local_outbound_internal``` filter chain 中配置 的 Tcp Proxy 对应的 cluster 为 ```spiffe://cluster.local/ns/default/sa/bookinfo-productpage_to_http_reviews.default.svc.cluster.local_outbound_internal```。
     1. ```spiffe://cluster.local/ns/default/sa/bookinfo-productpage_to_http_reviews.default.svc.cluster.local_outbound_internal``` cluster 中有三个 endpoint，endpoint 对应的是 Internal Listener ```outbound_tunnel_lis_spiffe://cluster.local/ns/default/sa/bookinfo-productpage```。endpoint 往 filter_metata 中设置了请求的隧道目的地址（reviews pod IP:15008）和真实目的地址（reviews pod IP:9080）。
@@ -213,7 +213,37 @@ Internal Listener 中 TCP Proxy 指定的 Cluster ```outbound_tunnel_clus_spiffe
 
 ## Inbound 流量处理
 
-未完待续 ...
+node 上收到入向的请求后，会被拦截后发送到 ztunnel 的 15006(plain tcp) 和 15008(tls) 端口。如下图所示：
+
+{{< figure src="img/2022-09-11-ambient-deep-dive-2/ztunnel-inbound.png" link="/img/2022-09-11-ambient-deep-dive-2/ztunnel-inbound.png" >}} {{< load-photoswipe >}}
+<center>ambient 模式 inbound 流量劫持（ptp 网络）</center>
+
+
+> 备注：如果想要详细了解 inbbound 流量拦截的机制，可以参考本系列中第二篇的 [inbbound 流量劫持](https://www.zhaohuabing.com/post/2022-09-11-ambient-deep-dive-2/#inbound-%E6%B5%81%E9%87%8F%E5%8A%AB%E6%8C%81) 部分的内容。
+
+启用 ztunnel 的主要目的是为工作负载之间的通信进行认证和加密，在 15006 端口提供 plain tcp 只是为了兼容未启用 mtls 的工作负载。本文只对 15008 端口的 mtls 流量处理进行分析。
+
+{{< figure src="img/2022-10-17-ambient-deep-dive-3/inbound_listener.png" link="/img/2022-10-17-ambient-deep-dive-3/inbound_listener.png" >}} {{< load-photoswipe >}}
+<center>ztunnel inbound listener 配置</center>
+{{< figure src="img/2022-10-17-ambient-deep-dive-3/virtual-inboud-cluster.png" link="/img/2022-10-17-ambient-deep-dive-3/virtual-inboud-cluster.png" >}} {{< load-photoswipe >}}
+<center>ztunnel inbound virtual inbound cluster 配置</center>
+Inbound Listener 中为该 node 中的每个 pod 都创建了一个 filter chain，采用 pod IP 地址进行匹配。
+
+我们继续查看 productpage 请求 reviews 的场景下 inbound 的处理流程：
+
+1. ```ztunnel_inbound``` listener 在 15009 端口接收通过 iptables 和 route 劫持后转发到 ztunnel 的入向流量。
+1. 通过 filter chain 的匹配条件，请求目的地址 IP ```10.244.1.23```（reviews pod IP）匹配到了名为 ```inbound_10.244.1.23``` 的 filter chain。该 filter chain 中配置的是 名为 inbound_hcm 的 ```http_connection_manager```。我们需要特别关注该 filter chain 中的下述配置：
+    * filter chain 的 ```transport_socket```  的 ```common_tls_context``` 部分配置了 server 端的证书，以及验证 client 证书的 ROOTCA 和身份验证配置。
+    * HCM 中的 ```upgrade_config``` 提供了 HTTP CONNECT 隧道的配置，其中 ```"upgrade_type": "CONNECT"``` 表示支持 HTTP CONNECT 隧道。Envoy 对 HTTP CONNECT 的支持有[两种方式](https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/http/upgrades#connect-support)：一种是不做任何处理，将 HTTP CONNECT 请求直接透传给 upstream；另一种是在 Envoy 处终结 HTTP CONNECT 请求，只将 payload 作为 TCP 数据发送给 upstream。在第二种方式下，Envoy 提供了一个 HTTP CONNECT 隧道。```upgrade_config``` 中 的```"connect_config": {}``` [选项表示 Envoy 将以第二种方式处理 HTTP CONNECT 请求](https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/route/v3/route_components.proto#config-route-v3-routeaction-upgradeconfig)，即将 HTTP CONNECT 隧道中的 TCP 数据拿出来后发给 upstream。
+1. HCM 中配置的是 cluster 是 ```virtual_inbound```。该 cluster 的类型为 ```ORIGINAL_DST```，即采用 downstream 请求中的原始目的地址。而此时原始目的地址是 pod IP:15008，端口为 HTTP CONNECT 隧道的 server 端端口。如果采用该地址，无法和 server 端 pod 建立连接。在 ```original_dst_lb_config``` 中配置了 ```"use_http_header": true```，根据 [Envoy 对该选项的说明](https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/cluster/v3/cluster.proto#config-cluster-v3-cluster-originaldstlbconfig)，Envoy 将采用 HTTP CONNECT 请求中 ```x-envoy-original-dst-host``` 这个 header 的值取代 upstream 请求中的目的地址。该 header 在 [outbound 的处理流程](#internal-listener)中已经被设置为了正确的服务端口 pod IP:9080。
+
+{{< figure src="img/2022-10-17-ambient-deep-dive-3/ztunnel-l4-processing.png" link="/img/2022-10-17-ambient-deep-dive-3/ztunnel-l4-processing.png" >}} {{< load-photoswipe >}}
+<center>ztunnel 四层处理完整流程</center>
+
+# 小结
+本文分析了 ambient 模式下四层流量的处理流程。可以看到，Istio 在 client 端 node 上的 ztunnel 和 server 端 的 ztunnel 之间创建了一个 HTTP CONNECT 隧道，该隧道中的数据通过 mtls 进行进行认证和加密。为了便于理解，本文中的 client 和 server 处于不同 node 上。但从配置中可以看到，即时 client 和 server 处于同一个 node 上，处理流程也是相同的，只是此时两段的 ztunnel 是同一个。在本系列的下一篇文章中，我们将继续深入分析 ztunnel 对七层流量的处理流程。
+
+
 
 
 

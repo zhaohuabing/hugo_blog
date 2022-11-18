@@ -25,6 +25,10 @@ showtoc: false
 [私有协议接入教程](https://www.aeraki.net/zh/docs/v1.x/tutorials/implement-a-custom-protocol)
 [Github](https://github.com/aeraki-mesh)
 
+{{< figure src="/slides/manage-dubbo-in-istio-in-5-minutes/1.png" >}}{{< load-photoswipe >}}
+{{< figure src="/slides/manage-dubbo-in-istio-in-5-minutes/2.png" widt="10">}}
+{{< figure src="/slides/manage-dubbo-in-istio-in-5-minutes/3.png" size="10x7">}}
+
 {{< bilibili BV1fP411g7zN >}}
 
 

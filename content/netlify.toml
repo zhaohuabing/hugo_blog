@@ -26,3 +26,9 @@ GO_VERSION = "1.18"
   to = "https://istio-guide.netlify.app/:splat"
   status = 200
   force = true
+
+[[redirects]]
+  from = "/web-slides/*"
+  to = "https://web-slides.netlify.app/:splat"
+  status = 200
+  force = true

@@ -15,7 +15,7 @@ Hi，我是赵化冰，服务网格技术布道者及实践者，[腾讯云](htt
 ## 演讲分享 (部分)
 |年份          |城市        |会议         | 分享主题    |讲稿         |视频       |
 | ----------- |----------- |----------- |----------- |----------- |----------- |
-|2022|上海|[服务网格峰会](https://jimmysong.io/notice/service-mesh-summit-2022/)|[5分钟内将 Dubbo 服务接入 Istio 服务网格](https://www.zhaohuabing.com/post/2022-09-26-ndjg-dubbo-aeraki-mesh/)||[观看](https://www.bilibili.com/video/BV1oe4y167kz/?zw&vd_source=13de6a5e7f290572ee6b115b44a424f2)|
+|2022|上海|[服务网格峰会](https://jimmysong.io/notice/service-mesh-summit-2022/)|[5分钟内将 Dubbo 服务接入 Istio 服务网格](https://www.zhaohuabing.com/post/2022-09-26-servicemesh-summit2022-dubbo-aeraki-mesh/)|[观看](https://zhaohuabing.com/web-slides/manage-dubbo-in-istio-in-5-minutes/)|[观看](https://www.bilibili.com/video/BV1oe4y167kz/?zw&vd_source=13de6a5e7f290572ee6b115b44a424f2)|
 |2022|线上|[IstioCon](https://events.istio.io/istiocon-2022)|[Istio + Aeraki 在腾讯音乐的服务网格落地](https://events.istio.io/istiocon-2022/sessions/tencent-music-aeraki/)|[下载](/slides/tencent-music-service-mesh-practice-with-istio-and-aeraki.pdf)|[观看](https://www.youtube.com/watch?v=6t_yPsq4Pi4)|
 |2022|线上|[A2M](https://a2m.msup.com.cn/course?aid=2699&cid=15382)|[全栈服务网格 - Aeraki Mesh 助你在 Istio 服务网格中管理任何七层流量](https://a2m.msup.com.cn/course?aid=2699&cid=15382)|[下载](/slides/full-stack-service-mesh-a2m-20220422.pdf)||
 |2022|线上|[云原生正发声](https://cloud.tencent.com/developer/salon/live-1403)| [Areaki Mesh 在 2022 冬奥会视频直播应用中的服务网格实践](https://mp.weixin.qq.com/s/zp9q99mGyH2VD9Dij2owWg) | [下载](http://localhost:1313/img/2022-03-30-aeraki-mesh-winter-olympics-practice/slides.pdf)|[观看](https://youtu.be/uXxatQTKzW8)|

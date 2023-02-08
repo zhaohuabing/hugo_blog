@@ -1,6 +1,7 @@
 node_modules
 static/_pagefind
 public
+resources
 .env
 *.log
 **/.DS_Store

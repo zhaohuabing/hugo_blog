@@ -10,7 +10,7 @@ I have to admit that when I started at this book, it was a bit hard for me to co
 
 After the first few chapters, I got to know most of the new words and began to enjoy this book. Tara Westover has a talent for storytelling. With her vivid writing, I can imagine myself standing in front of their house in rural Idaho, surrounded by snowy mountains, looking at the junkyard where she, her brothers, and her father used to work in daily. I can also feel her inner struggle when she was trying to find her own path through education while she felt she was betraying her family. 
 ![](https://mrsladywordsmith.com/wp-content/uploads/2020/10/Westover-Home.jpg)
-Westover family home, Clifton, Idaho.
+Westover family home, Clifton, Idaho. (photo by mrsladywordsmith.com)
 
 Since it’s a memoir, all the characters in this book do exist, although Tara used pseudonyms for her parents and the brother who bullied her. Readers would wonder who are they in real life and their latest status, so do I. I googled and found some interesting facts about the Westover family. From the perspective of an outsider, the homeschooling of the Westover family turned out to be successful. Three of the seven children in her family obtained PhDs in their fields, even though they had never set their feet in schools. Her mother LaRee had also written multiple books, some on her herbalism and essential oil business and one memoir to defend the family against Tara’s accusations in Educated. These books are not as popular as Tara’s book, but this at least proves that LaRee received a very good education, but she choose to be an obedient wife, standing by her radical husband.
 

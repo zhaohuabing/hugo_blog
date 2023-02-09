@@ -54,3 +54,10 @@ Feel free to connect Huabing at Github and Linkedin, leave your thoughts in his 
 | Envoy       | Contributor| https://www.envoyproxy.io |https://github.com/envoyproxy/envoy|
 | ONAP        | PTL        | https://www.onap.org||
 | hugo-theme-cleanwhite | Creator    | https://themes.gohugo.io/themes/hugo-theme-cleanwhite  | https://github.com/zhaohuabing/hugo-theme-cleanwhite |
+
+## Certificates
+
+<div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="edf1a5de-202c-49e7-9762-f3e6f5ff1b38" data-share-badge-host="https://www.credly.com"></div><script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
+
+<div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="86fbba51-17d8-4718-b6d8-3b8bff7c7377" data-share-badge-host="https://www.credly.com"></div><script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
+

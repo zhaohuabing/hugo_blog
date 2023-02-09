@@ -37,3 +37,9 @@ Hi，我是赵化冰，服务网格技术布道者及实践者，[腾讯云](htt
 | Envoy       | Contributor| https://www.envoyproxy.io |https://github.com/envoyproxy/envoy|
 | ONAP        | 项目 Leader        | https://www.onap.org||
 | hugo-theme-cleanwhite | 创建者    | https://themes.gohugo.io/themes/hugo-theme-cleanwhite  | https://github.com/zhaohuabing/hugo-theme-cleanwhite |
+
+## 认证
+
+<div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="edf1a5de-202c-49e7-9762-f3e6f5ff1b38" data-share-badge-host="https://www.credly.com"></div><script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
+
+<div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="86fbba51-17d8-4718-b6d8-3b8bff7c7377" data-share-badge-host="https://www.credly.com"></div><script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>

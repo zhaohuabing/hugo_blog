@@ -108,14 +108,14 @@ params:
         image: /img/cndc.png
         href: https://zhaohuabing.com/post/2021-08-27-cloud-native-data-center/
   addtional_menus:
-    - title: NOTES
-      href: /notes/
+    - title: READING
+      href: /reading/
     - title: PHOTOS
       href: /photos/
-    - title: READING
-      href: /reading/ 
+    - title: NOTES
+      href: /notes/
     - title: ARCHIVE
-      href: /archive/  
+      href: /archive/
     - title: ABOUT
       href: /about/
   algolia:

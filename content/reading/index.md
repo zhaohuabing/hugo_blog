@@ -12,7 +12,11 @@ After the first few chapters, I got to know most of the new words and began to e
 ![](https://mrsladywordsmith.com/wp-content/uploads/2020/10/Westover-Home.jpg)
 Westover family home, Clifton, Idaho. (photo by mrsladywordsmith.com)
 
-Since it’s a memoir, all the characters in this book do exist, although Tara used pseudonyms for her parents and the brother who bullied her. Readers would wonder who are they in real life and their latest status, so do I. I googled and found some interesting facts about the Westover family. From the perspective of an outsider, the homeschooling of the Westover family turned out to be successful. Three of the seven children in her family obtained PhDs in their fields, even though they had never set their feet in schools. Her mother LaRee had also written multiple books, some on her herbalism and essential oil business and one memoir to defend the family against Tara’s accusations in Educated. These books are not as popular as Tara’s book, but this at least proves that LaRee received a very good education, but she choose to be an obedient wife, standing by her radical husband.
+Since it’s a memoir, all the characters in this book do exist, although Tara used pseudonyms for her parents and the brother who bullied her. Readers would wonder who they are in real life and their latest status, and so do I. I googled and found some interesting facts about the Westover family. From an outsider's point of view, the homeschooling of the Westover family turned out to be quite successful. 
+
+Three of the seven children in her family obtained PhDs in their fields, even though they had never set their feet in schools. Her mother LaRee had also written multiple books, some on her herbalism and essential oil business and one memoir to defend the family against Tara’s accusations in Educated. These books are not as popular as Tara’s book, but this at least proves that LaRee has received a very good education. However, she choosed to be an obedient wife, standing by her husband, even though he has some obvious radical behavior patterns and put the family memeber in danger for many times, like insisting driving long distance home during night twice, resulting servery injuries to LaRee and one of their son.
+
+It looks to me what had happend to Tara might come from Mormon. This was not clearly stated in the book, but I can find many clues among those lines.  In a Mormon family,  instead of to go to a college and find a normal job, women are encouraged to stay at home, raising children and supporting their husbands.  According to the book, women are also asked to be "modest", not allowed to wear short-leeve shirts and skirts above the knee. This is clearly gender discrimination against women.  There were some other problems in this family, but this was the root cause of Tara's tragedy.
 
 Some links readers might be interested in after reading this book.
 
@@ -25,3 +29,7 @@ Some links readers might be interested in after reading this book.
 # The Diary of a Young Girl
 
 ![](https://m.media-amazon.com/images/I/81xPFVVGesL.jpg)
+
+It was heartbreaking when I read that Anna was found by Getsapo and ended up dead because of illness and hungry in a concentration camp. She could become an established writer if she had survived the war. I can tell that from the diary, in which Anne already showed that she has a talent for writing.
+
+It was a bit surprising to know that everyone in hiding was studying something. Even in such a difficult situation, when they were worried about their lives, people in the secret annex were pursuing knowledge in their interested areas. I came to understand why Jews are so successful in many fields around the world. 

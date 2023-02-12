@@ -26,6 +26,10 @@ Some links readers might be interested in after reading this book.
 # Kite Runner
 ![](https://m.media-amazon.com/images/I/81IzbD2IiIL.jpg)
 
+The racial discrimination against Hazaras in this book made me sick. And according to [research],(https://www.neliti.com/publications/145437/racial-discrimination-towards-the-hazaras-as-reflected-in-khaled-hosseinis-the-k), “one reason why the Hazaras have been discriminated by Pashtun is their appearance that look like Chinese people”.  As a Chinese, I can't understand why Afghanistan think they're superior to the Chinese. 
+The author also didn't express any condemnation of his father who betrayed Ali by having a child with Ali's wife. 
+He probably seduced her or rapped her.
+
 # The Diary of a Young Girl
 
 ![](https://m.media-amazon.com/images/I/81xPFVVGesL.jpg)

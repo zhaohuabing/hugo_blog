@@ -310,8 +310,15 @@ bootstrap 中的 node metadata 则是由 istio-agent 根据当前 pod 所在的 
 ![](/img/2023-02-14-istio-metrics-deep-dive/metadata-exchange-tcp.png)
 
 
+Sidecar Proxy 通过七层或者四层的 Metadata Exchange 机制拿到对端的节点信息后，会保存到 Envoy 的 [filter state](https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/advanced/data_sharing_between_filters#dynamic-state) 中，以供生成 metrics 时使用。
 
-// 待补充
+## Istio Stats Filter
+
+Istio 还在 Envoy Proxy 增加了 Istio Stats Filter（七层和四层各有一个 stats filter） 来生成 Service 相关的 Metrics。该 Filter 利用 envoy 提供的 stats api 创建了前文描述的 [service metrics](#istio-%E5%AF%B9-envoy-stats-%E7%9A%84%E6%89%A9%E5%B1%95)，并将从 [filter state](https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/advanced/data_sharing_between_filters#dynamic-state) 中获取到的对端节点的 metadata，将对端节点的信息作为 label 加入到生成的 metrics 数据中。
+
+## Istio Metrics 引发的内存问题
+
+由于 Metrics 数据的数量较大，往往是 Envoy 内存占用的一个主要罪魁祸首，例如这个[典型的 metrics 引发的 Envoy 内存溢出故障](https://www.zhaohuabing.com/istio-guide/docs/common-problem/envoy-stats-memory/)。 因此在对 Istio Metrics 进行自定义设置，特别是添加 label 时需要特别注意。不要随意加入取值范围较大或者取值不确定的 label。增加 label会导致 metrics 占用的内存数量成倍增长。 例如增加一个取值范围为 10 的 label，会导致生成的 metrics 数据变为之前的 10 倍。 例如，加入 request path 作为 label，而 path 中又有一些参数变量，往往会生成大量的 metrics，最终导致 envoy 内存溢出。
 
 # 参考文档
 

@@ -177,28 +177,144 @@ Istio 为 Envoy 添加了一个 Metadata Exchange Filter。该 Filter 会在两�
 
 Metadata Exchange Filter 在四层和七层采用了不同的机制来交换对方节点的信息。
 
-七层的 Metadata Exchange 机制：
+### 七层的 Metadata Exchange 机制
 
-client 端 sidecar proxy 在 HTTP 请求中添加了两个 header  `x-envoy-peer-metadata-id` 和 `x-envoy-peer-metadata`，用于将 client 节点的信息告知 server 端。server 端在 response 中也会增加这两个 header，以用于将 server 节点的信息告知 client 端。这样两端的 proxy 就拿到了对端的节点信息，可以作为 label 添加到生成的 metrics 中。
+Istio 在 envoy proxy 中加入了一个 http filter [metadata exchange](https://github.com/istio/proxy/tree/1.4.10/extensions/metadata_exchange)。在 client 端，该 HTTP filter 在 HTTP 请求中添加了两个 header：`x-envoy-peer-metadata-id` 和 `x-envoy-peer-metadata`。用这个两个 header 将 client 节点的信息告知 server 端。 同样的，在 server 端，该 HTTP filter 也在 response 中增加了这两个 header，以用于将 server 节点的信息告知 client 端。这样请求两端的 sidecar proxy 就拿到了对端的节点信息，这些节点信息将作为 label 添加到生成的 metrics 中。
 
-以 boookinfo demo 中 reviews 服务访问 ratings 服务为例对 Metadata Exchange 的过程进行说明：
+![](/img/2023-02-14-istio-metrics-deep-dive/metadata-exchange-http.png)
+下面我们以 boookinfo demo 中 reviews 服务访问 ratings 服务为例对 Metadata Exchange 的过程进行说明：
 
 reviews 的 sidecar proxy 在请求中加入了下面的 header：
 
 ```
-'x-envoy-peer-metadata', 'ChsKDkFQUF9DT05UQUlORVJTEgkaB3Jldmlld3MKGgoKQ0xVU1RFUl9JRBIMGgpLdWJlcm5ldGVzCh0KDElOU1RBTkNFX0lQUxINGgsxMC4yNDQuMC4yNQoZCg1JU1RJT19WRVJTSU9OEggaBjEuMTQuNQrVAQoGTEFCRUxTEsoBKscBChAKA2FwcBIJGgdyZXZpZXdzCiEKEXBvZC10ZW1wbGF0ZS1oYXNoEgwaCjU1NTQ1YzQ1OWIKJAoZc2VjdXJpdHkuaXN0aW8uaW8vdGxzTW9kZRIHGgVpc3RpbwosCh9zZXJ2aWNlLmlzdGlvLmlvL2Nhbm9uaWNhbC1uYW1lEgkaB3Jldmlld3MKKwojc2VydmljZS5pc3Rpby5pby9jYW5vbmljYWwtcmV2aXNpb24SBBoCdjMKDwoHdmVyc2lvbhIEGgJ2MwoaCgdNRVNIX0lEEg8aDWNsdXN0ZXIubG9jYWwKJQoETkFNRRIdGhtyZXZpZXdzLXYzLTU1NTQ1YzQ1OWItZm1mNWYKFgoJTkFNRVNQQUNFEgkaB2RlZmF1bHQKTgoFT1dORVISRRpDa3ViZXJuZXRlczovL2FwaXMvYXBwcy92MS9uYW1lc3BhY2VzL2RlZmF1bHQvZGVwbG95bWVudHMvcmV2aWV3cy12MwoXChFQTEFURk9STV9NRVRBREFUQRICKgAKHQoNV09SS0xPQURfTkFNRRIMGgpyZXZpZXdzLXYz'
+x-envoy-peer-metadata: ChsKDkFQUF9DT05UQUlORVJTEgkaB3Jldmlld3MKGgoKQ0xVU1RFUl9JRBIMGgpLdWJlcm5ldGVzCh4KDElOU1RBTkNFX0lQUxIOGgwxNzIuMTYuMC4xMzMKGQoNSVNUSU9fVkVSU0lPThIIGgYxLjE0LjUK0wEKBkxBQkVMUxLIASrFAQoQCgNhcHASCRoHcmV2aWV3cwofChFwb2QtdGVtcGxhdGUtaGFzaBIKGgg1OGI2NDc5YgokChlzZWN1cml0eS5pc3Rpby5pby90bHNNb2RlEgcaBWlzdGlvCiwKH3NlcnZpY2UuaXN0aW8uaW8vY2Fub25pY2FsLW5hbWUSCRoHcmV2aWV3cworCiNzZXJ2aWNlLmlzdGlvLmlvL2Nhbm9uaWNhbC1yZXZpc2lvbhIEGgJ2MwoPCgd2ZXJzaW9uEgQaAnYzChoKB01FU0hfSUQSDxoNY2x1c3Rlci5sb2NhbAojCgROQU1FEhsaGXJldmlld3MtdjMtNThiNjQ3OWItNjJydjUKFgoJTkFNRVNQQUNFEgkaB2RlZmF1bHQKTgoFT1dORVISRRpDa3ViZXJuZXRlczovL2FwaXMvYXBwcy92MS9uYW1lc3BhY2VzL2RlZmF1bHQvZGVwbG95bWVudHMvcmV2aWV3cy12MwoXChFQTEFURk9STV9NRVRBREFUQRICKgAKHQoNV09SS0xPQURfTkFNRRIMGgpyZXZpZXdzLXYz
 
-'x-envoy-peer-metadata-id', 'sidecar~10.244.0.25~reviews-v3-55545c459b-fmf5f.default~default.svc.cluster.local'
+x-envoy-peer-metadata-id: sidecar~172.16.0.133~reviews-v3-58b6479b-62rv5.default~default.svc.cluster.local
 ```
 
 ratings 的 sidecar proxy 在响应中加入了下面的 header：
 
 ```
+x-envoy-peer-metadata: ChsKDkFQUF9DT05UQUlORVJTEgkaB3JhdGluZ3MKGgoKQ0xVU1RFUl9JRBIMGgpLdWJlcm5ldGVzCh0KDElOU1RBTkNFX0lQUxINGgsxNzIuMTYuMC42OQoZCg1JU1RJT19WRVJTSU9OEggaBjEuMTQuNQrVAQoGTEFCRUxTEsoBKscBChAKA2FwcBIJGgdyYXRpbmdzCiEKEXBvZC10ZW1wbGF0ZS1oYXNoEgwaCjg1Y2M0NmI2ZDQKJAoZc2VjdXJpdHkuaXN0aW8uaW8vdGxzTW9kZRIHGgVpc3RpbwosCh9zZXJ2aWNlLmlzdGlvLmlvL2Nhbm9uaWNhbC1uYW1lEgkaB3JhdGluZ3MKKwojc2VydmljZS5pc3Rpby5pby9jYW5vbmljYWwtcmV2aXNpb24SBBoCdjEKDwoHdmVyc2lvbhIEGgJ2MQoaCgdNRVNIX0lEEg8aDWNsdXN0ZXIubG9jYWwKJQoETkFNRRIdGhtyYXRpbmdzLXYxLTg1Y2M0NmI2ZDQtbjdxZGcKFgoJTkFNRVNQQUNFEgkaB2RlZmF1bHQKTgoFT1dORVISRRpDa3ViZXJuZXRlczovL2FwaXMvYXBwcy92MS9uYW1lc3BhY2VzL2RlZmF1bHQvZGVwbG95bWVudHMvcmF0aW5ncy12MQoXChFQTEFURk9STV9NRVRBREFUQRICKgAKHQoNV09SS0xPQURfTkFNRRIMGgpyYXRpbmdzLXYx
+
+x-envoy-peer-metadata-id: sidecar~172.16.0.69~ratings-v1-85cc46b6d4-n7qdg.default~default.svc.cluster.local
 ```
+
+x-envoy-peer-metadata 是经过 base64 编码的本节点的相关信息，Request 中的 metadata 解码后的内容如下：
+
+```
+APP_CONTAINERS reviews
+CLUSTER_ID Kubernetes
+INSTANCE_IPS 172.16.0.133
+ISTIO_VERSION 1.14.5
+
+LABELS
+app reviews
+pod-template-hash 58b6479b
+security.istio.io/tlsMode istio
+service.istio.io/canonical-name reviews
+service.istio.io/canonical-revision v3
+version v3
+MESH_ID cluster.local
+NAME reviews-v3-58b6479b-62rv5
+NAMESPACE default
+OWNER kubernetes://apis/apps/v1/namespaces/default/deployments/reviews-v3
+WORKLOAD_NAME reviews-v3
+```
+
+Response 中的 metadata 解码后的内容如下：
+
+```
+APP_CONTAINERS ratings
+CLUSTER_ID Kubernetes
+INSTANCE_IPS 172.16.0.69
+ISTIO_VERSION 1.14.5
+
+LABELS
+app ratings
+pod-template-hash 85cc46b6d4
+security.istio.io/tlsMode istio
+service.istio.io/canonical-name ratings
+service.istio.io/canonical-revision v1
+version v1
+MESH_ID cluster.local
+NAME ratings-v1-85cc46b6d4-n7qdg
+NAMESPACE default
+OWNER kubernetes://apis/apps/v1/namespaces/default/deployments/ratings-v1
+PLATFORM_METADATA
+WORKLOAD_NAME ratings-v1
+```
+
+metadata 中的信息来自于 Envoy sidecar bootstrap 配置中的 node 部分。我们可以通过下面的命令查看 reviews-v3-58b6479b-62rv5 这个 pod 的 node metadata。
+
+```
+istioctl proxy-config bootstrap reviews-v3-58b6479b-62rv5
+```
+
+```
+{
+  "bootstrap": {
+    "node": {
+      "id": "sidecar~172.16.0.133~reviews-v3-58b6479b-62rv5.default~default.svc.cluster.local",
+      "cluster": "reviews.default",
+      "metadata": {
+        "ANNOTATIONS": {…},
+        "APP_CONTAINERS": "reviews",
+        "CLUSTER_ID": "Kubernetes",
+        "ENVOY_PROMETHEUS_PORT": 15090,
+        "ENVOY_STATUS_PORT": 15021,
+        "INSTANCE_IPS": "172.16.0.133",
+        "INTERCEPTION_MODE": "REDIRECT",
+        "ISTIO_PROXY_SHA": "1bb64f113319d0984fae32222335a833e560edac",
+        "ISTIO_VERSION": "1.14.5",
+        "LABELS": {
+          "app": "reviews",
+          "pod-template-hash": "58b6479b",
+          "security.istio.io/tlsMode": "istio",
+          "service.istio.io/canonical-name": "reviews",
+          "service.istio.io/canonical-revision": "v3",
+          "version": "v3"
+        },
+        "MESH_ID": "cluster.local",
+        "NAME": "reviews-v3-58b6479b-62rv5",
+        "NAMESPACE": "default",
+        "OWNER": "kubernetes://apis/apps/v1/namespaces/default/deployments/reviews-v3",
+        "PILOT_SAN": […],
+        "POD_PORTS": "[{\"containerPort\":9080,\"protocol\":\"TCP\"}]",
+        "PROV_CERT": "var/run/secrets/istio/root-cert.pem",
+        "PROXY_CONFIG": {…},
+        "SERVICE_ACCOUNT": "bookinfo-reviews",
+        "WORKLOAD_NAME": "reviews-v3"
+      }
+    }  
+}
+```
+
+bootstrap 中的 node metadata 则是由 istio-agent 根据当前 pod 所在的 cluster，Namespace，名称，label 等相关信息生成的。 
+
+### 四层的 Metadata Exchange 机制
+
+对于 四层 的 Metrics，Istio 在 envoy proxy 中加入了一个 tcp filter [metadata exchange](https://github.com/istio/proxy/tree/1.4.10/src/envoy/tcp/metadata_exchange) ，通过在应用数据前加入一个自定义的 metadata exchange 协议来获取对端节点的信息。该协议的格式非常简单，header 是一个魔数 `0x3D230467` 和  body 长度，内容则是 node metadata 信息，和 HTTP header 中的数据类似。
+
+| Header | body |
+|-----|------|
+|0x3D230467 \| body 长度|Metadata id \| metadata|
+
+
+在 Istio service mesh 中，我们并不能保证 tcp 链接的两端都支持 metadata exchange 协议。例如，对端的 sidecar proxy 可能由于版本较低还不支持 metadata exchange，对端也可能由于没有部署 sidecar proxy 而无法支持。
+
+为了解决该问题，Istio 采用了 TLS 的 ALPN 字段来和对端进行协商，以判断对端是否支持 metadata exchange 协议。支持 metadata exchange 协议的 sidecar proxy 在发送 TLS hello 消息时会在 APLN 字段中添加一个 istio-peer-exchange 协议。如果对端也支持 istio-peer-exchange ALPN，则双方 proxy 就会采用 metadata exchange 协议交换节点信息，如果没有，则会跳过该步骤。由于协议协商依赖 TLS 的 APLN，如果未启用 TLS，则 Istio 也不会启用 metadata exchange。
+
+四层的 Metadata Exchange 协议如下图所示：
+
+![](/img/2023-02-14-istio-metrics-deep-dive/metadata-exchange-tcp.png)
+
+
 
 // 待补充
 
 # 参考文档
 
 * [Envoy stats](https://blog.envoyproxy.io/envoy-stats-b65c7f363342)
+* [Proxy Metadata Exchange](https://docs.google.com/document/d/1bWQAsrBZguk5HCmBVDEgEMVGS91r9uh3SIr7D7ELZBk/edit#heading=h.qex63c29z2to)
 * [Understanding Istio Telemetry v2](https://blog.christianposta.com/understanding-istio-telemetry-v2/#:~:text=A%20metric%20is%20a%20counter,DISTRIBUTION%20measuring%20latency%20of%20requests)

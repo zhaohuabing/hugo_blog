@@ -6,7 +6,7 @@ subtitle:   ""
 description: "本次社区会议介绍了 Aeraki Mesh 最新发布的 Access Log，Sevice Metrics 功能，并邀请了来自 Boss 直聘，Shopline 的专家分享基于 Aeraki Mesh 的 Dubbo 实操案例。此外，还介绍了来着腾讯游戏项目和 Boss 直聘正在贡献的多路复用和 Gateway 支持 MetaProtocol 应用协议的新特性。"
 author: "赵化冰"
 date: 2023-02-24
-image: "https://images.unsplash.com/photo-1502161254066-6c74afbf07aa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2671&q=80"
+image: "https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
 published: true
 tags:
     - Istio
@@ -15,8 +15,9 @@ tags:
     - Aeraki Mesh
     - Dubbo
     - MetaProtocol
-categories: 
-    - [ Open Source ]
+categories:
+    - Tech
+    - Open Source
 metadata:
     - text: "幻灯片"
       link: "https://zhaohuabing.com/web-slides/aeraki-mesh-community-meeting-2023-02-23/"

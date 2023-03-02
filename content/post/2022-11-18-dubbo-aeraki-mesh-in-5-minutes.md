@@ -29,7 +29,7 @@ showtoc: false
 ---
 [幻灯片](https://zhaohuabing.com/web-slides/manage-dubbo-in-istio-in-5-minutes/)
 [Aeraki Mesh 官网](https://aeraki.net)
-[Dubbo 接入教程](https://zhaohuabing.com/zh/docs/v1.x/tutorials/dubbo)
+[Dubbo 接入教程](https://www.aeraki.net/zh/docs/v1.x/tutorials/dubbo)
 [私有协议接入教程](https://www.aeraki.net/zh/docs/v1.x/tutorials/implement-a-custom-protocol)
 [Github](https://github.com/aeraki-mesh)
 

@@ -289,12 +289,12 @@ func main() {
 	* 前面我们已经讲到，Reflector 会使用 List 的结果刷新 FIFO 队列，因此 ResourceEventHandler 收到的资源变化消息其实包含了 Informer 启动时获取的完整资源列表，Informer 会采用 ADDED 事件将列表的资源通知到用户 Controller。该机制屏蔽了 List 和 Watch 的细节，保证用户的 ResourceEventHandler 代码中会接收到 Controller 监控的资源的完整数据，包括启动 Controller 前已有的资源数据，以及之后的资源变化。
 	* ResourceEventHandler 中收到的消息中只有资源对象的 key，用户在 Controller 中可以使用该 key 为关键字，通过 Indexer 查询本地缓存中的完整资源对象。
 
-下面是采用 Informer 机制来创建 Controller 的例子，来自于 [Kubernetes Client Go Repository](https://github.com/kubernetes/client-go/blob/master/examples/workqueue/main.go)。
+下面是采用 Informer 机制来创建 Controller 的例子。该示例代码来自于 [Kubernetes Client Go Repository](https://github.com/kubernetes/client-go/blob/master/examples/workqueue/main.go)，为方便阅读去掉了部分非关键代码。
 
 该示例 Controller 监控了 default namespace 中的 Pod 资源，在 syncToStdout 方法中打印了 pod 名称。可以看到该 Controller 的代码结构和上图是一致的。除此之外，我们在编码时需要注意下面几点：
 
-* 在启动 Controller 时需要调用 ``` informer.Run(stopCh) ``` 方法（参见 109 行）。该方法会调用 Reflector 的 [ListAndWatch](https://github.com/kubernetes/client-go/blob/6df09021f998a3b005b8612d21c254b1b4d3d48b/tools/cache/reflector.go#L322) 方法。ListAndWatch 首先采用 HTTP List API 从 K8s API Server 获取当前的资源列表，然后调用 HTTP Watch API 对资源变化进行监控，并把 List 和 Watch 的收到的资源通过 ResourceEventHandlerFuncs 的 AddFunc UpdateFunc DeleteFunc 三个回调接口分发给 Controller。
-* 在开始对队列中的资源事件进行处理之前，先调用 ```cache.WaitForCacheSync(stopCh, c.informer.HasSynced)``` （参见 112 行）。正如其方法名所示，该方法确保 Informer 的本地缓存已经和 K8s API Server 的资源数据进行了同步。当 Reflector 成功调用 ListAndWatch 方法从 K8s API Server 获取到需要监控的资源数据并保存到本地缓存后，会将 ```c.informer.HasSynced``` 设置为 true。在开始业务处理前调用该方法可以确保在本地缓存中的资源数据是和 K8s API Server 中的数据一致的。
+* 在启动 Controller 时需要调用 ``` informer.Run(stopCh) ``` 方法（参见 88 行）。该方法会调用 Reflector 的 [ListAndWatch](https://github.com/kubernetes/client-go/blob/6df09021f998a3b005b8612d21c254b1b4d3d48b/tools/cache/reflector.go#L322) 方法。ListAndWatch 首先采用 HTTP List API 从 K8s API Server 获取当前的资源列表，然后调用 HTTP Watch API 对资源变化进行监控，并把 List 和 Watch 的收到的资源通过 ResourceEventHandlerFuncs 的 AddFunc UpdateFunc DeleteFunc 三个回调接口分发给 Controller。
+* 在开始对队列中的资源事件进行处理之前，先调用 ```cache.WaitForCacheSync(stopCh, c.informer.HasSynced)``` （参见 91 行）。正如其方法名所示，该方法确保 Informer 的本地缓存已经和 K8s API Server 的资源数据进行了同步。当 Reflector 成功调用 ListAndWatch 方法从 K8s API Server 获取到需要监控的资源数据并保存到本地缓存后，会将 ```c.informer.HasSynced``` 设置为 true。在开始业务处理前调用该方法可以确保在本地缓存中的资源数据是和 K8s API Server 中的数据一致的。
 
 {{< highlight go "linenos=inline" >}}
 
@@ -374,28 +374,7 @@ func (c *Controller) syncToStdout(key string) error {
 
 // handleErr checks if an error happened and makes sure we will retry later.
 func (c *Controller) handleErr(err error, key interface{}) {
-	if err == nil {
-		// Forget about the #AddRateLimited history of the key on every successful synchronization.
-		// This ensures that future processing of updates for this key is not delayed because of
-		// an outdated error history.
-		c.queue.Forget(key)
-		return
-	}
-
-	// This controller retries 5 times if something goes wrong. After that, it stops trying.
-	if c.queue.NumRequeues(key) < 5 {
-		klog.Infof("Error syncing pod %v: %v", key, err)
-
-		// Re-enqueue the key rate limited. Based on the rate limiter on the
-		// queue and the re-enqueue history, the key will be processed later again.
-		c.queue.AddRateLimited(key)
-		return
-	}
-
-	c.queue.Forget(key)
-	// Report to an external entity that, even after several retries, we could not successfully process this key
-	runtime.HandleError(err)
-	klog.Infof("Dropping pod %q out of the queue: %v", key, err)
+	... 略
 }
 
 // Run begins watching and syncing.

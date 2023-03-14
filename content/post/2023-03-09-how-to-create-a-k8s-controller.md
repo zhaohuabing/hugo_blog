@@ -293,8 +293,9 @@ func main() {
 
 该示例 Controller 监控了 default namespace 中的 Pod 资源，在 syncToStdout 方法中打印了 pod 名称。可以看到该 Controller 的代码结构和上图是一致的。除此之外，我们在编码时需要注意下面几点：
 
-* 在启动 Controller 时需要调用 ``` informer.Run(stopCh) ``` 方法（参见 88 行）。该方法会调用 Reflector 的 [ListAndWatch](https://github.com/kubernetes/client-go/blob/6df09021f998a3b005b8612d21c254b1b4d3d48b/tools/cache/reflector.go#L322) 方法。ListAndWatch 首先采用 HTTP List API 从 K8s API Server 获取当前的资源列表，然后调用 HTTP Watch API 对资源变化进行监控，并把 List 和 Watch 的收到的资源通过 ResourceEventHandlerFuncs 的 AddFunc UpdateFunc DeleteFunc 三个回调接口分发给 Controller。
-* 在开始对队列中的资源事件进行处理之前，先调用 ```cache.WaitForCacheSync(stopCh, c.informer.HasSynced)``` （参见 91 行）。正如其方法名所示，该方法确保 Informer 的本地缓存已经和 K8s API Server 的资源数据进行了同步。当 Reflector 成功调用 ListAndWatch 方法从 K8s API Server 获取到需要监控的资源数据并保存到本地缓存后，会将 ```c.informer.HasSynced``` 设置为 true。在开始业务处理前调用该方法可以确保在本地缓存中的资源数据是和 K8s API Server 中的数据一致的。
+* 在启动 Controller 时需要调用 ``` informer.Run(stopCh) ``` 方法（参见 109 行）。该方法会调用 Reflector 的 [ListAndWatch](https://github.com/kubernetes/client-go/blob/6df09021f998a3b005b8612d21c254b1b4d3d48b/tools/cache/reflector.go#L322) 方法。ListAndWatch 首先采用 HTTP List API 从 K8s API Server 获取当前的资源列表，然后调用 HTTP Watch API 对资源变化进行监控，并把 List 和 Watch 的收到的资源通过 ResourceEventHandlerFuncs 的 AddFunc UpdateFunc DeleteFunc 三个回调接口分发给 Controller。
+* 在开始对队列中的资源事件进行处理之前，先调用 ```cache.WaitForCacheSync(stopCh, c.informer.HasSynced)``` （参见 112 行）。正如其方法名所示，该方法确保 Informer 的本地缓存已经和 K8s API Server 的资源数据进行了同步。当 Reflector 成功调用 ListAndWatch 方法从 K8s API Server 获取到需要监控的资源数据并保存到本地缓存后，会将 ```c.informer.HasSynced``` 设置为 true。在开始业务处理前调用该方法可以确保在本地缓存中的资源数据是和 K8s API Server 中的数据一致的。
+* 在对事件进行处理之后，需要调用 ```queue.Forger(key)``` 方法将事件从队列中删除，以避免重复处理。如果处理时发生异常，可以进行重试，当大于指定重试次数还未成功，则也调用 ```queue.Forger(key)``` 将其从队列中删除，避免无限次重试（参见 76 行的 handleErr 方法）。
 
 {{< highlight go "linenos=inline" >}}
 
@@ -374,7 +375,28 @@ func (c *Controller) syncToStdout(key string) error {
 
 // handleErr checks if an error happened and makes sure we will retry later.
 func (c *Controller) handleErr(err error, key interface{}) {
-	... 略
+	if err == nil {
+		// Forget about the #AddRateLimited history of the key on every successful synchronization.
+		// This ensures that future processing of updates for this key is not delayed because of
+		// an outdated error history.
+		c.queue.Forget(key)
+		return
+	}
+
+	// This controller retries 5 times if something goes wrong. After that, it stops trying.
+	if c.queue.NumRequeues(key) < 5 {
+		klog.Infof("Error syncing pod %v: %v", key, err)
+
+		// Re-enqueue the key rate limited. Based on the rate limiter on the
+		// queue and the re-enqueue history, the key will be processed later again.
+		c.queue.AddRateLimited(key)
+		return
+	}
+
+	c.queue.Forget(key)
+	// Report to an external entity that, even after several retries, we could not successfully process this key
+	runtime.HandleError(err)
+	klog.Infof("Dropping pod %q out of the queue: %v", key, err)
 }
 
 // Run begins watching and syncing.
@@ -470,6 +492,228 @@ func main() {
 	select {}
 }
 {{< / highlight >}}
+
+# SharedInformer
+
+如果在一个应用中有多处相互独立的业务逻辑都需要监控同一种资源对象，用户会编写多个 Informer 来进行处理。这会导致应用中发起对 K8s API Server 同一资源的多次 ListAndWatch 调用，并且每一个 Informer 中都有一份单独的本地缓存，增加了内存占用。
+
+K8s 在 client go 中基于 Informer 之上再做了一层封装，提供了 SharedInformer 机制。采用 SharedInformer 后，客户端对同一种资源对象只会有一个对 API Server 的 ListAndWatch 调用，多个 Informer 也会共用同一份缓存，减少了对 API Server 的请求，提高了性能。
+
+SharedInformerFactory 中有一个 Informer Map。当应用代码调用 InformerFactory 获取某一资源类型的 Informer 时， SharedInformer 会判断该类型的 Informer 是否存在，如果不存在就新建一个 Informer 并保存到该 Map 中，如果已存在则直接返回该 Informer（参见 SharedInformerFactory 的 [InformerFor](https://github.com/kubernetes/client-go/blob/471f66fb1055201dc7975d416d5889f8e617a4c0/informers/factory.go#L189) 方法）。因此应用中所有从 InformerFactory 中取出的同一类型的 Informer 都是同一个实例。
+
+
+下面的代码是使用了 SharedInformer 的 Controller 示例。该示例的代码和上一节使用 Informer 的代码大部分是一样的，主要的差别是采用了 ```NewSharedInformerFactory``` 来创建 Informer（参见 160 行）。
+我们在使用 SharedInformer 来构建 Controller 时，需要注意下面几点：
+* 为了能够共用缓存，同一个 SharedInformerFactory 生成的所有 Informer 只能使用相同的查询过滤条件。
+* 在启动 Controller 前需要调用 ``` informerFactory.Start(stop) ``` 方法（参见 197 行）。该方法会调用 factory 中所有 Informer 的 Run 方法。 Informer 会发起向 k8s API Server 的 ListAndWatch 调用，并开始资源事件的监控和消息分发。
+* 和直接使用 Informer 相同，在开始对队列中的资源事件进行处理之前，先调用 ```cache.WaitForCacheSync(stopCh, c.informer.HasSynced)``` （参见 121 行），以确保在开始业务处理前，Informer 本地缓存中的资源数据已经和 K8s API Server 进行了同步，数据是一致的。
+* 和直接使用 Informer 相同，在对事件进行处理之后，需要调用 ```queue.Forger(key)``` 方法将事件从队列中删除，以避免重复处理。如果处理时发生异常，可以进行重试，当大于指定重试次数还未成功，则也调用 ```queue.Forger(key)``` 将其从队列中删除，避免无限次重试（参见 85 行的 handleErr 方法）。
+
+{{< highlight go "linenos=inline" >}}
+package main
+
+import (
+	"flag"
+	"fmt"
+	"k8s.io/apimachinery/pkg/api/errors"
+	"k8s.io/client-go/informers"
+	"time"
+
+	"k8s.io/klog/v2"
+
+	"k8s.io/apimachinery/pkg/util/runtime"
+	utilruntime "k8s.io/apimachinery/pkg/util/runtime"
+	"k8s.io/apimachinery/pkg/util/wait"
+	"k8s.io/client-go/kubernetes"
+	clientv1 "k8s.io/client-go/listers/core/v1"
+	"k8s.io/client-go/tools/cache"
+	"k8s.io/client-go/tools/clientcmd"
+	"k8s.io/client-go/util/workqueue"
+)
+
+// Controller demonstrates how to implement a controller with client-go.
+type Controller struct {
+	lister   clientv1.PodLister
+	queue    workqueue.RateLimitingInterface
+	informer cache.Controller
+}
+
+// NewController creates a new Controller.
+func NewController(queue workqueue.RateLimitingInterface, lister clientv1.PodLister, informer cache.Controller) *Controller {
+	return &Controller{
+		informer: informer,
+		lister:   lister,
+		queue:    queue,
+	}
+}
+
+func (c *Controller) processNextItem() bool {
+	// Wait until there is a new item in the working queue
+	key, quit := c.queue.Get()
+	if quit {
+		return false
+	}
+	// Tell the queue that we are done with processing this key. This unblocks the key for other workers
+	// This allows safe parallel processing because two pods with the same key are never processed in
+	// parallel.
+	defer c.queue.Done(key)
+
+	// Invoke the method containing the business logic
+	err := c.syncToStdout(key.(string))
+	// Handle the error if something went wrong during the execution of the business logic
+	c.handleErr(err, key)
+	return true
+}
+
+// syncToStdout is the business logic of the controller. In this controller it simply prints
+// information about the pod to stdout. In case an error happened, it has to simply return the error.
+// The retry logic should not be part of the business logic.
+func (c *Controller) syncToStdout(key string) error {
+	namespace, name, err := cache.SplitMetaNamespaceKey(key)
+	if err != nil {
+		utilruntime.HandleError(fmt.Errorf("invalid resource key: %s", key))
+		return nil
+	}
+
+	// Get the Foo resource with this namespace/name
+	pod, err := c.lister.Pods(namespace).Get(name)
+	if err != nil {
+		if errors.IsNotFound(err) {
+			utilruntime.HandleError(fmt.Errorf("pod '%s' in work queue no longer exists", key))
+			return nil
+		}
+
+		return err
+	}
+
+	// Note that you also have to check the uid if you have a local controlled resource, which
+	// is dependent on the actual instance, to detect that a Pod was recreated with the same name
+	fmt.Printf("Sync/Add/Update for Pod %s\n", pod.GetName())
+
+	return nil
+}
+
+// handleErr checks if an error happened and makes sure we will retry later.
+func (c *Controller) handleErr(err error, key interface{}) {
+	if err == nil {
+		// Forget about the #AddRateLimited history of the key on every successful synchronization.
+		// This ensures that future processing of updates for this key is not delayed because of
+		// an outdated error history.
+		c.queue.Forget(key)
+		return
+	}
+
+	// This controller retries 5 times if something goes wrong. After that, it stops trying.
+	if c.queue.NumRequeues(key) < 5 {
+		klog.Infof("Error syncing pod %v: %v", key, err)
+
+		// Re-enqueue the key rate limited. Based on the rate limiter on the
+		// queue and the re-enqueue history, the key will be processed later again.
+		c.queue.AddRateLimited(key)
+		return
+	}
+
+	c.queue.Forget(key)
+	// Report to an external entity that, even after several retries, we could not successfully process this key
+	runtime.HandleError(err)
+	klog.Infof("Dropping pod %q out of the queue: %v", key, err)
+}
+
+// Run begins watching and syncing.
+func (c *Controller) Run(workers int, stopCh chan struct{}) {
+	defer runtime.HandleCrash()
+
+	// Let the workers stop when we are done
+	defer c.queue.ShutDown()
+	klog.Info("Starting Pod controller")
+
+	go c.informer.Run(stopCh)
+
+	// Wait for all involved caches to be synced, before processing items from the queue is started
+	if !cache.WaitForCacheSync(stopCh, c.informer.HasSynced) {
+		runtime.HandleError(fmt.Errorf("Timed out waiting for caches to sync"))
+		return
+	}
+
+	for i := 0; i < workers; i++ {
+		go wait.Until(c.runWorker, time.Second, stopCh)
+	}
+
+	<-stopCh
+	klog.Info("Stopping Pod controller")
+}
+
+func (c *Controller) runWorker() {
+	for c.processNextItem() {
+	}
+}
+
+func main() {
+	var kubeconfig string
+	var master string
+
+	flag.StringVar(&kubeconfig, "kubeconfig", "", "absolute path to the kubeconfig file")
+	flag.StringVar(&master, "master", "", "master url")
+	flag.Parse()
+
+	// creates the connection
+	config, err := clientcmd.BuildConfigFromFlags(master, kubeconfig)
+	if err != nil {
+		klog.Fatal(err)
+	}
+
+	// creates the clientset
+	clientset, err := kubernetes.NewForConfig(config)
+	if err != nil {
+		klog.Fatal(err)
+	}
+
+	// create an informer factory
+	informerFactory := informers.NewSharedInformerFactory(clientset, time.Second*30)
+
+	// create an informer and lister for pods
+	informer := informerFactory.Core().V1().Pods()
+
+	// create the workqueue
+	queue := workqueue.NewRateLimitingQueue(workqueue.DefaultControllerRateLimiter())
+
+	// register the event handler with the informer
+	informer.Informer().AddEventHandler(cache.ResourceEventHandlerFuncs{
+		AddFunc: func(obj interface{}) {
+			key, err := cache.MetaNamespaceKeyFunc(obj)
+			if err == nil {
+				queue.Add(key)
+			}
+		},
+		UpdateFunc: func(old interface{}, new interface{}) {
+			key, err := cache.MetaNamespaceKeyFunc(new)
+			if err == nil {
+				queue.Add(key)
+			}
+		},
+		DeleteFunc: func(obj interface{}) {
+			// IndexerInformer uses a delta queue, therefore for deletes we have to use this
+			// key function.
+			key, err := cache.DeletionHandlingMetaNamespaceKeyFunc(obj)
+			if err == nil {
+				queue.Add(key)
+			}
+		},
+	})
+
+	controller := NewController(queue, informer.Lister(), informer.Informer())
+
+	// Now let's start the controller
+	stop := make(chan struct{})
+	defer close(stop)
+	informerFactory.Start(stop)
+	go controller.Run(1, stop)
+
+	// Wait forever
+	select {}
+}
+{{< / highlight >}}
+
 # 未完待续
 
 # 参考文档

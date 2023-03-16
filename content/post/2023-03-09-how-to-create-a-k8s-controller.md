@@ -293,9 +293,10 @@ func main() {
 
 该示例 Controller 监控了 default namespace 中的 Pod 资源，在 syncToStdout 方法中打印了 pod 名称。可以看到该 Controller 的代码结构和上图是一致的。除此之外，我们在编码时需要注意下面几点：
 
-* 在启动 Controller 时需要调用 ``` informer.Run(stopCh) ``` 方法（参见 109 行）。该方法会调用 Reflector 的 [ListAndWatch](https://github.com/kubernetes/client-go/blob/6df09021f998a3b005b8612d21c254b1b4d3d48b/tools/cache/reflector.go#L322) 方法。ListAndWatch 首先采用 HTTP List API 从 K8s API Server 获取当前的资源列表，然后调用 HTTP Watch API 对资源变化进行监控，并把 List 和 Watch 的收到的资源通过 ResourceEventHandlerFuncs 的 AddFunc UpdateFunc DeleteFunc 三个回调接口分发给 Controller。
-* 在开始对队列中的资源事件进行处理之前，先调用 ```cache.WaitForCacheSync(stopCh, c.informer.HasSynced)``` （参见 112 行）。正如其方法名所示，该方法确保 Informer 的本地缓存已经和 K8s API Server 的资源数据进行了同步。当 Reflector 成功调用 ListAndWatch 方法从 K8s API Server 获取到需要监控的资源数据并保存到本地缓存后，会将 ```c.informer.HasSynced``` 设置为 true。在开始业务处理前调用该方法可以确保在本地缓存中的资源数据是和 K8s API Server 中的数据一致的。
-* 在对事件进行处理之后，需要调用 ```queue.Forger(key)``` 方法将事件从队列中删除，以避免重复处理。如果处理时发生异常，可以进行重试，当大于指定重试次数还未成功，则也调用 ```queue.Forger(key)``` 将其从队列中删除，避免无限次重试（参见 76 行的 handleErr 方法）。
+* 在启动 Controller 时需要调用 ``` informer.Run(stopCh) ``` 方法（参见 107 行）。该方法会调用 Reflector 的 [ListAndWatch](https://github.com/kubernetes/client-go/blob/6df09021f998a3b005b8612d21c254b1b4d3d48b/tools/cache/reflector.go#L322) 方法。ListAndWatch 首先采用 HTTP List API 从 K8s API Server 获取当前的资源列表，然后调用 HTTP Watch API 对资源变化进行监控，并把 List 和 Watch 的收到的资源通过 ResourceEventHandlerFuncs 的 AddFunc UpdateFunc DeleteFunc 三个回调接口分发给 Controller。
+* 在开始对队列中的资源事件进行处理之前，先调用 ```cache.WaitForCacheSync(stopCh, c.informer.HasSynced)``` （参见 110 行）。正如其方法名所示，该方法确保 Informer 的本地缓存已经和 K8s API Server 的资源数据进行了同步。当 Reflector 成功调用 ListAndWatch 方法从 K8s API Server 获取到需要监控的资源数据并保存到本地缓存后，会将 ```c.informer.HasSynced``` 设置为 true。在开始业务处理前调用该方法可以确保在本地缓存中的资源数据是和 K8s API Server 中的数据一致的。
+* 在对事件进行处理之后，需要调用 ```queue.Done(key)``` 方法将事件从队列中删除，以避免重复处理。
+* 如果处理时发生异常，可以通过 ```c.queue.AddRateLimited(key)``` 将出错事件的 key 重新加入到队列中。该方法会对重新加入队列的错误消息进行限流，缺省的限流规则是 10 qps。这意味着当 1 秒内出错的消息大于 10 条时，10 条后的错误消息就会在等待一段时间后才会被重新加入到队列中（参见 74 行的 handleErr 方法）。
 
 {{< highlight go "linenos=inline" >}}
 
@@ -340,9 +341,7 @@ func (c *Controller) processNextItem() bool {
 	if quit {
 		return false
 	}
-	// Tell the queue that we are done with processing this key. This unblocks the key for other workers
-	// This allows safe parallel processing because two pods with the same key are never processed in
-	// parallel.
+	// Tell the queue that we are done with processing this key. 
 	defer c.queue.Done(key)
 
 	// Invoke the method containing the business logic
@@ -502,12 +501,13 @@ K8s 在 client go 中基于 Informer 之上再做了一层封装，提供了 Sha
 SharedInformerFactory 中有一个 Informer Map。当应用代码调用 InformerFactory 获取某一资源类型的 Informer 时， SharedInformer 会判断该类型的 Informer 是否存在，如果不存在就新建一个 Informer 并保存到该 Map 中，如果已存在则直接返回该 Informer（参见 SharedInformerFactory 的 [InformerFor](https://github.com/kubernetes/client-go/blob/471f66fb1055201dc7975d416d5889f8e617a4c0/informers/factory.go#L189) 方法）。因此应用中所有从 InformerFactory 中取出的同一类型的 Informer 都是同一个实例。
 
 
-下面的代码是使用了 SharedInformer 的 Controller 示例。该示例的代码和上一节使用 Informer 的代码大部分是一样的，主要的差别是采用了 ```NewSharedInformerFactory``` 来创建 Informer（参见 160 行）。
+下面的代码是使用了 SharedInformer 的 Controller 示例。该示例的代码和上一节使用 Informer 的代码大部分是一样的，主要的差别是采用了 ```NewSharedInformerFactory``` 来创建 Informer（参见 158 行）。
 我们在使用 SharedInformer 来构建 Controller 时，需要注意下面几点：
 * 为了能够共用缓存，同一个 SharedInformerFactory 生成的所有 Informer 只能使用相同的查询过滤条件。
-* 在启动 Controller 前需要调用 ``` informerFactory.Start(stop) ``` 方法（参见 197 行）。该方法会调用 factory 中所有 Informer 的 Run 方法。 Informer 会发起向 k8s API Server 的 ListAndWatch 调用，并开始资源事件的监控和消息分发。
+* 在启动 Controller 前需要调用 ``` informerFactory.Start(stop) ``` 方法（参见 195 行）。该方法会调用 factory 中所有 Informer 的 Run 方法。 Informer 会发起向 k8s API Server 的 ListAndWatch 调用，并开始资源事件的监控和消息分发。
 * 和直接使用 Informer 相同，在开始对队列中的资源事件进行处理之前，先调用 ```cache.WaitForCacheSync(stopCh, c.informer.HasSynced)``` （参见 121 行），以确保在开始业务处理前，Informer 本地缓存中的资源数据已经和 K8s API Server 进行了同步，数据是一致的。
-* 和直接使用 Informer 相同，在对事件进行处理之后，需要调用 ```queue.Forger(key)``` 方法将事件从队列中删除，以避免重复处理。如果处理时发生异常，可以进行重试，当大于指定重试次数还未成功，则也调用 ```queue.Forger(key)``` 将其从队列中删除，避免无限次重试（参见 85 行的 handleErr 方法）。
+* 和直接使用 Informer 相同，在对事件进行处理之后，需要调用 ```queue.Done(key)``` 方法将事件从队列中删除，以避免重复处理。
+* 和直接使用 Informer 相同， 如果处理时发生异常，可以通过 ```c.queue.AddRateLimited(key)``` 将出错事件的 key 重新加入到队列中。
 
 {{< highlight go "linenos=inline" >}}
 package main
@@ -553,9 +553,7 @@ func (c *Controller) processNextItem() bool {
 	if quit {
 		return false
 	}
-	// Tell the queue that we are done with processing this key. This unblocks the key for other workers
-	// This allows safe parallel processing because two pods with the same key are never processed in
-	// parallel.
+	// Tell the queue that we are done with processing this key.
 	defer c.queue.Done(key)
 
 	// Invoke the method containing the business logic

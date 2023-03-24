@@ -716,12 +716,15 @@ func main() {
 
 在之前的章节中，我们了解到了如何编写一个 Controller 来监控和处理 Kubernetes 中内置的 Pod 资源对象。采用同样的方法，我们也可以编写一个 Controller 来处理自定义的 CRD 资源对象。
 
-首先用 golang 来定义一个 CRD，CRD 的结构中主要包含下列的内容：
+首先用 go 来编写 CRD 的数据结构，CRD 的结构中主要包含下列的内容：
 
 * TypeMeta - CRD 的 Group，Version 和 Kind
 * ObjectMeta - 标准的 k8s metadata 字段，包括 name 和 namespace
 * Spec - CRD 中的自定义字段
 * Status - Spec 对应的状态
+
+
+除了上述的 CRD 定义之外，可以看到代码中还有类似 ```// +...``` 的注释，这些注释是用于生成 k8s go client 框架代码的。
 
 ```go
 /* source code from https://github.com/kubernetes/sample-controller/blob/master/pkg/apis/samplecontroller/v1alpha1/types.go */
@@ -767,6 +770,8 @@ type FooList struct {
 1. [Kubernetes API Concepts: Efficient detection of changes](https://kubernetes.io/docs/reference/using-api/api-concepts/#efficient-detection-of-changes)
 2. [client-go under the hood](https://github.com/kubernetes/sample-controller/blob/master/docs/controller-client-go.md)
 3. [Writing Controllers For Kubernetes Resources](https://vivilearns2code.github.io/k8s/2021/03/11/writing-controllers-for-kubernetes-custom-resources.html)
+3. [本文中的源码](https://github.com/zhaohuabing/k8sControllerTutorial)
+4. [Kubernetes sample controller](https://github.com/kubernetes/sample-controller)
 
 
 

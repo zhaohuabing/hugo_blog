@@ -716,15 +716,76 @@ func main() {
 
 在之前的章节中，我们了解到了如何编写一个 Controller 来监控和处理 Kubernetes 中内置的 Pod 资源对象。采用同样的方法，我们也可以编写一个 Controller 来处理自定义的 CRD 资源对象。
 
-首先用 go 来编写 CRD 的数据结构，CRD 的结构中主要包含下列的内容：
+我们首先使用下面的 yaml 片段来在 Kubernetes 中创建一个自定义 CRD。该 yaml 文件中定义了名为 Foo 的自定义资源，该资源的 Spec 中有 deployment 和 replica 两个属性，其实是对 Deployment 的一个简单封装。
+
+```yaml
+kubectl apply -f - <<EOF
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: foos.samplecontroller.k8s.io
+  # for more information on the below annotation, please see
+  # https://github.com/kubernetes/enhancements/blob/master/keps/sig-api-machinery/2337-k8s.io-group-protection/README.md
+  annotations:
+    "api-approved.kubernetes.io": "unapproved, experimental-only; please get an approval from Kubernetes API reviewers if you're trying to develop a CRD in the *.k8s.io or *.kubernetes.io groups"
+spec:
+  group: samplecontroller.k8s.io
+  versions:
+    - name: v1alpha1
+      served: true
+      storage: true
+      schema:
+        # schema used for validation
+        openAPIV3Schema:
+          type: object
+          properties:
+            spec:
+              type: object
+              properties:
+                deploymentName:
+                  type: string
+                replicas:
+                  type: integer
+                  minimum: 1
+                  maximum: 10
+            status:
+              type: object
+              properties:
+                availableReplicas:
+                  type: integer
+      # subresources for the custom resource
+      subresources:
+        # enables the status subresource
+        status: {}
+  names:
+    kind: Foo
+    plural: foos
+  scope: Namespaced
+EOF
+```
+
+在 Kubernetes 中创建了 Foo 这个 CRD 之后，我们可以采用 kubectl 命令行工具创建/删除/修改该 CRD 对应的资源。例如下面的代码片段将创建一个 名为 ```example-foo``` 的 Foo 资源。
+
+```yaml
+apply -f - <<EOF
+heredoc> apiVersion: samplecontroller.k8s.io/v1alpha1
+kind: Foo
+metadata:
+  name: example-foo
+spec:
+  deploymentName: example-foo
+  replicas: 1
+heredoc> EOF
+```
+
+在前面章节的示例中，我们采用 [Inoformer](#informer-机制) 机制来对 Pod 进行 Watch 和调谐；类似地，我们也希望采用类似的方式对新建的该自定义 CRD Foo 进行处理。但是 Kubernetes client go 中只有 Kubernetes 原生的 API 对象相关的接口，并不能处理自定义 CRD。为了对自定义 CRD 进行访问，Kubernetes 提供了 [k8s.io/code-generator](https://github.com/kubernetes/code-generator) 代码生成工具，我们可以使用该工具来生成创建 Informer 需要的相关框架代码，包括 clientset，informers，listers 和 API 对象中相关数据结构的 DeepCopy 方法。
+
+为了使用 go-generator 工具来生成我们需要的 go-client 代码，我们先采用 go 来编写和该 CRD 对应的数据结构。如下面的代码片段所示，CRD 的结构中主要包含下列的内容：
 
 * TypeMeta - CRD 的 Group，Version 和 Kind
 * ObjectMeta - 标准的 k8s metadata 字段，包括 name 和 namespace
 * Spec - CRD 中的自定义字段
 * Status - Spec 对应的状态
-
-
-除了上述的 CRD 定义之外，可以看到代码中还有类似 ```// +...``` 的注释，这些注释是用于生成 k8s go client 框架代码的。
 
 ```go
 /* source code from https://github.com/kubernetes/sample-controller/blob/master/pkg/apis/samplecontroller/v1alpha1/types.go */
@@ -765,14 +826,299 @@ type FooList struct {
 }
 ```
 
+可以看到，在定义 CRD 的 go 代码中有类似 ```// +...``` 的注释（称为 Tag），go-generator 会根据这些 Tag 来生成 k8s go client 框架代码。
+
+我们需要在 doc.go 文件中使用一个全局 tag ```+k8s:deepcopy-gen=package``` ，来为整个 package 中的所有数据结构生成 DeepCopy 方法。 DeepCopy 方法对数据结构进行深拷贝，当你需要在代码中对该一个对象进行修改，而又不希望影响其他使用到该对象的代码时，可以先对对象进行一次 DeepCopy，拿到该对象的一个副本后再进行操作。
+
+
+```go
+/* source code from https://github.com/kubernetes/sample-controller/blob/master/pkg/apis/samplecontroller/v1alpha1/doc.go */
+
+// +k8s:deepcopy-gen=package
+// +groupName=samplecontroller.k8s.io
+
+// Package v1alpha1 is the v1alpha1 version of the API.
+package v1alpha1
+```
+
+Kubernetes client 要求注册到 Scheme 中的 API 对象必须实现 ```runtime.Object``` 接口。因此除了该全局 Tag 之外，我们可以看到在上面代码片段的 ```Foo``` 和 ```FooList``` 数据结构中，还采用了 ```+k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object``` 本地 Tag 来告诉 ```deepcoy-gen``` 工具为这两个数据结构生成返回 ```runtime.Objec``` 对象的附加的 ```DeepCopyObject``` 方法。
+
+```+genclient``` 和 ```+groupName=samplecontroller.k8s.io``` 则被 ```client-gen``` 工具用于生成 clientsent。此外，我们还需要使用 ```informer-gen``` 和 ```lister-gen``` 为自定义 CRD 生成 ```informer``` 和 ```lister``` 代码。
+
+为自定义 CRD 生成 go client 代码的脚本在 [hack/update-codegen.sh](https://github.com/zhaohuabing/k8scontrollertutorial/tree/main/hack) 中，生成的代码在本文参考文档的[该链接](https://github.com/zhaohuabing/k8scontrollertutorial/tree/main/pkg/custom)中。
+
+还需要注意的是必须创建一个 [register.go](https://github.com/zhaohuabing/k8scontrollertutorial/blob/main/pkg/custom/apis/foo/v1alpha1/register.go) 文件，在该文件中把自定义 CRD 对应的 golang type 注册到 Scheme 中，否则编译时会报错。
+
+```go
+package v1alpha1
+
+import (
+	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+	"k8s.io/apimachinery/pkg/runtime"
+	"k8s.io/apimachinery/pkg/runtime/schema"
+)
+
+// GroupName is the group name used in this package
+const (
+	GroupName = "samplecontroller.k8s.io"
+)
+
+// SchemeGroupVersion is group version used to register these objects
+var SchemeGroupVersion = schema.GroupVersion{Group: GroupName, Version: "v1alpha1"}
+
+// Kind takes an unqualified kind and returns back a Group qualified GroupKind
+func Kind(kind string) schema.GroupKind {
+	return SchemeGroupVersion.WithKind(kind).GroupKind()
+}
+
+// Resource takes an unqualified resource and returns a Group qualified GroupResource
+func Resource(resource string) schema.GroupResource {
+	return SchemeGroupVersion.WithResource(resource).GroupResource()
+}
+
+var (
+	// SchemeBuilder initializes a scheme builder
+	SchemeBuilder = runtime.NewSchemeBuilder(addKnownTypes)
+	// AddToScheme is a global function that registers this API group & version to a scheme
+	AddToScheme = SchemeBuilder.AddToScheme
+)
+
+// Adds the list of known types to Scheme.
+func addKnownTypes(scheme *runtime.Scheme) error {
+	scheme.AddKnownTypes(SchemeGroupVersion,
+		&Foo{},
+		&FooList{},
+	)
+	metav1.AddToGroupVersion(scheme, SchemeGroupVersion)
+	return nil
+}
+```
+
+最后我们就可以用生成的代码来编写该自定义 CRD 的 Controller 了，如下面的代码所示。可以看到，该代码和前面章节中通过 Shared Informer 来监控 Pod 的代码几乎一模一样。主要的区别是采用了 go generator 生成的 Foo 这个自定义 CRD 的 clientset，lnformer 和 lister 的相关 package 来替换 Kubernetes go client 自带的 Pod 的相关 package。
+
+```go
+package main
+
+import (
+	"flag"
+	"fmt"
+	customscheme "github.com/zhaohuabing/k8scontrollertutorial/pkg/custom/client/clientset/versioned/scheme"
+	"k8s.io/client-go/kubernetes/scheme"
+	"time"
+
+	customclient "github.com/zhaohuabing/k8scontrollertutorial/pkg/custom/client/clientset/versioned"
+	custominformers "github.com/zhaohuabing/k8scontrollertutorial/pkg/custom/client/informers/externalversions"
+	customlisters "github.com/zhaohuabing/k8scontrollertutorial/pkg/custom/client/listers/foo/v1alpha1"
+	"k8s.io/apimachinery/pkg/api/errors"
+	"k8s.io/apimachinery/pkg/util/runtime"
+	utilruntime "k8s.io/apimachinery/pkg/util/runtime"
+	"k8s.io/apimachinery/pkg/util/wait"
+	"k8s.io/client-go/tools/cache"
+	"k8s.io/client-go/tools/clientcmd"
+	"k8s.io/client-go/util/workqueue"
+	"k8s.io/klog/v2"
+)
+
+// Controller demonstrates how to implement a controller with client-go.
+type Controller struct {
+	lister   customlisters.FooLister
+	queue    workqueue.RateLimitingInterface
+	informer cache.Controller
+}
+
+// NewController creates a new Controller.
+func NewController(queue workqueue.RateLimitingInterface, lister customlisters.FooLister,
+	informer cache.Controller) *Controller {
+	return &Controller{
+		informer: informer,
+		lister:   lister,
+		queue:    queue,
+	}
+}
+
+func (c *Controller) processNextItem() bool {
+	// Wait until there is a new item in the working queue
+	key, quit := c.queue.Get()
+	if quit {
+		return false
+	}
+	// Tell the queue that we are done with processing this key. This unblocks the key for other workers
+	// This allows safe parallel processing because two pods with the same key are never processed in
+	// parallel.
+	defer c.queue.Done(key)
+
+	// Invoke the method containing the business logic
+	err := c.syncToStdout(key.(string))
+	// Handle the error if something went wrong during the execution of the business logic
+	c.handleErr(err, key)
+	return true
+}
+
+// syncToStdout is the business logic of the controller. In this controller it simply prints
+// information about the pod to stdout. In case an error happened, it has to simply return the error.
+// The retry logic should not be part of the business logic.
+func (c *Controller) syncToStdout(key string) error {
+	namespace, name, err := cache.SplitMetaNamespaceKey(key)
+	if err != nil {
+		utilruntime.HandleError(fmt.Errorf("invalid resource key: %s", key))
+		return nil
+	}
+
+	// Get the Foo resource with this namespace/name
+	foo, err := c.lister.Foos(namespace).Get(name)
+	if err != nil {
+		if errors.IsNotFound(err) {
+			utilruntime.HandleError(fmt.Errorf("foo '%s' in work queue no longer exists", key))
+			return nil
+		}
+
+		return err
+	}
+
+	// Note that you also have to check the uid if you have a local controlled resource, which
+	// is dependent on the actual instance, to detect that a foo was recreated with the same name
+	fmt.Printf("Sync/Add/Update for foo %s\n", foo.GetName())
+
+	return nil
+}
+
+// handleErr checks if an error happened and makes sure we will retry later.
+func (c *Controller) handleErr(err error, key interface{}) {
+	if err == nil {
+		// Forget about the #AddRateLimited history of the key on every successful synchronization.
+		// This ensures that future processing of updates for this key is not delayed because of
+		// an outdated error history.
+		c.queue.Forget(key)
+		return
+	}
+
+	// This controller retries 5 times if something goes wrong. After that, it stops trying.
+	if c.queue.NumRequeues(key) < 5 {
+		klog.Infof("Error syncing foo %v: %v", key, err)
+
+		// Re-enqueue the key rate limited. Based on the rate limiter on the
+		// queue and the re-enqueue history, the key will be processed later again.
+		c.queue.AddRateLimited(key)
+		return
+	}
+
+	c.queue.Forget(key)
+	// Report to an external entity that, even after several retries, we could not successfully process this key
+	runtime.HandleError(err)
+	klog.Infof("Dropping foo %q out of the queue: %v", key, err)
+}
+
+// Run begins watching and syncing.
+func (c *Controller) Run(workers int, stopCh chan struct{}) {
+	defer runtime.HandleCrash()
+
+	// Let the workers stop when we are done
+	defer c.queue.ShutDown()
+	klog.Info("Starting foo controller")
+
+	go c.informer.Run(stopCh)
+
+	// Wait for all involved caches to be synced, before processing items from the queue is started
+	if !cache.WaitForCacheSync(stopCh, c.informer.HasSynced) {
+		runtime.HandleError(fmt.Errorf("Timed out waiting for caches to sync"))
+		return
+	}
+
+	for i := 0; i < workers; i++ {
+		go wait.Until(c.runWorker, time.Second, stopCh)
+	}
+
+	<-stopCh
+	klog.Info("Stopping foo controller")
+}
+
+func (c *Controller) runWorker() {
+	for c.processNextItem() {
+	}
+}
+
+func main() {
+	var kubeconfig string
+	var master string
+
+	flag.StringVar(&kubeconfig, "kubeconfig", "", "absolute path to the kubeconfig file")
+	flag.StringVar(&master, "master", "", "master url")
+	flag.Parse()
+
+	// Add sample-controller types to the default Kubernetes Scheme so Events can be
+	// logged for sample-controller types.
+	utilruntime.Must(customscheme.AddToScheme(scheme.Scheme))
+
+	// creates the connection
+	config, err := clientcmd.BuildConfigFromFlags(master, kubeconfig)
+	if err != nil {
+		klog.Fatal(err)
+	}
+
+	// creates the clientset
+	clientset, err := customclient.NewForConfig(config)
+	if err != nil {
+		klog.Fatal(err)
+	}
+
+	// create an informer factory
+	informerFactory := custominformers.NewSharedInformerFactory(clientset, time.Second*30)
+
+	// create an informer and lister for foo
+	informer := informerFactory.Samplecontroller().V1alpha1().Foos()
+
+	// create the workqueue
+	queue := workqueue.NewRateLimitingQueue(workqueue.DefaultControllerRateLimiter())
+
+	// register the event handler with the informer
+	informer.Informer().AddEventHandler(cache.ResourceEventHandlerFuncs{
+		AddFunc: func(obj interface{}) {
+			key, err := cache.MetaNamespaceKeyFunc(obj)
+			if err == nil {
+				queue.Add(key)
+			}
+		},
+		UpdateFunc: func(old interface{}, new interface{}) {
+			key, err := cache.MetaNamespaceKeyFunc(new)
+			if err == nil {
+				queue.Add(key)
+			}
+		},
+		DeleteFunc: func(obj interface{}) {
+			// IndexerInformer uses a delta queue, therefore for deletes we have to use this
+			// key function.
+			key, err := cache.DeletionHandlingMetaNamespaceKeyFunc(obj)
+			if err == nil {
+				queue.Add(key)
+			}
+		},
+	})
+
+	controller := NewController(queue, informer.Lister(), informer.Informer())
+
+	// Now let's start the controller
+	stop := make(chan struct{})
+	defer close(stop)
+	informerFactory.Start(stop)
+	go controller.Run(1, stop)
+
+	// Wait forever
+	select {}
+}
+
+```
+
+
+
 # 参考文档
 
-1. [Kubernetes API Concepts: Efficient detection of changes](https://kubernetes.io/docs/reference/using-api/api-concepts/#efficient-detection-of-changes)
-2. [client-go under the hood](https://github.com/kubernetes/sample-controller/blob/master/docs/controller-client-go.md)
-3. [Writing Controllers For Kubernetes Resources](https://vivilearns2code.github.io/k8s/2021/03/11/writing-controllers-for-kubernetes-custom-resources.html)
-3. [本文中的源码](https://github.com/zhaohuabing/k8sControllerTutorial)
-4. [Kubernetes sample controller](https://github.com/kubernetes/sample-controller)
-
+* [Kubernetes API Concepts: Efficient detection of changes](https://kubernetes.io/docs/reference/using-api/api-concepts/#efficient-detection-of-changes)
+* [client-go under the hood](https://github.com/kubernetes/sample-controller/blob/master/docs/controller-client-go.md)
+* [Writing Controllers For Kubernetes Resources](https://vivilearns2code.github.io/k8s/2021/03/11/writing-controllers-for-kubernetes-custom-resources.html)
+* [Kubernetes sample controller](https://github.com/kubernetes/sample-controller)
+* [Kubernetes code generator](https://github.com/kubernetes/code-generator)
+* [Groups and Versions and Kinds, oh my!](https://book.kubebuilder.io/cronjob-tutorial/gvks.html#err-but-whats-that-scheme-thing)
+* [本文中的示例源码](https://github.com/zhaohuabing/k8sControllerTutorial)
 
 
 

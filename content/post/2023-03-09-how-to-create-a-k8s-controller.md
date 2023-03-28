@@ -15,7 +15,7 @@ categories:
 showtoc: true
 ---
 
-Kubernetes(简称K8s) 是一套容器编排和管理系统，可以帮助我们部署、扩展和管理容器化应用程序。在 K8s 中，Controller 是一个重要的组件，它可以根据我们的期望状态和实际状态来进行调谐，以确保我们的应用程序始终处于所需的状态。本文将解析 K8s Controller 的实现机制，并介绍如何编写一个 Controller。。
+Kubernetes(简称K8s) 是一套容器编排和管理系统，可以帮助我们部署、扩展和管理容器化应用程序。在 K8s 中，Controller 是一个重要的组件，它可以根据我们的期望状态和实际状态来进行调谐，以确保我们的应用程序始终处于所需的状态。本系列博文将解析 K8s Controller 的实现机制，并介绍如何编写一个 Controller。
 
 # Controller 原理
 
@@ -40,7 +40,7 @@ K8s API Server 提供了获取某类资源集合的 HTTP API，此类 API 被称
 HTTP GET api/v1/namespaces/default/pods
 ```
 
-在该 URL 后面加上参数 ```?watch=true```，则 API Server 会对 default namespace 下面的 pod 的状态进行持续监控，并在 pod 状态发生变化时通过 [chunked](https://datatracker.ietf.org/doc/html/rfc9112#name-chunked-transfer-coding) Response (HTTP 1.1) 或者 [Server Push](https://datatracker.ietf.org/doc/html/rfc9113#name-server-push)（HTTP2）通知到客户端。K8s 称此机制为 watch<sup>1</sup>。
+在该 URL 后面加上参数 ```?watch=true```，则 API Server 会对 default namespace 下面的 pod 的状态进行持续监控，并在 pod 状态发生变化时通过 [chunked](https://datatracker.ietf.org/doc/html/rfc9112#name-chunked-transfer-coding) Response (HTTP 1.1) 或者 [Server Push](https://datatracker.ietf.org/doc/html/rfc9113#name-server-push)（HTTP2）通知到客户端。K8s 称此机制为 [watch](https://kubernetes.io/docs/reference/using-api/api-concepts/#efficient-detection-of-changes)。
 
 ```
 HTTP GET api/v1/namespaces/default/pods?watch=true
@@ -716,7 +716,7 @@ func main() {
 
 在之前的章节中，我们了解到了如何编写一个 Controller 来监控和处理 Kubernetes 中内置的 Pod 资源对象。采用同样的方法，我们也可以编写一个 Controller 来处理自定义的 CRD 资源对象。
 
-我们首先使用下面的 yaml 片段来在 Kubernetes 中创建一个自定义 CRD。该 yaml 文件中定义了名为 Foo 的自定义资源，该资源的 Spec 中有 deployment 和 replica 两个属性，其实是对 Deployment 的一个简单封装。
+我们首先使用下面的 yaml 片段来在 Kubernetes 中创建一个自定义 CRD。该 yaml 文件中定义了名为 Foo 的自定义资源，该资源的 Spec 中有 deployment 和 replica 两个属性，可以看出是对 Deployment 的一个简单封装，即将一个 Deployment 的副本数设置为指定的数量。
 
 ```yaml
 kubectl apply -f - <<EOF
@@ -764,7 +764,7 @@ spec:
 EOF
 ```
 
-在 Kubernetes 中创建了 Foo 这个 CRD 之后，我们可以采用 kubectl 命令行工具创建/删除/修改该 CRD 对应的资源。例如下面的代码片段将创建一个 名为 ```example-foo``` 的 Foo 资源。
+在 Kubernetes 中创建了 Foo 这个 CRD 之后，我们可以采用 kubectl 命令行工具创建/删除/修改该 CRD 对应的资源。例如下面的代码片段将创建一个 名为 ```example-foo``` 的 Foo 资源。该资源要求将 example-foo 这个 Deployment 的副本数设置为5个。
 
 ```yaml
 apply -f - <<EOF
@@ -774,11 +774,11 @@ metadata:
   name: example-foo
 spec:
   deploymentName: example-foo
-  replicas: 1
+  replicas: 5
 heredoc> EOF
 ```
 
-在前面章节的示例中，我们采用 [Inoformer](#informer-机制) 机制来对 Pod 进行 Watch 和调谐；类似地，我们也希望采用类似的方式对新建的该自定义 CRD Foo 进行处理。但是 Kubernetes client go 中只有 Kubernetes 原生的 API 对象相关的接口，并不能处理自定义 CRD。为了对自定义 CRD 进行访问，Kubernetes 提供了 [k8s.io/code-generator](https://github.com/kubernetes/code-generator) 代码生成工具，我们可以使用该工具来生成创建 Informer 需要的相关框架代码，包括 clientset，informers，listers 和 API 对象中相关数据结构的 DeepCopy 方法。
+在前面章节的示例中，我们采用 [Inoformer](#informer-机制) 机制来对 Pod 进行监控和调谐；类似地，我们也希望采用类似的方式对新建的该自定义 CRD Foo 进行处理。但是 Kubernetes client go 中只有 Kubernetes 原生的 API 对象相关的接口，并不能处理自定义 CRD。为了对自定义 CRD 进行访问，Kubernetes 提供了 [k8s.io/code-generator](https://github.com/kubernetes/code-generator) 代码生成工具，我们可以使用该工具来生成创建 Informer 需要的相关框架代码，包括 clientset，informers，listers 和 API 对象中相关数据结构的 DeepCopy 方法。
 
 为了使用 go-generator 工具来生成我们需要的 go-client 代码，我们先采用 go 来编写和该 CRD 对应的数据结构。如下面的代码片段所示，CRD 的结构中主要包含下列的内容：
 

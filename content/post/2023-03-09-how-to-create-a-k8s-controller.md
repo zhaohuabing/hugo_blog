@@ -1,8 +1,8 @@
 ---
 layout:     post
 
-title:      "Kubernetes Controller 实现机制深度解析"
-subtitle:   ""
+title:      "Kubernetes Controller 机制详解（一）"
+subtitle:   "Kubernetes API List/Watch 机制 与 Informer 客户端库"
 description: "Kubernetes(简称K8s) 是一套容器编排和管理系统，可以帮助我们部署、扩展和管理容器化应用程序。在 K8s 中，Controller 是一个重要的组件，它可以根据我们的期望状态和实际状态来进行调谐，以确保我们的应用程序始终处于所需的状态。本文将解析 K8s Controller 的实现机制，并介绍如何编写一个 Controller。"
 author: "赵化冰"
 date: 2023-03-09
@@ -1108,7 +1108,19 @@ func main() {
 
 ```
 
+# 使用 Controller Runtime 和 Kubebuilder
 
+在本文 Pod 和 Foo 的 Controller 示例中，我们采用了 client-go 提供的 Informer 来编写 Controller。但其实我们还可以使用 Controller runtime 或者 kubebuilder 这两个框架来编写 Controller，这两个框架提供了比 Informer 更高层次的抽象，可以进一步简化我们的代码。
+
+下面是采用 Informer，Controller runtime 和 Kubebuilder 来编写 Controller 的区别：
+
+* 直接使用 Informer：直接使用 Informer 编写 Controller 需要编写更多的代码，因为我们需要在代码处理更多的底层细节，例如如何在集群中监视资源，以及如何处理资源变化的通知。但是，使用 Informer 也可以更加自定义和灵活，因为我们可以更细粒度地控制 Controller 的行为。
+
+* Controller runtime：Controller runtime 是基于 Informer 实现的，在 Informer 之上为 Controller 编写提供了高级别的抽象和帮助类，包括 Leader Election、Event Handling 和 Reconcile Loop 等等。使用 Controller runtime，可以更容易地编写和测试 Controller，因为它已经处理了许多底层的细节。
+
+* Kubebuilder：和 Informer 及 Controller runtime 不同，Kubebuilder 并不是一个代码库，而是一个开发框架。Kubebuilder 底层使用了 controller-runtime。Kubebuilder 提供了 CRD 生成器和代码生成器等工具，可以帮助开发者自动生成一些重复性的代码和资源定义，提高开发效率。同时，Kubebuilder 还可以生成 Webhooks，以用于验证自定义资源。
+
+我们将在本系列的后续文章中继续介绍 Controller runtime 和 Kubebuilder 两种机制。
 
 # 参考文档
 

@@ -1108,6 +1108,102 @@ func main() {
 
 ```
 
+# Leader Election
+
+在实际部署时，为了保证 Controller 的高可用，我们常常同时运行多个 Controller 实例。在这种情况下，多个 Controller 实例之间需要进行 Leader Election。被选中成为 Leader 的 Controller 实例才执行 Watch 和 Reconcile 逻辑，其余 Controller 处于等待状态。当 Leader 出现问题后，另一个实例会被重新选为 Leader，接替原 Leader 继续执行。
+
+要在应用程序中实现 Leader Election，我们往往需要部署分布式共享存储系统如 ZooKeeper, etcd 或者 Consul 等来实现选主，或者自己在应用程序中实现选主的算法。为了简化 Controller 的编写，Kubernetes client-go 中提供了 [leaderelection](https://pkg.go.dev/k8s.io/client-go/tools/leaderelection) package。该 package 通过将 Kubernetes 的 lease 资源作为分布式锁来实现了选主逻辑。Kubernetes 为 Controller 的 Leader Election 创建一个 Lease 对象，该对象 spec 中的 holderIdentity 是当前的 Leader，一般会使用 Leader 的 pod name 作为 Identity。leaseDurationSeconds 是锁的租赁时间，renewTime 则是上一次的更新时间。参与选举的实例会判断当前是否存在该 Lease 对象，如果不存在，则会创建一个 Lease 对象，并将 holderIdentity 设为自己，成为 Leader 并执行调谐逻辑。其他实例则会定期检测该 Lease 对象，如果发现租赁过期，则会试图将 holderIdentity 设为自己，成为新的 Leader。
+
+> 备注：Kubernetes client go 曾使用 ConfigMap 和 Endpoint 资源对象来作为分布式锁，并通过资源对象上的 annotation 来记录 Leader Election 信息。不过相对于使用 annotation，lease 资源的 spec 更适用于表示分布式锁的语义。
+
+下面的 yaml 片段是一个 Lease 资源的例子：
+
+```yaml
+apiVersion: coordination.k8s.io/v1
+kind: Lease
+metadata:
+  creationTimestamp: "2023-04-02T03:36:42Z"
+  name: demo-controller-lock
+  namespace: kube-system
+  resourceVersion: "1156206"
+  uid: bb58f519-ec4b-4e1f-a2d1-923366c33926
+spec:
+  acquireTime: "2023-04-02T03:36:42.000000Z"
+  holderIdentity: demo-controller-5c4497489b-tcfjm
+  leaseDurationSeconds: 60
+  leaseTransitions: 0
+  renewTime: "2023-04-02T05:19:14.533852Z"
+```
+
+Kubernetes Client go 已经封装了上面描述的选举逻辑，我们可以直接使用封装后的代码，不必关心 Leader Election 的实现细节。下面是添加了 Leader Election 的代码片段。
+
+```go
+
+func main() {
+	.... 略
+
+	controller := NewController(queue, informer.Lister(), informer.Informer())
+
+	// Now let's start the controller
+	stop := make(chan struct{})
+	defer close(stop)
+
+	kubeclient, err := kubernetes.NewForConfig(config)
+	if err != nil {
+		klog.Fatal(err)
+	}
+	rl, err := getResourceLock(kubeclient)
+	if err != nil {
+		klog.Fatal(err)
+	}
+	leaderelection.RunOrDie(context.TODO(), leaderelection.LeaderElectionConfig{
+		Lock:          rl,
+		LeaseDuration: 60 * time.Second,
+		RenewDeadline: 15 * time.Second,
+		RetryPeriod:   5 * time.Second,
+		Callbacks: leaderelection.LeaderCallbacks{
+			OnStartedLeading: func(ctx context.Context) {
+				informerFactory.Start(stop)
+				go controller.Run(1, stop)
+			},
+			OnStoppedLeading: func() {
+				klog.Info("leaderelection lost")
+			},
+			OnNewLeader: func(identity string) {
+				if identity == rl.Identity() {
+					klog.Info("leaderelection won")
+				}
+			},
+		},
+	})
+
+	// Wait forever
+	select {}
+}
+
+func getResourceLock(client *kubernetes.Clientset) (resourcelock.Interface, error) {
+	lockName := "demo-controller-lock"
+	lockNamespace := "kube-system"
+	identity, err := os.Hostname()
+	if err != nil {
+		return nil, err
+	}
+
+	return resourcelock.New(
+		resourcelock.LeasesResourceLock,
+		lockNamespace,
+		lockName,
+		client.CoreV1(),
+		client.CoordinationV1(),
+		resourcelock.ResourceLockConfig{
+			Identity: identity,
+		},
+	)
+}
+
+
+```
+
 # 使用 Controller Runtime 和 Kubebuilder
 
 在本文 Pod 和 Foo 的 Controller 示例中，我们采用了 client-go 提供的 Informer 来编写 Controller。但其实我们还可以使用 Controller runtime 或者 kubebuilder 这两个框架来编写 Controller，这两个框架提供了比 Informer 更高层次的抽象，可以进一步简化我们的代码。
@@ -1130,6 +1226,8 @@ func main() {
 * [Kubernetes sample controller](https://github.com/kubernetes/sample-controller)
 * [Kubernetes code generator](https://github.com/kubernetes/code-generator)
 * [Groups and Versions and Kinds, oh my!](https://book.kubebuilder.io/cronjob-tutorial/gvks.html#err-but-whats-that-scheme-thing)
+* [Leader Election](https://pkg.go.dev/k8s.io/client-go/tools/leaderelection)
+* [Leases]https://kubernetes.io/docs/concepts/architecture/leases/
 * [本文中的示例源码](https://github.com/zhaohuabing/k8sControllerTutorial)
 
 

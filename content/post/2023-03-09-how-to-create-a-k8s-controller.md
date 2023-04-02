@@ -1227,7 +1227,7 @@ func getResourceLock(client *kubernetes.Clientset) (resourcelock.Interface, erro
 * [Kubernetes code generator](https://github.com/kubernetes/code-generator)
 * [Groups and Versions and Kinds, oh my!](https://book.kubebuilder.io/cronjob-tutorial/gvks.html#err-but-whats-that-scheme-thing)
 * [Leader Election](https://pkg.go.dev/k8s.io/client-go/tools/leaderelection)
-* [Leases]https://kubernetes.io/docs/concepts/architecture/leases/
+* [Leases](https://kubernetes.io/docs/concepts/architecture/leases/)
 * [本文中的示例源码](https://github.com/zhaohuabing/k8sControllerTutorial)
 
 

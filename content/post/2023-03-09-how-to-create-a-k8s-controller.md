@@ -1112,7 +1112,7 @@ func main() {
 
 在实际部署时，为了保证 Controller 的高可用，我们常常同时运行多个 Controller 实例。在这种情况下，多个 Controller 实例之间需要进行 Leader Election。被选中成为 Leader 的 Controller 实例才执行 Watch 和 Reconcile 逻辑，其余 Controller 处于等待状态。当 Leader 出现问题后，另一个实例会被重新选为 Leader，接替原 Leader 继续执行。
 
-要在应用程序中实现 Leader Election，我们往往需要部署分布式共享存储系统如 ZooKeeper, etcd 或者 Consul 等来实现选主，或者自己在应用程序中实现选主的算法。为了简化 Controller 的编写，Kubernetes client-go 中提供了 [leaderelection](https://pkg.go.dev/k8s.io/client-go/tools/leaderelection) package。该 package 通过将 Kubernetes 的 lease 资源作为分布式锁来实现了选主逻辑。Kubernetes 为 Controller 的 Leader Election 创建一个 Lease 对象，该对象 spec 中的 holderIdentity 是当前的 Leader，一般会使用 Leader 的 pod name 作为 Identity。leaseDurationSeconds 是锁的租赁时间，renewTime 则是上一次的更新时间。参与选举的实例会判断当前是否存在该 Lease 对象，如果不存在，则会创建一个 Lease 对象，并将 holderIdentity 设为自己，成为 Leader 并执行调谐逻辑。其他实例则会定期检测该 Lease 对象，如果发现租赁过期，则会试图将 holderIdentity 设为自己，成为新的 Leader。
+要在应用程序中实现 Leader Election，我们可以部署一个共享 KV 存储系统如 ZooKeeper, etcd 或者 Consul，在其中创建一个用于选主的 kv 节点，KV 存储系统可以保证写操作的原子性，因此多个实例可以通过竞争设置节点的值来实现选主；也可以自己在应用程序中实现选主的算法。为了简化 Controller 的编写，Kubernetes client-go 中提供了 [leaderelection](https://pkg.go.dev/k8s.io/client-go/tools/leaderelection) package。该 package 通过将 Kubernetes 的 lease 资源作为分布式锁来实现了选主逻辑。Kubernetes 为 Controller 的 Leader Election 创建一个 Lease 对象，该对象 spec 中的 holderIdentity 是当前的 Leader，一般会使用 Leader 的 pod name 作为 Identity。leaseDurationSeconds 是锁的租赁时间，renewTime 则是上一次的更新时间。参与选举的实例会判断当前是否存在该 Lease 对象，如果不存在，则会创建一个 Lease 对象，并将 holderIdentity 设为自己，成为 Leader 并执行调谐逻辑。其他实例则会定期检测该 Lease 对象，如果发现租赁过期，则会试图将 holderIdentity 设为自己，成为新的 Leader。
 
 > 备注：Kubernetes client go 曾使用 ConfigMap 和 Endpoint 资源对象来作为分布式锁，并通过资源对象上的 annotation 来记录 Leader Election 信息。不过相对于使用 annotation，lease 资源的 spec 更适用于表示分布式锁的语义。
 
@@ -1135,7 +1135,7 @@ spec:
   renewTime: "2023-04-02T05:19:14.533852Z"
 ```
 
-Kubernetes Client go 已经封装了上面描述的选举逻辑，我们可以直接使用封装后的代码，不必关心 Leader Election 的实现细节。下面是添加了 Leader Election 的代码片段。
+Kubernetes Client go 已经封装了上面描述的选举逻辑，我们可以直接使用封装后的代码，不必关心 Leader Election 的实现细节。下面是添加了 Leader Election 的代码片段，完整代码参见文后的链接。
 
 ```go
 
@@ -1200,7 +1200,6 @@ func getResourceLock(client *kubernetes.Clientset) (resourcelock.Interface, erro
 		},
 	)
 }
-
 
 ```
 

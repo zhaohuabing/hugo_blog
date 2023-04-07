@@ -333,6 +333,7 @@ I0407 06:58:10.744397       1 leaderelection.go:258] successfully acquired lease
 2023-04-07T06:58:10Z	INFO	Starting workers	{"controller": "foo", "controllerGroup": "samplecontroller.zhaohuabing.com", "controllerKind": "Foo", "worker count": 1}
 reconcile foo foo-sampl
 ```
+完整的代码参见：https://github.com/zhaohuabing/kubebuilderexample
 
 # 小结
 在本系列文章中，我们介绍了 Kubernetes List/Watch API 的原理，以及基于该 API 编写自定义 Controller 的几种方法。我们可以采用 Informer，Controller runtime，Kubebuilder 来编写 Controller。其中 Informer 和 Controller 是 Kubernetes 提供的代码库，而 Kubebuilder 则是一个快速生成 Controller 项目的脚手架工具。其实这些方法说到底都是对 Kubernetes List/Watch 机制的封装。对于开发者的友好程度而言，Informer，Controller runtime，Kubebuilder 依次增加；而代码定制的灵活度则依次降低。在具体使用时，可以根据业务需求的具体情况选择其中的一种方式。
@@ -342,6 +343,8 @@ reconcile foo foo-sampl
 
 * [Kubernetes controller-runtime](https://github.com/kubernetes-sigs/controller-runtime)
 * [kubebuilder quick start](https://book.kubebuilder.io/quick-start.html)
+* [采用 Controller runtime 的源代码](https://github.com/zhaohuabing/k8scontrollertutorial/tree/main/pkg/custom/controller_runtime)
+* [采用 Kubebuilder 的源代码](https://github.com/zhaohuabing/kubebuilderexample)
 
 
 

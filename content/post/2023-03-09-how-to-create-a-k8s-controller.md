@@ -3,7 +3,7 @@ layout:     post
 
 title:      "Kubernetes Controller 机制详解（一）"
 subtitle:   "Kubernetes API List/Watch 机制 与 Informer 客户端库"
-description: "Kubernetes(简称K8s) 是一套容器编排和管理系统，可以帮助我们部署、扩展和管理容器化应用程序。在 K8s 中，Controller 是一个重要的组件，它可以根据我们的期望状态和实际状态来进行调谐，以确保我们的应用程序始终处于所需的状态。本文将解析 K8s Controller 的实现机制，并介绍如何编写一个 Controller。"
+description: "Kubernetes(简称K8s) 是一套容器编排和管理系统，可以帮助我们部署、扩展和管理容器化应用程序。在 K8s 中，Controller 是一个重要的组件，它可以根据我们的期望状态和实际状态来进行调谐，以确保我们的应用程序始终处于所需的状态。本系列文章将解析 K8s Controller 的实现机制，并介绍如何编写一个 Controller。"
 author: "赵化冰"
 date: 2023-03-09
 image: "https://images.unsplash.com/photo-1432821596592-e2c18b78144f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2370&q=80"
@@ -919,7 +919,7 @@ import (
 	"k8s.io/klog/v2"
 )
 
-// Controller demonstrates how to implement a controller with client-go.
+// Controller samplenstrates how to implement a controller with client-go.
 type Controller struct {
 	lister   customlisters.FooLister
 	queue    workqueue.RateLimitingInterface
@@ -1123,13 +1123,13 @@ apiVersion: coordination.k8s.io/v1
 kind: Lease
 metadata:
   creationTimestamp: "2023-04-02T03:36:42Z"
-  name: demo-controller-lock
+  name: sample-controller-lock
   namespace: kube-system
   resourceVersion: "1156206"
   uid: bb58f519-ec4b-4e1f-a2d1-923366c33926
 spec:
   acquireTime: "2023-04-02T03:36:42.000000Z"
-  holderIdentity: demo-controller-5c4497489b-tcfjm
+  holderIdentity: sample-controller-5c4497489b-tcfjm
   leaseDurationSeconds: 60
   leaseTransitions: 0
   renewTime: "2023-04-02T05:19:14.533852Z"
@@ -1182,7 +1182,7 @@ func main() {
 }
 
 func getResourceLock(client *kubernetes.Clientset) (resourcelock.Interface, error) {
-	lockName := "demo-controller-lock"
+	lockName := "sample-controller-lock"
 	lockNamespace := "kube-system"
 	identity, err := os.Hostname()
 	if err != nil {
@@ -1227,7 +1227,7 @@ func getResourceLock(client *kubernetes.Clientset) (resourcelock.Interface, erro
 * [Groups and Versions and Kinds, oh my!](https://book.kubebuilder.io/cronjob-tutorial/gvks.html#err-but-whats-that-scheme-thing)
 * [Leader Election](https://pkg.go.dev/k8s.io/client-go/tools/leaderelection)
 * [Leases](https://kubernetes.io/docs/concepts/architecture/leases/)
-* [本文中的示例源码](https://github.com/zhaohuabing/k8sControllerTutorial)
+* [本文中的示例源码](https://github.com/zhaohuabing/k8scontrollertutorial)
 
 
 

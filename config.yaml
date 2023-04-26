@@ -29,7 +29,7 @@ markup:
     renderer:
       unsafe: true
 params:
-  header_image: https://images.unsplash.com/photo-1557214997-7eae7e0e7aaa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80
+  header_image: /img/background.webp
   SEOTitle: 赵化冰的博客 | Zhaohuabing Blog
   description: '赵化冰，程序员, 开源爱好者，生活探险家 | 这里是 赵化冰 的博客，与你一起发现更大的世界。'
   keyword: >-
@@ -47,7 +47,7 @@ params:
   algolia_indexName: blog
   algolia_apiKey: 090c4a77b8bd4b8d2f2c1262afbc4be2
   sidebar_about_description: 'CNCF Ambassador, Engineer @Tencent Cloud, creator @Aeraki Mesh, open-source enthusiast, technical writer and life adventurer'
-  sidebar_avatar: img/zhaohuabing-headshot-round-white.png
+  sidebar_avatar: img/zhaohuabing-headshot-round-white.webp
   featured_tags: true
   featured_condition_size: 5
   ba_track_id: a1d96090e4189c0376251fb043da7be5
@@ -99,13 +99,13 @@ params:
     title: MY BOOKS
     items:
       - title: Distributed Tracing with Jaeger, Kubernetes, and Istio
-        image: /img/liveproject.png
+        image: /img/liveproject.webp
         href: https://www.manning.com/bundles/distributed-tracing-ser?utm_source=zhaohuabing&utm_medium=affiliate&utm_campaign=liveproject_zhao_distributed_9_7_21&a_aid=zhaohuabing&a_bid=ce8ffc93
       - title: 深入理解 Istio
-        image: /img/2021-08-26-istio-handbook/book.jpeg
+        image: /img/2021-08-26-istio-handbook/book.webp
         href: https://www.zhaohuabing.com/post/2021-08-26-istio-handbook/
       - title: 云原生数据中心网络
-        image: /img/cndc.png
+        image: /img/cndc.webp
         href: https://zhaohuabing.com/post/2021-08-27-cloud-native-data-center/
   addtional_menus:
     - title: READING

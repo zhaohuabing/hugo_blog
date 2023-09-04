@@ -1,5 +1,7 @@
 ---
-layout: page
+title: "一些走过的路以及旅行记录"
+layout: top
+showTOC: false
 ---
 
 本文记录了我在旅行中一些美好的瞬间。

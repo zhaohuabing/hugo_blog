@@ -1,5 +1,6 @@
 ---
-layout: post
+title:      "一些读过的书以及胡思乱想"
+layout: top
 ---
 
 # 尘埃落定

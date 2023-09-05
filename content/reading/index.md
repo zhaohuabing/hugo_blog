@@ -3,7 +3,7 @@ layout: top
 ---
 
 # 尘埃落定
-![](/img/reading/read-poppies.jpeg)
+![](/img/reading/red-poppies.jpeg)
 
 所有曾经被唤醒、被激发的一切，都从升得最高最飘的空中慢慢落下了，落入晦暗的意思深处，重新归入了平静。--- 阿来
 

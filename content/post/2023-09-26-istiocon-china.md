@@ -37,7 +37,7 @@ showtoc: true
 
 ![](/img/2023-09-26-istiocon-china/kmesh-1.png)
 
-kmesh 采用了一个成为 “伪建链” 的技术，在收到 downstream 的 TCP 请求时， ebpf 程序先和 downstream 创建一个 “伪 TCP 链接”，而并不会和 upstream 服务真正创建链接。当 ebpf 程序拿到 downstream 发出的 HTTP 消息后，根据 HTTP 消息进行七层路由处理，找到其目的服务，然后再和 upstream 创建链接。通过这种方式，kmesh 将 L7 的处理下沉到内核中。
+kmesh 采用了一个其称为 “伪建链” 的技术，在收到 downstream 的 TCP 请求时， ebpf 程序先和 downstream 创建一个 “伪 TCP 链接”，而并不会和 upstream 服务真正创建链接。当 ebpf 程序拿到 downstream 发出的 HTTP 消息后，根据 HTTP 消息进行七层路由处理，找到其目的服务，然后再和 upstream 创建链接。通过这种方式，kmesh 将 L7 的处理下沉到了内核中。
 
 ![](/img/2023-09-26-istiocon-china/kmesh-2.png)
 
@@ -80,26 +80,18 @@ cert-manager 会连接到 CA provider，然后生成 CSR，调用 CA Provider �
 ![](/img/2023-09-26-istiocon-china/vk-3.png)
 ![](/img/2023-09-26-istiocon-china/vk-4.png)
 
-## Coraza
+## 其他
 
-# To be continue 
+来自印尼的朋友 Zufar Dhiyaulhaq 分享了采用 Coraza Proxy WASM 来扩展 Envoy， 快速实现自定义 WAF （Web Application Firewall）的实践。 WAF 在企业应用中，特别是金融、银行、保险等对安全要求严格的行业是一个非常重要的产品。传统的 WAF 产品通常是一个独立的设备，需要单独部署和管理，而且需要和应用进行集成。Coraza Proxy WASM 可以将 WAF 的能力下沉到 Envoy 中，从而实现无缝集成。而且由于采用了 WASM 来实现，可以非常方便地扩展和定制 WAF 的能力。
 
-<!--
+![](/img/2023-09-26-istiocon-china/waf.png)
 
-
-
-## 构建高效的服务网格：Merbridge 在 eBPF 实现和 Istio Ambient 中的创新
-
-## Coraza
-
-Build-in rules?
-
-## Debug
-
-我们真的需要一个可以连接到 Kubernetes 中的 Debug 方式吗？
-
-99% 的问题都可以通过日志定位，1% 的问题可以通过增加日志信息，再通过日志输出来定位。
--->
+Coraza Proxy WASM 也是我公司（[Tetrate.io](https://tetrate.io/)）贡献的一个开源项目，欢迎大家关注。
 
 
+https://github.com/corazawaf/coraza-proxy-wasm
 
+
+我和 Boss 直聘的 覃士林 一起分享了 Aeraki Mesh 在 Boss 直聘中的 Dubbo 服务治理实践。大家有兴趣的话可以从 https://istioconchina2023.sched.com/ [下载](https://istioconchina2023.sched.com/) 演讲 PPT。本文提到的其他演讲 PPT 也都可以从 https://istioconchina2023.sched.com/ 下载。
+
+![](/img/2023-09-26-istiocon-china/boss-architecture.png)

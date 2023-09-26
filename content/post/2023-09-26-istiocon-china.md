@@ -67,26 +67,25 @@ cert-manager 会连接到 CA provider，然后生成 CSR，调用 CA Provider �
 ![](/img/2023-09-26-istiocon-china/cm-4.png)
 ![](/img/2023-09-26-istiocon-china/cm-5.png)
 
+##  基于 Istio 和 Virtual Kubelet 的无服务器服务网格
+
+阿里分享了采用 VK（Virtual Kubelet） 来实现无服务器网格的思路：VK 是集群中的一个虚拟节点，用户在使用时只需要将 VK 作为普通节点一样加入到集群中。VK 的主要优势是其节点本身的容量是可以弹性伸缩的，并不需要提前规划。因此 VK 的该一特性可以很好地用于 waypoint 代理的部署：数据面实现了弹性伸缩-无需提前规划 node 容量。
+
+更进一步，waypoint 还可以部署到云厂商自身的托管资源池中，然后通过托管池的弹性伸缩能力来实现 waypoint 的弹性伸缩。
+
+可以看到阿里 VK 无服务器网格的思路和 Google 的思路类似，都是**通过托管控制面和数据面来的方式将服务网格从用户集群中剥离出去，使其成为一个云上的基础设施**。这应该也是未来云厂商提供服务网格的主要发展方向。
+
+![](/img/2023-09-26-istiocon-china/vk-1.png)
+![](/img/2023-09-26-istiocon-china/vk-2.png)
+![](/img/2023-09-26-istiocon-china/vk-3.png)
+![](/img/2023-09-26-istiocon-china/vk-4.png)
+
+## Coraza
+
 # To be continue 
 
 <!--
 
-Key takeway：
-
-为什么要用 Geneve 隧道而不是 veth：保留原始目的地地址
-
-
-
-##  使用 WebAssembly 扩展和自定义 Istio
-
-## 释放魔力：在 Istio 环境模式中利用 eBPF 进行流量重定向
-
-## Cert-manager有助于增强Istio证书管理的安全性和灵活性
-
-##  基于 Istio 和 Virtual Kubelet 的无服务器服务网格
-通过托管控制面实现 control plane serverless
-通过 VK 实现弹性伸缩-无需提前规划 node 容量  --》 更近一步，部署到托管池中。 和 Google 的思路类似。
-分享了实现过程中遇到的一些问题。
 
 
 ## 构建高效的服务网格：Merbridge 在 eBPF 实现和 Istio Ambient 中的创新

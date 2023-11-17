@@ -30,7 +30,7 @@ Bilibili
 YouTube
 {{< youtube 3sTj5lmoP6c >}}
 
-采访内容:
+采访内容(待整理):
 
 Huabing: OK, let's welcome our superstar from Istio community. John Howard, Is my pronunciation correct?
 

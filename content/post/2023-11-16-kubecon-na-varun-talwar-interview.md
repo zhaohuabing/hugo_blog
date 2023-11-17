@@ -1,7 +1,7 @@
 ---
 layout:     post
 
-title:      "KubeCon 芝加哥现场报道 - 和 Istio 创始人, Varun Talwar 聊聊 Istio 开源背后的故事"
+title:      "KubeCon 芝加哥现场报道 - Istio 创始人 Varun Talwar 解密 Istio 开源背后的故事"
 subtitle:   ""
 description: "前 Goole 产品经理, 硅谷初创企业 Tetrate.io CEO, Istio 创始人 Varun Talwar 解密 Istio 开源背后的故事"
 author: "赵化冰"

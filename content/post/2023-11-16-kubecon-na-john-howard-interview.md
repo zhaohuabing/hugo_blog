@@ -1,9 +1,9 @@
 ---
 layout:     post
 
-title:      "KubeCon 芝加哥现场报道 - Istio 社区明星 John Howard 专访"
+title:      "KubeCon 芝加哥现场报道 - Istio 社区核心维护者 John Howard 分享他高效的秘诀"
 subtitle:   ""
-description: "Istio 社区核心维护者 John Howard 分享他高效的秘诀"
+description: "Istio 社区核心维护者, 来自 Google 的 John Howard 分享他高效的秘诀"
 author: "赵化冰"
 date: 2023-11-16
 image: "https://images.unsplash.com/photo-1597116789352-9ad0fe0cb197?q=80&w=3432&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"

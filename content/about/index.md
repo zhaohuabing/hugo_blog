@@ -4,21 +4,9 @@ multilingual: true
 ---
 
 ## About Me
-**_Huabing Zhao_** is a software architect, an Istio Member and an ONAP PTL. He has a solid experience in the information and telecommunication technology industry for more than 17 years. 
+Hello, I am Huabing Zhao, an engineer at [tetrate.io](https://tetrate.io). I have previously worked at [Tencent Cloud](https://cloud.tencent.com/product/tcm), [ZTE Corporation](https://www.zte.com.cn/), and [Oracle](https://www.oracle.com). My current primary focus is on Envoy, Envoy Gateway, and Istio. I created the open-source project Aeraki Mesh (a CNCF Sandbox project), which allows for the management of traffic in Istio for Dubbo, Thrift, Redis, and any proprietary protocols.
 
-Throughout his career, he has built a number of large-scale, cross-country software systems, most of them are still running in production. 
-
-He loves open source and has been contributing to various open source projects, he is a member of Istio,  previous PTL of ONAP, the author of the Hugo clean-white theme and the open source project Aeraki Mesh.  
-
-He also has strong interests in various technical topics such as Cloud Native, Artificial Intelligence, Cryptocurrencies, Smart Home, etc. He love sharing his ideas about these things in his blog.
-
-Huabing holds a BSc in Computer Science and Technology from Chongqing University in China. 
-
-Currently, Huabing works as a senior engineer at [Tencent Cloud](https://cloud.tencent.com/) and also wears the hat of PTL in ONAP open source project. For now, his main focus is to build a managed service mesh solution on cloud.
-
-While he is free, he likes writing technical blog posts, watching movies, swimming, hiking, travelling and learning languages.
-
-Feel free to connect Huabing at Github and Linkedin, leave your thoughts in his blog or share your ideas by [writing him an email](mailto:zhaohuabing@zhaohuabing.com). 
+You can reach me via email at zhaohuabing@gmail.com, on WeChat at zhao_huabing, or connect with me on LinkedIn at https://www.linkedin.com/in/zhaohuabing/.
 
 ## Publications
 | Title       |Type        |Publisher   |Link        |
@@ -32,6 +20,8 @@ Feel free to connect Huabing at Github and Linkedin, leave your thoughts in his 
 ## Presentations (Selected)
 |Year         |City        |Conference  | Title      |Slides      |Video       |
 | ----------- |----------- |----------- |----------- |----------- |----------- |
+|2023|Chicago|[KubeCon NA](https://colocatedeventsna2023.sched.com/event/1Rj2s/introduce-metaprotocol-proxy-a-layer-7-proxy-framework-powered-by-envoy-huabing-zhao-tetrate)|[ Introduce MetaProtocol Proxy: A Layer-7 Proxy Framework Powered by Envoy](https://www.zhaohuabing.com/post/2023-11-16-kubecon-na-metaprotocol/)|[Slides](https://zhaohuabing.com/slides/MetaProtoclProxy.pdf)|[Video](https://www.bilibili.com/video/BV1JC4y1m71j)|
+|2023|上海|[KubeCon China](https://www.lfasiallc.com/kubecon-cloudnativecon-open-source-summit-china/program/schedule/)|[Envoy Gateway: 云原生时代的 API 网关](https://www.zhaohuabing.com/post/2023-11-01-kubecon-shanghai-2023-envoy-gateway-the-api-gateway-in-the-cloud-native-era/)|[Slides](https://zhaohuabing.com/slides/kubecon-envoy-gateway-the-API-Gateway-in-the-Cloud-Native-Era.pdf)|[Video](https://www.bilibili.com/video/BV15G411y7hP)|
 |2022|Shanghai|[China Service Mesh Summit](https://jimmysong.io/notice/service-mesh-summit-2022/)|[Manage Dubbo Application In Istio Service Mesh In 5 Minutes](https://www.zhaohuabing.com/post/2022-09-26-servicemesh-summit2022-dubbo-aeraki-mesh/)|[Slides](https://zhaohuabing.com/web-slides/manage-dubbo-in-istio-in-5-minutes/)|[Video](https://www.bilibili.com/video/BV1oe4y167kz/?zw&vd_source=13de6a5e7f290572ee6b115b44a424f2)|
 |2022|Virtual|[IstioCon](https://events.istio.io/istiocon-2022)|[Tencent Music’s service mesh practice with Istio and Aeraki](https://events.istio.io/istiocon-2022/sessions/tencent-music-aeraki/)|[Slides](/slides/tencent-music-service-mesh-practice-with-istio-and-aeraki.pdf)|[Video](https://www.youtube.com/watch?v=6t_yPsq4Pi4)|
 |2022|Virtual|[A2M](https://a2m.msup.com.cn/course?aid=2699&cid=15382)|[全栈服务网格 - Aeraki Mesh 助你在 Istio 服务网格中管理任何七层流量](https://a2m.msup.com.cn/course?aid=2699&cid=15382)|[Slides](/slides/full-stack-service-mesh-a2m-20220422.pdf)||
@@ -56,6 +46,8 @@ Feel free to connect Huabing at Github and Linkedin, leave your thoughts in his 
 | hugo-theme-cleanwhite | Creator    | https://themes.gohugo.io/themes/hugo-theme-cleanwhite  | https://github.com/zhaohuabing/hugo-theme-cleanwhite |
 
 ## Certificates
+
+<div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="6cb590b5-d2f6-42a1-9e2e-a8141624b718" data-share-badge-host="https://www.credly.com"></div><script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
 
 <div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="cf5a509e-6855-4e4a-aa95-8e78d4bc8d34" data-share-badge-host="https://www.credly.com"></div><script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
 

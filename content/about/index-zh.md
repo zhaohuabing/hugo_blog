@@ -1,7 +1,7 @@
 ## 关于我
-Hi，我是赵化冰，服务网格技术布道者及实践者，[腾讯云](https://cloud.tencent.com/product/tcm)工程师，曾担任[中兴通讯](https://www.zte.com.cn/)技术专家，Linux 基金会开源项目 [ONAP](https://www.onap.org/) 项目 leader，甲骨文中间件高级顾问等。我创建了服务网格开源项目 [Aeraki Mesh](https://aeraki.net)（CNCF Sandbox 项目），可以在 Istio 中管理 Dubbo、Thrift、Redis 以及任意私有协议的流量。
+Hi，我是赵化冰，[tetrate.io](https://tetrate.io) 工程师，曾就职于[腾讯云](https://cloud.tencent.com/product/tcm)，[中兴通讯](https://www.zte.com.cn/)，[Oracle](https://www.oracle.com)。目前主要工作领域为 Envoy，Envoy Gateway 和 Istio。我创建了服务网格开源项目 [Aeraki Mesh](https://aeraki.net)（CNCF Sandbox 项目），可以在 Istio 中管理 Dubbo、Thrift、Redis 以及任意私有协议的流量。
 
-工作联系： zhaohuabing@gmail.com
+工作联系：邮件 zhaohuabing@gmail.com 微信 zhao_huabing LinkedIn https://www.linkedin.com/in/zhaohuabing/
 
 ## 出版物
 | 标题       |类型        |出版社   |链接        |
@@ -15,6 +15,8 @@ Hi，我是赵化冰，服务网格技术布道者及实践者，[腾讯云](htt
 ## 演讲分享 (部分)
 |年份          |城市        |会议         | 分享主题    |讲稿         |视频       |
 | ----------- |----------- |----------- |----------- |----------- |----------- |
+|2023|芝加哥|[KubeCon NA](https://colocatedeventsna2023.sched.com/event/1Rj2s/introduce-metaprotocol-proxy-a-layer-7-proxy-framework-powered-by-envoy-huabing-zhao-tetrate)|[ Introduce MetaProtocol Proxy: A Layer-7 Proxy Framework Powered by Envoy](https://www.zhaohuabing.com/post/2023-11-16-kubecon-na-metaprotocol/)|[观看](https://zhaohuabing.com/slides/MetaProtoclProxy.pdf)|[观看](https://www.bilibili.com/video/BV1JC4y1m71j)|
+|2023|上海|[KubeCon China](https://www.lfasiallc.com/kubecon-cloudnativecon-open-source-summit-china/program/schedule/)|[Envoy Gateway: 云原生时代的 API 网关](https://www.zhaohuabing.com/post/2023-11-01-kubecon-shanghai-2023-envoy-gateway-the-api-gateway-in-the-cloud-native-era/)|[观看](https://zhaohuabing.com/slides/kubecon-envoy-gateway-the-API-Gateway-in-the-Cloud-Native-Era.pdf)|[观看](https://www.bilibili.com/video/BV15G411y7hP)|
 |2022|上海|[服务网格峰会](https://jimmysong.io/notice/service-mesh-summit-2022/)|[5分钟内将 Dubbo 服务接入 Istio 服务网格](https://www.zhaohuabing.com/post/2022-09-26-servicemesh-summit2022-dubbo-aeraki-mesh/)|[观看](https://zhaohuabing.com/web-slides/manage-dubbo-in-istio-in-5-minutes/)|[观看](https://www.bilibili.com/video/BV1oe4y167kz/?zw&vd_source=13de6a5e7f290572ee6b115b44a424f2)|
 |2022|线上|[IstioCon](https://events.istio.io/istiocon-2022)|[Istio + Aeraki 在腾讯音乐的服务网格落地](https://events.istio.io/istiocon-2022/sessions/tencent-music-aeraki/)|[下载](/slides/tencent-music-service-mesh-practice-with-istio-and-aeraki.pdf)|[观看](https://www.youtube.com/watch?v=6t_yPsq4Pi4)|
 |2022|线上|[A2M](https://a2m.msup.com.cn/course?aid=2699&cid=15382)|[全栈服务网格 - Aeraki Mesh 助你在 Istio 服务网格中管理任何七层流量](https://a2m.msup.com.cn/course?aid=2699&cid=15382)|[下载](/slides/full-stack-service-mesh-a2m-20220422.pdf)||
@@ -39,6 +41,7 @@ Hi，我是赵化冰，服务网格技术布道者及实践者，[腾讯云](htt
 | hugo-theme-cleanwhite | 创建者    | https://themes.gohugo.io/themes/hugo-theme-cleanwhite  | https://github.com/zhaohuabing/hugo-theme-cleanwhite |
 
 ## 认证
+<div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="6cb590b5-d2f6-42a1-9e2e-a8141624b718" data-share-badge-host="https://www.credly.com"></div><script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
 
 <div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="cf5a509e-6855-4e4a-aa95-8e78d4bc8d34" data-share-badge-host="https://www.credly.com"></div><script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
 

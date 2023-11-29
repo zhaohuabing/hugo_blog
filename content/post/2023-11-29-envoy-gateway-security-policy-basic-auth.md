@@ -6,7 +6,7 @@ subtitle:   ""
 description: ""
 author: "赵化冰"
 date: 2023-11-29
-image: "https://images.unsplash.com/photo-1597116789352-9ad0fe0cb197?q=80&w=3432&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+image: "https://gateway.envoyproxy.io/featured-background_hub722101dbe1dbe5596133cb6c8ada6d9_400690_1920x1080_fill_q75_catmullrom_top.jpg"
 published: true
 tags:
     - Envoy Gateway

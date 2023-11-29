@@ -32,7 +32,11 @@ YouTube
 
 采访内容(待整理):
 
-I will introduce this interview first in Chinese, because the audience are from China Alice, could you please quickly introduce yourself. Um So what are you doing and what got you involved into the Envoy Gateway. I'm Alice, I am from Oregon. So right now I'm mostly working on various ingress projects such as Emissary and Envoy Gateway. What really first got me interested in the Envoy Gateway project was a colleague of mine who works on emissary, which is another open source uh Congress project was getting involved with the Envoy Gateway.
+Huabing: I will introduce this interview first in Chinese, because the audience are from China. Envoy Gateway 社区的朋友大家好，我们今天有幸邀请到了 Envoy Gateway 的维护者，来自 Emissary 的 Alice。 Alice 从 Envoy Gateway 创建之初就参与了这个项目，今天很有幸能够在 KubeCon 现场对她进行采访。下面我将用英文对 Alice 进行采访。
+
+Alice, could you please briefly introduce yourself? Where are you from？What are you doing? What got you involved into the Envoy Gateway.
+
+Alice: Thanks. Hi, I'm Alice, I am from Oregon, the United States. So right now I'm mostly working on various ingress projects such as Emissary and Envoy Gateway. What really first got me interested in the Envoy Gateway project was a colleague of mine who works on emissary, which is another open source uh Congress project was getting involved with the Envoy Gateway.
 
 He had come together with a few other individuals from other projects similar to MS G. And we decided like there's a lot of people that are working on projects. So we decided to get all of that talent together in one room and focus all of our efforts on a single project that everybody could benefit from and hopefully take some of the learnings of these projects that have been around for a while and then start create a new project and make it really solid from the ground after taking all of those learnings and lessons from those other projects. Yeah. That makes a lot of sense because you don't want to um work on the same thing , you know, in multiple countries, multiple organizations.
 

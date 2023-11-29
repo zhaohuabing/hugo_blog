@@ -16,7 +16,7 @@ categories:
 showtoc: true
 ---
 
-## 什么 Envoy Gateway 安全策略？
+## 什么是 Envoy Gateway 安全策略？
 
 Envoy Gateway 中的[安全策略 (SecurityPolicy)](https://gateway.envoyproxy.io/v0.6.0/api/extension_types/#securitypolicy) 是 Envoy Gateway 对 Kubernetes Gateway API 的一个扩展资源。SecurityPolicy 采用了 Gateway API 的 [Policy Attachment](https://gateway-api.sigs.k8s.io/geps/gep-713/) 机制来对 Gateway API 进行扩展，为 Envoy Gateway 实现了 CORS，JWT，OIDC，Basic Auth 等强大的安全能力。
 

@@ -34,9 +34,9 @@ SSO 通常是通过 OpenID Connect (OIDC) 来实现的。OIDC 是一个基于 OA
 
 OAuth 2.0 协议本身是一个授权协议，OAuth 2.0 协议中的授权服务器（Authorization Server）负责对用户进行身份认证，认证成功后，授权服务器会向客户端颁发一个访问令牌（Access Token），客户端可以使用该令牌来访问该用户的受保护的资源。例如用户可以通过 OAuth 2.0 授权一个第三方应用访问其 Github 账号下的代码库。Access Token 是一个透明的字符串，只有授权服务器才知道如何解读。客户端会在访问受保护资源时带上 Acces Token，授权服务器根据 Access Token 来判断该s请求是否有访问指定资源的权限。Access Token 只用于对资源访问进行授权，其中并没有用户身份信息。
 
-OIDC 通过在 OAuth 2.0 协议之上增加了一个 ID Token 来实现身份认证。OIDC 的认证过程和 OAuth 2.0 的认证过程是一样的，只是认证服务器在对用户认证后向客户端颁发的是一个 ID Token 而不是 Access Token。ID Token 是一个 [JSON Web Token (JWT)](https://jwt.io/)，JWT Token 是一个标准的格式，其中包含了用户的身份信息，例如用户的唯一标识，用户名，邮箱等，并且可以通过认证服务器的公钥进行验证，因此可以代表登录的用户身份。OIDC 通过 ID Token 来实现身份认证，从而实现了单点登录。
+OIDC 通过在 OAuth 2.0 协议之上增加了一个 ID Token 来实现身份认证。OIDC 的认证过程和 OAuth 2.0 的认证过程是一样的，只是认证服务器在对用户认证后向客户端颁发的是一个 ID Token 而不是 Access Token。ID Token 是一个 [JSON Web Token (JWT) ¹](https://jwt.io/)，JWT Token 是一个标准的格式，其中包含了用户的身份信息，例如用户的唯一标识，用户名，邮箱等，并且可以通过认证服务器的公钥进行验证，因此可以代表登录的用户身份。OIDC 通过 ID Token 来实现身份认证，从而实现了单点登录。
 
-备注：由于篇幅有限，本文对 OAuth 2.0 只做简单介绍，如果感兴趣的话，可以移步阮一峰老师的 [OAuth 2.0 介绍](https://www.ruanyifeng.com/blog/2019/04/oauth_design.html) 系列文章进一步了解协议的原理。
+备注：由于篇幅有限，本文对 OAuth 2.0 只做简单介绍，如果感兴趣的话，可以移步阮一峰老师的 [OAuth 2.0 介绍 ²](https://www.ruanyifeng.com/blog/2019/04/oauth_design.html) 系列文章进一步了解协议的原理。
 
 ## 如何通过 Envoy Gateway 实现 OIDC SSO ？
 
@@ -44,9 +44,9 @@ Envoy Gateway 在最新版本中的安全策略中提供了 OIDC 的能力，可
 
 ### 配置 OIDC Provider
 
-Envoy Gateway 支持所有实现了 OIDC 标准的 Identify Provider，包括 Google，微软，Auth0，Okta，微信等等。下面我们以 Google 账户登录为例介绍如何为 Envoy Gateway 配置 OIDC SSO。
+Envoy Gateway 支持所有实现了 OIDC 标准的 Identify Provider，包括 Google、微软、Auth0、Okta、微信、微博等等。下面我们以 Google 账户登录为例介绍如何为 Envoy Gateway 配置 OIDC SSO。
 
-首先需要参照 [Google 的 OpenID Connect 文档](https://developers.google.com/identity/openid-connect/openid-connect) Google Cloud Platform 中创建一个 OAuth Client ID。
+首先需要参照 [Google 的 OpenID Connect 文档 ³](https://developers.google.com/identity/openid-connect/openid-connect) Google Cloud Platform 中创建一个 OAuth Client ID。
 
 打开 Google Cloud Console 的 Credentials 界面，点击 Create Credentials -> OAuth client ID，然后选择 Web application，输入应用的名称，设置 Authorized redirect URLs 为 `https://www.example.com/oauth2/callback`，然后点击 Create 按钮创建 OAuth Client ID。
 ![](/img/2023-12-07-envoy-gateway-security-policy-oidc/oauth-client.png)
@@ -58,7 +58,7 @@ Envoy Gateway 支持所有实现了 OIDC 标准的 Identify Provider，包括 Go
 
 ### 配置 Envoy Gateway 安全策略
 
-首先参照 [Envoy Gateway Quickstart](https://gateway.envoyproxy.io/latest/user/quickstart/) 安装 Envoy Gateway 和例子程序。OIDC SSO 需要在 Envoy Gateway 中启用 HTTPS，因此前参照 [Secure Gateway](https://gateway.envoyproxy.io/latest/user/secure-gateways/)为 Envoy Gateway 配置 HTTPS。
+首先参照 [Envoy Gateway Quickstart ⁴](https://gateway.envoyproxy.io/latest/user/quickstart/) 安装 Envoy Gateway 和例子程序。OIDC SSO 需要在 Envoy Gateway 中启用 HTTPS，因此前参照 [Secure Gateway ⁵](https://gateway.envoyproxy.io/latest/user/secure-gateways/)为 Envoy Gateway 配置 HTTPS。
 
 创建一个 Kubernetes Secret，用于存储 OAuth Client 的 Client Secret。
 
@@ -119,7 +119,7 @@ sudo kubectl -n envoy-gateway-system port-forward service/${ENVOY_SERVICE} 443:4
 
 ### 理解原理
 
-Envoy Gateway 采用了 OAuth 2.0 的 [Authorization Code](https://datatracker.ietf.org/doc/html/rfc6749#section-4.1) 来获取 ID Token。下图展示了 Envoy Gateway OIDC 的认证过程。
+Envoy Gateway 采用了 OAuth 2.0 的 [Authorization Code Flow ⁶](https://datatracker.ietf.org/doc/html/rfc6749#section-4.1) 来获取 ID Token。下图展示了 Envoy Gateway OIDC 的认证过程。
 * 当用户访问一个需要进行 OIDC 认证的 HTTPRoute 时，Envoy Gateway 会检查请求中是否有代表用户身份的 ID Token，如果没有，或者 Token 已经过期，则会将请求重定向到 OIDC Provider 的认证页面。
 * 用户在 OIDC Provider 的认证页面输入用户名和密码等身份信息进行认证。认证成功后，OIDC Provider 会将用户重定向到 Envoy Gateway 的回调地址，并且带上一个 Authorization Code。
 * Envoy Gateway 收到 OIDC Provider 的回调请求后，会将 Authorization Code 发送给 OIDC Provider，OIDC Provider 根据 Authorization Code 生成一个 ID Token，并将 ID Token 返回给 Envoy Gateway。
@@ -134,6 +134,11 @@ Envoy Gateway 采用了 OAuth 2.0 的 [Authorization Code](https://datatracker.i
 
 
 ## 参考链接
-- [阮一峰： OAuth 2.0 介绍](https://www.ruanyifeng.com/blog/2019/04/oauth_design.html)
-- [Envoy Gateway OIDC Authentication](https://gateway.envoyproxy.io/latest/user/oidc/)
+1. [JSON Web Token (JWT)](https://jwt.io/)： https://jwt.io
+2. [阮一峰： OAuth 2.0 介绍](https://www.ruanyifeng.com/blog/2019/04/oauth_design.html)： https://www.ruanyifeng.com/blog/2019/04/oauth_design.html
+3. [Google OpenID Connect 文档 ³](https://developers.google.com/identity/openid-connect/openid-connect)：https://developers.google.com/identity/openid-connect/openid-connect
+4. [Envoy Gateway Quickstart ⁴](https://gateway.envoyproxy.io/latest/user/quickstart/) ：https://gateway.envoyproxy.io/latest/user/quickstart
+5. [Secure Gateway ⁵](https://gateway.envoyproxy.io/latest/user/secure-gateways/)：https://gateway.envoyproxy.io/latest/user/secure-gateways
+6. [Authorization Code Flow ⁶](https://datatracker.ietf.org/doc/html/rfc6749#section-4.1) ：https://datatracker.ietf.org/doc/html/rfc6749#section-4.1
+
 

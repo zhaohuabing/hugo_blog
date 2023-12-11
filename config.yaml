@@ -88,13 +88,15 @@ params:
     - title: Aeraki Mesh
       href: 'https://aeraki.net/'
     - title: Istio 运维实战
-      href: 'https://www.zhaohuabing.com/istio-guide'  
+      href: 'https://www.zhaohuabing.com/istio-guide'
     - title: unsplash
       href: 'https://unsplash.com/'
     - title: pexels
       href: 'https://www.pexels.com'
     - title: excalidraw
       href: 'https://excalidraw.com/'
+    - title: Markdown Editor
+      href: 'https://doocs.github.io/md'
   publications:
     title: MY BOOKS
     items:

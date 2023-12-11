@@ -6,7 +6,7 @@ subtitle:   ""
 description: "单点登录（SSO）简化了用户体验，使用户能够在访问多个应用时只需一次登录。Envoy Gateway 在最新版本中的安全策略中提供了 OpenID Connect (OIDC) 的能力，采用 Envoy Gateway，无需对应用做任何修改，即可立刻实现基于 OIDC 的单点登录。"
 author: "赵化冰"
 date: 2023-12-07
-image: "https://gateway.envoyproxy.io/featured-background_hub722101dbe1dbe5596133cb6c8ada6d9_400690_1920x1080_fill_q75_catmullrom_top.jpg"
+image: "https://images.unsplash.com/photo-1461685265823-f8d5d0b08b9b?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
 published: true
 tags:
     - Envoy Gateway

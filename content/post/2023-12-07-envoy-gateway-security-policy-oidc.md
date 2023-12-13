@@ -26,7 +26,7 @@ SSO 是 英文 Single Sign-On 的缩写，翻译为中文即为单点登录。�
 采用单点登录有以下几个好处：
 * 用户只需要登录一次，就可以访问多个应用系统，不需要为每个应用系统都单独登录。
 * 应用系统不需要自己实现用户认证，只需将认证工作交给单点登录系统，可以大大减少应用系统的开发工作量。
-![sso](https://www.renovodata.com/assets/images/blog/single-sign-on-info.jpg)
+![sso](/img/2023-12-07-envoy-gateway-security-policy-oidc/sso.png)
 
 ## 什么是 OpenID Connect (OIDC) ？
 

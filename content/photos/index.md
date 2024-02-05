@@ -5,7 +5,21 @@ showTOC: true
 ---
 
 
-本文记录了我在旅行中一些美好的瞬间。
+> “Do not go gentle into that good night” 
+
+尘埃落地之前，去看看这世界。
+
+# 金门大桥 - 旧金山，美国，2023.11
+
+{{<post-image image="2023-11-golden-bridge.jpg"/>}}
+
+# 唐人街 - 旧金山，美国，2023.11
+
+{{<post-image image="2023-11-san-francisco.jpg"/>}}
+
+# 芝加哥 - 芝加哥，美国，2023.11
+
+{{<post-image image="2023-11-chicago.jpg"/>}}
 
 # 雅女湖 - 四川，眉山 2024.01
 

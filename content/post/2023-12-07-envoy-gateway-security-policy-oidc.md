@@ -12,7 +12,6 @@ tags:
     - Envoy Gateway
 categories:
     - Tech
-    - OIDC
     - Open Source
 showtoc: true
 ---

@@ -15,6 +15,7 @@ tags:
 categories:
     - Tech
     - Open Source
+    - Presentations
 metadata:
     - text: "Slides"
       link: "/slides/MetaProtoclProxy.pdf"

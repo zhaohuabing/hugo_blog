@@ -15,6 +15,7 @@ tags:
 categories:
     - Tech
     - Open Source
+    - Presentations
 metadata:
     - text: "Slides"
       link: "/slides/kubecon-envoy-gateway-the-API-Gateway-in-the-Cloud-Native-Era.pdf"

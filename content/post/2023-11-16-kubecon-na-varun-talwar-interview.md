@@ -132,11 +132,13 @@ And people were very clear that if uh like this is, if it's just within where it
 
 Varun：人们很清楚，如果 Istio 只能在 Kubernetes 中运行，那么它的价值就很比较有限。因为 Kubernetes 只占基础设施中的一小部分。我吗还有 虚拟机、Lamda、运行在裸金属上的传统 JAVA 应用等等。所以我认为 Google Cloud 作为一个云服务提供商，更倾向于告诉用户，你们可以来使用我们的云服务，我们会帮你们解决这些问题的。
 
-第二个问题是，Google 等云服务提供商更倾向于告诉用户，你们可以来使用我们的云服务，我们会帮你们解决这些问题的。
+第二个问题是，Google 等云服务提供商更倾向于告诉用户，你们可以来使用我们的云服务，我们会帮你们解决这些问题的。这是有原因的，因为云服务提供商的收入主要来自于计算、存储和网络，而这些服务对于他们来说只是锦上添花，用来吸引用户的。所以他们并不会太关心这些问题。从经济学来说,这个行业就是这么运作的。但是用户希望在不同的云服务提供商上获得相同的体验，无论是在 AWS、Azure、GCP、Red Hat、Rancher、VMware 等等。
 
 We were running it as a service, you know, so our service we care about to, we care about what the problem for you now. So, but and you could, and then there's a reason, right? Because dog providers make money out of uh computer storage networking and for them all these services on top are, are just, are just gravy for attracting people so they can make money then, right? So the economics work that way. Um And um this was something that customers needed uniformly across their different clouds and infrastructure, right?
 
 So they wanted the same experience on Aws, on Azure or GCP on Red Hat on Rancher no matter what it is or VM War, right? So I, I want to have a similar experience of how my services talk to each other, how I monitor them, how I secure them, like how my developers access one service to the other. It should be a consistent way. I do it in a company. Why is it like, I have to teach like 10 different things on 10 different platforms, right?
+
+服务之间的通信、监控、安全、开发者访问等等，用户希望在不同的云服务提供商上获得相同的体验。但是现在的情况是，用户需要在不同的云服务提供商上学习不同的东西，这是非常不方便的。
 
 Uh So I think that there was, it was clear from there that there is a need for some third party company to have a platform which is not tied to any of the cloud providers or a pass provider like Red Hat or a branch or IBM or something, right? So I think uh that was the kind after that, it was just, you know, finding the, the luck of finding all the right people in the community, you know, finding JJ who's uh my co-founder and like aligning of the minds that, you know, those things take uh time. And uh but, you know, once that happens, uh and very rarely in your career you land on something where, like you did something in your job. It is new technology, very promising, you know, the market, you know, the people, you know, the community. So that's a lot to just start, right.
 

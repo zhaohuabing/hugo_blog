@@ -157,6 +157,19 @@ I think we mostly have consensus on 1, but we're waiting for #2128 to merge befo
 It may also be helpful to take a look at our documentation for the GEP process. All API changes have to go through that process so we can't start directly with a PR to change the API itself without first having an approved GEP in an "implementable" state.
 ```
 
+## 什么时候应该私下沟通？
+
+一般情况下，PR 作者和评审者之间会通过 PR 中的评论来进行交流。例如，如果评审者对于 PR 中的某个修改有疑问，或者对 PR 的某个修改有异议，则在 PR 中提出，PR 作者可以选择接受意见进行修改，或者解释自己的修改意图。
+
+通过 PR 评论的这种公开交流方式的好处是可以让 PR 的讨论过程对所有人可见，可以让其他人也了解到 PR 的讨论过程，从而提高项目的透明度。
+
+但是公开讨论其实并不适合所有场景，有时候，私下的点对地交流会更加高效。例如，如果一个问题比较复杂，可能需要多轮的讨论才能澄清问题。这种情况下，如果在 PR 的评论中和评审者就问题进行 “反复拉扯”，讨论很容易变得混乱，而且会让 PR 的讨论气氛变得不那么友好。
+
+这时候我们可以选择私下联系评审者，进行更深入的讨论。我的判断标准是，如果一个问题需要超过 3 个评论才能解决，那么我会选择通过 Slack 私下联系对方，进行更深入的讨论。在就问题的解决方案达成一致后，我们再将讨论的结果总结到 PR 中，以便其他人了解到讨论的结果。
+
+另外，有时候我们的 PR 会被挂起，长时间没有得到评审。这有可能是评审者自身的工作较忙，没有时间对 PR 进行评审，或者是没有注意到 PR。这时候我们也可以选择私下联系评审者，询问 PR 的评审进度。在私下联系时，我们可以礼貌地询问评审者是否有时间对 PR 进行评审，或者询问评审者对于 PR 中的某个修改有什么意见。一般情况下，评审者会很乐意回复你的私信，帮助你解决问题。
+
+
 ## 欢迎大家为 Envoy Gateway 提交 PR
 
 希望这篇文章中的这些小小的经验能够帮助到大家。同时欢迎感兴趣的朋友参与 Envoy Gateway 开源项目。对于初次参加项目的开发者，可以考虑先从文档和一些简单的 bug 修复开始，熟悉项目的代码风格和贡献流程。可以搜索 [Envoy Gateway Github repo 中 带 “help wanted” tag 的issue](https://github.com/envoyproxy/gateway/issues?q=is%3Aopen+is%3Aissue+label%3A%22help+wanted%22)，查找自己感兴趣的贡献点。除此之外，现在 Envoy Gateway 的中文官方网站正在建设中，者对于初次参与项目的同学来说是一个很好的入门机会。我们非常欢迎大家参与其中，为 Envoy Gateway 的中文文档贡献力量。

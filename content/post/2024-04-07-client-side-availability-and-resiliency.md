@@ -5,8 +5,8 @@ title:      "使用服务网格和 Envoy 网关构建客户端的可用性和弹
 subtitle:   ""
 description: '在讨论可用性和弹性时，我们通常是从基础设施和服务的角度来探讨的。那么有没有办法在不修改服务的情况下在客户端提高服务的“实际感知可用性”呢？'
 author: "Zack Butcher (赵化冰 译)"
-date: 2024-03-25
-image: "https://images.pexels.com/photos/3861972/pexels-photo-3861972.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+date: 2024-04-07
+image: "https://images.unsplash.com/photo-1711639270142-e1e181749333?q=80&w=3133&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
 published: true
 tags:
     - Envoy Gateway

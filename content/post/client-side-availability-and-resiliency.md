@@ -76,7 +76,7 @@ showtoc: true
 
 可以将限流视为保护服务器的共享资源免受过载的影响，而断路器则保护服务器的每个单个实例免受过载的影响。
 
-Envoy 支持进行本地限流，每个 Envoy 实例跟踪其看到的请求并应用速率限制。这在将 Envoy 作为入口网关使用时是非常有用的。Envoy 也支持“全局”限流，其限流的额度由所有 Envoy 实例共享。全局限流需要部署一个用于存储速率限制的 Redis 实例，以及一个位于其前面的限流服务器。[Tetrate Enterprise Gateway for Envoy²](https://tetrate.io/tetrate-enterprise-gateway-for-envoy/）—Tetrate 针对 [Envoy Gateway³](https://gateway.envoyproxy.io/) 的企业版本中统一提供了全局限流所需的组件，并以 helm chart 的方式进行发布。
+Envoy 支持进行本地限流，每个 Envoy 实例跟踪其看到的请求并应用速率限制。这在将 Envoy 作为入口网关使用时是非常有用的。Envoy 也支持“全局”限流，其限流的额度由所有 Envoy 实例共享。全局限流需要部署一个用于存储速率限制的 Redis 实例，以及一个位于其前面的限流服务器。[Tetrate Enterprise Gateway for Envoy (TEG)²](https://tetrate.io/tetrate-enterprise-gateway-for-envoy/)—Tetrate 针对 [Envoy Gateway³](https://gateway.envoyproxy.io/) 的企业版本中提供了全局限流所需的所有组件，并以 helm chart 的方式进行发布。
 
 当你的服务是无状态服务时，通常情况下，你不需要引入速率限制及其所需要的额外机制就能达到很好的效果（无状态服务具有较好的伸缩性，如果一个实例被过多的请求所淹没，你可以在短时间内简单地增配更多实例）。
 
@@ -86,7 +86,7 @@ Envoy 支持进行本地限流，每个 Envoy 实例跟踪其看到的请求并�
 
 ## 下一步
 
-[Envoy Gateway³］(https://gateway.envoyproxy.io/) 是由 Envoy 社区驱动的一个项目，旨在简化 Envoy 的使用和操作，使其成为网关的首选。它专注于易用性，让常见用例变得简单，并利用 [Kubernetes Gateway API⁴](https://gateway-api.sigs.k8s.io/) 来管理 Envoy 和对外暴露应用。Tetrate 协助启动了 Envoy Gateway 项目并持续对其进行大量投入。
+[Envoy Gateway (EG)³](https://gateway.envoyproxy.io/) 是由 Envoy 社区驱动的一个项目，旨在简化 Envoy 的使用和操作，使其成为网关的首选。它专注于易用性，让常见用例变得简单，并利用 [Kubernetes Gateway API⁴](https://gateway-api.sigs.k8s.io/) 来管理 Envoy 和对外暴露应用。Tetrate 协助启动了 EG 项目并持续对其进行大量投入。
 
 Tetrate 提供了一款企业级的 Envoy 网关分发产品——Tetrate Enterprise Gateway for Envoy ——您可以立即开始使用。欢迎[查看文档以了解更多信息并试用⁵](https://docs.tetrate.io/envoy-gateway/)。
 

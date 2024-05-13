@@ -1,7 +1,10 @@
 ## 关于我
 Hi，我是赵化冰，[tetrate.io](https://tetrate.io) 工程师，曾就职于[腾讯云](https://cloud.tencent.com/product/tcm)，[中兴通讯](https://www.zte.com.cn/)，[Oracle](https://www.oracle.com)。目前主要工作领域为 Envoy，Envoy Gateway 和 Istio。我创建了服务网格开源项目 [Aeraki Mesh](https://aeraki.net)（CNCF Sandbox 项目），可以在 Istio 中管理 Dubbo、Thrift、Redis 以及任意私有协议的流量。
 
-工作联系：邮件 zhaohuabing@gmail.com 微信 zhao_huabing LinkedIn https://www.linkedin.com/in/zhaohuabing/
+工作联系：
+* 邮件 zhaohuabing@gmail.com 
+* 微信 zhao_huabing 
+* LinkedIn https://www.linkedin.com/in/zhaohuabing
 
 ## 出版物
 | 标题       |类型        |出版社   |链接        |
@@ -33,17 +36,18 @@ Hi，我是赵化冰，[tetrate.io](https://tetrate.io) 工程师，曾就职于
 
 ## 开源项目
 |项目         |角色        |  网站   | GitHub     |
-| ----------- |----------- |----------- |----------- |
-| Aeraki Mesh | 创建者    | https://aeraki.net  | http://github.com/aeraki-mesh |
-| Istio       | Contributor| https://istio.io    | https://github.com/istio/istio|
-| Envoy       | Contributor| https://www.envoyproxy.io |https://github.com/envoyproxy/envoy|
-| ONAP        | 项目 Leader        | https://www.onap.org||
+| ------------ |----------- |----------- |----------- |
+| Aeraki Mesh  | 创建者    | https://aeraki.net  | http://github.com/aeraki-mesh |
+| Envoy Gateway| Maintainer| https://gateway.envoyproxy.io |https://github.com/envoyproxy/gateway|
+| Envoy        | Contributor| https://www.envoyproxy.io |https://github.com/envoyproxy/envoy|
+| Istio        | Contributor| https://istio.io    | https://github.com/istio/istio|
+| ONAP         | 项目 Leader        | https://www.onap.org||
 | hugo-theme-cleanwhite | 创建者    | https://themes.gohugo.io/themes/hugo-theme-cleanwhite  | https://github.com/zhaohuabing/hugo-theme-cleanwhite |
 
 ## 认证
 <div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="6cb590b5-d2f6-42a1-9e2e-a8141624b718" data-share-badge-host="https://www.credly.com"></div><script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
 
-<div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="cf5a509e-6855-4e4a-aa95-8e78d4bc8d34" data-share-badge-host="https://www.credly.com"></div><script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
+<div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="08f232fa-30de-46bf-becb-a7e4ab85ef79" data-share-badge-host="https://www.credly.com"></div><script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
 
 <div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="edf1a5de-202c-49e7-9762-f3e6f5ff1b38" data-share-badge-host="https://www.credly.com"></div><script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
 

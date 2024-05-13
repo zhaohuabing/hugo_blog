@@ -6,7 +6,10 @@ multilingual: true
 ## About Me
 Hello, I am Huabing Zhao, an engineer at [tetrate.io](https://tetrate.io). I have previously worked at [Tencent Cloud](https://cloud.tencent.com/product/tcm), [ZTE Corporation](https://www.zte.com.cn/), and [Oracle](https://www.oracle.com). My current primary focus is on Envoy, Envoy Gateway, and Istio. I created the open-source project Aeraki Mesh (a CNCF Sandbox project), which allows for the management of traffic in Istio for Dubbo, Thrift, Redis, and any proprietary protocols.
 
-You can reach me via email at zhaohuabing@gmail.com, on WeChat at zhao_huabing, or connect with me on LinkedIn at https://www.linkedin.com/in/zhaohuabing/.
+You can reach me by:
+* Email zhaohuabing@gmail.com
+* WeChat zhao_huabing
+* LinkedIn https://www.linkedin.com/in/zhaohuabing
 
 ## Publications
 | Title       |Type        |Publisher   |Link        |
@@ -37,19 +40,20 @@ You can reach me via email at zhaohuabing@gmail.com, on WeChat at zhao_huabing, 
 |2017|Paris|[ONAP Developer Event](https://wiki.onap.org/display/DW/ONAP+Developer+Event+September+25-28%2C+2017%2C+Paris-Saclay%2C+France)|[Microservice Bus Tutorial](https://wiki.onap.org/display/DW/September+26-28+Topics#September2628Topics-M2)|[Slides](https://www.slideshare.net/HuabingZhao/microservice-bus-tutorial)|
 
 ## Open Source Projects
-|Project      |Role        |  Website   | GitHub     |
-| ----------- |----------- |----------- |----------- |
-| Aeraki Mesh | Creator    | https://aeraki.net  | http://github.com/aeraki-mesh |
-| Istio       | Contributor| https://istio.io    | https://github.com/istio/istio|
-| Envoy       | Contributor| https://www.envoyproxy.io |https://github.com/envoyproxy/envoy|
-| ONAP        | PTL        | https://www.onap.org||
+|Project       |Role        |  Website   | GitHub     |
+| ------------ |----------- |----------- |----------- |
+| Aeraki Mesh  | Creator    | https://aeraki.net  | http://github.com/aeraki-mesh |
+| Envoy Gateway| Maintainer| https://gateway.envoyproxy.io |https://github.com/envoyproxy/gateway|
+| Envoy        | Contributor| https://www.envoyproxy.io |https://github.com/envoyproxy/envoy|
+| Istio        | Contributor| https://istio.io    | https://github.com/istio/istio|
+| ONAP         | PTL        | https://www.onap.org||
 | hugo-theme-cleanwhite | Creator    | https://themes.gohugo.io/themes/hugo-theme-cleanwhite  | https://github.com/zhaohuabing/hugo-theme-cleanwhite |
 
 ## Certificates
 
 <div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="6cb590b5-d2f6-42a1-9e2e-a8141624b718" data-share-badge-host="https://www.credly.com"></div><script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
 
-<div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="cf5a509e-6855-4e4a-aa95-8e78d4bc8d34" data-share-badge-host="https://www.credly.com"></div><script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
+<div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="08f232fa-30de-46bf-becb-a7e4ab85ef79" data-share-badge-host="https://www.credly.com"></div><script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
 
 <div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="edf1a5de-202c-49e7-9762-f3e6f5ff1b38" data-share-badge-host="https://www.credly.com"></div><script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
 

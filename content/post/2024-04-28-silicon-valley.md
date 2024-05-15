@@ -6,7 +6,7 @@ subtitle:   "一个普通“码农”视角的硅谷生活"
 description: '硅谷，计算机从业者的圣殿，全球高科技创新的摇篮。硅谷神秘面纱下的工作和生活到底是怎样的？本文将以我自己 — 一个普通“码农”的视角来记录在硅谷日常生活的一些点点滴滴。'
 author: ""
 date: 2024-04-28
-image: "/img/2024-04-28-silicon-valley/5.webp"
+image: "/img/2024-04-28-silicon-valley/9.webp"
 published: true
 tags:
 categories:

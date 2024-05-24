@@ -102,7 +102,7 @@ Here’s an example of the Envoy configuration for this setting:
 }
 ```
 
-As long as the number set in `xffNumTrustedHops` is correct and the nodes are trusted, we can ensure that malicious users cannot forge the client IP address.
+As long as the number of nodes set in `xffNumTrustedHops` is correct and these nodes can be trusted, we can ensure that malicious users cannot forge the client IP address.
 
 Imagine an attacker trying to pose as a legitimate client by forging the X-Forwarded-For header. In the request, he includes a fake X-Forwarded-For header like this:
 
@@ -120,7 +120,7 @@ Because we set `xffNumTrustedHops` to 2, Envoy will look at the second rightmost
 
 ![](/img/2024-05-17-client-ip/client-ip-3.png)  
 
-#### 通过 IP Detection Extension 从 X-Forwarded-For 中提取 IP 地址
+#### Using the XFF IP Detection Extension
 
 除了在 HCM 中配置 X-Forwarded-For，我们还可以通过 IP Detection Extension 来提取客户端的真实 IP 地址，其配置和 HCM 类似，只是配置不是直接在 HCM 中，而是通过一个 IP Detection Extension 扩展组件来实现。
 

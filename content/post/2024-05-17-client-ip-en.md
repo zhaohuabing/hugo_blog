@@ -17,16 +17,16 @@ Just as a river flows from its source through various bends before reaching the 
 
 During this journey, the request’s original IP address is lost as it moves through multiple network infrastructures such as proxy servers and load balancers. This happens because some of these hops terminate the TCP connection and create a new TCP connection with the next hop.  As a result, the receiving server only sees the IP address of its directly connected hop in the chain rather than the client’s original IP address.
 
+![](/img/2024-05-17-client-ip/client-ip-1.png)
+<center>Loss of Client IP After Traversing Multiple Intermediate Network Hops</center>
+
+> The above diagram is a simplified representation of an HTTP request’s journey from the client to the server. Some details, such as a server may have multiple IP addresses, or the IP address may be changed by network address translation (NAT), are omitted in this diagram and the other examples in this article, so that we can focus on the main concepts.
+
 However, when processing the request, the backend often needs to know the client’s “Real” IP address for various reasons, below are some of them:
 * Fraud Prevention: The client IP address can help identify malicious actors and enable blocking of specific IP addresses associated with abusive behavior, hacking attempts, or denial-of-service attacks.
 * Access Control: Some systems restrict access to certain resources based on IP addresses. Knowing the client IP address allows you to implement whitelisting policies.
 * User Experience: Geolocation data derived from client IP addresses can be used to tailor content to users based on their location, such as displaying localized content or language.
 * Application Performance: Client IP addresses are used to implement rate limiting to prevent abuse and ensure fair usage of resources. It can also be used to distribute traffic effectively and maintain session affinity.
-
-![](/img/2024-05-17-client-ip/client-ip-1.png)
-<center>Loss of Client IP After Traversing Multiple Intermediate Network Hops</center>
-
-> The above diagram is a simplified representation of an HTTP request’s journey from the client to the server. Some details, such as a server may have multiple IP addresses, or the IP address may be changed by network address translation (NAT), are omitted in this diagram and the other examples in this article, so that we can focus on the main concepts.
 
 Envoy provides several methods to obtain the client’s IP address, including using the X-Forwarded-For HTTP header, custom HTTP headers, and the proxy protocol.
 

@@ -9,6 +9,24 @@ showTOC: true
 
 尘埃落地之前，去看看这世界。
 
+# Rubin 拿着刚为我组装的滑板 - Santa Cruz，美国，2024.05
+
+Rubin 在 35 年前创立了这家 [SkateWorks](https://skateworks.com/) 滑板店，他告诉我他从 5 岁开始滑滑板，现在已经快 75 了。老爷子身体很硬朗，看来滑板是保持年轻的秘诀。
+
+![](https://lh3.googleusercontent.com/pw/AP1GczNVQT9xQ4S6vFIoMUjwT1W2_j1_DE6qpzcbp-P_ThHt5Ks0ypUKxggaFcGe11ilgxYMFeix-iWO9ZG42XW7AcdcfQ7Jujgp2RUl7xRSgXx_nDwxjCxq9ij7fpevK1_R_1A-pHEsi6DPXa1A0DCFmszFag=w3098-h1742-s-no-gm?authuser=0)
+
+# 无名礁石 - Santa Cruz，美国，2024.05
+
+自然彷佛一位天才的雕刻家，用海浪和海风为刻刀，用千百年的时间将礁石被打磨成各种奇妙的形状。
+
+![](/img/photos/PXL_20240527_202502569.jpg)
+
+# 冲浪的情侣 - Santa Cruz，美国，2024.05
+
+Santa Cruz 是加州最著名的冲浪胜地之一，这对情侣正在准备下海冲浪。
+
+![](/img/photos/PXL_20240527_172201795.jpg)
+
 # 金门大桥 - 旧金山，美国，2023.11
 
 巨大的红色桥塔横跨在桥面上，如同一个昂首阔步的巨人。

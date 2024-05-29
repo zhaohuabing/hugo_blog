@@ -3,7 +3,7 @@ baseurl: 'https://zhaohuabing.com'
 title: Huabing Blog
 theme: hugo-theme-cleanwhite
 languageCode: en-us
-disqusShortname: zhaohuabings-blog
+# disqusShortname: zhaohuabings-blog
 googleAnalytics: G-Q13FPWS6LW
 preserveTaxonomyNames: true
 paginate: 10
@@ -69,8 +69,8 @@ params:
     crossorigin: anonymous
 
   # We need a proxy to access Disqus api in China
-  disqus_proxy : 'https://disqusapi.zhaohuabing.com'
-  disqus_site : 'https://zhaohuabing.com'
+  # disqus_proxy : 'https://disqusapi.zhaohuabing.com'
+  # disqus_site : 'https://zhaohuabing.com'
   social:
     rss: true
     email: zhaohuabing@gmail.com

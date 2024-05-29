@@ -11,7 +11,7 @@ showTOC: true
 
 # Rubin 拿着刚为我组装的滑板 - Santa Cruz，美国，2024.05
 
-Rubin 在 35 年前创立了这家 [SkateWorks](https://skateworks.com/) 滑板店，他从 5 岁开始滑滑板，现在已经快 75 了，看来滑板是保持健康的不二秘诀。
+Rubin 在 35 年前创立了这家 [SkateWorks](https://skateworks.com/) 滑板店，他从 5 岁开始玩滑板，现在已经快 75 了，看来滑板是保持健康的不二秘诀。
 
 ![](https://lh3.googleusercontent.com/pw/AP1GczNVQT9xQ4S6vFIoMUjwT1W2_j1_DE6qpzcbp-P_ThHt5Ks0ypUKxggaFcGe11ilgxYMFeix-iWO9ZG42XW7AcdcfQ7Jujgp2RUl7xRSgXx_nDwxjCxq9ij7fpevK1_R_1A-pHEsi6DPXa1A0DCFmszFag=w3098-h1742-s-no-gm?authuser=0)
 
@@ -77,13 +77,13 @@ Santa Cruz 是加州最著名的冲浪胜地之一，这对情侣正在准备下
 
 # 第四纪冰川形成的石头河 - 227国道稻城和理塘之间，海子山，甘孜，2022.08
 
-潺潺的溪水从巨大的石头堆中流过，一直蜿蜒流向远处的山谷。
+潺潺溪水从来自远古冰川的巨大石堆中淌过，一直蜿蜒流向远处苍茫的群山之中。
 
 ![](/img/photos/2022-海子山冰川石头河.jpeg)
 
 # 山坡上的自驾游客 - 227国道稻城和理塘之间，路边的草原，甘孜，2022.08
 
-哪个少年曾经没有一个策马持剑，浪迹天涯的梦想呢？
+也许他日常也是在小格子间里面伏案工作，但谁在少年不曾有一个策马持剑，浪迹天涯的梦想呢？
 
 ![](/img/photos/2022-grassland.jpeg)
 

@@ -8,7 +8,7 @@ author: ""
 date: 2024-05-20
 image: "https://images.pexels.com/photos/17398971/pexels-photo-17398971/free-photo-of-aerial-view-of-a-winding-river-and-green-forests.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
 published: true
-tags: [Envoy, Envoy Gateway, IP]
+tags: [Envoy, Envoy Gateway, X-Forwarded-For, Proxy Protocol]
 categories: [Tech,Open Source]
 showtoc: true
 ---

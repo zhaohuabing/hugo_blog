@@ -63,6 +63,7 @@ Below are the source and destination addresses for each TCP connection, along wi
 | 3 | From Load Balancer to Server|198.40.10.102|Server IP|146.74.94.117,198.40.10.101|
 
 As the above table shows, even though the source IP address changes as the request passes through each TCP connection ,the client’s IP address is preserved in the X-Forwarded-For header. The server can then extract the client’s IP address from the X-Forwarded-For header. Knowing that there are 2 hops, it selects the second value from the rightmost value.
+
 ![](/img/2024-05-17-client-ip/client-ip-2.png)
 <center>Client IP Forwarded Through the X-Forwarded-For (XFF) Header</center>
 
@@ -198,7 +199,7 @@ The Proxy Protocol Version 1 header is a single line of text that starts with th
 PROXY <INET_PROTOCOL> <CLIENT_IP> <SERVER_IP> <CLIENT_PORT> <SERVER_PORT>\r\n
 ```
 
-After the TCP connection handshake is complete, the sender sends a Proxy Protocol Header to the receiver. This header contains a few fields, what we are interested in is the client’s IP address and port number. Then the proxy server forwards the client’s data right after the Proxy Protocol Header.
+After the TCP connection handshake is complete, the sender sends a Proxy Protocol Header to the receiver. This header contains a few fields, what we are interested in is the client’s IP address. Then the proxy server forwards the client’s data right after the Proxy Protocol Header.
 
 Here is an example of an HTTP request with a Proxy Protocol Header:
 

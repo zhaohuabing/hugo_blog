@@ -9,133 +9,146 @@ showTOC: true
 
 尘埃落地之前，去看看这世界。
 
+# In-N-Out Burger - Milpitas, USA, 2024.05
+
+In-N-Out 是加州才有的快餐连锁店，加州人对 In-N-Out 有着特殊的感情。在疫情之后，其他的快餐店都涨价了，In-N-Out 仍然保持着之前的价格，并且其食材新鲜，口味独特，是加州人的最爱。其装修风格也很有特色，简洁明快的红白色调，再加上墙上加州风格的装饰画，让人感觉心情愉悦。
+
+![](/img/travel/PXL_20240526_022356189.jpg)
+![](/img/travel/PXL_20240525_032754131.jpeg)
+
+# 雕像：在图书馆前玩耍的孩子们 - Milpitas 图书馆，Milpitas，美国，2024.05
+
+在图书馆里阅读一本童话，在草地上和小伙伴一起嬉闹，无忧无虑的童年是最美好的时光。
+![](/img/travel/PXL_20240530_010942556.jpg)
+
+
 # Rubin 拿着刚为我组装的滑板 - Santa Cruz，美国，2024.05
 
 Rubin 在 35 年前创立了这家 [SkateWorks](https://skateworks.com/) 滑板店，他从 5 岁开始玩滑板，现在已经快 75 了，看来滑板是保持健康的不二秘诀。
 
-![](https://lh3.googleusercontent.com/pw/AP1GczNVQT9xQ4S6vFIoMUjwT1W2_j1_DE6qpzcbp-P_ThHt5Ks0ypUKxggaFcGe11ilgxYMFeix-iWO9ZG42XW7AcdcfQ7Jujgp2RUl7xRSgXx_nDwxjCxq9ij7fpevK1_R_1A-pHEsi6DPXa1A0DCFmszFag=w3098-h1742-s-no-gm?authuser=0)
+![](/img/travel/PXL_20240527_195720764.jpeg)
 
 # 无名礁石 - Santa Cruz，美国，2024.05
 
 大自然是最耐心的雕刻家，以海浪为刻刀，用千百年的时间将礁石打磨成各种奇妙的形状。
 
-![](/img/photos/PXL_20240527_202502569.jpg)
+![](/img/travel/PXL_20240527_202502569.jpeg)
 
 # 冲浪的情侣 - Santa Cruz，美国，2024.05
 
 Santa Cruz 是加州最著名的冲浪胜地之一，这对情侣正在准备下海冲浪。
 
-![](/img/photos/PXL_20240527_172201795.jpg)
+![](/img/travel/PXL_20240527_172201795.jpg)
 
 # 金门大桥 - 旧金山，美国，2023.11
 
 巨大的红色桥塔横跨在桥面上，如同一个昂首阔步的巨人。
 
-![](/img/photos/2023-11-golden-gate-bridge.jpg)
+![](/img/travel/2023-11-golden-gate-bridge.jpg)
 
 # 唐人街 - 旧金山，美国，2023.11
 
 传奇武术大师李小龙在旧金山留下的印记至今仍然清晰可见。
 
-![](/img/photos/2023-11-san-francisco.jpg)
+![](/img/travel/2023-11-san-francisco.jpg)
 
 # 芝加哥 - 芝加哥，美国，2023.11
 
 芝加哥是美国很少的几个有摩天大楼的城市之一，这里的建筑风格独具特色，具有强烈的现代感。
 
-![](/img/photos/2023-11-chicago.jpg)
+![](/img/travel/2023-11-chicago.jpg)
 
 # 雅女湖 - 四川，眉山 2024.01
 
 清晨的湖面平静如镜，湖边的树木和远处的瓦屋山倒影在湖中，如同一幅水墨画。
 
-![](/img/photos/2023-雅女湖.jpeg)
+![](/img/travel/2023-雅女湖.jpeg)
 
 # 穿藏族服装的少女 - 理塘，甘孜，2022.08
 
 青春的少女穿着藏族服装，背景是一片蓝天白云，仿佛置身于天空之城。
-![](/img/photos/2022-理塘-天空之城.jpeg)
+![](/img/travel/2022-理塘-天空之城.jpeg)
 
 # 兴伊措 - 227国道稻城和理塘之间，甘孜，2022.08
 
 开车途经一段异常崎岖，遍地石头的路段，突然开阔起来，一片湖泊映入眼帘，湖水清澈见底，周围群山环绕，仿佛置身于仙境。
 
-![](/img/photos/2022-兴伊措.jpeg)
+![](/img/travel/2022-兴伊措.jpeg)
 
 # 香格里拉圣路 - 227国道稻城和理塘之间，甘孜，2022.08
 
 前方黑色的云层中正酝酿着一场风暴，巨大的环状旋风连接了天空和地面，仿佛在天地之间打开了一个通道。
 
-![](/img/photos/2022-兴伊措路上.jpeg)
+![](/img/travel/2022-兴伊措路上.jpeg)
 
 # 海子山地貌 - 227国道稻城和理塘之间，海子山，甘孜，2022.08
 
 海子山上遍布巨大的冰川漂砾，蛮荒得如同来到了火星。
 
-![](/img/photos/2022-海子山.jpeg)
+![](/img/travel/2022-海子山.jpeg)
 
 
 # 第四纪冰川形成的石头河 - 227国道稻城和理塘之间，海子山，甘孜，2022.08
 
 潺潺溪水从来自远古冰川的巨大石堆中淌过，一直蜿蜒流向远处苍茫的群山之中。
 
-![](/img/photos/2022-海子山冰川石头河.jpeg)
+![](/img/travel/2022-海子山冰川石头河.jpeg)
 
 # 山坡上的自驾游客 - 227国道稻城和理塘之间，路边的草原，甘孜，2022.08
 
 也许他和你我一样，日常都被困在高楼的小格子间里，但谁年少时不曾有一个策马持剑，浪迹天涯的梦想呢？
 
-![](/img/photos/2022-grassland.jpeg)
+![](/img/travel/2022-grassland.jpeg)
 
 # 秋意 - 二古溪村，米亚罗，阿坝，2019.10
 
 在有着浓浓雾气的早晨，背起背包，走进二古溪色彩斑斓的秋天。
 
-![](/img/photos/2020-米亚罗.jpeg)
+![](/img/travel/2020-米亚罗.jpeg)
 
 # 国立博物馆 - 阿姆斯特丹，荷兰，2019.10
 
-![](/img/photos/2019-amsterdam-rijksmuseum.jpeg)
+![](/img/travel/2019-amsterdam-rijksmuseum.jpeg)
 
 # 中央车站 - 阿姆斯特丹，荷兰，2019.10
 
-![](/img/photos/2019-amsterdam-centraal.jpeg)
+![](/img/travel/2019-amsterdam-centraal.jpeg)
 
 # 河边的风车 - 阿姆斯特丹，荷兰，2019.10
 
-![](/img/photos/2019-amsterdam-windmill.jpeg)
+![](/img/travel/2019-amsterdam-windmill.jpeg)
 
 # 晨光中的小船 - 阿姆斯特丹，荷兰，2019.10
 
 Best moment at the dawn, the reflection of trees shattered by the waves of a boat.
 
-![](/img/photos/2019-amsterdam-boat-at-dawn.jpeg)
+![](/img/travel/2019-amsterdam-boat-at-dawn.jpeg)
 
 # 情人海 - 金川，阿坝，2018.10
 
-![](/img/photos/2018-情人海.jpeg)
+![](/img/travel/2018-情人海.jpeg)
 
 # 船上的小孩 - 马来西亚，2018.10
 
 其实还没有机会去马来西亚，这是一个马来西亚网友发给我的，觉得构图很不错。
 
-![](/img/photos/2018-no-name.jpeg)
+![](/img/travel/2018-no-name.jpeg)
 
 # 某寺庙 - 香港，2015.4
 
-![](/img/photos/2015-hk-temple.jpeg)
+![](/img/travel/2015-hk-temple.jpeg)
 
 # 双层巴士 - 轩尼诗道，香港，2015.4
 
 A tram trip is a wonderful old-fashioned way to explore the city.
 
-![](/img/photos/2015-hk-bus.jpeg)
+![](/img/travel/2015-hk-bus.jpeg)
 
 # 昂坪缆车 - 香港，2015.4
 
-![](/img/photos/2015-hk-昂坪缆车.jpeg)
+![](/img/travel/2015-hk-昂坪缆车.jpeg)
 
 # 父与子 - 杜塞尔多夫，德国，2014.2
 
 一对穿着亲子装的父子在狂欢节上，父亲的啤酒肚和儿子呆萌的小脸相映成趣。
-![](/img/photos/2014-父与子.jpeg)
+![](/img/travel/2014-父与子.jpeg)

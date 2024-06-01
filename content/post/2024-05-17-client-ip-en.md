@@ -383,7 +383,7 @@ Envoy provides several methods to obtain the client’s real IP address, includi
 
 While Envoy’s configuration syntax can be complex and challenging for average users, managing Envoy with [Envoy Gateway][] significantly simplifies the process of retrieving the client IP from the request. Additionally, [Envoy Gateway][] enables advanced use cases such as access control, rate limiting, and other client IP-based traffic management.
 
-👇👇👇 Do you utilize client IP in your Gateway configuration? I love to hear about your use cases! Feel free to leave a comment below and share your insights.👇👇👇
+👇👇👇Do you utilize client IP in your Gateway configuration? I love to hear about your use cases! Feel free to leave a comment below and share your insights.👇👇👇
 
 [Envoy Gateway]: https://gateway.envoyproxy.io
 [SecurityPolicy]: https://gateway.envoyproxy.io/v1.0.1/api/extension_types/#securitypolicy

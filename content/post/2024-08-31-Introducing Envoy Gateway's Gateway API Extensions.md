@@ -156,14 +156,111 @@ ClientTrafficPolicy 提供了下面这些配置选项：
 
 下图是 ClientTrafficPolicy 的一个示例：
 
+![](/img/2024-08-31-introducing-envoy-gateways-gateway-api-extensions/3.png)
+<center>ClientTrafficPolicy 示例</center>
+
+
 `client-traffic-policy-gateway` 是一个 ClientTrafficPolicy 资源，它关联到了名为 `eg` 的 Gateway 资源上，用于对客户端到 Envoy 之间的连接进行流量控制。这个 ClientTrafficPolicy 对象配置了 TCP Keepalive、Connection Buffer Size、HTTP Request Timeout、HTTP Idle Timeout、客户端原始 IP 地址的获取方式等配置。由于 `eg` Gateway 资源上有两个 Listener `http` 和 `https`，因此这个 ClientTrafficPolicy 资源会对这两个 Listener 生效。
 
 同时，`client-traffic-policy-https-listener` 这个 ClientTrafficPolicy 资源直接关联到了 `https` Listener 上（通过指定其 targetRef 的 sectionName 字段）。这个 ClientTrafficPolicy 资源会覆盖 `client-traffic-policy-gateway` 对 `https` Listener 的配置，以对 `https` Listener 配置 tls 相关的参数。
 
-![](/img/2024-08-31-introducing-envoy-gateways-gateway-api-extensions/3.png)
-<center>ClientTrafficPolicy 示例</center>
-
 # BackendTrafficPolicy：后端连接流量控制
+
+BackendTrafficPolicy 和 ClientTrafficPolicy 类似，但其作用点不同。BackendTrafficPolicy 用于对 Envoy 到后端服务之间的连接进行流量控制。BackendTrafficPolicy 的作用原理如下图所示：
+![](/img/2024-08-31-introducing-envoy-gateways-gateway-api-extensions/4.png)
+<center>BackendTrafficPolicy 资源的作用原理</center>
+
+当 BackendTrafficPolicy 作用时，Envoy 已经对请求进行了路由处理。因此 BackendTrafficPolicy 可以既可以作用于 Gateway，也可以作用于 HTTPRoute 和 GRPCRoute 资源上。
+当 BackendTrafficPolicy 作用于 Gateway 时，它实际上会被应用到 Gateway 下的所有 HTTPRoute 和 GRPCRoute 资源上。
+
+BackendTrafficPolicy 提供了下面这些配置选项：
+* 全局和本地限流：Envoy Gateway 同时支持全局限流和本地限流。全局限流是对某个服务的所有实例使用一个全局的限流策略，本地限流则是对服务的每个实例使用一个独立的限流策略。
+* 负载均衡策略：支持一致性哈希、最小请求、随机、轮询等负载均衡策略。支持“慢启动”，将新的后端服务实例逐渐引入负载均衡池，避免突然的流量冲击。
+* 断路器：支持基于连接数量，连接请求数，最大并发请求，并发重试等断路器策略。
+* Envoy 到后端之间连接的 TCP 相关配置：TCP Keepalive、TCP Timeout、Socket Buffer Size、Connection Buffer Size。
+* Envoy 到后端之间连接的 HTTP 相关配置：HTTP Request Timeout、HTTP Idle Timeout 等。
+* Envoy 到后端之间连接的其他配置：是否启用 Proxy Protocol、是否采用和客户端连接相同的 HTTP 版本等。
+
+下图是 BackendTrafficPolicy 的一个示例：
+![](/img/2024-08-31-introducing-envoy-gateways-gateway-api-extensions/5.png)
+<center>BackendTraffic 示例</center>
+
+`backend-traffic-policy-http-route` 是一个 BackendTrafficPolicy 资源，它关联到了名为 `http-route` 的 HTTPRoute 资源上，用于对 Envoy 到后端服务之间的连接进行流量控制。这个 BackendTrafficPolicy 配置了全局限流、负载均衡策略和断路器策略。可以看到，采用 BackendTrafficPolicy 来配置全局限流非常简单，只需要大约 10 行 YAML 配置即可实现。
+
+# SecurityPolicy：安全策略
+
+SecurityPolicy 用于对请求进行访问控制，包括 CORS 策略、用户认证、权限控制等。SecurityPolicy 的作用原理如下图所示：
+
+![](/img/2024-08-31-introducing-envoy-gateways-gateway-api-extensions/6.png)
+<center>SecurityPolicy 资源的作用原理</center>
+
+上图是一个逻辑视图，实际上并没有一个单独的 Acces Controll 组件，Envoy Gateway 会将 SecurityPolicy 的配置应用到 Envoy 的 Filter Chain 中，以实现对请求的访问控制。
+
+SecurityPolicy 支持下面这些配置选项：
+* CORS 策略：配置跨域资源共享策略，包括允许的 Origin、Headers、Methods 等。
+* 用户认证：支持基于 JWT Token、OIDC、Basic Auth 等的用户认证。
+* 权限控制：支持基于客户端原始 IP，JWT Token 中的 Claims 等的权限控制。
+* ExtAuth：支持将请求转发到外部认证服务进行认证。
+
+下图是 SecurityPolicy 的一个示例：
+![](/img/2024-08-31-introducing-envoy-gateways-gateway-api-extensions/7.png)
+<center>SecurityPolicy 示例</center>
+
+`security-policy-http-route` 是一个 SecurityPolicy 资源，它关联到了名为 `http-route` 的 HTTPRoute 资源上，用于对请求进行访问控制。这个 SecurityPolicy 配置了 OIDC 用户认证 和基于客户端 IP 的权限控制。
+
+# EnvoyExtensionPolicy：自定义扩展
+
+虽然 Envoy Gateway 提供了丰富的流量管理和安全性功能，但是总有一些特定的需求无法通过 Envoy 已有的功能来实现。在这种情况下，用户可以通过 EnvoyExtensionPolicy 来扩展 Envoy 的功能。EnvoyExtensionPolicy 支持用户将自定义的扩展功能加载到 Envoy 中，以实现对请求和响应的自定义处理。
+
+EnvoyExtensionPolicy 支持两种类型的自定义扩展：
+* WebAssembly 扩展：WebAssembly 是一种高性能的二进制格式，可以在 Envoy 中运行。用户可以通过 WebAssembly 扩展来实现对请求和响应的自定义处理。
+* External Process 扩展：用户可以通过 External Process 扩展来调用外部进程来处理请求和响应。
+
+### WebAssembly 扩展
+
+Envoy Gateway 对 Envoy 原生的 Wasm 扩展进行了增强，支持采用 OCI Image 作为 Wasm 扩展的载体。用户可以将自定义的 Wasm 扩展打包成 OCI Image，放到容器镜像仓库中，然后通过 EnvoyExtensionPolicy 来加载这个 Wasm 扩展。OCI Image 支持为 Wasm 扩展提供了版本管理能力和更好的安全性。用户可以通过 OCI Image 的标签来指定 Wasm 扩展的版本，通过私有镜像仓库来保护 Wasm 扩展的安全性。除此之外，还可以使用 OCI Image 生态系统中的工具来操作、管理、分发 Wasm 扩展。
+
+下图是 Envoy Gateway 中 Wasm OCI Image 的工作原理：
+![](/img/2024-08-31-introducing-envoy-gateways-gateway-api-extensions/8.png)
+<center>Envoy Gateway Wasm OCI Image 原理</center>
+
+除了 OCI Image，Envoy Gateway 也支持通过 HTTP URL 来加载 Wasm 扩展。用户可以将 Wasm 扩展上传到一个 HTTP 服务器上，然后通过 URL 来指定 Wasm 扩展的位置。
+
+下图是 Wasm 扩展的示例，左图是一个采用 OCI Image 作为载体的 Wasm 扩展的示例。右图则是采用 HTTP URL 作为载体的 Wasm 扩展的示例。
+![](/img/2024-08-31-introducing-envoy-gateways-gateway-api-extensions/9.png)
+<center>Wasm 扩展示例</center>
+
+### External Process 扩展
+
+External Process 扩展是 Envoy Gateway 提供的另一种扩展方式。External Process 扩展允许用户通过一个外部进程来处理请求和响应。用户需要单独对该外部进程进行部署，Envoy Gateway 会将请求和响应通过远程调用的方式发送给这个外部进程，然后由这个外部进程来处理请求和响应。
+
+下图是 External Process 扩展的工作原理：
+
+![](/img/2024-08-31-introducing-envoy-gateways-gateway-api-extensions/10.png)
+<center>External Process 扩展</center>
+
+如果对请求处理路径上的网络延迟的要求较高，可以采用 Sidecar 方式将 External Process 扩展进程部署到 Envoy Gateway 的 Pod 中，以将远程调用转换为 UDS 调用，从而减少调用时延。
+
+如下图所示，External Process 扩展进程被部署到 Envoy Pod 中，通过 UDS 与 Envoy 通信。注意需要创建一个 Backend 资源来定义 External Process 扩展进程的 UDS 地址，并在 EnvoyExtensionPolicy 中引用这个 Backend 资源。
+
+![](/img/2024-08-31-introducing-envoy-gateways-gateway-api-extensions/11.png)
+<center>采用 Sidecar 方式部署 External Process 扩展</center>
+
+### 如何选择 WebAssembly 和 External Process 扩展
+Envoy Gateway 提供了 WebAssembly 和 External Process 两种扩展方式，那么用户应该如何选择呢？我们可以从下面几个方面来进行考虑：
+* 性能：WebAssembly 扩展比 External Process 扩展性能更好，因为 WebAssembly 扩展运行在 Envoy 的进程内，不需要通过网络调用来处理请求和响应。External Process 扩展则需要通过网络调用来处理请求和响应，性能相对会差一些。
+* 功能：WebAssembly 运行在沙箱中，对于系统调用和资源访问等有一定的限制。External Process 则没有这些限制，可以采用任何编程语言来实现，对于系统调用和资源访问等没有限制。
+* 部署：Envoy 从 OCI  Registry 或者 HTTP URL 加载 Wasm 扩展，无需独立部署。External Process 扩展则需要单独部署一个外部进程，增加了系统的复杂度。
+* 安全：WebAssembly 扩展运行在 Envoy 中，如果 Wasm 扩展出现问题，可能会影响 Envoy 的稳定性，例如导致 Envoy Crush。而 External Process 则运行在独立的进程中，即使出现问题，也不会影响到 Envoy 的运行。
+* 伸缩性：由于 External Process 扩展是独立的进程，因此可以根据需要进行伸缩。而 WebAssembly 扩展则运行在 Envoy 中，无法独立伸缩。
+
+总的来说，WebAssembly 扩展适合在数据处理路径上的一些简单的处理逻辑，而 External Process 则适合一些需要和外部系统交互的复杂逻辑。大家可以根据自己的需求和场景来选择使用 WebAssembly 还是 External Process 扩展。
+
+## EnvoyPatchPolicy：Envoy 配置补丁
+
+
+
+
 To be continued...
 
 ## 参考

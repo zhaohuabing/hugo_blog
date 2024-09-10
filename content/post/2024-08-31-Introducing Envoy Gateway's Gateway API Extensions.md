@@ -1,9 +1,9 @@
 ---
 layout:     post
 
-title:      "超越 Gateway API：深入探索 Envoy Gateway 的扩展功能（未完成）"
+title:      "超越 Gateway API：深入探索 Envoy Gateway 的扩展功能"
 subtitle:
-description: 'Envoy Gateway 作为 Envoy 的 Ingress Gateway 实现，全面支持了 Gateway API 的所有能力。除此之外，基于 Gateway API 的扩展机制，Envoy Gateway 还提供了丰富的流量管理、安全性、自定义扩展等 Gateway API 中不包含的增强功能。本文将介绍 Envoy Gateway 的 Gateway API 扩展功能，并深入探讨这些功能的应用场景。'
+description: 'Envoy Gateway 作为 Envoy 社区推出的 Ingress Gateway 实现，全面支持了 Kubernetes Gateway API 的所有能力。除此之外，基于 Gateway API 的扩展机制，Envoy Gateway 还提供了丰富的流量管理、安全性、自定义扩展等 Gateway API 中不包含的增强功能。本文将介绍 Envoy Gateway 的 Gateway API 扩展功能，并深入探讨这些功能的应用场景。'
 author: "赵化冰（Envoy Gateway Maintainer）"
 date: 2024-08-31
 image: "/img/2024-08-31-introducing-envoy-gateways-gateway-api-extensions/IMG_1624.JPG"
@@ -16,7 +16,7 @@ showtoc: true
 
 > 本文是我在 2024 年 8 月于香港举行的 Kubecon China 上的技术分享：[Gateway API and Beyond: Introducing Envoy Gateway's Gateway API Extensions](https://kccncossaidevchn2024.sched.com/event/1eYcX/gateway-api-and-beyond-introducing-envoy-gateways-gateway-api-extensions-jie-api-daeptao-envoyjie-zha-jie-api-huabing-zhao-tetrate) 的内容总结。
 
-Envoy Gateway 作为 Envoy 的 Ingress Gateway 实现，全面支持了 Gateway API 的所有能力。除此之外，基于 Gateway API 的扩展机制，Envoy Gateway 还提供了丰富的流量管理、安全性、自定义扩展等 Gateway API 中不包含的增强功能。本文将介绍 Envoy Gateway 的 Gateway API 扩展功能，并深入探讨这些功能的应用场景。
+Envoy Gateway 作为 Envoy 社区推出的 Ingress Gateway 实现，全面支持了 Kubernetes Gateway API 的所有能力。除此之外，基于 Gateway API 的扩展机制，Envoy Gateway 还提供了丰富的流量管理、安全性、自定义扩展等 Gateway API 中不包含的增强功能。本文将介绍 Envoy Gateway 的 Gateway API 扩展功能，并深入探讨这些功能的应用场景。
 
 ## Kubernets Ingerss 的现状与问题
 
@@ -246,7 +246,7 @@ External Process 扩展是 Envoy Gateway 提供的另一种扩展方式。Extern
 ![](/img/2024-08-31-introducing-envoy-gateways-gateway-api-extensions/11.png)
 <center>采用 Sidecar 方式部署 External Process 扩展</center>
 
-### 如何选择 WebAssembly 和 External Process 扩展
+### 如何选择合适的扩展方式
 Envoy Gateway 提供了 WebAssembly 和 External Process 两种扩展方式，那么用户应该如何选择呢？我们可以从下面几个方面来进行考虑：
 * 性能：WebAssembly 扩展比 External Process 扩展性能更好，因为 WebAssembly 扩展运行在 Envoy 的进程内，不需要通过网络调用来处理请求和响应。External Process 扩展则需要通过网络调用来处理请求和响应，性能相对会差一些。
 * 功能：WebAssembly 运行在沙箱中，对于系统调用和资源访问等有一定的限制。External Process 则没有这些限制，可以采用任何编程语言来实现，对于系统调用和资源访问等没有限制。
@@ -258,6 +258,9 @@ Envoy Gateway 提供了 WebAssembly 和 External Process 两种扩展方式，�
 
 ## EnvoyPatchPolicy：Envoy 配置补丁
 
+Envoy 提供了丰富的配置选项，这些配置选项是用于控制面
+Envoy Gateway 通过 Gateway API 和各种 Policy 资源简化了对 Envoy 配置的管理。这些面向用户的 API 
+提供了对 Envoy 配置的控制。但是有时候用户可能需要对 Envoy 的配置进行一些微调，例如修改 Envoy 的 Listener、Cluster、Route 等配置。为了实现这个目的，Envoy Gateway 提供了 EnvoyPatchPolicy 资源对象，用于对 Envoy 的配置进行补丁。
 
 
 

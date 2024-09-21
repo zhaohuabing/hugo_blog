@@ -56,7 +56,7 @@
     {{ if .Site.Params.disqus_proxy }}
     <link rel="stylesheet" href="{{ "css/iDisqus.min.css" | relURL }}"/>
     {{ end }}
-    
+
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="{{ "css/bootstrap.min.css" | relURL }}">
 
@@ -68,7 +68,7 @@
 
     <!-- Custom Fonts -->
     <link rel="stylesheet" href="{{ "css/font-awesome.all.min.css" | relURL }}">
-    
+
     <!--  Custom CSS  -->
     {{ range .Site.Params.custom_css -}}
     <link rel="stylesheet" href="{{ . | absURL }}">
@@ -91,7 +91,7 @@
     <script src="{{ . | absURL }}"></script>
     {{ end }}
 
-    <!-- 
+    <!--
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4731711387000975"
      crossorigin="anonymous"></script>
     -->

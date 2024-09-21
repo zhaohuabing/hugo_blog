@@ -3,7 +3,7 @@ layout:     post
 
 title:      "超越 Gateway API：深入探索 Envoy Gateway 的扩展功能"
 subtitle:
-description: 'Envoy Gateway 作为 Envoy 社区推出的 Ingress Gateway 实现，全面支持了 Kubernetes Gateway API 的所有能力。除此之外，基于 Gateway API 的扩展机制，Envoy Gateway 还提供了丰富的流量管理、安全性、自定义扩展等 Gateway API 中不包含的增强功能。本文将介绍 Envoy Gateway 的 Gateway API 扩展功能，并深入探讨这些功能的应用场景。'
+description: '作为 Envoy 社区推出的 Ingress Gateway 实现，Envoy Gateway 全面支持了 Kubernetes Gateway API 的所有能力。除此之外，基于 Gateway API 的扩展机制，Envoy Gateway 还提供了丰富的流量管理、安全性、自定义扩展等 Gateway API 中并不包含的增强功能。本文将介绍 Envoy Gateway 的 Gateway API 扩展功能，并深入探讨这些功能的应用场景。'
 author: "赵化冰（Envoy Gateway Maintainer）"
 date: 2024-08-31
 image: "/img/2024-08-31-introducing-envoy-gateways-gateway-api-extensions/IMG_1624.JPG"
@@ -18,11 +18,11 @@ showtoc: true
 
 {{< youtube qH2byF7SDO8 >}}
 
-[Envoy Gateway²](https://github.com/envoyproxy/gateway) 作为 Envoy 社区推出的 Ingress Gateway 实现，全面支持了 [Kubernetes Gateway API³](https://gateway-api.sigs.k8s.io) 的所有能力。除此之外，基于 Gateway API 的扩展机制，Envoy Gateway 还提供了丰富的流量管理、安全性、自定义扩展等 Gateway API 中不包含的增强功能。本文将介绍 Envoy Gateway 的 Gateway API 扩展功能，并深入探讨这些功能的应用场景。
+作为 Envoy 社区推出的 Ingress Gateway 实现，[Envoy Gateway²](https://github.com/envoyproxy/gateway) 全面支持了 [Kubernetes Gateway API³](https://gateway-api.sigs.k8s.io) 的所有能力。除此之外，基于 Gateway API 的扩展机制，Envoy Gateway 还提供了丰富的流量管理、安全性、自定义扩展等 Gateway API 中并不包含的增强功能。本文将介绍 Envoy Gateway 的 Gateway API 扩展功能，并深入探讨这些功能的应用场景。
 
 ## Kubernets Ingerss 的现状与问题
 
-[Ingress⁴](https://kubernetes.io/docs/concepts/services-networking/ingres) 是 Kubernetes 中定义集群入口流量规则的 API 对象。Ingress API 为用户提供了定义 HTTP 和 HTTPS 路由规则的能力，但是 <font color="red">**Ingress API 的功能有限，只提供了按照 Host、Path 进行路由和 TLS 卸载的基本功能**</font>。这些功能在实际应用中往往无法满足复杂的流量管理需求，导致用户需要通过 Annotations 或者自定义 API 对象来扩展 Ingress 的功能。
+[Ingress⁴](https://kubernetes.io/docs/concepts/services-networking/ingres) 是 Kubernetes 中定义集群入口流量规则的 API 对象。Ingress API 为用户提供了基本的定义 HTTP 路由规则的能力，但是 <font color="red">**Ingress API 的功能非常有限，只提供了按照 Host、Path 进行路由和 TLS 卸载的基本功能**</font>。这些功能在实际应用中往往无法满足复杂的流量管理需求，导致各个 Ingress Controller 实现需要通过 Annotations 或者自定义 API 对象等非标准的方式来扩展 Ingress API 的功能。
 
 例如，一个很常见的需求是采用正则表达式对请求的 Path 进行匹配，但是 Ingress API 只支持 Prefix 和 Exact 两种 Path 匹配方式，无法满足这个需求。
 

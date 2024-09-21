@@ -1,9 +1,9 @@
 ## 关于我
-Hi，我是赵化冰，[tetrate.io](https://tetrate.io) 工程师，曾就职于[腾讯云](https://cloud.tencent.com/product/tcm)，[中兴通讯](https://www.zte.com.cn/)，[Oracle](https://www.oracle.com)。目前主要工作领域为 Envoy，Envoy Gateway 和 Istio。我创建了服务网格开源项目 [Aeraki Mesh](https://aeraki.net)（CNCF Sandbox 项目），可以在 Istio 中管理 Dubbo、Thrift、Redis 以及任意私有协议的流量。
+Hi，我是赵化冰，[Tetrate](https://tetrate.io) 工程师，曾就职于[腾讯云](https://cloud.tencent.com/product/tcm)，[中兴通讯](https://www.zte.com.cn/)，[Oracle](https://www.oracle.com)。目前主要工作领域为 Envoy，Envoy Gateway 和 Istio。我创建了服务网格开源项目 [Aeraki Mesh](https://aeraki.net)（CNCF Sandbox 项目），可以在 Istio 中管理 Dubbo、Thrift、Redis 以及任意私有协议的流量。
 
 工作联系：
-* 邮件 zhaohuabing@gmail.com 
-* 微信 zhao_huabing 
+* 邮件 zhaohuabing@gmail.com
+* 微信 zhao_huabing
 * LinkedIn https://www.linkedin.com/in/zhaohuabing
 
 ## 出版物
@@ -18,6 +18,7 @@ Hi，我是赵化冰，[tetrate.io](https://tetrate.io) 工程师，曾就职于
 ## 演讲分享 (部分)
 |年份          |城市        |会议         | 分享主题    |讲稿         |视频       |
 | ----------- |----------- |----------- |----------- |----------- |----------- |
+|2024|香港|[KubeCon China](https://kccncossaidevchn2024.sched.com/event/1eYcX/gateway-api-and-beyond-introducing-envoy-gateways-gateway-api-extensions-jie-api-daeptao-envoyjie-zha-jie-api-huabing-zhao-tetrate)|[Gateway API and Beyond: Introducing Envoy Gateway's Gateway API Extensions](https://www.zhaohuabing.com/post/2024-08-31-introducing-envoy-gateways-gateway-api-extensions/)|[Slides](https://static.sched.com/hosted_files/kccncossaidevchn2024/2b/Gateway%20API%20and%20Beyond_%20Introducing%20Envoy%20Gateway%27s%20Gateway%20API%20Extensions.pptx.pdf?_gl=1*17q8fyt*_gcl_au*MTE3NzMxNDg4My4xNzI1NTkwMDI1*FPAU*MTE3NzMxNDg4My4xNzI1NTkwMDI1)|[Video](https://www.youtube.com/watch?v=qH2byF7SDO8)|
 |2023|芝加哥|[KubeCon NA](https://colocatedeventsna2023.sched.com/event/1Rj2s/introduce-metaprotocol-proxy-a-layer-7-proxy-framework-powered-by-envoy-huabing-zhao-tetrate)|[ Introduce MetaProtocol Proxy: A Layer-7 Proxy Framework Powered by Envoy](https://www.zhaohuabing.com/post/2023-11-16-kubecon-na-metaprotocol/)|[观看](https://zhaohuabing.com/slides/MetaProtoclProxy.pdf)|[观看](https://www.bilibili.com/video/BV1JC4y1m71j)|
 |2023|上海|[KubeCon China](https://www.lfasiallc.com/kubecon-cloudnativecon-open-source-summit-china/program/schedule/)|[Envoy Gateway: 云原生时代的 API 网关](https://www.zhaohuabing.com/post/2023-11-01-kubecon-shanghai-2023-envoy-gateway-the-api-gateway-in-the-cloud-native-era/)|[观看](https://zhaohuabing.com/slides/kubecon-envoy-gateway-the-API-Gateway-in-the-Cloud-Native-Era.pdf)|[观看](https://www.bilibili.com/video/BV15G411y7hP)|
 |2022|上海|[服务网格峰会](https://jimmysong.io/notice/service-mesh-summit-2022/)|[5分钟内将 Dubbo 服务接入 Istio 服务网格](https://www.zhaohuabing.com/post/2022-09-26-servicemesh-summit2022-dubbo-aeraki-mesh/)|[观看](https://zhaohuabing.com/web-slides/manage-dubbo-in-istio-in-5-minutes/)|[观看](https://www.bilibili.com/video/BV1oe4y167kz/?zw&vd_source=13de6a5e7f290572ee6b115b44a424f2)|

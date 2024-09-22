@@ -110,9 +110,9 @@ spec:
 
 虽然 Gateway API 提供了比 Ingress 更丰富的功能，但是<font color="red">**任何一个标准，不管定义得多么完善，理论上都只能是其所有实现的最小公约数**</font>。Gateway API 也不例外。Gateway API 作为一个通用的 API 规范，为了保持通用性，无法对一些和具体实现细节相关的功能提供直接的支持。例如，虽然请求限流、权限控制等功能在实际应用中非常重要，但是不同的数据平面如 Envoy，Nginx 等的实现方式各有不同，因此 Gateway API 无法提供一个通用的规范来支持这些功能。Ingress API 就是由于这个原因，导致了 Annotations 和自定义 API 资源的泛滥。
 
-Gateway API 中创新的地方在于，它提供了 [Policy Attachment⁵](https://gateway-api.sigs.k8s.io/reference/policy-attachment/) 扩展机制，允许用户在<font color="red">**不修改 Gateway API 的情况下，通过关联自定义的 Policy 到 Gateway 和 xRoute 等资源上，以实现对流量的自定义处理**</font>。Policy Attachment 机制为 Gateway API 提供了更好的可扩展性，使得 Gateway API 可以支持更多的流量管理、安全性、自定义扩展等功能。此外，Gateway API 还支持将自定义的 Backend 资源关联到 HTTPRoute 和 GRPCRoute 等资源上，以支持将流量路由到自定义的后端服务。支持在 HTTPRoute  和 GRPCRoute 的规则中关联自定义的 Filter 资源，以支持对请求和响应进行自定义处理。
+Gateway API 中创新的地方在于，它提供了 [Policy Attachment⁵](https://gateway-api.sigs.k8s.io/reference/policy-attachment/) 扩展机制，允许各个 Controller 实现在<font color="red">**不修改 Gateway API 的情况下，通过关联自定义的 Policy 到 Gateway 和 HTTPRoute 等资源上，以实现对流量的自定义处理**</font>。Policy Attachment 机制为 Gateway API 提供了更好的可扩展性，使得 Gateway API 可以支持更多的流量管理、安全性、自定义扩展等功能。此外，Gateway API 还支持将自定义的 Backend 资源关联到 HTTPRoute 和 GRPCRoute 等资源上，以支持将流量路由到自定义的后端服务。支持在 HTTPRoute  和 GRPCRoute 的规则中关联自定义的 Filter 资源，以支持对请求和响应进行自定义处理。
 
-通过这些内建的扩展机制，Gateway API 既保持了 Gateway，HTTPRoute 等核心资源的通用性，保证了不同实现之间对核心功能的兼容性；又为不同 Controller 实现在 Gateway API 的基础上进行功能扩展提供了一个统一的规范，让不同的 Ingress Controller 实现可以在 Gateway API 的基础上，通过自定义的 Policy、Backend、Filter 等资源来实现更多自己独有的增强功能。
+通过这些内建的扩展机制，Gateway API 既保持了 Gateway，HTTPRoute 等核心资源的通用性，保证了不同实现之间对核心功能的兼容性；又为不同 Controller 实现在 Gateway API 的基础上进行功能扩展提供了一个统一的规范。Gateway API 让不同的 Ingress Controller 实现可以在其核心资源的基础上，通过自定义的 Policy、Backend、Filter 等资源来实现更多自己独有的增强功能。
 
 ![](/img/2024-08-31-introducing-envoy-gateways-gateway-api-extensions/1.png)
 <center>Ingerss 和 Gateway API 的对比</center>
@@ -120,7 +120,7 @@ Gateway API 中创新的地方在于，它提供了 [Policy Attachment⁵](https
 ## Envoy Gateway 的 Gateway API 扩展功能
 Envoy 是一个非常强大的云原生代理，广泛应用于服务网格、API Gateway、边缘代理等场景。Envoy 提供了丰富的流量管理能力，其配置也非常灵活。要将 Envoy 作为 Ingress Gateway 使用，需要配置大量的 Envoy 的配置项，这对用户来说是一个挑战。
 
-为了简化 Envoy 的配置和管理，Envoy 社区推出了 Envoy Gateway 项目。 <font color=red>**Envoy Gateway 是一个基于 Envoy 的 Ingress Gateway 实现，它为用户提供了一个简单易用的 API 来配置 Envoy 的流量管理能力**</font>。Envoy Gateway 使用 Gateway API 作为其面向用户的接口，兼容 Gateway API 的所有资源，提供了对 Gateway、HTTPRoute、GRPCRoute、TLSRoute、TCPRoute、UDPRoute 等资源的配置。除此之外，Envoy Gateway 还通过 Gateway API 的扩展机制提供了丰富的增强功能，例如请求限流、权限控制、WebAssembly 扩展等功能。
+为了简化 Envoy 的配置和管理，Envoy 社区推出了 Envoy Gateway 项目。 <font color=red>**Envoy Gateway 是一个基于 Envoy 的 Ingress Gateway 实现，它为用户提供了一个简单易用的 API 来配置 Envoy 的流量管理能力**</font>。Envoy Gateway 使用 Gateway API 作为其面向用户的接口，兼容 Gateway API 的最新版本，提供了对 Gateway、HTTPRoute、GRPCRoute、TLSRoute、TCPRoute、UDPRoute 等资源的支持。除此之外，Envoy Gateway 还通过 Gateway API 的扩展机制提供了丰富的增强功能，例如请求限流、权限控制、WebAssembly 扩展等功能。
 
 Envoy Gateway 提供了下面这些自定义资源：
 * Policy Attachment：ClientTrafficPolicy、BackendTrafficPolicy、SecurityPolicy、EnvoyExtensionPolicy、EnvoyPatchPolicy。这些 Policy 可以关联到 API Gateway 的 Gateway、HTTPRoute 和 GRPCRoute 资源上，以实现对流量的自定义处理。
@@ -135,7 +135,9 @@ Envoy Gateway 提供了下面这些自定义资源：
 
 ## Policy Attachment 扩展机制
 
-[Policy Attachment⁵](https://gateway-api.sigs.k8s.io/reference/policy-attachment/) 是 Gateway API 提供的一个扩展机制，允许将一个 Policy 关联到 GatewayClass、Gateway、HTTPRoute、GRPCRoute 和 Service 等资源上，以实现对流量的自定义处理。Envoy Gateway 通过 Policy Attachment 机制实现了多种 Policy，用于实现对流量的自定义处理。Envoy Gateway 对 Policy Attachment 的生效范围和优先级的规定如下：
+[Policy Attachment⁵](https://gateway-api.sigs.k8s.io/reference/policy-attachment/) 是 Gateway API 提供的一个扩展机制，允许将一个 Policy 关联到 GatewayClass、Gateway、HTTPRoute、GRPCRoute 和 Service 等资源上，以实现对流量的自定义处理。Envoy Gateway 通过 Policy Attachment 机制实现了多种 Policy，用于在 Gateway 上提供 Envoy 强大的流量管理能力。
+
+同一个 Policy 可以关联到多个 Gateway API 的资源上。Envoy Gateway 对 Policy Attachment 的生效范围和优先级的规定如下：
 * 父资源上关联的 Policy 对其所有子资源生效。
   * Gateway 上关联的 Policy 对该 Gateway 中的所有 Listener 生效。（ClientTrafficPolicy）
   * Gateway 上关联的 Policy 对该 Gateway 下的所有 HTTPRoute 和 GRPCRoute 资源生效。（BackendTrafficPolicy，SecurityPolicy，EnvoyExtensionPolicy）
@@ -175,7 +177,8 @@ BackendTrafficPolicy 和 ClientTrafficPolicy 类似，但其作用点不同。Ba
 <center>BackendTrafficPolicy 资源的作用原理</center>
 
 当 BackendTrafficPolicy 作用时，Envoy 已经对请求进行了路由处理。因此 BackendTrafficPolicy 可以既可以作用于 Gateway，也可以作用于 HTTPRoute 和 GRPCRoute 资源上。
-当 BackendTrafficPolicy 作用于 Gateway 时，它实际上会被应用到 Gateway 下的所有 HTTPRoute 和 GRPCRoute 资源上。
+
+备注：当 BackendTrafficPolicy 作用于 Gateway 时，它实际上会被应用到 Gateway 下的所有 HTTPRoute 和 GRPCRoute 资源上。
 
 BackendTrafficPolicy 提供了下面这些配置选项：
 * 全局和本地限流：Envoy Gateway 同时支持全局限流和本地限流。全局限流是对某个服务的所有实例使用一个全局的限流策略，本地限流则是对服务的每个实例使用一个独立的限流策略。
@@ -189,7 +192,7 @@ BackendTrafficPolicy 提供了下面这些配置选项：
 ![](/img/2024-08-31-introducing-envoy-gateways-gateway-api-extensions/5.png)
 <center>BackendTraffic 示例</center>
 
-`backend-traffic-policy-http-route` 是一个 BackendTrafficPolicy 资源，它关联到了名为 `http-route` 的 HTTPRoute 资源上，用于对 Envoy 到后端服务之间的连接进行流量控制。这个 BackendTrafficPolicy 配置了全局限流、负载均衡策略和断路器策略。可以看到，采用 BackendTrafficPolicy 来配置全局限流非常简单，只需要大约 10 行 YAML 配置即可实现。
+`backend-traffic-policy-http-route` 是一个 BackendTrafficPolicy 资源，它关联到了名为 `http-route` 的 HTTPRoute 资源上，用于对 Envoy 到后端服务之间的连接进行流量控制。这个 BackendTrafficPolicy 配置了全局限流、负载均衡策略和断路器策略。可以看到，采用 BackendTrafficPolicy 来配置全局限流非常简单，只需要大约 10 行 YAML 配置即可实现，而且配置的内容非常直观，大大降低了用户的配置难度。
 
 # SecurityPolicy：安全策略
 
@@ -211,6 +214,8 @@ SecurityPolicy 支持下面这些配置选项：
 <center>SecurityPolicy 示例</center>
 
 `security-policy-http-route` 是一个 SecurityPolicy 资源，它关联到了名为 `http-route` 的 HTTPRoute 资源上，用于对请求进行访问控制。这个 SecurityPolicy 配置了 OIDC 用户认证 和基于客户端 IP 的权限控制。
+
+通过采用 SecurityPolicy，可以将用户认证、权限控制等安全策略的实现从应用程序中解耦，直接利用 Envoy Gateway 提供的安全策略来实现，大大简化了应用程序的开发和维护，提升了应用程序的安全性。Envoy Gateway 提供了 Out-of-the-box 的安全策略，支持多种用户认证方式，包括 JWT Token、OIDC、Basic Auth 等；支持多种权限控制方式，包括基于客户端原始 IP、JWT Token 中的 Claims 等。如果用户需要和已有的认证服务集成，也可以通过 ExtAuth 来实现。
 
 # EnvoyExtensionPolicy：自定义扩展
 
@@ -297,6 +302,9 @@ egctl experimental translate -f epp.yaml
 ```
 
 需要注意的是，Envoy Gateway 版本的升级可能会导致 Envoy 配置的变化，从而导致原来的 EnvoyPatchPolicy 不再生效。因此我们在升级 Envoy Gateway 版本时，需要重新审视原来的 EnvoyPatchPolicy 是否还适用，是否需要进行修改。
+
+## 小结
+Gateway API 是 Kubernetes 中定义集群入口流量规则的下一代 API 规范，提供了丰富的功能，可以满足用户对流量管理、安全性、自定义扩展等方面的需求。Envoy Gateway 是一个基于 Envoy 的 Ingress Gateway 实现，全面支持 Gateway API 的所有能力，并通过 Gateway API 的扩展机制提供了丰富的增强功能。Envoy Gateway 提供了多种增强 Policy，包括 ClientTrafficPolicy、BackendTrafficPolicy、SecurityPolicy、EnvoyExtensionPolicy、EnvoyPatchPolicy 等。这些 Policy 可以关联到 Gateway、HTTPRoute、GRPCRoute 等资源上，以实现对流量的自定义处理。通过这些 Policy，用户可以实现客户端连接流量控制、后端连接流量控制、请求访问控制、自定义扩展等一些列强大的功能。
 
 
 ## 参考

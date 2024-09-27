@@ -139,6 +139,8 @@ The relationship between these custom resources and the standard resources of th
 ![](/img/2024-08-31-introducing-envoy-gateways-gateway-api-extensions/Envoy-Gateway-Resources.png)
 <center>Envoy Gateway Resources</center>
 
+> Special thanks to [Erica Hughberg](https://www.linkedin.com/in/ericahughberg) for drwaing this diagram. She also created many other amazing visuals to explain complex technical concepts in a simple and intuitive way. Follow her on [LinkedIn](https://www.linkedin.com/in/ericahughberg) to see more of her work.
+
 Next, let's take a closer look at Envoy Gateway's Gateway API extension features and explore their use cases.
 
 ## Policy Attachment Mechanism
@@ -274,70 +276,65 @@ As shown in the diagram, the External Process extension runs inside the same Pod
 
 ### Choosing Between WebAssembly and External Process Extensions
 
-Both WebAssembly and External Process extensions offer powerful capabilities for extending Envoy Gateway. How do we decide between them when extending Envoy Gateway? Here are a few factors to consider:
+Both WebAssembly (Wasm) and External Process extensions offer powerful ways to extend Envoy Gateway. But how do you choose between them? Here are a few factors to consider:
 
-* Performance: Wasm extensions generally perform better since they run within the Envoy process, eliminating the need for network calls to process requests and responses. External Process extensions, by contrast, rely on network calls, which can result in slightly lower performance(This can be mitigated by deploying the External Process extension as a sidecar, as shown in the example above).
-* Functionality: Wasm runs in a sandbox, meaning it has certain limitations when it comes to system calls and external resource access. External Process extensions have no such restrictions and can be implemented in any programming language with full access to system resources.
-* Deployment: Wasm extensions can be loaded directly by Envoy from an OCI registry or HTTP URL, eliminating the need for separate deployment. In contrast, External Process extensions require deploying and managing a separate process, which adds some additional management overhead.
-* Security: Wasm extensions run inside Envoy, so any bugs in the extension could affect Envoy’s stability and potentially cause crashes. In contrast, External Process extensions run in their own separate process, so even if they crash, Envoy’s operation remains unaffected.
-* Scalability: External Process extensions can scale independently because they run as separate processes, while Wasm extensions can only scale with Envoy.
+* Wasm extensions typically offer better performance because they run directly within the Envoy process. External Process extensions, by contrast, rely on network calls, which can lead to slightly lower performance. However, this can be mitigated by deploying the External Process extension as a sidecar, as illustrated in the example above.
+* Functionality: Wasm runs in a sandbox environment, which imposes certain restrictions on system calls and access to external resources. External Process extensions have no such restrictions and can be implemented in any programming language with full access to system resources.
+* Deployment: Wasm extensions can be loaded directly by Envoy from an OCI registry or HTTP URL. In contrast, External Process extensions require deploying a separate process, introducing additional management overhead.
+* Security: Wasm extensions run within Envoy, meaning any bugs in the extension could compromise Envoy’s stability and potentially lead to crashes. By comparison, External Process extensions operate in their own separate process, so even if they fail, Envoy’s functionality remains unaffected.
+* Scalability: External Process extensions can scale independently since they run as separate processes, allowing you to manage their resources and scaling separately from Envoy. On the other hand, Wasm extensions are embedded within Envoy and can only scale alongside Envoy itself.
 
 In general, Wasm extensions are a good fit for lightweight, in-path data processing tasks, while External Process extensions are better suited for more complex logic that requires interaction with external systems. Your choice will depend on the specific needs of your application and environment.
 
-Envoy Gateway 提供了 WebAssembly 和 External Process 两种扩展方式，那么用户应该如何选择呢？我们可以从下面几个方面来进行考虑：
-* 性能：WebAssembly 扩展比 External Process 扩展性能更好，因为 WebAssembly 扩展运行在 Envoy 的进程内，不需要通过网络调用来处理请求和响应。External Process 扩展则需要通过网络调用来处理请求和响应，性能相对会差一些。
-* 功能：WebAssembly 运行在沙箱中，对于系统调用和资源访问等有一定的限制。External Process 则没有这些限制，可以采用任何编程语言来实现，对于系统调用和资源访问等没有限制。
-* 部署：Envoy 从 OCI  Registry 或者 HTTP URL 加载 Wasm 扩展，无需独立部署。External Process 扩展则需要单独部署一个外部进程，增加了系统的复杂度。
-* 安全：WebAssembly 扩展运行在 Envoy 中，如果 Wasm 扩展出现问题，可能会影响 Envoy 的稳定性，例如导致 Envoy Crush。而 External Process 则运行在独立的进程中，即使出现问题，也不会影响到 Envoy 的运行。
-* 伸缩性：由于 External Process 扩展是独立的进程，因此可以根据需要进行伸缩。而 WebAssembly 扩展则运行在 Envoy 中，无法独立伸缩。
+In general, Wasm extensions are well-suited for lightweight, data-path processing tasks, while External Process extensions are better for handling more complex logic that involves interaction with external systems. The right choice depends on the specific requirements of your application and environment.
 
-总的来说，WebAssembly 扩展适合在数据处理路径上的一些简单的处理逻辑，而 External Process 则适合一些需要和外部系统交互的复杂逻辑。大家可以根据自己的需求和场景来选择使用 WebAssembly 还是 External Process 扩展。
+## EnvoyPatchPolicy: Arbitrary Configuration Patches
 
-## EnvoyPatchPolicy：Envoy 配置补丁
-
-Envoy Gateway 通过 Gateway API 和各种 Policy 简化了对 Envoy 配置的管理。这些配置资源可以覆盖 99% 的用户场景，但是总有一些特定的需求无法通过这些配置资源来实现。在这种情况下，用户可以通过 EnvoyPatchPolicy 来对 Envoy 的配置打补丁。
+Envoy Gateway simplifies managing Envoy through the Gateway API and its policy extensions. While these configuration resources handle most use cases, there are always some edge cases that aren’t fully covered. In such instances, users can use EnvoyPatchPolicy to apply arbitrary patches to the generated Envoy configuration.
 
 
-EnvoyPatchPolicy 的作用原理如下图所示：
+The diagram below illustrates how EnvoyPatchPolicy works:
 
 ![](/img/2024-08-31-introducing-envoy-gateways-gateway-api-extensions/13.png)
-<center>EnvoyPatchPolicy 资源的作用原理</center>
+<center>How EnvoyPatchPolicy Works</center>
 
-EnvoyPatchPolicy 缺省情况下是未被启用的，用户需要在 Envoy Gateway 的配置中显式地启用 EnvoyPatchPolicy 才能生效。启用以后，用户可以通过 EnvoyPatchPolicy 可以对 Envoy Gateway 生成的 Envoy 配置中的 Listener、Cluster、Route 等的配置参数进行修改。
+By default, EnvoyPatchPolicy is disabled and must be explicitly enabled in the Envoy Gateway configuration. Once enabled, it allows users to add arbitrary patches to the Envoy configuration generated by Envoy Gateway, including modifications to Listener, Cluster, and Route configurations.
 
 ![](/img/2024-08-31-introducing-envoy-gateways-gateway-api-extensions/14.png)
-<center>EnvoyPatchPolicy 示例</center>
+<center>EnvoyPatchPolicy Example</center>
 
-该 EnvoyPatchPolicy 资源对 Envoy Gateway 生成的 Envoy 配置中的 Listener `default/eg/http` 进行了修改，在 Listener 的 Default Filter Chain 中的第一个 Filter （即是 Envoy 中处理 HTTP 协议的 `envoy.http_connection_manager`） 中添加了 localReplyConfig 参数。该配置将 404 错误的响应 码改为了406，同时将响应体改为了 `could not find what you are looking for`。
+In this example, the EnvoyPatchPolicy resource modifies the Listener `default/eg/http` in the generated Envoy configuration. It adds the `localReplyConfig` parameter to the first filter in the Listener’s Default Filter Chain, which is the `envoy.http_connection_manager` responsible for handling HTTP traffic. This change updates the response code for 404 errors to 406 and sets the response body to “could not find what you are looking for.”
 
-从上面的例子中可以看到，EnvoyPatchPolicy 是一个非常强大的功能，可以用于对 Envoy 的配置进行任意的修改。
+EnvoyPatchPolicy is a powerful tool, but it can be risky, as it relies on the structure and field naming conventions of the generated Envoy configuration, neither of which are guaranteed to be stable and may change with future updates to Envoy Gateway. Therefore, it should be used judiciously and only when necessary.
 
-EnvoyPatchPolicy 的应用直接依赖于 Envoy Gateway 生成的 Envoy 配置。例如上面例子中的 EnvoyPatchPolicy 依赖了 listener 的名称，以及其内部的 Filter Chain 结构。因此用户需要了解 Envoy Gateway 生成的 Envoy 配置的结构和规则，才能正确地使用 EnvoyPatchPolicy。
+EnvoyPatchPolicy is generally recommended in the following scenarios:
+* When Envoy Gateway does not yet support a new feature, EnvoyPatchPolicy can be used as a temporary workaround or for prototyping.
+* When the generated Envoy configuration doesn’t meet certain specific requirements, EnvoyPatchPolicy can be used to make the necessary modifications.
 
-一般来说，只建议在下面两种情况下使用 EnvoyPatchPolicy：
-* 在 Envoy Gateway 还没有提供对某个新特性的支持时，可以通过 EnvoyPatchPolicy 来临时实现这个特性。
-* 在某些特定的场景下，Envoy Gateway 生成的 Envoy 配置无法满足用户的需求时，可以通过 EnvoyPatchPolicy 来对 Envoy 配置进行修改。
+Before creating an EnvoyPatchPolicy, you can use the `egctl` tool to view the original Envoy configuration. This allows you to identify the places where you need to make changes.
 
-在创建 EnvoyPatchPolicy 前，我们可以通过 `egctl` 工具来查看原始的 Envoy 配置，以确定如何对 Envoy 配置进行修改。
 ```bash
 egctl config envoy-proxy all -oyaml
 ```
 
-在编写好 EnvoyPatchPolicy 后，我们也可以通过 `egctl` 工具来验证采用 EnvoyPatchPolicy 打补丁后的 Envoy 配置是否符合预期。
+After writing the EnvoyPatchPolicy, you can also use the `egctl` tool to validate whether the patched Envoy configuration meets your expectations.
 
 ```bash
 egctl experimental translate -f epp.yaml
 ```
 
-需要注意的是，Envoy Gateway 版本的升级可能会导致 Envoy 配置的变化，从而导致原来的 EnvoyPatchPolicy 不再生效。因此我们在升级 Envoy Gateway 版本时，需要重新审视原来的 EnvoyPatchPolicy 是否还适用，是否需要进行修改。
+Keep in mind that upgrading Envoy Gateway can lead to changes in the Envoy configuration, which might cause your existing EnvoyPatchPolicy to no longer work as expected. <font color=red>  **When upgrading, it’s important to review and assess whether the current EnvoyPatchPolicy is still applicable or needs to be updated** </font>.
 
-## 小结
-Gateway API 是 Kubernetes 中定义集群入口流量规则的下一代 API 规范，提供了丰富的功能，可以满足用户对流量管理、安全性、自定义扩展等方面的需求。Envoy Gateway 是一个基于 Envoy 的 Ingress Gateway 实现，全面支持 Gateway API 的所有能力，并通过 Gateway API 的扩展机制提供了丰富的增强功能。Envoy Gateway 提供了多种增强 Policy，包括 ClientTrafficPolicy、BackendTrafficPolicy、SecurityPolicy、EnvoyExtensionPolicy、EnvoyPatchPolicy 等。这些 Policy 可以关联到 Gateway、HTTPRoute、GRPCRoute 等资源上，以实现对流量的自定义处理。通过这些 Policy，用户可以实现客户端连接流量控制、后端连接流量控制、请求访问控制、自定义扩展等一些列强大的功能。
+## Key Takeaways
+
+The Gateway API is the next-generation Ingress API in Kubernetes, offering a rich set of features for managing inbound traffic to clusters. Envoy Gateway is an ingress gateway built on Envoy that fully supports the capabilities of the Gateway API while providing a wide range of enhancements through the API’s extension mechanisms.
+
+Envoy Gateway offers several advanced policies—including ClientTrafficPolicy, BackendTrafficPolicy, SecurityPolicy, EnvoyExtensionPolicy, and EnvoyPatchPolicy—which can be attached to Gateway API resources like Gateway, HTTPRoute, and GRPCRoute to enable fine-grained traffic control. With these policies, users can fine-tune the behavior of client and backend connections, enforce access control, and implement custom extensions, unlocking the full power of Envoy to manage edge traffic.
 
 
-## 参考
-1. [KubeCon 演讲稿下载地址](https://kccncossaidevchn2024.sched.com/event/1eYcX/gateway-api-and-beyond-introducing-envoy-gateways-gateway-api-extensions-jie-api-daeptao-envoyjie-zha-jie-api-huabing-zhao-tetrate)：https://kccncossaidevchn2024.sched.com/event/1eYcX/gateway-api-and-beyond-introducing-envoy-gateways-gateway-api-extensions-jie-api-daeptao-envoyjie-zha-jie-api-huabing-zhao-tetrate
-2. [Envoy Gateway GitHub 项目地址](ttps://github.com/envoyproxy/gateway)：https://github.com/envoyproxy/gateway
+## References
+1. [KubeCon China talk: Gateway API and Beyond: Introducing Envoy Gateway's Gateway API Extensions](https://kccncossaidevchn2024.sched.com/event/1eYcX/gateway-api-and-beyond-introducing-envoy-gateways-gateway-api-extensions-jie-api-daeptao-envoyjie-zha-jie-api-huabing-zhao-tetrate)：https://kccncossaidevchn2024.sched.com/event/1eYcX/gateway-api-and-beyond-introducing-envoy-gateways-gateway-api-extensions-jie-api-daeptao-envoyjie-zha-jie-api-huabing-zhao-tetrate
+2. [Envoy Gateway GitHub](ttps://github.com/envoyproxy/gateway)：https://github.com/envoyproxy/gateway
 3. [Kubernetes Gateway API](https://gateway-api.sigs.k8s.io)：https://gateway-api.sigs.k8s.io
 4. [Kubernetes Ingress API](https://kubernetes.io/docs/concepts/services-networking/ingress)：https://kubernetes.io/docs/concepts/services-networking/ingress
 5. [Policy Attachment](https://gateway-api.sigs.k8s.io/reference/policy-attachment)：https://gateway-api.sigs.k8s.io/reference/policy-attachment

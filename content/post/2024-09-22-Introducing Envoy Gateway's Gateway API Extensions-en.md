@@ -293,7 +293,7 @@ In general, Wasm extensions are well-suited for lightweight, data-path processin
 
 ## EnvoyPatchPolicy: Arbitrary Configuration Patches
 
-Envoy Gateway simplifies managing Envoy through the Gateway API and its policy extensions. While these configuration resources handle most use cases, there are always some edge cases that aren’t fully covered. In such instances, users can use EnvoyPatchPolicy to apply arbitrary patches to the generated Envoy configuration.
+Envoy Gateway simplifies managing Envoy through the Gateway API and its policy extensions. While these configuration resources handle most use cases, there are always some edge cases that aren’t fully covered. In such instances, users can use EnvoyPatchPolicy to apply arbitrary patches to the generated Envoy configuration to meet specific requirements.
 
 
 The diagram below illustrates how EnvoyPatchPolicy works:

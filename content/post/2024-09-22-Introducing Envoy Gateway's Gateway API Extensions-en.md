@@ -132,7 +132,8 @@ Moreover, Envoy Gateway leverages the Gateway API’s extension mechanisms to of
 Envoy Gateway introduces the following custom resources:
 
 * Policy Attachment: Includes ClientTrafficPolicy, BackendTrafficPolicy, SecurityPolicy, EnvoyExtensionPolicy, and EnvoyPatchPolicy. These policies can be attached to API Gateway resources like Gateway, HTTPRoute, and GRPCRoute to provide advanced traffic management, security, and custom extension capabilities.
-* Custom Backend: The Backend can be used within HTTPRoute and GRPCRoute rules to route traffic to custom backend services
+* Custom HTTPRoute Filter: Supports URL rewriting, direct response, and other advanced request and response processing features at the HTTPRoute rule level.
+* Custom Backend: The Backend can be used within HTTPRoute and GRPCRoute rules to route traffic to non-kubernetes backends, such as IP addresses, hostnames, or UDS addresses.
 
 The relationship between these custom resources and the standard resources of the Gateway API is illustrated in the diagram below:
 
@@ -140,6 +141,8 @@ The relationship between these custom resources and the standard resources of th
 <center>Envoy Gateway Resources</center>
 
 > Special thanks to [Erica Hughberg](https://www.linkedin.com/in/ericahughberg) for drwaing this diagram. She also created many other amazing visuals to explain complex technical concepts in a simple and intuitive way. Follow her on [LinkedIn](https://www.linkedin.com/in/ericahughberg) to see more of her work.
+
+This article will focus on the custom policy resources provided by Envoy Gateway, as HTTPRoute Filters and Custom Backends are relatively straightforward and self-explanatory.
 
 Next, let's take a closer look at Envoy Gateway's Gateway API extension features and explore their use cases.
 

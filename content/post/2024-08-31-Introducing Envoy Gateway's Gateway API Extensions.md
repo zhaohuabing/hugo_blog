@@ -124,6 +124,7 @@ Envoy 是一个非常强大的云原生代理，广泛应用于服务网格、AP
 
 Envoy Gateway 提供了下面这些自定义资源：
 * Policy Attachment：ClientTrafficPolicy、BackendTrafficPolicy、SecurityPolicy、EnvoyExtensionPolicy、EnvoyPatchPolicy。这些 Policy 可以关联到 API Gateway 的 Gateway、HTTPRoute 和 GRPCRoute 资源上，以实现对流量的自定义处理。
+* HTTPRoute Filter：在 HTTPRoute 规则级别，支持 URL 重写、直接响应以及其他高级的请求和响应处理功能。
 * 自定义 Backend：Backend 可以用于 HTTPRoute 和 GRPCRoute 的规则中，将流量路由到自定义的后端服务。
 
 这些自定义资源和 Gateway API 的标准资源的关系如下图所示：
@@ -131,7 +132,9 @@ Envoy Gateway 提供了下面这些自定义资源：
 ![](/img/2024-08-31-introducing-envoy-gateways-gateway-api-extensions/Envoy-Gateway-Resources.png)
 <center>Envoy Gateway 的资源</center>
 
-下面我们将详细介绍 Envoy Gateway 的 Gateway API 扩展功能，并深入探讨这些功能的应用场景。
+> 特别感谢 [Erica Hughberg](https://www.linkedin.com/in/ericahughberg) 为本文绘制了上图。她还创作了许多其他有趣的作品，用简单直观的方式解释复杂的技术概念。关注她的 [LinkedIn](https://www.linkedin.com/in/ericahughberg) 以查看更多她的作品。
+
+下面我们将详细介绍 Envoy Gateway 的 Gateway API 扩展功能，并深入探讨这些功能的应用场景。本文将重点介绍 Envoy Gateway 提供的自定义 Policy，因为 HTTPRoute Filter 和自定义 Backend 相对来说比较简单，容易理解。
 
 ## Policy Attachment 扩展机制
 

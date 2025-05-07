@@ -7,7 +7,7 @@ description: "单点登录（SSO）简化了用户体验，使用户能够在访
 author: "赵化冰"
 date: 2023-12-07
 image: "https://images.unsplash.com/photo-1461685265823-f8d5d0b08b9b?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-published: true
+
 tags:
     - Envoy Gateway
 categories:
@@ -145,6 +145,3 @@ sudo kubectl -n envoy-gateway-system port-forward service/${ENVOY_SERVICE} 443:4
 3. [Google OpenID Connect 文档 ⁶](https://developers.google.com/identity/openid-connect/openid-connect)：https://developers.google.com/identity/openid-connect/openid-connect
 4. [Envoy Gateway Quickstart ⁷](https://gateway.envoyproxy.io/latest/user/quickstart/) ：https://gateway.envoyproxy.io/latest/user/quickstart
 5. [Secure Gateway ⁸](https://gateway.envoyproxy.io/latest/user/secure-gateways/)：https://gateway.envoyproxy.io/latest/user/secure-gateways
-
-
-

@@ -8,7 +8,7 @@ author:     ""
 date:       2018-01-01
 description: "Cozy apartment for rent, 1 bedroom, next to the UESTC Qingshuihe Campus"
 image: "https://images.pexels.com/photos/276514/pexels-photo-276514.jpeg"
-published: true
+
 showtoc: false
 
 #categories: [ Life ]
@@ -25,7 +25,7 @@ Hello, this is Zhao, I have a cozy apartment next to UESTC Qingshuihe Campus(Uni
 * The Kitchen: Kitchen fully equipped, Oven, Fridge, Electric Hob
 * English speaking rental service
 
-There's no agency/middleman, so you don't have to pay extra money. 
+There's no agency/middleman, so you don't have to pay extra money.
 
 The rent is RMB1400 excluding property management fee. Please contact me via zhaohuabing@zhaohuabing.com if you're interested.
 
@@ -42,7 +42,3 @@ Google map: https://goo.gl/maps/zUU2vxCUPMjWY7ko8
 ## Neighborhood
 
 {{< gallery dir="/img/longfor-apartment/neighborhood/" />}} {{< load-photoswipe >}}
-
-
-
-

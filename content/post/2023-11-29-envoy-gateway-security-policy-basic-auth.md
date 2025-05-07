@@ -7,7 +7,7 @@ description: ""
 author: "赵化冰"
 date: 2023-11-29
 image: "https://gateway.envoyproxy.io/featured-background_hub722101dbe1dbe5596133cb6c8ada6d9_400690_1920x1080_fill_q75_catmullrom_top.jpg"
-published: true
+
 tags:
     - Envoy Gateway
 categories:
@@ -161,5 +161,3 @@ curl -v -H "Host: www.example.com" -u 'foo:bar' "http://${GATEWAY_HOST}/"
 * Envoy Gateway HTTP Basic Authentication：https://github.com/envoyproxy/gateway/pull/2224
 * Envoy Gateway Quickstart：https://gateway.envoyproxy.io/v0.6.0/user/quickstart/
 * Envoy Gateway Security Policy：https://gateway.envoyproxy.io/v0.6.0/api/extension_types/#securitypolicy
-
-

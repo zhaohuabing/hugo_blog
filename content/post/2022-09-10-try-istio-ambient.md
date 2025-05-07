@@ -7,7 +7,7 @@ description: ""
 author: "赵化冰"
 date: 2022-09-10
 image: "https://images.unsplash.com/photo-1558403871-bb6e8113a32e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2662&q=80"
-published: true
+
 tags:
     - Istio
     - Envoy
@@ -90,7 +90,7 @@ kubectl apply -f https://zhaohuabing.com/download/ambient/notsleep.yaml
 
 ```bash
 kubectl label namespace default istio.io/dataplane-mode=ambient
-``` 
+```
 
 istio-cni 组件会监控到 namespace 加入到了 ambient mesh 中，会设置相应的流量重定向策略，如果我们查看 istio-cni 的日志，可以看到 istio-cni 为应用 pod 创建了相应的路由规则：
 
@@ -107,7 +107,7 @@ kubectl logs istio-cni-node-nxcnf -n istio-system|grep route
 从 sleep 访问 productpage:
 
 ```bash
-kubectl exec deploy/sleep -- curl -s http://productpage:9080/ 
+kubectl exec deploy/sleep -- curl -s http://productpage:9080/
 ```
 
 我们应该可以看到 productpage 服务的输出。此时流量已经通过 ztunnel 进行了 mTLS 双向认证和加密。我们应该可以从 sleep 和 productpage 节点上的 ztunnel 的日志中看到访问记录。
@@ -157,7 +157,7 @@ bookinfo-productpage-waypoint-proxy-7dc7c7ff6-6q6l7   1/1     Running   0       
 从 sleep 访问 productpage:
 
 ```bash
-kubectl exec deploy/sleep -- curl -s http://productpage:9080/ 
+kubectl exec deploy/sleep -- curl -s http://productpage:9080/
 ```
 
 下面我们再来看一下请求经过的实际路径：
@@ -281,13 +281,3 @@ kubectl exec -it deploy/sleep -- sh -c 'for i in $(seq 1 10); do curl -s http://
 
 # 参考文档：
 * https://istio.io/latest/blog/2022/get-started-ambient/
-
-
-
-
-
-
-
-
-
-

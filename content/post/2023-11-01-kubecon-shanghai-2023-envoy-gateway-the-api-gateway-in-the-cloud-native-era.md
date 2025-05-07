@@ -7,7 +7,7 @@ description: "KubeCon 分享：为什么 Envoy Gateway 是云原生时代的 API
 author: "赵化冰"
 date: 2023-11-01
 image: "https://images.unsplash.com/photo-1494198518635-0f0f38fc43d0?auto=format&fit=crop&q=80&w=3270&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-published: true
+
 tags:
     - Envoy
     - Envoy Gateway
@@ -37,12 +37,3 @@ Bilibili
 
 YouTube
 {{< youtube XBsDe9stMcg >}}
-
-
-
-
-
-
-
-
-

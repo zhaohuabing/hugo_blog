@@ -8,7 +8,7 @@ author:     "赵化冰"
 date:       2019-04-16
 description: "By default, in a Kubernetes cluster with the Istio service mesh enabled, services can only be accessed inside the cluster. However, some of the services may need to be exposed to the external network as well. Kubernetes and Istio provide a variety of means to get external traffic into your cluster including NodePort, LoadBalancer, Kubernetes Ingress and Istio Gateway. With all these options, which one should be the right choice for your service mesh running in production?"
 image: "/img/2019-03-29-how-to-choose-ingress-for-service-mesh/airport.jpg"
-published: true 
+
 tags:
     - Service Mesh
     - Istio
@@ -175,7 +175,7 @@ Kubernetes LoadBalancer works in OSI layer 4, meaning it can only dispatch inbou
 
 To solve these problems, Kubernetes Ingress resource is used to declare an OSI layer 7 load balancer, which can understand HTTP protocol and dispatch inbound traffic based on the HTTP URL or Host.
 
-* Routing requests to different backend services based on URL 
+* Routing requests to different backend services based on URL
 ![](/img/2019-03-29-how-to-choose-ingress-for-service-mesh/Ingress-url-fanout.png)
 
 * Routing requests to different backend services based on Host
@@ -284,4 +284,3 @@ What are your thoughts on this? Let me know by leaving comments after the post.
 * https://zhaohuabing.com/2017/11/28/access-application-from-outside/
 * https://medium.com/google-cloud/kubernetes-nodeport-vs-loadbalancer-vs-ingress-when-should-i-use-what-922f010849e0
 * https://zhaohuabing.com/post/2018-12-27-the-obstacles-to-put-istio-into-production/#service-mesh-and-api-gateway
-

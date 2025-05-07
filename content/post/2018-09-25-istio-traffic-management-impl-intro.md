@@ -8,12 +8,12 @@ author:     "赵化冰"
 date:       2018-09-25
 description: " Istio作为一个service mesh开源项目,其中最重要的功能就是对网格中微服务之间的流量进行管理,包括服务发现,请求路由和服务间的可靠通信。Istio体系中流量管理配置下发以及流量规则如何在数据面生效的机制相对比较复杂，通过官方文档容易管中窥豹，难以了解其实现原理。本文尝试结合系统架构、配置文件和代码对Istio流量管理的架构和实现机制进行分析，以达到从整体上理解Pilot和Envoy的流量管理机制的目的。"
 image: "https://upload.wikimedia.org/wikipedia/commons/d/d6/San_Francisco_International_Airport_at_night.jpg"
-published: false
+draft: true
 tags:
-    - Istio 
+    - Istio
     - Pilot
     - Envoy
-    - Service Mesh 
+    - Service Mesh
 
 categories: [ Tech ]
 ---
@@ -28,7 +28,7 @@ Istio体系中流量管理配置下发以及流量规则如何在数据面生效
 
 Istio控制面中负责流量管理的组件为Pilot，Pilot的高层架构如下图所示：
 
-![](/img/2018-09-25-istio-traffic-management-impl-intro/pilot-architecture.png)  
+![](/img/2018-09-25-istio-traffic-management-impl-intro/pilot-architecture.png)
 <center>Pilot Architecture（来自[Isio官网文档](https://istio.io/docs/concepts/traffic-management/)<sup>[[1]](#ref01)</sup>)</center>
 根据上图,Pilot主要实现了下述功能：
 
@@ -62,7 +62,7 @@ Pilot的规则DSL是采用K8S API Server中的[Custom Resource (CRD)](https://ku
 
 我们可以通过下图了解Istio流量管理涉及到的相关组件。虽然该图来自Istio Github old pilot repo, 但图中描述的组件及流程和目前Pilot的最新代码的架构基本是一致的。
 
-![](/img/2018-09-25-istio-traffic-management-impl-intro/traffic-managment-components.png)  
+![](/img/2018-09-25-istio-traffic-management-impl-intro/traffic-managment-components.png)
 <center>Pilot Design Overview (来自[Istio old_pilot_repo](https://github.com/istio/old_pilot_repo/blob/master/doc/design.md)<sup>[[4]](#ref04)</sup>)</center>
 图例说明：图中红色的线表示控制流，黑色的线表示数据流。蓝色部分为和Pilot相关的组件。
 
@@ -215,11 +215,11 @@ kubectl exec productpage-v1-54b8b9f55-bx2dq -c istio-proxy curl http://127.0.0.1
 
 ```
 kubectl exec t productpage-v1-54b8b9f55-bx2dq -c istio-proxy --  netstat -ln
- 
+
 Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name
-tcp        0      0 0.0.0.0:9080            0.0.0.0:*               LISTEN      -               
-tcp        0      0 127.0.0.1:15000         0.0.0.0:*               LISTEN      13/envoy        
-tcp        0      0 0.0.0.0:15001           0.0.0.0:*               LISTEN      13/envoy  
+tcp        0      0 0.0.0.0:9080            0.0.0.0:*               LISTEN      -
+tcp        0      0 127.0.0.1:15000         0.0.0.0:*               LISTEN      13/envoy
+tcp        0      0 0.0.0.0:15001           0.0.0.0:*               LISTEN      13/envoy
 ```
 
 ## Envoy启动过程分析
@@ -255,7 +255,7 @@ Containers:
   productpage:
     Image:          istio/examples-bookinfo-productpage-v1:1.8.0
     Port:           9080/TCP
-    
+
   istio-proxy:
     Image:         gcr.io/istio-release/proxyv2:1.0.0
     Args:
@@ -394,7 +394,7 @@ kubectl exec productpage-v1-54b8b9f55-bx2dq -c istio-proxy -- cat /etc/istio/pro
 
 配置文件的结构如图所示：
 
-![](/img/2018-09-25-istio-traffic-management-impl-intro/envoy-rev0.png)  
+![](/img/2018-09-25-istio-traffic-management-impl-intro/envoy-rev0.png)
 
 其中各个配置节点的内容如下：
 
@@ -406,7 +406,7 @@ kubectl exec productpage-v1-54b8b9f55-bx2dq -c istio-proxy -- cat /etc/istio/pro
 "node": {
     "id": "sidecar~192.168.206.23~productpage-v1-54b8b9f55-bx2dq.default~default.svc.cluster.local",
     //用于标识envoy所代理的node（在k8s中对应为Pod）上的service cluster，来自于Envoy进程启动时的service-cluster参数
-    "cluster": "productpage",  
+    "cluster": "productpage",
     "metadata": {
           "INTERCEPTION_MODE": "REDIRECT",
           "ISTIO_PROXY_SHA": "istio-proxy:6166ae7ebac7f630206b2fe4e6767516bf198313",
@@ -513,7 +513,7 @@ kubectl exec productpage-v1-54b8b9f55-bx2dq -c istio-proxy -- cat /etc/istio/pro
           }
         ]
       }
-      
+
     ]
   }
 ```
@@ -559,7 +559,7 @@ kubectl exec productpage-v1-54b8b9f55-bx2dq -c istio-proxy -- cat /etc/istio/pro
 
 Envoy配置初始化流程：
 
-![](/img/2018-09-25-istio-traffic-management-impl-intro/envoy-config-init.png)  
+![](/img/2018-09-25-istio-traffic-management-impl-intro/envoy-config-init.png)
 
 1. Pilot-agent根据启动参数和K8S API Server中的配置信息生成Envoy的初始配置文件envoy-rev0.json，该文件告诉Envoy从xDS server中获取动态配置信息，并配置了xDS server的地址信息，即控制面的Pilot。
 1. Pilot-agent使用envoy-rev0.json启动Envoy进程。
@@ -576,7 +576,7 @@ kubectl exec -it productpage-v1-54b8b9f55-bx2dq -c istio-proxy curl http://127.0
 
 ### Envoy配置文件结构
 
-![](/img/2018-09-25-istio-traffic-management-impl-intro/envoy-config.png)  
+![](/img/2018-09-25-istio-traffic-management-impl-intro/envoy-config.png)
 
 文件中的配置节点包括：
 
@@ -584,15 +584,15 @@ kubectl exec -it productpage-v1-54b8b9f55-bx2dq -c istio-proxy curl http://127.0
 
 从名字可以大致猜出这是Envoy的初始化配置，打开该节点，可以看到文件中的内容和前一章节中介绍的envoy-rev0.json是一致的，这里不再赘述。
 
-![](/img/2018-09-25-istio-traffic-management-impl-intro/envoy-config-bootstrap.png)  
+![](/img/2018-09-25-istio-traffic-management-impl-intro/envoy-config-bootstrap.png)
 
-#### Clusters 
+#### Clusters
 
 在Envoy中，Cluster是一个服务集群，Cluster中包含一个到多个endpoint，每个endpoint都可以提供服务，Envoy根据负载均衡算法将请求发送到这些endpoint中。
 
 在Productpage的clusters配置中包含static_clusters和dynamic_active_clusters两部分，其中static_clusters是来自于envoy-rev0.json的xDS server和zipkin server信息。dynamic_active_clusters是通过xDS接口从Istio控制面获取的动态服务信息。
 
-![](/img/2018-09-25-istio-traffic-management-impl-intro/envoy-config-clusters.png)  
+![](/img/2018-09-25-istio-traffic-management-impl-intro/envoy-config-clusters.png)
 
 Dynamic Cluster中有以下几类Cluster：
 
@@ -749,11 +749,11 @@ Envoy采用listener来接收并处理downstream发过来的请求，listener采�
 Listener可以绑定到IP Socket或者Unix Domain Socket上，以接收来自客户端的请求;也可以不绑定，而是接收从其他listener转发来的数据。Istio利用了Envoy listener的这一特点，通过VirtualOutboundListener在一个端口接收所有出向请求，然后再按照请求的端口分别转发给不同的listener分别处理。
 
 
-##### VirtualOutbound Listener 
+##### VirtualOutbound Listener
 
 Envoy创建了一个在15001端口监听的入口监听器。Iptable将Envoy所在Pod的对外请求拦截后发向本地的15001端口，该监听器接收后并不进行业务处理，而是根据请求的目的端口分发给其他监听器处理。该监听器取名为"virtual"（虚拟）监听器也是这个原因。
 
-Envoy是如何做到按请求的目的端口进行分发的呢？ 从下面VirtualOutbound Listener的配置中可以看到[use_original_dest](https://www.envoyproxy.io/docs/envoy/latest/configuration/listeners/listener_filters/original_dst_filter)被设置为true,表明监听器将接收到的请求转交给和请求原目的地址关联的listener进行处理。 
+Envoy是如何做到按请求的目的端口进行分发的呢？ 从下面VirtualOutbound Listener的配置中可以看到[use_original_dest](https://www.envoyproxy.io/docs/envoy/latest/configuration/listeners/listener_filters/original_dst_filter)被设置为true,表明监听器将接收到的请求转交给和请求原目的地址关联的listener进行处理。
 
 如果在Enovy的配置中找不到和请求目的地端口的listener，则将会根据Istio的outboundTrafficPolicy全局配置选项进行处理。存在两种情况：
 
@@ -826,7 +826,7 @@ Productpage Pod中的Envoy创建了多个Outbound Listener
             {
              "name": "mixer",
              "config": {
-			  
+
 			  ......
 
              }
@@ -879,7 +879,7 @@ Productpage Pod中的Envoy创建了多个Outbound Listener
      },
      "last_updated": "2018-09-06T09:34:26.172Z"
     },
-    
+
 ```
 
 ##### VirtualInbound Listener
@@ -1038,7 +1038,7 @@ Productpage Pod中的Envoy创建了多个Outbound Listener
 
 下图描述了一个Productpage服务调用Details服务的请求流程：
 
-![](/img/2018-09-25-istio-traffic-management-impl-intro/envoy-traffic-route.png)  
+![](/img/2018-09-25-istio-traffic-management-impl-intro/envoy-traffic-route.png)
 
 1. Productpage发起对Details的调用：`http://details:9080/details/0` 。
 2. 请求被Pod的iptable规则拦截，转发到15001端口。
@@ -1167,7 +1167,7 @@ Productpage Pod中的Envoy创建了多个Outbound Listener
               }
             }
           },
-         ......  
+         ......
         }
       ]
     }
@@ -1195,7 +1195,7 @@ Productpage Pod中的Envoy创建了多个Outbound Listener
          {
           "name": "envoy.http_connection_manager",
           ......
-          
+
           "route_config": {
             "name": "inbound|9080||details.default.svc.cluster.local",
             "validate_clusters": false,
@@ -1204,14 +1204,14 @@ Productpage Pod中的Envoy创建了多个Outbound Listener
               "name": "inbound|http|9080",
               "routes": [
                 ......
-                
+
                 "route": {
                  "max_grpc_timeout": "0.000s",
                  "cluster": "inbound|9080||details.default.svc.cluster.local",
                  "timeout": "0.000s"
                 },
                 ......
-                
+
                 "match": {
                  "prefix": "/"
                 }
@@ -1224,7 +1224,7 @@ Productpage Pod中的Envoy创建了多个Outbound Listener
             ]
            },
             ......
-            
+
            ]
           }
          }
@@ -1263,4 +1263,3 @@ Productpage Pod中的Envoy创建了多个Outbound Listener
 https://github.com/istio/istio/tree/master/pilot/pkg/proxy/envoy/v2
 1. <a id="ref08">[Pilot Debug interface](https://github.com/istio/istio/tree/master/pilot/pkg/proxy/envoy/v2)
 1. <a id="ref09">[Istio Sidecar自动注入原理](https://zhaohuabing.com/2018/05/23/istio-auto-injection-with-webhook/)
-

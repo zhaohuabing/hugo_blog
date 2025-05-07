@@ -7,7 +7,7 @@ description: ""
 author:     "赵化冰"
 date:       2022-06-30
 image: "https://images.pexels.com/photos/3972755/pexels-photo-3972755.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-published: true
+
 showtoc: true
 plantuml: true
 tags:
@@ -79,7 +79,7 @@ public:
 ```cpp
 class NetworkFilterCallbacks {
 public:
-  
+
   // 通过该方法获取 Network Filter 关联的 Downstream Connection
   virtual Connection& connection() PURE;
 };
@@ -87,7 +87,7 @@ public:
 
 ## Connection Manager 结构
 
-Connection Manager 实现了三个重要的接口: 
+Connection Manager 实现了三个重要的接口:
 
 * Network::ReadFilter 对 Downstream 连接中读取到的数据进行处理，包括解码和调用七层 filter。
 * MetaProtocolProxy::RequestDecoderCallbacks 为 MetaProtocol 的七层 filter 提供的回调接口。
@@ -140,7 +140,7 @@ void ConnectionManager::dispatch() {
       decoder_->onData(request_buffer_, underflow);
     }
     return;
-  } 
+  }
 
   不重要，略过......
 }

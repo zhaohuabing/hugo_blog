@@ -7,7 +7,7 @@ description: ""
 author: "赵化冰"
 date: 2022-09-28
 image: "https://images.unsplash.com/photo-1484976063837-eab657a7aca7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"
-published: true
+
 tags:
     - Istio
     - Envoy
@@ -31,7 +31,7 @@ Istio ambient 模式采用了被称为 [HBONE](https://www.zhaohuabing.com/post/
 
 例如在一个内网环境中，我们只允许通过 HTTP 代理来访问外部的 web 服务器。但我们可以通过 HTTP 隧道的方式来连接到一个外部的 SSH 服务器上。。
 
-客户端连接到代理服务器，发送 HTTP CONNECT 请求通过和指定主机的 22 端口建立隧道。 
+客户端连接到代理服务器，发送 HTTP CONNECT 请求通过和指定主机的 22 端口建立隧道。
 
 ```
 CONNECT for.bar.com:22 HTTP/1.1
@@ -153,7 +153,7 @@ filter_chains:
       stat_prefix: tcp_stats
       cluster: cluster_0
       # 表示该 TcpProxy 将采用 HTTP 隧道的方式代理数据
-      tunneling_config: 
+      tunneling_config:
         hostname: host.com:443
   ```
 
@@ -316,12 +316,3 @@ HBONE 由于采用了 HTTP CONNECT 创建隧道，还可以在 HTTP CONNECT 请�
 * https://www.envoyproxy.io/docs/envoy/latest/configuration/other_features/internal_listener
 * https://docs.google.com/document/d/1Ofqtxqzk-c_wn0EgAXjaJXDHB9KhDuLe-W3YGG67Y8g
 * https://docs.google.com/document/d/1ubUG78rNQbwwkqpvYcr7KgM14kEHwitSsuorCZjR6qY/edit#
-
-
-
-
-
-
-
-
-

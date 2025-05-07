@@ -7,7 +7,7 @@ description: ""
 author: "Ethan Jackson - Google, Yuval Kohavi - Solo.io, Justin Pettit - Google, Christian Posta - Solo.io"
 date: 2022-09-09
 image: "https://images.unsplash.com/photo-1585688458395-51aa0a34e9a2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2370&q=80"
-published: true
+
 tags:
     - Istio
     - Envoy

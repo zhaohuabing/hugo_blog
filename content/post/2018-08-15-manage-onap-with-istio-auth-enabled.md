@@ -8,11 +8,11 @@ author:     "赵化冰"
 date:       2018-08-15
 description: ""
 image: "/img/2018-08-01-manage-onap-with-istio/backgroud.jpeg"
-published: true 
+
 tags:
-    - Istio 
-    - ONAP 
-    - Service Mesh 
+    - Istio
+    - ONAP
+    - Service Mesh
 
 categories: [ Tech ]
 ---
@@ -161,7 +161,7 @@ Start a local helm repository server and add it to helm repository list:
 
 ```
 helm serve &
-helm repo add local http://127.0.0.1:8879 
+helm repo add local http://127.0.0.1:8879
 ```
 
 Download OOM Gerrit repository and build the helm charts.
@@ -385,7 +385,7 @@ Labels:                  app=aai
 Annotations:             <none>
 Selector:                app=aai
 Type:                    NodePort
-IP:                      10.96.29.203 
+IP:                      10.96.29.203
 Port:                    http-aai  8080/TCP
 ---omitted for brevity
 ```

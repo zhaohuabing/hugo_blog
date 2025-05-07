@@ -6,7 +6,7 @@ description: "Aeraki Mesh 提供了对 Redis 的流量管理能力，可以实�
 author: "赵化冰"
 date: 2023-05-09
 image: "https://images.unsplash.com/photo-1473186578172-c141e6798cf4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1973&q=80"
-published: true
+
 tags:
     - Aeraki Mesh
     - Redis
@@ -162,7 +162,7 @@ Demo 中部署的 Redis Cluster 由 6 台 Redis 服务器组成，Cluster 中有
 
  ```bash
  kubectl exec -it redis-cluster-0 -c redis -n redis -- redis-cli cluster shards
- ``` 
+ ```
 
 该 Redis Cluster 的拓扑结构如下图所示。从图中可以看到，该 Cluster 有三个分片（Shard）每个 Shard 负责一个范围的槽位（Slot），Shard 0 负责处理 Slot 0 到 5460，Shard 1 负责处理 Slot 5461 到 10922，Shard 2 负责处理 10923 到 16383。每个 Key 对应的 Slot 是固定的，其计算方式为 ```CRC16(key) mod 16384```。
 
@@ -258,7 +258,7 @@ redis-cluster:6379> get cluster-test-route
 再通过客户端访问 redis-single 服务，可以看到 redis-single 服务中只有 `test-route` 这个 key，而 `cluster-test-route` 这个 key 的值为 nil。这说明 `test-route` 被路由到 redis-single 服务，而 `cluster-test-route` 被路由到 redis-cluster 服务。
 
 ```bash
-kubectl exec -it `kubectl get pod -l app=redis-client -n redis -o jsonpath="{.items[0].metadata.name}"` -c redis-client -n redis -- redis-cli -h redis-single 
+kubectl exec -it `kubectl get pod -l app=redis-client -n redis -o jsonpath="{.items[0].metadata.name}"` -c redis-client -n redis -- redis-cli -h redis-single
 
 redis-single:6379> AUTH testredis123!
 OK
@@ -293,7 +293,7 @@ spec:
   host:
     - redis-cluster.redis.svc.cluster.local
   settings:
-    readPolicy: REPLICA  
+    readPolicy: REPLICA
   redis:
     - route:
         host: redis-cluster.redis.svc.cluster.local
@@ -322,7 +322,7 @@ spec:
       mirror:
         - route:
             host: redis-single.redis.svc.cluster.local
-          percentage: 
+          percentage:
             value: 100
 EOF
 ```
@@ -330,7 +330,7 @@ EOF
 此时通过客户端访问 redis-cluster 服务，设置 `test-traffic-mirroring` key 的值。
 
 ```bash
-kubectl exec -it `kubectl get pod -l app=redis-client -n redis -o jsonpath="{.items[0].metadata.name}"` -c redis-client -n redis -- redis-cli -h redis-cluster  
+kubectl exec -it `kubectl get pod -l app=redis-client -n redis -o jsonpath="{.items[0].metadata.name}"` -c redis-client -n redis -- redis-cli -h redis-cluster
 
 redis-cluster:6379> set test-traffic-mirroring "this key goes to both redis-cluster and redis-single"
 OK
@@ -375,7 +375,7 @@ spec:
         host: redis-cluster.redis.svc.cluster.local
   faults:
     - type: ERROR
-      percentage: 
+      percentage:
         value: 50
       commands:
         - GET
@@ -398,7 +398,7 @@ redis-cluster:6379> get a
 Demo 中的 Redis 是部署在 Kubernetes 集群中的，但其实我们也可以通过 Aeraki Mesh 连接集群外的 Redis 服务。我们可以在 Kubernetes 集群中创建一个 [无选择器服务](https://kubernetes.io/docs/concepts/services-networking/service/#services-without-selectors)，然后创建一个该服务对应的 EndpointSlice 来指定外部 Redis 的地址。然后就可以像集群内服务一样使用 RedisService 和 Redis Destination 来对该服务进行流量管理了。
 
 ```yaml
-kubectl apply -f- <<EOF 
+kubectl apply -f- <<EOF
 apiVersion: v1
 kind: Service
 metadata:

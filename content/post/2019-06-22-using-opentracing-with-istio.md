@@ -8,7 +8,7 @@ author:     "赵化冰"
 date:       2019-06-22
 description: "本文将介绍如何利用OpenTracing来增强Istio/Envoy缺省的调用链跟踪实现：如何利用Opentracing来实现跨进程边界的分布式调用上下文传递；以及在Istio/Envoy生成的分布式调用跟踪基础上实现方法级的细粒度调用跟踪。"
 image: "/img/2019-06-22-using-opentracing-with-istio/background.jpg"
-published: true 
+
 tags:
     - Service Mesh
     - Istio
@@ -85,7 +85,7 @@ Span的数据结构中包含以下内容：
 
 ### 跨进程调用信息传播
 
-SpanContext是Opentracing中一个让人比较迷惑的概念。在Opentracing的概念模型中提到SpanContext用于跨进程边界传递分布式调用的上下文。但实际上Opentracing只定义一个SpanContext的抽象接口，该接口封装了分布式调用中一个Span的相关上下文内容，包括该Span所属的Trace id，Span id以及其它需要传递到downstream服务的信息。SpanContext自身并不能实现跨进程的上下文传递，需要由Tracer（Tracer是一个遵循Opentracing协议的实现，如Jaeger，Skywalking的Tracer）将SpanContext序列化后通过Wire Protocol传递到下一个进程中，然后在下一个进程将SpanContext反序列化，得到相关的上下文信息，以用于生成Child Span。 
+SpanContext是Opentracing中一个让人比较迷惑的概念。在Opentracing的概念模型中提到SpanContext用于跨进程边界传递分布式调用的上下文。但实际上Opentracing只定义一个SpanContext的抽象接口，该接口封装了分布式调用中一个Span的相关上下文内容，包括该Span所属的Trace id，Span id以及其它需要传递到downstream服务的信息。SpanContext自身并不能实现跨进程的上下文传递，需要由Tracer（Tracer是一个遵循Opentracing协议的实现，如Jaeger，Skywalking的Tracer）将SpanContext序列化后通过Wire Protocol传递到下一个进程中，然后在下一个进程将SpanContext反序列化，得到相关的上下文信息，以用于生成Child Span。
 
 为了为各种具体实现提供最大的灵活性，Opentracing只是提出了跨进程传递SpanContext的要求，并未规定将SpanContext进行序列化并在网络中传递的具体实现方式。各个不同的Tracer可以根据自己的情况使用不同的Wire Protocol来传递SpanContext。
 
@@ -98,7 +98,7 @@ X-B3-SpanId: e457b5a2e4d86bd1
 X-B3-Sampled: 1
 ```
 
-# Istio对分布式调用跟踪的支持 
+# Istio对分布式调用跟踪的支持
 
 Istio/Envoy为微服务提供了开箱即用的分布式调用跟踪功能。在安装了Istio和Envoy的微服务系统中，Envoy会拦截服务的入向和出向请求，为微服务的每个调用请求自动生成调用跟踪数据。通过在服务网格中接入一个分布式跟踪的后端系统，例如zipkin或者Jaeger，就可以查看一个分布式请求的详细内容，例如该请求经过了哪些服务，调用了哪个REST接口，每个REST接口所花费的时间等。
 

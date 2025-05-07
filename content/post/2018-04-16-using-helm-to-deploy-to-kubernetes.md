@@ -7,7 +7,7 @@ excerpt: "Helm是Kubernetes生态系统中的一个软件包管理工具。本�
 date:       2018-04-16 15:00:00
 author:     "赵化冰"
 image: "/img/2018-04-16-using-helm-to-deploy-to-kubernetes/buffalo.jpg"
-published: true
+
 tags:
     - Kubernetes
     - Helm
@@ -65,7 +65,7 @@ Helm的引入很好地解决上面这些问题。
 * Release: 使用Helm install命令在Kubernetes集群中安装的Chart称为Release。
 
 >  需要特别注意的是， Helm中提到的Release和我们通常概念中的版本有所不同，这里的Release可以理解为Helm使用Chart包部署的一个应用实例。
->  
+>
 >  其实Helm中的Release叫做Deployment更合适。估计因为Deployment这个概念已经被Kubernetes使用了，因此Helm才采用了Release这个术语。
 
 下面这张图描述了Helm的几个关键组件Helm（客户端），Tiller（服务器），Repository（Chart软件仓库），Chart（软件包）之前的关系。
@@ -97,7 +97,7 @@ Helm init
 让我们在实践中来了解Helm。这里将使用一个Go测试小程序，让我们先为这个小程序创建一个Helm chart。
 
 ```
-git clone https://github.com/zhaohuabing/testapi.git; 
+git clone https://github.com/zhaohuabing/testapi.git;
 cd testapi
 ```
 
@@ -280,7 +280,7 @@ local/testapi-chart     1.0.0                           A Helm chart for Kuberne
 现在用helm upgrade将已部署的testapi升级到新版本。可以通过参数指定需要升级的版本号，如果没有指定版本号，则缺省使用最新版本。
 
 ```
-helm upgrade testapi local/testapi-chart 
+helm upgrade testapi local/testapi-chart
 ```
 
 已部署的testapi release被升级到1.0.0版本
@@ -360,4 +360,3 @@ dependencies:
 * [Using Helm to deploy to Kubernetes](https://daemonza.github.io/2017/02/20/using-helm-to-deploy-to-kubernetes/)
 * [Helm documentation](https://docs.helm.sh/helm/)
 * [Helm - Application deployment management for Kubernetes](https://www.slideshare.net/alexLM/helm-application-deployment-management-for-kubernetes)
-

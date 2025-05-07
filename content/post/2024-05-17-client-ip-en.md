@@ -3,11 +3,11 @@ layout:     post
 
 title:      "How to Get the Client’s “Real” IP Address with Envoy Gateway ?"
 subtitle:   ""
-description: 
+description:
 author: ""
 date: 2024-05-20
 image: "https://images.pexels.com/photos/17398971/pexels-photo-17398971/free-photo-of-aerial-view-of-a-winding-river-and-green-forests.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-published: true
+
 tags: [Envoy, Envoy Gateway, X-Forwarded-For, Proxy Protocol]
 categories: [Tech,Open Source]
 showtoc: true
@@ -97,7 +97,7 @@ Here’s an example of the Envoy configuration for this setting:
   "@type": "type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager",
   // omitted for brevity
   // ...
-   
+
   "xffNumTrustedHops": 2
 }
 ```
@@ -143,7 +143,7 @@ Here’s an example of how to configure X-Forwarded-For with the XFF Original IP
       }
     }
   ]
-} 
+}
 ```
 
 Note: There’s likely a [bug](https://github.com/envoyproxy/envoy/issues/34241) in the IP Detection Extension. The `xffNumTrustedHops` parameter needs to be set to one less than the actual number of IP addresses. For example, if you need to extract the second-to-last IP address, set xffNumTrustedHops to 1.
@@ -174,7 +174,7 @@ For example, if we use a X-Real-IP header to store the client’s IP address, he
       }
     }
   ]
-} 
+}
 ```
 
 ## Proxy Protocol
@@ -224,7 +224,7 @@ When the receiver receives a new TCP connection with a Proxy Protocol Header, it
 
 Here’s how to configure the Proxy Protocol in Envoy. The Proxy Protocol header is inserted during the TCP handshake, so we need to enable it in the Listener settings.
 
-We need to add an envoy.filters.listener.proxy_protocol Listener Filter in the Listener configuration. This filter will extract the client’s IP address by parsing the Proxy Protocol Header from the first data packet of the TCP connection. After that, it strips the Proxy Protocol Header and forwards the actual application data to the HTTP Connection Manager (HCM) for further processing. 
+We need to add an envoy.filters.listener.proxy_protocol Listener Filter in the Listener configuration. This filter will extract the client’s IP address by parsing the Proxy Protocol Header from the first data packet of the TCP connection. After that, it strips the Proxy Protocol Header and forwards the actual application data to the HTTP Connection Manager (HCM) for further processing.
 
 ```json
 "listener": {
@@ -239,7 +239,7 @@ We need to add an envoy.filters.listener.proxy_protocol Listener Filter in the L
   // ...
 
   "listenerFilters": [
-    { 
+    {
       "name": "envoy.filters.listener.proxy_protocol",
       "typedConfig": {
         "@type": "type.googleapis.com/envoy.extensions.filters.listener.proxy_protocol.v3.ProxyProtocol"
@@ -295,7 +295,7 @@ spec:
   targetRef:
     group: gateway.networking.k8s.io
     kind: Gateway
-    name: my-gateway   
+    name: my-gateway
 ```
 
 If the network middlewares on the request path support the proxy protocol, you can also enable it using the `enableProxyProtocol` field in [ClientTrafficPolicy][]. Here’s an example of how to set up [ClientTrafficPolicy][] to make Envoy pull the client’s IP address from the proxy protocol:
@@ -353,7 +353,7 @@ With [Envoy Gateway][]’s [BackendTrafficPolicy][], you can implement rate limi
 
 ```yaml
 apiVersion: gateway.envoyproxy.io/v1alpha1
-kind: BackendTrafficPolicy 
+kind: BackendTrafficPolicy
 metadata:
   name: policy-httproute
 spec:

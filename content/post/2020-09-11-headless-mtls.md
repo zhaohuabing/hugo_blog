@@ -8,7 +8,7 @@ author:     "赵化冰"
 date:       2020-09-11
 description: "本系列文章将介绍用户从 Spring Cloud，Dubbo 等传统微服务框架迁移到 Istio 服务网格时的一些经验，以及在使用 Istio 过程中可能遇到的一些常见问题的解决方法。"
 image: "https://images.pexels.com/photos/4458415/pexels-photo-4458415.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-published: true
+
 tags:
     - Istio
     - Envoy
@@ -253,7 +253,7 @@ Redis 客户端以为是这样的：
 	}
 ```
 
-由于 Pod 在被注入 Envoy Sidecar 的同时被加上了该标签，客户端 Enovy Sidecar 在向该 Pod 发起连接时，根据 endpoint 中的标签匹配到 tlsMode-istio 中的配置，就会采用 mTLS；而如果一个 Pod 没有被注入 Envoy Sidecar，自然不会有该 Label，因此不能满足前面配置所示的匹配条件，客户端的 Envoy Sidecar 会根据 tlsMode-disabled 中的配置，采用 plain TCP 连接该 endpoint。这样同时兼容了服务器端支持和不支持 mTLS 两种情况。 
+由于 Pod 在被注入 Envoy Sidecar 的同时被加上了该标签，客户端 Enovy Sidecar 在向该 Pod 发起连接时，根据 endpoint 中的标签匹配到 tlsMode-istio 中的配置，就会采用 mTLS；而如果一个 Pod 没有被注入 Envoy Sidecar，自然不会有该 Label，因此不能满足前面配置所示的匹配条件，客户端的 Envoy Sidecar 会根据 tlsMode-disabled 中的配置，采用 plain TCP 连接该 endpoint。这样同时兼容了服务器端支持和不支持 mTLS 两种情况。
 
 下图展示了 Istio 中是如何通过 endpoint 的标签来兼容 mTLS 和 plain TCP 两种情况的。
 
@@ -275,7 +275,7 @@ spec:
   host: redis.default.svc.cluster.local
   trafficPolicy:
     tls:
-      mode: DISABLE 
+      mode: DISABLE
 ```
 
 再查看客户端 Envoy 中的 Redis Cluster 配置，可以看到 mTLS 已经被禁用，Cluster 中不再有 mTLS 相关的证书配置。

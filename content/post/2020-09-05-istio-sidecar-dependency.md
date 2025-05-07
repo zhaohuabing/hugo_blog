@@ -8,7 +8,7 @@ author:     "赵化冰"
 date:       2020-09-05
 description: "本系列文章将介绍用户从 Spring Cloud，Dubbo 等传统微服务框架迁移到 Istio 服务网格时的一些经验，以及在使用 Istio 过程中可能遇到的一些常见问题的解决方法。"
 image: "img/post-bg-unix-linux.jpg"
-published: true
+
 tags:
     - Istio
     - Envoy
@@ -52,10 +52,10 @@ kubectl get pod awesome-app-cd1234567-gzgwg  -oyaml
 
 ```yaml
 containerStatuses:
-  - containerID: 
+  - containerID:
     lastState:
       terminated:
-        containerID: 
+        containerID:
         exitCode: 1
         finishedAt: 2020-09-01T13:16:23Z
         reason: Error
@@ -66,7 +66,7 @@ containerStatuses:
     state:
       running:
         startedAt: 2020-09-01T13:16:36Z
-  - containerID: 
+  - containerID:
     lastState: {}
     name: istio-proxy
     ready: true
@@ -79,8 +79,8 @@ containerStatuses:
 从该输出可以看到 pod 中的应用容器 awesome-app 重启了两次。整理该 pod 中 awesome-app 应用容器和 istio-proxy sidecar 容器的启动和终止的时间顺序，可以得到下面的时间线：
 
 1. 2020-09-01T13:16:20Z istio-proxy 启动
-1. 2020-09-01T13:16:22Z awesome-app 上一次启动时间      
-1. 2020-09-01T13:16:23Z awesome-app 上一次异常退出时间   
+1. 2020-09-01T13:16:22Z awesome-app 上一次启动时间
+1. 2020-09-01T13:16:23Z awesome-app 上一次异常退出时间
 1. 2020-09-01T13:16:36Z awesome-app 最后一次启动，以后就一直正常运行
 
 可以看到在 istio-proxy 启动2秒后，awesome-app 启动，并于1秒后异常退出。结合前面的日志信息，我们知道这次启动失败的直接原因是应用访问配置中心失败导致。在 istio-proxy 启动16秒后，awesome-app 再次启动，这次启动成功，之后一直正常运行。
@@ -92,7 +92,7 @@ istio-proxy 启动和 awesome-app 上一次异常退出的时间间隔很短，�
 
 # 解决方案
 
-## 在应用启动命令中判断 Envoy 初始化状态 
+## 在应用启动命令中判断 Envoy 初始化状态
 
 从前面的分析可以得知，该问题的根本原因是由于应用进程对 Envoy sidecar 配置初始化的依赖导致的。因此最直接的解决思路就是：在应用进程启动时判断 Envoy sidecar 的初始化状态，待其初始化完成后再启动应用进程。
 
@@ -162,7 +162,7 @@ metadata:
 spec:
   containers:
   - name: istio-proxy
-    image: 
+    image:
     lifecycle:
       postStart:
         exec:
@@ -200,4 +200,3 @@ Envoy sidecar 初始化期间网络暂时不能访问的情况只是放大了微
 * [App container unable to connect to network before sidecar is fully running #11130](https://github.com/istio/istio/issues/11130)
 * [Delaying application start until sidecar is ready](https://medium.com/@marko.luksa/delaying-application-start-until-sidecar-is-ready-2ec2d21a7b74)
 * [Kubernetes Container Lifecycle Hooks](https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/)
-

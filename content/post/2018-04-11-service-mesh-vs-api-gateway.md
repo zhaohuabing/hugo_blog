@@ -7,7 +7,7 @@ excerpt: "API Gateway和Service Mesh的关系是我最近一直在思考的问�
 date:       2018-04-11 09:32:00
 author:     "赵化冰"
 image: "/img/2018-04-11-service-mesh-vs-api-gateway/background.jpg"
-published: true
+
 tags:
     - Microservice
     - Service Mesh
@@ -76,4 +76,3 @@ API Gateway作为微服务引用的流量入口，其对效率要求较高，如
 ## 原文
 
 本译文发表已征得原作者同意，原文参见 [Service Mesh vs API Gateway](https://medium.com/microservices-in-practice/service-mesh-vs-api-gateway-a6d814b9bf56)
-

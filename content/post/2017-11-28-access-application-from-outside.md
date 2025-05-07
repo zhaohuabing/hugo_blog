@@ -1,12 +1,12 @@
 ---
-layout:     post 
+layout:     post
 title:      "如何从外部访问Kubernetes集群中的应用？"
 subtitle:   ""
 description: "我们知道，kubernetes的Cluster Network属于私有网络，只能在cluster Network内部才能访问部署的应用，那如何才能将Kubernetes集群中的应用暴露到外部网络，为外部用户提供服务呢？本文探讨了从外部网络访问kubernetes cluster中应用的几种实现方式。"
 date:       2017-11-28 12:00:00
 author:     "赵化冰"
 image: "http://img.zhaohuabing.com/post-bg-2015.jpg"
-published: true
+
 tags:
     - Kubernetes
 URL: "/2017/11/28/access-application-from-outside/"
@@ -252,5 +252,3 @@ spec:
 * [Using Kubernetes external load balancer feature](https://docs.openstack.org/magnum/ocata/dev/kubernetes-load-balancer.html)
 
 * [Expose Services on your AWS Quick Start Kubernetes cluster]( http://docs.heptio.com/content/tutorials/aws-qs-services-elb.html)
-
-

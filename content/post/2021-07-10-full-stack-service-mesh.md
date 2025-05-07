@@ -7,7 +7,7 @@ description: "流量管理是 Istio 服务网格的核心能力，然而 Istio �
 author:     "赵化冰"
 date:       2021-07-10
 image: "img/2021-07-10-full-stack-service-mesh/istio-china-meetup-2021.jpg"
-published: true
+
 showtoc: false
 tags:
     - Istio
@@ -53,6 +53,4 @@ B站
 {{< bilibili BV1th41167N5 >}}
 
 YouTube
-{{< youtube Bq5T3OR3iTM >}} 
-
-
+{{< youtube Bq5T3OR3iTM >}}

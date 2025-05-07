@@ -8,10 +8,10 @@ author:     "赵化冰"
 date:       2019-10-26
 description: "Service Mesh和SDN(Software Defined Network) 的架构非常相似，这两者都采用了软件对网络进行管理和控制，也都包含控制面和数据面的概念。那么Service Mesh和SDN有什么关系？Service Mesh是下一代的SDN吗？ Service Mesh可以从SDN的发展历史中借鉴哪些经验？本文将就这些问题进行一一探讨。"
 image: "https://upload.wikimedia.org/wikipedia/commons/9/97/Malojapass_B%C3%B6hringer_2018.jpg"
-published: true 
+
 tags:
-    - Service Mesh 
-    - Istio 
+    - Service Mesh
+    - Istio
     - SDN
 categories:
     - Presentations
@@ -71,7 +71,7 @@ SDN的不同层次之间采用标准接口进行通信：
 
 # Service Mesh是下一代SDN吗？
 
-从上面的分析可以看出，SDN和Service Mesh面临的是类似的问题，既然都是解决类似的问题，那么Service Mesh是否可以看作下一代的SDN呢？ 
+从上面的分析可以看出，SDN和Service Mesh面临的是类似的问题，既然都是解决类似的问题，那么Service Mesh是否可以看作下一代的SDN呢？
 
 我认为答案是否定的，因为两者之间还是有显著的不同。SDN主要面对L1到L4层，即网络层的基本转发和控制功能；Service Mesh则主要面对L7层及以上，用于处理应用层的服务发现，服务路由等功能，但两者采用了相似的理念，我们可以把Service Mesh看作SDN的理念在应用层的扩展和实践。
 
@@ -129,4 +129,4 @@ SDN和Service Mesh的出现都是为了解决类似的网络通信问题，两�
 ## 视频回放
 
 YouTube
-{{< youtube nGkxp-2OsKg >}} 
+{{< youtube nGkxp-2OsKg >}}

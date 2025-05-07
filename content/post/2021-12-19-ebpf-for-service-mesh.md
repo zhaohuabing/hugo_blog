@@ -7,7 +7,7 @@ description: "这篇博客非常清晰地阐述了目前很热的 eBPF 和 Servi
 author: "Idit Levine，Christian Posta，Yuval Kohavi"
 date: 2021-12-18
 image: "https://images.pexels.com/photos/631522/pexels-photo-631522.jpeg?cs=srgb&dl=pexels-quintin-gellar-631522.jpg&fm=jpg"
-published: true
+
 tags:
     - Istio
     - Envoy

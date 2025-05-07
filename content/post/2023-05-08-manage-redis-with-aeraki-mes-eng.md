@@ -6,7 +6,7 @@ description: "Managing a Redis Cluster can be complicated. With the help of Isti
 author: "赵化冰"
 date: 2023-05-09
 image: "https://images.unsplash.com/photo-1473186578172-c141e6798cf4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1973&q=80"
-published: true
+
 tags:
     - Aeraki Mesh
     - Redis
@@ -160,7 +160,7 @@ The Redis cluster deployed in the demo consists of six instances divided into th
 
  ```bash
  kubectl exec -it redis-cluster-0 -c redis -n redis -- redis-cli cluster shards
- ``` 
+ ```
 
 ![](/img/2023-05-08-manage-redis-with-aeraki-mesh/redis-cluster.png)
 
@@ -181,7 +181,7 @@ The reason for this error is that the Redis client is using a regular API, which
 
 Unfortunately, since the client is using a regular API, it is unable to interpret this error and automatically resend the request to the appropriate node. As a result, the client continues to return an error.
 
-By setting the mode parameter in [RdisDestination](https://aeraki.net/zh/docs/v1.x/reference/redis/#RedisDestination) to CLUSTER, Aeraki Mesh is able to abstract away the differences between Redis’ Cluster mode and standalone mode. 
+By setting the mode parameter in [RdisDestination](https://aeraki.net/zh/docs/v1.x/reference/redis/#RedisDestination) to CLUSTER, Aeraki Mesh is able to abstract away the differences between Redis’ Cluster mode and standalone mode.
 
 ```yaml
 
@@ -259,7 +259,7 @@ redis-cluster:6379> get cluster-test-route
 If you connect to the redis-single service, you can see that it only contains the “test-route” key, while the value of the “cluster-test-route” key is nil. This behavior confirms our RedisService configuration, as it shows that “test-route” has been correctly routed to the redis-single service, while “cluster-test-route” is being handled by the redis-cluster service.
 
 ```bash
-kubectl exec -it `kubectl get pod -l app=redis-client -n redis -o jsonpath="{.items[0].metadata.name}"` -c redis-client -n redis -- redis-cli -h redis-single 
+kubectl exec -it `kubectl get pod -l app=redis-client -n redis -o jsonpath="{.items[0].metadata.name}"` -c redis-client -n redis -- redis-cli -h redis-single
 
 redis-single:6379> AUTH testredis123!
 OK
@@ -293,7 +293,7 @@ spec:
   host:
     - redis-cluster.redis.svc.cluster.local
   settings:
-    readPolicy: REPLICA  
+    readPolicy: REPLICA
   redis:
     - route:
         host: redis-cluster.redis.svc.cluster.local
@@ -322,7 +322,7 @@ spec:
       mirror:
         - route:
             host: redis-single.redis.svc.cluster.local
-          percentage: 
+          percentage:
             value: 100
 EOF
 ```
@@ -330,7 +330,7 @@ EOF
 Apply the above configuration, then let’s connect to redis-cluster and set the value of `test-traffic-mirroring`.
 
 ```bash
-kubectl exec -it `kubectl get pod -l app=redis-client -n redis -o jsonpath="{.items[0].metadata.name}"` -c redis-client -n redis -- redis-cli -h redis-cluster  
+kubectl exec -it `kubectl get pod -l app=redis-client -n redis -o jsonpath="{.items[0].metadata.name}"` -c redis-client -n redis -- redis-cli -h redis-cluster
 
 redis-cluster:6379> set test-traffic-mirroring "this key goes to both redis-cluster and redis-single"
 OK
@@ -374,7 +374,7 @@ spec:
         host: redis-cluster.redis.svc.cluster.local
   faults:
     - type: ERROR
-      percentage: 
+      percentage:
         value: 50
       commands:
         - GET
@@ -396,7 +396,7 @@ redis-cluster:6379> get a
 While the Redis service in the demo is deployed within a Kubernetes cluster, it’s possible to use Aeraki Mesh to connect to a Redis service that’s outside of the cluster. This can be done by creating a [service without selectors](https://kubernetes.io/docs/concepts/services-networking/service/#services-without-selectors), followed by creating an EndpointSlice for the service to specify the address of the external Redis. Once that’s done, RedisService and Redis Destination can be used to manage traffic for the service, just as they would for Redis within the cluster.
 
 ```yaml
-kubectl apply -f- <<EOF 
+kubectl apply -f- <<EOF
 apiVersion: v1
 kind: Service
 metadata:

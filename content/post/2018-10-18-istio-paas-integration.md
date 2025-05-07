@@ -8,14 +8,14 @@ author:     "赵化冰"
 date:       2018-10-18
 description: "Istio发布1.0版本后，其服务发现和路由规则功能已基本具备production能力，我们也开始了Istio和公司内部微服务平台的集成工作，打算以Istio为基础打造一个微服务管控中心，在这里把目前的进展和遇到的坑和大家分享一下。"
 image: "/img/2018-10-18-istio-paas-integration/traffic_freeway_highway_road_night.jpg"
-published: true
+
 tags:
-    - Istio 
+    - Istio
     - Pilot
     - Envoy
     - Mixer
     - PaaS
-    - Service Mesh 
+    - Service Mesh
 
 categories: [ Tech ]
 ---
@@ -24,7 +24,7 @@ categories: [ Tech ]
 
 Istio发布1.0版本后，其服务发现和路由规则功能已基本具备production能力，我们也开始了Istio和公司内部微服务平台的集成工作，打算以Istio为基础打造一个微服务管控中心，在这里把目前的进展和遇到的坑和大家分享一下。
 
-# 现有系统架构 
+# 现有系统架构
 
 目前公司的微服务架构如图所示，系统中主要包含三类服务：
 
@@ -34,7 +34,7 @@ Istio发布1.0版本后，其服务发现和路由规则功能已基本具备pro
 
 * 其他未纳入K8S集群的服务，如遗留系统和第三方系统提供的服务。某些业务服务和这些服务之间存在互相访问的需求。
 
-![](/img/2018-10-18-istio-paas-integration/current_architecture.png)  
+![](/img/2018-10-18-istio-paas-integration/current_architecture.png)
 <center></center>
 
 ## 服务注册
@@ -75,7 +75,7 @@ API Gateway支持虚拟主机，提供4层和7层的LB。除此以外，API Gate
 # Istio集成方案
 
 引入Istio后，系统架构如下图所示：
-![](/img/2018-10-18-istio-paas-integration/integrated_architecture.png)  
+![](/img/2018-10-18-istio-paas-integration/integrated_architecture.png)
 
 ## 控制面
 

@@ -8,10 +8,10 @@ author:     "赵化冰"
 date:       2019-11-15
 description: "在Istio服务网格中，每个Envoy占用的内存也许并不算多，但所有sidecar增加的内存累积起来则是一个不小的数字。在进行商用部署时，我们需要考虑如何优化并减少服务网格带来的额外内存消耗。"
 image: "/img/2019-11-15-envoy-memory-optimize/background.jpg"
-published: true 
+
 tags:
-    - Service Mesh 
-    - Istio 
+    - Service Mesh
+    - Istio
     - Envoy
 
 categories: [ Tech ]
@@ -64,7 +64,7 @@ TCMalloc的内存分配效率比glibc的malloc更高，但会预留系统内存�
 
 ## 通过优化配置降低Envoy内存占用
 
-即使将内存降低到50M，在一些对资源要求比较严格的环境，例如边缘计算的场景中，网格中这些Envoy内存累加在一起也是不能接受的，因此需要想办法进一步降低Envoy的资源使用。 
+即使将内存降低到50M，在一些对资源要求比较严格的环境，例如边缘计算的场景中，网格中这些Envoy内存累加在一起也是不能接受的，因此需要想办法进一步降低Envoy的资源使用。
 
 根据Envoy的这个github issue[（Per listener and per cluster memory overhead is too high #4196）](https://github.com/envoyproxy/envoy/issues/4196)和[Istio文档](https://istio.io/docs/concepts/performance-and-scalability/#cpu-and-memory)可以得知，Envoy占用的内存和其配置的Listener和Cluster个数是成线性关系的，Listener和Cluster越多，Envoy占用的内存越大，因此一个自然的想法就是通过减少Pilot为Envoy创建的Listener和Cluster数量来降低Envoy的内存开销。
 

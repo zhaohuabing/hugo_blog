@@ -8,10 +8,10 @@ author:     "赵化冰"
 date:       2018-12-19
 description: "Istio1.0版本只支持在单个网络，即Mesh中的服务只能连接在一个网络上。而在电信NFV场景中，多网络平面是一个常见的场景，随着Kubernetes在NFV领域中的逐渐应用，已经出现多个Kubernetes多网络平面解决方案，Istio也需要考虑支持多网络平面，以为5G的微服务化架构提供服务通讯和管控的基础设施。"
 image: "/img/2018-12-19-multi-network-interfaces-for-istio/background.jpg"
-published: true 
+
 tags:
-    - Service Mesh 
-    - Istio 
+    - Service Mesh
+    - Istio
     - NFV
     - Kubernetes
     - Knitter
@@ -108,4 +108,3 @@ Issue: https://github.com/istio/istio/issues/9441
 
 1. https://kubernetes.io/docs/concepts/cluster-administration/networking/
 2. https://github.com/ZTE/Knitter/
-

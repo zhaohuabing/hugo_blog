@@ -7,7 +7,7 @@ description: '在讨论可用性和弹性时，我们通常是从基础设施和
 author: "Zack Butcher Tetrate.io (赵化冰 译)"
 date: 2024-04-07
 image: "https://images.unsplash.com/photo-1711639270142-e1e181749333?q=80&w=3133&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-published: true
+
 tags:
     - Envoy Gateway
     - Envoy

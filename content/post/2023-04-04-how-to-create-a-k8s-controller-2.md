@@ -7,7 +7,7 @@ description: "Kubernetes(简称K8s) 是一套容器编排和管理系统，可�
 author: "赵化冰"
 date: 2023-04-04
 image: "https://images.unsplash.com/photo-1432821596592-e2c18b78144f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2370&q=80"
-published: true
+
 tags:
     - Kubernetes
 categories:
@@ -29,7 +29,7 @@ showtoc: true
 * Controller：采用 controller-runtime package 的 ```NewControllerManagedBy``` 方法来创建一个 controller 并将其加入之前创建的 Manager 中。该方法只需要两个参数：watch 的 CRD 资源类型，以及实现 ```Reconciler``` 接口的一个对象。
 * Webhook：采用 controller-runtime package 的 ```NewWebhookManagedBy``` 方法来创建一个 webhook 并将其加入到之前创建的 Manager 中。
 
-可以看到，controller runtime 已经封装了 Informer 机制中大部分的模板代码，用户在编写 controller 时真正需要编写的基本只有 Reconcile 方法中的业务逻辑。  
+可以看到，controller runtime 已经封装了 Informer 机制中大部分的模板代码，用户在编写 controller 时真正需要编写的基本只有 Reconcile 方法中的业务逻辑。
 
 {{< highlight go "linenos=inline" >}}
 package main
@@ -106,7 +106,7 @@ func main() {
 		os.Exit(1)
 	}
 	// 启动 Manager，Manager 将启动其管理的所有 controller 以及 webhook server
-	setupLog.Info("starting manager") 
+	setupLog.Info("starting manager")
 	if err := mgr.Start(ctrl.SetupSignalHandler()); err != nil {
 		setupLog.Error(err, "problem running manager")
 		os.Exit(1)
@@ -301,7 +301,7 @@ func (r *FooReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ctrl.R
 
 	// TODO(user): your logic here
 	fmt.Println("reconcile foo " + req.Name)
- 
+
 	return ctrl.Result{}, nil
 }
 ```
@@ -311,7 +311,7 @@ func (r *FooReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ctrl.R
 make docker-build docker-push IMG=zhaohuabing/sample-controller:kubebuilder
 ```
 
-使用构建的镜像在集群中部署 Controller。 
+使用构建的镜像在集群中部署 Controller。
 
 ```bash
 make deploy IMG=zhaohuabing/sample-controller:kubebuilder
@@ -345,10 +345,3 @@ reconcile foo foo-sampl
 * [kubebuilder quick start](https://book.kubebuilder.io/quick-start.html)
 * [采用 Controller runtime 的源代码](https://github.com/zhaohuabing/k8scontrollertutorial/tree/main/pkg/custom/controller_runtime)
 * [采用 Kubebuilder 的源代码](https://github.com/zhaohuabing/kubebuilderexample)
-
-
-
-
-
-
-

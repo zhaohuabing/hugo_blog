@@ -7,7 +7,7 @@ description: "演示如何利用 Aeraki Mesh 在 Isito 服务网格中对 Dubbo 
 author: "赵化冰"
 date: 2022-09-27
 image: "https://images.unsplash.com/photo-1627666259356-03a116b7dde9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"
-published: true
+
 tags:
     - Istio
     - Envoy
@@ -15,7 +15,7 @@ tags:
     - Aeraki Mesh
     - Dubbo
     - MetaProtocol
-categories: 
+categories:
     - Tech
     - Presentations
 showtoc: false
@@ -26,12 +26,3 @@ showtoc: false
 [Github](https://github.com/aeraki-mesh)
 
 {{< bilibili BV1oe4y167kz >}}
-
-
-
-
-
-
-
-
-

@@ -9,12 +9,12 @@ date:       2019-12-12
 description: " Istio作为一个service mesh开源项目,其中最重要的功能就是对网格中微服务之间的流量进行管理,包括服务发现,请求路由和服务间的可靠通信。Istio体系中流量管理配置下发以及流量规则如何在数据面生效的机制相对比较复杂，通过官方文档容易管中窥豹，难以了解其实现原理。本文尝试结合系统架构、配置文件和代码对Istio流量管理的架构和实现机制进行分析，以达到从整体上理解Pilot和Envoy的流量管理机制的目的。"
 image: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Brumas_del_San_Juan.jpg/2560px-Brumas_del_San_Juan.jpg"
 url: "post/2018-09-25-istio-traffic-management-impl-intro/"
-published: true 
+
 tags:
-    - Istio 
+    - Istio
     - Pilot
     - Envoy
-    - Service Mesh 
+    - Service Mesh
 
 categories: [ Tech ]
 ---
@@ -29,7 +29,7 @@ Istio体系中流量管理配置下发以及流量规则如何在数据面生效
 
 Istio控制面中负责流量管理的组件为Pilot，Pilot的高层架构如下图所示：
 
-![](/img/2019-12-05-istio-traffic-management-impl-intro/pilot-architecture.png)  
+![](/img/2019-12-05-istio-traffic-management-impl-intro/pilot-architecture.png)
 <center>Pilot Architecture（来自[Isio官网文档](https://istio.io/docs/concepts/traffic-management/)<sup>[[1]](#ref01)</sup>)</center>
 根据上图,Pilot主要实现了下述功能：
 
@@ -63,7 +63,7 @@ Pilot的规则DSL是采用K8S API Server中的[Custom Resource (CRD)](https://ku
 
 我们可以通过下图了解Istio流量管理涉及到的相关组件。虽然该图来自Istio Github old pilot repo, 但图中描述的组件及流程和目前Pilot的最新代码的架构基本是一致的。
 
-![](/img/2019-12-05-istio-traffic-management-impl-intro/traffic-managment-components.png)  
+![](/img/2019-12-05-istio-traffic-management-impl-intro/traffic-managment-components.png)
 <center>Pilot Design Overview (来自[Istio old_pilot_repo](https://github.com/istio/old_pilot_repo/blob/master/doc/design.md)<sup>[[4]](#ref04)</sup>)</center>
 图例说明：图中红色的线表示控制流，黑色的线表示数据流。蓝色部分为和Pilot相关的组件。
 
@@ -304,7 +304,7 @@ Containers:
       15020
       --applicationPorts
       9080
-      --trust-domain=cluster.local   
+      --trust-domain=cluster.local
 ```
 
 ### Proxy_init
@@ -314,7 +314,7 @@ Productpage的Pod中有一个InitContainer proxy_init，InitContrainer是K8S提�
 从上面的Pod description可以看到，proxy_init容器执行的命令是istio-iptables，这是一个go编译出来的二进制文件，该二进制文件会调用iptables命令创建了一些列iptables规则来劫持Pod中的流量。该命令有这些关键的参数：
 
 * 命令行参数 -p 15001表示出向流量被iptable重定向到Envoy的15001端口
-* 命令行参数 -z 15006表示入向流量被iptable重定向到Envoy的15006端口  
+* 命令行参数 -z 15006表示入向流量被iptable重定向到Envoy的15006端口
 * 命令行参数 -u 1337参数用于排除用户ID为1337，即Envoy自身的流量，以避免Iptable把Envoy发出的数据又重定向到Envoy，形成死循环。
 
 Iptables规则的详细内容参见istio源码中的shell脚本[tools/packaging/common/istio-iptables.sh](https://github.com/istio/istio/blob/1.4.0/tools/packaging/common/istio-iptables.sh)。
@@ -345,7 +345,7 @@ kubectl exec productpage-v1-6d8bc58dd7-ts8kw -c istio-proxy cat /etc/istio/proxy
 
 配置文件的结构如图所示：
 
-![](/img/2019-12-05-istio-traffic-management-impl-intro/envoy-rev0.png)  
+![](/img/2019-12-05-istio-traffic-management-impl-intro/envoy-rev0.png)
 
 其中各个配置节点的内容如下：
 
@@ -595,7 +595,7 @@ kubectl exec productpage-v1-6d8bc58dd7-ts8kw -c istio-proxy cat /etc/istio/proxy
 
 Envoy配置初始化流程：
 
-![](/img/2019-12-05-istio-traffic-management-impl-intro/envoy-config-init.png)  
+![](/img/2019-12-05-istio-traffic-management-impl-intro/envoy-config-init.png)
 
 1. Pilot-agent根据启动参数和K8S API Server中的配置信息生成Envoy的初始配置文件envoy-rev0.json，该文件告诉Envoy从xDS server中获取动态配置信息，并配置了xDS server的地址信息，即控制面的Pilot。
 1. Pilot-agent使用envoy-rev0.json启动Envoy进程。
@@ -613,7 +613,7 @@ kubectl exec -it productpage-v1-6d8bc58dd7-ts8kw -c istio-proxy curl http://127.
 
 ### Envoy配置文件结构
 
-![](/img/2019-12-05-istio-traffic-management-impl-intro/envoy-config.png)  
+![](/img/2019-12-05-istio-traffic-management-impl-intro/envoy-config.png)
 
 从dump文件中可以看到Envoy中包括下述配置：
 
@@ -621,15 +621,15 @@ kubectl exec -it productpage-v1-6d8bc58dd7-ts8kw -c istio-proxy curl http://127.
 
 从名字可以大致猜出这是Envoy的初始化配置，打开该节点，可以看到文件中的内容和前一章节中介绍的envoy-rev0.json是一致的，这里不再赘述。
 
-![](/img/2019-12-05-istio-traffic-management-impl-intro/envoy-config-bootstrap.png)  
+![](/img/2019-12-05-istio-traffic-management-impl-intro/envoy-config-bootstrap.png)
 
-#### Clusters 
+#### Clusters
 
 在Envoy中，Cluster是一个服务集群，Cluster中包含一个到多个endpoint，每个endpoint都可以提供服务，Envoy根据负载均衡算法将请求发送到这些endpoint中。
 
 在Productpage的clusters配置中包含static_clusters和dynamic_active_clusters两部分，其中static_clusters是来自于envoy-rev0.json的初始化配置中的prometheus_stats、xDS server和zipkin server信息。dynamic_active_clusters是通过xDS接口从Istio控制面获取的动态服务信息。
 
-![](/img/2019-12-05-istio-traffic-management-impl-intro/envoy-config-clusters.png)  
+![](/img/2019-12-05-istio-traffic-management-impl-intro/envoy-config-clusters.png)
 
 Dynamic Cluster中有以下几类Cluster：
 
@@ -855,11 +855,11 @@ Envoy采用listener来接收并处理downstream发过来的请求，listener采�
 Listener可以绑定到IP Socket或者Unix Domain Socket上，以接收来自客户端的请求;也可以不绑定，而是接收从其他listener转发来的数据。Istio利用了Envoy listener的这一特点，通过VirtualOutboundListener在一个端口接收所有出向请求，然后再按照请求的端口分别转发给不同的listener分别处理。
 
 
-##### VirtualOutbound Listener 
+##### VirtualOutbound Listener
 
 Envoy创建了一个在15001端口监听的入口监听器。Iptable将Envoy所在Pod的对外请求拦截后发向本地的15001端口，该监听器接收后并不进行业务处理，而是根据请求的目的端口分发给其他监听器处理。该监听器取名为"virtual"（虚拟）监听器也是这个原因。
 
-Envoy是如何做到按请求的目的端口进行分发的呢？ 从下面VirtualOutbound Listener的配置中可以看到[use_original_dest](https://www.envoyproxy.io/docs/envoy/latest/configuration/listeners/listener_filters/original_dst_filter)被设置为true,表明监听器将接收到的请求转交给和请求原目的地址关联的listener进行处理。 
+Envoy是如何做到按请求的目的端口进行分发的呢？ 从下面VirtualOutbound Listener的配置中可以看到[use_original_dest](https://www.envoyproxy.io/docs/envoy/latest/configuration/listeners/listener_filters/original_dst_filter)被设置为true,表明监听器将接收到的请求转交给和请求原目的地址关联的listener进行处理。
 
 如果在Enovy的配置中找不到和请求目的地端口的listener，则将会根据Istio的outboundTrafficPolicy全局配置选项进行处理。存在两种情况：
 
@@ -1040,7 +1040,7 @@ VirtualInbound Listener中的第一个filterchain的匹配条件为所有IP，�
                         },
                         "route": {
                             "cluster": "outbound|9080||productpage.default.svc.cluster.local"
-													
+
 													......
                         }
                 ]
@@ -1068,7 +1068,7 @@ VirtualInbound Listener中的第一个filterchain的匹配条件为所有IP，�
                         },
                         "route": {
                             "cluster": "outbound|9080||ratings.default.svc.cluster.local",
-                            													
+
 													......
                         }
                 ]
@@ -1096,7 +1096,7 @@ VirtualInbound Listener中的第一个filterchain的匹配条件为所有IP，�
                         },
                         "route": {
                             "cluster": "outbound|9080||reviews.default.svc.cluster.local",
-                            													
+
 													......
                         }
                 ]
@@ -1215,7 +1215,7 @@ VirtualInbound Listener中的第一个filterchain的匹配条件为所有IP，�
                                 }
                             ],
                             ......
-                            
+
                             "rds": {
                                 "config_source": {
                                     "ads": {}
@@ -1235,7 +1235,7 @@ VirtualInbound Listener中的第一个filterchain的匹配条件为所有IP，�
         "continue_on_listener_filters_timeout": true
     },
     "last_updated": "2019-12-04T03:08:22.822Z"
-}   
+}
 ```
 
 6. “9080”这个route的配置中，host name为reviews:9080的请求对应的cluster为outbound|9080||reviews.default.svc.cluster.local

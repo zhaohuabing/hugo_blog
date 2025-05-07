@@ -7,12 +7,12 @@ excerpt: "一些外部的第三方系统也可能需要访问系统内部的微�
 date:       2018-05-23T18:00:00
 author:     "赵化冰"
 image: "/img/2018-05-23-external_system_auth/background.jpg"
-published: true 
+
 tags:
     - Microservice
     - Security
 URL: "/2018/05/23/external_system_auth/"
-categories: [ "Tech" ]    
+categories: [ "Tech" ]
 ---
 
 ## 外部系统访问控制
@@ -62,7 +62,7 @@ OAuth针对不同场景有不同的认证流程，一个典型的认证流程如
 >```
 >POST /oauth/token HTTP/1.1
 >Host: authorization-server.com
->  			
+>
 >grant_type=authorization_code
 >&code=xxxxxxxxxxx
 >&redirect_uri=https://example-app.com/redirect
@@ -76,14 +76,13 @@ OAuth针对不同场景有不同的认证流程，一个典型的认证流程如
 
 
 另外在谈及OAuth时，我们需要注意微服务应用作为OAuth客户端和OAuth服务器的两种不同场景:
-  
+
 在实现微服务自身的用户认证时，也可以采用OAuth将微服务的用户认证委托给一个第三方的认证服务提供商，例如很多应用都将用户登录和微信或者QQ的OAuth服务进行了集成。
-  
+
 第三方应用接入和微服务自身用户认证采用OAuth的目的是不同的，前者是为了将微服务中用户的私有数据访问权限授权给第三方应用，微服务在OAuth架构中是认证和资源服务器的角色；而后者的目的是集成并利用知名认证提供服务商提供的OAuth认证服务，简化繁琐的注册操作，微服务在OAuth架构中是客户端的角色。
-  
+
 因此在我们需要区分这两种不同的场景，以免造成误解。
 
 ## 后记
 
 前两篇文章在在公众号发布后，有朋友提到还要注意登录密码明文问题、防止重放攻击、防止时间差攻击、防止脱裤后的彩虹表攻击...。的确，安全是一个庞大的话题，本系列文章只阐述了我关于微服务架构对应用安全带来的影响的一点小小思考。在产品开发和运维中，还需要对安全进行全方面的考虑，最好遵循一些业界的最佳实践，如采用完善的防火墙对外部流量进行隔离，采用加盐hash对用户密码进行存储，采用tls进行加密传输，对用户输入进行严格检查防止sql注入，采用经过验证的通用加密算法等等。
-

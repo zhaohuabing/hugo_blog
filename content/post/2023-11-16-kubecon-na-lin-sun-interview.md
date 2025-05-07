@@ -7,7 +7,7 @@ description: "Istio 技术指导委员会成员, 来自 Solo.io 的 Lin Sun 和�
 author: "赵化冰"
 date: 2023-11-16
 image: "https://images.unsplash.com/photo-1597116789352-9ad0fe0cb197?q=80&w=3432&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-published: true
+
 tags:
     - KubeCon
     - Istio
@@ -91,14 +91,3 @@ So I do the same thing for work for career. You know, you always try to be a lit
 But once you find out that you have a pretty clear goal that you may find out that you actually execute a lot. OK. Thank you. Thank you very much for your Yeah, I really appreciate all the love from the Easter community in China on the East project. So, thank you so much.
 
 OK. Well, I, I would just cover this one. OK. Thank you. Are you all right.
-
-
-
-
-
-
-
-
-
-
-

@@ -7,7 +7,7 @@ description: "今天，我想和大家聊一聊 Envoy 生态中的新成员 Envo
 author: "赵化冰"
 date: 2023-04-11
 image: "https://images.unsplash.com/40/lUUnN7VGSoWZ3noefeH7_Baker%20Beach-12.jpg?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
-published: true
+
 tags:
     - Kubernetes
 categories:
@@ -57,7 +57,7 @@ Envoy 作为一个通用的数据面代理，也在服务网格中被广泛采�
 
 Envoy Gateway 通过采用 Kubernetes Gateway API 作为用户接口简化了 Envoy 的配置工作，并提供了 Envoy 原生的强大的流量管理、可观察性和定制开发能力。Istio 和 Envoy Gateway 都采用了 Envoy 作为数据面。先采用 Envoy Gateway 作为边缘网关可以帮助项目人员熟悉 Envoy 的各种功能和配置，当项目需要向服务网格的方案迈进时，会在技术储备上更有信心。除此之外，Envoy Gateway 和 Istio 都采用了 Kubernetes Gateway API 作为控制面的用户接口，因此可以实现从边缘网关到服务网格的平滑迁移。从 Envoy Gateway 向服务网格方案的演进有两种方式：
 * Envoy Gateway 切换为 Istio Ingress Gateway
-  
+
   这种方式适用于只采用了标准 Kubernetes Gateway API 来对边缘网关进行配置的项目。即标准 Kubernetes Gateway API 提供的能力已经可以满足项目需求，没有采用 Envoy Gateway 提供的额外扩展能力。由于 Istio 也支持 Kubernetes Gateway API 来配置网关，因此可以直接切换到 Istio Ingress Gateway。
 * Envoy Gateway 替换 Istio Ingress Gateway
 

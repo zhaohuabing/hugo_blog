@@ -6,11 +6,11 @@ excerpt: "Everything about setting up my own ubuntu desktop, it's just a Note in
 date:    2018-05-24
 author:     "赵化冰"
 image: "/img/2018-05-23-service_2_service_auth/background.jpg"
-published: true 
+
 tags:
-    - ubuntu 
+    - ubuntu
 URL: "/2018/05/24/set_up_my_ubuntu_desktop/"
-categories: [ "Tech" ]    
+categories: [ "Tech" ]
 ---
 
 ## Generate SSH Key Pair
@@ -21,7 +21,7 @@ ssh-keygen -C "zhaohuabing@gmail.com"
 
 ## Shadowsocks
 
-Install shadowsokcs    
+Install shadowsokcs
 
 ```
 sudo apt-get install python3-pip
@@ -29,7 +29,7 @@ sudo apt-get install python3-pip
 sudo pip3 install shadowsocks
 ```
 
-Create config at ```config/shadowsocks.json```, with the following content:    
+Create config at ```config/shadowsocks.json```, with the following content:
 
 ```
 {
@@ -45,7 +45,7 @@ Create config at ```config/shadowsocks.json```, with the following content:
 }
 ```
 
-Start a local socks proxy 
+Start a local socks proxy
 
 ```
 sudo sslocal -c config/shadowsocks.json -d start
@@ -54,7 +54,7 @@ sudo sslocal -c config/shadowsocks.json -d start
 In case there is an openssl error, modify shadowsocks source file.
 
 ```
-sudo vi /usr/local/lib/python3.6/dist-packages/shadowsocks/crypto/openssl.py 
+sudo vi /usr/local/lib/python3.6/dist-packages/shadowsocks/crypto/openssl.py
 
 :%s/cleanup/reset/gc
 ```
@@ -64,7 +64,7 @@ Convert shadowsocks socks proxy to http proxy
 ```
 sudo apt-get install polipo
 
-echo "socksParentProxy = localhost:1080" | sudo tee -a /etc/polipo/config 
+echo "socksParentProxy = localhost:1080" | sudo tee -a /etc/polipo/config
 sudo service polipo restart
 ```
 

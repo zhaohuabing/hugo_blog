@@ -8,11 +8,11 @@ author:     "赵化冰"
 date:       2018-08-01
 description: ""
 image: "/img/2018-08-01-manage-onap-with-istio/backgroud.jpeg"
-published: true 
+
 tags:
-    - Istio 
-    - ONAP 
-    - Service Mesh 
+    - Istio
+    - ONAP
+    - Service Mesh
 
 categories: [ Tech ]
 ---
@@ -45,7 +45,7 @@ From the output of the script, you should see a command on how to join a node to
 ```
 You can now join any number of machines by running the following on each node
 as root:
- 
+
   kubeadm join 10.12.5.104:6443 --token 1x62yf.60ys5p2iw13tx2t8 --discovery-token-ca-cert-hash sha256:f06628c7cee002b262e69f3f9efadf47bdec125e19606ebff743a3e514a8383b
 ```
 
@@ -91,7 +91,7 @@ istio-telemetry            ClusterIP      10.101.153.114   <none>        9091/TC
 prometheus                 ClusterIP      10.103.0.205     <none>        9090/TCP                                                              20m
 servicegraph               NodePort       10.106.49.168    <none>        8088:30088/TCP                                                        20m
 tracing                    LoadBalancer   10.100.158.236   <pending>     80:30188/TCP                                                          20m
-zipkin                     NodePort       10.96.164.255    <none>        9411:30411/TCP       
+zipkin                     NodePort       10.96.164.255    <none>        9411:30411/TCP
 ```
 
 ## Sidecar Injection

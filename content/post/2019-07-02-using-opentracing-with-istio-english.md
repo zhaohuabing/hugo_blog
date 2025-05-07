@@ -8,7 +8,7 @@ author:     "赵化冰"
 date:       2019-09-11
 description: "In this post, we will continue to use the eshop demo to explore how asynchronous messaging, specifically Kafka, can be traced in Istio service mesh with the help of Opentracing."
 image: "/img/2019-07-02-using-opentracing-with-istio/background-english.jpg"
-published: true 
+
 tags:
     - Service Mesh
     - Istio

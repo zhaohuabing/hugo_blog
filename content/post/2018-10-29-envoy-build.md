@@ -8,11 +8,11 @@ author:     "赵化冰"
 date:       2018-10-29
 description: "Istio由控制面和数据面组成。其中Envoy是Istio在数据面缺省使用的转发代理，Istio利用Envoy的四层和七层代理功能对网格中微服务之间的调用流量进行转发。今天我>们来分析一下Istio 使用到的Envoy构建流程。"
 image: "https://zhaohuabing.com/img/2018-10-29-envoy-build/background.jpg"
-published: true 
+
 tags:
-    - Istio 
+    - Istio
     - Envoy
-    - Service Mesh 
+    - Service Mesh
 
 categories: [ Tech ]
 ---
@@ -80,7 +80,7 @@ make build_envoy
 │   │   │   │   ├── *.cc
 │   │   │   │   ├── *.h
 │   │   │   │   └── "BUILD"
-│   │   │   └── mixer                      --mixer filter，实现metrics上报，Quota(Rate Limiting (处理http协议) 
+│   │   │   └── mixer                      --mixer filter，实现metrics上报，Quota(Rate Limiting (处理http协议)
 │   │   │       ├── *.cc
 │   │   │       ├── *.h
 │   │   │       └── "BUILD"
@@ -149,8 +149,3 @@ http_archive(
 
 
 ![](https://zhaohuabing.com/img/2018-10-29-envoy-build/envoy-build.png)
-
-
-
-
-

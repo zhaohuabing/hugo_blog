@@ -7,7 +7,7 @@ description: "。"
 author: "赵化冰"
 date: 2024-03-15
 image: "https://gateway.envoyproxy.io/featured-background_hub722101dbe1dbe5596133cb6c8ada6d9_400690_1920x1080_fill_q75_catmullrom_top.jpg"
-published: true
+
 tags:
     - Envoy Gateway
 categories:
@@ -84,6 +84,3 @@ showtoc: true
 4. https://gateway.envoyproxy.io/v1.0.0/user/quickstart
 
 5. https://gateway.envoyproxy.io/v1.0.0/contributions
-
-
-

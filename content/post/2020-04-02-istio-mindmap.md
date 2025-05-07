@@ -8,7 +8,7 @@ author:     "Huabing Zhao"
 date:       2021-04-02
 description: "Istio 相关知识汇总"
 image: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Meteora%60s_monastery_2.jpg/2880px-Meteora%60s_monastery_2.jpg"
-published: true
+
 tags:
     - Kubernetes
     - Knowledge Graph

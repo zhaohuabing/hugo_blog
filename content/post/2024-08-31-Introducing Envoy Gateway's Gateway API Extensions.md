@@ -7,7 +7,7 @@ description: '作为 Envoy 社区推出的 Ingress Gateway 实现，Envoy Gatewa
 author: "赵化冰（Envoy Gateway Maintainer）"
 date: 2024-08-31
 image: "/img/2024-08-31-introducing-envoy-gateways-gateway-api-extensions/IMG_1624.JPG"
-published: true
+
 tags: [Envoy, Envoy Gateway]
 categories: [Tech,Open Source]
 showtoc: true

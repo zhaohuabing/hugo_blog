@@ -8,7 +8,7 @@ excerpt: "Kubernets 1.9版本引入了Admission Webhook(web 回调)扩展机制�
 date:    2018-05-23
 author:     "赵化冰"
 image: "/img/2018-4-25-istio-auto-injection-with-webhook/lion.jpg"
-published: true 
+
 tags:
     - Kubernetes
     - Istio
@@ -26,11 +26,11 @@ Istio 0.7版本就利用了Kubernets webhook实现了sidecar的自动注入。
 <!--more-->
 ## 什么是Admission
 ---
-Admission是Kubernets中的一个术语，指的是Kubernets API Server资源请求过程中的一个阶段。如下图所示，在API Server接收到资源创建请求时，首先会对请求进行认证和鉴权，然后经过Admission处理，最后再保存到etcd。 
+Admission是Kubernets中的一个术语，指的是Kubernets API Server资源请求过程中的一个阶段。如下图所示，在API Server接收到资源创建请求时，首先会对请求进行认证和鉴权，然后经过Admission处理，最后再保存到etcd。
 ![](/img//2018-4-25-istio-auto-injection-with-webhook/admission-phase.png)
 从图中看到，Admission中有两个重要的阶段，Mutation和Validation，这两个阶段中执行的逻辑如下：
 * Mutation
-  
+
   Mutation是英文“突变”的意思,从字面上可以知道在Mutation阶段可以对请求内容进行修改。
 * Validation
 
@@ -91,7 +91,7 @@ NAME                     DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
 istio-sidecar-injector   1         1         1            1           1d
 ```
 
-### 开启需要自动注入sidecar的namespace 
+### 开启需要自动注入sidecar的namespace
 
 ```
 kubectl label namespace default istio-injection=enabled
@@ -100,9 +100,9 @@ kubectl get namespace -L istio-injection
 
 NAME           STATUS    AGE       ISTIO-INJECTION
 default        Active    1h        enabled
-istio-system   Active    1h        
-kube-public    Active    1h        
-kube-system    Active    1h  
+istio-system   Active    1h
+kube-public    Active    1h
+kube-system    Active    1h
 ```
 
 ## 参考

@@ -7,7 +7,7 @@ description: "本文将继续介绍 ambient 模式下四层流量处理的实现
 author: "赵化冰"
 date: 2022-10-17
 image: "https://images.unsplash.com/photo-1664434612237-3eda04fbc834?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"
-published: true
+
 tags:
     - Istio
     - Envoy
@@ -242,13 +242,3 @@ Inbound Listener 中为该 node 中的每个 pod 都创建了一个 filter chain
 
 # 小结
 本文分析了 ambient 模式下四层流量的处理流程。可以看到，Istio 在 client 端 node 上的 ztunnel 和 server 端 的 ztunnel 之间创建了一个 HTTP CONNECT 隧道，该隧道中的数据通过 mtls 进行进行认证和加密。为了便于理解，本文中的 client 和 server 处于不同 node 上。但从配置中可以看到，即时 client 和 server 处于同一个 node 上，处理流程也是相同的，只是此时两段的 ztunnel 是同一个。在本系列的下一篇文章中，我们将继续深入分析 ztunnel 对七层流量的处理流程。
-
-
-
-
-
-
-
-
-
-

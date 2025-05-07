@@ -8,7 +8,7 @@ author:     "Huabing Zhao"
 date:       2020-02-21
 description: "When hearing about Network Service Mesh for the first time, you probably are as curious as I was:  Does it have anything to do with Service Mesh/Istio? In my opinion, Network Service Mesh could be a turn point for NFV. I'll dive into more details in this post."
 image: "/img/2020-02-21-network-service-mesh-english/background.png"
-published: true 
+
 tags:
     - Network Service Mesh
     - Service Mesh

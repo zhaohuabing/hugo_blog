@@ -8,7 +8,7 @@ author:     "赵化冰"
 date:       2019-03-29
 description: "在启用了Istio服务网格的Kubernetes集群中，缺省情况下只能在集群内部访问网格中的服务，要如何才能从外部网络访问这些服务呢？ Kubernetes和Istio提供了NodePort，LoadBalancer，Kubernetes Ingress，Istio Gateway等多种外部流量入口的方式，面对这么多种方式，我们在产品部署中应该如何选择？"
 image: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Andhika_bayu_nugraha-taman_nasional_bromo_tengger_semeru.jpg/2560px-Andhika_bayu_nugraha-taman_nasional_bromo_tengger_semeru.jpg"
-published: true 
+
 tags:
     - Service Mesh
     - Istio
@@ -174,7 +174,7 @@ NodePort提供了一种从外部网络访问Kubernetes集群内部Service的方�
 <center>NodeBalancer</center>
 
 > 备注：LoadBalancer类型需要云服务提供商的支持，Service中的定义只是在Kubernetes配置文件中提出了一个要求，即为该Service创建Load Balancer，至于如何创建则是由Google Cloud或Amazon Cloud等云服务商提供的，创建的Load Balancer的过程不在Kubernetes Cluster的管理范围中。
-> 
+>
 > <br>
 > 目前WS, Azure, CloudStack, GCE 和 OpenStack 等主流的公有云和私有云提供商都可以为Kubernetes提供Load Balancer。一般来说，公有云提供商还会为Load Balancer提供一个External IP，以提供Internet接入。如果你的产品没有使用云提供商，而是自建Kubernetes Cluster，则需要自己提供LoadBalancer。
 
@@ -293,4 +293,3 @@ API Gateway需求中很大一部分需要根据不同的应用系统进行定制
 2. <a id="ref02">https://zhaohuabing.com/2017/11/28/access-application-from-outside/#undefined</a>
 3. <a id="ref03">https://medium.com/google-cloud/kubernetes-nodeport-vs-loadbalancer-vs-ingress-when-should-i-use-what-922f010849e0</a>
 4. <a id="ref04">https://zhaohuabing.com/post/2018-12-27-the-obstacles-to-put-istio-into-production/#service-mesh-and-api-gateway</a>
-

@@ -7,7 +7,7 @@ description: "ambient 模式中，应用 pod 通过 ztunnel 之间的安全通�
 author: "赵化冰"
 date: 2022-09-29
 image: "https://images.unsplash.com/photo-1473800447596-01729482b8eb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"
-published: true
+
 tags:
     - Istio
     - Envoy
@@ -88,9 +88,9 @@ Name: ztunnel-pods-ips
 从下面的 nat 表的规则中可以看到，kubernets 创建的 KUBE-SERVICE chain 被跳过了，因此在 ambient 模式中，应用发出的数据包中的请求目的地址并不会被转换为 pod ip。
 ```bash
 # 首先进入 ztunnel-PREROUTING chain 进行处理
--A PREROUTING -j ztunnel-PREROUTING 
+-A PREROUTING -j ztunnel-PREROUTING
 # KUBE-SERVICES chain 将 service ip dnat 到 pod ip
--A PREROUTING -m comment --comment "kubernetes service portals" -j KUBE-SERVICES 
+-A PREROUTING -m comment --comment "kubernetes service portals" -j KUBE-SERVICES
 
 ...
 # 带有 0x100 标签的数据包将直接跳过 PREROUTING chain 的后续处理，因此不会进行 dnat。
@@ -226,12 +226,3 @@ k -n istio-system exec  ztunnel-gzlxs --  iptables-save|grep pistioin
 
 * https://ipset.netfilter.org/
 * [policy-based routing](https://docs.pica8.com/display/PicOS21118sp/IP+Rule+of+Management+Network+and+Service+Network#IPRuleofManagementNetworkandServiceNetwork-PolicyRoutingRules)
-
-
-
-
-
-
-
-
-

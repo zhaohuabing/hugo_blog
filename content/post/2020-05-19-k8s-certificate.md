@@ -8,7 +8,7 @@ author:     "赵化冰"
 date:       2020-05-19
 description: "在本文中，我将试图以一种比官方文档更容易理解的方式来说明 Kubernete s中和证书（Certificate）相关的工作机制，如果你也存在这方面的疑惑，希望这篇文章对你有所帮助。"
 image: "https://upload.wikimedia.org/wikipedia/commons/2/21/Kolkheti1122.jpg"
-published: true
+
 tags:
     - kubernetes
     - security
@@ -127,7 +127,7 @@ Kubernetes 中使用到的主要证书
 * 验证 service account token 的公钥。
 
 ```bash
-/usr/local/bin/kube-apiserver \\ 
+/usr/local/bin/kube-apiserver \\
   --tls-cert-file=/var/lib/kubernetes/kube-apiserver.pem \\                             # 用于对外提供服务的服务器证书
   --tls-private-key-file=/var/lib/kubernetes/kube-apiserver-key.pem \\                  # 服务器证书对应的私钥
   --etcd-certfile=/var/lib/kubernetes/kube-apiserver-etcd-client.pem \\                 # 用于访问 etcd 的客户端证书
@@ -135,7 +135,7 @@ Kubernetes 中使用到的主要证书
   --kubelet-client-certificate=/var/lib/kubernetes/kube-apiserver-kubelet-client.pem \\ # 用于访问 kubelet 的客户端证书
   --kubelet-client-key=/var/lib/kubernetes/kube-apiserver-kubelet-client-key.pem \\     # 用于访问 kubelet 的客户端证书的私钥
   --client-ca-file=/var/lib/kubernetes/cluster-root-ca.pem \\                           # 用于验证访问 kube-apiserver 的客户端的证书的 CA 根证书
-  --etcd-cafile=/var/lib/kubernetes/cluster-root-ca.pem \\                              # 用于验证 etcd 服务器证书的 CA 根证书  
+  --etcd-cafile=/var/lib/kubernetes/cluster-root-ca.pem \\                              # 用于验证 etcd 服务器证书的 CA 根证书
   --kubelet-certificate-authority=/var/lib/kubernetes/cluster-root-ca.pem \\            # 用于验证 kubelet 服务器证书的 CA 根证书
   --service-account-key-file=/var/lib/kubernetes/service-account.pem \\                 # 用于验证 service account token 的公钥
   ...
@@ -157,8 +157,8 @@ admin.conf  controller-manager.conf  kubelet.conf  scheduler.conf
 ```yaml
 apiVersion: v1
 clusters:
-- cluster: 
-    # 用于验证 kube-apiserver 服务器证书的 CA 根证书 
+- cluster:
+    # 用于验证 kube-apiserver 服务器证书的 CA 根证书
     certificate-authority-data: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUM1ekNDQWMrZ0F3SUJBZ0lCQVRBTkJna3Foa2lHOXcwQkFRc0ZBREFWTVJNd0VRWURWUVFERXdwdGFXNXAKYTNWaVpVTkJNQjRYRFRJd01ETXdOekF3TXpjeE1Wb1hEVE13TURNd05qQXdNemN4TVZvd0ZURVRNQkVHQTFVRQpBeE1LYldsdWFXdDFZbVZEUVRDQ0FTSXdEUVlKS29aSWh2Y05BUUVCQlFBRGdnRVBBRENDQVFvQ2dnRUJBTTczCkdIMWxqNkxEUm1FLy9hQ2cvNUlmampKYy8zOGcyMVpITXJDMkx5RGVqZWhrdWUwZFB1WTJ0L2JjTjJYM1dGNEsKaWNzNmhhWnBDbFVxL3pteVRITWhhZnlmVVF5MDFJZmhDV2I5NXI4akpHZ2NyU3U3UUtXM3ZOd1Z1TmhJNmd6SApSWW45Ry82VHJKTjdOMWRjejNmMlU1OFRjUHVCQzZOUzVTc1JmemFSczVDZnd0UTNaa2czQUFVYTlQSDZFVmtDCkIvRGR1bXBialZGakMwSllOWlFVNTlGNUxDeHJ0bEYvOUJsSVhnZGw0ZlNCNzQ0ZW1UelcySEZQek9lTklYYnUKYTJPa0FFTDdJc3hSRTFBaEFKZ1h6cFNmdi9paDBuMEJpQ1VaV1hLZjg2UjZJL2xlK2docG51c21kTXUwbkNEUApHMm9laXhRTit5NzFQU2tGcGdzQ0F3RUFBYU5DTUVBd0RnWURWUjBQQVFIL0JBUURBZ0trTUIwR0ExVWRKUVFXCk1CUUdDQ3NHQVFVRkJ3TUNCZ2dyQmdFRkJRY0RBVEFQQmdOVkhSTUJBZjhFQlRBREFRSC9NQTBHQ1NxR1NJYjMKRFFFQkN3VUFBNElCQVFCaWpXYlpPNU9uaU9lNHRHUlQvRGFXaFBkY2ZwbE8vcVQ5WkFqU1hXZU41TStubExQZQpGV1NLRGRWU1NzajJ6UVdMU3A1Vjc3MkFoa2NYQlM0a2ZiY2ZCTUl2ejVsYXJZeHgxcnduTzZLbVZSTHdkNUNkCnRER2RjUjF0UzdqeTRSV05ISlAyNWZhZHB5TE9KVzJlZkdLRmRiSnZyRjljekV1ODR5a1drdThtVnNNa0RzTXkKbnVFNGtXblNvODgweFpxVG9QN01qM3hkRlNYYWdoNytwK3FMazk1VjhBNTRUNmRKa2VjSGg4SzdNYVRxdWVOVgpzOVhuZDA2WEJGQWFCVXRsSGZybmRXUzhmaTQ5dTY0NEFWOWJHclNYRnR1Q0lydnIxVkY2d0R3dEJYZi9UUStrCkx3Zk1oNVZDVWt1bEJqWEpqK1ZvRnBLZm5Qck9nbEExZzRtUgotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg==
     server: https://localhost:8443
   name: kubernetes
@@ -185,12 +185,12 @@ users:
 
 ```bash
  /usr/local/bin/kube-controller-manager \\
- --kubeconfig=/etc/kubernetes/controller-manager.conf 
+ --kubeconfig=/etc/kubernetes/controller-manager.conf
  # 下面几个证书和访问 kube-apiserver 无关，我们会在后面介绍到
  --cluster-signing-cert-file=/var/lib/kubernetes/cluster-root-ca.pem             # 用于签发证书的 CA 根证书
- --cluster-signing-key-file=/var/lib/kubernetes/cluster-root-ca-key.pem          # 用于签发证书的 CA 根证书的私钥  
+ --cluster-signing-key-file=/var/lib/kubernetes/cluster-root-ca-key.pem          # 用于签发证书的 CA 根证书的私钥
  --service-account-private-key-file=/var/lib/kubernetes/service-account-key.pem  # 用于对 service account token 进行签名的私钥
- ... 
+ ...
 ```
 
 ## Service Account  证书
@@ -200,13 +200,13 @@ Kubernetes 中有两类用户，一类为 user account，一类为 service accou
 我们可以看到 service account 证书的公钥和私钥分别被配置到了 kube-apiserver 和 kube-controller-manager 的命令行参数中，如下所示：
 
 ```bash
-/usr/local/bin/kube-apiserver \\ 
+/usr/local/bin/kube-apiserver \\
   --service-account-key-file=/var/lib/kubernetes/service-account.pem \\          # 用于验证 service account token 的公钥
   ...
-  
+
  /usr/local/bin/kube-controller-manager \\
  --service-account-private-key-file=/var/lib/kubernetes/service-account-key.pem  # 用于对 service account token 进行签名的私钥
- ... 
+ ...
 ```
 
 下图展示了 kubernetes 中生成、使用和验证 service account token  的过程。
@@ -224,8 +224,8 @@ Kubernetes 提供了一个  `certificates.k8s.io`  API，可以使用配置的 C
 ```bash
  /usr/local/bin/kube-controller-manager \\
  --cluster-signing-cert-file=/var/lib/kubernetes/cluster-root-ca.pem             # 用于签发证书的 CA 根证书
- --cluster-signing-key-file=/var/lib/kubernetes/cluster-root-ca-key.pem          # 用于签发证书的 CA 根证书的私钥  
- ... 
+ --cluster-signing-key-file=/var/lib/kubernetes/cluster-root-ca-key.pem          # 用于签发证书的 CA 根证书的私钥
+ ...
 ```
 
 关于更多 Kubernetes 证书签发 API 的内容，可以参见 [管理集群中的 TLS 认证](https://kubernetes.io/zh/docs/tasks/tls/managing-tls-in-a-cluster/)。

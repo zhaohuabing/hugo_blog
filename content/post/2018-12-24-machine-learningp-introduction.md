@@ -8,9 +8,9 @@ author:     "赵化冰"
 date:       2018-12-24
 description: ""
 image: "/img/2018-12-24-machine-learningp-introduction/background.jpg"
-published: true 
+
 tags:
-    - Machine Learning 
+    - Machine Learning
     - Supervised learning
 
 categories: [ Tech ]
@@ -21,10 +21,10 @@ categories: [ Tech ]
 Two definitions of machine learning are offered.
 
 Arthur Samuel version: <BR>
-A field of study that gives computers the ability to *learn without being explicitly programmed*.    
- 
+A field of study that gives computers the ability to *learn without being explicitly programmed*.
+
 Tom Mitchell version: <BR>
-A computer program is said to learn from experience E with respect to some task T and some performance measure P, if its performance on T, as measured by P, improves with experience E. 
+A computer program is said to learn from experience E with respect to some task T and some performance measure P, if its performance on T, as measured by P, improves with experience E.
 
 Example: playing checkers.
 
@@ -51,7 +51,7 @@ There are two types of supervised learning problems:
 
 ### Regression problem
 
-In a regression problem, the supervised learning algorithm is trying to predict results within a continuous output, meaning that it is trying to map input variables to some continuous function. 
+In a regression problem, the supervised learning algorithm is trying to predict results within a continuous output, meaning that it is trying to map input variables to some continuous function.
 
 **Example**
 
@@ -59,9 +59,9 @@ Given data about the size of houses on the real estate market, try to predict th
 ![](/img/2018-12-24-machine-learningp-introduction/regression-problem-house-price.png)
 <center>House Price Prediction</center>
 
-### Classification problem 
+### Classification problem
 
-In a classification problem, the supervised learning algorithm is instead trying to predict results within a discrete output, meaning that it is trying to map input variables to discrete categories. 
+In a classification problem, the supervised learning algorithm is instead trying to predict results within a discrete output, meaning that it is trying to map input variables to discrete categories.
 
 **Example**
 
@@ -76,6 +76,6 @@ Classification - Given a patient with a tumor, we have to predict whether the tu
 
 TBC
 
-# Reference 
+# Reference
 
 Free online course offered by Stanford: https://www.coursera.org/learn/machine-learning

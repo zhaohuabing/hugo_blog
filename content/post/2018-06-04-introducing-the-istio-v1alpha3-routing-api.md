@@ -7,9 +7,9 @@ description: "介绍Istio v1alpha3 routing API及其设计原则"
 date:       2018-06-04
 author:     "赵化冰"
 image: "/img/2018-06-04-introducing-the-istio-v1alpha3-routing-api/background.jpg"
-published: true 
+
 tags:
-    - Istio 
+    - Istio
 
 categories: [ Tech ]
 URL: "/2018/06/04/introducing-the-istio-v1alpha3-routing-api/"
@@ -165,8 +165,8 @@ spec:
 首先，请注意`VirtualService`的目标服务是使用`hosts`字段（实际上是重复字段）指定的，然后再在每个路由的`destination`字段中指定。 这是与以前模型的重要区别。
 
 `VirtualService`描述了一个或多个用户可寻址目标到网格内实际工作负载之间的映射。在上面的示例中，这两个地址是相同的，但实际上用户可寻址目标可以是任何用于定位服务的，具有可选通配符前缀或CIDR前缀的DNS名称。
-这对于应用从单体架构到微服务架构的迁移过程特别有用，单体应用被拆分为多个独立的微服务后，采用VirtaulService可以继续把多个微服务对外暴露为同一个目标地址，而不需要服务消费者进行修改以适应该变化。 
- 
+这对于应用从单体架构到微服务架构的迁移过程特别有用，单体应用被拆分为多个独立的微服务后，采用VirtaulService可以继续把多个微服务对外暴露为同一个目标地址，而不需要服务消费者进行修改以适应该变化。
+
 例如，以下规则允许服务消费者访问Bookinfo应用程序的reviews和ratings服务，就好像它们是`http://bookinfo.com/`（虚拟）服务的一部分：
 
 ```yaml
@@ -311,6 +311,6 @@ Istio `v1alpha3`路由API具有比其前身更多的功能，但不幸的是新�
 * Isaiah Snell-Feikema (IBM)
 * Kuat Yessenov (Google)
 
-## 原文 
+## 原文
 
 * [Introducing the Istio v1alpha3 routing API](https://kubernetes.io/blog/2018/01/extensible-admission-is-beta)

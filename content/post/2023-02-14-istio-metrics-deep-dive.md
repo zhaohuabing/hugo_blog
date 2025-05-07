@@ -6,7 +6,7 @@ description: "Istio 为 Service Mesh 中的微服务提供了非常丰富的统�
 author: "赵化冰"
 date: 2023-02-14
 image: "https://images.unsplash.com/photo-1489619243109-4e0ea59cfe10?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
-published: true
+
 tags:
     - Istio
     - Envoy
@@ -28,7 +28,7 @@ Istio Metrics 是基于 Envoy Stats 机制进行扩展而实现的。要理解 I
 Envoy 提供了三种类型的 stats：
 
 * Counter：Counter 是一个只增不减的计数器，可以用于记录某些事情的发生次数，例如请求的总次数。只要不重置该计数器，请求总数的数量只会向上增长，越来越大。
-  
+
   例如下面的 envoy_cluster_upstream_rq_total 指标记录了 echo-service 这个 cluster 的处理的 HTTP 请求总数。
   ```
   # TYPE  counter
@@ -40,9 +40,9 @@ Envoy 提供了三种类型的 stats：
   ```
   # TYPE envoy_cluster_upstream_cx_active gauge
   envoy_cluster_upstream_cx_active{envoy_cluster_name="echo-service"} 24
-  ```   
+  ```
 * Histogram：如果我们想了解一个指标在某一段时间内的取值的分布情况，例如系统启动以来请求处理的耗时分布情况，则需要 Histogram 类型的指标。
-   
+
    例如下面的 historgram 指标 envoy_cluster_upstream_rq_time 展示了 echo-service 这个 cluster 的 HTTP 请求处理时长的分布情况。从 20 个 bucket 数据行可以看到请求的处理时长分布在 0 - 500 毫秒这个区间中，并可以看到落入每个区间的请求数量。sum 数据行记录了所有这些请求的总时长。count 数据行则是请求的总数。我们可以通过这些数据进一步计算出请求的 P50， P90，P99 百分数以及请求的平均耗时等统计数据。
    ```
    # TYPE envoy_cluster_upstream_rq_time histogram
@@ -75,16 +75,16 @@ Envoy 提供了三种类型的 stats：
 通过 envoy 的 admin 端口可以查询 stats 数据。Envoy 支持按照原始格式或者 prometheus 格式展示指标数据。
 
 * 原始格式：以 "." 将 stats 的名称和该 stats 的各个 tag 连在一起作为指标名称。
-    
+
     下面的这个 stats 是一个 counter，表示 echo-service 这个 cluster 的 http1 请求总数:
     ```
-    http.echo-service.downstream_rq_http1_total: 41  
-    ``` 
+    http.echo-service.downstream_rq_http1_total: 41
+    ```
 * Prometheus 格式：Envoy 会将指标名中的 tag 按照规则提取出来，生成符合 Prometheus 格式要求的指标数据。该接口可以作为数据提供给 Prometheus 进行抓取。
-    
+
     将上面的 stats 转换为 Prometheus 格式:
-    ``` 
-    envoy_http_downstream_rq_http1_total{envoy_http_conn_manager_prefix="echo-service"} 41 
+    ```
+    envoy_http_downstream_rq_http1_total{envoy_http_conn_manager_prefix="echo-service"} 41
     ```
 
 通过管理接口的两个不同的 URL http://localhost:$(admin_port)/stats 和 http://localhost:$(admin_port)/stats/prometheus 可以以原始格式和 Prometheus 格式查看 envoy 中的所有 stats 数据。
@@ -142,7 +142,7 @@ istio_requests_total{
     source_canonical_service="reviews",
     destination_canonical_service="ratings",
     source_canonical_revision="v3",
-    destination_canonical_revision="v1"} 
+    destination_canonical_revision="v1"}
     32
 ```
 
@@ -150,17 +150,17 @@ istio_requests_total{
 
 | Tag | 说明 | 示例 | 备注 |
 |-----|------|------|------|
-|reporter| 数据的上报端   |  source/destination  | 如果数据是从 client 端的 sidecar proxy 上报的，则取值为 source；如果是从 server 端的 sidecar proxy 上报的，则取值为 destination|  
-|source_cluster|Client 端所属的 Cluster| 
-|source_workload_namespace|Client 端所属的 namespace|default|      |  
-|source_workload|Client 端的 workload| reviews-v3 | deployment 名称 |    
+|reporter| 数据的上报端   |  source/destination  | 如果数据是从 client 端的 sidecar proxy 上报的，则取值为 source；如果是从 server 端的 sidecar proxy 上报的，则取值为 destination|
+|source_cluster|Client 端所属的 Cluster|
+|source_workload_namespace|Client 端所属的 namespace|default|      |
+|source_workload|Client 端的 workload| reviews-v3 | deployment 名称 |
 |source_app|Client 端的应用名称|reviews|pod 的 app label|
 |source_version|Client 端的版本号|v3|pod 的 version label|
 |source_canonical_service|Client 端的标准服务名|reviews|pod label `service.istio.io/canonical-name` 或者 `app.kubernetes.io/name` 或者 `app` 或者 deployment name（优先级由高到底）|
 |source_canonical_revision|Client 端的标准版本号|v3|pod label `service.istio.io/canonical-revision` 或者 `app.kubernetes.io/version` 或者 `version` 或者 "latest"（优先级由高到底）|
-|destination_cluster|Server 端所属的 Cluster| 
-|destination_workload_namespace|Server 端所属的 namespace|default|      |  
-|destination_workload|Server 端的 workload| ratings-v1 | deployment 名称 |    
+|destination_cluster|Server 端所属的 Cluster|
+|destination_workload_namespace|Server 端所属的 namespace|default|      |
+|destination_workload|Server 端的 workload| ratings-v1 | deployment 名称 |
 |destination_app|Server 端的应用名称|ratings|pod 的 app label|
 |destination_service|请求的服务全限定名称|ratings.default.svc.cluster.local|如果采用 VS 进行路由，service 是 VS 路由指向的服务|
 |destination_service_name|请求的服务名|ratings|如果采用 VS 进行路由，service 是 VS 路由指向的服务|
@@ -168,12 +168,12 @@ istio_requests_total{
 |destination_version|Server 端的版本号|v1|pod 的 version label|
 |destination_canonical_service|Server 端的标准服务名|ratings|pod label `service.istio.io/canonical-name` 或者 `app.kubernetes.io/name` 或者 `app` 或者 deployment name（优先级由高到底）|
 |destination_canonical_revision|Server 端的标准版本号|v1|pod label `service.istio.io/canonical-revision` 或者 `app.kubernetes.io/version` 或者 `version` 或者 "latest"（优先级由高到底）|
- 
+
 ## Istio Metadata Exchange Filter
 
 从上文中 Istio metrics 的例子中可以看到，sidecar proxy 在上报 metrics 时会将对端服务的相关信息作为 label 加入到上报数据中，包括对端的 cluster，workload_namespace，app，version，canonical_service，canonical_revision。那么 sidecar proxy 如何才能获取对端服务的这些信息呢？这就要依赖 Istio 的 Metadata Exchang 机制。
 
-Istio 为 Envoy 添加了一个 Metadata Exchange Filter。该 Filter 会在两个通信的 sidecar 之间交换对方节点的 metdata 信息，并将这些 metadata 信息用于生成 metrics 的 label。 
+Istio 为 Envoy 添加了一个 Metadata Exchange Filter。该 Filter 会在两个通信的 sidecar 之间交换对方节点的 metdata 信息，并将这些 metadata 信息用于生成 metrics 的 label。
 
 Metadata Exchange Filter 在四层和七层采用了不同的机制来交换对方节点的信息。
 
@@ -286,11 +286,11 @@ istioctl proxy-config bootstrap reviews-v3-58b6479b-62rv5
         "SERVICE_ACCOUNT": "bookinfo-reviews",
         "WORKLOAD_NAME": "reviews-v3"
       }
-    }  
+    }
 }
 ```
 
-bootstrap 中的 node metadata 则是由 istio-agent 根据当前 pod 所在的 cluster，Namespace，名称，label 等相关信息生成的。 
+bootstrap 中的 node metadata 则是由 istio-agent 根据当前 pod 所在的 cluster，Namespace，名称，label 等相关信息生成的。
 
 ### 四层的 Metadata Exchange 机制
 

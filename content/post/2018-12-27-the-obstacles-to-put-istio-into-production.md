@@ -8,11 +8,11 @@ author:     "赵化冰"
 date:       2018-12-27
 description: "After its 1.0 release, our team has begun the efforts to integrate Istio into our system. This article tells our findings and thoughts during this adventure."
 image: "/img/2018-12-27-the-obstacles-to-put-istio-into-production/background.jpg"
-published: true 
+
 tags:
-    - Service Mesh 
-    - Istio 
-    - Consul 
+    - Service Mesh
+    - Istio
+    - Consul
     - NFV
 
 categories: [ Tech ]

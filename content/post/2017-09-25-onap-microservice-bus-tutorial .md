@@ -8,7 +8,7 @@ author:     "赵化冰"
 date:       2017-09-25
 description: "Microservices Bus(MSB) provide a reliable, resilient and scalable communication and governance infrastructure to support Microservice Architecture including including service registration/discovery, external API gateway, internal API gateway, client SDK.It's a pluggable architecture so it can integrate with auth service provider to provide centralized Authentication & Authorization. MSB also provides a service portal to manage the REST APIs."
 image: "https://www.ft.com/__origami/service/image/v2/images/raw/http%3A%2F%2Fcom.ft.imagepublish.upp-prod-us.s3.amazonaws.com%2F8a361812-5a1f-11ea-abe5-8e03987b7b20?fit=scale-down&source=next&width=700"
-published: true
+
 showtoc: false
 tags:
     - ONAP

@@ -8,7 +8,7 @@ author:     "赵化冰"
 date:       2020-10-13
 description: "Redis 是一个高性能的 key-value 存储系统，被广泛用于微服务架构中。本文将介绍如何通过 Istio 和 Envoy 实现客户端无感知的 Redis Cluster 数据分片，并实现读写分离、流量镜像等高级流量管理功能。"
 image: "https://images.pexels.com/photos/358326/pexels-photo-358326.jpeg?cs=srgb&dl=pexels-pixabay-358326.jpg&fm=jpg"
-published: true
+
 tags:
     - Istio
     - Envoy
@@ -152,7 +152,7 @@ S: e293d25881c3cf6db86034cd9c26a1af29bc585a 172.16.0.72:6379
 我们可以采用 `cluster info` 命令查看 Redis Cluster 的配置信息和 Cluster 中的成员节点，以验证集群是否创建成功。
 
 ```bash
-$ kubectl exec -it redis-cluster-0 -c redis -n redis -- redis-cli cluster info 
+$ kubectl exec -it redis-cluster-0 -c redis -n redis -- redis-cli cluster info
 cluster_state:ok
 cluster_slots_assigned:16384
 cluster_slots_ok:16384
@@ -202,7 +202,7 @@ Istio 缺省下发的 LDS 中配置的是 TCP proxy filter，我们需要将其�
 由于 1.7.3 中尚不支持 EnvoyFilter 的 "REPLACE" 操作，我们首先需要更新 EnvoyFilter 的 CRD 定义，然后才能创建该 EnvoyFilter：
 
 ```bash
-$ kubectl apply -f istio/envoyfilter-crd.yaml 
+$ kubectl apply -f istio/envoyfilter-crd.yaml
 customresourcedefinition.apiextensions.k8s.io/envoyfilters.networking.istio.io configured
 ```
 
@@ -230,7 +230,7 @@ envoyfilter.networking.istio.io/add-redis-proxy created
 Redis Cluster 中各个分片的 Master 和 Slave 节点地址：
 
 ```
-Shard[0] Master[0]  redis-cluster-0 172.16.0.138:6379   replica  redis-cluster-4 172.16.0.72:6379  -> Slots 0 - 5460 
+Shard[0] Master[0]  redis-cluster-0 172.16.0.138:6379   replica  redis-cluster-4 172.16.0.72:6379  -> Slots 0 - 5460
 Shard[1] Master[1]  redis-cluster-1 172.16.1.52:6379    replica  redis-cluster-5 172.16.0.201:6379 -> Slots 5461 - 10922
 Shard[2] Master[2]  redis-cluster-2 172.16.1.53:6379    replica  redis-cluster-3 172.16.0.139:6379 -> Slots 10923 - 16383
 ```
@@ -302,7 +302,7 @@ a
 
 采用该方法，我们可以在应用业务规模逐渐扩张，单一 Redis 节点压力过大时，将系统中的 Redis 从单节点无缝迁移到集群模式。在集群模式下，不同 key 的数据被缓存在不同的数据分片中，我们可以增加分片中 Replica 节点的数量来对一个分片进行扩容，也可以增加分片个数来对整个集群进行扩展，以应对由于业务不断扩展而增加的数据压力。由于 Envoy 可以感知 Redis Cluster 集群拓扑，数据的分发由 Envoy 完成，整个迁移和扩容过程无需客户端，不会影响到线上业务的正常运行。
 
-## Redis 读写分离 
+## Redis 读写分离
 
 在一个 Redis 分片中，通常有一个 Master 节点，一到多个 Slave（Replica）节点，Master 节点负责写操作，并将数据变化同步到 Slave 节点。当来自应用的读操作压力较大时，我们可以在分片中增加更多的 Replica，以对读操作进行负载分担。Envoy Redis Rroxy 支持设置不同的读策略：
 
@@ -329,7 +329,7 @@ redis-cluster:6379> set b bb
 OK
 redis-cluster:6379> get b
 "bb"
-redis-cluster:6379> 
+redis-cluster:6379>
 ```
 
 在前面的 Redis Cluster 拓扑中，我们已经得知 key "b" 属于 Shard[0] 这个分片。我们可以通过命令 `redis-cli monitor` 查看该分片中 Master 和 Replica 节点中收到的命令。
@@ -356,7 +356,7 @@ Envoy Redis Proxy 支持流量镜像，即将客户端发送的请求同时发�
 我们创建一个单节点的 Redis 节点，用做镜像服务器：
 
 ```bash
-$ kubectl apply -f k8s/redis-mirror.yaml -n redis 
+$ kubectl apply -f k8s/redis-mirror.yaml -n redis
 deployment.apps/redis-mirror created
 service/redis-mirror created
 ```
@@ -419,7 +419,7 @@ $ kubectl exec -it `kubectl get pod -l app=redis-mirror -n redis -o jsonpath="{.
 在上面的步骤中，我们在 Istio 中创建了两个 EnvoyFilter 配置对象。这两个 EnvoyFilter 修改了 Envoy 代理的配置，主要包括两部分内容：Redis Proxy Network Filter 配置和 Redis Cluster 配置。
 
 
-下面的 EnvoyFilter 替换了 Pilot 为 Redis Service 创建的 Listener 中的 TCP Proxy Network Filter，将其替换为一个 "type.googleapis.com/envoy.config.filter.network.redis_proxy.v2.RedisProxy" 类型的 Network Filter。 该 Redis Proxy 的缺省路由指向 "custom-redis-cluster"，并且配置了读写分离策略和流量镜像策略。 
+下面的 EnvoyFilter 替换了 Pilot 为 Redis Service 创建的 Listener 中的 TCP Proxy Network Filter，将其替换为一个 "type.googleapis.com/envoy.config.filter.network.redis_proxy.v2.RedisProxy" 类型的 Network Filter。 该 Redis Proxy 的缺省路由指向 "custom-redis-cluster"，并且配置了读写分离策略和流量镜像策略。
 
 ```yaml
 apiVersion: networking.istio.io/v1alpha3

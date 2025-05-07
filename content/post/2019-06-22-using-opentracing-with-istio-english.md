@@ -8,7 +8,7 @@ author:     "赵化冰"
 date:       2019-08-24
 description: ""
 image: "/img/2019-06-22-using-opentracing-with-istio/background.jpg"
-published: true 
+
 tags:
     - Service Mesh
     - Istio
@@ -84,7 +84,7 @@ kubectl apply -f k8s/eshop.yaml
 ```
 
 * Open this URL in your browser to invoke eshop checkout REST API: http://${NODE_IP}:31380/checkout
-* Open Jaeger UI to see the trace: http://${NODE_IP}:30088 
+* Open Jaeger UI to see the trace: http://${NODE_IP}:30088
 
 Note: In order to access Jaeger UI from outside of the Kubernetes Cluster, you may want to modify Istio install scripts to add a NodePort for Jaeger service:
 

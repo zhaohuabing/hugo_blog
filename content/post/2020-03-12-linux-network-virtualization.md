@@ -8,7 +8,7 @@ author:     "赵化冰"
 date:       2020-03-12
 description: "介绍Linux的network namespace, veth，bridge与路由。"
 image: "https://images.pexels.com/photos/1141853/pexels-photo-1141853.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-published: true 
+
 tags:
     - Network
     - Linux
@@ -66,12 +66,12 @@ Network namespace允许你在Linux中创建相互隔离的网络视图，每个�
 
 # Veth
 
-The veth devices are virtual Ethernet devices.  They can act as tunnels between network namespaces to create a bridge to a physical network device in another namespace, but can also be used as standalone network devices. 
+The veth devices are virtual Ethernet devices.  They can act as tunnels between network namespaces to create a bridge to a physical network device in another namespace, but can also be used as standalone network devices.
 
-veth devices are always created in interconnected pairs.  A pair can be created using the command: 
+veth devices are always created in interconnected pairs.  A pair can be created using the command:
 
 ```bash
-# ip link add <p1-name> type veth peer name <p2-name> 
+# ip link add <p1-name> type veth peer name <p2-name>
 ```
 
 In the above, p1-name and p2-name are the names assigned to the two connected end points. Packets transmitted on one device in the pair are immediately received on the other device.  When either devices is down the link state of the pair is down.(摘录自[Linux man page](http://man7.org/linux/man-pages/man4/veth.4.html)中对veth的介绍)
@@ -350,36 +350,36 @@ PING 192.168.1.2 (192.168.1.2) 56(84) bytes of data.
 当将br0设置为缺省网关后，可以从ns1和ns2连接到主机网络10.0.2.15/24上。此时数据流向是这样的：ns1--(网桥)-->br0--(IP Forwarding)-->10.0.2.15/24
 
 ```bash
-route: default gw 192.168.1   
-+------------------+     +------------------+  
-|                  |     |                  | 
+route: default gw 192.168.1
++------------------+     +------------------+
 |                  |     |                  |
-|                  |     |                  | 
-|       ns1        |     |       ns2        | 
-|                  |     |                  | 
-|                  |     |                  |                  
-|                  |     |                  |                 
-|  192.168.1.2/24  |     |  192.168.1.3/24  |                
-+---+(veth+ns1)+---+     +---+(veth+ns2)+---+               
-         +                          +                      
-         |                          |                     
-         |                          |                    
-         +                          +                   
-+-+(veth+ns1+br)+-----------+(veth+ns2+br)+-+          
-|                                           |         
-|               Linux bridge                |                  
-|                                           |                 
-+-----------------(br0)---------------------+                
-                    |                                       
-                    |                                      
-                    |                                     
-+-----------------(br0)---------------------+            
-|            192.168.1.1/24                 |           
-|        default network namespace          |          
-|       (Linux Kernel IP Forwarding)        |         
-|                                           |                
-|              10.0.2.15/24                 |               
-+---------------(enp0s3)--------------------+   
+|                  |     |                  |
+|                  |     |                  |
+|       ns1        |     |       ns2        |
+|                  |     |                  |
+|                  |     |                  |
+|                  |     |                  |
+|  192.168.1.2/24  |     |  192.168.1.3/24  |
++---+(veth+ns1)+---+     +---+(veth+ns2)+---+
+         +                          +
+         |                          |
+         |                          |
+         +                          +
++-+(veth+ns1+br)+-----------+(veth+ns2+br)+-+
+|                                           |
+|               Linux bridge                |
+|                                           |
++-----------------(br0)---------------------+
+                    |
+                    |
+                    |
++-----------------(br0)---------------------+
+|            192.168.1.1/24                 |
+|        default network namespace          |
+|       (Linux Kernel IP Forwarding)        |
+|                                           |
+|              10.0.2.15/24                 |
++---------------(enp0s3)--------------------+
 ```
 
 下面我们通过命令行来测试这个网络拓扑。

@@ -7,7 +7,7 @@ description: "Istio 于2022年9月7日宣布了一种全新的数据平面模式
 author: "John Howard - Google, Ethan J. Jackson - Google, Yuval Kohavi - Solo.io, Idit Levine - Solo.io, Justin Pettit - Google, Lin Sun - Solo.io"
 date: 2022-09-08
 image: "https://images.unsplash.com/photo-1592853625511-ad0edcc69c07?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2369&q=80"
-published: true
+
 tags:
     - Istio
     - Envoy
@@ -55,7 +55,7 @@ Ambient mesh 采取了一种不同的方法。它将 Istio 的功能分成两个
 
 Ambient mesh 使用了一个共享代理，该共享代理运行在 Kubernetes 集群的每个节点上。这个代理是一个零信任隧道（简称为 ztunnel），其主要职责是安全地连接和认证 mesh 内的工作负载。节点上的网络栈会将工作负载的所有流量重定向到本地的 ztunnel 代理。这将 Istio 的数据平面与应用程序的关注点完全分开，可以让运维在不影响应用的情况下启用、禁用、伸缩和升级数据平面。ztunnel 不对工作负载流量进行 L7 处理，因此相对 sidecar 更为精简。大幅降低的复杂性和相关的资源成本使得 ambient mesh 适合作为共享基础设施进行交付。
 
-Ztunnel 实现了一个服务网格的核心功能：零信任。当为一个 namespace 启用 ambient 时，Istio 会创建一个安全覆盖层(secure overlay)，该安全覆盖层为工作负载提供 mTLS, 遥测和认证，以及 L4 权限控制，并不需要中断 HTTP 链接或者解析 HTTP 数据。 
+Ztunnel 实现了一个服务网格的核心功能：零信任。当为一个 namespace 启用 ambient 时，Istio 会创建一个安全覆盖层(secure overlay)，该安全覆盖层为工作负载提供 mTLS, 遥测和认证，以及 L4 权限控制，并不需要中断 HTTP 链接或者解析 HTTP 数据。
 
 ![](/img/2022-09-08-introducing-ambient-mesh/ambient-secure-overlay.png)
 Ambient mesh 使用一个节点上的共享 ztunnel 来提供一个零信任的安全覆盖层
@@ -112,7 +112,7 @@ Ambient mesh 采用一个部署在本地节点上的共享 ztunnel 代理来处�
 
 请看一个简短的视频，Christian 运行了 Istio ambient mesh 的相关组件，并演示 ambient mesh 的一些功能。
 
-{{< youtube nupRBh9Iypo >}} 
+{{< youtube nupRBh9Iypo >}}
 
 # 参与进来
 

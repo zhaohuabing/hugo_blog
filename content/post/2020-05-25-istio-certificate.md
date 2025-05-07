@@ -8,7 +8,7 @@ author:     "赵化冰"
 date:       2020-05-25
 description: "Istio 为微服务提供了无侵入，可插拔的安全框架。应用不需要修改代码，就可以利用 Istio 提供的双向 TLS 认证实现服务身份认证，并基于服务身份信息提供细粒度的访问控制。本文将揭秘 Istio 双向 TLS 认证的实现机制。"
 image: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Obi-Obi_Valley_-_Mapleton_Falls_National_Park.tif/lossy-page1-2560px-Obi-Obi_Valley_-_Mapleton_Falls_National_Park.tif.jpg"
-published: true
+
 tags:
     - Istio
 categories: [ Tech ]

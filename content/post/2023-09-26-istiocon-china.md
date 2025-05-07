@@ -7,7 +7,7 @@ author: "赵化冰"
 date: 2023-09-26
 image: "img/2023-09-26-istiocon-china/background.jpg"
 image1: "https://www.lfasiallc.com/wp-content/uploads/2023/05/KubeCon_OSS_China_23_DigitalAssets_web-homepage-1920x606.jpg"
-published: true
+
 showtoc: true
 ---
 
@@ -16,7 +16,7 @@ showtoc: true
 
 这个演讲是 Google 的 Sponsored Keynote，从中可以非常清晰地看到 Google 在 Istio 社区中推动 Ambient 模式的思路：**通过在 Istio 中提供 Ambient 模式，可以使得数据面的组件也可以从用户工作负载中剥离出来，成为和 LB 类似的云上的托管服务。** 这样 Istio 就可以真正成为一个基础设施，而不是和应用一起部署在用户集群。
 
-**当 sidecar proxy 从容器 Pod 中剥离出来成为单独部署的 Ztunnel 和 WayPoint 后，这两个组件的部署已经和应用解耦，为云厂商将这两个组件进行托管扫清了障碍。** 
+**当 sidecar proxy 从容器 Pod 中剥离出来成为单独部署的 Ztunnel 和 WayPoint 后，这两个组件的部署已经和应用解耦，为云厂商将这两个组件进行托管扫清了障碍。**
 
 数据面托管的具体思路是：目前独立部署的 Ztunnel 组件和集群 CNI 组件都会对集群节点网络进行配置，在两者没有很好配合的情况下很容易发生冲突，这也是目前 Ambient 模式遇到的一个困难之一。解决方案是将 Ztunnel 和集群 CNI 集成在一起，成为一个增强的 CNI，从而简化 Ambient 模式中的数据面部署。可以预见，后续会有很多 CNI 插件和云厂商提供的 CNI 会集成 Ztunnel 能力。除此以外，云厂商也可以提供托管的 Waypoint。由于 Istio 控制面托管已经是一个常见的模式，这样 Istio 的 控制面和数据面的全部组件都可以由云厂商进行托管，从而带来以下好处：
 * 服务网格真正下沉到基础设施层，完全对用户集群透明

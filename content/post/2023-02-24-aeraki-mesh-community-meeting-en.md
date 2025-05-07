@@ -7,7 +7,7 @@ description: "本次社区会议介绍了 Aeraki Mesh 最新发布的 Access Log
 author: "赵化冰"
 date: 2023-02-24
 image: "https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-published: true
+
 tags:
     - Istio
     - Envoy
@@ -38,13 +38,4 @@ B站
 {{< bilibili BV1t54y1c7nR >}}
 
 YouTube
-{{< youtube H2XIn0tIF98 >}} 
-
-
-
-
-
-
-
-
-
+{{< youtube H2XIn0tIF98 >}}

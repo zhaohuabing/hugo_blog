@@ -7,7 +7,7 @@ description: "Kubernetes(简称K8s) 是一套容器编排和管理系统，可�
 author: "赵化冰"
 date: 2023-03-09
 image: "https://images.unsplash.com/photo-1432821596592-e2c18b78144f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2370&q=80"
-published: true
+
 tags:
     - Kubernetes
 categories:
@@ -268,7 +268,7 @@ func main() {
 1. Reflector 采用 K8s HTTP API List/Watch API Server 中指定的资源。
 
     Reflector 会先 List 资源，然后使用 List 接口返回的 resourceVersion 来 watch 后续的资源变化。对应的源码：[Reflector ListAndWatch](https://github.com/kubernetes/client-go/blob/6df09021f998a3b005b8612d21c254b1b4d3d48b/tools/cache/reflector.go#L322)。
-	
+
 1. Reflector 将 List 得到的资源列表和后续的资源变化放到一个 FIFO（先进先出）队列中。
 
     对应的源码：
@@ -280,11 +280,11 @@ func main() {
 1. Informer 将从 FIFO 队列中拿出的资源对象放到 Indexer 中。对应的源码：[processDeltas](https://github.com/kubernetes/client-go/blob/012954e4d5d6e5d0923a00a5a49f76a8a3f11438/tools/cache/controller.go#L473)。
 
     Indexer 是 Informer 中的一个本地缓存，该缓存提供了索引功能（这是该组件取名为 Indexer 的原因），允许基于特定条件（如标签、注释或字段选择器）快速有效地查找资源。此处代码中的 clientState 就是 Indexer，来自于[NewIndexerInformer](https://github.com/kubernetes/client-go/blob/012954e4d5d6e5d0923a00a5a49f76a8a3f11438/tools/cache/controller.go#L392)方法中构建的 Indexer，该 Indexer 作为 clientState 参数传递给了 newInformer 方法。
-   
+
 1. Indexer 将收到的资源对象放入其内部的缓存 [ThreadSafeStore](https://github.com/kubernetes/client-go/blob/012954e4d5d6e5d0923a00a5a49f76a8a3f11438/tools/cache/thread_safe_store.go#L41) 中。
 1. 回调 Controller 的 ResourceEventHandler，将资源对象变化通知到应用逻辑。对应的源码：[processDeltas](https://github.com/kubernetes/client-go/blob/012954e4d5d6e5d0923a00a5a49f76a8a3f11438/tools/cache/controller.go#L476)。
 1. 在 ResourceEventHandler 对资源对象的变化进行处理。
-    
+
 	ResourceEventHandler 处于用户的 Controller 代码中，k8s 推荐的编程范式是将收到的消息放入到一个队列中，然后在一个循环中处理该队列中的消息，执行调谐逻辑。推荐该模式的原因是采用队列可以解耦消息生产者（Informer）和消费者（Controller 调谐逻辑），避免消费者阻塞生产者。在用户代码中需要注意几点：
 	* 前面我们已经讲到，Reflector 会使用 List 的结果刷新 FIFO 队列，因此 ResourceEventHandler 收到的资源变化消息其实包含了 Informer 启动时获取的完整资源列表，Informer 会采用 ADDED 事件将列表的资源通知到用户 Controller。该机制屏蔽了 List 和 Watch 的细节，保证用户的 ResourceEventHandler 代码中会接收到 Controller 监控的资源的完整数据，包括启动 Controller 前已有的资源数据，以及之后的资源变化。
 	* ResourceEventHandler 中收到的消息中只有资源对象的 key，用户在 Controller 中可以使用该 key 为关键字，通过 Indexer 查询本地缓存中的完整资源对象。
@@ -341,7 +341,7 @@ func (c *Controller) processNextItem() bool {
 	if quit {
 		return false
 	}
-	// Tell the queue that we are done with processing this key. 
+	// Tell the queue that we are done with processing this key.
 	defer c.queue.Done(key)
 
 	// Invoke the method containing the business logic
@@ -1228,11 +1228,3 @@ func getResourceLock(client *kubernetes.Clientset) (resourcelock.Interface, erro
 * [Leader Election](https://pkg.go.dev/k8s.io/client-go/tools/leaderelection)
 * [Leases](https://kubernetes.io/docs/concepts/architecture/leases/)
 * [本文中的示例源码](https://github.com/zhaohuabing/k8scontrollertutorial)
-
-
-
-
-
-
-
-

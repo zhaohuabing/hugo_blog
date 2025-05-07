@@ -7,7 +7,7 @@ description: "CleanWhite is a clean, elegant, but fully functional blog theme fo
 author:     "赵化冰"
 date:       2021-09-26
 image: "https://images.pexels.com/photos/1082655/pexels-photo-1082655.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-published: true
+
 tags:
     - Hugo
 categories: [ Open Source ]

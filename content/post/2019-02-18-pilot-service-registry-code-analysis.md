@@ -8,10 +8,10 @@ author:     "赵化冰"
 date:       2019-02-18
 description: "本文将从代码出发，对Pilot的服务注册插件机制进行分析。"
 image: "/img/post-bg-unix-linux.jpg"
-published: true 
+
 tags:
-    - Service Mesh 
-    - Istio 
+    - Service Mesh
+    - Istio
 
 categories: [ Tech ]
 ---
@@ -24,7 +24,7 @@ categories: [ Tech ]
 
 本文将从代码出发，对Pilot的服务注册机制进行分析。
 
-备注： 本文分析的代码对应Istio commit 58186e1dc3392de842bc2b2c788f993878e0f123 
+备注： 本文分析的代码对应Istio commit 58186e1dc3392de842bc2b2c788f993878e0f123
 
 # 服务注册相关的对象
 首先我们来了解一下Pilot中关于服务注册的一些基本概念和相关数据结构。
@@ -64,7 +64,7 @@ type Service struct {
         // 该服务是否为一个 “外部服务”， 采用 ServiceEntry 定义的服务该标志为true
         MeshExternal bool
 
-        // 服务解析规则： 包括 
+        // 服务解析规则： 包括
         // ClientSideLB: 由Envoy代理根据其本地的LB pool进行请求路由
         // DNSLB: 查询DNS服务器得到IP地址，并将请求发到该IP
         // Passthrough： 将请求发转发到其原始目的地
@@ -181,13 +181,13 @@ type ServiceDiscovery interface {
 
         // 根据主机名，服务端点和标签查询服务实例
         InstancesByPort(hostname Hostname, servicePort int, labels LabelsCollection) ([]*ServiceInstance, error)
-		
-		// 查询边车代理所在节点上的服务实例 
+
+		// 查询边车代理所在节点上的服务实例
 		GetProxyServiceInstances(*Proxy) ([]*ServiceInstance, error)
-		
+
 		// 获取边车代理所在的Region,Zone和SubZone
         GetProxyLocality(*Proxy) string
-        
+
 		// 管理端口，Istio生成的配置会将管理端口的流量排除，不进行路由处理
         ManagementPorts(addr string) PortList
 
@@ -263,7 +263,7 @@ func (m *consulMonitor) updateServiceRecord() {
                 return
         }
         newRecord := consulServices(svcs)
-        
+
         if !reflect.DeepEqual(newRecord, m.serviceCachedRecord) {
                 // This is only a work-around solution currently
                 // Since Handler functions generally act as a refresher

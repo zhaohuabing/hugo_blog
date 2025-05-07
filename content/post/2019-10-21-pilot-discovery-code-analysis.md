@@ -8,10 +8,10 @@ author:     "赵化冰"
 date:       2019-10-21
 description: "在Istio架构中，Pilot组件属于最核心的组件，负责了服务网格中的流量管理以及控制面和数据面之间的配置下发。Pilot内部的代码结构比较复杂，本文中我们将通过对Pilot的代码的深入分析来了解Pilot实现原理。"
 image: "/img/post-bg-unix-linux.jpg"
-published: true 
+
 tags:
-    - Service Mesh 
-    - Istio 
+    - Service Mesh
+    - Istio
 
 categories: [ Tech ]
 ---
@@ -135,7 +135,7 @@ Pilot和Envoy之间建立的是一个双向的Streaming GRPC服务调用，因�
 ```go
 // StreamAggregatedResources implements the ADS interface.
 func (s *DiscoveryServer) StreamAggregatedResources(stream ads.AggregatedDiscoveryService_StreamAggregatedResourcesServer) error {
-        
+
     ......
 
     //创建一个goroutine来接收来自Envoy的xDS请求，并将请求放到reqChannel中
@@ -144,11 +144,11 @@ func (s *DiscoveryServer) StreamAggregatedResources(stream ads.AggregatedDiscove
     go receiveThread(con, reqChannel, &receiveError)
 
      ......
-    
+
     for {
         select{
         //从reqChannel接收Envoy端主动发起的xDS请求
-        case discReq, ok := <-reqChannel:        
+        case discReq, ok := <-reqChannel:
             //根据请求的类型构造相应的xDS Response并发送到Envoy端
             switch discReq.TypeUrl {
             case ClusterType:
@@ -164,14 +164,14 @@ func (s *DiscoveryServer) StreamAggregatedResources(stream ads.AggregatedDiscove
         //从PushChannel接收Service或者Config变化后的通知
         case pushEv := <-con.pushChannel:
             //将变化内容推送到Envoy端
-            err := s.pushConnection(con, pushEv)   
-        }            
+            err := s.pushConnection(con, pushEv)
+        }
     }
 }
 ```
 
 ### 处理服务和配置变化的关键代码
- 
+
 该部分关键代码位于 `istio.io/istio/pilot/pkg/proxy/envoy/v2/discovery.go` 文件中，用于监听服务和配置变化消息，并将变化消息合并后通过Channel发送给前面提到的 StreamAggregatedResources 方法进行处理。
 
 ConfigUpdate是处理服务和配置变化的回调函数，service controller和config controller在发生变化时会调用该方法通知Discovery Server。

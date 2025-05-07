@@ -8,7 +8,7 @@ author:     "Huabing Zhao"
 date:       2020-02-24
 description: "在计算机网络中，TUN与TAP是操作系统内核中的虚拟网络设备。不同于普通靠硬件网路板卡实现的设备，这些虚拟的网络设备全部用软件实现，并向运行于操作系统上的软件提供与硬件的网络设备完全相同的功能。"
 image: "https://images.pexels.com/photos/1172105/pexels-photo-1172105.jpeg"
-published: true
+
 tags:
     - Linux
     - Tun/Tap
@@ -80,4 +80,3 @@ VPN主机上有两个物理网卡，其中Eth0用于和对方站点的VPN主机�
 * [Universal TUN/TAP device driver Frequently Asked Question](http://vtun.sourceforge.net/tun/faq.html)
 * [Tun/Tap interface tutorial](https://backreference.org/2010/03/26/tuntap-interface-tutorial/)
 * [A simplistic, simple-minded, naive tunnelling program using tun/tap interfaces and TCP](https://github.com/gregnietsky/simpletun/blob/master/simpletun.c)
-

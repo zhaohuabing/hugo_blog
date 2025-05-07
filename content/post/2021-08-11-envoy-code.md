@@ -7,7 +7,7 @@ description: "最近在实现 MetaProtocol 时阅读了 Envoy 相关的一些源
 author:     "赵化冰"
 date:       2021-08-11
 image: "https://upload.wikimedia.org/wikipedia/commons/a/a3/Lake_in_Dome_Creek.jpg"
-published: true
+
 tags:
     - Envoy
 categories: [ Tech ]
@@ -26,7 +26,7 @@ categories: [ Tech ]
 # RDS
 
 RDS（路由发现服务）的代码包括下面三个主要的流程：
-* 订阅 RDS 
+* 订阅 RDS
     * 执行线程：[Main Thread](https://blog.envoyproxy.io/envoy-threading-model-a8d44b922310)
     * 工作流程：RDS 订阅是在 HCM 配置工厂类中处理的，详细流程如下：
         1. Envoy 在初始化 Network Filter Chain 时调用 HttpConnectionManagerFilterConfigFactory 的 createFilterFactoryFromProtoTyped 方法。
@@ -38,7 +38,7 @@ RDS（路由发现服务）的代码包括下面三个主要的流程：
      * 工作流程：
        1. RdsRouteConfigSubscription 的 onConfigUpdate 方法收到 RDS 配置更新的回调，然后调用 RdsRouteConfigProvider 的 onConfigUpdate 方法。[（相关代码）](https://github.com/envoyproxy/envoy/blob/5b4bad85bd7adb923cf25dd319f8f3f45b7c2670/source/common/router/rds_impl.cc#L115)
        2. RdsRouteConfigProvider 通过 [Thread local storage](https://blog.envoyproxy.io/envoy-threading-model-a8d44b922310) 机制将配置更新到各个 worker thread 中。
-* 使用 RDS 配置对请求进行路由 
+* 使用 RDS 配置对请求进行路由
     * 执行线程：[Worker Thread](https://blog.envoyproxy.io/envoy-threading-model-a8d44b922310)
     * 工作流程：
       1. Envoy 调用到 Network Filter Chain 中的 HCM filter。

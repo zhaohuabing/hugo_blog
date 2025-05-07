@@ -7,7 +7,7 @@ description: "本场分享将介绍腾讯音乐使用 Istio + Aeraki 的服务�
 author:     "赵化冰"
 date:       2022-04-26
 image: "https://events.istio.io/istiocon-2022/images/hero-background2.jpg"
-published: true
+
 showtoc: false
 tags:
     - Istio
@@ -67,6 +67,4 @@ B站
 {{< bilibili  BV1sR4y1w7yf >}}
 
 YouTube
-{{< youtube HlqND67lVXw >}} 
-
-
+{{< youtube HlqND67lVXw >}}

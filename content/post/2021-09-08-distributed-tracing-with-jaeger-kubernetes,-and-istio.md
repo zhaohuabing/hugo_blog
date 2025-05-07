@@ -7,7 +7,7 @@ description: "In this series of liveProjects, you’ll deploy distributed tracin
 author:     "赵化冰"
 date:       2021-09-06
 image: "https://images.pexels.com/photos/4183522/pexels-photo-4183522.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-published: true
+
 tags:
     - Istio
     - Service Mesh
@@ -22,8 +22,8 @@ metadata:
     - text: "Get this lesson with 30% discount"
       link: "https://www.manning.com/bundles/distributed-tracing-ser?utm_source=zhaohuabing&utm_medium=affiliate&utm_campaign=liveproject_zhao_distributed_9_7_21&a_aid=zhaohuabing&a_bid=ce8ffc93"
 ---
-[**30% off** 👉👉👉 Get this lesson now with my special discount!](https://www.manning.com/bundles/distributed-tracing-ser?utm_source=zhaohuabing&utm_medium=affiliate&utm_campaign=liveproject_zhao_distributed_9_7_21&a_aid=zhaohuabing&a_bid=ce8ffc93) 
-[**30% off** 👉👉👉 Get more Manning books with my special discount!](https://www.manning.com/?utm_source=zhaohuabing&utm_medium=affiliate&utm_campaign=affiliate&a_aid=zhaohuabing) 
+[**30% off** 👉👉👉 Get this lesson now with my special discount!](https://www.manning.com/bundles/distributed-tracing-ser?utm_source=zhaohuabing&utm_medium=affiliate&utm_campaign=liveproject_zhao_distributed_9_7_21&a_aid=zhaohuabing&a_bid=ce8ffc93)
+[**30% off** 👉👉👉 Get more Manning books with my special discount!](https://www.manning.com/?utm_source=zhaohuabing&utm_medium=affiliate&utm_campaign=affiliate&a_aid=zhaohuabing)
 
 [**优惠30%** 👉👉👉 采用我的专属折扣链接购买本在线课程！](https://www.manning.com/bundles/distributed-tracing-ser?utm_source=zhaohuabing&utm_medium=affiliate&utm_campaign=liveproject_zhao_distributed_9_7_21&a_aid=zhaohuabing&a_bid=ce8ffc93)
 [**优惠30%** 👉👉👉 采用我的专属折扣链接购买 Manning 书籍！](https://www.manning.com/?utm_source=zhaohuabing&utm_medium=affiliate&utm_campaign=affiliate&a_aid=zhaohuabing)

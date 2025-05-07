@@ -8,7 +8,7 @@ author:     "Huabing Zhao"
 date:       2020-06-12
 description: "How can we quickly integrate these existing microservices projects with Istio at minimal modifications? In this post, I will first explain the service registry mechanism of Istio, and then propose several possible options to integrate third-party service discovery with Istio."
 image: "https://cdn.pixabay.com/photo/2017/09/17/16/35/boats-2758962_1280.jpg"
-published: true
+
 tags:
     - Istio
 categories: [ Tech ]

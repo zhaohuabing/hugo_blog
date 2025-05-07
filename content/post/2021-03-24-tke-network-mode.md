@@ -7,7 +7,7 @@ description: "在实现 K8s 网络模型时，为了应对不同的使用场景�
 author:     "赵化冰"
 date:       2021-03-24
 image: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Roosa_hommikuudu_Tolkuse_rabas.jpg/2560px-Roosa_hommikuudu_Tolkuse_rabas.jpg"
-published: true
+
 tags:
     - Tencent
     - TKE
@@ -42,7 +42,7 @@ Global Router 模式为每一个虚拟机分配了一个容器子网网段。一
     link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
     inet 127.0.0.1/8 scope host lo
        valid_lft forever preferred_lft forever
-3: eth0@if6: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default 
+3: eth0@if6: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default
     link/ether f6:b9:8c:3d:62:8c brd ff:ff:ff:ff:ff:ff link-netnsid 0
     inet 172.20.0.3/26 brd 172.20.0.63 scope global eth0
        valid_lft forever preferred_lft forever
@@ -60,15 +60,15 @@ NIC statistics:
     link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
     inet 127.0.0.1/8 scope host lo
        valid_lft forever preferred_lft forever
-    inet6 ::1/128 scope host 
+    inet6 ::1/128 scope host
        valid_lft forever preferred_lft forever
 2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
     link/ether 52:54:00:cf:9f:ad brd ff:ff:ff:ff:ff:ff
     inet 10.0.0.29/24 brd 10.0.0.255 scope global noprefixroute eth0
        valid_lft forever preferred_lft forever
-    inet6 fe80::5054:ff:fecf:9fad/64 scope link 
+    inet6 fe80::5054:ff:fecf:9fad/64 scope link
        valid_lft forever preferred_lft forever
-3: docker0: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN group default 
+3: docker0: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN group default
     link/ether 02:42:07:83:f1:3a brd ff:ff:ff:ff:ff:ff
     inet 169.254.32.1/28 brd 169.254.32.15 scope global docker0
        valid_lft forever preferred_lft forever
@@ -76,19 +76,19 @@ NIC statistics:
     link/ether f6:23:3e:66:b2:51 brd ff:ff:ff:ff:ff:ff
     inet 172.20.0.1/26 brd 172.20.0.63 scope global cbr0
        valid_lft forever preferred_lft forever
-    inet6 fe80::f423:3eff:fe66:b251/64 scope link 
+    inet6 fe80::f423:3eff:fe66:b251/64 scope link
        valid_lft forever preferred_lft forever
-5: Veth88a01d46@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue master cbr0 state UP group default 
+5: Veth88a01d46@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue master cbr0 state UP group default
     link/ether 4e:02:63:5d:29:44 brd ff:ff:ff:ff:ff:ff link-netnsid 0
-    inet6 fe80::4c02:63ff:fe5d:2944/64 scope link 
+    inet6 fe80::4c02:63ff:fe5d:2944/64 scope link
        valid_lft forever preferred_lft forever
-6: Vethdc4b21b7@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue master cbr0 state UP group default 
+6: Vethdc4b21b7@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue master cbr0 state UP group default
     link/ether 66:b8:19:aa:9f:91 brd ff:ff:ff:ff:ff:ff link-netnsid 1
-    inet6 fe80::64b8:19ff:feaa:9f91/64 scope link 
+    inet6 fe80::64b8:19ff:feaa:9f91/64 scope link
        valid_lft forever preferred_lft forever
-7: Veth91fbf97b@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue master cbr0 state UP group default 
+7: Veth91fbf97b@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue master cbr0 state UP group default
     link/ether 0a:17:bd:8e:7b:d4 brd ff:ff:ff:ff:ff:ff link-netnsid 2
-    inet6 fe80::817:bdff:fe8e:7bd4/64 scope link 
+    inet6 fe80::817:bdff:fe8e:7bd4/64 scope link
        valid_lft forever preferred_lft forever
 ```
 
@@ -110,9 +110,9 @@ NIC statistics:
 
 ```bash
 [root@VM-0-29-centos ~]# ip link show master cbr0
-6: Vethdc4b21b7@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue master cbr0 state UP mode DEFAULT group default 
+6: Vethdc4b21b7@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue master cbr0 state UP mode DEFAULT group default
     link/ether 66:b8:19:aa:9f:91 brd ff:ff:ff:ff:ff:ff link-netnsid 1
-7: Veth91fbf97b@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue master cbr0 state UP mode DEFAULT group default 
+7: Veth91fbf97b@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue master cbr0 state UP mode DEFAULT group default
     link/ether 0a:17:bd:8e:7b:d4 brd ff:ff:ff:ff:ff:ff link-netnsid 2
 ```
 
@@ -236,7 +236,7 @@ Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
 0.0.0.0         169.254.1.1     0.0.0.0         UG    0      0        0 eth0
 169.254.1.1     0.0.0.0         255.255.255.255 UH    0      0        0 eth0
 
-➜  ~ k exec network-tool-549c7756bd-6tfkf -- arp     
+➜  ~ k exec network-tool-549c7756bd-6tfkf -- arp
 Address                  HWtype  HWaddress           Flags Mask            Iface
 169.254.1.1              ether   e2:62:fb:d2:cb:28   CM                    eth0
 ```
@@ -251,21 +251,21 @@ Address                  HWtype  HWaddress           Flags Mask            Iface
     link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
 2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP mode DEFAULT group default qlen 1000
     link/ether 52:54:00:6a:d6:a9 brd ff:ff:ff:ff:ff:ff
-3: docker0: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN mode DEFAULT group default 
+3: docker0: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN mode DEFAULT group default
     link/ether 02:42:99:5e:7a:5d brd ff:ff:ff:ff:ff:ff
 4: eth1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP mode DEFAULT group default qlen 1000
     link/ether 20:90:6f:cd:76:76 brd ff:ff:ff:ff:ff:ff
-5: eni9cdadcec1a4@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP mode DEFAULT group default 
+5: eni9cdadcec1a4@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP mode DEFAULT group default
     link/ether 72:c9:77:c8:0d:99 brd ff:ff:ff:ff:ff:ff link-netnsid 0
-6: eni90454969e0a@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP mode DEFAULT group default 
+6: eni90454969e0a@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP mode DEFAULT group default
     link/ether d6:bb:78:55:14:a0 brd ff:ff:ff:ff:ff:ff link-netnsid 1
-10: enia59decf1cc3@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP mode DEFAULT group default 
+10: enia59decf1cc3@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP mode DEFAULT group default
     link/ether e6:b6:ea:2c:b6:16 brd ff:ff:ff:ff:ff:ff link-netnsid 5
-11: eniec98d9f243c@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP mode DEFAULT group default 
+11: eniec98d9f243c@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP mode DEFAULT group default
     link/ether aa:ab:c2:5d:05:90 brd ff:ff:ff:ff:ff:ff link-netnsid 2
-13: eni78dddf1c1d5@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP mode DEFAULT group default 
+13: eni78dddf1c1d5@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP mode DEFAULT group default
     link/ether 02:00:e7:ff:5e:b1 brd ff:ff:ff:ff:ff:ff link-netnsid 4
-16: eni8ba8b48a483@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP mode DEFAULT group default 
+16: eni8ba8b48a483@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP mode DEFAULT group default
     link/ether e2:62:fb:d2:cb:28 brd ff:ff:ff:ff:ff:ff link-netnsid 3
 ```
 
@@ -290,10 +290,10 @@ Address                  HWtype  HWaddress           Flags Mask            Iface
 32767:	from all lookup default
 
 [root@VM-0-49-centos ~]# ip route show table main
-default via 10.0.0.1 dev eth0 proto dhcp metric 100 
-default via 10.0.0.1 dev eth1 proto dhcp metric 101 
-10.0.0.0/24 dev eth0 proto kernel scope link src 10.0.0.49 metric 100 
-10.0.0.41 dev eniec98d9f243c scope link⁵ 
+default via 10.0.0.1 dev eth0 proto dhcp metric 100
+default via 10.0.0.1 dev eth1 proto dhcp metric 101
+10.0.0.0/24 dev eth0 proto kernel scope link src 10.0.0.49 metric 100
+10.0.0.41 dev eniec98d9f243c scope link⁵
 10.0.0.44 dev eni8ba8b48a483 scope link⁶
 
 [root@VM-0-49-centos ~]# ip route show table 100
@@ -303,7 +303,7 @@ default via 10.0.0.1 dev eth1 onlink
 
 ## 出向 - 从虚拟机到物理机
 
-类似地，上标为 3 和 4 的两条路由策略指定源地址为本虚拟机点中 Pod IP 地址的数据包采用 100 路由表。在该路由表中只有一条缺省路由，将这些数据包通过 eth1 接口发送到网关 10.0.0.1。 
+类似地，上标为 3 和 4 的两条路由策略指定源地址为本虚拟机点中 Pod IP 地址的数据包采用 100 路由表。在该路由表中只有一条缺省路由，将这些数据包通过 eth1 接口发送到网关 10.0.0.1。
 
 在这之后的流程和 Global Router 模式相同，会采用 vhost-net/virtio-net 将数据包从虚拟机发送到物理机上。和 Global Router 唯一不同的是，VPC-CNI 采用了独立的弹性网卡 eth1 来处理 Pod 的流量，并未像 Global Router 模式一样使用虚拟机自身的 eth0。
 
@@ -333,10 +333,10 @@ default via 10.0.0.1 dev eth1 onlink
 
 ``` bash
 [root@VM-0-40-centos ~]# ip route show table main
-default via 10.0.0.1 dev eth0 proto dhcp metric 100 
-default via 10.0.0.1 dev eth1 proto dhcp metric 101 
-10.0.0.0/24 dev eth0 proto kernel scope link src 10.0.0.22 metric 100 
-10.0.0.30 dev eni0f548c70045 scope link⁷ 
+default via 10.0.0.1 dev eth0 proto dhcp metric 100
+default via 10.0.0.1 dev eth1 proto dhcp metric 101
+10.0.0.0/24 dev eth0 proto kernel scope link src 10.0.0.22 metric 100
+10.0.0.30 dev eni0f548c70045 scope link⁷
 10.0.0.35 dev eni353b4974c2c scope link
 ```
 
@@ -374,4 +374,3 @@ default via 10.0.0.1 dev eth1 proto dhcp metric 101
 * [Linux network namespace， Veth， birdge与路由](https://zhaohuabing.com/post/2020-03-12-linux-network-virtualization)
 * [vhost-net/virtio-net 原理](https://www.eet-china.com/mp/a13515.html)
 * [Virtio-networking series](https://www.redhat.com/en/virtio-networking-series)
-

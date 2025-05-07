@@ -6,7 +6,7 @@ description: "如何配置docker使用HTTP代理"
 date:       2018-03-13 18:00:00
 author:     "赵化冰"
 image: "/img/docker.jpg"
-published: true
+
 tags:
     - Docker
 URL: "/2018/03/13/use-docker-behind-http-proxy/"

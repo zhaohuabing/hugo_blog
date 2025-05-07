@@ -8,7 +8,7 @@ author:     "赵化冰"
 date:       2020-09-19
 description: "本系列文章将介绍用户从 Spring Cloud，Dubbo 等传统微服务框架迁移到 Istio 服务网格时的一些经验，以及在使用 Istio 过程中可能遇到的一些常见问题的解决方法。"
 image: "https://images.pexels.com/photos/356043/pexels-photo-356043.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-published: true
+
 tags:
     - Istio
     - Envoy
@@ -94,10 +94,10 @@ eureka-server-2                  1/1     Running   0          6h56m   172.16.1.3
       "lb_policy": "CLUSTER_PROVIDED",
    ...
 
-}  
+}
 ```
 
-根据 [Envoy 的文档说明](https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/upstream/service_discovery#arch-overview-service-discovery-types)，“ORIGINAL_DST” 的解释为： 
+根据 [Envoy 的文档说明](https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/upstream/service_discovery#arch-overview-service-discovery-types)，“ORIGINAL_DST” 的解释为：
 
 > In these cases requests routed to an original destination cluster are forwarded to upstream hosts as addressed by the redirection metadata, without any explicit host configuration or upstream host discovery.
 

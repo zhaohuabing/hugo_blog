@@ -7,7 +7,7 @@ description: "Envoy Gateway 项目 Maintainer Alice Wasko 谈 Envoy Gateway 项�
 author: "赵化冰"
 date: 2023-11-16
 image: "https://images.unsplash.com/photo-1597116789352-9ad0fe0cb197?q=80&w=3432&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-published: true
+
 tags:
     - KubeCon
     - Istio
@@ -38,7 +38,7 @@ Alice, could you please briefly introduce yourself? Where are you from？What ar
 
 Alice: Thanks. Hi, I'm Alice, I am from Oregon, the United States. So right now I'm mostly working on various ingress projects such as Emissary and Envoy Gateway. What really first got me interested in the Envoy Gateway project was a colleague of mine who works on Emissary, which is another open source Ingress project was getting involved with the Envoy Gateway.
 
-He had come together with a few other individuals from other projects similar to Emissary. And we decided like there's a lot of people that are working on ingress projects. So we decided to get all of that talents together in one room and focus all of our efforts on a single project that everybody could benefit from, and hopefully take some of the learnings of these projects that have been around for a while, and then start create a new project and make it really solid from the ground after taking all of those learnings and lessons from those other projects. 
+He had come together with a few other individuals from other projects similar to Emissary. And we decided like there's a lot of people that are working on ingress projects. So we decided to get all of that talents together in one room and focus all of our efforts on a single project that everybody could benefit from, and hopefully take some of the learnings of these projects that have been around for a while, and then start create a new project and make it really solid from the ground after taking all of those learnings and lessons from those other projects.
 
 Huabing: Yeah. That makes a lot of sense because you don't want to  work on the same thing , you know, in multiple countries, multiple organizations.
 

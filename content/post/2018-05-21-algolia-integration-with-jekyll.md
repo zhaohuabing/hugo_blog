@@ -5,9 +5,9 @@ subtitle:   ""
 date:       2018-05-21 11:00:00
 author:     "赵化冰"
 image: "/img/2018-05-06-cryptocurrency_week1/bitcoin_header.jpg"
-published: false 
+draft: true
 tags:
-    - Jekyll:q 
+    - Jekyll:q
     - Bitcoin
 categories: [ Tech ]
 URL: "/2018/05/21/algolia-integration-with-jekyll"
@@ -16,7 +16,7 @@ URL: "/2018/05/21/algolia-integration-with-jekyll"
 
 > This series of articles are my notes of "Bitcoin and Cryptocurrency Technologies" online course.
 
-## Table of Content 
+## Table of Content
 {:.no_toc}
 
 * Table of Content
@@ -27,9 +27,9 @@ Scrooge Coin programming assignment is a little bit tricky, the video of this le
 ![Scrooge Coin](/img//2018-5-20-cryptocurrency_week1_scroogecoin/scroogecoin.png)
 
 <!--more-->
-Every transaction has a set of inputs and a set of outputs. An input in a transaction must use a hash pointer to refer to its corresponding output in the previous transaction, and it must be signed with the private key of the owner because the owner needs to prove he/she agrees to spend his/her coins.  
+Every transaction has a set of inputs and a set of outputs. An input in a transaction must use a hash pointer to refer to its corresponding output in the previous transaction, and it must be signed with the private key of the owner because the owner needs to prove he/she agrees to spend his/her coins.
 
-Every output is correlated to the public key of the receiver, which is his/her ScroogeCoin address. 
+Every output is correlated to the public key of the receiver, which is his/her ScroogeCoin address.
 
 In the first transaction, we assume that Scrooge has created 10 coins and assigned them to himself, we don't doubt that because the system-Scroogecoin has a building rule which says that Scrooge has right to create coins.
 

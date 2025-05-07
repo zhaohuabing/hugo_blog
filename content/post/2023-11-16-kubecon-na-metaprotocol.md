@@ -7,7 +7,7 @@ description: "我在 KubeCon NA 上分享了基于 Envoy 的通用七层协议�
 author: "赵化冰"
 date: 2023-11-16
 image: "/img/2023-11-16-kubecon-na-metaprotocol/kubecon-na.jpg"
-published: true
+
 tags:
     - KubeCon
     - Envoy

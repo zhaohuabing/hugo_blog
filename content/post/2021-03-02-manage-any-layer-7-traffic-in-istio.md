@@ -8,7 +8,7 @@ author:     "赵化冰"
 date:       2021-03-02
 description: "本文根据腾讯云赵化冰和知乎唐阳在 IstioCon 2021 中的演讲 “How to Manage Any Layer-7 Traffic in an Istio Service Mesh?” 整理而成。"
 image: "https://images.pexels.com/photos/194094/pexels-photo-194094.jpeg?cs=srgb&dl=pexels-miguel-%C3%A1-padri%C3%B1%C3%A1n-194094.jpg&fm=jpg"
-published: true
+
 tags:
     - Aeraki
     - Istio
@@ -189,4 +189,4 @@ B站
 {{< bilibili BV1aA411T7rH >}}
 
 YouTube
-{{< youtube k6bXDMs9E_A >}} 
+{{< youtube k6bXDMs9E_A >}}

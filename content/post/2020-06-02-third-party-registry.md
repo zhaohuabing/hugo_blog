@@ -8,7 +8,7 @@ author:     "赵化冰"
 date:       2020-06-02
 description: "目前越来越多的微服务项目开始考虑将自己的微服务基础设施向 Istio 进行迁移。然而对于大量使用了 Consul，Eureka 或者自建服务注册中心的项目来说，如何能够以最小的代价快速地将现有微服务项目和 Istio 进行集成，以享受 Istio 提供的各种服务治理能力呢？本文将分析 Istio 服务注册机制的原理，并提出几种 Istio 与第三方服务注册中心集成的可行方案，以供读者参考。"
 image: "https://cdn.pixabay.com/photo/2017/09/17/16/35/boats-2758962_1280.jpg"
-published: true
+
 tags:
     - Istio
 categories: [ Tech ]

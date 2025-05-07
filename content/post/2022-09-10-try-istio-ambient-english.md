@@ -7,7 +7,7 @@ description: ""
 author: "Huaing Zhao"
 date: 2022-09-10
 image: "https://images.unsplash.com/photo-1558403871-bb6e8113a32e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2662&q=80"
-published: true
+
 tags:
     - Istio
     - Envoy
@@ -90,7 +90,7 @@ You can add all application workloads in a namespace to the ambient mesh by labe
 
 ```bash
 kubectl label namespace default istio.io/dataplane-mode=ambient
-``` 
+```
 
 The istio-cni component watches the namespace added to the ambient mesh and will set the appropriate traffic redirection policy. If we check the istio-cni logs, we can see that istio-cni creates the appropriate routing rules for the application pod.
 
@@ -107,7 +107,7 @@ kubectl logs istio-cni-node-nxcnf -n istio-system|grep route
 Access the productpage from sleep:
 
 ```bash
-kubectl exec deploy/sleep -- curl -s http://productpage:9080/ 
+kubectl exec deploy/sleep -- curl -s http://productpage:9080/
 ```
 
 We should be able to see the output of the productpage service. At this point the traffic has been authenticated and encrypted in both directions with mTLS via ztunnel. We should be able to see the access logs from the ztunnel on the sleep and productpage nodes.
@@ -158,7 +158,7 @@ bookinfo-productpage-waypoint-proxy-7dc7c7ff6-6q6l7   1/1     Running   0       
 Access the productpage from sleep.
 
 ```bash
-kubectl exec deploy/sleep -- curl -s http://productpage:9080/ 
+kubectl exec deploy/sleep -- curl -s http://productpage:9080/
 ```
 
 Let’s look at the actual path that the request goes through.
@@ -286,13 +286,3 @@ Aywany, ambient is still in active development, so I believe these minor issues 
 
 # Reference
 * https://istio.io/latest/blog/2022/get-started-ambient/
-
-
-
-
-
-
-
-
-
-

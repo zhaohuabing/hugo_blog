@@ -8,10 +8,10 @@ author:     "赵化冰"
 date:       2019-11-23
 description: "what is the relationship between Service Mesh and SDN — Is Service Mesh the next generation of SDN? What can Service Mesh learn from the experience of SDN? I’d like to share some of my own opinions in this article."
 image: "https://upload.wikimedia.org/wikipedia/commons/f/f0/%CE%91%CE%B8%CE%B1%CE%BC%CE%B1%CE%BD%CE%B9%CE%BA%CE%AC_%CE%8C%CF%81%CE%B7_%CF%85%CF%80%CF%8C_%CF%84%CE%BF_%CF%86%CF%89%CF%82_%CF%84%CE%BF%CF%85_%CE%A6%CE%B5%CE%B3%CE%B3%CE%B1%CF%81%CE%B9%CE%BF%CF%8D_-_%CE%A3%CF%84%CE%AC%CE%B8%CE%B7%CF%82_%CE%9A%CE%BF%CF%85%CF%84%CF%83%CE%B9%CE%B1%CF%8D%CF%84%CE%B7%CF%82.jpg"
-published: true 
+
 tags:
-    - Service Mesh 
-    - Istio 
+    - Service Mesh
+    - Istio
     - SDN
 
 categories: [ Tech ]

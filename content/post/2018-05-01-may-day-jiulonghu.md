@@ -7,7 +7,7 @@ description: "五一节前的一周内，几个朋友就纷纷坐不住了，一
 date:       2018-05-01
 author:     "赵化冰"
 image: "/img/2018-05-01-may-day-jiulonghu/snowmountain.jpg"
-published: true
+
 hide-in-home: true
 tags:
     - Travel
@@ -134,6 +134,3 @@ URL: "/2018/05/01/may-day-jiulonghu"
 
 
 > 请注意：川西地区山路路况复杂，请勿根据博客内容自行前往，否则一切后果自负。
-
-
-

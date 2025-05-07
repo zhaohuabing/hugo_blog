@@ -8,7 +8,7 @@ author:     "赵化冰"
 date:       2019-06-25
 description: "奇妙的 2019 KubeCon + ClondNativeCon + Open Source Summit 大会！在这里，我近距离接触了大神 Linus；见到了来自 ServiceMesher 社区的很多朋友；还遇到了搞 Kubernetes 的恩格斯后人!"
 image: "/img/2019-06-25-kubecon-cncf-oss-2019/background.jpg"
-published: true
+
 tags:
 categories: [ Tech ]
 ---
@@ -60,7 +60,7 @@ Zemlin后面是CNCF执行董事Dan Kohn的演讲，Dan没有考虑到中国听�
 
 然后是Huawei的赞助广告演讲，印象最深的是华为将开源方舟编译器，看得出是在为鸿蒙操作系统的生态圈布局。
 
-最激动人心的时刻莫过于Linux上台了，Linus一上台就开了一个典型的Linus类型的玩笑：I don't like presentation, because I don't like preparing the slides and worrying about the audience's response. So I do talk instead of presentation, if it turns out well, it's my credit; if it sucks, you should blame the one who asks silly questions. 
+最激动人心的时刻莫过于Linux上台了，Linus一上台就开了一个典型的Linus类型的玩笑：I don't like presentation, because I don't like preparing the slides and worrying about the audience's response. So I do talk instead of presentation, if it turns out well, it's my credit; if it sucks, you should blame the one who asks silly questions.
 
 看着Linus淘气的小眼神，Dirk Hohndel的内心是崩溃的，下面的问题可不能问错了 :-)
 ![](/img/2019-06-25-kubecon-cncf-oss-2019/linus.jpg)
@@ -157,8 +157,3 @@ ServiceMesher社区的朋友们
 * Service Mesh已经从去年的概念阶段逐渐进入试商用阶段，并且成为各大云平台基础设施的一部分。
 * 由于多厂商竞争和对hybrid cloud的支持要求，SMI（Service Mesh Interface）得到了较多支持，虽然目前还不成熟，但估计在下半年到明年会逐渐成熟并形成生态，到时Istio也不得不加入SMI并对其进行兼容。
 * 对于中小企业而言，hybrid cloud是一个强需求。需要用一个统一的界面来屏蔽差异，共同管理private/public/multi cloud。
-
-
-
-
-

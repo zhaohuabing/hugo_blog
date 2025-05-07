@@ -6,7 +6,7 @@ description: "使用Visual Basic Script脚本和Windows定时任务自动设置w
 author:     "赵化冰"
 date:     2017-11-23
 image: ""
-published: true
+
 tags:
 URL: "/2017/11/23/windows-proxy-scripts/"
 categories: [ Tech ]
@@ -27,7 +27,7 @@ categories: [ Tech ]
 注意需要将下面脚本中的proxy_server的值改为你网络环境中的代理服务器的IP和端口。
 该脚本根据IP地址的范围来判断是否处于办公环境，如果IP为10.*的网络，则认为在办公环境中，设置代理服务器；否则就认为是在家里的网络中，删除代理服务器。如果你的IP范围不同，可以根据实际情况修改。将脚本保存为setproxy.vbs。
 
-``` 
+```
 Const proxy_server="http://your_proxy_server:port"
 Const ip_prefix="10"
 
@@ -83,6 +83,3 @@ Event ID: 10000
 执行动作选择刚才创建的脚本就可以了。
 
 ![Windows任务触发条件](/img//windows-proxy-script/windows-task-trigger.PNG)
-
-
-

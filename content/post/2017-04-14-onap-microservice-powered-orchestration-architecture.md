@@ -8,7 +8,7 @@ author:     "赵化冰"
 date:       2017-04-17
 description: "In this session, I'll talk about the MSB(Microservice BUS) project we have been using in OPEN-O as the fabric for Microservice communications."
 image: "https://images.pexels.com/photos/161764/golden-gate-bridge-suspension-san-francisco-california-161764.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-published: true
+
 showtoc: false
 tags:
     - ONAP
@@ -31,7 +31,7 @@ First, I will start with why we choose Microservice Architecture in OPEN-O.
 
 Then, I’d like to talk about the challenges we were facing when we turn to the microservice approach.
 
-Finally, How we address these challenges in OPEN-O with the help of Microservice BUS 
+Finally, How we address these challenges in OPEN-O with the help of Microservice BUS
 And what’s the potential benefit MSB could bring to ONAP.
 
 MSB Architecture:

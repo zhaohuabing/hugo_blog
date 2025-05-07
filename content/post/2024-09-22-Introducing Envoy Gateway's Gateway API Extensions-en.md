@@ -6,7 +6,7 @@ description: 'As the official Gateway Controller for the Envoy, Envoy Gateway pr
 author: "Huabing Zhao（Envoy Gateway Maintainer）"
 date: 2024-08-31
 image: "/img/2024-08-31-introducing-envoy-gateways-gateway-api-extensions/IMG_1624.JPG"
-published: true
+
 tags: [Envoy, Envoy Gateway]
 categories: [Tech,Open Source]
 showtoc: true
@@ -107,11 +107,11 @@ spec:
           port: 80
 ```
 
-Although the Gateway API offers more functionality than Ingress, it’s important to remember that <font color="red"> **any standard, no matter how well-defined, can only serve as the lowest common denominator across all implementations** </font>. The Gateway API is no exception. Because the Gateway API is designed as a universal API specification to ensure wide compatibility, it cannot directly support features that are closely linked to specific implementation details. 
+Although the Gateway API offers more functionality than Ingress, it’s important to remember that <font color="red"> **any standard, no matter how well-defined, can only serve as the lowest common denominator across all implementations** </font>. The Gateway API is no exception. Because the Gateway API is designed as a universal API specification to ensure wide compatibility, it cannot directly support features that are closely linked to specific implementation details.
 
 For instance, although features like rate limiting and access control are essential in real-world scenarios, they are implemented differently across data planes like Envoy and NGINX. Because of these differences, the Gateway API cannot offer a universal standard for such functionalities. This is also why the Ingress API saw a proliferation of annotations and custom API resources to fill those gaps.
 
-<font color="red"> **A key innovation of the Gateway API is the [Policy Attachment⁵](https://gateway-api.sigs.k8s.io/reference/policy-attachment/) mechanism, which allows controllers to extend the API’s capabilities through custom policies without modifying the Gateway API itself**</font>. By associating custom policies with resources like Gateway and HTTPRoute, this feature enhances the API’s flexibility and enables advanced traffic management, security, and custom extensions. 
+<font color="red"> **A key innovation of the Gateway API is the [Policy Attachment⁵](https://gateway-api.sigs.k8s.io/reference/policy-attachment/) mechanism, which allows controllers to extend the API’s capabilities through custom policies without modifying the Gateway API itself**</font>. By associating custom policies with resources like Gateway and HTTPRoute, this feature enhances the API’s flexibility and enables advanced traffic management, security, and custom extensions.
 
 In addition to Policy Attachment, the Gateway API aslo supports other extension mechanisms, such as linking custom Backend resources to HTTPRoute and GRPCRoute for routing traffic to non-standard backends, as well as adding custom Filter resources for handling requests and responses.
 
@@ -251,7 +251,7 @@ Envoy Gateway enhances Envoy’s native Wasm support by allowing Wasm extensions
 
 OCI Image support offers version control and enhanced security for Wasm extensions. You can specify the extension’s version via image tags and enforce accee control by storing them in private registries. Plus, you can leverage the broader OCI ecosystem for packaging, distributing, and managing Wasm extensions.
 
-The diagram below illustrates how Wasm OCI Image works in Envoy Gateway:  
+The diagram below illustrates how Wasm OCI Image works in Envoy Gateway:
 ![](/img/2024-08-31-introducing-envoy-gateways-gateway-api-extensions/8.png)
 <center>Envoy Gateway Wasm OCI Image</center>
 

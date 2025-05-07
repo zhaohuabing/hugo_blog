@@ -8,7 +8,7 @@ author:     "赵化冰"
 date:       2020-08-13
 description: "作为开源 Service Mesh 明星项目 Istio 背后的主要厂商，Google 也在其公有云上推出了 Service Mesh 管理服务。让人迷惑的是 Google Cloud 上有两个 Service Mesh 产品：Traffic Director 与 Anthos Service Mesh。Google 同时推出两个 Servcie Mesh 产品的原因是什么？这两个产品的定位有何不同？"
 image: "img/2020-08-13/background.jpg"
-published: true
+
 tags:
     - Istio
     - Traffic Director
@@ -44,7 +44,7 @@ Traffic Director 采用了 Google Cloud 的一种称为 Backend Service 的服�
 
 ### 服务注册发现资源模型
 
-Traffic Director 的服务注册发现资源模型如下图所示，图中蓝色的图形为 Traffic Director 中使用的资源，桔色的图形为这些资源对应在 K8s 中的概念。Backend Service 是一个逻辑服务，可以看作 K8s 中的 Service，Backend Service 中可以包含 GKE 集群中的 NEG （Network Endpoint Group），GCE 虚拟机 的 MIG （Managed Instance Group），或者无服务的 NEG 。NEG 中则是具体的一个个工作负载，即服务实例。 
+Traffic Director 的服务注册发现资源模型如下图所示，图中蓝色的图形为 Traffic Director 中使用的资源，桔色的图形为这些资源对应在 K8s 中的概念。Backend Service 是一个逻辑服务，可以看作 K8s 中的 Service，Backend Service 中可以包含 GKE 集群中的 NEG （Network Endpoint Group），GCE 虚拟机 的 MIG （Managed Instance Group），或者无服务的 NEG 。NEG 中则是具体的一个个工作负载，即服务实例。
 
 
 ![](/img/2020-08-13/traffic-director-service-discovery.png "Traffic Director 服务发现资源模型")
@@ -64,26 +64,26 @@ Google Cloud 的这一套服务注册的机制并不只是为 Traffic Director �
 2. 创建防火墙规则：需要创建一条防火墙规则，以允许 gcloud 对 GKE NEG 中的服务实例进行健康检查
 
 ```bash
-gcloud compute firewall-rules create fw-allow-health-checks \  
-  --action ALLOW \    
-  --direction INGRESS \    
-  --source-ranges 35.191.0.0/16,130.211.0.0/22 \    
+gcloud compute firewall-rules create fw-allow-health-checks \
+  --action ALLOW \
+  --direction INGRESS \
+  --source-ranges 35.191.0.0/16,130.211.0.0/22 \
   --rules tcp
 ```
 
 3. 创建健康检查
 
 ```bash
-gcloud compute health-checks create http td-gke-health-check \  
+gcloud compute health-checks create http td-gke-health-check \
   --use-serving-port
 ```
 
 4. 创建 Backend Service，创建时需要指定上一步创建的健康检查
 
 ```bash
-gcloud compute backend-services create td-gke-service \ 
-  --global \ 
-  --health-checks td-gke-health-check \ 
+gcloud compute backend-services create td-gke-service \
+  --global \
+  --health-checks td-gke-health-check \
   --load-balancing-scheme INTERNAL_SELF_MANAGED
 ```
 
@@ -92,11 +92,11 @@ gcloud compute backend-services create td-gke-service \
 ```bash
 NEG_NAME=$(gcloud beta compute network-endpoint-groups list \
 | grep service-test | awk '{print $1}')
-gcloud compute backend-services add-backend td-gke-service \ 
-  --global \ 
-  --network-endpoint-group ${NEG_NAME} \ 
-  --network-endpoint-group-zone us-central1-a \ 
-  --balancing-mode RATE \ 
+gcloud compute backend-services add-backend td-gke-service \
+  --global \
+  --network-endpoint-group ${NEG_NAME} \
+  --network-endpoint-group-zone us-central1-a \
+  --balancing-mode RATE \
   --max-rate-per-endpoint 5
 ```
 
@@ -105,27 +105,27 @@ gcloud compute backend-services add-backend td-gke-service \
 1. 创建虚机模版：在创建模版时可以通过命令参数 --service-proxy=enabled 声明使用该模版创建的虚拟机需要安装 Envoy sidecar 代理
 
 ```bash
-gcloud beta compute instance-templates create td-vm-template-auto \    
+gcloud beta compute instance-templates create td-vm-template-auto \
   --service-proxy=enabled
 ```
 
 2. 创建 MIG：使用虚拟机模版创建一个 managed instance group，该 group 中的实例数为2
 
 ```bash
-gcloud compute instance-groups managed create td-vm-mig-us-central1 \    
-  --zone us-central1-a 
-  --size=2 
+gcloud compute instance-groups managed create td-vm-mig-us-central1 \
+  --zone us-central1-a
+  --size=2
   --template=td-vm-template-auto
 ```
 
 3. 创建防火墙规则
 
 ```bash
-gcloud compute firewall-rules create fw-allow-health-checks \  
-  --action ALLOW \  
-  --direction INGRESS \  
-  --source-ranges 35.191.0.0/16,130.211.0.0/22 \  
-  --target-tags td-http-server \  
+gcloud compute firewall-rules create fw-allow-health-checks \
+  --action ALLOW \
+  --direction INGRESS \
+  --source-ranges 35.191.0.0/16,130.211.0.0/22 \
+  --target-tags td-http-server \
   --rules tcp:80
 ```
 
@@ -138,19 +138,19 @@ gcloud compute health-checks create http td-vm-health-check
 5. 创建 Backend Service，创建时需要指定上一步创建的健康检查
 
 ```bash
-gcloud compute backend-services create td-vm-service \ 
-  --global \ 
-  --load-balancing-scheme=INTERNAL_SELF_MANAGED \ 
-  --connection-draining-timeout=30s \ 
+gcloud compute backend-services create td-vm-service \
+  --global \
+  --load-balancing-scheme=INTERNAL_SELF_MANAGED \
+  --connection-draining-timeout=30s \
   --health-checks td-vm-health-check
 ```
 
 6. 将 MIG 加入到上一步创建的 Backend service 中
 
 ```bash
-gcloud compute backend-services add-backend td-vm-service \  
-  --instance-group td-demo-hello-world-mig \  
-  --instance-group-zone us-central1-a \  
+gcloud compute backend-services add-backend td-vm-service \
+  --instance-group td-demo-hello-world-mig \
+  --instance-group-zone us-central1-a \
   --global
 ```
 
@@ -167,7 +167,7 @@ Traffic Director 流量规则相关的控制面资源模型如下图所示，图
 * URL Map：用于设置路由规则，包括规则匹配条件和规则动作两部分。匹配条件支持按照 HTTP 的 Host、Path、Header进行匹配。匹配后可以执行 Traffic Splitting、Redirects、URL Rewrites、Traffic Mirroring、Fault Injection、Header Transformation 等动作。
 * Backend Service：前面在服务发现中已经介绍了 Backend Service 用于服务发现，其实还可以在 Backen Service 上设置流量策略，包括LB策略，断路器配置，实例离线检测等。可以看到 Backend Service 在 Traffic Director 的流量管理模型中同时承担了 Istio 中的 ServiceEntry 和 Destionation Rule 两个资源等功能。
 
-客户端直接通过 VIP 访问服务其实是一个不太友好的方式，因此我们还需要通过一个 DNS 服务将 Rorwarding Rule 中的 VIP 和一个 DNS record 关联起来，在 Google Cloud 中可以采用 [Cloud DNS](https://cloud.google.com/dns/) 来将 Forwarding Rule 的 VIP 关联到一个内部的全局 DNS 名称上。 
+客户端直接通过 VIP 访问服务其实是一个不太友好的方式，因此我们还需要通过一个 DNS 服务将 Rorwarding Rule 中的 VIP 和一个 DNS record 关联起来，在 Google Cloud 中可以采用 [Cloud DNS](https://cloud.google.com/dns/) 来将 Forwarding Rule 的 VIP 关联到一个内部的全局 DNS 名称上。
 
 ![](/img/2020-08-13/traffic-managemetn-resources.png "Traffic Director 流量管理资源模型")
 
@@ -333,10 +333,10 @@ sudo /home/envoy/traffic-director/run.sh start"
 在创建虚拟机模版时添加注入proxy的参数，可以在VM中自动部署Envoy sidecar。
 
 ```bash
-gcloud beta compute instance-templates create td-vm-template-auto \    
+gcloud beta compute instance-templates create td-vm-template-auto \
 --service-proxy=enabled
 
-gcloud compute instance-groups managed create td-vm-mig-us-central1 \    
+gcloud compute instance-groups managed create td-vm-mig-us-central1 \
 --zone us-central1-a --size=2 --template=td-vm-template-auto
 ```
 
@@ -508,7 +508,7 @@ Metric，Access log和 tracing 过 Envoy stackdriver http filter 上报到 Googl
 
 
 ```bash
-g********@cloudshell:~ (huabingzhao-anthos)$ 
+g********@cloudshell:~ (huabingzhao-anthos)$
 export CTX1=gke_huabingzhao-anthos_us-west1-a_anthos-mesh-cluster-1
 
 for i in {1..4}

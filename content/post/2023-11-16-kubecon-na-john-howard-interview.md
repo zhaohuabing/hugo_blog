@@ -7,7 +7,7 @@ description: "Istio 社区核心维护者, 来自 Google 的 John Howard 分享�
 author: "赵化冰"
 date: 2023-11-16
 image: "https://images.unsplash.com/photo-1597116789352-9ad0fe0cb197?q=80&w=3432&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-published: true
+
 tags:
     - KubeCon
     - Istio
@@ -101,13 +101,3 @@ And now I know, you know, that like the back of my hand and I'm very familiar wi
 I've been really fortunate to be able to focus on the same thing for quite a while which I don't think many other people have ended up taking that opportunity. So I'm pretty thankful of, you know what I've been able to do. Ok. Thank you for sharing all this. Yeah, it's been been great talking with you.
 
 Ok, bye bye.
-
-
-
-
-
-
-
-
-
-

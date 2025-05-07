@@ -7,7 +7,7 @@ description: "近日，Aeraki Mesh 正式进入 CNCF 云原生全景图，位于
 author: "赵化冰"
 date: 2022-03-02
 image: "https://images.pexels.com/photos/258045/pexels-photo-258045.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-published: true
+
 tags:
     - Aeraki
     - CNCF
@@ -48,5 +48,3 @@ Aeraki Mesh 是一个厂商中立的开源社区，目前社区正在大力发�
 加入社区会议： https://www.aeraki.net/zh/community/#community-meetings
 
 Star 一下： https://github.com/aeraki-mesh/aeraki
-
-

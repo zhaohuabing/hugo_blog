@@ -1,5 +1,5 @@
 ---
-layout:     post 
+layout:     post
 title:      "如何构建安全的微服务应用？"
 subtitle:   "微服务架构下的认证和鉴权方案探讨"
 description: "微服务架构的引入为软件应用带来了诸多好处：包括小开发团队，缩短开发周期，语言选择灵活性，增强服务伸缩能力等。与此同时，也引入了分布式系统的诸多复杂问题。其中一个挑战就是如何在微服务架构中实现一个灵活，安全，高效的认证和鉴权方案。本文将尝试就此问题进行一次比较完整的探讨。"
@@ -7,7 +7,7 @@ excerpt: "微服务架构的引入为软件应用带来了诸多好处：包括�
 date:       2018-02-03 12:00:00
 author:     "赵化冰"
 image: "/img/2018-02-03-authentication-and-authorization-of-microservice/AuthenticationTrack.jpeg"
-published: true
+
 tags:
     - Microservice
     - Security
@@ -35,7 +35,7 @@ categories: [ Tech ]
 ## 微服务认证和鉴权面临的问题
 在微服务架构下，一个应用被拆分为多个微服务进程，每个微服务实现原来单体应用中一个模块的业务功能。应用拆分后，对每个微服务的访问请求都需要进行认证和鉴权。如果参考单体应用的实现方式会遇到下述问题：
 * 认证和鉴权逻辑需要在每个微服务中进行处理，需要在各个微服务中重复实现这部分公共逻辑。虽然我们可以使用代码库复用部分代码，但这又会导致所有微服务对特定代码库及其版本存在依赖，影响微服务语言/框架选择的灵活性。
-* 微服务应遵循单一职责原理，一个微服务只处理单一的业务逻辑。认证和鉴权的公共逻辑不应该放到微服务实现中。 
+* 微服务应遵循单一职责原理，一个微服务只处理单一的业务逻辑。认证和鉴权的公共逻辑不应该放到微服务实现中。
 * 为了充分利用微服务架构的好处，实现微服务的水平扩展(Scalability)和弹性(Resiliency),微服务最好是无状态的。因此不建议使用session这种有状态的方案。
 * 微服务架构下的认证和鉴权涉及到场景更为复杂，涉及到用户访问微服务应用，第三方应用访问微服务应用，应用内多个微服务之间相互访问等多种场景，每种场景下的认证和鉴权方案都需要考虑到，以保证应用程序的安全性。
 ![微服务认证和鉴权涉及到的三种场景](/img//2018-02-03-authentication-and-authorization-of-microservice/auth-scenarios.png)
@@ -162,7 +162,7 @@ OAuth针对不同场景有不同的认证流程，一个典型的认证流程如
 >```
 >POST /oauth/token HTTP/1.1
 >Host: authorization-server.com
->  			
+>
 >grant_type=authorization_code
 >&code=xxxxxxxxxxx
 >&redirect_uri=https://example-app.com/redirect
@@ -176,11 +176,11 @@ OAuth针对不同场景有不同的认证流程，一个典型的认证流程如
 
 
 另外在谈及OAuth时，我们需要注意微服务应用作为OAuth客户端和OAuth服务器的两种不同场景:
-  
+
 在实现微服务自身的用户认证时，也可以采用OAuth将微服务的用户认证委托给一个第三方的认证服务提供商，例如很多应用都将用户登录和微信或者QQ的OAuth服务进行了集成。
-  
+
 第三方应用接入和微服务自身用户认证采用OAuth的目的是不同的，前者是为了将微服务中用户的私有数据访问权限授权给第三方应用，微服务在OAuth架构中是认证和资源服务器的角色；而后者的目的是集成并利用知名认证提供服务商提供的OAuth认证服务，简化繁琐的注册操作，微服务在OAuth架构中是客户端的角色。
-  
+
 因此在我们需要区分这两种不同的场景，以免造成误解。
 
 ### 微服务之间的认证
@@ -196,5 +196,3 @@ OAuth针对不同场景有不同的认证流程，一个典型的认证流程如
 * [OAuth 2.0 Authorization Code Request](https://www.oauth.com/oauth2-servers/access-tokens/authorization-code-request/)
 * [PKI/CA工作原理及架构](https://www.jianshu.com/p/c65fa3af1c01)
 * [深入聊聊微服务架构的身份认证问题](http://www.primeton.com/read.php?id=2390)
-
-

@@ -7,7 +7,7 @@ description: "6月15日，我在创建的 [Aeraki Mesh](https://aeraki.net) 项�
 author:     "赵化冰"
 date:       2022-04-26
 image: "img/2022-06-17-aeraki-mesh-cncf-sandbox/background.webp"
-published: true
+
 showtoc: false
 plantuml: true
 tags:
@@ -95,6 +95,3 @@ Aeraki Mesh 产品落地实践：
 * [凤凰网：全面拥抱云原生和开源：腾讯云 Aeraki Mesh 正式成为 CNCF 沙箱项目](https://tech.ifeng.com/c/8GtbclKj3Xu)
 * [网易：全球顶级开源基金会 CNCF 宣布：腾讯云 Aeraki Mesh 正式成为沙箱项目](https://www.163.com/news/article/HA0IFCB400019UD6.html)
 * [CSDN：Aeraki Mesh 正式成为CNCF沙箱项目，腾讯云携手合作伙伴加速服务网格成熟商用](https://blog.csdn.net/Tencnt_news/article/details/125316807?csdn_share_tail=%7B%22type%22%3A%22blog%22%2C%22rType%22%3A%22article%22%2C%22rId%22%3A%22125316807%22%2C%22source%22%3A%22Tencnt_news%22%7D&ctrtid=YZofj)
-
-
-

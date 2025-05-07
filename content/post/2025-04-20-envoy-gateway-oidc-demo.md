@@ -9,7 +9,7 @@ author:     "Robin Zhao"
 date:       2025-04-20
 description: "In this demo, I’ll walk you through how to use Envoy Gateway’s SecurityPolicy to enforce OIDC authentication and authorization, using Amazon Cognito as the identity provider."
 image: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Hell_Gate_Bridge_%2860275p%29.jpg/2560px-Hell_Gate_Bridge_%2860275p%29.jpg"
-published: true
+
 tags:
     - Envoy Gateway
     - OIDC

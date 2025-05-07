@@ -6,7 +6,7 @@ date:       2018-05-06
 author:     "赵化冰"
 image: "/img/2018-05-06-cryptocurrency_week1/bitcoin_1.jpg"
 description : "I have noticed the buzzwords “Bitcoin” and “Blockchain” for a while. There are lots of articles, news, and talks around them. It seems that many people believe that cryptocurrency is the future of online payment, some even claim that blockchain would become the fundamental technology of the next generation of the Internet."
-published: true
+
 tags:
     - Cryptocurrency
     - Blockchain
@@ -24,7 +24,7 @@ I have noticed the buzzwords “Bitcoin” and “Blockchain” for a while. The
 Given its popularity, I can’t help thinking that should I also invest in it? Maybe investing money in Bitcoin or other cryptocurrencies is too risky now, but at least I could try to learn the technologies behind these. So one day I could use this knowledge to help me estimate a potential cryptocurrency investment opportunity, or maybe find a job :-)
 
 ##  What's my finding of blockchain and cryptocurrency learning materials?
-I did some searches and found so many materials about Bitcoin and Blockchain. Some of them did good jobs at explaining parts of the whole picture, But it’s a big topic so I think a systematic learning path makes more sense. 
+I did some searches and found so many materials about Bitcoin and Blockchain. Some of them did good jobs at explaining parts of the whole picture, But it’s a big topic so I think a systematic learning path makes more sense.
 
 Finally, I found this amazing “Bitcoin and Cryptocurrency Technologies” online course. It's created by the professors of Princeton University. The course has a series of well-organized lecture videos explaining the technologies behind Bitcoin from the very beginning to more advanced topics. It also has programming practices after each lecture so you can get hands in the codes and get a better understanding of the theories you got from the videos.
 

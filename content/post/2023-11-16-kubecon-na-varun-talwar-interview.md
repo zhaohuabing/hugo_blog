@@ -7,7 +7,7 @@ description: "前 Goole 产品经理, 硅谷初创企业 Tetrate.io CEO, Istio �
 author: "赵化冰"
 date: 2023-11-16
 image: "https://images.unsplash.com/photo-1597116789352-9ad0fe0cb197?q=80&w=3432&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-published: true
+
 tags:
     - KubeCon
     - Istio
@@ -95,7 +95,7 @@ Varun：是的，Kubernetes 更多的是关注基础设施，而不是应用层�
 
 Sure. Right. Uh We can't do like traffic routing request level losing all all of that stuff, right? So, and then the third one was uh around uh how can we encrypt traffic uh between services, right? It's hard.
 
-So almost for one year, I heard these consistently coming from them. 
+So almost for one year, I heard these consistently coming from them.
 在
 
 So that's why you uh got inspired to create a to, to solve all these problems. So I basically took what also I had and then added some pieces on top for control plane and uh Spiffy and some of those concepts and then address those three needs and then that's how we took him. So, so just different pieces of reward and compare this project. Yeah.
@@ -201,7 +201,7 @@ Thank you.
 
 Welcome @ari to chim in on this.
 
-By the way, if it's ok, may I ask access to the EG meeting recordings? I can reach out to the LF staff if it may take you too much time on it. 
+By the way, if it's ok, may I ask access to the EG meeting recordings? I can reach out to the LF staff if it may take you too much time on it.
 
 The reason I ask this is that I want to get a better understanding of the previous discussion and the context so I can get more involved in the future discussions in the meetings.
 
@@ -209,9 +209,9 @@ ASAIK, the design goal of TVS is for the vulnerability scanning of the istio dep
 
 @V please chime in for more discussion.
 
-Thanks @zack for the heads up. 
+Thanks @zack for the heads up.
 
-GRPC and 
+GRPC and
 
 
 This PR does the following:
@@ -222,5 +222,5 @@ This PR does the following:
   * Unify the request timeout for external services(JWT, oauth2, ext auth)
   * Add SNI for UpstreamTLSSocket
 
-The BackendObjectReference validation and Cluster creation could be optimized and combined into these of the xRoutes. 
+The BackendObjectReference validation and Cluster creation could be optimized and combined into these of the xRoutes.
 I prefer to improve it in a follow-up PR because this PR is already big enough.

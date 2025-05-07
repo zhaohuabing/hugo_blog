@@ -6,7 +6,7 @@ date:       2018-05-09 22:00:00
 author:     "赵化冰"
 image: "/img/2018-05-06-cryptocurrency_week1/bitcoin_3.jpg"
 description: "Hash function can produce a fixed lenght digest of any size of data, and the original data can not be found out if it's properly used."
-published: true
+
 tags:
     - Cryptocurrency
     - Blockchain
@@ -33,14 +33,14 @@ A hash function which is used for cryptographic purposes should have these prope
 
 **Definition:**
 
-A hash function H is said to be collision free if:    
-It's infeasible to find two values X1 and X2, such that *X1!=X2*, yet *H(X1)=H(X2)*  
-Or in other words,  
-It's infeasible to find two inputs which can produce the same outputs. 
+A hash function H is said to be collision free if:
+It's infeasible to find two values X1 and X2, such that *X1!=X2*, yet *H(X1)=H(X2)*
+Or in other words,
+It's infeasible to find two inputs which can produce the same outputs.
 
 **Explaination:**
 
-The collision does exist because the inputs can be any data and the outputs are only 2 to 256 possibilities. 
+The collision does exist because the inputs can be any data and the outputs are only 2 to 256 possibilities.
 
 But for a good hash function, it's just impossible to find them in an acceptable time frame even use all the computers to solve this together on the earth.
 
@@ -50,7 +50,7 @@ We can use this property of hash functions to create a digest for a given data. 
 
 **Definition:**
 
-A hash function H is hiding if:   
+A hash function H is hiding if:
 when a secret value R is chosen from a highly spread-out distribution that, then given the hash result of *H( R/|X)*, it is infeasible to find X.  /| means concatenation of two strings.
 
 **The Problem We Want to Solve:**
@@ -59,7 +59,7 @@ We want a hash function that it's infeasible to find out the input by the output
 
 The problem is that if there are only a few values of inputs, it will be very easy to figure out what the input is by the output by simply trying all the possible values of inputs and see if they match the output.
 
-**Solution:** 
+**Solution:**
 
 Concatenating input with a random R which is randomly chosen from a highly spread-out distribution like this: *H( R/|X)*
 
@@ -140,12 +140,12 @@ As the table above illustrates, different salt values will create completely dif
 
 **Definition:**
 
-A hash function H is said to be puzzle-friendly if:  
-Given an R which is chosen from a highly spread-out distribution and a target set Y.  
-Try to find a solution X such that *H(R/|X) $$/in$$ Y*.  
+A hash function H is said to be puzzle-friendly if:
+Given an R which is chosen from a highly spread-out distribution and a target set Y.
+Try to find a solution X such that *H(R/|X) $$/in$$ Y*.
 There is no solving strategy to find X much better than just trying every possible value of X.
 
-**Usage:** 
+**Usage:**
 
 Puzzle-friendly property is used for Bitcoin mining. The miner needs to find out a specific number R, which is concatenated with the data of the block, and the hash of the combination should fall into a certain range. The first one who solves this puzzle can add the outstanding transaction into the blockchain and get Bitcoin as the reward.
 

@@ -8,7 +8,7 @@ author:     "赵化冰"
 date:       2019-07-02
 description: "本文将接着上一篇继续介绍如何利用OpenTracing来对Kafka异步消息进行跟踪，并将异步消息的跟踪信息加入Istio/Envoy生成的分布式调用跟踪链中进行统一呈现。"
 image: "/img/2019-07-02-using-opentracing-with-istio/background.jpg"
-published: true 
+
 tags:
     - Service Mesh
     - Istio

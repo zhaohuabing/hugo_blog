@@ -7,7 +7,7 @@ description: "本次直播分享主要介绍腾讯云服务网格团队开源的
 author:     "赵化冰"
 date:       2022-03-30
 image: "https://news.cgtn.com/news/2022-02-21/Beijing-2022-Winter-Olympics-closes-with-fireworks-over-Bird-s-Nest-17PnNMaubXq/img/5b6d5bdd0d5442c99b39f4169ba19265/5b6d5bdd0d5442c99b39f4169ba19265.jpeg"
-published: true
+
 showtoc: false
 tags:
     - Istio
@@ -55,6 +55,4 @@ B站
 {{< bilibili  BV1HP4y1M7xw >}}
 
 YouTube
-{{< youtube uXxatQTKzW8 >}} 
-
-
+{{< youtube uXxatQTKzW8 >}}

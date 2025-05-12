@@ -19,6 +19,3 @@ I'll keep updating this post to include more diagrams as I create them.
 
 ## Overview
 ![](./envoy-gateway-architecture.png)
-* Red: Envoy Gateway Components
-* Blue: Data Structures
-* Green: Kubernetes Resources

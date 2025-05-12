@@ -112,7 +112,7 @@ params:
       - title: 云原生数据中心网络
         image: /img/cndc.webp
         href: https://zhaohuabing.com/post/2021-08-27-cloud-native-data-center/
-  addtional_menus:
+  additional_menus:
     - title: READING
       href: /reading/
     - title: TRAVEL

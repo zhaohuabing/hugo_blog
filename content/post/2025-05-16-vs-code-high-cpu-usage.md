@@ -6,6 +6,7 @@ subtitle:   ""
 author:     "Huabing Zhao"
 date:       2025-05-16
 description: "A small shell script to limit CPU usage of node processes in VS Code remote server."
+image: "https://unsplash.com/photos/uyfohHiTxho/download?ixid=M3wxMjA3fDB8MXxhbGx8fHx8fHx8fHwxNzQ3NDA5NzMzfA&force=true&w=1920"
 
 tags:
     - VSCode
@@ -13,11 +14,15 @@ categories:
     - Tech
 ---
 
+
+
 ## VS Code Constantly Freezing
 
-I’ve been using VS Code for a long time, and it’s usually rock solid. Recently, though, I started working with the [Rmote-SSH](https://code.visualstudio.com/docs/remote/ssh) extension to connect to a remote Ubuntu server — a more powerful machine I spun up in the cloud to offload dev workloads from my laptop.
+I’ve been using VS Code for a long time, and it’s usually rock solid. Recently, though, I started working with the [Remote-SSH](https://code.visualstudio.com/docs/remote/ssh) extension to connect to a remote Ubuntu server — a more powerful machine I spun up in the cloud to offload dev workloads from my laptop.
 
 But not long after, I noticed VS Code was frequently freezing, lagging, and even dropping SSH connections. The same thing was happening in Cursor and Windsurf, which makes sense since they’re both VS Code forks under the hood.
+
+![](../2025-05-16-vs-code-high-cpu-usage.png)
 
 ## Diagnosing the Problem
 
@@ -42,7 +47,7 @@ Here’s a snapshot of what I saw:
 
 To prevent VS Code from freezing, I wrote a small shell script that uses cpulimit to restrict each node process to 50% CPU usage.
 
-Here’s the script:
+Here’s the script, you can adjust the `CPU_LIMIT` variable to set the desired CPU limit according to the number of cores on your machine. I set it to 50% for my 24-core server, which is a good balance between performance and stability.
 
 ```bash
 CPU_LIMIT=50

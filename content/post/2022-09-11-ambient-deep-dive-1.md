@@ -5,7 +5,7 @@ title:      "Istio Ambient 模式流量管理实现机制详解（一）"
 subtitle:   "HBONE 隧道原理"
 description: ""
 author: "赵化冰"
-date: 2022-09-28
+date: 2025-05-26
 image: "https://images.unsplash.com/photo-1484976063837-eab657a7aca7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"
 
 tags:
@@ -52,7 +52,13 @@ SSH-2.0-OpenSSH_4.3\r\n
 ... ggg
 ```
 
-> 备注：除了 HTTP CONNECT 以外，采用 HTTP GET 和 POST 也可以创建 HTTP 隧道，这种方式创建的隧道的原理是将 TCP 数据封装到 HTTP 数据包中发送到外部服务器，该外部服务器会提取并执行客户端的原始网络请求。外部服务器收到此请求的响应后，将其重新打包为HTTP响应，并发送回客户端。在这种方式中，客户端所有流量都封装在 HTTP GET 或者 POST 请求中。
+# HTTP2 隧道
+
+Istio 的 HBONE 采用了 HTTP/2 的 CONNECT 方法来创建隧道。HTTP/2 的 CONNECT 方法和 HTTP/1.1 的 CONNECT 方法类似，但在 HTTP/2 中，
+一个 隧道是一个 HTTP2 的 stream，而不是一个 TCP 连接。采用 HTTP/2 CONNECT 可以在同一个 TCP 连接上创建多个隧道，减少了 ztunnel 和 waypoint proxy 之间的连接数。
+
+![](/img/2022-09-11-ambient-hbone/http2-tunnel.png)
+<p style="text-align: center;">HTTP/2 CONNECT 隧道</p>
 
 # Envoy 的 Internal Listener 机制
 

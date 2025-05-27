@@ -117,8 +117,8 @@ params:
       href: /reading/
     - title: TRAVEL
       href: /travel/
-    - title: NOTES
-      href: /notes/
+    # - title: NOTES
+    #  href: /notes/
     - title: ARCHIVE
       href: /archive/
     - title: ABOUT

@@ -17,7 +17,8 @@ categories: [ Tech ]
 showtoc: true
 ---
 
-Istio ambient 模式采用了被称为 [HBONE](https://www.zhaohuabing.com/post/2022-09-08-introducing-ambient-mesh/#%E6%9E%84%E5%BB%BA%E4%B8%80%E4%B8%AA-ambient-mesh) 的方式来连接 ztunnel 和 waypoint proxy。HBONE 是 HTTP-Based Overlay Network Environment 的缩写。虽然该名称是第一次看到，其实 HBONE 并不是 Istio 创建出来的一个新协议，而只是利用了 HTTP 协议标准提供的隧道能力。简单地说，ambient 模式采用了 [HTTP 的 CONNECT 方法](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/CONNECT) 在 ztunnel 和 waypoint proxy 创建了一个隧道，通过该隧道来传输数据。本文将分析 HBONE 的实现机制和原理。
+Istio ambient 模式采用了被称为 [HBONE](https://www.zhaohuabing.com/post/2022-09-08-introducing-ambient-mesh/#%E6%9E%84%E5%BB%BA%E4%B8%80%E4%B8%AA-ambient-mesh) 的
+方式来连接 ztunnel 和 waypoint proxy。HBONE 是 HTTP-Based Overlay Network Environment 的缩写。虽然是一个新的名词，但其实 HBONE 并不是 Istio 创建出来的一个新协议，而只是利用了 HTTP 协议标准提供的隧道能力。简单地说，ambient 模式采用了 [HTTP 的 CONNECT 方法](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/CONNECT) 在 ztunnel 和 waypoint proxy 创建了一个隧道，通过该隧道来传输数据。本文将分析 HBONE 的实现机制和原理。
 
 # HTTP 隧道原理
 
@@ -29,33 +30,58 @@ Istio ambient 模式采用了被称为 [HBONE](https://www.zhaohuabing.com/post/
 
 通过这种方法，我们可以采用 HTTP CONNECT 创建一个隧道，该隧道中可以传输任何类型的 TCP 数据。
 
-例如在一个内网环境中，我们只允许通过 HTTP 代理来访问外部的 web 服务器。但我们可以通过 HTTP 隧道的方式来连接到一个外部的 SSH 服务器上。。
+假设我们有一个运行在 `127.0.0.1` 的 10080 端口的 HTTP 代理服务器，我们想通过该代理服务器连接到外部的服务器 `httpbin.org` 的 80 端口。我们可以使用 Telnet 来模拟这个过程。
 
-客户端连接到代理服务器，发送 HTTP CONNECT 请求通过和指定主机的 22 端口建立隧道。
+首先通过 Telnet 连接到代理服务器。
+
+```bash
+telnet 127.0.0.1 10080
+Trying 127.0.0.1...
+Connected to 127.0.0.1.
+Escape character is '^]'.
+```
+
+接下来发送 HTTP CONNECT 请求，请求代理服务器连接到 `httpbin.org` 的 80 端口。
+
+```bash
+CONNECT httpbin.org HTTP/1.1
 
 ```
-CONNECT for.bar.com:22 HTTP/1.1
+
+如果代理允许连接，它将返回一个 HTTP 200 响应，表示已经和远程主机建立了连接。
+
+```bash
+HTTP/1.1 200 Connection established
 ```
 
-如果代理允许连接，并且代理已连接到指定的主机，则代理将返回2XX成功响应。
+现在客户端就可以通过代理访问远程主机。 发送到代理服务器的所有数据都将原封不动地转发到远程主机，远程主机返回的数据也将原封不动地转发到客户端。
+例如发送一个 HTTP GET 请求到 `httpbin.org` 的 `/status/200` 路径：
+
+```bash
+GET /status/200 HTTP/1.1
+Host: httpbin.org
 
 ```
+
+代理服务器将会将这个请求转发到 `httpbin.org`，并将服务器的响应返回给客户端。
+
+```bash
 HTTP/1.1 200 OK
-```
-
-现在客户端将通过代理访问远程主机。 发送到代理服务器的所有数据都将原封不动地转发到远程主机。
-
-客户端和服务器开始 SSH 通信。
-
-```
-SSH-2.0-OpenSSH_4.3\r\n
-... ggg
+Date: Tue, 27 May 2025 02:27:35 GMT
+Content-Type: text/html; charset=utf-8
+Content-Length: 0
+Connection: keep-alive
+Server: gunicorn/19.9.0
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Credentials: true
 ```
 
 # HTTP2 隧道
 
-Istio 的 HBONE 采用了 HTTP/2 的 CONNECT 方法来创建隧道。HTTP/2 的 CONNECT 方法和 HTTP/1.1 的 CONNECT 方法类似，但在 HTTP/2 中，
-一个 隧道是一个 HTTP2 的 stream，而不是一个 TCP 连接。采用 HTTP/2 CONNECT 可以在同一个 TCP 连接上创建多个隧道，减少了 ztunnel 和 waypoint proxy 之间的连接数。
+HTTP/1.1 CONNECT 可以在客户端和代理服务器之间创建一个隧道，但它有一个缺点：每个隧道都需要一个独立的 TCP 连接，这会导致大量的连接开销。
+采用 HTTP/2 可以解决这个问题。HTTP/2 的设计允许在同一个 TCP 连接上创建多个流（stream），每个流可以独立地发送和接收数据。
+HTTP/2 也支持 CONNECT 方法，其使用方法和 HTTP/1.1 的 CONNECT 方法类似，但在 HTTP/2 中，一个 隧道是一个 HTTP2 的 stream，而不是一个 TCP 连接。
+因此采用 HTTP/2 CONNECT 可以在同一个 TCP 连接上创建多个隧道，从而减少连接开销。Istio ambient 模式中采用的 HBONE 隧道就是基于 HTTP/2 CONNECT 方法来实现的。
 
 ![](/img/2022-09-11-ambient-hbone/http2-tunnel.png)
 <p style="text-align: center;">HTTP/2 CONNECT 隧道</p>

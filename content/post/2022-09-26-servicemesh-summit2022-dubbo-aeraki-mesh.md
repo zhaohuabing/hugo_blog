@@ -1,8 +1,8 @@
 ---
 layout:     post
 
-title:      "Service Mesh Summit 2022 Dubbo Demo"
-subtitle:   ""
+title:      "采用 Aeraki Mesh 对 Dubbo 服务进行服务治理"
+subtitle:   "Service Mesh Summit 2022"
 description: "演示如何利用 Aeraki Mesh 在 Isito 服务网格中对 Dubbo 服务进行服务治理：七层负载均衡、动态路由、本地/全局限流、零代码侵入调用跟踪、查看调用指标等。"
 author: "赵化冰"
 date: 2022-09-27

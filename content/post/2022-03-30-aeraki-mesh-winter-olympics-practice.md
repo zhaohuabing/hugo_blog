@@ -1,8 +1,8 @@
 ---
 layout:     post
 
-title:      "腾讯云原生：Areaki Mesh 在 2022 冬奥会视频直播应用中的服务网格实践"
-subtitle:   ""
+title:      "Areaki Mesh 在 2022 冬奥会视频直播应用中的服务网格实践"
+subtitle:   "腾讯云原生"
 description: "本次直播分享主要介绍腾讯云服务网格团队开源的 Aeraki Mesh 项目如何通过扩展 Istio 来支持 Thrift，Dubbo 等开源协议以及私有协议，并分享腾讯融媒体采用 Aeraki Mesh 支撑 2022 冬奥会视频直播的实践经验。"
 author:     "赵化冰"
 date:       2022-03-30

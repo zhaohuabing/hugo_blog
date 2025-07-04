@@ -1,8 +1,8 @@
 ---
 layout:     post
 
-title:      "Istiocon 2022 分享：Tencent Music’s service mesh practice with Istio and Aeraki(Istio + Aeraki 在腾讯音乐的服务网格落地)"
-subtitle:   ""
+title:      "Tencent Music’s service mesh practice with Istio and Aeraki(Istio + Aeraki 在腾讯音乐的服务网格落地)"
+subtitle:   "Istiocon 2022"
 description: "本场分享将介绍腾讯音乐使用 Istio + Aeraki 的服务网格落地实践，主要包含下述内容：如何利用 Aeraki 来扩展 Istio 的协议扩展能力，Aeraki 和 MetaProtocol Proxy 的原理介绍，腾讯音乐如何使用 Istio + Aeraki 来构建一个管理 HTTP 和私有协议的全功能服务网格。"
 author:     "赵化冰"
 date:       2022-04-26

@@ -1,8 +1,8 @@
 ---
 layout:     post
 
-title:      "IstioCon 2021: How to Manage Any Layer-7 Traffic in an Istio Service Mesh?"
-subtitle:   ""
+title:      "How to Manage Any Layer-7 Traffic in an Istio Service Mesh?"
+subtitle:   "IstioCon 2021"
 excerpt: ""
 author:     "赵化冰"
 date:       2021-03-02

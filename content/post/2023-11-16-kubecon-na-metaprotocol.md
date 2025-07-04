@@ -1,8 +1,8 @@
 ---
 layout:     post
 
-title:      "KubeCon NA - Introduce MetaProtocol Proxy: A Layer-7 Proxy Framework Powered by Envoy"
-subtitle:   ""
+title:      "Introduce MetaProtocol Proxy: A Layer-7 Proxy Framework Powered by Envoy"
+subtitle:   "KubeCon North America 2023"
 description: "我在 KubeCon NA 上分享了基于 Envoy 的通用七层协议代理框架 MetaProtocol Proxy"
 author: "赵化冰"
 date: 2023-11-16

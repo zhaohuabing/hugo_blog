@@ -1,8 +1,8 @@
 ---
 layout:     post
 
-title:      "Istio Meetup China：全栈服务网格 - Aeraki 助你在 Istio 服务网格中管理任何七层流量"
-subtitle:   ""
+title:      "全栈服务网格 - Aeraki 助你在 Istio 服务网格中管理任何七层流量"
+subtitle:   "Istio Meetup China"
 description: "流量管理是 Istio 服务网格的核心能力，然而 Istio 缺省只提供了 HTTP 和 gRPC 两种协议的七层管理能力。对于微服务中常用的其他协议，包括 RPC、Messaging、Cache、Database等，Istio 只支持在四层上对这些协议进行处理。这导致我们将微服务应用迁移到 Istio 服务网格时，无法充分利用服务网格提供的流量管理能力。开源项目 Aeraki 提供了一个第三方协议的扩展框架，支持在 Istio 中对任意七层流量进行管理，提供动态路由、负载均衡、熔断等流量管理能力。本次分享将介绍如何使用 Aeraki 在 Istio 服务网格中管理任何七层协议，包括 Thrift，Dubbo，Redis，以及私有 RPC 协议等，并演示一个使用 Aeraki 管理第三方 RPC 协议的示例。"
 author:     "赵化冰"
 date:       2021-07-10

@@ -1,8 +1,8 @@
 ---
 layout:     post
 
-title:      "CNBPS 2020：Istio 流量管理原理与协议扩展"
-subtitle:   ""
+title:      "Istio 流量管理原理与协议扩展"
+subtitle:   "CNBPS 2020"
 excerpt: ""
 author:     "赵化冰"
 date:       2020-12-07

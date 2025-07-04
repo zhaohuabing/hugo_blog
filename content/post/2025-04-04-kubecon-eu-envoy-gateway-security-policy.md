@@ -1,8 +1,8 @@
 ---
 layout:     post
 
-title:      "KubeCon Europe 2025 - Securing the Gateway: A Deep Dive into Envoy Gateway's Advanced Security Policy"
-subtitle:   ""
+title:      "Securing the Gateway: A Deep Dive into Envoy Gateway's Advanced Security Policy"
+subtitle:   "KubeCon Europe 2025"
 description: "Envoy Gateway's Security Policy simplifies access to Envoy's robust security features, eliminating the need for users to navigate complex Envoy configurations. These features include CORS, JWT authentication, Basic Auth, OpenID Connect (OIDC), External Authentication (Ext Auth), and more. This session includes a demo showcasing OIDC authentication and authorization based on JWT claims, offering practical insights for enhancing application security—whether you're an experienced Envoy user or new to open source."
 author: "赵化冰"
 date: 2025-04-04
@@ -28,6 +28,7 @@ Envoy Gateway's Security Policy simplifies access to Envoy's robust security fea
 
 ## Videos
 
-
 YouTube
 {{< youtube x8wEo6ZDT1g >}}
+
+[Slides](http://localhost:57825/slides/KubeConEU25-Securing%20the%20Gateway_%20A%20Deep%20Dive%20into%20Envoy%20Gateway%27s%20Advanced%20Security%20Policy.pdf)

@@ -1,8 +1,8 @@
 ---
 layout:     post
 
-title:      "KubeCon 上海分享: Envoy Gateway - The API Gateway in the Cloud Native Era"
-subtitle:   ""
+title:      "The API Gateway in the Cloud Native Era"
+subtitle:   "KubeCon China 2023"
 description: "KubeCon 分享：为什么 Envoy Gateway 是云原生时代的 API 网关？"
 author: "赵化冰"
 date: 2023-11-01

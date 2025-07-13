@@ -21,9 +21,11 @@ Feel free to connect with me via:
 |[Istio Operation Bible](http://localhost:1313/post/2021-10-08-istio-operation-bible/)|ebook||[Read online](https://istio-operation-bible.aeraki.net/)|
 
 
-## Presentations (Selected)
+## Presentations
 |Year         |City        |Conference  | Title      |Slides      |Video       |
 | ----------- |----------- |----------- |----------- |----------- |----------- |
+|2025|Japan|[KubeCon Japan](https://kccncjpn2025.sched.com/event/1x6zn/envoy-gateway-policies-unlocking-the-full-power-of-envoy-proxy-for-api-gateways-huabing-zhao-tetrateio)|[Envoy Gateway Policies: Unlocking the Full Power of Envoy Proxy for API Gateways](https://www.zhaohuabing.com/post/2025-06-16-kubecon-japan-envoy-gateway-policies-unlocking-the-full-power-of-envoy-proxy-for-api-gateways/)|[Slides](http://localhost:57825/slides/KubeCon%20Japan%202025-Envoy%20Gateway%20Policies_%20Unlocking%20the%20Full%20Power%20of%20Envoy%20Proxy%20for%20API%20Gateways.pdf)|[Video](https://www.youtube.com/watch?v=_454exrrbMM)|
+|2025|London|[KubeCon EU](https://kccnceu2025.sched.com/event/1tczX/securing-the-gateway-a-deep-dive-into-envoy-gateways-advanced-security-policy-huabing-robin-zhao-tetrate)|[Securing the Gateway: A Deep Dive into Envoy Gateway's Advanced Security Policy](https://www.zhaohuabing.com/post/2025-04-04-kubecon-eu-envoy-gateway-security-policy/)|[Slides](https://static.sched.com/hosted_files/kccnceu2025/8a/KubeConEU25-Securing%20the%20Gateway_%20A%20Deep%20Dive%20into%20Envoy%20Gateway%27s%20Advanced%20Security%20Policy.pdf?_gl=1*1fjrvq6*_gcl_au*NjQzOTUyMjYwLjE3NDU3MjIxODg.*FPAU*NjQzOTUyMjYwLjE3NDU3MjIxODg.)|[Video](https://www.youtube.com/watch?v=x8wEo6ZDT1g)|
 |2024|Hong Kong|[KubeCon China](https://kccncossaidevchn2024.sched.com/event/1eYcX/gateway-api-and-beyond-introducing-envoy-gateways-gateway-api-extensions-jie-api-daeptao-envoyjie-zha-jie-api-huabing-zhao-tetrate)|[Gateway API and Beyond: Introducing Envoy Gateway's Gateway API Extensions](https://www.zhaohuabing.com/post/2024-08-31-introducing-envoy-gateways-gateway-api-extensions/)|[Slides](https://static.sched.com/hosted_files/kccncossaidevchn2024/2b/Gateway%20API%20and%20Beyond_%20Introducing%20Envoy%20Gateway%27s%20Gateway%20API%20Extensions.pptx.pdf?_gl=1*17q8fyt*_gcl_au*MTE3NzMxNDg4My4xNzI1NTkwMDI1*FPAU*MTE3NzMxNDg4My4xNzI1NTkwMDI1)|[Video](https://www.youtube.com/watch?v=qH2byF7SDO8)|
 |2023|Chicago|[KubeCon NA](https://colocatedeventsna2023.sched.com/event/1Rj2s/introduce-metaprotocol-proxy-a-layer-7-proxy-framework-powered-by-envoy-huabing-zhao-tetrate)|[ Introduce MetaProtocol Proxy: A Layer-7 Proxy Framework Powered by Envoy](https://www.zhaohuabing.com/post/2023-11-16-kubecon-na-metaprotocol/)|[Slides](https://zhaohuabing.com/slides/MetaProtoclProxy.pdf)|[Video](https://www.bilibili.com/video/BV1JC4y1m71j)|
 |2023|Shanghai|[KubeCon China](https://www.lfasiallc.com/kubecon-cloudnativecon-open-source-summit-china/program/schedule/)|[Envoy Gateway: The API Gateway for the Cloud-Native Era](https://www.zhaohuabing.com/post/2023-11-01-kubecon-shanghai-2023-envoy-gateway-the-api-gateway-in-the-cloud-native-era/)|[Slides](https://zhaohuabing.com/slides/kubecon-envoy-gateway-the-API-Gateway-in-the-Cloud-Native-Era.pdf)|[Video](https://www.bilibili.com/video/BV15G411y7hP)|
@@ -45,19 +47,19 @@ Feel free to connect with me via:
 |Project       |Role        |  Website   | GitHub     |
 | ------------ |----------- |----------- |----------- |
 | Aeraki Mesh  | Creator    | https://aeraki.net  | http://github.com/aeraki-mesh |
-| Envoy Gateway| Maintainer| https://gateway.envoyproxy.io |https://github.com/envoyproxy/gateway|
+| Envoy Gateway| Maintainer | https://gateway.envoyproxy.io |https://github.com/envoyproxy/gateway|
 | Envoy        | Contributor| https://www.envoyproxy.io |https://github.com/envoyproxy/envoy|
 | Istio        | Contributor| https://istio.io    | https://github.com/istio/istio|
-| ONAP         | PTL        | https://www.onap.org||
-| hugo-theme-cleanwhite | Creator    | https://themes.gohugo.io/themes/hugo-theme-cleanwhite  | https://github.com/zhaohuabing/hugo-theme-cleanwhite |
+| ONAP         | PTL        | https://www.onap.org| |
 
 ## Certificates
 
+<div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="66ac1503-8b17-426c-a248-c3b8b7555f13" data-share-badge-host="https://www.credly.com"></div><script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
+<div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="2735c36a-3840-420f-8e71-e8c1fbaae08e" data-share-badge-host="https://www.credly.com"></div><script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
+<div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="70f53390-c0c6-495c-a227-2240bfa45bbb" data-share-badge-host="https://www.credly.com"></div><script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
+<div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="5e7a2f8b-e7e2-464b-bcec-b642611c4804" data-share-badge-host="https://www.credly.com"></div><script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
+<div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="deaa4683-97e6-4042-8f3f-38bccdad8f00" data-share-badge-host="https://www.credly.com"></div><script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
+<div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="ec9962a0-9a21-48c6-8c41-33836abaa3e6" data-share-badge-host="https://www.credly.com"></div><script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
 <div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="6cb590b5-d2f6-42a1-9e2e-a8141624b718" data-share-badge-host="https://www.credly.com"></div><script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
-
-<div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="08f232fa-30de-46bf-becb-a7e4ab85ef79" data-share-badge-host="https://www.credly.com"></div><script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
-
-<div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="edf1a5de-202c-49e7-9762-f3e6f5ff1b38" data-share-badge-host="https://www.credly.com"></div><script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
-
+<div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="e38fbc26-c8ff-4e8e-8587-90538175f18f" data-share-badge-host="https://www.credly.com"></div><script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
 <div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="86fbba51-17d8-4718-b6d8-3b8bff7c7377" data-share-badge-host="https://www.credly.com"></div><script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
-

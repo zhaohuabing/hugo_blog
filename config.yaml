@@ -101,7 +101,7 @@ params:
     - title: xiaomark
       href: 'https://xiaomark.com/'
   publications:
-    title: MY BOOKS
+    title: PUBLICATIONS
     items:
       - title: Distributed Tracing with Jaeger, Kubernetes, and Istio
         image: /img/liveproject.webp

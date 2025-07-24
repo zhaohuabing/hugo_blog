@@ -44,6 +44,7 @@
     {{ else }}
     <meta property="twitter:card" content="summary" />
     {{ end }}
+    <meta property="og:url" content="{{ .Permalink }}" />
     <!-- end ogp -->
 
     <meta name="keyword"  content="{{ .Site.Params.keyword }}">
@@ -100,4 +101,3 @@
 {{ if .Site.Config.Services.GoogleAnalytics.ID }}
 {{ template "_internal/google_analytics.html" . }}
 {{ end }}
-

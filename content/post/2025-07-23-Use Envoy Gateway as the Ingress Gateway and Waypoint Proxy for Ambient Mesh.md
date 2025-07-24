@@ -6,7 +6,7 @@ subtitle:   ""
 description: "In this article, we’ll look at how you can use [Envoy Gateway](https://gateway.envoyproxy.io/), an Envoy project open source solution, together with Istio when running in Ambient mode. This will allow you to easily leverage the power of Envoy’s L7 capabilities for Ingress traffic and east-west traffic in your mesh with easy-to-use CRDs."
 author: "Huabing Zhao & Ric Hincapie"
 date: 2025-07-24
-image: "/img/IMG_1922.jpg"
+image: ""
 
 tags:
     - Istio

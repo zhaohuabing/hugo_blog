@@ -11,8 +11,7 @@
     <meta property="og:image" content="{{ .Site.BaseURL }}{{ .Params.thumbnail }}">
     <meta property="twitter:image" content="{{ .Site.BaseURL }}{{ .Params.thumbnail }}" />
     {{ else if .Params.image}}
-    <meta property="og:image" con
-    ’tent="{{ .Params.image }}">
+    <meta property="og:image" con ’tent="{{ .Params.image }}">
     <meta property="twitter:image" content="{{ .Params.image }}" />
     {{ else }}
     <meta property="og:image" content="{{ .Site.BaseURL }}/{{ .Site.Params.header_image }}">
@@ -39,6 +38,8 @@
     <meta property="twitter:description" content="{{ .Site.Params.description }}" />
     {{ end }}
 
+    <meta property="og:url" content="{{ .Permalink }}" />
+
     {{ if .Params.summary }}
     <meta property="twitter:card" content="{{ .Params.summary }}" />
     {{ else }}
@@ -46,28 +47,28 @@
     {{ end }}
     <!-- end ogp -->
 
-    <meta name="keyword"  content="{{ .Site.Params.keyword }}">
-    <link rel="shortcut icon" href="{{ "img/favicon.ico" | relURL }}">
+    <meta name="keyword" content="{{ .Site.Params.keyword }}">
+    <link rel="shortcut icon" href="{{ " img/favicon.ico" | relURL }}">
 
     <title>{{ if .Title }}{{ .Title }}-{{ .Site.Params.SEOTitle }}{{ else }}{{ .Site.Params.SEOTitle }}{{ end }}</title>
 
     <link rel="canonical" href="{{ .RelPermalink }}">
 
     {{ if .Site.Params.disqus_proxy }}
-    <link rel="stylesheet" href="{{ "css/iDisqus.min.css" | relURL }}"/>
+    <link rel="stylesheet" href="{{ " css/iDisqus.min.css" | relURL }}" />
     {{ end }}
 
     <!-- Bootstrap Core CSS -->
-    <link rel="stylesheet" href="{{ "css/bootstrap.min.css" | relURL }}">
+    <link rel="stylesheet" href="{{ " css/bootstrap.min.css" | relURL }}">
 
     <!-- Clean White theme CSS -->
-    <link rel="stylesheet" href="{{ "css/hugo-theme-cleanwhite.min.css" | relURL }}">
+    <link rel="stylesheet" href="{{ " css/hugo-theme-cleanwhite.min.css" | relURL }}">
 
     <!-- zangshang CSS -->
-    <link rel="stylesheet" href="{{ "css/zanshang.css" | relURL }}">
+    <link rel="stylesheet" href="{{ " css/zanshang.css" | relURL }}">
 
     <!-- Custom Fonts -->
-    <link rel="stylesheet" href="{{ "css/font-awesome.all.min.css" | relURL }}">
+    <link rel="stylesheet" href="{{ " css/font-awesome.all.min.css" | relURL }}">
 
     <!--  Custom CSS  -->
     {{ range .Site.Params.custom_css -}}
@@ -75,16 +76,16 @@
     {{- end }}
 
     <!-- jQuery -->
-    <script src="{{ "js/jquery.min.js" | relURL }}"></script>
+    <script src="{{ " js/jquery.min.js" | relURL }}"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="{{ "js/bootstrap.min.js" | relURL }}"></script>
+    <script src="{{ " js/bootstrap.min.js" | relURL }}"></script>
 
     <!-- Hux Theme JavaScript -->
-    <script src="{{ "js/hux-blog.min.js" | relURL }}"></script>
+    <script src="{{ " js/hux-blog.min.js" | relURL }}"></script>
 
     <!-- lazy load image JavaScript -->
-    <script src="{{ "js/lazysizes.min.js" | relURL }}"></script>
+    <script src="{{ " js/lazysizes.min.js" | relURL }}"></script>
 
     <!-- Custom JS -->
     {{ range .Site.Params.custom_js }}
@@ -100,4 +101,3 @@
 {{ if .Site.Config.Services.GoogleAnalytics.ID }}
 {{ template "_internal/google_analytics.html" . }}
 {{ end }}
-

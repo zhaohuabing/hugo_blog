@@ -51,7 +51,6 @@ params:
   sidebar_avatar: img/zhaohuabing-headshot-round-white.webp
   featured_tags: true
   featured_condition_size: 5
-  ba_track_id: a1d96090e4189c0376251fb043da7be5
   reward: false
   reward_guide: 嗯，这篇文章对我有用，鼓励一下...
   friends: false

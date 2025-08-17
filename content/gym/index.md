@@ -1,5 +1,6 @@
 ---
 layout: page
+search_exclude: true
 ---
 # 🏋️‍♂️ 每周两练自由器械力量计划（含热身组 + 视频演示 + 替代动作）
 

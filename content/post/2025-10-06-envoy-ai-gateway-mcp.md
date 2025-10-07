@@ -2,7 +2,7 @@
 layout:     post
 
 title:      "Envoy AI Gateway 现已支持 Model Context Protocol"
-description: "我们很高兴地宣布，Envoy AI Gateway 的下一个版本将正式支持 [Model Context Protocol](https://modelcontextprotocol.io/)（简称 MCP），让 Envoy AI Gateway（EAIGW）成为现代 AI 生产流量的通用入口。"
+description: "我们很高兴地宣布，Envoy AI Gateway 的下一个版本将正式支持 [Model Context Protocol](https://modelcontextprotocol.io/)（简称 MCP），让 Envoy AI Gateway（EAIGW）成为 AI 流量的通用入口。"
 author: "nacx, mathetake"
 date: 2025-10-06
 image: "/img/2025-10-06-envoy-ai-gateway-mcp.jpg"
@@ -19,7 +19,7 @@ showtoc: false
 
 # Envoy AI Gateway 现已支持 Model Context Protocol
 
-我们很高兴地宣布，Envoy AI Gateway 的下一个版本将正式支持 [Model Context Protocol](https://modelcontextprotocol.io/)（简称 MCP），让 Envoy AI Gateway（EAIGW）成为现代 AI 生产流量的通用入口。
+我们很高兴地宣布，Envoy AI Gateway 的下一个版本将正式支持 [Model Context Protocol](https://modelcontextprotocol.io/)（简称 MCP），让 Envoy AI Gateway（EAIGW）成为 AI 流量的通用入口。
 
 Envoy AI Gateway 是 [Bloomberg](https://www.bloomberg.com/) 与 [Tetrate](https://tetrate.io/) 合作的成果，旨在满足企业级 AI 工作负载的生产需求，结合了大型企业在真实生产环境中的经验与创新。
 EAIGW 基于久经验证的 [Envoy Proxy](https://www.envoyproxy.io/) 数据平面构建，作为 Envoy Gateway 的 AI 扩展，已被全球数千家企业用于关键任务流量。

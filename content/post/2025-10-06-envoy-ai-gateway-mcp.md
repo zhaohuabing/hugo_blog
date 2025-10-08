@@ -99,7 +99,7 @@ MCP 的集成远不止是“数据转发”。
 
 然后启动 Envoy AI Gateway：
 
-如果还未安装 CLI，请参阅 安装指南。
+如果还未安装 CLI，请参阅 [安装指南](http://aigateway.envoyproxy.io/docs/cli/aigwinstall)
 
 ```bash
 $ aigw run --mcp-config mcp-servers.json

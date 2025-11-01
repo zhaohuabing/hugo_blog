@@ -1,7 +1,7 @@
 [build]
 [build.environment]
-HUGO_VERSION = "0.148.2"
-GO_VERSION = "1.24.6"
+HUGO_VERSION = "0.151.0"
+GO_VERSION = "1.25.0"
 [[redirects]]
   from = "/learning-envoy/*"
   to = "https://hilarious-faloodeh-b9f59a.netlify.app/:splat"

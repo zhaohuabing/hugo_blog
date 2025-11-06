@@ -5,7 +5,6 @@ title:      "在 Ambient Mesh 中使用 Envoy Gateway 扩展 Redis 集群"
 description: "本文介绍如何在 Istio Ambient Mesh 中，通过 Envoy Gateway 实现对 Redis 集群 的透明接入与智能路由，为无 Sidecar 模式下的有状态服务提供高效、可扩展的解决方案。"
 author: "Kailun Wang(Houzz)、Yangyang Zhao(Houzz)、Huabing Zhao(Tetrate)"
 date: 2025-11-06
-image: "/img/background.webp"
 
 tags:
     - Envoy Gateway

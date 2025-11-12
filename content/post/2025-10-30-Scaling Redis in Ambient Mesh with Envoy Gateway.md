@@ -3,7 +3,7 @@ layout:     post
 
 title:      "在 Ambient Mesh 中使用 Envoy Gateway 扩展 Redis 集群"
 description: "本文介绍如何在 Istio Ambient Mesh 中，通过 Envoy Gateway 实现对 Redis 集群 的透明接入与智能路由，为无 Sidecar 模式下的有状态服务提供高效、可扩展的解决方案。"
-author: "Kailun Wang(Houzz)、Yangyang Zhao(Houzz)、Huabing Zhao(Tetrate)"
+author: "Kailun Wang、Yangyang Zhao、Huabing Zhao"
 date: 2025-11-06
 image: "/img/2025-10-30-scaling-redis-in-ambient-mesh-with-envoy-gateway/background.webp"
 
@@ -23,19 +23,19 @@ showtoc: true
 
 基于这一基础，本篇文章将探讨一个更复杂、涉及状态管理的实际场景：如何在 Ambient Mesh 中管理 Redis 集群流量。
 
-随着服务网格被广泛采用，支持 Redis 这类有状态协议的需求变得越来越重要。本文由 **[Houzz](https://www.houzz.com/)** 与 **[Tetrate](https://tetrate.io/)** 联合撰写，介绍我们如何协作，通过 Envoy Gateway 作为集中式 Waypoint 代理，使 Istio Ambient Mesh 能够透明地处理 Redis 集群通信。
+随着服务网格被广泛采用，支持 Redis 这类有状态协议的需求变得越来越重要。本文由介绍我们如何协作，通过 Envoy Gateway 作为集中式 Waypoint 代理，使 Istio Ambient Mesh 能够透明地处理 Redis 集群通信。
 
-这一探索始于 Houzz 在从基于 sidecar 的 Istio 模式迁移到轻量、无 sidecar 的 Ambient 模式过程中遇到的挑战。虽然 Ambient 模式在运维简化和资源开销方面具有显著优势，但它原生并不支持 Redis 集群特有的拓扑发现与基于 slot 的路由机制。
+这一探索始于公司一个客户在从基于 sidecar 的 Istio 模式迁移到轻量、无 sidecar 的 Ambient 模式过程中遇到的挑战。虽然 Ambient 模式在运维简化和资源开销方面具有显著优势，但它原生并不支持 Redis 集群特有的拓扑发现与基于 slot 的路由机制。
 
 为此，我们设计了一种新架构：使用 Envoy Gateway 作为 Waypoint Proxy，将 Redis 集群的拓扑感知和请求路由逻辑从应用中剥离出来。这样，网格内的客户端无需改动代码，即可无缝访问外部 Redis 分片，也无需注入 sidecar。
 
-接下来，我们将介绍问题背景、解决方案设计、部署步骤以及该方案在 Houzz 实际生产环境中的效果。
+接下来，我们将介绍问题背景、解决方案设计、部署步骤以及该方案在客户实际生产环境中的效果。
 
 ---
 
-## 背景：Houzz 的 Redis 集群架构
+## 背景：客户的 Redis 集群架构
 
-Redis 是 Houzz 基础设施中不可或缺的核心组件，为包括 PHP、Node.js 在内的多语言应用提供支持。Houzz 运行着一个大型 Redis 集群，以集群模式部署在云端虚拟机上。该集群包含数百个节点，存储数百 TB 数据，其中大部分为持久化数据，需要在服务更新期间保持可用。
+Redis 是客户基础设施中不可或缺的核心组件，为包括 PHP、Node.js 在内的多语言应用提供支持。客户运行着一个大型 Redis 集群，以集群模式部署在云端虚拟机上。该集群包含数百个节点，存储数百 TB 数据，其中大部分为持久化数据，需要在服务更新期间保持可用。
 
 该 Redis 集群采用 分片（sharding） 机制，每个主节点负责部分键空间（keyspace），由一段哈希 slot 范围定义。当客户端向不属于该 slot 的节点发送请求时，该节点会返回一个 MOVED 响应，指向正确的分片。客户端需要通过 CLUSTER SLOTS 命令获取集群拓扑信息，维护 slot 与节点的对应关系，从而正确地路由请求。
 
@@ -43,13 +43,13 @@ Redis 是 Houzz 基础设施中不可或缺的核心组件，为包括 PHP、Nod
 
 **图 1.** Redis 集群基于 key-slot 进行分片。客户端通过计算 `CRC16(key) % 16384` 来确定 slot，并将请求路由至对应的分片。
 
-过去，Houzz 的应用程序在客户端库中自行实现这些路由逻辑。这导致应用与 Redis 集群拓扑之间高度耦合，也增加了不同语言 Redis 客户端开发和维护的复杂度。
+过去，客户的应用程序在客户端库中自行实现这些路由逻辑。这导致应用与 Redis 集群拓扑之间高度耦合，也增加了不同语言 Redis 客户端开发和维护的复杂度。
 
 ---
 
 ## 使用 Istio Sidecar 与 EnvoyFilter 实现 Redis 集群支持
 
-在迁移 Ambient Mesh 之前，Houzz 采用基于 sidecar 的方案，通过 Istio 的 EnvoyFilter API 支持 Redis 集群流量。
+在迁移 Ambient Mesh 之前，客户采用基于 sidecar 的方案，通过 Istio 的 EnvoyFilter API 支持 Redis 集群流量。
 
 这种方式将 Redis 集群感知与 key-slot 路由逻辑从客户端中移出，由 Istio sidecar（istio-proxy）内的 Envoy 代理负责。具体包括：
 - 在 Envoy 中定义一个 后端集群（backend cluster），包含所有 Redis 节点，用于基于 slot 的路由；
@@ -65,20 +65,20 @@ Redis 是 Houzz 基础设施中不可或缺的核心组件，为包括 PHP、Nod
 
 ## 挑战：在无 Sidecar 的 Ambient 模式中支持 Redis
 
-Istio 的 Ambient 模式移除了 Pod 内的 sidecar 代理，大幅降低了资源消耗并简化了运维。然而，当 Houzz 试图在 Ambient 模式中运行 Redis 时遇到关键问题：** Ambient Mesh 不支持通过 EnvoyFilter 配置 Redis 集群**。
+Istio 的 Ambient 模式移除了 Pod 内的 sidecar 代理，大幅降低了资源消耗并简化了运维。然而，当客户试图在 Ambient 模式中运行 Redis 时遇到关键问题：** Ambient Mesh 不支持通过 EnvoyFilter 配置 Redis 集群**。
 
 在 sidecar 模式中，EnvoyFilter 可用来实现复杂的 Redis 行为，包括拓扑发现和基于 slot 的转发。而 Ambient Mesh 采用了不同的架构：
 * ztunnel 进程负责透明地捕获应用流量；
 * 可选的 Waypoint 代理 处理 L7 逻辑；
 * 并不支持自定义 L7 过滤器（如 envoy.filters.network.redis_proxy）。
 
-因此，在 Ambient 模式下，Houzz 的应用无法像在 Sidecar 模式中那样透明地连接 Redis 集群。Redis 客户端在收到 MOVED 响应时，由于不了解集群拓扑，无法自行完成请求重定向，最终导致访问失败。
+因此，在 Ambient 模式下，客户的应用无法像在 Sidecar 模式中那样透明地连接 Redis 集群。Redis 客户端在收到 MOVED 响应时，由于不了解集群拓扑，无法自行完成请求重定向，最终导致访问失败。
 
-这成为 Houzz 推动 Ambient Mesh 更大范围落地的主要阻碍——即便 Ambient 在资源开销和运维体验上表现出明显优势。
+这成为客户内部在推动 Ambient Mesh 更大范围落地的主要阻碍——即便 Ambient 在资源开销和运维体验上表现出明显优势。
 
 ## 解决方案：使用 Envoy Gateway 作为 Redis 的 Waypoint 代理
 
-为了解决上述问题，Houzz 与 Tetrate 的联合团队设计了一种方案：在 Ambient Mesh 中使用 Envoy Gateway 作为可编程的 Waypoint Proxy。
+为了解决上述问题，Tetrate 团队为客户设计了一种方案：在 Ambient Mesh 中使用 Envoy Gateway 作为可编程的 Waypoint Proxy。
 Envoy Gateway 支持 Redis Filter，并可通过 EnvoyPatchPolicy 灵活扩展，从而在无 sidecar 的环境下实现第七层（L7）流量控制。
 
 整个架构的工作原理如下：

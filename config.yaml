@@ -64,10 +64,9 @@ params:
     data_mapping: pathname
     data_reactions_enabled: '1'
     data_emit_metadata: '0'
-    data_theme: light
+    data_theme: preferred_color_scheme
     data_lang: en
     crossorigin: anonymous
-
   # We need a proxy to access Disqus api in China
   # disqus_proxy : 'https://disqusapi.zhaohuabing.com'
   # disqus_site : 'https://zhaohuabing.com'

@@ -1,104 +1,141 @@
 ---
 layout: post
-title: "我如何安装 OpenClaw，并把它变成每天都在用的效率系统"
-subtitle: "从环境安装、自动化测试到日报投递：一套可落地的 AI 助手实践"
-description: "记录我安装和使用 OpenClaw 的完整过程，以及它如何在日常工程工作中持续提升效率。"
-excerpt: "这不是一次性的 AI 尝鲜，而是一套可持续运行的工作流：自动化执行、上下文记忆、定时报告、环境排障。"
+title: "我是怎么把 OpenClaw 用成日常效率搭子的"
+subtitle: "从安装、踩坑到跑顺：一套可持续的 AI 工作流实战"
+description: "记录我如何把 OpenClaw 接入真实工程流：环境修复、E2E 测试自动化、GitHub 日报投递、备份与迁移。"
+excerpt: "我需要的不是会聊天的 AI，而是能执行、能记忆、能按时交付结果的 AI。"
 author: "Huabing（Robin）Zhao"
 date: 2026-03-04
-image: "/img/background.webp"
-tags: [OpenClaw, AI Agent, Dev Productivity, Envoy Gateway, Automation]
+image: "/img/2026-03-04-openclaw-productivity/cover.svg"
+tags: [OpenClaw, AI Agent, Dev Productivity, Envoy Gateway, Automation, GitHub MCP]
 categories: [Tech, Open Source]
 showtoc: yes
 URL: "/2026/03/04/openclaw-productivity/"
 ---
 
-最近我把 OpenClaw 真正接进了自己的日常工程工作流里。最初只是想“装一个 AI 助手试试看”，结果最后演变成了一个持续协作系统：它不仅能对话，还能执行命令、管理上下文、跑测试、维护任务，并且把结果按计划发送给我。
+<center><img src="/img/2026-03-04-openclaw-productivity/cover.svg" alt="OpenClaw Productivity Cover"/></center>
 
-这篇文章记录一下我从安装到落地的全过程，以及它到底是怎么帮我提高效率的。
+先简单介绍一下 OpenClaw：它是一个开源、自托管的 AI Agent Gateway。你可以把它理解为“消息渠道”和“AI 执行能力”之间的统一中枢：一边连 Telegram/WhatsApp/Discord/iMessage，另一边连模型、工具、会话和记忆系统。
+
+对我来说，OpenClaw 最关键的不是“会聊天”，而是它能持续执行真实任务。
+
+这段时间我做了一件很工程师的事：我没有把它当聊天玩具，而是把它接进了我每天的工作流。结果是：它现在已经是我日常在用的效率系统。
 
 <!--more-->
 
-## 为什么是 OpenClaw？
+## 我为什么会开始用 OpenClaw
 
-我需要的不是一个“会聊天”的模型，而是一个“能干活”的助手：
+我对 AI 工具的要求很实际：
 
-- 能在本机/服务器执行实际命令；
-- 能记住上下文，不用每次从头讲；
-- 能定时做事（比如日报）；
-- 能接入我的常用工具（GitHub、消息渠道等）；
-- 能把执行结果闭环反馈给我。
+- 能执行命令，不只是给建议；
+- 能记住上下文，不用每次重讲背景；
+- 能定时做事，而不是我手动触发；
+- 能把结果送达我，而不是让我自己翻日志。
 
-OpenClaw 刚好满足了这些条件。
+OpenClaw 基本满足了这四点，所以我决定把它当“长期协作者”来用。
 
-## 安装之后，我先做了什么
+## 安装后我先做了哪些配置
 
-我安装完成后，没有直接进入“写功能”阶段，而是先做了两件基础工作：
+我没有一上来就让它“写东西”，而是先做基础配置，让系统先稳定。
 
-1. **先把执行环境稳定住**（Go、Helm、kind、shell）
-2. **先把记忆和备份策略定好**（避免后续状态丢失）
+### 1）运行与服务配置
 
-这一步很关键。因为一旦环境不稳定，后续所有自动化都会变成“偶尔成功”。
+- 重启 Gateway 应用模型变更：`openclaw gateway restart`
+- 用 `openclaw gateway status` 验证服务状态、端口、RPC 探活
 
-## 一次真实的排障：把 E2E 链路打通
+### 2）GitHub MCP 与日报任务
 
-在跑 Envoy Gateway E2E 的过程中，我连续遇到了几类问题：
+- 验证 GitHub MCP 可用（`mcporter call github.get_me`）
+- 调整 Daily GitHub Standup 任务为每天 18:00（Asia/Shanghai）
+- 修复“任务执行成功但消息未送达”的配置问题，确保日报能直接发到我 Telegram
 
-- Go 工具链版本不匹配；
-- 缺少 Helm；
-- Helm release 名称冲突（`eg` 已存在）；
-- kind 集群和测试流程状态不一致；
-- `/etc/bash.bashrc` 中 `PS1` 在非交互 shell 场景触发 `unbound variable`。
+### 3）备份与忽略策略
 
-其中 `PS1` 这个问题看似小，但会直接让 `make` 过程中子 shell 退出。最终修复方式是把 bashrc 里对 `PS1` 的判断改成安全写法（例如 `${PS1-}`），避免在 `set -u` 场景下炸掉。
+我把 `~/.openclaw` 做成可迁移状态，同时避免备份膨胀：
 
-这类问题如果手动反复跑，通常很耗时间。用 OpenClaw 的好处是：
+- 在 `.gitignore` 中排除大目录（如 `workspace/envoy-gateway/`, `workspace/istio-1.29.0/`, `workspace/hugo_blog/`）
+- 排除 `logs/`、`workspace/.venv/`
+- 按需排除敏感目录（`credentials/`）
 
-- 复现路径可持续；
-- 每次失败点能快速定位；
-- 修复后可立即回归验证。
+### 4）状态仓库化
 
-## 不是“聊一下”，而是“接管重复劳动”
+- 初始化 `~/.openclaw` 为 git 仓库
+- 配置远程并 push（用于配置与记忆迁移）
 
-我把很多重复动作交给了 OpenClaw：
+<center><img src="/img/2026-03-04-openclaw-productivity/workflow.svg" alt="OpenClaw Workflow"/></center>
 
-- 拉取和更新仓库；
-- 同步 skills；
-- 执行测试并收集失败点；
-- 维护备份与 `.gitignore` 规则；
-- 生成并发送 GitHub standup 报告。
+## 真实踩坑记录：我遇到了什么，怎么修的
 
-比如我后来把定时日报任务修到可用状态：
+这部分是我觉得最有价值的地方，因为全是实战里遇到的问题。
 
-- 每天 18:00（Asia/Shanghai）执行；
-- 用 GitHub MCP 拉取最近 24h 活动；
-- 输出 PR/Issue/Review 模板化报告；
-- 直接发到我的 Telegram。
+### 坑 1：Go 版本不对，E2E 直接失败
 
-这就是我最看重的一点：**AI 不只是回答问题，而是在我的工作流里持续产出结果。**
+报错涉及 `-modfile`，根因是工具链过旧。升级 Go 后，构建链路恢复。
 
-## 记忆和迁移：把“助手状态”当资产管理
+### 坑 2：Helm 缺失 / release 冲突
 
-我还专门整理了 OpenClaw 的迁移策略：
+- 先遇到 `helm: command not found`
+- 装完后又遇到 `cannot re-use a name that is still in use`
 
-- 备份 `~/.openclaw` 里的关键配置和工作区；
-- 对大型项目目录做 `.gitignore` 排除，避免备份仓库膨胀；
-- 保留 memory、skills、jobs 等可迁移状态；
-- 有意识地区分“可重建环境”和“不可丢失上下文”。
+处理方式是固定化：冲突时先 `helm uninstall eg`，再重跑。
 
-这样即使换主机，也能快速恢复到可工作状态，而不是从零开始重新驯化助手。
+### 坑 3：`PS1 unbound variable`（隐蔽但致命）
 
-## 我现在的使用感受
+在非交互 shell + `set -u` 场景下，bashrc 对 `$PS1` 的不安全引用会导致 make 子流程退出。修复成 `${PS1-}` 后才稳定。
 
-如果只看“写代码能力”，很多 AI 工具都不错；
-但从“长期效率系统”角度看，我更在意的是：
+### 坑 4：测试入口与过滤参数不一致
 
-1. **可执行性**：能不能真的落地执行；
-2. **可持续性**：上下文和任务能不能持续积累；
-3. **可维护性**：出了问题能不能快速定位与修复。
+`E2E_RUN_TEST` 的行为和测试包路径（如 `multiple_gc`）不完全一致，必须对着 Makefile 路径来跑，不能只凭经验猜参数。
 
-OpenClaw 在这三点上给我的体验是正向的。
+### 坑 5：新集群创建与环境兼容问题
 
-它没有神化工程师，而是把我从大量重复操作里解放出来，让我把精力放在真正需要判断和决策的地方。
+直接 `kind create cluster` 在当前宿主环境不稳定，改用项目内 `make delete-cluster create-cluster` 脚本流程更可靠。
 
-如果你也在做基础设施、云原生、网关或平台工程，这种“可执行 + 有记忆 + 可自动化”的 AI 助手值得认真搭一套。
+### 坑 6：Istio ambient CNI CrashLoop
+
+报错 `too many open files`，通过调高 inotify sysctl 并重建 pod 修复。
+
+### 坑 7：EG 安装 manifest 冲突
+
+遇到 server-side apply 字段冲突，最终用 `--server-side --force-conflicts` 完成。
+
+<center><img src="/img/2026-03-04-openclaw-productivity/troubleshoot.svg" alt="Troubleshooting Loop"/></center>
+
+## 我的实际使用案例（不是 demo）
+
+这里列几个我已经在用的案例：
+
+### 案例 A：E2E 自动化排障闭环
+
+我让 OpenClaw 按“执行→失败点→修复→复跑→回报”的闭环跑测试。这样我每天不用在重复命令里耗精力，只看关键结果和决策点。
+
+### 案例 B：GitHub Standup 自动投递
+
+我现在每天固定收到结构化 standup：
+
+1. PR（opened/closed/updated）
+2. Issues created
+3. Issues triaged（按评论时间校验）
+4. Reviewed PRs（approved/commented）
+
+这比手动翻 GitHub 高效太多。
+
+### 案例 C：配置迁移与主机切换
+
+我把 OpenClaw 的配置、记忆、任务状态当作资产来管理，而不是“临时环境”。换主机时不再从零配置。
+
+### 案例 D：内容生产与发布
+
+这篇文章本身就是一个案例：我让 OpenClaw根据真实操作记录迭代草稿、补配图路径、更新到 Hugo 博客仓库并提交。
+
+## 我的结论
+
+对我来说，OpenClaw 的价值不在于“AI 很聪明”，而在于它把我的工作流变成了可持续系统：
+
+1. **可执行**：直接帮我做，不是只提建议；
+2. **可持续**：有记忆、有任务、有状态；
+3. **可落地**：在真实工程环境里能持续产出结果。
+
+如果你做的是云原生、网关、服务网格、平台工程这类工作，我很建议你别只把 AI 当问答工具。把它接进你的真实流程，让它接管那些高频、低价值但必须有人做的事情。
+
+对我来说，这就是 AI 提效真正发生的地方。

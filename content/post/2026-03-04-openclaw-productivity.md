@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "OpenClaw 不是玩具，我的 Jeff 已经开始“上班”了"
+title: "OpenClaw 不是玩具，我的个人助理 Jeff 已经开始“上班”了"
 subtitle: "OpenClaw 实战：从 Telegram/WhatsApp 对话，到自动排障、日报投递与博客发布"
 description: "记录我如何把 OpenClaw 接入真实工程流：环境修复、E2E 测试自动化、GitHub 日报投递、备份与迁移。"
 excerpt: "我需要的不是会聊天的 AI，而是能执行、能记忆、能按时交付结果的 AI。"
